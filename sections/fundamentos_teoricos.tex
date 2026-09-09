@@ -1,0 +1,120 @@
+\subsubsection{Gestion de inventarios}
+
+La gestion de inventarios consiste en el proceso que se realiza sobre la mercancia para conocer la cantidad disponible, esto permitiendo analizar los niveles de existencia y la aproximacion del consumo real.\cite{meana2024gestión}
+
+Los pasos basicos para realizar una correcta gestion de inventario consiste en: Compra del inventario, en el que los productos se entregan al almacen o punto de venta, Almacenamiento del inventario, en el que este se guarda hasta que se necesite y Aprovechamiento del inventario, en donde se controla la cantidad de productos que hay a la venta para finalmente enviarlo o venderlo a los clientes.\cite{ibm_inventario}
+
+\paragraph{Tipos de gestion de inventario}
+
+\begin{description}
+    \item[Gestión periódica de inventarios] Este método implica realizar un recuento físico del inventario a intervalos específicos. Se toma el inventario al inicio del periodo, se suman las nuevas compras y se deduce el inventario final para calcular el costo de las mercancías vendidas (COGS).\cite{ibm_inventario}
+
+    \item[Gestión de inventario de códigos de barras] Utiliza un sistema que asigna un número único a cada producto. Permite asociar datos como proveedor, dimensiones del producto, peso y cantidad en stock.\cite{ibm_inventario}
+
+    \item[Gestión de inventario RFID] Transmite de forma inalámbrica la identidad de un producto mediante un número de serie único. Mejora la eficiencia y visibilidad del inventario, facilitando el seguimiento de artículos.\cite{ibm_inventario}
+    
+\end{description}
+
+\subsubsection{Prediccion de demanda}
+
+La prediccion de la demanda es un proceso que permite mejorar la gestion de los niveles de inventario mediante la utilizacion de datos historicos. Una correcta prediccion de la demanda le permite a las organizaciones el poder tomar decisiones mas inteligentes a la hora de manejar sus provisiones, evitando la falta o exceso de productos, de esta manera, aumentando tanto la satisfaccion del cliente como la creacion de estraregias de negocio mas efectivas a corto y largo plazo \cite{ibm_prevision_demanda}.
+
+En los ultimos años, los mercados han evolucionado y se han vuelto cada vez mas exigentes en cuanto la calidad y precicion de los servicios, es por eso, que muchas organizaciones se ha visto inclinadas a incluir el uso de nuevas herramientas y tecnologias como Inteligencia Artificial. Machine Learning o analisis predictivo, para automatizar y perfeccionar esta tarea, ya que los metodos actuales estaticos que son la norma en muchas empresas y organizaciones han empezado a quedar obsoletas para satisfacer las necesidades del mercado actual.\cite{ibm_prevision_demanda, valencia2015}
+
+La principal debilidad de los modelos de inventario actuales es que al ser poco robustos, no toman en contemplacion diferentes factores externos de manera inteligente \cite{valencia2015}. 
+
+\subsubsection{Series de tiempo}
+
+Las series temporales son usadas para analizar datos históricos recogidos en intervalos regulares, como ventas diarias o mensuales, para identificar patrones, tendencias estacionales y ciclos. Estos patrones se identifican mediante técnicas como gráficos ACF y PACF, tambien estos patrones sirven para ajustar modelos estadísticos o de aprendizaje automático (como ARIMA, SARIMAX o Prophet) que permiten proyectar valores futuros \cite{10596_69801}
+
+Se utilizan estos modelos para hacer predicciones, los datos se agrupan en intervalos (mensualmente) para reducir variabilidad y facilitar el análisis. Tras el análisis de datos, se ajustan los modelos y se evalúan mediante métricas como el RMSE, para que las predicciones sirvan en la toma de decisiones de gestión y planificación de recursos
+
+
+\subsubsection{Modelos de prediccion de demanda}
+
+\paragraph{Redes Neuronales Artificiales (RNA)}\mbox{}\\
+Las redes neuronales artificiales (RNA) son técnicas útiles para la previsión de la demanda, gracias a su capacidad para manejar datos no lineales y captar relaciones funcionales sutiles entre datos empíricos, incluso cuando las relaciones subyacentes son desconocidas o difíciles de describir.
+
+    \subparagraph{Long Short-Term Memory (LSTM)}\mbox{}\\
+    Las redes neuronales de memoria a largo y corto plazo o LSTM es un tipo de red neuronal que se ha demostrado eficaz en la predicción de series temporales, esta tecnica esta diseñada para procesar datos secuenciales y temporales que fue creada para superar las limitaciones de las redes neuronales tradicionales.\cite{10124729}.
+
+    Su funcionamiento se basa en una estrictura de memoria que permite a la red aprender y recordar información a lo largo del tiempo, lo que es especialmente útil para capturar dependencias a largo plazo en los datos. LSTM cuenta con las tres siguientes puertas: 
+
+    \begin{description}
+        \item[Puerta de olvido (forget gate):] Decide qué información se descarta. Esta se calcula mediante la función sigmoide, que toma como entrada el vector de entrada actual y el estado oculto anterior, de esta menra, generando un valor entre 0 y 1 para cada componente de la celda de la memoria. 
+        
+        \begin{equation}
+        f_t = \delta(W_f[h_{t-1}, X_t] + b_f)
+        \end{equation}   
+
+        \item[Puerta de entrada (input gate):] Decide qué información se almacena en la memoria. Tambien usa una funcion tanh para normalizar la informacion que pasa atraves de la red neuronal.
+        \begin{equation}
+        i_t = \delta(W_i[h_{t-1}, X_t] + b_i), \quad L_t = \tanh(W_c[h_{t-1}, X_t] + b_c)
+        \end{equation}
+
+        \item[Puerta de salida (output gate):] Decide qué información se utiliza para generar la salida oculta actual.
+        \begin{equation}
+        o_t = \delta(W_o[h_{t-1}, X_t] + b_o)
+        \end{equation}
+
+        La actualizacion del estado celular se realiza mediante:
+
+        \begin{equation}
+        C_t = f_t * C_{t-1} + i_t * L_t
+        \end{equation}
+
+        Finalmente, la salida oculta se calcula aplicando la funcion tanh al estado celular y multiplicandolo por la puerta de salida como:
+        \begin{equation}
+        h_t = o_t * \tanh(C_t)
+        \end{equation}
+    \end{description}
+
+
+    \subparagraph{Gated Recurrent Unit (GRU)}\mbox{}\\
+    Gru es modelo de prediccion bastante parecido a LSTM, pero con una arquitectura mucho mas simple, lo que la hace muchisimo mas compacta y potencialmente menos costosa computacionalmente que una LSTM equivalente. Estas han demostrado tener exito en diferentes aplicaciones relacionadas con datos secuenciales o temporales, principalmente si son secuencias largas. GRU reduce el numero de tres redes compuestas distintas que usa LSTM en solo 2, esto mediante la combinacion de la compuerta de entrada y la compuerta de olvido mediante una suma directa. Las compuertas de GRU se denominan: Compuerta de actualizacion y Compuerta de reinicio. \cite{Salem2022}
+
+    El modelo GRU se presenta como:
+
+    \begin{equation}
+        h_t = g(Uh(r_t \odot h_{t-1}) + Wx_t + b_h)
+    \end{equation}
+
+    \begin{equation}
+    h_t = (1 - z_t) \odot h_{t-1} + z_t \odot \tilde{h}_t
+    \end{equation}
+    donde $z_t$ es la compuerta de actualización, $r_t$ es la compuerta de reinicio y $\tilde{h}_t$ es la propuesta de nueva información. Las dos compuertas se presentan como:
+
+    \begin{equation}
+        z_t = \sigma (U_z h_{t-1} + W_z x_t + b_z)
+    \end{equation}
+
+    \begin{equation}
+        r_t = \sigma (U_r h_{t-1} + W_r x_t + b_r)
+    \end{equation}
+
+\paragraph{Modelos estadísticos y de Machine Learning tradicionales}
+    \subparagraph{Regresión lineal}\mbox{}\\
+    Los modelos de regresion son utilizados para resolver problemas de prediccion, el objetivo de este modelo puede ser explicativo, donde se busca, por ejempo, evaluar como ciertas variables independientes afectan a una variable dependiente, o predictivo, en el que se busca estimar el valor de la variable dependiente en funcion de las independientes \cite{pelaez2016modelos}.
+
+    Un modelo de regresion se expresa como: 
+
+    \begin{equation}
+    y = (x_1, x_2, ..., x_n) \beta + \epsilon
+    \end{equation}
+
+    Existen distintas opciones para poder estimar un modelo de regresion, siendo las mas comunes: Regresion lineal  y regresion logistica. La eleccion depende del tipo de variable dependiente que se tenga, si es una variable continua se utiliza regresion lineal, mientras que si se trata de una variable dicotomica se utiliza una variable dicotomica.
+
+\paragraph{Modelos basados en árboles de decisión}
+    \subparagraph{XGBoost}\mbox{}\\
+    XGBoost se ha utilizado ampliamente en numerosos campos para lograr resultados de vanguardia (state-of-the-art) en tareas relacionadas con datos y predicción. Su funcionamiento consiste en en un sistema de aprendizaje automatizado basado en el metodo de Tree Boosting que incluye un algoritmo de aprendizaje de arboles. EL Tree Boosting es un algoritmo de aprendizaje por conjuntos o ensemble learning, capaz de transformar varios clasificadores debiles en uno fuerte con el objetivo de obtener un mejor rendimiento en le clasificacion, es decir, se combinan multiples arboles para obtener un modelo mas potente. Un modelo tree boosting se escribe de la siguiente manera\cite{ren2017novel}:
+
+    \begin{equation}
+        \hat{y_i} = \sum_{k=1}^{K} f_k(x_i), f_k \in F
+    \end{equation}
+    
+    Donde:
+    \begin{equation}
+        F = \{f(x) = w_{q(x)}\} (q: R^m \rightarrow T, w \in R^T)
+    \end{equation}
+    
+    Representa el espacio de los arboles de regresion o clasifiacion

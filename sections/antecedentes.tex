@@ -1,0 +1,90 @@
+\subsubsection{Comparación de modelos de predicción de demanda}
+
+Debido a que existen diferentes modelos y tecnicas para la prediccion de la demanda, se realizo una revision de literatura de diferentes estudios que emplean los modelos mas utilizados para la prediccion de la demanda, esto con el fin de realizar el siguiente analisis comparativo para determinar cual es el mas adecuado para la prediccion de demanda en el presente proyecto, teniendo en cuenta ventajas, limitaciones y caracteristicas como: tipo de datos utilizados, dominio de aplicación, tecnica de aplicacion, metricas de evaluacion y resultados obtenidos, dataset utilizado, entre otros.
+
+\begin{table}[H]
+\centering
+\caption{Comparación de técnicas de predicción aplicadas a problemas de demanda y series de tiempo}
+\label{tab:comparacion_modelos}
+\renewcommand{\arraystretch}{1.3}
+\small
+
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|p{2.5cm}|p{4.5cm}|p{4.5cm}|p{4.5cm}|p{4.5cm}|p{4.5cm}|}
+\hline
+
+\textbf{Aspecto} &
+\textbf{Redes neuronales (ANN)} &
+\textbf{LSTM} &
+\textbf{Regresión lineal} &
+\textbf{GRU} &
+\textbf{XGBoost} \\ 
+\hline
+
+\textbf{Referencia} &
+\textit{Demand Forecasting Using Neural Network for Supply Chain Management} &
+\textit{LSTM Model Based Demand Forecasting in Supply Chain Using Efficient Optimizer} &
+\textit{Application of ABC Analysis and Linear Regression Model in Inventory Management} &
+\textit{StockNet--GRU Based Stock Index Prediction} &
+\textit{XGBoost-Based Demand Forecasting in Supply Chain Management Using Machine Learning Algorithm} \\ 
+\hline
+
+\textbf{Datos utilizados} &
+Datos históricos de ventas organizados como series de tiempo. Se emplean ventas mensuales de un filtro de combustible entre 2011 y 2013 para predecir la demanda de 2014. &
+Datos históricos de ventas organizados como series de tiempo. Incluyen fecha, unidades vendidas, ganancias y ubicación, seleccionando las variables relevantes para el entrenamiento. &
+Datos históricos de inventario y ventas. Incluyen información de productos, inventario, órdenes de compra y venta, cantidad y precio de venta, fecha, marcas, clasificación e impuestos. &
+Series de tiempo financieras correspondientes a precios históricos de apertura del índice bursátil CNX Nifty y de las 10 acciones con mayor correlación. Los datos se normalizan y organizan mediante ventanas deslizantes de 20 días. &
+Datos logísticos y de cadena de suministro relacionados con la demanda, incluyendo variables asociadas con proveedores y logística. Los datos se normalizan mediante Z-score y posteriormente se seleccionan las variables relevantes. \\ 
+\hline
+
+\textbf{Dominio} &
+Gestión de la cadena de suministro, control de inventarios, manufactura y distribución. También presenta aplicaciones en turismo, consumo eléctrico, supermercados y ventas. &
+Gestión de la cadena de suministro y predicción de demanda. &
+Gestión de inventarios, cadena de suministro y análisis de ventas. &
+Predicción de índices bursátiles, mercados financieros y análisis de series de tiempo. &
+Gestión de la cadena de suministro, predicción de demanda, logística y optimización de inventarios. El enfoque puede aplicarse a diferentes sectores que requieran pronósticos de demanda. \\ 
+\hline
+
+\textbf{Técnica} &
+Red neuronal \textit{feed-forward} entrenada mediante \textit{Backpropagation}. Se comparan Gradient Descent, Conjugate Gradient y Levenberg--Marquardt, siendo este último el de mejor desempeño. &
+Red neuronal recurrente LSTM con tres capas, regularización mediante Dropout y optimizadores Adam y SGD. Se experimenta con épocas, tasa de aprendizaje, tamaño de lote y longitud de secuencia. &
+Modelo de regresión lineal para identificar tendencias en cantidad y precio de venta. Utiliza Gradient Descent para minimizar el error cuadrático, después de realizar limpieza de datos y selección de variables. &
+Red neuronal recurrente GRU integrada en la arquitectura StockNet. Utiliza ventanas deslizantes de 20 días, optimizador Adam, activación ReLU y datos normalizados entre 0 y 1. &
+El proceso incluye normalización Z-score, selección de características mediante un Algoritmo Genético, predicción mediante XGBoost y optimización de hiperparámetros mediante Particle Swarm Optimization (PSO). \\ 
+\hline
+
+\textbf{Métricas} &
+Error absoluto de pronóstico (\textit{Forecasting Error}) y porcentaje de error, comparando los valores pronosticados con los valores reales. &
+RMSE para medir la diferencia entre valores reales y predichos. También se compara el tiempo promedio por época para evaluar la eficiencia computacional. &
+Coeficiente de determinación ($R^2$). El estudio reporta un valor de 70,57\,\% para la predicción de la cantidad vendida y cercano al 80\,\% para el precio de venta. &
+RMSE, MAE y MAPE. También se considera el tiempo de ejecución y se utiliza la prueba estadística de Wilcoxon para validar diferencias entre modelos. &
+MAE, RMSE y coeficiente de determinación. Se compara el desempeño de XGBoost con SARIMA, Decision Tree (DT) y Random Forest (RF). \\ 
+\hline
+
+\textbf{Dataset} &
+Datos reales de consumo mensual de un filtro de combustible perteneciente a una empresa manufacturera. Contiene registros mensuales entre 2011 y 2013 para entrenamiento y validación. &
+\textit{Sales Dataset} con información histórica de ventas utilizada para entrenar y evaluar el modelo. &
+Dataset de inventario de una tienda de comestibles (\textit{grocery store}) con información de productos, inventario y ventas. Después del preprocesamiento se utilizan aproximadamente 60 observaciones correspondientes a dos meses. &
+Índice bursátil CNX Nifty y las 10 acciones más correlacionadas del National Stock Exchange (NSE) de India, obtenidos desde Yahoo Finance. Contiene 5.904 días de negociación entre abril de 1996 y enero de 2020. &
+Dataset de demanda de cadena de suministro con información relacionada con logística y proveedores. Se utiliza para entrenar y evaluar el modelo de predicción. \\ 
+\hline
+
+\textbf{Comentario / reseña} &
+Las ANN permiten modelar relaciones no lineales y presentan resultados favorables frente a métodos tradicionales de series de tiempo. Son útiles para predicciones de corto plazo, aunque requieren suficiente información y ajuste de parámetros. &
+LSTM constituye una alternativa eficaz para la predicción de demanda debido a su capacidad para capturar dependencias temporales de largo plazo. Puede contribuir a la optimización de inventarios y a la toma de decisiones en la cadena de suministro. &
+La regresión lineal permite identificar y proyectar tendencias generales de ventas e inventario y presenta una menor complejidad. Sin embargo, tiene limitaciones para representar relaciones complejas y eventos extraordinarios. &
+GRU permite capturar dependencias temporales y presenta resultados favorables en la predicción de series de tiempo. Sin embargo, el estudio analizado se desarrolla en el dominio financiero, por lo que su aplicación a inventarios requiere evaluación adicional. &
+XGBoost presenta capacidad para modelar relaciones complejas y puede utilizarse para apoyar la planificación de inventarios, reducir costos y optimizar operaciones en la cadena de suministro. \\ 
+\hline
+
+\end{tabular}%
+}
+
+\vspace{0.2cm}
+
+\begin{flushleft}
+\footnotesize
+\textit{Fuente: Elaboración propia a partir de los estudios revisados.}
+\end{flushleft}
+
+\end{table}

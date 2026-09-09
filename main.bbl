@@ -1,0 +1,364 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global/global}
+    \entry{meana2024gestión}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=f8eb06a8a920e0e6e5e8e5cb5a2efdff}{%
+           family={MEANA\bibnamedelima COALLA},
+           familyi={M\bibinitperiod\bibinitdelim C\bibinitperiod},
+           given={P.P.},
+           giveni={P\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Ediciones Paraninfo, S.A}%
+      }
+      \strng{namehash}{f8eb06a8a920e0e6e5e8e5cb5a2efdff}
+      \strng{fullhash}{f8eb06a8a920e0e6e5e8e5cb5a2efdff}
+      \strng{fullhashraw}{f8eb06a8a920e0e6e5e8e5cb5a2efdff}
+      \strng{bibnamehash}{f8eb06a8a920e0e6e5e8e5cb5a2efdff}
+      \strng{authorbibnamehash}{f8eb06a8a920e0e6e5e8e5cb5a2efdff}
+      \strng{authornamehash}{f8eb06a8a920e0e6e5e8e5cb5a2efdff}
+      \strng{authorfullhash}{f8eb06a8a920e0e6e5e8e5cb5a2efdff}
+      \strng{authorfullhashraw}{f8eb06a8a920e0e6e5e8e5cb5a2efdff}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{9788428363570}
+      \field{series}{Comercio y Marketing}
+      \field{title}{Gestión de inventarios}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://books.google.com.co/books?id=RfgyEQAAQBAJ
+      \endverb
+      \verb{url}
+      \verb https://books.google.com.co/books?id=RfgyEQAAQBAJ
+      \endverb
+    \endentry
+    \entry{ibm_inventario}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=cbf44511d041dc6d1dd73cc0c033122c}{%
+           family={{IBM}},
+           familyi={I\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {IBM Think}%
+      }
+      \strng{namehash}{cbf44511d041dc6d1dd73cc0c033122c}
+      \strng{fullhash}{cbf44511d041dc6d1dd73cc0c033122c}
+      \strng{fullhashraw}{cbf44511d041dc6d1dd73cc0c033122c}
+      \strng{bibnamehash}{cbf44511d041dc6d1dd73cc0c033122c}
+      \strng{authorbibnamehash}{cbf44511d041dc6d1dd73cc0c033122c}
+      \strng{authornamehash}{cbf44511d041dc6d1dd73cc0c033122c}
+      \strng{authorfullhash}{cbf44511d041dc6d1dd73cc0c033122c}
+      \strng{authorfullhashraw}{cbf44511d041dc6d1dd73cc0c033122c}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{¿Qué es la gestión de inventario?}
+      \field{urlday}{5}
+      \field{urlmonth}{8}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.ibm.com/mx-es/think/topics/inventory-management
+      \endverb
+      \verb{url}
+      \verb https://www.ibm.com/mx-es/think/topics/inventory-management
+      \endverb
+    \endentry
+    \entry{ibm_prevision_demanda}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=9ac2a54a168ac507d7520995890811ff}{%
+           family={{Teaganne Finn , Ian Smalley}},
+           familyi={T\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {IBM Think}%
+      }
+      \strng{namehash}{9ac2a54a168ac507d7520995890811ff}
+      \strng{fullhash}{9ac2a54a168ac507d7520995890811ff}
+      \strng{fullhashraw}{9ac2a54a168ac507d7520995890811ff}
+      \strng{bibnamehash}{9ac2a54a168ac507d7520995890811ff}
+      \strng{authorbibnamehash}{9ac2a54a168ac507d7520995890811ff}
+      \strng{authornamehash}{9ac2a54a168ac507d7520995890811ff}
+      \strng{authorfullhash}{9ac2a54a168ac507d7520995890811ff}
+      \strng{authorfullhashraw}{9ac2a54a168ac507d7520995890811ff}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{¿Qué es la previsión de demanda?}
+      \field{urlday}{5}
+      \field{urlmonth}{8}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.ibm.com/es-es/think/topics/demand-forecasting
+      \endverb
+      \verb{url}
+      \verb https://www.ibm.com/es-es/think/topics/demand-forecasting
+      \endverb
+    \endentry
+    \entry{valencia2015}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=495074535cfd471ad439d8d73819f0ae}{%
+           family={Valencia\bibnamedelima Cárdenas},
+           familyi={V\bibinitperiod\bibinitdelim C\bibinitperiod},
+           given={Marisol},
+           giveni={M\bibinitperiod}}}%
+        {{hash=0a817980dd2b072a7750ba64480c239d}{%
+           family={Díaz\bibnamedelima Serna},
+           familyi={D\bibinitperiod\bibinitdelim S\bibinitperiod},
+           given={Francisco\bibnamedelima Javier},
+           giveni={F\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=52022578a8082343bfdc63746eaf4987}{%
+           family={Correa\bibnamedelima Morales},
+           familyi={C\bibinitperiod\bibinitdelim M\bibinitperiod},
+           given={Juan\bibnamedelima Carlos},
+           giveni={J\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \strng{namehash}{f3e05c7440ad9472b1c6d591d6be8e45}
+      \strng{fullhash}{23fe3fc9e29bfd67668feaa2fb4fb0cd}
+      \strng{fullhashraw}{23fe3fc9e29bfd67668feaa2fb4fb0cd}
+      \strng{bibnamehash}{23fe3fc9e29bfd67668feaa2fb4fb0cd}
+      \strng{authorbibnamehash}{23fe3fc9e29bfd67668feaa2fb4fb0cd}
+      \strng{authornamehash}{f3e05c7440ad9472b1c6d591d6be8e45}
+      \strng{authorfullhash}{23fe3fc9e29bfd67668feaa2fb4fb0cd}
+      \strng{authorfullhashraw}{23fe3fc9e29bfd67668feaa2fb4fb0cd}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Proper inventory planning should incorporate factors changing over time, since static factors are not robust to this apparent variability. In models of inventories is necessary to recognize the great demand uncertainty. This paper reviews the state of the art of the most significant developments related to inventory models, especially those who consider dynamic demands in time. In addition, demand forecasting models and some techniques for optimizing inventories are analyzed, considering costs and service levels, among others. In the literature review, gaps have been identified related to the treatment of multivariate inventories as well as the use of Bayesian statistics for the purpose of optimization and the development of demand forecasts.}
+      \field{journaltitle}{DYNA}
+      \field{month}{3}
+      \field{number}{190}
+      \field{title}{Inventory planning with dynamic demand. {A} state of art review}
+      \field{volume}{82}
+      \field{year}{2015}
+      \field{pages}{182\bibrangedash 191}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.15446/dyna.v82n190.42828
+      \endverb
+      \verb{urlraw}
+      \verb https://revistas.unal.edu.co/index.php/dyna/article/view/42828
+      \endverb
+      \verb{url}
+      \verb https://revistas.unal.edu.co/index.php/dyna/article/view/42828
+      \endverb
+    \endentry
+    \entry{10596_69801}{misc}{}{}
+      \name{author}{2}{}{%
+        {{hash=702cab7b24ec329839a5bd89ad471ddc}{%
+           family={Fernando},
+           familyi={F\bibinitperiod},
+           given={Sánchez\bibnamedelimb Cuervo\bibnamedelima Samuel},
+           giveni={S\bibinitperiod\bibinitdelim C\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=c3ece406aa9588f1ea0d0ee807e44f19}{%
+           family={Camilo},
+           familyi={C\bibinitperiod},
+           given={Ortega\bibnamedelimb Betancur\bibnamedelima Cristian},
+           giveni={O\bibinitperiod\bibinitdelim B\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \strng{namehash}{c5171c601f07a716190810c640d556a6}
+      \strng{fullhash}{c5171c601f07a716190810c640d556a6}
+      \strng{fullhashraw}{c5171c601f07a716190810c640d556a6}
+      \strng{bibnamehash}{c5171c601f07a716190810c640d556a6}
+      \strng{authorbibnamehash}{c5171c601f07a716190810c640d556a6}
+      \strng{authornamehash}{c5171c601f07a716190810c640d556a6}
+      \strng{authorfullhash}{c5171c601f07a716190810c640d556a6}
+      \strng{authorfullhashraw}{c5171c601f07a716190810c640d556a6}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Este trabajo se organiza en cuatro secciones principales que abordan de manera integral el análisis de series temporales aplicado a la predicción de demanda. La primera sección presenta el origen de los datos y realiza un análisis descriptivo de las ventas históricas, proporcionando una visión general inicial. La segunda sección explora los modelos de estrategia utilizados en el proyecto, como Power BI, ARIMA, SARIMAX y Prophet, herramientas clave en el análisis de datos temporales. La tercera sección se enfoca en un informe sobre la predicción de demanda técnica basada en el modelo SARIMAX, mientras que la cuarta sección detalla el análisis de series temporales del producto en estudio y concluye con recomendaciones y observaciones generales. Los métodos de análisis de series temporales se dividen en dos categorías: cualitativos y cuantitativos. Los métodos cualitativos, basados en el juicio humano y la experiencia, permiten identificar patrones y tendencias de forma subjetiva, mientras que los métodos cuantitativos emplean modelos matemáticos para detectar patrones en los datos de manera objetiva. Entre los métodos cuantitativos más comunes se encuentran la regresión lineal, el análisis de componentes principales y el modelo ARIMA. La estructura metodológica planteada en este trabajo no solo destaca la importancia de seleccionar la técnica adecuada, sino también de adaptar el modelo a los objetivos específicos de predicción y análisis. Esto proporciona una base sólida para que el análisis de series temporales no solo mejore las proyecciones de demanda, sino también optimice la gestión de recursos en función de las necesidades reales del mercado.}
+      \field{title}{Análisis de series temporales para predicción de demanda de productos}
+      \field{year}{2024-11-05}
+      \verb{urlraw}
+      \verb https://repository.unad.edu.co/handle/10596/69801
+      \endverb
+      \verb{url}
+      \verb https://repository.unad.edu.co/handle/10596/69801
+      \endverb
+    \endentry
+    \entry{10124729}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=e7be62d0da7ec6b28c1b0712b07fb4f0}{%
+           family={Wen},
+           familyi={W\bibinitperiod},
+           given={Xianyun},
+           giveni={X\bibinitperiod}}}%
+        {{hash=a3032e1f8bdcfcca16db750aaafc188e}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Weibang},
+           giveni={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{86dd1e1ae4b66a8b494a772e6aa58b3c}
+      \strng{fullhash}{86dd1e1ae4b66a8b494a772e6aa58b3c}
+      \strng{fullhashraw}{86dd1e1ae4b66a8b494a772e6aa58b3c}
+      \strng{bibnamehash}{86dd1e1ae4b66a8b494a772e6aa58b3c}
+      \strng{authorbibnamehash}{86dd1e1ae4b66a8b494a772e6aa58b3c}
+      \strng{authornamehash}{86dd1e1ae4b66a8b494a772e6aa58b3c}
+      \strng{authorfullhash}{86dd1e1ae4b66a8b494a772e6aa58b3c}
+      \strng{authorfullhashraw}{86dd1e1ae4b66a8b494a772e6aa58b3c}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Access}
+      \field{title}{Time Series Prediction Based on LSTM-Attention-LSTM Model}
+      \field{volume}{11}
+      \field{year}{2023}
+      \field{pages}{48322\bibrangedash 48331}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.1109/ACCESS.2023.3276628
+      \endverb
+      \keyw{Time series analysis;Predictive models;Forecasting;Data models;Logic gates;Decoding;Autoregressive processes;Time series forecasting;long short-term memory networks;encoder and decoder model;attention mechanisms}
+    \endentry
+    \entry{Salem2022}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=562329d35461b8ad79d7293e6f6f7164}{%
+           family={Salem},
+           familyi={S\bibinitperiod},
+           given={Fathi\bibnamedelima M.},
+           giveni={F\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Cham}%
+      }
+      \list{publisher}{1}{%
+        {Springer International Publishing}%
+      }
+      \strng{namehash}{562329d35461b8ad79d7293e6f6f7164}
+      \strng{fullhash}{562329d35461b8ad79d7293e6f6f7164}
+      \strng{fullhashraw}{562329d35461b8ad79d7293e6f6f7164}
+      \strng{bibnamehash}{562329d35461b8ad79d7293e6f6f7164}
+      \strng{authorbibnamehash}{562329d35461b8ad79d7293e6f6f7164}
+      \strng{authornamehash}{562329d35461b8ad79d7293e6f6f7164}
+      \strng{authorfullhash}{562329d35461b8ad79d7293e6f6f7164}
+      \strng{authorfullhashraw}{562329d35461b8ad79d7293e6f6f7164}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We describe the standard Gated Recurrent Unit (GRU) in recurrent neural networks (RNNs) as was originally introduced. Next, by adopting the same notations as for LSTMs in the previous chapter, we directly show how it can viewed as a reduced form of the LSTM RNNs. Then, we explore further the parameter reductions in the GRU RNNs by way of introducing five slim GRU RNNs. These slim GRU RNNs retain the network structure and systematically reduce parameters in the ``update'' and ``reset'' gates. Finally, we demonstrate in illustrative case studies the comparative performance of the standard and the slim GRU RNNs. We evaluate the standard and three slim GRU variants on MNIST and IMDB datasets and show that all these GRU RNN perform comparatively.}
+      \field{booktitle}{Recurrent Neural Networks: From Simple to Gated Architectures}
+      \field{isbn}{978-3-030-89929-5}
+      \field{title}{Gated RNN: The Gated Recurrent Unit (GRU) RNN}
+      \field{year}{2022}
+      \field{pages}{85\bibrangedash 100}
+      \range{pages}{16}
+      \verb{doi}
+      \verb 10.1007/978-3-030-89929-5_5
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/978-3-030-89929-5_5
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/978-3-030-89929-5_5
+      \endverb
+    \endentry
+    \entry{pelaez2016modelos}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=21e332d2376a4ba69c434dfeeb4a35f9}{%
+           family={Peláez},
+           familyi={P\bibinitperiod},
+           given={Irene\bibnamedelima Moral},
+           giveni={I\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \strng{namehash}{21e332d2376a4ba69c434dfeeb4a35f9}
+      \strng{fullhash}{21e332d2376a4ba69c434dfeeb4a35f9}
+      \strng{fullhashraw}{21e332d2376a4ba69c434dfeeb4a35f9}
+      \strng{bibnamehash}{21e332d2376a4ba69c434dfeeb4a35f9}
+      \strng{authorbibnamehash}{21e332d2376a4ba69c434dfeeb4a35f9}
+      \strng{authornamehash}{21e332d2376a4ba69c434dfeeb4a35f9}
+      \strng{authorfullhash}{21e332d2376a4ba69c434dfeeb4a35f9}
+      \strng{authorfullhashraw}{21e332d2376a4ba69c434dfeeb4a35f9}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Revista Seden}
+      \field{title}{Modelos de regresión: lineal simple y regresión logística}
+      \field{volume}{14}
+      \field{year}{2016}
+      \field{pages}{195\bibrangedash 214}
+      \range{pages}{20}
+    \endentry
+    \entry{ren2017novel}{inproceedings}{}{}
+      \name{author}{5}{}{%
+        {{hash=52dc027c9e14da50dfa7d5e647725987}{%
+           family={Ren},
+           familyi={R\bibinitperiod},
+           given={Xudie},
+           giveni={X\bibinitperiod}}}%
+        {{hash=0de3702db710a80b0a1168c806e60f67}{%
+           family={Guo},
+           familyi={G\bibinitperiod},
+           given={Haonan},
+           giveni={H\bibinitperiod}}}%
+        {{hash=fd4b78f09a00b455e6d7c1a495cb77a6}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Shenghong},
+           giveni={S\bibinitperiod}}}%
+        {{hash=a5531c68b8460bd5ad5c47cf9ef6fc81}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Shilin},
+           giveni={S\bibinitperiod}}}%
+        {{hash=c2af0f05e99850ddfe02b8fc2d66808b}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Jianhua},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{e027f79e12bb229349b636075316cd6c}
+      \strng{fullhash}{661650bb04d609e5d845fc4c7fab90ca}
+      \strng{fullhashraw}{661650bb04d609e5d845fc4c7fab90ca}
+      \strng{bibnamehash}{661650bb04d609e5d845fc4c7fab90ca}
+      \strng{authorbibnamehash}{661650bb04d609e5d845fc4c7fab90ca}
+      \strng{authornamehash}{e027f79e12bb229349b636075316cd6c}
+      \strng{authorfullhash}{661650bb04d609e5d845fc4c7fab90ca}
+      \strng{authorfullhashraw}{661650bb04d609e5d845fc4c7fab90ca}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{International workshop on digital watermarking}
+      \field{title}{A novel image classification method with CNN-XGBoost model}
+      \field{year}{2017}
+      \field{pages}{378\bibrangedash 390}
+      \range{pages}{13}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

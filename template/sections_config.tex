@@ -1,0 +1,52 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  usa el paquete titlesec
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Empezar sección en una nueva pagina
+\let\stdsection\section
+\renewcommand\section{\cleardoublepage\stdsection}
+
+%----------------------------------
+% NUMERACIÓN TIPO TESIS
+%----------------------------------
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}
+\renewcommand{\theparagraph}{\thesubsubsection.\arabic{paragraph}}
+
+%----------------------------------
+% FORMATO DE SECCIONES
+%----------------------------------
+\titleformat{\section}[hang]
+    {\filcenter\normalfont\normalsize\bfseries} % centrado
+    {\thesection}
+    {1em}{}
+
+%----------------------------------
+% FORMATO DE SUBSECCIONES
+%----------------------------------
+\titleformat{\subsection}[hang]
+    {\normalfont\normalsize\bfseries}
+    {\thesubsection}
+    {1em}{}
+
+%----------------------------------
+% FORMATO DE SUBSUBSECCIONES
+%----------------------------------
+\titleformat{\subsubsection}[hang]
+    {\normalfont\normalsize\bfseries}
+    {\thesubsubsection}
+    {1em}{}
+
+\titlespacing{\subsubsection}{0cm}{*1}{*0.5}
+
+%----------------------------------
+% FORMATO DE PÁRRAFOS
+%----------------------------------
+\titleformat{\paragraph}[runin]
+    {\normalfont\normalsize\itshape\bfseries}
+    {\theparagraph}
+    {1em}{}
+    [:]
+
+\titlespacing{\paragraph}{0cm}{*1}{*1}
