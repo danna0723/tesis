@@ -1,252 +1,130 @@
-\documentclass[12pt]{article} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  PLANTILLA DE TRABAJO DE GRADO
+%  Universidad de San Buenaventura
+%  By GHS & PADIA - 2026-2
+%
+%  Se recomienda compilar con XeLaTeX. Tambien funciona con pdfLaTeX
+%  y con LuaLaTeX: la fuente se ajusta sola segun el motor.
+%
+%      latexmk main.tex          <- usa la configuracion de latexmkrc
+%      make                      <- alternativa con make
+%
+%  En Overleaf: Menu > Settings > Compiler > XeLaTeX
+%
+%  Que se edita y donde:
+%      parametros.tex            titulo, autores, asesor, programa, anio
+%      sections/*.tex            un archivo por capitulo
+%      anexos/anexos.tex         anexos A-E
+%      bibs/sample.bib           referencias (estilo IEEE)
+%      images/                   sus figuras
+%      template/*.tex            formato: paquetes, fuentes, secciones, TOC, bibliografia
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[12pt]{article}
 \usepackage[letterpaper, margin=2.5cm]{geometry}
-% enlaza la tabla de contenido con las paginas
-% \usepackage[linktoc=all ]{hyperref}
-% usar con XETEX
-% \usepackage[no-math]{fontspec}\usepackage{longtable}
-\usepackage{array}
-\usepackage{tabularx}
-\usepackage{ltablex}   % combina longtable + tabularx
-\usepackage{enumitem}
-\usepackage{amsmath}
-\usepackage{float}
 
-\keepXColumns
-\setlist[itemize]{leftmargin=*, topsep=2pt, itemsep=1pt, parsep=0pt}
-% \setmainfont{Times New Roman}\setlength{\parskip}{1em} % sangria de 1.2cm en la primera linea del parrafo
-%\usepackage[utf8]{inputenc} 
+% fuente principal del documento (Times New Roman o su equivalente libre)
+\input{template/fuentes.tex}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%% evita que coloque guiones al justificar
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  %\tolerance 9999
-  %\emergencystretch 3em
-  %\vfuzz\hfuzz
+% paquetes de tablas, figuras, codigo, idioma, etc.
+\input{template/packages.tex}
 
-% https://sumanta679.wordpress.com/2009/05/20/latex-justify-without-hyphenation/
+% referencias en estilo IEEE (biblatex + biber)
+\input{template/bibliografia.tex}
+
+% formato de titulos y numeracion de capitulos y secciones
+\input{template/sections_config.tex}
+
+% formato de la tabla de contenido, lista de figuras y lista de tablas
+\input{template/toc.tex}
+
+% comandos propios del template (\keywords, \palabrasclave, columnas P, etc.)
+\input{template/config.tex}
+\input{template/celdas.tex}
+
+% datos del trabajo: titulo, autores, asesor, programa, anio
+\input{parametros.tex}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Interlineado 1.5 y espacio entre parrafos
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{setspace}
+\onehalfspacing
+\setlength{\parskip}{1em}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Justificacion sin division de palabras con guiones
+%  https://sumanta679.wordpress.com/2009/05/20/latex-justify-without-hyphenation/
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \tolerance=1000
 \emergencystretch=\maxdimen
 \hyphenpenalty=10000
 \hbadness=10000
 
-%\usepackage{hyphenat}
-%\usepackage{microtype}
-%\usepackage[none]{hyphenat}
-
-%\tolerance=9999
-%\emergencystretch=10pt
-%\hyphenpenalty=10000
-%\exhyphenpenalty=100
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%        interlineado 1.5
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%─────────────────────────────────────┐
-\usepackage{setspace}                %│  
-\onehalfspacing                      %│
-%─────────────────────────────────────┘
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  elimina identacion en las listas
-%  se usa el paquete enumitem
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%─────────────────────────────────────┐
-\usepackage{enumitem}                %│          
-\setlist[itemize]{leftmargin=*}      %│  
-%─────────────────────────────────────┘
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% paquete para referencias
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage[style=ieee]{biblatex}
-\addbibresource{bibs/sample.bib}   
-
-
-
-% para que las urls tengan la misma fuente que resto del documento
-%https://tex.stackexchange.com/questions/106622/how-to-change-the-font-of-url-in-the-bibliography
-\usepackage{url}
-\urlstyle{same}
-
-%% coloca s.f cuando no tiene anio la referencia
-%% https://copyprogramming.com/howto/biblatex-and-entries-with-no-date
-%\newcommand{\mkbibnodate}{s\adddot f\adddot}
-%\AtEveryCitekey{\iffieldundef{labelyear}{\restorefield{labelyear}{\mkbibnodate}}{}}
-%\AtEveryBibitem{\iffieldundef{labelyear}{\restorefield{year}{\mkbibnodate}}{}}
-
-% https://tex.stackexchange.com/questions/612417/biblatex-and-entries-with-no-date-part-2
-\renewbibmacro*{date}{%
-  \iffieldundef{year}
-    {\bibstring{nodate}}
-    {\printdate}}
-
-\DeclareFieldFormat{url}{[Internet]\adddot\space\bibstring{urlfrom}\space\url{#1}}
-
-\DeclareFieldFormat{urldate}{\adddot\addspace[\bibstring{urlseen}\addcolon\space #1]}
-
-% puntos en cada entrada d la biliografia
-\renewcommand*{\newunitpunct}{\addcomma\space}
-%\renewcommand*{\newunitpunct}{\addperiod\space}
-  
-\DefineBibliographyStrings{spanish}{%
-  urlfrom = {Disponible en},
-  urlseen = {Consultado}
-} 
-
-
-\newbibmacro*{author+title+date}{%
-  \ifnameundef{editor}
-    {}
-    {%
-      \usebibmacro{editor}%
-      \setunit{\addspace}%
-      \printnames[byeditor]{editor}%
-      \clearname{editor}%
-      \newunit
-    }%
-  \usebibmacro{byeditorx}%
-  \usebibmacro{bytranslator+others}%
-  \ifnameundef{author}
-  {%
-    \printfield{title}
-    \printtext[parens]{\usebibmacro{date}}
-  }%
-  {%
-      \usebibmacro{author}\addcomma\space%
-      \printtext[parens]{\usebibmacro{date}} \adddot \addspace %
-      \printfield{title} \adddot
-  }%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Enlaces internos (hyperref se carga de ultimo a proposito)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[linktoc=all]{hyperref}
+\hypersetup{
+    hidelinks,              % enlaces sin recuadro de color (para imprimir)
+    pdftitle={\titulo},
+    pdfauthor={\autorescitacion},
+    bookmarksnumbered=true,
 }
 
+% descomente para ver los margenes y cajas de la pagina (util al ajustar el diseno)
+%\usepackage{showframe}
 
-
-\DeclareBibliographyDriver{online}{%
-  \usebibmacro{bibindex}%
-  \usebibmacro{begentry}%
-  %\usebibmacro{author/editor+others/translator+others}%
-  \usebibmacro{author+title+date}%
-  %\setunit{\adddot\addspace}% ELIMINADO
-  %\usebibmacro{title}%        ELIMINADO  
-  \setunit{\adddot\addspace}%
-  \printlist{language}%
-  \setunit{\adddot\addspace}%
-  \usebibmacro{byauthor}%
-  \setunit{\adddot\addspace}%
-  \usebibmacro{byeditor+others}%
-  \setunit{\adddot\addspace}%
-  \printfield{version}%
-  \setunit{\adddot\addspace}%
-  \printfield{note}%
-  \newunit\newblock
-  \printlist{organization}%
-  \setunit{\adddot\addspace}%
-  \iftoggle{bbx:eprint}
-    {\usebibmacro{eprint}}
-    {}%
-  \setunit{\adddot\addspace}%
-  %\printtext[parens]{\usebibmacro{date}}% ELIMINDADO
-  %\newunit\newblock                     % ELIMINDADO
-  \usebibmacro{url+urldate}%
-  \setunit{\adddot\addspace}%
-  \usebibmacro{addendum+pubstate}%
-  \setunit{\bibpagerefpunct}\newblock
-  \usebibmacro{pageref}%
-  \newunit\newblock
-  \iftoggle{bbx:related}
-    {\usebibmacro{related:init}%
-     \usebibmacro{related}}
-    {}%
-  \usebibmacro{finentry}}
-
-
-
-
-
-%\usepackage{showframe}% http://ctan.org/pkg/showframe
-
-\input{template/packages.tex}
-\input{template/toc}
-\input{template/sections_config.tex}
-\input{template/config} 
-
-\input{template/celdas.tex}
-\input{parametros.tex}
- 
 %------------ Inicia Documento -------------------%
 \begin{document} 
 
+% las paginas preliminares (portada, legal, dedicatoria, indices) no llevan
+% numero visible; la numeracion arabiga corre desde la primera pagina
 \pagenumbering{arabic}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%    fancy header. 
-%    paquestes usados: fancyhdr y xcolor
-%    Nota paquete toclof: importarlo con 
-%       la opcion titles para que no intervenga 
-%       en la definicion de las cabeceras de 
-%       la tabla de contenido, figuras, etc
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%────────────────────────────────────────────────────────────────────────────────────────┐
-% formato de la cabecera (Header)          
-\renewcommand{\headrulewidth}{1pt}% 2pt header rule   
-% linea de cabecera de color naranja                    
-\renewcommand{\headrule}{\hbox to\headwidth{% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Encabezado de pagina (paquetes fancyhdr y xcolor)
+%    izquierda: titulo corto del trabajo   derecha: numero de pagina
+%    debajo: una linea naranja
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\headrule}{\hbox to\headwidth{%
     \color{orange}\leaders\hrule height \headrulewidth\hfill}}
 
-\definecolor{fgheader}{gray}{.5}
+\fancyhead{}                                  % limpia el encabezado
+\fancyhead[L]{\fontsize{10}{12}\selectfont \textcolor{gray}{\tituloencabezado}}
+\fancyhead[R]{\textcolor{gray}{\thepage}}
+\fancyfoot{}                                  % limpia el pie de pagina
+\setlength{\headheight}{24.65pt}
 
-\fancyhead{} % clear all header fields
-\fancyhead[L]{\fontsize{10}{12} \selectfont \textcolor{gray} {\tituloencabezado} }
-\fancyhead[R]{\textcolor{gray}\thepage}
-\fancyfoot{} % clear all footer fields
-\setlength{\headheight}{24.64995pt}
-%────────────────────────────────────────────────────────────────────────────────────────┘
-
-
-% [doc-434] documento en ingles porque el español genera errores con el modulo /includeGraphic
-% solo se cambia a español en en las referencias para que los meses y las abreviaciones aparezcan en español
-\selectlanguage{english}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  oculta las cabeceras
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\pagestyle{empty}  % oculta las cabeceras  (header)
+\pagestyle{empty}   % en las paginas preliminares no se muestra el encabezado
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%    Potadas
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Portada, pagina legal y dedicatoria
+%  (los datos se toman de parametros.tex)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{templatepages/paginaportada}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% cambia la fuente a 10 pt
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\footnotesize
+\footnotesize                                  % la pagina legal va en 10 pt
 \input{templatepages/paginalegal}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  regresa la fuente a 12 pt
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \normalsize
 
 \input{templatepages/paginadedicatoria}
 
-% comentado 2022-11-04
-%\thispagestyle{empty}
-%\cleardoublepage{}
 
-
-% tabla de contenido
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Tabla de contenido, lista de tablas y lista de figuras
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \tableofcontents{}
 \cleardoublepage{}
 
-% lista de tablas
 \listoftables
 \cleardoublepage{}
 
-%lista de figuras
 \listoffigures
 
 
@@ -256,103 +134,79 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\clearpage %or \cleardoublepage          %──────────────────────────────────────────────┐
-\phantomsection                          %  seccion sin numeracion y listado en la      │
-\addcontentsline{toc}{section}{RESUMEN}  %  tabla de contenido                          │
-\section*{RESUMEN}                       % (https://en.wikibooks.org/wiki/LaTeX/Document_Structure#Section_numbering)
-                                         %───────────────────────────────────────────
+\clearpage
+\phantomsection                          % seccion sin numerar pero listada en el indice
+\addcontentsline{toc}{section}{Resumen}
+\section*{Resumen}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  muestra de nuevo las cabeceras
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{fancy}   % a partir de aqui si se muestra el encabezado
 
-\pagestyle{fancy} %  muestra la cabecera (header)
-
-
-\input{sections/resumen.tex} 
+\input{sections/resumen.tex}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  ABSTRACT 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\clearpage %or \cleardoublepage             %───────────────────────────────────────────
-\phantomsection                             %  seccion sin numeracion y listado en la 
-\addcontentsline{toc}{section}{ABSTRACT}    %  tabla de contenido 
-\section*{ABSTRACT}                         % (https://en.wikibooks.org/wiki/LaTeX/Document_Structure#Section_numbering)  
-                                            %───────────────────────────────────────────
+\clearpage
+\phantomsection
+\addcontentsline{toc}{section}{Abstract}
+\section*{Abstract}
 
+% el resumen en ingles se compone con las reglas tipograficas del ingles
+\begin{otherlanguage}{english}
 \input{sections/abstract.tex}
+\end{otherlanguage}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  GLOSARIO 
+%  GLOSARIO
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\clearpage %or \cleardoublepage             %───────────────────────────────────────────
-\phantomsection                             %  seccion sin numeracion y listado en la 
-\addcontentsline{toc}{section}{GLOSARIO}    %  tabla de contenido 
-\section*{GLOSARIO}                         % (https://en.wikibooks.org/wiki/LaTeX/Document_Structure#Section_numbering)  
-                                            %───────────────────────────────────────────
+\clearpage
+\phantomsection
+\addcontentsline{toc}{section}{Glosario}
+\section*{Glosario}
 
-\input{sections/glosario}
+\input{sections/glosario.tex}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  INTRODUCCION 
+%  CAPITULOS
+%  cada archivo contiene el titulo del capitulo (\section) y todas sus
+%  subsecciones. Para reordenar o quitar un capitulo, mueva o comente su \input.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\setcounter{secnumdepth}{5}  
-\section{INTRODUCCIÓN}
-\input{sections/introduction.tex}
+\input{sections/capitulo1_introduccion.tex}
 
-%salto de pagina. TODO QUITAR
-\noindent \begin{center}
+\input{sections/capitulo2_marco_referencia.tex}
+
+\input{sections/capitulo3_diseno_desarrollo.tex}
+
+\input{sections/capitulo4_resultados.tex}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  REFERENCIAS  (estilo IEEE)
+%  Se generan a partir de bibs/sample.bib; solo aparecen las que se citen
+%  en el texto con \cite{...}.  Configuracion: template/bibliografia.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \cleardoublepage{}
-\par\end{center}
 
-\section{MARCO TEÓRICO}
-\input{sections/marco_teorico.tex}
+% titlesec altera el funcionamiento interno de las secciones: sin este
+% \phantomsection el enlace del indice apuntaria a la pagina equivocada
+\phantomsection
+\printbibliography[heading=bibintoc, title={Referencias Bibliográficas}]
 
-\section{DISEÑO Y DESARROLLO}
-\input{sections/diseño_desarrollo.tex}
 
-\section{RESULTADOS}
-\input{sections/resultados.tex}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  ANEXOS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\input{anexos/anexos.tex}
 
-\section{ANALISIS DE RESULTADOS Y JUICIO DE INGENIERIA}
-\input{sections/analisis_resultados.tex.tex}
-
-\section{REFERENCIAS}
-%\section{RECOMENDACIONES}
-%\input{sections/recomendaciones.tex}
-
-% salto de pagina
-\noindent \begin{center}
-\cleardoublepage{}
-\par\end{center}
-
-% ver [doc-434]. se cambia a español para que los meses y las abreviacion sean en español. 
-\selectlanguage{spanish}
-% necesario porque el paquete  titlesec cambiar comportamientos internos de las secciones.
-% Por tal motivo el anchor de los hyperref estan corruptos. Es necesario agregar
-% Phantomsection antes de una adicion manual a la tabla de contenido [heading=bibintoc]
-\phantomsection 
-\printbibliography[heading=bibintoc, title={REFERENCIAS}]
-% ver [doc-434]. se coloca de nuevo en ingles. 
-\selectlanguage{english}
 
 \end{document}
-
-
-% TODO: parametro para texto de dedicatoria  [        ]   0% 
-% TODO: arreglar  warnings en TOC enlazable  [========] 100% ok
-% TODO: ejemplo de graficos                  [========] 100% ok
-% TODO: ejemplo de tablas                    [========] 100% ok
-% TODO: keywords en el abstract              [========] 100% ok
-% TODO: Varios autores en paramteros.tex     [========] 100% ok
-% TODO: parametros.tex                       [=====   ]  50%
-% TODO: fechas de las referencias en español [========] 100% ok
-% TODO: referencias en mayuscula             [========] 100% ok
-% TODO: Planteamiento del problema           [========] 100% ok 
-% TODO: referencias en la tabla de contenido [========] 100% ok
 
 

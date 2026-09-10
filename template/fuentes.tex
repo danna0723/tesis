@@ -1,0 +1,77 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  PLANTILLA DE TRABAJO DE GRADO
+%  Universidad de San Buenaventura
+%  By GHS & PADIA - 2026-2
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Fuente del documento
+%
+%  Por defecto se usa TeX Gyre Termes: un clon libre de Times New Roman con
+%  las mismas metricas (ocupa exactamente el mismo espacio en la pagina) que
+%  viene incluido en todas las distribuciones de LaTeX y en Overleaf.
+%
+%  Se carga por nombre de archivo, no por nombre de fuente del sistema. Eso
+%  es intencional: buscar fuentes del sistema obliga a XeLaTeX a recorrer el
+%  catalogo de fuentes de la maquina, lo que en Overleaf puede tardar tanto
+%  que la compilacion supera el limite de tiempo del plan gratuito.
+%
+%  Si trabaja en Windows o macOS y prefiere la Times New Roman autentica,
+%  ponga el interruptor de abajo en \timesnewromantrue. En Overleaf dejelo
+%  como esta.
+%
+%  La plantilla funciona con XeLaTeX, LuaLaTeX y pdfLaTeX: la fuente se
+%  ajusta sola segun el motor.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%  <<<<  interruptor: cambie a \timesnewromantrue para usar Times New Roman
+\newif\iftimesnewroman
+\timesnewromanfalse
+
+\usepackage{iftex}
+
+% verdadero con XeLaTeX o LuaLaTeX; falso con pdfLaTeX
+\newif\ifmotormoderno
+\ifXeTeX  \motormodernotrue \fi
+\ifLuaTeX \motormodernotrue \fi
+
+\ifmotormoderno
+    %------------------------------------------------------------------
+    %  XeLaTeX o LuaLaTeX
+    %------------------------------------------------------------------
+    \usepackage[no-math]{fontspec} % quite [no-math] si presenta errores
+
+    \iftimesnewroman
+        % fuentes instaladas en el sistema (Windows y macOS)
+        \setmainfont{Times New Roman}
+        \setmonofont{Courier New}[Scale=MatchLowercase]
+    \else
+        % clones libres, cargados por nombre de archivo (rapido, sin
+        % consultar el catalogo de fuentes del sistema)
+        \setmainfont{texgyretermes}[
+            Extension      = .otf,
+            UprightFont    = *-regular,
+            BoldFont       = *-bold,
+            ItalicFont     = *-italic,
+            BoldItalicFont = *-bolditalic,
+        ]
+        \setmonofont{texgyrecursor}[
+            Extension      = .otf,
+            UprightFont    = *-regular,
+            BoldFont       = *-bold,
+            ItalicFont     = *-italic,
+            BoldItalicFont = *-bolditalic,
+            Scale          = MatchLowercase,
+        ]
+    \fi
+\else
+    %------------------------------------------------------------------
+    %  pdfLaTeX: no puede usar fuentes del sistema, siempre usa los clones
+    %------------------------------------------------------------------
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc}
+    \usepackage{tgtermes}          % clon libre de Times New Roman
+    \usepackage{tgcursor}          % clon de Courier, para el codigo
+    \renewcommand{\familydefault}{\rmdefault}
+\fi

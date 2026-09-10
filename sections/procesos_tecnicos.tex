@@ -1,8 +1,57 @@
-\subsubsection{Identificación de Stakeholders}
+Los procesos tecnicos que guiaron el diseño y desarrollo del sistema Thary se estructuraron siguiendo la ISO/IEC/IEEE 12207, una norma que establece un conjunto de procesos estandar para el ciclo de vida del software. Dichos procesos fueron aplicados al desarrollo del sistema de la siguiente manera:
 
+\subsubsection{Identificación de Stakeholders}
+A partir del planteamiento del sistema y tras un analisis de sus caracteristicas y funcionalidades, se identificaron los siguientes stakeholders que estaria involucrados en el sistema, ya sea directa o indirectamente:
+
+\begin{itemize}
+    \item Personal encargado de la gestion del inventario y el abastecimiento: Es el usuario final que interactua con el sistema, es responsable de interpretar los resultados que Thary y tomar decisiones de repocision en base a ellas.
+    \item Equipo de desarrollo: Desarrolladores y diseñadores responsables de la implementación del sistema Thary, asegurando que cumpla con los requisitos y estándares establecidos.
+    \item Administradores del sistema: Es el perfil con permisos y privilegios, es responsable de cargar los datos historicos de consumo, es decir, el archivo de entrada, ejecutar el proceso de medicion, ademas, puede crear nuevos usaurios para los empleados con menor rango.
+    \item Institucion usuaria del sistema: Es la entidad interesada en utilizar Thary para poder refucir el riesgo de desabastecimiento de productos. El sistema se planeo para poder adaptarse en distintos dominios, por lo que cualquier tipo de empresa puede usarlo.
+    \item Proovedores de productos: Aunque los proovedores no interactuan con Thary, indirectamente son una variable importante para el sistema, ya que factores externos como el tiempo de entrega o lead time, marcan una gran diferencia en los resultados del sistema.
+\end{itemize} 
 \subsubsection{Elicitación de Requisitos}
+La elicitacion de requisitos consiste en poder identificar las necesidades del sistema a partir de los usaurios, en el caso de Thary, el proceso se llevo a cabo mediante dos fuentes principales de informacion, en primera instancia, la revision de literatura permitio analizar que variables suelen ser relevantes para este tipo de proyectos, y que salidas le aportan mayor valor al usuario. En segundo lugar, se realizo un analisis a un caso de estudio real, los datos usados durante el desarrollo del sistema eran datos autenticos de la Clinica Nuestra señora de los Remedios de la ciudad de Cali, lo cual permitio observar como se comportaria el sistema en un escenario real como la existencia de variaciones en la demanda o datos historicos no tan limpios como historiales incompletos o datos con errores, y que ajustes serian necesarios para mejorar su rendimiento.
+
+Es en base a tdo esto, que se definieron los siguientes requisitos funcionales:
+
+\begin{itemize}
+    \item RF-01: El sistema debe permitir que un usuario registrado como admin pueda realizar la carga de un archivo CSV con el datos como el historial de consumo mensual de los productos, validando que contenga los datos minimos requeridos: fecha, id del producto y cantidad demandada.
+    \item RF-02: El sistema debe generar una estimacion de la demanda mensual, esperada para cada producto a partir de la informacion compartida en el historial cargado
+    \item RF-03: El sistema debe de calcular para cada producto datos como el punto de reposicion y la cantidad recomendada de compra, considerando factores externos como el tiempo de entrega del proovedor o lead time, presupuestos y el inventario actual disponible
+    \item RF-04: El sistema debe de contar con alertas visuales claras para los productos cuyo inventario actual se encuentre en o por debajo de su punto de reposicion.
+    \item RF-05: El sistema debe presentar los resultados, demanda pronosticada, estado del inventario, etc, de una manera clara y sencilla de entender en una interfaz intuitiva para el usuario
+    \item RF-06: El sistema debe permitirle al personal del inventario registrar un pedido, guardando informacion importante de este como proovedor elegido, fecha del pedido y el usuario responsable de la realizacion del pedido.
+    \item RF-07: El sistema debe restringir el acceso a la carga de los archivos y la ejecucion del proceso unicamente al perfil administrador.
+    \item RF-08: El sistema debe permitirle al perfil de administrador el poder crear nuevos usuarios con menos privilegios para sus empleados.
+    \item RF-09: El sistema debe de permitir evaluar el desempeño de los modelos de prediccion mediante metricas cuantitavias, para de esta manera, poder respaldar la confiabilidad de las estimaciones que le son presentadas al usuario.
+    \item RF-10: El sistema debe permitir el registro e inicio de sesion de los usuarios.
+\end{itemize}
+
+En cuanto a los requisitos no funcionales de Thary, se identificaron los siguientes:
+
+\begin{itemize}
+    \item RNF-01: Si el sistema es utilizado por mas de una organizacionm los datos de una no deben de ser accesibles para otra
+    \item RNF-02: El sistema debe de poder procesar archivos de distintos dominios de inventario (salud, alimentos, ferreteria, etc) siempre y cuando contengan los datos minimos requeridos.
+    \item RNF-03: El sistema debe poder generar una estimacion incluso si el historial de producto presenta datos faltantes.
+\end{itemize}
 
 \subsubsection{Especificación de Requisitos de Software (SRS)}
+
+A partir de los requisitos especificados, se elaboro la especificacion de requisitos funcionales (SRP), la cual fue estructurada mediante casos de uso y tomando como referencia los lineamientos de la norma IEEE 29148 para la elaboracion de los mismos. El sistema contempla dos actores principales, el administrados y el personal de inventario. El administrador es el tipo de usuario que mas privilegios tiene, es responsable de cargar el historial de consumo e iniciar el procesamiento y gestionar las cuentas de los usuarios. Mientras que el personal de inventario solo usa el sistema para consultar las predicciones y, entre otras actividades, gestionar los pedidos sugeridos. La figura debajo representa el diagrama general de caso de uso de Thary:
+
+
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{templatefigures/caso_de_uso.png}
+    \caption{Caso de uso}
+\end{figure}
+
+Como se puede ver en el diagrama, los casos de uso identificados, se relacionan con los requisitos funcionales de la siguiente manera:
+
+
 \subsubsection{Diseño de la Arquitectura}
 \subsubsection{Escenarios Arquitecturales}
 \subsubsection{Análisis de Alternativas y Decisiones de Diseño (ADRs)}

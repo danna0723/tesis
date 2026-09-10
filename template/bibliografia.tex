@@ -1,0 +1,102 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% paquete para referencias
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[style=ieee]{biblatex}
+\addbibresource{bibs/sample.bib}   
+
+
+
+% para que las urls tengan la misma fuente que resto del documento
+%https://tex.stackexchange.com/questions/106622/how-to-change-the-font-of-url-in-the-bibliography
+\usepackage{url}
+\urlstyle{same}
+
+%% coloca s.f cuando no tiene anio la referencia
+%% https://copyprogramming.com/howto/biblatex-and-entries-with-no-date
+%\newcommand{\mkbibnodate}{s\adddot f\adddot}
+%\AtEveryCitekey{\iffieldundef{labelyear}{\restorefield{labelyear}{\mkbibnodate}}{}}
+%\AtEveryBibitem{\iffieldundef{labelyear}{\restorefield{year}{\mkbibnodate}}{}}
+
+% https://tex.stackexchange.com/questions/612417/biblatex-and-entries-with-no-date-part-2
+\renewbibmacro*{date}{%
+  \iffieldundef{year}
+    {\bibstring{nodate}}
+    {\printdate}}
+
+\DeclareFieldFormat{url}{[Internet]\adddot\space\bibstring{urlfrom}\space\url{#1}}
+
+\DeclareFieldFormat{urldate}{\adddot\addspace[\bibstring{urlseen}\addcolon\space #1]}
+
+% puntos en cada entrada d la biliografia
+\renewcommand*{\newunitpunct}{\addcomma\space}
+%\renewcommand*{\newunitpunct}{\addperiod\space}
+  
+\DefineBibliographyStrings{spanish}{%
+  urlfrom = {Disponible en},
+  urlseen = {Consultado}
+} 
+
+
+\newbibmacro*{author+title+date}{%
+  \ifnameundef{editor}
+    {}
+    {%
+      \usebibmacro{editor}%
+      \setunit{\addspace}%
+      \printnames[byeditor]{editor}%
+      \clearname{editor}%
+      \newunit
+    }%
+  \usebibmacro{byeditorx}%
+  \usebibmacro{bytranslator+others}%
+  \ifnameundef{author}
+  {%
+    \printfield{title}
+    \printtext[parens]{\usebibmacro{date}}
+  }%
+  {%
+      \usebibmacro{author}\addcomma\space%
+      \printtext[parens]{\usebibmacro{date}} \adddot \addspace %
+      \printfield{title} \adddot
+  }%
+}
+
+
+
+\DeclareBibliographyDriver{online}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  %\usebibmacro{author/editor+others/translator+others}%
+  \usebibmacro{author+title+date}%
+  %\setunit{\adddot\addspace}% ELIMINADO
+  %\usebibmacro{title}%        ELIMINADO  
+  \setunit{\adddot\addspace}%
+  \printlist{language}%
+  \setunit{\adddot\addspace}%
+  \usebibmacro{byauthor}%
+  \setunit{\adddot\addspace}%
+  \usebibmacro{byeditor+others}%
+  \setunit{\adddot\addspace}%
+  \printfield{version}%
+  \setunit{\adddot\addspace}%
+  \printfield{note}%
+  \newunit\newblock
+  \printlist{organization}%
+  \setunit{\adddot\addspace}%
+  \iftoggle{bbx:eprint}
+    {\usebibmacro{eprint}}
+    {}%
+  \setunit{\adddot\addspace}%
+  %\printtext[parens]{\usebibmacro{date}}% ELIMINDADO
+  %\newunit\newblock                     % ELIMINDADO
+  \usebibmacro{url+urldate}%
+  \setunit{\adddot\addspace}%
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \newunit\newblock
+  \iftoggle{bbx:related}
+    {\usebibmacro{related:init}%
+     \usebibmacro{related}}
+    {}%
+  \usebibmacro{finentry}}
