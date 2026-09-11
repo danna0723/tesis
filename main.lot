@@ -1,4 +1,15 @@
 \babel@toc {english}{}\relax 
 \babel@toc {english}{}\relax 
 \babel@toc {english}{}\relax 
-\contentsline {table}{\numberline {I}{\ignorespaces Comparación de técnicas de predicción aplicadas a problemas de demanda y series de tiempo}}{24}{table.caption.14}%
+\contentsline {table}{\numberline {I}{\ignorespaces Comparación de técnicas de predicción aplicadas a problemas de demanda y series de tiempo}}{25}{table.caption.14}%
+\contentsline {table}{\numberline {II}{\ignorespaces Análisis de interés e influencia de los stakeholders}}{28}{table.caption.15}%
+\contentsline {table}{\numberline {III}{\ignorespaces Trazabilidad entre casos de uso y requisitos funcionales}}{32}{table.caption.17}%
+\contentsline {table}{\numberline {IV}{\ignorespaces Entidades principales del modelo de datos.}}{35}{table.caption.23}%
+\contentsline {table}{\numberline {V}{\ignorespaces Especificación del caso de uso CU-01: Iniciar sesión}}{40}{table.caption.27}%
+\contentsline {table}{\numberline {VI}{\ignorespaces Especificación del caso de uso CU-02: Cargar historial de consumo}}{41}{table.caption.28}%
+\contentsline {table}{\numberline {VII}{\ignorespaces Especificación del caso de uso CU-03: Procesar archivo}}{42}{table.caption.29}%
+\contentsline {table}{\numberline {VIII}{\ignorespaces Especificación del caso de uso CU-04: Consultar demanda pronosticada}}{43}{table.caption.30}%
+\contentsline {table}{\numberline {IX}{\ignorespaces Especificación del caso de uso CU-05: Consultar estado del inventario}}{44}{table.caption.31}%
+\contentsline {table}{\numberline {X}{\ignorespaces Especificación del caso de uso CU-06: Consultar recomendaciones de reposición y presupuesto}}{45}{table.caption.32}%
+\contentsline {table}{\numberline {XI}{\ignorespaces Especificación del caso de uso CU-07: Registrar pedido}}{46}{table.caption.33}%
+\contentsline {table}{\numberline {XII}{\ignorespaces Especificación del caso de uso CU-08: Gestionar usuarios}}{47}{table.caption.34}%

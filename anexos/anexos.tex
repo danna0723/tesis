@@ -1,1 +1,389 @@
 % TODO: contenido de los anexos A-E
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  PLANTILLA DE TRABAJO DE GRADO
+%  Universidad de San Buenaventura
+%  By GHS & PADIA - 2026-2
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Anexos
+%  \anexos (definido en template/sections_config.tex) reinicia el contador
+%  y hace que \section numere con letras: Anexo A, Anexo B, ...
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\clearpage
+\phantomsection
+\addcontentsline{toc}{section}{ANEXOS}
+\section*{ANEXOS}
+
+\anexos
+
+
+\section{Documento completo SRS (historias de usuario / backlog)}
+% Guia: documento completo SRS: historias de usuario y backlog del producto.
+\begin{table}[H]
+\centering
+\caption{Especificación del caso de uso CU-01: Iniciar sesión}
+\label{tab:cu01_login}
+\begin{tabularx}{\textwidth}{>{\bfseries}p{3.5cm} X}
+\hline
+Elemento & Especificación \\
+\hline
+
+ID & CU-01 \\
+
+Nombre & Iniciar sesión \\
+
+Actor principal & Usuario registrado \\
+
+Requisitos relacionados & RF-10 \\
+
+Objetivo & El objetivo es permitir que los usuarios registrados accedan al sistema utilizando sus credenciales. \\
+
+Precondiciones & Para poder iniciar sesión, el usuario debe encontrarse previamente registrado en el sistema. \\
+
+Postcondiciones & El usuario accede exitosamente al sistema y puede acceder a las funcionalidades a las que tenga acceso dependiendo de su rol. \\
+
+Flujo principal &
+\begin{enumerate}
+    \item El usuario ingresa su usuaario y contraseña.
+    \item El sistema valida que la informacion sea correcta.
+    \item El sistema identifica el perfil del usuario.
+    \item El sistema permite el acceso a Thary.
+\end{enumerate}
+\\
+
+Flujos alternativos &
+\begin{enumerate}
+    \item Si el usuario o la contraseña introducidos son incorrectas, el sistema le informa el usuario que los datos ingresados no son válidos.
+    \item Si el usuario no está registrado, el sistema rechaza el acceso y el usuario tiene la oportunidad de registrarse.
+\end{enumerate}
+\\
+
+\hline
+\end{tabularx}
+\end{table}
+
+
+\begin{table}[H]
+\centering
+\caption{Especificación del caso de uso CU-02: Cargar historial de consumo}
+\label{tab:cu02_cargar_historial}
+\begin{tabularx}{\textwidth}{>{\bfseries}p{3.5cm} X}
+\hline
+Elemento & Especificación \\
+\hline
+
+ID & CU-02 \\
+
+Nombre & Cargar historial de consumo \\
+
+Actor principal & Administrador \\
+
+Requisitos relacionados & RF-01, RF-07 \\
+
+Objetivo & El objetivo del caso de uso es permitirle al Administrador poder cargar un archivo CSV que contenga el historial de consumo de los productos del inventario. \\
+
+Precondiciones &
+\begin{itemize}
+    \item Para acceder a esta funcionalidad, el usuario debe haber iniciado sesión con perfil de Administrador.
+    \item El archivo debe subirse en formato de CSV.
+\end{itemize}
+\\
+
+Postcondiciones & El archivo es recibido por el sistema para su posterior procesamiento\\
+
+Flujo principal &
+\begin{enumerate}
+    \item El Administrador inicia sesion y es recibido por la pantalla inicial que le da la opcion de subir un archivo csv.
+    \item El Administrador selecciona un archivo CSV.
+    \item El sistema recibe el archivo.
+    \item El sistema se encarga de validar el formato y que contenga los campos mínimos requeridos para el funcionamiento del sistema como: fecha, ID del producto y cantidad demandada de cada uno.
+    \item El sistema informa que el archivo fue cargado correctamente.
+\end{enumerate}
+\\
+
+Flujos alternativos &
+\begin{enumerate}
+    \item Si el archivo no tiene formato CSV, el sistema informa el error con el mensaje "El archivo debe tener extensión .csv"
+    \item Si faltan campos obligatorios, el sistema rechaza el archivo e informa cuáles son los datos requeridos, ejemplo: Falta la columna obligatoria: fecha"
+    \item Si el usuario no cuenta con los permisos de Administrador, Thary simplemente no le muestra la opcion de carga archivo, limitandose con solo mostrarle el dashboard con los resultados y demas pantallas con informacion.
+\end{enumerate}
+\\
+
+\hline
+\end{tabularx}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Especificación del caso de uso CU-03: Procesar archivo}
+\label{tab:cu03_procesar_archivo}
+\begin{tabularx}{\textwidth}{>{\bfseries}p{3.5cm} X}
+\hline
+Elemento & Especificación \\
+\hline
+
+ID & CU-03 \\
+
+Nombre & Procesar archivo \\
+
+Actor principal & Administrador \\
+
+Requisitos relacionados & RF-02, RF-07 \\
+
+Objetivo & Iniciar el procesamiento del historial de consumo previamente cargado para generar las estimaciones de demanda. \\
+
+Precondiciones &
+\begin{itemize}
+    \item El Administrador debe haber iniciado sesión.
+    \item Debe existir un archivo de historial cargado y válido.
+\end{itemize}
+\\
+
+Postcondiciones & El sistema procesa los datos, ejecuta el proceso de predicción y genera los resultados de demanda para los productos. \\
+
+Flujo principal &
+\begin{enumerate}
+    \item El Administrador accede al panel de procesamiento.
+    \item El sistema verifica que exista un archivo válido.
+    \item El Administrador selecciona la opción ``Procesar archivo''.
+    \item El sistema procesa y prepara los datos.
+    \item El sistema ejecuta el proceso de predicción.
+    \item El sistema genera las estimaciones de demanda mensual para los productos.
+    \item El sistema genera los resultados necesarios para las etapas posteriores.
+\end{enumerate}
+\\
+
+Flujos alternativos &
+\begin{enumerate}
+    \item Si no existe un archivo válido, el sistema informa al Administrador que debe cargar un historial.
+    \item Si ocurre un error durante el procesamiento, el sistema informa que no fue posible completar la operación.
+    \item Si el usuario no es Administrador, el sistema impide la ejecución.
+\end{enumerate}
+\\
+
+\hline
+\end{tabularx}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Especificación del caso de uso CU-04: Consultar demanda pronosticada}
+\label{tab:cu04_demanda_pronosticada}
+\begin{tabularx}{\textwidth}{>{\bfseries}p{3.5cm} X}
+\hline
+Elemento & Especificación \\
+\hline
+
+ID & CU-04 \\
+
+Nombre & Consultar demanda pronosticada \\
+
+Actor principal & Personal de Inventario \\
+
+Requisitos relacionados & RF-02, RF-05 \\
+
+Objetivo & Permitirle al los empleados del inventario consultar cual es la demanda mensual estimada para cada uno de los producto. \\
+
+Precondiciones & Como precondicion, ya debe de existir un archivo procesado anteriormente por el administrador, tambien ya deben haber resultados de predicción disponibles. \\
+
+Postcondiciones & El usuario visualiza las estimaciones de demanda correspondientes a los productos. \\
+
+Flujo principal &
+\begin{enumerate}
+    \item El usuario accede al dashboard con las predicciones.
+    \item El sistema consulta los resultados generados.
+    \item El sistema le muestra al usuario, sin importar si es administrador o usuario, la demanda pronosticada de los productos.
+    \item El usuario consulta la información presentada.
+\end{enumerate}
+\\
+
+Flujos alternativos & Si no existen resultados de predicción, el sistema informa que primero debe realizarse el procesamiento del archivo mediante el siguiente mensaje "Todavía no hay datos cargados. En cuanto tu administrador suba un archivo, vas a poder ver el pronóstico, el inventario y confirmar pedidos."\\
+
+\hline
+\end{tabularx}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Especificación del caso de uso CU-05: Consultar estado del inventario}
+\label{tab:cu05_estado_inventario}
+\begin{tabularx}{\textwidth}{>{\bfseries}p{3.5cm} X}
+\hline
+Elemento & Especificación \\
+\hline
+
+ID & CU-05 \\
+
+Nombre & Consultar estado del inventario \\
+
+Actor principal & Personal de Inventario \\
+
+Requisitos relacionados & RF-04, RF-05 \\
+
+Objetivo & El objetivo es que se pueda consultar el inventario actual de los productos e identificar facilmente a aquellos que requieran atención o esten en mayor riesgo de desabatecimiento. \\
+
+Precondiciones & Como precondicion para este caso de uso, es importante que ya exista información del inventario disponible y resultados del procesamiento. \\
+
+Postcondiciones & Las postcondiciones son que el usuario puede visualizar sin problemas el estado actual del inventario y las alertas correspondientes para cada producto. \\
+
+Flujo principal &
+\begin{enumerate}
+    \item El usuario accede al módulo de "Estado de inventario".
+    \item El sistema consulta la informacion actual del inventario.
+    \item El sistema se encarga de comparar el inventario disponible con el punto de reposición de cada producto.
+    \item El sistema identifica los productos que se encuentran en o por debajo de su punto de reposición.
+    \item El sistema muestra las alertas visuales correspondientes dependiendo de cada caso, se marcaran de color rojo en caso de estar por debajo del punto de reposicion.
+\end{enumerate}
+\\
+
+Flujos alternativos & Si no existe información de inventario para un producto, el sistema informa que no se dispone de los datos necesarios para determinar su estado. \\
+
+\hline
+\end{tabularx}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Especificación del caso de uso CU-06: Consultar recomendaciones de reposición y presupuesto}
+\label{tab:cu06_recomendaciones}
+\begin{tabularx}{\textwidth}{>{\bfseries}p{3.5cm} X}
+\hline
+Elemento & Especificación \\
+\hline
+
+ID & CU-06 \\
+
+Nombre & Consultar recomendaciones de reposición y presupuesto \\
+
+Actor principal & Personal de Inventario \\
+
+Requisitos relacionados & RF-03, RF-05 \\
+
+Objetivo & Permitir consultar las recomendaciones de reposición generadas para cada producto, teniendo en cuenta distintos datos como la demanda estimada, el inventario que ya se tiene disponible, el tiempo de entrega, que varia de producto a producto, y el presupuesto establecido. \\
+
+Precondiciones & La principal precondicion es que debe existir un archivo csv ya procesado, y el sistema ya debe contar con toda la información necesaria para poder calcular las recomendaciones. \\
+
+Postcondiciones & El usuario visualiza la cantidad recomendada de compra de una manera clara mediante el uso de graficas y tablas, tambien puede ver otros datos relevantes como el punto de reposición y información acerca del presupuesto. \\
+
+Flujo principal &
+\begin{enumerate}
+    \item El usuario accede al módulo de recomendaciones, es decir, el dashboard principal.
+    \item El sistema consulta las estimaciones de demanda.
+    \item El sistema obtiene el inventario actual y los parámetros de reposición.
+    \item El sistema considera el tiempo de entrega del proveedor y las restricciones presupuestales.
+    \item El sistema calcula la recomendación de reposición.
+    \item El sistema le muestra los resultados al usuario.
+\end{enumerate}
+\\
+
+Flujos alternativos & Si no existen datos suficientes para realizar el cálculo, el sistema informa qué información se encuentra pendiente. \\
+
+\hline
+\end{tabularx}
+\end{table}
+
+
+\begin{table}[H]
+\centering
+\caption{Especificación del caso de uso CU-07: Registrar pedido}
+\label{tab:cu07_registrar_pedido}
+\begin{tabularx}{\textwidth}{>{\bfseries}p{3.5cm} X}
+\hline
+Elemento & Especificación \\
+\hline
+
+ID & CU-07 \\
+
+Nombre & Registrar pedido \\
+
+Actor principal & Personal de Inventario \\
+
+Requisitos relacionados & RF-06 \\
+
+Objetivo & El objetivo es permitirle al Personal de Inventario registrar un pedido de reposición a partir de las recomendaciones generadas. \\
+
+Precondiciones & El usuario debe haber iniciado sesión y debe existir información del producto y de la cantidad a solicitar. \\
+
+Postcondiciones & El pedido queda registrado con la información correspondiente y asociado con el nombre del usuario responsable. \\
+
+Flujo principal &
+\begin{enumerate}
+    \item El usuario consulta la pagina de "Pedidos" del sistema.
+    \item Selecciona uno de los pedidos para registrarlos.
+    \item Selecciona el proveedor.
+    \item A partir de esto, el sistema registra la fecha del pedido.
+    \item El sistema identifica al usuario responsable.
+    \item El sistema guarda la información del pedido.
+    \item El sistema confirma el registro.
+\end{enumerate}
+\\
+
+Flujos alternativos & Si no se selcciona ningun producto, pero de todas maneras se hace click en el boton para registrar, saldra el siguiente mensaje: No seleccionaste ningún producto para confirmar" \\
+
+\hline
+\end{tabularx}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Especificación del caso de uso CU-08: Gestionar usuarios}
+\label{tab:cu08_gestionar_usuarios}
+\begin{tabularx}{\textwidth}{>{\bfseries}p{3.5cm} X}
+\hline
+Elemento & Especificación \\
+\hline
+
+ID & CU-08 \\
+
+Nombre & Gestionar usuarios \\
+
+Actor principal & Administrador \\
+
+Requisitos relacionados & RF-08 \\
+
+Objetivo & Permitirle al Administrador poder crear cuentas para sus empleados con menos privilegios a los de un administrador.\\
+
+Precondiciones & El usuario debe haber iniciado sesión con perfil de Administrador. \\
+
+Postcondiciones & El nuevo empleado queda registrado y puede utilizar el sistema con permisos restringidos. \\
+
+Flujo principal &
+\begin{enumerate}
+    \item El Administrador accede a la gestión de usuarios.
+    \item Selecciona la opción para crear un usuario.
+    \item Ingresa la información requerida.
+    \item Define el perfil o nivel de privilegios.
+    \item El sistema valida la información.
+    \item El sistema registra al nuevo usuario.
+\end{enumerate}
+\\
+
+Flujos alternativos &
+\begin{enumerate}
+    \item Si la información es inválida o incompleta, el sistema solicita corregirla mediante un mensaje de error.
+    \item Si el usuario ya existe, el sistema informa que no puede crearse una cuenta duplicada.
+\end{enumerate}
+\\
+
+\hline
+\end{tabularx}
+\end{table}
+
+
+\section{Modelos de datos extensos, diccionarios de datos, mockups}
+% Guia: modelos de datos extensos, diccionarios de datos y mockups.
+
+
+\section{Manual de usuario y/o guía de instalación y despliegue}
+% Guia: manual de usuario y guia de instalacion y despliegue.
+
+
+\section{Enlaces a repositorios de código fuente y tableros de gestión (Azure DevOps, Jira, GitHub)}
+% Guia: enlaces a repositorios de codigo fuente y tableros de gestion.
+
+
+\section{Protocolo y seguimiento de la revisión sistemática de literatura (si aplica)}
+% Guia: protocolo y seguimiento de la revision sistematica de literatura.
