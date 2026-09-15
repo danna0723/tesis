@@ -1,7 +1,0 @@
-\begin{MintedVerbatim}[commandchars=\\\{\}]
-\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{calcular\PYGZus{}cobertura}\PYG{p}{(}\PYG{n}{lineas\PYGZus{}probadas}\PYG{p}{,} \PYG{n}{lineas\PYGZus{}totales}\PYG{p}{):}
-    \PYG{c+c1}{\PYGZsh{} Devuelve el porcentaje de cobertura de pruebas}
-    \PYG{k}{if} \PYG{n}{lineas\PYGZus{}totales} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{:}
-        \PYG{k}{return} \PYG{l+m+mf}{0.0}
-    \PYG{k}{return} \PYG{l+m+mf}{100.0} \PYG{o}{*} \PYG{n}{lineas\PYGZus{}probadas} \PYG{o}{/} \PYG{n}{lineas\PYGZus{}totales}
-\end{MintedVerbatim}

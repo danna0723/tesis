@@ -1,0 +1,65 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n}{ETIQUETAS\PYGZus{}COLUMNAS\PYGZus{}OBLIGATORIAS} \PYG{o}{=} \PYG{p}{\PYGZob{}}
+    \PYG{l+s+s2}{\PYGZdq{}fecha\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Fecha (o Date, Sale\PYGZus{}Date)\PYGZdq{}}\PYG{p}{,}
+    \PYG{l+s+s2}{\PYGZdq{}producto\PYGZus{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Producto (o Product, Product\PYGZus{}ID)\PYGZdq{}}\PYG{p}{,}
+    \PYG{l+s+s2}{\PYGZdq{}demanda\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Demanda (o Demand, Sales, Quantity\PYGZus{}Sold)\PYGZdq{}}\PYG{p}{,}
+\PYG{p}{\PYGZcb{}}
+
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{cargar\PYGZus{}y\PYGZus{}limpiar}\PYG{p}{(}\PYG{n}{ruta\PYGZus{}archivo}\PYG{p}{):}
+\PYG{+w}{    }\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{    Lee el CSV subido por el usuario, normaliza nombres de columnas a}
+\PYG{l+s+sd}{    variantes conocidas (inglés/español), valida las columnas}
+\PYG{l+s+sd}{    obligatorias y descarta el último mes si viene incompleto.}
+
+\PYG{l+s+sd}{    Cada problema posible levanta un ValueError con un mensaje pensado}
+\PYG{l+s+sd}{    para mostrarse tal cual al usuario (ver procesar() en}
+\PYG{l+s+sd}{    app/routes/main.py, que lo manda directo a flash()) — no un mensaje}
+\PYG{l+s+sd}{    técnico de pandas, sino qué le pasa al archivo y qué tiene que}
+\PYG{l+s+sd}{    corregir.}
+\PYG{l+s+sd}{    \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+    \PYG{k}{try}\PYG{p}{:}
+        \PYG{n}{df} \PYG{o}{=} \PYG{n}{pd}\PYG{o}{.}\PYG{n}{read\PYGZus{}csv}\PYG{p}{(}\PYG{n}{ruta\PYGZus{}archivo}\PYG{p}{)}
+    \PYG{k}{except} \PYG{n}{pd}\PYG{o}{.}\PYG{n}{errors}\PYG{o}{.}\PYG{n}{EmptyDataError}\PYG{p}{:}
+        \PYG{k}{raise} \PYG{n+ne}{ValueError}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}El archivo está vacío. Sube un CSV con al menos una fila de datos.\PYGZdq{}}\PYG{p}{)}
+    \PYG{k}{except} \PYG{n}{pd}\PYG{o}{.}\PYG{n}{errors}\PYG{o}{.}\PYG{n}{ParserError}\PYG{p}{:}
+        \PYG{k}{raise} \PYG{n+ne}{ValueError}\PYG{p}{(}
+            \PYG{l+s+s2}{\PYGZdq{}No se pudo leer el archivo como CSV. Verifica que sea un archivo de texto \PYGZdq{}}
+            \PYG{l+s+s2}{\PYGZdq{}separado por comas (por ejemplo, no un Excel renombrado a .csv).\PYGZdq{}}
+        \PYG{p}{)}
+    \PYG{k}{except} \PYG{n+ne}{UnicodeDecodeError}\PYG{p}{:}
+        \PYG{k}{raise} \PYG{n+ne}{ValueError}\PYG{p}{(}
+            \PYG{l+s+s2}{\PYGZdq{}El archivo tiene una codificación de caracteres que el sistema no reconoce. \PYGZdq{}}
+            \PYG{l+s+s2}{\PYGZdq{}Guárdalo como CSV con codificación UTF\PYGZhy{}8 e intenta de nuevo.\PYGZdq{}}
+        \PYG{p}{)}
+
+    \PYG{k}{if} \PYG{n}{df}\PYG{o}{.}\PYG{n}{empty}\PYG{p}{:}
+        \PYG{k}{raise} \PYG{n+ne}{ValueError}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}El archivo no tiene filas de datos, solo encabezados.\PYGZdq{}}\PYG{p}{)}
+
+    \PYG{n}{df} \PYG{o}{=} \PYG{n}{df}\PYG{o}{.}\PYG{n}{rename}\PYG{p}{(}\PYG{n}{columns}\PYG{o}{=}\PYG{p}{\PYGZob{}}
+        \PYG{l+s+s2}{\PYGZdq{}Sale\PYGZus{}Date\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}fecha\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}Date\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}fecha\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}date\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}fecha\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}Fecha\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}fecha\PYGZdq{}}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}Product\PYGZus{}ID\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}producto\PYGZus{}id\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}Product\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}producto\PYGZus{}id\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}Producto\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}producto\PYGZus{}id\PYGZdq{}}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}Quantity\PYGZus{}Sold\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}demanda\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}Sales\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}demanda\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}Demand\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}demanda\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}Demanda\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}demanda\PYGZdq{}}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}Unit\PYGZus{}Price\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}precio\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}Price\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}precio\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}Price\PYGZus{}per\PYGZus{}unit\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}precio\PYGZdq{}}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}Inventario\PYGZus{}Actual\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}inventario\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}Inventory\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}inventario\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}Stock\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}inventario\PYGZdq{}}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}Store\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}tienda\PYGZus{}id\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}Store\PYGZus{}ID\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}tienda\PYGZus{}id\PYGZdq{}}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}Category\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}categoria\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}Product\PYGZus{}Category\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}categoria\PYGZdq{}}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}Product\PYGZus{}Name\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}nombre\PYGZus{}producto\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}Nombre\PYGZus{}Producto\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}nombre\PYGZus{}producto\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}Nombre\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}nombre\PYGZus{}producto\PYGZdq{}}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}Lead\PYGZus{}time\PYGZus{}Semana\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}lead\PYGZus{}time\PYGZus{}semanas\PYGZdq{}}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}Costo\PYGZus{}pedido\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}costo\PYGZus{}pedido\PYGZdq{}}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}Costo\PYGZus{}unitario\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}costo\PYGZus{}unitario\PYGZdq{}}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}Porcentaje\PYGZus{}costo\PYGZus{}mantenimiento\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}porcentaje\PYGZus{}costo\PYGZus{}mantenimiento\PYGZdq{}}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}Supplier\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}proveedor\PYGZus{}principal\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}Proveedor\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}proveedor\PYGZus{}principal\PYGZdq{}}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}Proveedor\PYGZus{}Principal\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}proveedor\PYGZus{}principal\PYGZdq{}}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}Alternate\PYGZus{}Supplier\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}proveedor\PYGZus{}alterno\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}Proveedor\PYGZus{}Alterno\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}proveedor\PYGZus{}alterno\PYGZdq{}}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}Proveedor\PYGZus{}Alternativo\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}proveedor\PYGZus{}alterno\PYGZdq{}}\PYG{p}{,}
+    \PYG{p}{\PYGZcb{})}
+
+    \PYG{n}{columnas\PYGZus{}faltantes} \PYG{o}{=} \PYG{p}{[}\PYG{n}{c} \PYG{k}{for} \PYG{n}{c} \PYG{o+ow}{in} \PYG{n}{ETIQUETAS\PYGZus{}COLUMNAS\PYGZus{}OBLIGATORIAS} \PYG{k}{if} \PYG{n}{c} \PYG{o+ow}{not} \PYG{o+ow}{in} \PYG{n}{df}\PYG{o}{.}\PYG{n}{columns}\PYG{p}{]}
+    \PYG{k}{if} \PYG{n}{columnas\PYGZus{}faltantes}\PYG{p}{:}
+        \PYG{n}{faltan} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}, \PYGZdq{}}\PYG{o}{.}\PYG{n}{join}\PYG{p}{(}\PYG{n}{ETIQUETAS\PYGZus{}COLUMNAS\PYGZus{}OBLIGATORIAS}\PYG{p}{[}\PYG{n}{c}\PYG{p}{]} \PYG{k}{for} \PYG{n}{c} \PYG{o+ow}{in} \PYG{n}{columnas\PYGZus{}faltantes}\PYG{p}{)}
+        \PYG{k}{raise} \PYG{n+ne}{ValueError}\PYG{p}{(}
+            \PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}Al archivo le falta al menos una columna obligatoria: }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{faltan}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{. \PYGZdq{}}
+            \PYG{l+s+s2}{\PYGZdq{}Agrégala al CSV (con ese nombre exacto u otro de los aceptados) y vuelve a subirlo.\PYGZdq{}}
+        \PYG{p}{)}
+\end{MintedVerbatim}

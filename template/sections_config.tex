@@ -50,3 +50,13 @@
     [:]
 
 \titlespacing{\paragraph}{0cm}{*1}{*1}
+
+%----------------------------------
+% NUMERACIÓN DE ANEXOS
+% \anexos reinicia el contador de section y hace que \thesection
+% produzca "Anexo A", "Anexo B", ... en lugar de numeros arabigos.
+%----------------------------------
+\newcommand{\anexos}{%
+    \setcounter{section}{0}%
+    \renewcommand{\thesection}{Anexo \Alph{section}}%
+}

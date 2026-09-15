@@ -372,6 +372,55 @@ Flujos alternativos &
 \end{tabularx}
 \end{table}
 
+\begin{table}[H]
+\centering
+\caption{Especificación del caso de uso CU-09: Consultar asistente virtual}
+\label{tab:cu09_asistente_virtual}
+\begin{tabularx}{\textwidth}{>{\bfseries}p{3.5cm} X}
+\hline
+Elemento & Especificación \\
+\hline
+
+ID & CU-09 \\
+
+Nombre & Consultar asistente virtual \\
+
+Actor principal & Usuario registrado \\
+
+Requisitos relacionados & RF-10 \\
+
+Objetivo & El objetivo es permitirle a cualquier usuario del sistema resolver dudas sobre el funcionamiento de Thary mediante un asistente conversacional (chatbot), implementado utilizando la API de Ollama. \\
+
+Precondiciones &
+\begin{itemize}
+    \item El usuario debe haber iniciado sesión en el sistema.
+    \item El servicio de Ollama debe estar disponible y en ejecución.
+\end{itemize}
+\\
+
+Postcondiciones & El usuario recibe una respuesta generada por el asistente correspondiente a su consulta. \\
+
+Flujo principal &
+\begin{enumerate}
+    \item El usuario presiona el botón del asistente virtual, visible desde cualquier pantalla del sistema.
+    \item El sistema despliega una ventana emergente con el chat del asistente.
+    \item El usuario escribe su pregunta sobre el funcionamiento de Thary.
+    \item El sistema envía la consulta al servicio de Ollama mediante la API correspondiente.
+    \item El sistema recibe la respuesta generada por el modelo.
+    \item El sistema muestra la respuesta al usuario dentro de la ventana del chat.
+\end{enumerate}
+\\
+
+Flujos alternativos &
+\begin{enumerate}
+    \item Si el servicio de Ollama no está corriendo o no responde dentro del tiempo esperado, el sistema informa al usuario que el asistente no se encuentra disponible en ese momento.
+    \item Si el usuario cierra la ventana del chat, el sistema descarta la conversación en curso sin afectar el resto de la sesión.
+\end{enumerate}
+\\
+
+\hline
+\end{tabularx}
+\end{table}
 
 \section{Modelos de datos extensos, diccionarios de datos, mockups}
 % Guia: modelos de datos extensos, diccionarios de datos y mockups.

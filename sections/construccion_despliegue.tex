@@ -1,0 +1,112 @@
+% Guia: practicas de codificacion, control de versiones, CI/CD y ambientes
+% de despliegue.
+
+El desarrollo de Thary se llevó utilizando tecnologías de desarrollo web como: Python, Flask como framework y librerias como scikit-learn, Pandas, y XGBoost para la parte de la generacion de predicciones. El sistema se ejecuta en Flask mediante la ejecucion del comando \texttt{run.py} en un entorno virtual (\textit{venv}), todas las dependencias necesarias para la ejecucion del proyecto se encuentran resumidas en el archivo \texttt{requirements.txt}. Por su parte, el control de versiones del sitema se llevo a cabo mediante commits en GitHub en el que se documentaron los cambios mas significantes del sitemas durante todo su desarrollo. 
+
+\paragraph{Prácticas de codificación}
+
+La principal practica de codificacion que se siguio durante el desarrollo e implementacion del sistema Thary es la separacion de responsabilidades. Toda la logica principal del sistema se encuentra en la capa de servicios (\texttt{app/services/}), en el cual, cada una de las 9 etapas del pipeline se encuentran alojadas en nueve modulos independientes: carga de datos, segmentación, construcción de variables, modelos, validación, pronóstico, reposición, gráficas y exportación. Esta organizacion permite que se pueda modificar una etapa especifica del flujo sin afectar directamente a las demas partes, además de facilitar el mantenimiento y un entendimiento mas facil del código. A continuación, se describe a manera de ejemplo, como se implemento la etapa de carga y limpieza de los datos:  
+% ---------------------------------------------------------------------
+% EJEMPLO DE CODIGO FUENTE (borrelo)
+%   el lenguaje va entre llaves: {python}, {java}, {sql}, {bash}, ...
+%   Lo compone el paquete listings. Para colorearlo con minted, active el
+%   interruptor que hay en template/packages.tex.
+% ---------------------------------------------------------------------
+\begin{minted}{python}
+ETIQUETAS_COLUMNAS_OBLIGATORIAS = {
+    "fecha": "Fecha (o Date, Sale_Date)",
+    "producto_id": "Producto (o Product, Product_ID)",
+    "demanda": "Demanda (o Demand, Sales, Quantity_Sold)",
+}
+
+
+def cargar_y_limpiar(ruta_archivo):
+    """
+    Lee el CSV subido por el usuario, normaliza nombres de columnas a
+    variantes conocidas (inglés/español), valida las columnas
+    obligatorias y descarta el último mes si viene incompleto.
+
+    Cada problema posible levanta un ValueError con un mensaje pensado
+    para mostrarse tal cual al usuario (ver procesar() en
+    app/routes/main.py, que lo manda directo a flash()) — no un mensaje
+    técnico de pandas, sino qué le pasa al archivo y qué tiene que
+    corregir.
+    """
+    try:
+        df = pd.read_csv(ruta_archivo)
+    except pd.errors.EmptyDataError:
+        raise ValueError("El archivo está vacío. Sube un CSV con al menos una fila de datos.")
+    except pd.errors.ParserError:
+        raise ValueError(
+            "No se pudo leer el archivo como CSV. Verifica que sea un archivo de texto "
+            "separado por comas (por ejemplo, no un Excel renombrado a .csv)."
+        )
+    except UnicodeDecodeError:
+        raise ValueError(
+            "El archivo tiene una codificación de caracteres que el sistema no reconoce. "
+            "Guárdalo como CSV con codificación UTF-8 e intenta de nuevo."
+        )
+
+    if df.empty:
+        raise ValueError("El archivo no tiene filas de datos, solo encabezados.")
+
+    df = df.rename(columns={
+        "Sale_Date": "fecha", "Date": "fecha", "date": "fecha", "Fecha": "fecha",
+        "Product_ID": "producto_id", "Product": "producto_id", "Producto": "producto_id",
+        "Quantity_Sold": "demanda", "Sales": "demanda", "Demand": "demanda", "Demanda": "demanda",
+        "Unit_Price": "precio", "Price": "precio", "Price_per_unit": "precio",
+        "Inventario_Actual": "inventario", "Inventory": "inventario", "Stock": "inventario",
+        "Store": "tienda_id", "Store_ID": "tienda_id",
+        "Category": "categoria", "Product_Category": "categoria",
+        "Product_Name": "nombre_producto", "Nombre_Producto": "nombre_producto", "Nombre": "nombre_producto",
+        "Lead_time_Semana": "lead_time_semanas",
+        "Costo_pedido": "costo_pedido",
+        "Costo_unitario": "costo_unitario",
+        "Porcentaje_costo_mantenimiento": "porcentaje_costo_mantenimiento",
+        "Supplier": "proveedor_principal", "Proveedor": "proveedor_principal",
+        "Proveedor_Principal": "proveedor_principal",
+        "Alternate_Supplier": "proveedor_alterno", "Proveedor_Alterno": "proveedor_alterno",
+        "Proveedor_Alternativo": "proveedor_alterno",
+    })
+
+    columnas_faltantes = [c for c in ETIQUETAS_COLUMNAS_OBLIGATORIAS if c not in df.columns]
+    if columnas_faltantes:
+        faltan = ", ".join(ETIQUETAS_COLUMNAS_OBLIGATORIAS[c] for c in columnas_faltantes)
+        raise ValueError(
+            f"Al archivo le falta al menos una columna obligatoria: {faltan}. "
+            "Agrégala al CSV (con ese nombre exacto u otro de los aceptados) y vuelve a subirlo."
+        )
+\end{minted}
+
+En esta sección del archivo (\texttt{services/prediccion/carga\_datos.py}), se observa la etapa de carga y limpieza de los datos. Para garantizar que el sistema pueda adaptarse y funcionar para todo tipo de dominio de inventarios, se normalizan los nombres de las columnas de los archivos CSV con el fin de mantener un esquema más heterogéneo, de manera que el sistema pueda aceptar archivos de distintos dominios sin tener la necesidad de modificar el resto del pipeline. Para facilitarle al usuario el proceso de cargar un archivo, se capturan los errores mas comunes para el sistema a la hora de leer un CSV y se muestran a manera de mensaje de error en un lenguaje sencillo y facil de entender.
+
+\paragraph{Integración}
+
+Para integrar correctamente el modelo de prediccion con la aplicacion web, 
+
+Tal como se explico en capitulos anteriores, se definio un control de acceso basado en roles, esto con el objetivo de poder diferenciar a que funcionalidades debe tener acceso un usuario dependiendo de su rol. El administrador (\texttt{admin}) debe ser el unico usuario que cuente con todos los privilegios de acceso a la informacion sensible de la organizacion, mientras que para otros usuarios con menor rango, (\texttt{empleado}), convendria restringir este acceso completo a solo aquellas funcionalidades menos invasivas que sean necesarias para el desempeño de su trabajo, como todas aquellas que describen el analisis de los datos y la lista de pedidos. 
+
+\begin{minted}{python}
+    def admin_required(vista):
+    """
+    Como login_required, pero además exige que el usuario logueado
+    tenga rol "admin" — para las pantallas que un empleado no debería
+    poder ver (subir/procesar CSV, panel técnico y sus descargas).
+    Si un empleado intenta entrar, lo manda al dashboard en vez de
+    mostrarle la página.
+    """
+    @wraps(vista)
+    def envoltura(*args, **kwargs):
+        if "username" not in session:
+            flash("Iniciá sesión para continuar.")
+            return redirect(url_for("auth.login"))
+        if session.get("rol") != "admin":
+            flash("Esa sección es solo para el administrador.")
+            return redirect(url_for("main.dashboard"))
+        return vista(*args, **kwargs)
+    return envoltura
+
+\end{minted}
+
+
+
