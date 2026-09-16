@@ -1,0 +1,19 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n}{TEST\PYGZus{}SIZE\PYGZus{}MESES} \PYG{o}{=} \PYG{l+m+mi}{3}
+\PYG{n}{MIN\PYGZus{}TRAIN\PYGZus{}MESES} \PYG{o}{=} \PYG{l+m+mi}{3}
+\PYG{n}{MAX\PYGZus{}FOLDS} \PYG{o}{=} \PYG{l+m+mi}{3}
+
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{\PYGZus{}armar\PYGZus{}folds}\PYG{p}{(}\PYG{n}{meses\PYGZus{}ordenados}\PYG{p}{):}
+    \PYG{n}{n} \PYG{o}{=} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{meses\PYGZus{}ordenados}\PYG{p}{)}
+    \PYG{n}{folds} \PYG{o}{=} \PYG{p}{[]}
+    \PYG{n}{fin\PYGZus{}test} \PYG{o}{=} \PYG{n}{n}
+    \PYG{k}{while} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{folds}\PYG{p}{)} \PYG{o}{\PYGZlt{}} \PYG{n}{MAX\PYGZus{}FOLDS}\PYG{p}{:}
+        \PYG{n}{inicio\PYGZus{}test} \PYG{o}{=} \PYG{n}{fin\PYGZus{}test} \PYG{o}{\PYGZhy{}} \PYG{n}{TEST\PYGZus{}SIZE\PYGZus{}MESES}
+        \PYG{k}{if} \PYG{n}{inicio\PYGZus{}test} \PYG{o}{\PYGZlt{}} \PYG{n}{MIN\PYGZus{}TRAIN\PYGZus{}MESES}\PYG{p}{:}
+            \PYG{k}{break}
+        \PYG{n}{folds}\PYG{o}{.}\PYG{n}{append}\PYG{p}{((}\PYG{n}{meses\PYGZus{}ordenados}\PYG{p}{[:}\PYG{n}{inicio\PYGZus{}test}\PYG{p}{],} \PYG{n}{meses\PYGZus{}ordenados}\PYG{p}{[}\PYG{n}{inicio\PYGZus{}test}\PYG{p}{:}\PYG{n}{fin\PYGZus{}test}\PYG{p}{]))}
+        \PYG{n}{fin\PYGZus{}test} \PYG{o}{\PYGZhy{}=} \PYG{l+m+mi}{1}
+    \PYG{n}{folds}\PYG{o}{.}\PYG{n}{reverse}\PYG{p}{()}
+    \PYG{k}{return} \PYG{n}{folds}
+\end{MintedVerbatim}
