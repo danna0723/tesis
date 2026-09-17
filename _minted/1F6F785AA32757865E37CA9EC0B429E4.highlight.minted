@@ -1,0 +1,4 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n}{app}\PYG{o}{.}\PYG{n}{register\PYGZus{}blueprint}\PYG{p}{(}\PYG{n}{main\PYGZus{}bp}\PYG{p}{)}
+\PYG{n}{app}\PYG{o}{.}\PYG{n}{register\PYGZus{}blueprint}\PYG{p}{(}\PYG{n}{auth\PYGZus{}bp}\PYG{p}{)}
+\end{MintedVerbatim}

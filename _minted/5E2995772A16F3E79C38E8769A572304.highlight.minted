@@ -1,0 +1,33 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{ejecutar\PYGZus{}sistema}\PYG{p}{(}
+    \PYG{n}{ruta\PYGZus{}archivo}\PYG{p}{,} \PYG{n}{carpeta\PYGZus{}resultados}\PYG{o}{=}\PYG{k+kc}{None}\PYG{p}{,} \PYG{n}{presupuesto\PYGZus{}capital\PYGZus{}trabajo}\PYG{o}{=}\PYG{k+kc}{None}\PYG{p}{,} \PYG{n}{horizonte\PYGZus{}meses}\PYG{o}{=}\PYG{k+kc}{None}
+\PYG{p}{):}
+    \PYG{c+c1}{\PYGZsh{} 1. Carga, limpieza y agregacion mensual}
+    \PYG{n}{df} \PYG{o}{=} \PYG{n}{cargar\PYGZus{}y\PYGZus{}limpiar}\PYG{p}{(}\PYG{n}{ruta\PYGZus{}archivo}\PYG{p}{)}
+    \PYG{n}{df\PYGZus{}mensual} \PYG{o}{=} \PYG{n}{agregar\PYGZus{}mensual}\PYG{p}{(}\PYG{n}{df}\PYG{p}{)}
+
+    \PYG{c+c1}{\PYGZsh{} 2. Segmentacion de productos}
+    \PYG{n}{producto\PYGZus{}comportamiento} \PYG{o}{=} \PYG{n}{calcular\PYGZus{}comportamiento\PYGZus{}producto}\PYG{p}{(}\PYG{n}{df}\PYG{p}{,} \PYG{n}{df\PYGZus{}mensual}\PYG{p}{)}
+
+    \PYG{c+c1}{\PYGZsh{} 3. Feature engineering}
+    \PYG{n}{df\PYGZus{}mensual}\PYG{p}{,} \PYG{n}{df\PYGZus{}model}\PYG{p}{,} \PYG{n}{feature\PYGZus{}cols} \PYG{o}{=} \PYG{n}{construir\PYGZus{}features}\PYG{p}{(}\PYG{n}{df\PYGZus{}mensual}\PYG{p}{,} \PYG{n}{producto\PYGZus{}comportamiento}\PYG{p}{)}
+
+    \PYG{c+c1}{\PYGZsh{} 4. Modelos}
+    \PYG{n}{modelo\PYGZus{}lr}\PYG{p}{,} \PYG{n}{pred\PYGZus{}lr}\PYG{p}{,} \PYG{n}{features\PYGZus{}lr} \PYG{o}{=} \PYG{n}{entrenar\PYGZus{}regresion\PYGZus{}lineal}\PYG{p}{(}\PYG{n}{X\PYGZus{}train}\PYG{p}{,} \PYG{n}{y\PYGZus{}train}\PYG{p}{,} \PYG{n}{X\PYGZus{}test}\PYG{p}{,} \PYG{n}{feature\PYGZus{}cols}\PYG{p}{)}
+    \PYG{n}{model}\PYG{p}{,} \PYG{n}{pred\PYGZus{}xgb} \PYG{o}{=} \PYG{n}{entrenar\PYGZus{}xgboost}\PYG{p}{(}\PYG{n}{X\PYGZus{}train}\PYG{p}{,} \PYG{n}{y\PYGZus{}train\PYGZus{}log}\PYG{p}{,} \PYG{n}{X\PYGZus{}test}\PYG{p}{)}
+    \PYG{n}{pred\PYGZus{}baseline\PYGZus{}3} \PYG{o}{=} \PYG{n}{prediccion\PYGZus{}baseline\PYGZus{}movil}\PYG{p}{(}\PYG{n}{test\PYGZus{}df}\PYG{p}{)}
+
+    \PYG{c+c1}{\PYGZsh{} 5. Validacion cruzada temporal}
+    \PYG{n}{detalle\PYGZus{}validacion\PYGZus{}cruzada}\PYG{p}{,} \PYG{n}{resumen\PYGZus{}validacion\PYGZus{}cruzada} \PYG{o}{=} \PYG{n}{validacion\PYGZus{}cruzada\PYGZus{}temporal}\PYG{p}{(}\PYG{n}{df\PYGZus{}model}\PYG{p}{,} \PYG{n}{feature\PYGZus{}cols}\PYG{p}{)}
+
+    \PYG{c+c1}{\PYGZsh{} 6. Pronostico recursivo de los proximos N meses}
+    \PYG{n}{pronostico\PYGZus{}futuro\PYGZus{}df}\PYG{p}{,} \PYG{o}{...} \PYG{o}{=} \PYG{n}{generar\PYGZus{}pronostico\PYGZus{}futuro}\PYG{p}{(}\PYG{o}{...}\PYG{p}{)}
+
+    \PYG{c+c1}{\PYGZsh{} 7. Puntos de reorden y EOQ}
+    \PYG{n}{reorder\PYGZus{}df}\PYG{p}{,} \PYG{o}{...} \PYG{o}{=} \PYG{n}{calcular\PYGZus{}tabla\PYGZus{}reorden}\PYG{p}{(}\PYG{o}{...}\PYG{p}{)}
+
+    \PYG{c+c1}{\PYGZsh{} 8. Graficas y exportacion de artefactos}
+    \PYG{o}{...}
+
+    \PYG{k}{return} \PYG{p}{\PYGZob{}}\PYG{o}{...}\PYG{p}{\PYGZcb{}}
+\end{MintedVerbatim}

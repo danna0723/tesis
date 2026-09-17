@@ -1,0 +1,22 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n+nt}{name}\PYG{p}{:}\PYG{+w}{ }\PYG{l+lScalar+lScalarPlain}{Tests}
+
+\PYG{n+nt}{on}\PYG{p}{:}
+\PYG{+w}{  }\PYG{n+nt}{push}\PYG{p}{:}
+\PYG{+w}{  }\PYG{n+nt}{pull\PYGZus{}request}\PYG{p}{:}
+
+\PYG{n+nt}{jobs}\PYG{p}{:}
+\PYG{+w}{  }\PYG{n+nt}{tests}\PYG{p}{:}
+\PYG{+w}{    }\PYG{n+nt}{runs\PYGZhy{}on}\PYG{p}{:}\PYG{+w}{ }\PYG{l+lScalar+lScalarPlain}{ubuntu\PYGZhy{}latest}
+\PYG{+w}{    }\PYG{n+nt}{steps}\PYG{p}{:}
+\PYG{+w}{      }\PYG{p+pIndicator}{\PYGZhy{}}\PYG{+w}{ }\PYG{n+nt}{uses}\PYG{p}{:}\PYG{+w}{ }\PYG{l+lScalar+lScalarPlain}{actions/checkout@v4}
+
+\PYG{+w}{      }\PYG{p+pIndicator}{\PYGZhy{}}\PYG{+w}{ }\PYG{n+nt}{uses}\PYG{p}{:}\PYG{+w}{ }\PYG{l+lScalar+lScalarPlain}{actions/setup\PYGZhy{}python@v5}
+\PYG{+w}{        }\PYG{n+nt}{with}\PYG{p}{:}
+\PYG{+w}{          }\PYG{n+nt}{python\PYGZhy{}version}\PYG{p}{:}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}3.12\PYGZdq{}}
+\PYG{+w}{          }\PYG{n+nt}{cache}\PYG{p}{:}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}pip\PYGZdq{}}
+
+\PYG{+w}{      }\PYG{p+pIndicator}{\PYGZhy{}}\PYG{+w}{ }\PYG{n+nt}{run}\PYG{p}{:}\PYG{+w}{ }\PYG{l+lScalar+lScalarPlain}{pip install \PYGZhy{}r requirements.txt}
+
+\PYG{+w}{      }\PYG{p+pIndicator}{\PYGZhy{}}\PYG{+w}{ }\PYG{n+nt}{run}\PYG{p}{:}\PYG{+w}{ }\PYG{l+lScalar+lScalarPlain}{pytest tests/ \PYGZhy{}q}
+\end{MintedVerbatim}

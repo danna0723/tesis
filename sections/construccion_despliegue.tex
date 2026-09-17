@@ -1,112 +1,225 @@
 % Guia: practicas de codificacion, control de versiones, CI/CD y ambientes
 % de despliegue.
 
-El desarrollo de Thary se llevó utilizando tecnologías de desarrollo web como: Python, Flask como framework y librerias como scikit-learn, Pandas, y XGBoost para la parte de la generacion de predicciones. El sistema se ejecuta en Flask mediante la ejecucion del comando \texttt{run.py} en un entorno virtual (\textit{venv}), todas las dependencias necesarias para la ejecucion del proyecto se encuentran resumidas en el archivo \texttt{requirements.txt}. Por su parte, el control de versiones del sitema se llevo a cabo mediante commits en GitHub en el que se documentaron los cambios mas significantes del sitemas durante todo su desarrollo. 
+Thary es un sistema que se desarrollo mediante el uso de las siguientes tecnologias: Python, Flask como framework, librerias como scikit-learn, Pandas, y XGBoost. 
 
-\paragraph{Prácticas de codificación}
+A la hora de ejecutar el sistema en Flask, se tiene que ejecutar el comando \texttt{run.py} en un entorno virtual (\textit{venv}), todas las dependencias necesarias para la correcta ejecucion del proyecto se encuentran resumidas en el archivo \texttt{requirements.txt} para su facil instalacion. 
 
-La principal practica de codificacion que se siguio durante el desarrollo e implementacion del sistema Thary es la separacion de responsabilidades. Toda la logica principal del sistema se encuentra en la capa de servicios (\texttt{app/services/}), en el cual, cada una de las 9 etapas del pipeline se encuentran alojadas en nueve modulos independientes: carga de datos, segmentación, construcción de variables, modelos, validación, pronóstico, reposición, gráficas y exportación. Esta organizacion permite que se pueda modificar una etapa especifica del flujo sin afectar directamente a las demas partes, además de facilitar el mantenimiento y un entendimiento mas facil del código. A continuación, se describe a manera de ejemplo, como se implemento la etapa de carga y limpieza de los datos:  
-% ---------------------------------------------------------------------
-% EJEMPLO DE CODIGO FUENTE (borrelo)
-%   el lenguaje va entre llaves: {python}, {java}, {sql}, {bash}, ...
-%   Lo compone el paquete listings. Para colorearlo con minted, active el
-%   interruptor que hay en template/packages.tex.
-% ---------------------------------------------------------------------
-\begin{minted}{python}
-ETIQUETAS_COLUMNAS_OBLIGATORIAS = {
-    "fecha": "Fecha (o Date, Sale_Date)",
-    "producto_id": "Producto (o Product, Product_ID)",
-    "demanda": "Demanda (o Demand, Sales, Quantity_Sold)",
-}
+Por su parte, el control de versiones del sistema se llevo a cabo mediante una seria de commits en GitHub en el que se documentaron los cambios mas significativos del sistema durante todo el tiempo de desarrollo. 
 
+\paragraph{Construcción}
 
-def cargar_y_limpiar(ruta_archivo):
-    """
-    Lee el CSV subido por el usuario, normaliza nombres de columnas a
-    variantes conocidas (inglés/español), valida las columnas
-    obligatorias y descarta el último mes si viene incompleto.
+La principal practica de codificacion que se siguio durante el desarrollo e implementacion del sistema Thary es la separacion de responsabilidades, practica la cual se vio reflejada en la organizacion de archivos y carpetas del proyecto:
 
-    Cada problema posible levanta un ValueError con un mensaje pensado
-    para mostrarse tal cual al usuario (ver procesar() en
-    app/routes/main.py, que lo manda directo a flash()) — no un mensaje
-    técnico de pandas, sino qué le pasa al archivo y qué tiene que
-    corregir.
-    """
-    try:
-        df = pd.read_csv(ruta_archivo)
-    except pd.errors.EmptyDataError:
-        raise ValueError("El archivo está vacío. Sube un CSV con al menos una fila de datos.")
-    except pd.errors.ParserError:
-        raise ValueError(
-            "No se pudo leer el archivo como CSV. Verifica que sea un archivo de texto "
-            "separado por comas (por ejemplo, no un Excel renombrado a .csv)."
-        )
-    except UnicodeDecodeError:
-        raise ValueError(
-            "El archivo tiene una codificación de caracteres que el sistema no reconoce. "
-            "Guárdalo como CSV con codificación UTF-8 e intenta de nuevo."
-        )
+\begin{verbatim}
+sistema_prediccion_inventario/
+├── app/
+│   ├── routes/                 
+│   │   ├── auth.py            
+│   │   └── main.py            
+│   ├── services/                
+│   │   ├── auth.py              
+│   │   ├── db.py                
+│   │   ├── pedidos.py            #   Registro de pedidos confirmados
+│   │   ├── actividad.py          #   Acciones de usuario
+│   │   └── prediccion/           # pipeline
+│   │       ├── carga_datos.py     #   1. Carga y limpieza
+│   │       ├── segmentacion.py    #   2. Segmentacion ABC/variabilidad
+│   │       ├── features.py        #   3. Construccion de variables
+│   │       ├── modelos.py         #   4. Entrenamiento y seleccion
+│   │       ├── regresion_lineal.py#   4.1. Modelo de Regresion Lineal
+│   │       ├── validacion.py      #   5. Validacion cruzada temporal
+│   │       ├── pronostico_futuro.py# 6. Pronostico recursivo
+│   │       ├── reposicion.py      #   7. Puntos de reorden y EOQ
+│   │       ├── graficas.py        #   8. Generacion de graficos
+│   │       └── exportacion.py     #   9. Exportacion de resultados
+│   └── templates/                
+└── tests/                        # pytest
+    ├── test_carga_datos.py
+    ├── test_modelos.py
+    └── test_reposicion.py
+\end{verbatim}
 
-    if df.empty:
-        raise ValueError("El archivo no tiene filas de datos, solo encabezados.")
+Como se puede observar, la organizacion se divide en tres capas: \texttt{routes/} con el control del sistema, \texttt{services/} con la logica de negocio y, dentro de esta ultima, \texttt{prediccion/}. Es en esa ultima capa, en la cual cada una de las 9 etapas del pipeline se encuentran alojadas en nueve modulos independientes: carga de datos, segmentacion, construccion de variables, modelos, validacion, pronostico, reposicion, graficas y exportacion. La principal ventaja de esta organizacion, es que permite que se pueda modificar una etapa especifica del flujo sin afectar directamente a las demas partes, ademas de facilitar el mantenimiento y un entendimiento mas facil del codigo.
 
-    df = df.rename(columns={
-        "Sale_Date": "fecha", "Date": "fecha", "date": "fecha", "Fecha": "fecha",
-        "Product_ID": "producto_id", "Product": "producto_id", "Producto": "producto_id",
-        "Quantity_Sold": "demanda", "Sales": "demanda", "Demand": "demanda", "Demanda": "demanda",
-        "Unit_Price": "precio", "Price": "precio", "Price_per_unit": "precio",
-        "Inventario_Actual": "inventario", "Inventory": "inventario", "Stock": "inventario",
-        "Store": "tienda_id", "Store_ID": "tienda_id",
-        "Category": "categoria", "Product_Category": "categoria",
-        "Product_Name": "nombre_producto", "Nombre_Producto": "nombre_producto", "Nombre": "nombre_producto",
-        "Lead_time_Semana": "lead_time_semanas",
-        "Costo_pedido": "costo_pedido",
-        "Costo_unitario": "costo_unitario",
-        "Porcentaje_costo_mantenimiento": "porcentaje_costo_mantenimiento",
-        "Supplier": "proveedor_principal", "Proveedor": "proveedor_principal",
-        "Proveedor_Principal": "proveedor_principal",
-        "Alternate_Supplier": "proveedor_alterno", "Proveedor_Alterno": "proveedor_alterno",
-        "Proveedor_Alternativo": "proveedor_alterno",
-    })
+Como complemento a esta organizacion, se incorporaron pruebas automatizadas escritas con \textit{pytest}, las cuales fueron agrupadas en tres archivos dentro de la carpeta \texttt{tests/}:
 
-    columnas_faltantes = [c for c in ETIQUETAS_COLUMNAS_OBLIGATORIAS if c not in df.columns]
-    if columnas_faltantes:
-        faltan = ", ".join(ETIQUETAS_COLUMNAS_OBLIGATORIAS[c] for c in columnas_faltantes)
-        raise ValueError(
-            f"Al archivo le falta al menos una columna obligatoria: {faltan}. "
-            "Agrégala al CSV (con ese nombre exacto u otro de los aceptados) y vuelve a subirlo."
-        )
-\end{minted}
+\begin{itemize}
+    \item \texttt{test\_carga\_datos.py}, en este archivo se verifican los mensajes de error ante archivos invalidos y el reconocimiento de columnas heterogeneas
+    \item \texttt{test\_modelos.py}, en el que se verifica la logica de seleccion del modelo campeon por producto
+    \item y por ultimo,\texttt{test\_reposicion.py}, en donde se verifican los calculos de stock de seguridad, punto de reorden y EOQ
+\end{itemize}
 
-En esta sección del archivo (\texttt{services/prediccion/carga\_datos.py}), se observa la etapa de carga y limpieza de los datos. Para garantizar que el sistema pueda adaptarse y funcionar para todo tipo de dominio de inventarios, se normalizan los nombres de las columnas de los archivos CSV con el fin de mantener un esquema más heterogéneo, de manera que el sistema pueda aceptar archivos de distintos dominios sin tener la necesidad de modificar el resto del pipeline. Para facilitarle al usuario el proceso de cargar un archivo, se capturan los errores mas comunes para el sistema a la hora de leer un CSV y se muestran a manera de mensaje de error en un lenguaje sencillo y facil de entender.
+(Los resultados obtenidos al ejecutar esta suite de pruebas se presentan en el Capitulo 4.)
 
 \paragraph{Integración}
 
-Para integrar correctamente el modelo de prediccion con la aplicacion web, 
-
-Tal como se explico en capitulos anteriores, se definio un control de acceso basado en roles, esto con el objetivo de poder diferenciar a que funcionalidades debe tener acceso un usuario dependiendo de su rol. El administrador (\texttt{admin}) debe ser el unico usuario que cuente con todos los privilegios de acceso a la informacion sensible de la organizacion, mientras que para otros usuarios con menor rango, (\texttt{empleado}), convendria restringir este acceso completo a solo aquellas funcionalidades menos invasivas que sean necesarias para el desempeño de su trabajo, como todas aquellas que describen el analisis de los datos y la lista de pedidos. 
+Las rutas de la aplicacion se organizan en el archivo \texttt{app/\_\_init\_\_.py}, mediante el mecanismo de Blueprints de Flask, el cual permite que se pueda agrupar un conjunto de vistas en un modulo independiente y registrarlo en la aplicacion principal. Thary cuenta con dos blueprints: \texttt{main\_bp} (dashboard, inventario, presupuesto, pedidos y panel tecnico) y \texttt{auth\_bp} (inicio de sesion, registro y gestion de usuarios), que se registran de la siguiente manera:
 
 \begin{minted}{python}
-    def admin_required(vista):
-    """
-    Como login_required, pero además exige que el usuario logueado
-    tenga rol "admin" — para las pantallas que un empleado no debería
-    poder ver (subir/procesar CSV, panel técnico y sus descargas).
-    Si un empleado intenta entrar, lo manda al dashboard en vez de
-    mostrarle la página.
-    """
+app.register_blueprint(main_bp)
+app.register_blueprint(auth_bp)
+\end{minted}
+
+Esta organizacion permite que cada blueprint se desarrolle y se pruebe de forma independiente, y que agregar un nuevo conjunto de rutas al sistema no implique tener que modificar el codigo de los blueprints que ya existen.
+
+Por otra parte, para integrar correctamente el modelo de prediccion con la aplicacion web, en el archivo \texttt{services/sistema\_prediccion.py} se incluyo una funcion de entrada, \texttt{ejecutar\_sistema()}, la cual se encarga de orquestar secuencialmente las nueve etapas del pipeline y devolver un resultado. Esta decision de integracion se tomo tomando en cuenta la separacion de capas ya establecida para todo el proyecto. En este caso, la capa de servicios de dominio se mantiene independiente de la de presentacion.
+
+\begin{minted}{python}
+def ejecutar_sistema(
+    ruta_archivo, carpeta_resultados=None, presupuesto_capital_trabajo=None, horizonte_meses=None
+):
+    # 1. Carga, limpieza y agregacion mensual 
+    df = cargar_y_limpiar(ruta_archivo)
+    df_mensual = agregar_mensual(df)
+
+    # 2. Segmentacion de productos
+    producto_comportamiento = calcular_comportamiento_producto(df, df_mensual)
+
+    # 3. Feature engineering
+    df_mensual, df_model, feature_cols = construir_features(df_mensual, producto_comportamiento)
+
+    # 4. Modelos
+    modelo_lr, pred_lr, features_lr = entrenar_regresion_lineal(X_train, y_train, X_test, feature_cols)
+    model, pred_xgb = entrenar_xgboost(X_train, y_train_log, X_test)
+    pred_baseline_3 = prediccion_baseline_movil(test_df)
+
+    # 5. Validacion cruzada temporal
+    detalle_validacion_cruzada, resumen_validacion_cruzada = validacion_cruzada_temporal(df_model, feature_cols)
+
+    # 6. Pronostico recursivo de los proximos N meses
+    pronostico_futuro_df, ... = generar_pronostico_futuro(...)
+
+    # 7. Puntos de reorden y EOQ
+    reorder_df, ... = calcular_tabla_reorden(...)
+
+    # 8. Graficas y exportacion de artefactos
+    ...
+
+    return {...}
+\end{minted}
+
+Otro punto de integracion relevante es que Thary tiene dos maneras de almacenar la informacion: la base de datos relacional (MySQL), para datos que sean estructurados como numeros o textos cortos y el sistema de archivos para archivos que por su naturaleza no se podria poner en una tabla, en el caso de Thary, estos archivos serian el archivo del modelo XGBoost ya entrenado, y las imagenes de las graficas. Cada vez que se procesa un CSV, en MySQL se agrega una fila nueva, nunca se borra nada, pero los archivos, es decir, las graficas, modelo entrenado, etc, van siempre a la misma carpeta de la empresa a la que pertenezcan, y cada vez que se procesa un nuevo archivo, se sobrescriben los anteriores. Asi que, si se hace una serie de corridas, en MySQL habra varias filas completas, pero en la carpeta, solo existiran los archivos de la ultima corrida. 
+
+\texttt{app/routes/main.py}:
+\begin{minted}{python}
+def carpeta_resultados(empresa_id):
+    """Carpeta donde ejecutar_sistema escribe el pronostico, los
+    graficos y demas archivos de resultado de una empresa puntual."""
+    ruta = os.path.join(current_app.config["RESULTADOS_FOLDER_BASE"], empresa_id)
+    os.makedirs(ruta, exist_ok=True)
+    return ruta
+\end{minted}
+
+La ruta de la carpeta depende del id de la empresa (\texttt{empresa\_id}), y no del id de la corrida (\texttt{corrida\_id}), por lo que, la carpeta siempre es la misma para una misma empresa, sin importar cuantas veces se haya procesado un archivo. 
+
+Por otra parte, tal como se explico en capitulos anteriores, se definio un control de acceso basado en roles, esto con el objetivo de poder diferenciar a que funcionalidades debe tener acceso un usuario dependiendo de su rol. El administrador (\texttt{admin}) debe ser el unico usuario que cuente con todos los privilegios de acceso a la informacion sensible de la organizacion, mientras que para otros usuarios con menor rango, (\texttt{empleado}), convendria restringir este acceso completo a solo aquellas funcionalidades menos invasivas que sean necesarias para el desempeño de su trabajo, como todas aquellas que describen el analisis de los datos y la lista de pedidos: 
+
+\texttt{app/services/auth.py}:
+\begin{minted}{python}
+def admin_required(vista):
     @wraps(vista)
     def envoltura(*args, **kwargs):
         if "username" not in session:
-            flash("Iniciá sesión para continuar.")
+            flash("Inicia sesión para continuar.")
             return redirect(url_for("auth.login"))
         if session.get("rol") != "admin":
             flash("Esa sección es solo para el administrador.")
             return redirect(url_for("main.dashboard"))
         return vista(*args, **kwargs)
     return envoltura
-
 \end{minted}
 
+\subparagraph{Integración continua (CI)}
 
+El proyecto utilizo GitHub Actions para la automatizacion de pruebas unitarias (\texttt{.github/workflows/tests.yml}). Este se ejecuta automaticamente cada vez que se haga un \textit{push} o \textit{pull request} en el repositorio. El archivo cuenta con una configuracion que permite instalar tanto Python como todas las dependencias necesarias, y ejecuta las pruebas unitarias con \texttt{pytest}:  
 
+\begin{minted}{yaml}
+name: Tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - run: pip install -r requirements.txt
+
+      - run: pytest tests/ -q
+\end{minted}
+
+El flujo solo cubre la parte de CI (Integracion Continua), en cuanto a CD (Despliegue Continuo), se decidio hacerlo de manera manual, principalmente porque 
+al ser un proyecto desarrollado por una sola persona, es decir, sin múltiples entornos ni
+un equipo que dependa de constantes despliegues, el beneficio de
+un pipeline de CD completo es menor frente a la complejidad adicional que
+implicaría configurarlo.
+
+\paragraph{Despliegue}
+
+El despliegue del sistema Thary (además del entorno de desarrollo local), se encuentra en la nube mediante la plataforma Railway. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{templatefigures/railway_servicios}
+    \caption{Servicios desplegados en Railway: aplicación web (Thary) y base de datos MySQL.}
+    \label{fig:railway_servicios}
+\end{figure}
+
+Como se ve en la figura, Thary y la base de datos, se encuentran corriendo en Railway como servicios independientes, los cuales se comunican entre si para compartir información y funcionalidades.
+
+La aplicacion se ejecuta mediante un servidor WSGI de produccion (Gunicorn), configurado a traves de un archivo \texttt{Procfile}:
+
+\begin{minted}{text}
+web: gunicorn run:app --bind 0.0.0.0:$PORT
+\end{minted}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{templatefigures/railway_deploy_details}
+    \caption{Detalles de construcción y despliegue del servicio Thary en Railway.}
+    \label{fig:railway_deploy_details}
+\end{figure}
+
+Railway detecta y se encarga de ejecutar este comando \textit{start command} cuando se realiza un despliegue. Automaticamente identifica la version de python con la que se esta trabajando, en este caso, \texttt{.python-version} (3.13).  El proyecto fija todas sus dependencias en \texttt{requirements.txt}, incluyendo las versiones exactas de las librerias de prediccion (pandas, scikit-learn, XGBoost, statsmodels) y las necesarias para la conexion a la base de datos (\texttt{SQLAlchemy}, \texttt{PyMySQL}) y el servidor de produccion (\texttt{gunicorn}).
+
+En cuanto a la persistencia de los datos, esta se manejó mediante MySQL. La configuracion de conexion a la base de datos solo se obtiene de las variables de entorno:
+
+\begin{minted}{python}
+def _config():
+    return {
+        "host": os.environ.get("DB_HOST", "127.0.0.1"),
+        "port": os.environ.get("DB_PORT", "3307"),
+        "user": os.environ.get("DB_USER", "thary_app"),
+        "password": os.environ.get("DB_PASSWORD", ""),
+        "database": os.environ.get("DB_NAME", "sistema_inventario"),
+    }
+\end{minted}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{templatefigures/railway_variables}
+    \caption{Variables de entorno del servicio Thary en Railway, con los valores ocultos.}
+    \label{fig:railway_variables}
+\end{figure}
+
+Las credenciales se configuran en el panel de Railway como variables de entorno del servicio,  nunca visibles en el repositorio de codigo. 
+
+El servicio de Thary no cuenta con un volumen configurado, esto puede verse en el panel de adminsitracion en el que no se ve la pestalla de "volumenes". Esto quiere decir que los archivos que estan en el servicio son efimeros, es decir, cada vez que se redespliegue el servicio, como por ejemplo, por una actualizacion del codigo o un reinicio del servicio, se crea un nuevo contenedor, por lo que se pierden por completo los archivos generados por el sistema en las corridas anteriores del pipeline. Esto se reconoce como una limitacion del entorno de produccion. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{templatefigures/thary_login_produccion}
+    \caption{Pantalla de inicio de sesión de Thary, accedida desde su URL pública en Railway.}
+    \label{fig:thary_login_produccion}
+\end{figure}
+
+Finalmente, la figura muestra la aplicacion funcionando correctamente en el entorno de produccion a traves de de la URL publica asignada por Railway.

@@ -229,10 +229,11 @@ Finalmenente, el diagrama de componentes detalla a profundidad el funcionamiendo
 
 \paragraph{Modelo de Datos}
 
-Conceptualmente, el modelo de datos del sistema Thary utiliza un modelo relacional, en el que la informacion se organiza en 12 tablas relacionadas entre si, definidas mediante claves foraneas: empresas, usuarios, pedidos, actividad (el historial de movimientos), y corridas. Esta ultima es la tabla principal que representa cada vez que un usuario (administrador) sube un CSV, junto con 7 tablas que vienen de cada una de las corridas: segmentacion, metricas_modelos, predicciones_backtest, pronostico_futuro, reorder, validacion_cruzada_folds, validacion_cruzada_resumen. Cada archivo que se sube crea una fila nueva en corridas, aunque no se borra el historial, la app solo muestra la corrida más reciente.
+Conceptualmente, el modelo de datos del sistema Thary utiliza un modelo relacional, en el que la informacion se organiza en 12 tablas relacionadas entre si, definidas mediante claves foraneas: empresas, usuarios, pedidos, actividad (el historial de movimientos), y corridas. Esta ultima es la tabla principal que representa cada vez que un usuario (administrador) sube un CSV, junto con 7 tablas que vienen de cada una de las corridas: \texttt{segmentacion}, \texttt{metricas\_modelos}, \texttt{predicciones\_backtest}, \texttt{pronostico\_futuro}, \texttt{reorder}, \texttt{validacion\_cruzada\_folds}, \texttt{validacion\_cruzada\_resumen}. Cada archivo que se sube crea una fila nueva en corridas, aunque no se borra el historial, la app solo muestra la corrida más reciente.
 
-Logica y Fisicamente, el modelo hace uso de MySql (motor de base de datos relacional), el sistema se conecta a este usando SQLAlchemy. En la tabla \texttt{empresas}, se almacena el id y el nombre de cada organizacion que es registrada en el sistema, por otra parte, en la tabla \texttt{usuarios} se guarda la informacion del usuario, como su nombre, correo electronico, contraseña (cifrada), el rol, ya sea admin o empleado, y el id de la empresa a la que pertenece. La tabl dido también se almacena de forma independiente en el archivo \texttt{pedidos.json}; este archivo está separado de los resultados del procesamiento y es único para cada empresa, así se garantiza que cuando se cargue un nuevo historial, no se elimine el registro de los pedidos ya confirmados. Por otro lado, las entidades de registro de consumo historico, recomendacion de reposicion y comportamiento del producto son generadas despues de que el sistema procese el archivo CSV que fue cargado por el administrador. Estos resultados se guardan en los archivos \texttt{segmentacion\_productos.csv} y \texttt{reorder\_table.csv}, en una carpeta de resultados distinta para cada empresa.
+Logica y Fisicamente, el modelo hace uso de MySql (motor de base de datos relacional), el sistema se conecta a este usando SQLAlchemy. En la tabla \texttt{empresas}, se almacena el id y el nombre de cada organizacion que es registrada en el sistema, por otra parte, en la tabla \texttt{usuarios} se guarda la informacion del usuario, como su nombre, correo electronico, contraseña (cifrada), el rol, ya sea admin o empleado, y el id de la empresa a la que pertenece. La tabla pedido también se almacena de forma independiente en el archivo \texttt{pedidos.json}, este archivo está separado de los resultados del procesamiento y es único para cada empresa, así se garantiza que cuando se cargue un nuevo historial, no se elimine el registro de los pedidos ya confirmados. Por otro lado, las entidades de registro de consumo historico, recomendacion de reposicion y comportamiento del producto son generadas despues de que el sistema procese el archivo CSV que fue cargado por el administrador. Estos resultados se guardan en los archivos \texttt{segmentacion\_productos.csv} y \texttt{reorder\_table.csv}, en una carpeta de resultados distinta para cada empresa.
 
+No toda la informacion se queda en la base de datos, ya que los archivos CSV que el usuario sube, las graficas generadas y el modelo XGBoost entrenado se siguen almacenando como archivos en disco, los cuales estan organizados en carpetas por empresa. Solo se traslada a MySQL la informacion que pueda estructurarse en filas y columnas. 
 % Guia: modelo conceptual, logico y fisico.
 % El diccionario de datos va en el Anexo B.
 %
@@ -250,11 +251,12 @@ Logica y Fisicamente, el modelo hace uso de MySql (motor de base de datos relaci
         \toprule
         \textbf{Entidad} & \textbf{Descripción} & \textbf{Cardinalidad} \\
         \midrule
-        Usuario & Persona registrada en el sistema, con un rol (administrador o personal de inventario) y asociada a una empresa. & 1 : N \\
-        Registro de consumo histórico & Fecha, producto y cantidad demandada, junto con atributos opcionales como precio, inventario, proveedor y lead time. & 1 : N \\
-        Comportamiento del producto & Clasificación ABC, variabilidad (CV) y método de predicción campeón asignado a un producto. & 1 : 1 \\
-        Recomendación de reposición & Punto de reorden, y cantidad sugerida final calculada para un producto. & 1 : 1 \\
-        Pedido & Proveedor, cantidad, costo y usuario responsable de un pedido ya confirmado. & 1 : N \\
+        Empresa & Organización que utiliza el sistema, identificada de forma única. & 1 : N \\
+        Usuario & Persona registrada en el sistema, con un rol (administrador o personal de inventario), asociada a una empresa mediante clave foránea. & 1 : N \\
+        Pedido & Proveedor, cantidad, costo y usuario responsable de un pedido confirmado, asociado a una empresa. & 1 : N \\
+        Corrida & Registro de un procesamiento de archivo, con sus parámetros y métricas globales; tabla padre de los resultados detallados del pipeline. & 1 : N \\
+        Resultados de la corrida & Conjunto de tablas hijas de Corrida: segmentación, métricas por modelo, predicciones de backtest, pronóstico futuro, reposición y validación cruzada. & N : 1 (respecto a Corrida) \\
+        Actividad & Bitácora de acciones realizadas por los usuarios (subir archivo, confirmar/deshacer pedido, crear usuario), asociada a una empresa. & 1 : N \\
         \bottomrule
     \end{tabularx}
 \end{table}
@@ -262,6 +264,54 @@ Logica y Fisicamente, el modelo hace uso de MySql (motor de base de datos relaci
 
 La Tabla \ref{tab:entidades} resume las entidades del modelo con el detalle de cada campo y su cardinalidad
 
+----
+
+\begin{minted}{python}
+ETIQUETAS_COLUMNAS_OBLIGATORIAS = {
+    "fecha": "Fecha (o Date, Sale_Date)",
+    "producto_id": "Producto (o Product, Product_ID)",
+    "demanda": "Demanda (o Demand, Sales, Quantity_Sold)",
+}
+
+
+def cargar_y_limpiar(ruta_archivo):
+    try:
+        df = pd.read_csv(ruta_archivo)
+    except pd.errors.EmptyDataError:
+        raise ValueError("El archivo está vacío. Sube un CSV con al menos una fila de datos.")
+    except pd.errors.ParserError:
+        raise ValueError(
+            "No se pudo leer el archivo como CSV. Verifica que sea un archivo de texto "
+            "separado por comas (por ejemplo, no un Excel renombrado a .csv)."
+        )
+    except UnicodeDecodeError:
+        raise ValueError(
+            "El archivo tiene una codificación de caracteres que el sistema no reconoce. "
+            "Guárdalo como CSV con codificación UTF-8 e intenta de nuevo."
+        )
+
+    if df.empty:
+        raise ValueError("El archivo no tiene filas de datos, solo encabezados.")
+
+    df = df.rename(columns={
+        "Sale_Date": "fecha", "Date": "fecha", "date": "fecha", "Fecha": "fecha",
+        "Product_ID": "producto_id", "Product": "producto_id", "Producto": "producto_id",
+        "Quantity_Sold": "demanda", "Sales": "demanda", "Demand": "demanda", "Demanda": "demanda",
+# ... variantes adicionales para precio, inventario, categoria, proveedor y lead time
+    })
+
+    columnas_faltantes = [c for c in ETIQUETAS_COLUMNAS_OBLIGATORIAS if c not in df.columns]
+    if columnas_faltantes:
+        faltan = ", ".join(ETIQUETAS_COLUMNAS_OBLIGATORIAS[c] for c in columnas_faltantes)
+        raise ValueError(
+            f"Al archivo le falta al menos una columna obligatoria: {faltan}. "
+            "Agrégala al CSV (con ese nombre exacto u otro de los aceptados) y vuelve a subirlo."
+        )
+\end{minted}
+
+En esta sección del archivo (\texttt{services/prediccion/carga\_datos.py}), se observa la etapa de carga y limpieza de los datos. Para garantizar que el sistema pueda adaptarse y funcionar para todo tipo de dominio de inventarios, se normalizan los nombres de las columnas de los archivos CSV con el fin de mantener un esquema más heterogéneo, de manera que el sistema pueda aceptar archivos de distintos dominios sin tener la necesidad de modificar el resto del pipeline. Para facilitarle al usuario el proceso de cargar un archivo, se capturan los errores mas comunes para el sistema a la hora de leer un CSV y se muestran a manera de mensaje de error en un lenguaje sencillo y facil de entender.
+
+Otra practica que fue aplicada es el manejo de errores con mensajes dirigidos al usuario final, de esta manera, se evita que se propaguen los errores internos del sistema y el usuario sabe que es lo que esta ocurriendo y que es lo que se debe hacer para resolverlo.
 \paragraph{Diseño UX/UI}
 % Guia: flujos de usuario, wireframes y criterios de usabilidad y accesibilidad.
 Para realizar el diseño de interaccion de Thary, se decidio separar las pantallas en dos: Una dirigida exclusivamente a los administradores y otra dirigida a los empleados del inventario. Al ingresar al sistema, un usuario con el rol de administrador sigue el siguiente flujo: El administrador inicia en la pantalla de carga de archivo (\textit{index}), al haber cargado el archivo correctamnete y que este sea valido, se le redirige automaticamente al dashboard con los resultados. En el sidebar, ademas de encontrar demas opciones como estado del inventario, presupuesto y pedidos, el administrador puede navegar hacia la gestion de usuarios, donde puede crear cuentas nuevas para su personal de inventario. 
