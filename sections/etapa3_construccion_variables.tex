@@ -1,0 +1,163 @@
+En esta etapa, (\texttt{app/services/prediccion/features.py}), se adapta el historial de demanda a un formato que contenga las variables necesarias que los modelos usan como entrada (\textit{features}):
+
+\begin{itemize}
+    \item Componentes de calendario
+    \item Rezagos de la demanda
+    \item Estadísticas moviles
+    \item Estadisticas historicas por producto
+\end{itemize}
+
+La implementacion de esta etapa empieza con un merge incial, en este merge se trae las categorias abc y variabilidad a la tabla. Aunque no se usan como variables de entrada (\texttt{feature\_cols}), se incluyen porque posteriormente se necesitaran para mostrarlas en el dashboard y tabla de predicciones:
+
+\begin{minted}{python}
+def construir_features(df_mensual, producto_comportamiento):
+    # ...
+    df_mensual = df_mensual.merge(
+        producto_comportamiento[["producto_id", "categoria_abc", "variabilidad"]],
+        on="producto_id", how="left"
+    )
+
+\end{minted}
+
+Posteriormente, se extraen tanto el año como el mes de cada ejemplo, esto adaptado del repositorio "Demand Forecasting \& Inventory Optimization for Consumer Products" (https://github.com/dhruvi002/demand-forecast-inventory-optimizer). Con la diferencia de que en Thary, estos datos se incluyeron con el fin de en la implementacion que se tomo como guia, el mes "month", queda como un feature final para el modelo, mientras que en Thary, este dato posteriormente sea tranformado en \texttt{mes\_sin} y \texttt{mes\_cos}, proceso que se explicara mas adelante:
+
+\begin{minted}{python}
+    df_mensual["año"] = df_mensual["fecha"].dt.year
+    df_mensual["mes"] = df_mensual["fecha"].dt.month
+\end{minted}
+
+Un rezago (lag), se usa en Machine Learning y hace referencia al valor anterior a una variable, en este caso, representa el valor de la demanda del mes anterior, el cual es usado como dato de entrada para predecir el mes actual. Los lags junto con las medias y desviaciones moviles se encargan de capturar el comportamiento reciente de la demanda de cada producto. En Thary, para cada producto se tiene:
+
+\begin{itemize}
+    \item lag\_1: demanda del mes anterior
+    \item lag\_2: demanda de hace dos meses
+    \item lag\_3: demanda de hace tres meses
+\end{itemize}
+
+El modelo los usa como features porque la demanda pasada ayuda a poder determinar cuanto se va a vender el proximo mes. Por eso es que un producto necesita minimo 3 meses de historial antes de los primeros 3 meses del dataset para poder calcular lag1, lag2 y lag3. El problema era que el sistema solo conoce los datos que vienen dentro del mismo archivo CSV que el usuario sube, por lo que no tiene forma de saber que paso antes del primer mes que aparece en el archivo.
+
+Si un dataset empieza en enero de 2021, el lag1 de enero necesitaria la demanda de diciembre de 2020, dato que no esta en el historial dado por el usuario, solo seria a partir de abril 2021 que el sistema contaria con los 3 lags comparados correctamente. Es debido a que no hay informacion suficiente para calcular los lags correctamente, que el sistema descarta los primeros meses a la hora de entrenar el modelo mediante (\texttt{dropna()}. Como esos primeros 3 meses se descartan,  el valor de mes de esos meses nunca aparece como algo que el modelo tuvo que predecir durante el entrenamiento, por lo que estaria el riesgo de que, si mas adelante se le pide al modelo predecir justo ese mismo mes del año siguiente (por ejemplo, enero 2022), el modelo no tenga ninguna referencia previa de que numero de mes es ese, y termine adivinando mal, generando predicciones muy bajas o poco confiables para ese mes en particular
+
+Para evitar este problema, se decidio que durante esta etapa de features, se representaria el mes utilizando seno y coseno en vez de usar directamente el numero del mes (1-12). Esto permite que el modelo interprete el mes como un punto continuo cercano a los meses vecinos que si fueron entrenados, por ejemplo, diciembre y enero quedan numericamente uno cerca del otro, lo cual tiene mucho mas sentido que hacer que el sistema los vea como el numero 12 y 1, valores mucho mas lejanos de lo que deberian ser para dos meses vecinos. 
+
+Una vez que el modelo entienda la cercania real de los meses, es capaz de dejar de interpretarlos como categorias independientes, y puede generar una prediccion razonable de un mes que nunca halla visto antes (enero, por ejemlo), en base la informacion de un mes cercano (diciembre).
+
+A la hora de armar la funcion para construir los features se tomaron en cuenta diferentes implementaciones previas de distintos estudios con diferentes propuestas para un sistema de prediccion de demanda, se compararon y se seleccionaron aquellas que se apataban mejor a las necesidades del sistema y le aportaban valos al mismo, junto con la implementacion de nuevas ideas y mejoras que se fueron propuestas e implemantadas en Thary. Una de estas propuestas nuevas fue la codificacion ciclica del mes, que como ya se explico antes, consiste en representar los meses mediante dos valores calculados con seno y coseno, como se puede ver a continuacion:
+
+\begin{minted}{python}
+    # ...
+    df_mensual["mes_sin"] = np.sin(2 * np.pi * df_mensual["mes"] / 12)
+    df_mensual["mes_cos"] = np.cos(2 * np.pi * df_mensual["mes"] / 12)
+\end{minted}
+
+Por otra parte, la metodologia de implementar el uso de lags, tambien se tomo del repositorio "Demand Forecasting \& Inventory Optimization for Consumer Products" (https://github.com/dhruvi002/demand-forecast-inventory-optimizer) y se adapto a las necesidades del sistema Thary, agregando la codificacion cíclica de los meses y la inclusion de features adicionales como el inventario y el precio.
+
+\begin{minted}{python}
+    # ... 
+    # (Demand Forecasting & Inventory Optimization for Consumer Products)
+    df_mensual["lag_1"] = df_mensual.groupby("producto_id")["demanda"].shift(1)
+    df_mensual["lag_2"] = df_mensual.groupby("producto_id")["demanda"].shift(2)
+    df_mensual["lag_3"] = df_mensual.groupby("producto_id")["demanda"].shift(3)
+    df_mensual["lag_6"] = df_mensual.groupby("producto_id")["demanda"].shift(6)
+\end{minted}
+
+Otra estrategia que se tomo del repositorio "Demand Forecasting \& Inventory Optimization for Consumer Products", fue el uso de las estadísticas móviles. Estas aportan al sistema ya que consisten en un resumen de varios meses juntos. Mientras que los rezagos solo representan cuanto se vendio exactamente en un mes, las estadísticas móviles son un resumen de varios meses juntos.
+
+\begin{itemize}
+\item \texttt{media\_movil\_3} y \texttt{media\_movil\_6}: Estas variables representan cual es el nivel reciente de la demanda de los productos calculando el promedio de los ultimos 3 y 6 meses. Esto ayuda que el modelo pueda distingir un producto que vende de manera estable de uno irregular, ya que de ser ventas regulares, la media movil de 3 meses sera muy similar a la de 6 meses, mientras que si es inestable, ambas medias seran muy diferentes.
+\item \texttt{desviacion\_movil\_3}: Representa que tan erratica fue la demanda reciente, es decir, de los ultimos 3 meses. Los productos que cuentan con demanda estable tendran una desviacion baja mientras que los productos con ventas inestable tendran una desviacion alta.
+\end{itemize}
+
+En general, el modelo puede ver el comportamiento general reciente de los productos mas alla de solo los lags.
+
+En cuanto a la implementacion, se incluyo en la funcion de (\texttt{construir\_features}), en el que cada línea calcula por producto (\texttt{groupby("producto\_id")}) una estadística sobre una ventana de meses anteriores (\texttt{.shift(1)}) para no incluir el mes actual, evitando fuga de datos.
+
+
+\begin{minted}{python}
+    # ...
+    # (Demand Forecasting & Inventory Optimization for Consumer Products)
+
+    df_mensual["media_movil_3"] = df_mensual.groupby("producto_id")["demanda"].transform(
+        lambda x: x.shift(1).rolling(3).mean()
+    )
+    df_mensual["media_movil_6"] = df_mensual.groupby("producto_id")["demanda"].transform(
+        lambda x: x.shift(1).rolling(6).mean()
+    )
+    df_mensual["desviacion_movil_3"] = df_mensual.groupby("producto_id")["demanda"].transform(
+        lambda x: x.shift(1).rolling(3).std()
+    )
+\end{minted}
+
+Por otra parte, para la construccion de la etapa de Features tambien se tomo en cuenta el repositorio en Kaggle "Inventory Demand Forecast (XGBoost Reg)" (https://www.kaggle.com/code/ksmooi/inventory-demand-forecast-xgboost-reg). De este repositorio, se tomo el uso de el promedio del producto, pero esta vez, calculados en base a todo el historial completo y no solo en base a los ultimos 3 o 6 meses. 
+
+Como extension propuesta por el proyecto, junto al promedio tambien se incluyo la desviacion del producto, esto para poder seguir una misma estructura en todo el sistema, ya que si se tiene la (\texttt{media\_movil\_3}) y la (\texttt{desviacion\_movil\_3}), es decir, el nivel y la variabilidad de los ultimos 3 meses, es conveniente tener la media y desviacion de todo el historial del producto.
+
+Estos valores ya fueron calculados en la etapa de segmentacion, y simplemente son agregados en los features para que el modelo tambien los use como variables de entrada.
+
+\begin{minted}{python}
+    # ...
+    # (Inventory Demand Forecast (XGBoost Reg))
+    stats_cols = ["demanda_total", "media", "desviacion"]
+    df_mensual = df_mensual.merge(
+        producto_comportamiento[["producto_id"] + stats_cols].rename(
+            columns={"media": "media_producto", "desviacion": "desviacion_producto"}
+        ),
+        on="producto_id", how="left"
+    )
+\end{minted}
+
+Despues, se calculca cuanto stock habia el mes anterior. La condicion (\texttt{if "inventario" in df\_mensual.columns:}) determina si el csv que fue subido por el usuario contiene la columna "inventario", esta es una columna opcional que simplemente representa cuantas unidades de ese producto (stock disponible) habia fisicamente en el inventario en ese mes, Thary funciona sin ella, pero si el usuario la incluye, el modelo la usara como una variable de entrada mas para poder brindarle un analisis mucho mas detallado. 
+
+(\texttt{(inventario\_lag\_1)}) es el inventario del mes anterior, con (\texttt{.groupby("producto\_id")}) se asegura que este se calcule por separado para cada producto, esto con la intencion de evitar que el inventario de un producto se vaya a mezclar con otro, esto usando (\texttt{(shift(1))}) para poder obtener el inventario del mes anterior. Si no se hace esto, el modelo podria aprender que el inventario de un producto es igual al del mes actual, lo cual no es correcto y generaria predicciones erroneas. 
+
+\begin{minted}{python}
+    # ...
+    # (Inventory Demand Forecast (XGBoost Reg))
+    if "inventario" in df_mensual.columns:
+        df_mensual["inventario_lag_1"] = df_mensual.groupby("producto_id")["inventario"].shift(1)
+\end{minted}
+
+En esta parte, se implemento otra idea del repositorio ``Demand Forecasting
+\textbackslash \& Inventory Optimization for Consumer Products'' para poder descartar las filas sin historial suficiente para tener los lags. Para esto, se define una lista con nueve nombres de las columnas obligatiorias para poder entrenar, con (\texttt{(dropna(subset=feature\_history))}) se revisan las 4 columnas y elimina cualquier fila que tenga un espacio vacio, posteriormente el resultado se guarda en (\texttt{(df\_model)}), que es la tabla final que se usara para entrenar el modelo.
+
+\begin{minted}{python}
+    # ...
+    # (Inventory Demand Forecast (XGBoost Reg))
+    feature_history = ["lag_1", "lag_2", "lag_3", "media_movil_3"]
+    df_model = df_mensual.dropna(subset=feature_history).copy()
+
+    if len(df_model) == 0:
+        raise ValueError(
+            "Ningún producto tiene al menos 3 meses seguidos de historial, que es lo mínimo "
+            "para calcular tendencias. Sube un archivo con más meses continuos de datos."
+        )
+\end{minted}
+
+Otro de los conceptos que fueron propuestos en Thary es el tratamiento que se decidio darle a la variable con los precios de venta de los productos. Aunque el CSV pueda incluir esa variable, el modelo solo usa su valor actual (el precio de ese mes), sin calcular cómo cambió respecto al mes anterior. Esto debido a que por naturaleza, el precio de un producto puede influir en la demanda de un producto, ya que cuando algo baja de precio, la gente tiende a comprar más, mientras que cuando este sube, las personas compran menos. El problema es que si esta regla se repite muy seguido, se corre el riesgo de que el modelo aprenda que el cambio de precio predice muy bien la demanda, entonces, aunque el precio es una variable que si se tiene en cuenta, se excluye por completo su variabilidad de un mes a otro.  
+
+\begin{minted}{python}
+    # ...
+    feature_cols = [
+        "año", "mes_sin", "mes_cos",
+        "lag_1", "lag_2", "lag_3", "lag_6",
+        "media_movil_3", "media_movil_6", "desviacion_movil_3",
+        "media_producto", "desviacion_producto"
+    ]
+    if "precio" in df_model.columns:
+        feature_cols.append("precio")
+    if "inventario" in df_model.columns:
+        feature_cols.append("inventario")
+        if "inventario_lag_1" in df_model.columns:
+            feature_cols.append("inventario_lag_1")
+\end{minted}
+
+Finalmente, como extension propia de Thary, se hace un relleno final. Para esto, se recorre cada una de las columnas que van a usar los modelos, si hay alguna fila vavia en la tabla, se reemplazan los vacios de la columna con 0 mediante (\texttt{df\_model[col] = df\_model[col].fillna(0)}). Esto es importante porque si el modelo recibe un producto que solo aparece a partir de cierto mes, por ejemplo, abril 2021 en un dataset que empieza en enero de ese mismo año, el mes de abril pudo pasar el filtro de dropna() porque ya tiene (\texttt{(lag\_1, lag\_2, lag\_3 y media\_movil\_3 completos)}, pero en este caso, el lag\_6 necesitaría la demanda de octubre de 2020, mes que no existe en el archivo porque el producto todavua no tiene 6 meses de historial.
+
+La fila pasaria el filtro porque \texttt{lag\_6} no esta en \texttt{feature\_history}, pero inevitablemente terminara en \texttt{feature\_cols}, y ahi es donde se ejecuta este bloque final, si \texttt{lag\_6} es vavio en esa fila se rellena con 0.
+
+\begin{minted}{python}
+    # ...
+    for col in feature_cols:
+        if df_model[col].isna().any():
+            df_model[col] = df_model[col].fillna(0)
+\end{minted}

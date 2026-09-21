@@ -374,8 +374,8 @@ Flujos alternativos &
 
 \begin{table}[H]
 \centering
-\caption{Especificación del caso de uso CU-09: Consultar asistente virtual}
-\label{tab:cu09_asistente_virtual}
+\caption{Especificación del caso de uso CU-09: Deshacer pedido}
+\label{tab:cu09_deshacer_pedido}
 \begin{tabularx}{\textwidth}{>{\bfseries}p{3.5cm} X}
 \hline
 Elemento & Especificación \\
@@ -383,40 +383,161 @@ Elemento & Especificación \\
 
 ID & CU-09 \\
 
-Nombre & Consultar asistente virtual \\
+Nombre & Deshacer pedido \\
 
-Actor principal & Usuario registrado \\
+Actor principal & Personal de Inventario \\
 
 Requisitos relacionados & RF-10 \\
 
-Objetivo & El objetivo es permitirle a cualquier usuario del sistema resolver dudas sobre el funcionamiento de Thary mediante un asistente conversacional (chatbot), implementado utilizando la API de Ollama. \\
+Objetivo & El objetivo es permitirle al Personal de Inventario revertir un pedido previamente confirmado, en caso de haberse equivocado o de que la confirmacion ya no sea necesaria. \\
 
 Precondiciones &
 \begin{itemize}
-    \item El usuario debe haber iniciado sesión en el sistema.
-    \item El servicio de Ollama debe estar disponible y en ejecución.
+    \item El usuario debe haber iniciado sesion.
+    \item Debe existir al menos un pedido previamente confirmado por el mismo usuario.
 \end{itemize}
 \\
 
-Postcondiciones & El usuario recibe una respuesta generada por el asistente correspondiente a su consulta. \\
+Postcondiciones & El pedido queda marcado como no confirmado, y vuelve a aparecer entre las recomendaciones pendientes de confirmar. \\
 
 Flujo principal &
 \begin{enumerate}
-    \item El usuario presiona el botón del asistente virtual, visible desde cualquier pantalla del sistema.
-    \item El sistema despliega una ventana emergente con el chat del asistente.
-    \item El usuario escribe su pregunta sobre el funcionamiento de Thary.
-    \item El sistema envía la consulta al servicio de Ollama mediante la API correspondiente.
-    \item El sistema recibe la respuesta generada por el modelo.
-    \item El sistema muestra la respuesta al usuario dentro de la ventana del chat.
+    \item El usuario accede a la pagina de "Pedidos" del sistema.
+    \item Consulta el historial de pedidos confirmados.
+    \item Selecciona el pedido que desea deshacer.
+    \item El sistema solicita confirmacion de la accion.
+    \item El usuario confirma que desea deshacer el pedido.
+    \item El sistema revierte el estado del pedido y lo registra en la bitacora de actividad.
 \end{enumerate}
 \\
 
 Flujos alternativos &
 \begin{enumerate}
-    \item Si el servicio de Ollama no está corriendo o no responde dentro del tiempo esperado, el sistema informa al usuario que el asistente no se encuentra disponible en ese momento.
-    \item Si el usuario cierra la ventana del chat, el sistema descarta la conversación en curso sin afectar el resto de la sesión.
+    \item Si el usuario cancela la confirmacion, el sistema no realiza ningun cambio y el pedido permanece confirmado.
+    \item Si el pedido ya fue deshecho previamente por otro usuario, el sistema informa que la accion ya no es posible.
 \end{enumerate}
 \\
+
+\hline
+\end{tabularx}
+\end{table}
+
+
+\begin{table}[H]
+\centering
+\caption{Especificación del caso de uso CU-10: Consultar actividad de la empresa}
+\label{tab:cu10_consultar_actividad}
+\begin{tabularx}{\textwidth}{>{\bfseries}p{3.5cm} X}
+\hline
+Elemento & Especificación \\
+\hline
+
+ID & CU-10 \\
+
+Nombre & Consultar actividad de la empresa \\
+
+Actor principal & Administrador \\
+
+Requisitos relacionados & RF-11 \\
+
+Objetivo & Permitirle al Administrador consultar la bitacora completa de acciones realizadas por todos los usuarios de su empresa, con fines de auditoria. \\
+
+Precondiciones &
+\begin{itemize}
+    \item El usuario debe haber iniciado sesion con perfil de Administrador.
+    \item Debe existir al menos un registro de actividad generado previamente en la empresa.
+\end{itemize}
+\\
+
+Postcondiciones & El administrador visualiza el listado de acciones realizadas por los usuarios de su empresa, ordenadas cronologicamente. \\
+
+Flujo principal &
+\begin{enumerate}
+    \item El Administrador accede al modulo de "Actividad".
+    \item El sistema consulta el registro de actividad de la empresa del administrador.
+    \item El sistema muestra el listado de acciones, indicando el usuario responsable, el tipo de accion y la fecha y hora en que ocurrio.
+\end{enumerate}
+\\
+
+Flujos alternativos & Si aun no se ha registrado ninguna actividad en la empresa, el sistema informa que no hay eventos para mostrar. \\
+
+\hline
+\end{tabularx}
+\end{table}
+
+
+\begin{table}[H]
+\centering
+\caption{Especificación del caso de uso CU-11: Consultar calendario de pedidos}
+\label{tab:cu11_calendario_pedidos}
+\begin{tabularx}{\textwidth}{>{\bfseries}p{3.5cm} X}
+\hline
+Elemento & Especificación \\
+\hline
+
+ID & CU-11 \\
+
+Nombre & Consultar calendario de pedidos \\
+
+Actor principal & Personal de Inventario \\
+
+Requisitos relacionados & RF-12 \\
+
+Objetivo & Permitirle al usuario visualizar en un calendario las fechas estimadas en las que debe realizarse el pedido de cada producto, segun las recomendaciones generadas por el sistema. \\
+
+Precondiciones & Debe existir un archivo previamente procesado, con resultados de reposicion disponibles. \\
+
+Postcondiciones & El usuario visualiza, organizadas por fecha, las recomendaciones de pedido proximas a vencer. \\
+
+Flujo principal &
+\begin{enumerate}
+    \item El usuario accede al modulo de "Calendario de pedidos".
+    \item El sistema consulta las recomendaciones de reposicion vigentes.
+    \item El sistema organiza dichas recomendaciones segun la fecha estimada en la que deberian realizarse.
+    \item El sistema muestra el calendario con los pedidos proximos, por producto.
+\end{enumerate}
+\\
+
+Flujos alternativos & Si no existen recomendaciones de reposicion disponibles, el sistema informa que primero debe procesarse un archivo. \\
+
+\hline
+\end{tabularx}
+\end{table}
+
+
+\begin{table}[H]
+\centering
+\caption{Especificación del caso de uso CU-12: Consultar perfil}
+\label{tab:cu12_consultar_perfil}
+\begin{tabularx}{\textwidth}{>{\bfseries}p{3.5cm} X}
+\hline
+Elemento & Especificación \\
+\hline
+
+ID & CU-12 \\
+
+Nombre & Consultar perfil \\
+
+Actor principal & Usuario registrado \\
+
+Requisitos relacionados & RF-13 \\
+
+Objetivo & Permitirle a cualquier usuario, sin importar su rol, consultar los datos de su propia cuenta y el historial de las acciones que el mismo ha realizado en el sistema. \\
+
+Precondiciones & El usuario debe haber iniciado sesion. \\
+
+Postcondiciones & El usuario visualiza la informacion de su cuenta y sus propios movimientos dentro del sistema. \\
+
+Flujo principal &
+\begin{enumerate}
+    \item El usuario accede al modulo de "Perfil".
+    \item El sistema consulta los datos de la cuenta del usuario.
+    \item El sistema consulta los movimientos propios del usuario (pedidos confirmados o revertidos, y si es administrador, tambien sus archivos cargados y los usuarios que ha creado).
+    \item El sistema muestra la informacion recopilada.
+\end{enumerate}
+\\
+
+Flujos alternativos & Si el usuario aun no ha realizado ninguna accion registrada en el sistema, el sistema muestra los datos de la cuenta sin movimientos asociados. \\
 
 \hline
 \end{tabularx}

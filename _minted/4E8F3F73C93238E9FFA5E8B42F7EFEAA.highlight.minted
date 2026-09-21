@@ -1,0 +1,7 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+    \PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{verificar\PYGZus{}credenciales}\PYG{p}{(}\PYG{n}{username\PYGZus{}o\PYGZus{}email}\PYG{p}{,} \PYG{n}{password}\PYG{p}{):}
+    \PYG{c+c1}{\PYGZsh{}...}
+    \PYG{k}{if} \PYG{o+ow}{not} \PYG{n}{check\PYGZus{}password\PYGZus{}hash}\PYG{p}{(}\PYG{n}{usuario}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}password\PYGZus{}hash\PYGZdq{}}\PYG{p}{],} \PYG{n}{password}\PYG{p}{):}
+        \PYG{k}{return} \PYG{k+kc}{None}
+    \PYG{k}{return} \PYG{n}{usuario}
+\end{MintedVerbatim}

@@ -1,0 +1,12 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+    \PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{carpeta\PYGZus{}uploads}\PYG{p}{(}\PYG{n}{empresa\PYGZus{}id}\PYG{p}{):}
+    \PYG{n}{ruta} \PYG{o}{=} \PYG{n}{os}\PYG{o}{.}\PYG{n}{path}\PYG{o}{.}\PYG{n}{join}\PYG{p}{(}\PYG{n}{current\PYGZus{}app}\PYG{o}{.}\PYG{n}{config}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}UPLOAD\PYGZus{}FOLDER\PYGZus{}BASE\PYGZdq{}}\PYG{p}{],} \PYG{n}{empresa\PYGZus{}id}\PYG{p}{)}
+    \PYG{n}{os}\PYG{o}{.}\PYG{n}{makedirs}\PYG{p}{(}\PYG{n}{ruta}\PYG{p}{,} \PYG{n}{exist\PYGZus{}ok}\PYG{o}{=}\PYG{k+kc}{True}\PYG{p}{)}
+    \PYG{k}{return} \PYG{n}{ruta}
+
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{carpeta\PYGZus{}resultados}\PYG{p}{(}\PYG{n}{empresa\PYGZus{}id}\PYG{p}{):}
+    \PYG{n}{ruta} \PYG{o}{=} \PYG{n}{os}\PYG{o}{.}\PYG{n}{path}\PYG{o}{.}\PYG{n}{join}\PYG{p}{(}\PYG{n}{current\PYGZus{}app}\PYG{o}{.}\PYG{n}{config}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}RESULTADOS\PYGZus{}FOLDER\PYGZus{}BASE\PYGZdq{}}\PYG{p}{],} \PYG{n}{empresa\PYGZus{}id}\PYG{p}{)}
+    \PYG{n}{os}\PYG{o}{.}\PYG{n}{makedirs}\PYG{p}{(}\PYG{n}{ruta}\PYG{p}{,} \PYG{n}{exist\PYGZus{}ok}\PYG{o}{=}\PYG{k+kc}{True}\PYG{p}{)}
+    \PYG{k}{return} \PYG{n}{ruta}
+\end{MintedVerbatim}

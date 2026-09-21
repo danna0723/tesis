@@ -1,0 +1,17 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+    \PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{pedido\PYGZus{}confirmar}\PYG{p}{():}
+    \PYG{c+c1}{\PYGZsh{}...}
+    \PYG{k}{for} \PYG{n}{producto\PYGZus{}id} \PYG{o+ow}{in} \PYG{n}{seleccionados}\PYG{p}{:}
+        \PYG{n}{fila} \PYG{o}{=} \PYG{n}{productos\PYGZus{}por\PYGZus{}id}\PYG{o}{.}\PYG{n}{get}\PYG{p}{(}\PYG{n}{producto\PYGZus{}id}\PYG{p}{)}
+        \PYG{k}{if} \PYG{n}{fila} \PYG{o+ow}{is} \PYG{k+kc}{None}\PYG{p}{:}
+            \PYG{k}{continue}
+        \PYG{n}{proveedor} \PYG{o}{=} \PYG{n}{request}\PYG{o}{.}\PYG{n}{form}\PYG{o}{.}\PYG{n}{get}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}proveedor\PYGZus{}}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{producto\PYGZus{}id}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{)} \PYG{o+ow}{or} \PYG{l+s+s2}{\PYGZdq{}Sin especificar\PYGZdq{}}
+        \PYG{n}{registrar\PYGZus{}pedido}\PYG{p}{(}
+            \PYG{n}{empresa\PYGZus{}id}\PYG{o}{=}\PYG{n}{session}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}empresa\PYGZus{}id\PYGZdq{}}\PYG{p}{],}
+            \PYG{n}{producto\PYGZus{}id}\PYG{o}{=}\PYG{n}{producto\PYGZus{}id}\PYG{p}{,}
+            \PYG{n}{proveedor}\PYG{o}{=}\PYG{n}{proveedor}\PYG{p}{,}
+            \PYG{n}{cantidad}\PYG{o}{=}\PYG{n}{fila}\PYG{o}{.}\PYG{n}{get}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}cantidad\PYGZus{}sugerida\PYGZus{}pedido\PYGZdq{}}\PYG{p}{),}
+            \PYG{n}{costo}\PYG{o}{=}\PYG{n}{fila}\PYG{o}{.}\PYG{n}{get}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}costo\PYGZus{}estimado\PYGZus{}pedido\PYGZdq{}}\PYG{p}{),}
+            \PYG{n}{usuario}\PYG{o}{=}\PYG{n}{usuario}\PYG{p}{,}
+        \PYG{p}{)}
+\end{MintedVerbatim}

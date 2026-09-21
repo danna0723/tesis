@@ -1,0 +1,25 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n}{\PYGZus{}engine} \PYG{o}{=} \PYG{k+kc}{None}
+
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{\PYGZus{}config}\PYG{p}{():}
+    \PYG{k}{return} \PYG{p}{\PYGZob{}}
+        \PYG{l+s+s2}{\PYGZdq{}host\PYGZdq{}}\PYG{p}{:} \PYG{n}{os}\PYG{o}{.}\PYG{n}{environ}\PYG{o}{.}\PYG{n}{get}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}DB\PYGZus{}HOST\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}127.0.0.1\PYGZdq{}}\PYG{p}{),}
+        \PYG{l+s+s2}{\PYGZdq{}port\PYGZdq{}}\PYG{p}{:} \PYG{n}{os}\PYG{o}{.}\PYG{n}{environ}\PYG{o}{.}\PYG{n}{get}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}DB\PYGZus{}PORT\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}3307\PYGZdq{}}\PYG{p}{),}
+        \PYG{l+s+s2}{\PYGZdq{}user\PYGZdq{}}\PYG{p}{:} \PYG{n}{os}\PYG{o}{.}\PYG{n}{environ}\PYG{o}{.}\PYG{n}{get}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}DB\PYGZus{}USER\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}thary\PYGZus{}app\PYGZdq{}}\PYG{p}{),}
+        \PYG{l+s+s2}{\PYGZdq{}password\PYGZdq{}}\PYG{p}{:} \PYG{n}{os}\PYG{o}{.}\PYG{n}{environ}\PYG{o}{.}\PYG{n}{get}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}DB\PYGZus{}PASSWORD\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}\PYGZdq{}}\PYG{p}{),}
+        \PYG{l+s+s2}{\PYGZdq{}database\PYGZdq{}}\PYG{p}{:} \PYG{n}{os}\PYG{o}{.}\PYG{n}{environ}\PYG{o}{.}\PYG{n}{get}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}DB\PYGZus{}NAME\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}sistema\PYGZus{}inventario\PYGZdq{}}\PYG{p}{),}
+    \PYG{p}{\PYGZcb{}}
+
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{get\PYGZus{}engine}\PYG{p}{():}
+    \PYG{k}{global} \PYG{n}{\PYGZus{}engine}
+    \PYG{k}{if} \PYG{n}{\PYGZus{}engine} \PYG{o+ow}{is} \PYG{k+kc}{None}\PYG{p}{:}
+        \PYG{n}{cfg} \PYG{o}{=} \PYG{n}{\PYGZus{}config}\PYG{p}{()}
+        \PYG{n}{url} \PYG{o}{=} \PYG{p}{(}
+            \PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}mysql+pymysql://}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{cfg}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}user\PYGZsq{}}\PYG{p}{]}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{:}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{cfg}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}password\PYGZsq{}}\PYG{p}{]}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZdq{}}
+            \PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}@}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{cfg}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}host\PYGZsq{}}\PYG{p}{]}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{:}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{cfg}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}port\PYGZsq{}}\PYG{p}{]}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{/}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{cfg}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}database\PYGZsq{}}\PYG{p}{]}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{?charset=utf8mb4\PYGZdq{}}
+        \PYG{p}{)}
+        \PYG{n}{\PYGZus{}engine} \PYG{o}{=} \PYG{n}{create\PYGZus{}engine}\PYG{p}{(}\PYG{n}{url}\PYG{p}{,} \PYG{n}{pool\PYGZus{}pre\PYGZus{}ping}\PYG{o}{=}\PYG{k+kc}{True}\PYG{p}{)}
+    \PYG{k}{return} \PYG{n}{\PYGZus{}engine}
+\end{MintedVerbatim}

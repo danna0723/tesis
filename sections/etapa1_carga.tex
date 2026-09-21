@@ -1,0 +1,49 @@
+La primera etapa del pipeline (\texttt{app/services/prediccion/carga\_datos.py}) recibe el archivo CSV cargado por el administrador y lo normaliza hacia un esquema interno unico:
+
+
+\begin{minted}{python}
+ETIQUETAS_COLUMNAS_OBLIGATORIAS = {
+    "fecha": "Fecha (o Date, Sale_Date)",
+    "producto_id": "Producto (o Product, Product_ID)",
+    "demanda": "Demanda (o Demand, Sales, Quantity_Sold)",
+}
+
+
+def cargar_y_limpiar(ruta_archivo):
+    try:
+        df = pd.read_csv(ruta_archivo)
+    except pd.errors.EmptyDataError:
+        raise ValueError("El archivo está vacío. Sube un CSV con al menos una fila de datos.")
+    except pd.errors.ParserError:
+        raise ValueError(
+            "No se pudo leer el archivo como CSV. Verifica que sea un archivo de texto "
+            "separado por comas (por ejemplo, no un Excel renombrado a .csv)."
+        )
+    except UnicodeDecodeError:
+        raise ValueError(
+            "El archivo tiene una codificación de caracteres que el sistema no reconoce. "
+            "Guárdalo como CSV con codificación UTF-8 e intenta de nuevo."
+        )
+
+    if df.empty:
+        raise ValueError("El archivo no tiene filas de datos, solo encabezados.")
+
+    df = df.rename(columns={
+        "Sale_Date": "fecha", "Date": "fecha", "date": "fecha", "Fecha": "fecha",
+        "Product_ID": "producto_id", "Product": "producto_id", "Producto": "producto_id",
+        "Quantity_Sold": "demanda", "Sales": "demanda", "Demand": "demanda", "Demanda": "demanda",
+# ... variantes adicionales para precio, inventario, categoria, proveedor y lead time
+    })
+
+    columnas_faltantes = [c for c in ETIQUETAS_COLUMNAS_OBLIGATORIAS if c not in df.columns]
+    if columnas_faltantes:
+        faltan = ", ".join(ETIQUETAS_COLUMNAS_OBLIGATORIAS[c] for c in columnas_faltantes)
+        raise ValueError(
+            f"Al archivo le falta al menos una columna obligatoria: {faltan}. "
+            "Agrégala al CSV (con ese nombre exacto u otro de los aceptados) y vuelve a subirlo."
+        )
+\end{minted}
+
+En esta sección del archivo (\texttt{app/services/prediccion/carga\_datos.py}), se observa la etapa de carga y limpieza de los datos. Para garantizar que el sistema pueda adaptarse y funcionar para todo tipo de dominio de inventarios, se normalizan los nombres de las columnas de los archivos CSV con el fin de mantener un esquema más heterogéneo, de manera que el sistema pueda aceptar archivos de distintos dominios sin tener la necesidad de modificar el resto del pipeline. Para facilitarle al usuario el proceso de cargar un archivo, se capturan los errores mas comunes para el sistema a la hora de leer un CSV y se muestran a manera de mensaje de error en un lenguaje sencillo y facil de entender.
+
+Otra practica que fue aplicada es el manejo de errores con mensajes dirigidos al usuario final, de esta manera, se evita que se propaguen los errores internos del sistema y el usuario sabe que es lo que esta ocurriendo y que es lo que se debe hacer para resolverlo.

@@ -1,0 +1,71 @@
+Debido a su naturaleza, Thary es un sistema que maneja informacion que podria considerarse potencialmente sensible, como los datos de los usuarios, de consumo, entre otros. Teniendo esto en cuenta, se realizo un analisis en el que se identificaron las amenazas siguiendo el modelado de amenzasas STRIDE:
+
+\begin{itemize}
+    \item \textbf{Suplantación de identidad}: Mitigada mediante autenticación basada en usuario y contraseña, almacenando esta última mediante un algoritmo de hash (\textit{scrypt}, el metodo por defecto de \texttt{werkzeug.security}) y nunca en texto plano.
+    
+    \begin{minted}{python}
+    def crear_usuario(nombre, username, email, password, rol="empleado", empresa_id=None):
+    #...
+    password_hash = generate_password_hash(password)
+    \end{minted}
+
+    \begin{minted}{python}
+    def verificar_credenciales(username_o_email, password):
+    #...
+    if not check_password_hash(usuario["password_hash"], password):
+        return None
+    return usuario
+    \end{minted}
+
+    \item \textbf{Manipulación de datos}: Para evitar la manipulacion de los datos, se garantiza que la cantidad y el costo de un pedido confirmado se tome siempre del análisis generado por el sistema, y no de valores que el usuario pueda modificar en el formulario de confirmación.
+    
+    \begin{minted}{python}
+    def pedido_confirmar():
+    #...
+    for producto_id in seleccionados:
+        fila = productos_por_id.get(producto_id)
+        if fila is None:
+            continue
+        proveedor = request.form.get(f"proveedor_{producto_id}") or "Sin especificar"
+        registrar_pedido(
+            empresa_id=session["empresa_id"],
+            producto_id=producto_id,
+            proveedor=proveedor,
+            cantidad=fila.get("cantidad_sugerida_pedido"),
+            costo=fila.get("costo_estimado_pedido"),
+            usuario=usuario,
+        )
+    \end{minted}
+
+    \item \textbf{Repudio}: El sistema Thary cuenta con una tabla en la base de datos llamada "Actividad", en la cual se lleva un registro de todas las acciones relevantes que los usuarios realizan en el sistema, guardando informacion como el nombre del usuario, fecha y hora del evento, y la accion que fue realizada.
+    
+    \begin{minted}{python}
+    def pedido_confirmar():
+        if confirmados_ahora:
+            lista = ", ".join(seleccionados[:5]) + ("…" if len(seleccionados) > 5 else "")
+            registrar_actividad(
+                session["empresa_id"], session.get("username"), usuario,
+                "pedido_confirmado", f"Confirmó {confirmados_ahora} pedido(s): {lista}",
+            )
+    \end{minted}
+
+    \item \textbf{Divulgación de información}: Se evita que exista divulgacion de informacion mediante el aislamiento de los datos por empresa, de forma que ninguna organización pueda acceder a los datos de otra.
+    
+    \begin{minted}{python}
+    def carpeta_uploads(empresa_id):
+    ruta = os.path.join(current_app.config["UPLOAD_FOLDER_BASE"], empresa_id)
+    os.makedirs(ruta, exist_ok=True)
+    return ruta
+
+
+def carpeta_resultados(empresa_id):
+    ruta = os.path.join(current_app.config["RESULTADOS_FOLDER_BASE"], empresa_id)
+    os.makedirs(ruta, exist_ok=True)
+    return ruta
+    \end{minted}
+
+    \item \textbf{Denegacion de servicio}: Thary implementa varios controles para mitigar este riesgo. Se establecio un limite de tamaño para los archivos cargados (10 MB, mediante la configuracion \texttt{MAX\_CONTENT\_LENGTH} de Flask). Adicionalmente, el servidor WSGI de produccion (Gunicorn) se configuro con multiples procesos de trabajo (\textit{workers}) y un tiempo maximo de espera ampliado a 120 segundos, de forma que una solicitud de procesamiento pesada (por ejemplo, el entrenamiento de los modelos sobre un catalogo grande) ocupe unicamente uno de los procesos disponibles, sin bloquear el acceso al sistema para el resto de los usuarios. Finalmente, se incorporo un limite de tasa (\textit{rate limiting}) mediante la libreria \texttt{Flask-Limiter} sobre las rutas de inicio de sesion y registro, restringiendo a 10 solicitudes por minuto por direccion IP, mitigando intentos de fuerza bruta y saturacion por solicitudes repetidas. Cabe señalar que, al usar Gunicorn con multiples \textit{workers} y un almacenamiento de limite de tasa en memoria del propio proceso, este limite se aplica de forma independiente por cada worker y no de forma global para todo el servicio.
+
+    \item \textbf{Elevación de privilegios}: Para evitar este riesgo, se implemento un control de acceso basado en roles mediante el decorador \texttt{admin\_required} (definido en \texttt{app/services/auth.py}), aplicado sobre las rutas de carga y procesamiento de archivos, el panel tecnico de validacion, la gestion de usuarios y la consulta de la actividad de toda la empresa, restringiendo estas funciones exclusivamente al perfil administrador.
+    
+\end{itemize}

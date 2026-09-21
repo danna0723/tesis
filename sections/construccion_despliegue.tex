@@ -176,7 +176,7 @@ El despliegue del sistema Thary (además del entorno de desarrollo local), se en
 
 Como se ve en la figura, Thary y la base de datos, se encuentran corriendo en Railway como servicios independientes, los cuales se comunican entre si para compartir información y funcionalidades.
 
-La aplicacion se ejecuta mediante un servidor WSGI de produccion (Gunicorn), configurado a traves de un archivo \texttt{Procfile}:
+La aplicacion se ejecuta mediante un servidor WSGI de produccion (Gunicorn), configurado a traves del archivo \texttt{Procfile}:
 
 \begin{minted}{text}
 web: gunicorn run:app --bind 0.0.0.0:$PORT
@@ -191,18 +191,18 @@ web: gunicorn run:app --bind 0.0.0.0:$PORT
 
 Railway detecta y se encarga de ejecutar este comando \textit{start command} cuando se realiza un despliegue. Automaticamente identifica la version de python con la que se esta trabajando, en este caso, \texttt{.python-version} (3.13).  El proyecto fija todas sus dependencias en \texttt{requirements.txt}, incluyendo las versiones exactas de las librerias de prediccion (pandas, scikit-learn, XGBoost, statsmodels) y las necesarias para la conexion a la base de datos (\texttt{SQLAlchemy}, \texttt{PyMySQL}) y el servidor de produccion (\texttt{gunicorn}).
 
-En cuanto a la persistencia de los datos, esta se manejó mediante MySQL. La configuracion de conexion a la base de datos solo se obtiene de las variables de entorno:
+En cuanto a la persistencia de los datos, esta se manejó mediante MySQL. La configuracion de conexion a la base de datos solo se obtiene de las variables de entorno, tal como se detallo en la Seccion 3.2.9 (funcion \texttt{\_config()}).
 
-\begin{minted}{python}
-def _config():
-    return {
-        "host": os.environ.get("DB_HOST", "127.0.0.1"),
-        "port": os.environ.get("DB_PORT", "3307"),
-        "user": os.environ.get("DB_USER", "thary_app"),
-        "password": os.environ.get("DB_PASSWORD", ""),
-        "database": os.environ.get("DB_NAME", "sistema_inventario"),
-    }
-\end{minted}
+% \begin{minted}{python}
+% def _config():
+%     return {
+%         "host": os.environ.get("DB_HOST", "127.0.0.1"),
+%         "port": os.environ.get("DB_PORT", "3307"),
+%         "user": os.environ.get("DB_USER", "thary_app"),
+%         "password": os.environ.get("DB_PASSWORD", ""),
+%         "database": os.environ.get("DB_NAME", "sistema_inventario"),
+%     }
+% \end{minted}
 
 \begin{figure}[H]
     \centering
@@ -212,6 +212,15 @@ def _config():
 \end{figure}
 
 Las credenciales se configuran en el panel de Railway como variables de entorno del servicio,  nunca visibles en el repositorio de codigo. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{templatefigures/railway_mysql_tablas}
+    \caption{Tablas del esquema relacional de Thary en el entorno de producción, vistas desde el explorador de datos de Railway.}
+    \label{fig:railway_mysql_tablas}
+\end{figure}
+
+La Fig. \ref{fig:railway_mysql_tablas} muestra que el mismo esquema de 12 tablas que se tiene localmente, tambien existe en el entorno desplegado de Railway.
 
 El servicio de Thary no cuenta con un volumen configurado, esto puede verse en el panel de adminsitracion en el que no se ve la pestalla de "volumenes". Esto quiere decir que los archivos que estan en el servicio son efimeros, es decir, cada vez que se redespliegue el servicio, como por ejemplo, por una actualizacion del codigo o un reinicio del servicio, se crea un nuevo contenedor, por lo que se pierden por completo los archivos generados por el sistema en las corridas anteriores del pipeline. Esto se reconoce como una limitacion del entorno de produccion. 
 

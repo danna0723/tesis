@@ -2,14 +2,14 @@ Los procesos tecnicos que guiaron el diseño y desarrollo del sistema Thary se e
 
 \subsubsection{Identificación de Stakeholders}
 \label{sec:stakeholders}
-A partir del planteamiento del sistema y tras un analisis de sus caracteristicas y funcionalidades, se identificaron los siguientes stakeholders que estaria involucrados en el sistema, ya sea directa o indirectamente:
+A partir del planteamiento del sistema y tras un analisis de sus caracteristicas y funcionalidades, se identificaron los siguientes stakeholders que estarian involucrados en el sistema, ya sea directa o indirectamente:
 
 \begin{itemize}
-    \item Personal encargado de la gestion del inventario y el abastecimiento: Es el usuario final que interactua con el sistema, es responsable de interpretar los resultados que Thary y tomar decisiones de repocision en base a ellas.
+    \item Personal encargado de la gestion del inventario y el abastecimiento: Es el usuario final que interactua con el sistema, es responsable de interpretar los resultados que Thary genera y tomar decisiones de reposicion en base a ellas.
     \item Equipo de desarrollo: Desarrolladores y diseñadores responsables de la implementación del sistema Thary, asegurando que cumpla con los requisitos y estándares establecidos.
-    \item Administradores del sistema: Es el perfil con permisos y privilegios, es responsable de cargar los datos historicos de consumo, es decir, el archivo de entrada, ejecutar el proceso de prediccion, ademas, puede crear nuevos usaurios para los empleados con menor rango.
-    \item Institucion usuaria del sistema: Es la entidad interesada en utilizar Thary para poder refucir el riesgo de desabastecimiento de productos. El sistema se planeo para poder adaptarse en distintos dominios, por lo que cualquier tipo de empresa puede usarlo.
-    \item Proovedores de productos: Aunque los proovedores no interactuan con Thary, indirectamente son una variable importante para el sistema, ya que factores externos como el tiempo de entrega o lead time, marcan una gran diferencia en los resultados del sistema.
+    \item Administradores del sistema: Es el perfil con permisos y privilegios, es responsable de cargar los datos historicos de consumo, es decir, el archivo de entrada, ejecutar el proceso de prediccion, ademas, puede crear nuevos usuarios para los empleados con menor rango.
+    \item Institucion usuaria del sistema: Es la entidad interesada en utilizar Thary para poder reducir el riesgo de desabastecimiento de productos. El sistema se planeo para poder adaptarse en distintos dominios, por lo que cualquier tipo de empresa puede usarlo.
+    \item Proveedores de productos: Aunque los proveedores no interactuan con Thary, indirectamente son una variable importante para el sistema, ya que factores externos como el tiempo de entrega o lead time, marcan una gran diferencia en los resultados del sistema.
 \end{itemize} 
 
 \begin{table}[H]
@@ -29,7 +29,7 @@ A partir del planteamiento del sistema y tras un analisis de sus caracteristicas
 
 Personal de inventario y abastecimiento
 & Alto
-& Alta
+& Media
 \\
 
 Administrador del sistema
@@ -57,289 +57,43 @@ Equipo de desarrollo
 \end{table}
 
 \subsubsection{Elicitación de Requisitos}
-La elicitacion de requisitos consiste en poder identificar las necesidades del sistema a partir de los usaurios, en el caso de Thary, el proceso se llevo a cabo mediante dos fuentes principales de informacion, en primera instancia, la revision de literatura permitio analizar que variables suelen ser relevantes para este tipo de proyectos, y que salidas le aportan mayor valor al usuario. En segundo lugar, se realizo un analisis a un caso de estudio real, los datos usados durante el desarrollo del sistema eran datos autenticos de la Clinica Nuestra señora de los Remedios de la ciudad de Cali, lo cual permitio observar como se comportaria el sistema en un escenario real como la existencia de variaciones en la demanda o datos historicos no tan limpios como historiales incompletos o datos con errores, y que ajustes serian necesarios para mejorar su rendimiento.
+La elicitacion de requisitos consiste en poder identificar las necesidades del sistema a partir de los usuarios, en el caso de Thary, el proceso se llevo a cabo mediante dos fuentes principales de informacion, en primera instancia, la revision de literatura permitio analizar que variables suelen ser relevantes para este tipo de proyectos, y que salidas le aportan mayor valor al usuario. En segundo lugar, se realizo un analisis a un caso de estudio real, los datos usados durante el desarrollo del sistema eran datos autenticos de la Clinica Nuestra señora de los Remedios de la ciudad de Cali, lo cual permitio observar como se comportaria el sistema en un escenario real como la existencia de variaciones en la demanda o datos historicos no tan limpios como historiales incompletos o datos con errores, y que ajustes serian necesarios para mejorar su rendimiento.
 
-Es en base a tdo esto, que se definieron los siguientes requisitos funcionales:
+Es en base a todo esto, que se definieron los siguientes requisitos funcionales:
 
 \begin{itemize}
-    \item RF-01: El sistema debe permitir que un usuario registrado como admin pueda realizar la carga de un archivo CSV con el datos como el historial de consumo mensual de los productos, validando que contenga los datos minimos requeridos: fecha, id del producto y cantidad demandada.
+    \item RF-01: El sistema debe permitir que un usuario registrado como admin pueda realizar la carga de un archivo CSV con datos como el historial de consumo mensual de los productos, validando que contenga los datos minimos requeridos: fecha, id del producto y cantidad demandada.
     \item RF-02: El sistema debe generar una estimacion de la demanda mensual, esperada para cada producto a partir de la informacion compartida en el historial cargado
-    \item RF-03: El sistema debe de calcular para cada producto datos como el punto de reposicion y la cantidad recomendada de compra, considerando factores externos como el tiempo de entrega del proovedor o lead time, presupuestos y el inventario actual disponible
+    \item RF-03: El sistema debe de calcular para cada producto datos como el punto de reposicion y la cantidad recomendada de compra, considerando factores externos como el tiempo de entrega del proveedor o lead time, presupuestos y el inventario actual disponible
     \item RF-04: El sistema debe de contar con alertas visuales claras para los productos cuyo inventario actual se encuentre en o por debajo de su punto de reposicion.
     \item RF-05: El sistema debe presentar los resultados, demanda pronosticada, estado del inventario, etc, de una manera clara y sencilla de entender en una interfaz intuitiva para el usuario
-    \item RF-06: El sistema debe permitirle al personal del inventario registrar un pedido, guardando informacion importante de este como proovedor elegido, fecha del pedido y el usuario responsable de la realizacion del pedido.
+    \item RF-06: El sistema debe permitirle al personal del inventario registrar un pedido, guardando informacion importante de este como proveedor elegido, fecha del pedido y el usuario responsable de la realizacion del pedido.
     \item RF-07: El sistema debe restringir el acceso a la carga de los archivos y la ejecucion del proceso unicamente al perfil administrador.
     \item RF-08: El sistema debe permitirle al perfil de administrador el poder crear nuevos usuarios con menos privilegios para sus empleados.
     \item RF-09: El sistema debe permitir el registro e inicio de sesion de los usuarios.
-    \item RF-10: El sistema debe permitir a los usuarios consultar sus dudas sobre el funcionamiento del sistema mediante un asistente conversacional (chatbot), implementado utilizando la API de Ollama.
+    \item RF-10: El sistema debe permitir deshacer un pedido previamente confirmado.
+    \item RF-11: El sistema debe registrar y permitirle al administrador consultar una bitácora de las acciones relevantes realizadas por los usuarios.
+    \item RF-12: El sistema debe permitirle a los usuarios ver un calendario con las fechas en las que tienen que realizarse los pedidos de cada producto
+    \item RF-13: El sistema debe permitirle a los usuarios acceder a su perfil.
 \end{itemize}
 
 En cuanto a los requisitos no funcionales de Thary, se identificaron los siguientes:
 
 \begin{itemize}
-    \item RNF-01: Si el sistema es utilizado por mas de una organizacionm los datos de una no deben de ser accesibles para otra
+    \item RNF-01: Si el sistema es utilizado por mas de una organizacion, los datos de una no deben de ser accesibles para otra
     \item RNF-02: El sistema debe de poder procesar archivos de distintos dominios de inventario (salud, alimentos, ferreteria, etc) siempre y cuando contengan los datos minimos requeridos.
     \item RNF-03: El sistema debe poder generar una estimacion incluso si el historial de producto presenta datos faltantes.
 \end{itemize}
 
 \subsubsection{Especificación de Requisitos de Software (SRS)}
-
-A partir de los requisitos especificados, se elaboro la especificacion de requisitos funcionales (SRP), la cual fue estructurada mediante casos de uso y tomando como referencia los lineamientos de la norma IEEE 29148 para la elaboracion de los mismos. El sistema contempla dos actores principales, el administrados y el personal de inventario. El administrador es el tipo de usuario que mas privilegios tiene, es responsable de cargar el historial de consumo e iniciar el procesamiento y gestionar las cuentas de los usuarios. Mientras que el personal de inventario solo usa el sistema para consultar las predicciones y, entre otras actividades, gestionar los pedidos sugeridos. La figura debajo representa el diagrama general de caso de uso de Thary:
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1.0\textwidth]{templatefigures/caso_de_uso.png}
-    \caption{Caso de uso}
-\end{figure}
-
-Como se puede ver en el diagrama, los casos de uso identificados, se relacionan con los requisitos funcionales de la siguiente manera:
-
-\begin{table}[H]
-\centering
-\caption{Trazabilidad entre casos de uso y requisitos funcionales}
-\label{tab:trazabilidad_casos_uso}
-\begin{tabularx}{\textwidth}{>{\centering\arraybackslash}p{1.2cm} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X >{\centering\arraybackslash}p{3cm}}
-\hline
-\textbf{ID} & \textbf{Caso de uso} & \textbf{Actor principal} & \textbf{Requisitos relacionados} \\
-\hline
-
-CU-01 & Iniciar sesión & Usuario registrado & RF-09 \\
-
-CU-02 & Cargar historial de consumo & Administrador & RF-01, RF-07 \\
-
-CU-03 & Procesar archivo & Administrador & RF-02, RF-07 \\
-
-CU-04 & Consultar demanda pronosticada & Personal de Inventario & RF-02, RF-05 \\
-
-CU-05 & Consultar estado del inventario & Personal de Inventario & RF-04, RF-05 \\
-
-CU-06 & Consultar recomendaciones de reposición y presupuesto & Personal de Inventario & RF-03, RF-05 \\
-
-CU-07 & Registrar pedido & Personal de Inventario & RF-06 \\
-
-CU-08 & Gestionar usuarios & Administrador & RF-08 \\
-
-CU-09 & Consultar asistente virtual & Usuario registrado & RF-10 \\
-
-\hline
-\end{tabularx}
-\end{table}
-
-\begin{itemize}
-
-    \item Caso de uso CU-01 (Iniciar sesión (Usuario registrado)): Este caso de uso corresponde al RF-09, y le permite a cualquier usuario registrado ingresar al sistema mediante sus credenciales para acceder a las funcionalidades según su rol.
-
-    \item Caso de uso CU-02 (Cargar historial de consumo (administrador)): Este caso de uso corresponde al RF-01, y permite al administrador seleccionar y cargar el archivo csv con el historial de consumo.
-
-    \item Caso de uso CU-03 (Iniciar procesamiento(Administrador)): Corresponde al requerimiento RF-02, que hace referncia a que una vez cargado el archivo, el administrador debe de seleccionar la opcion "Procesar archivo" para que el sistema inicialice el procesamiento de los datos. 
-
-    \item Caso de uso CU-04 (Consultar demanda pronosticada (Personal de inventario)): Este caso de uso corresponde al RF-02 y al RF-05, y le permite al usuario consultar la demanda mensual estimada para cada producto una vez el archivo ya ha sido procesado.
-
-    \item Caso de uso CU-05 (Consultar estado del inventario (Personal de inventario)): Este caso de uso corresponde a RF-04, que permite al usuario visualizar tanto el inventario disponible como los productos que presentan condiciones de alerta.
-
-    \item Caso de uso CU-06 (Consultar las recomendaciones de reposicion y presupuesto (Personal del inventario)): Corresponde al requisito RF-03, y le permite al usuario consultar las recomendaciones generadas por el sistema y la informacion asociada al presupuesto disponible
-
-    \item Caso de uso CU-07 (Confirmar pedido (Personal de inventario)): Este se relaciona directamente con el RF-06, y permite marcar como completado las recomendaciones de pedido generadas por Thary. Los pedidos confirmados quedan registrados con el nombre de la persona que los completa.
-    \item Caso de uso CU-08 (Gestionar cuentas de usuario(administrador)): Le permite al administrador el poder crear nuevas cuentas al personal del inventario
-    \item Caso de uso CU-09 (Consultar asistente virtual (Usuario registrado)): Este caso de uso corresponde al RF-10, y le permite a cualquier usuario, sin importar su rol dentro del sistema, resolver dudas sobre el funcionamiento de Thary mediante un chatbot implementado con la API de Ollama.
-\end{itemize}
-
-Todos los casos de uso se documentan individualmente en la especificacion SRS presentada en el Anexo A, la cual contempla detalles como objetivo, actor principal, precondiciones y postcondiciones, flujo principales y alternativos.
-
-Elementos como las precondiciones se establecen antes de iniciar una funcionalidad, mientras que las postcondiciones describen cual es el estado esperado del sistema al finalizar el proceso, es de esta manera que realizar una correcta especificacion de casos permite establecer una base a la hora de continuar con el proceso de diseño de arquitectura e implementacion de servicios.
+\input{sections/especificacion_requisitos.tex}
 
 \subsubsection{Diseño de la Arquitectura}
-
-El sistema Thary fue diseñado basandose en una organizacion pipeline para el componente de prediccion y un estilo arquitectonico en capas de las cuales se distinguen tres principales:
-
-\begin{itemize}
-    \item Capa de Presentacion: Esta capa es la reponsable de funcionalidades como carga de archivos, visualizacion de resultados, registro de pedidos y demas funcionalidades relacionadas con toda la interaccion que el usuario final va a tener con el sistema.
-    \item Capa de Control: Esta capa es la encargada de recibir todas las solicitudes que el usaurio le haga a la aplicacion, y devolver los resultados esperados a la capa de presentacion
-    \item Capa de servicios de dominio: En esta capa se encuentra el componente de prediccion organizado como un pipeline secuencial compuesto por las diferentes etapas del sistema, en general, en esta capa se concentra toda la logica de Thary. Dentro de esta misma capa tambien se ubica el modulo del asistente conversacional, el cual se comunica con un modelo de lenguaje ejecutado localmente a traves de la API de Ollama, en lugar de depender de un servicio externo en la nube.
-\end{itemize}
-
-En cuanto a porque se decidio llevar la organizacion mediante un pipeline, esta desicion se tomo debido a que el proceso de prediccion de demanda, por su naturaleza, corresponde a un flujo secuencial de transformacion de los datos, por lo que el uso de esta estructuta facilita que se pueda separar responsabilidades de una manera mas sencilla y la trazabilidad de los resultados obtenidos. 
-
-Por otro lado, a la hora de elegir como se manejaria la persistencia de la informacion, se opto por simplemente utilizar archivos estructurados, en lugar de utilizar algun motor de base de dato relacional. Esta desicion se tomo considerando el alcance del proyecto y de esta manera, evitando involucrar complejidad adicional al mismo. Aun asi, la arquitectura de Thary contempla el aislamiento de los datos para cada organizacion, de manera que todas cuentan con un espcio independiente evitando que puedan acceder a informacion de otro usuario. 
-
-\paragraph{Escenarios Arquitecturales}
-% Guia: escenarios de calidad (rendimiento, disponibilidad, seguridad) que
-% guian la arquitectura.
-Para garantizar que Thary cuenta con una arquitectura que es capaz de responder a los atributos de calidad necesarios para un proyecto con sus caracteristicas, se plantaron los siguientes escenarios:
-\begin{itemize}
-    \item Escenario 1 (Confiabilidad ante datos escasos): Este escenario hace referencia a que cuando un usuario carge el historial de un producto con menos de cuatro meses de registros, Thary no debe de fallar ni excluir el producto, en su lugar, debe de utilizar un metodo de estimacion de respaldo, como la media movil. Esto le aporta valor al sistema cuando no exista suficiente informacion historica para usar un modelo mas complejo.
-    \item Escenario 2 (Desempeño ante catologos extensos): Cuando se procesa un archivo con un numero alto de productos diferentes, los calculos de variables como puntos de reposicion y cantidaddes sugeridas deben de poder completarse de manera eficiente, sin que el tiempo de procesamiento se degrade de forma desproporcionada al tamaño del catalogo.
-    \item Escenario 3 (Confidencialidad de la informcion): En este escenario se tiene en cuenta que Thary debe garantizar que los datos relacionados con el inventario y el historial de consumo de la organizacion, no se transmitan a ningun servicio externo del que Thary se encuentra alojado, incluyendo las consultas que un usuario le haga al asistente conversacional.
-    \item Escenario 4 (Aislamiento entre organizaciones): Al trabajar con tantos usuarios/administradoes, lo mas probable es que en algun moemtno, al menos dos organizaciones distintar usen el sistema de manera simultane, Thary debe asegurarse que ningun tipo de dato quede expuesto ni pueda ser modificado por otra organizacion 
-    \item Escenario 5 (Adaptabilidad del formato de datos): Este escenario se refiere a que cuando se cargue un archivo que pertenezca a un dominio diferente al caso de estudio principal, el cual fue salud, Thary tiene que ser capaz de reconocer y normalizar las columnas sin tener que modificar el codigo.
-\end{itemize}
-
-Estos escenarios permiten poder verificar que las desiciones arquitectonicas tomadas respondan a las necesidades que tiene el sistema, facilitando que posteriormente se pueda comprobar el funcionamiento de Thary
-\paragraph{Análisis de Alternativas y Decisiones de Diseño (ADRs)}
-% Guia: alternativas evaluadas y decisiones de arquitectura (ADR):
-% contexto, decision, consecuencias.
-
-Las decisiones de diseño que fueron adoptadas durante todo el desarrollo del sistema Thary y las alternativas consideradas.
-
-\begin{itemize}
-    \item Decision 1 (Persistencia basada en archivos frente a base de datos relacional): Debido a que el sistema va a trabajar con informacion relacionada con los usuarios y los historiales de consumo que compartan con el sistema, se tuvo que seleccionar la manera mas adecuada de almacenar dicha informacion. Teniendo en cuenta factores como el alcance del proyecto, se decidio que se utilizaran archivos estructurados independientes para cada la informacion de cada organizacion. La eleccion de esta alternativa se tomo con la intencion de poder simplificar el despliegue y la administracion del sistema, aunque cuenta con limitaciones como una menor capacidad para manejar consultas concurrentes a gran escala.
-    \item Decision 2 (Seleccion del modelo de predicccion por cada): Existen distintos productos del inventario que pueden presentar patrones de demanda diferentes entre si, teniendo esto en cuenta, al inicio del desarollo se propusieron dos alternativas, la primera era generalizar para todo el sistema el uso de un mismo modelo, y la segunda implementar tres modelos distintos. Se opto que la mejor opcion es entrenar diferentes modelos candidatos (XGBoost, regresion lineal, y media movil), comparar los resultados de los 3 y dependiendo de si el consumo es estable, esporadico o muy variable, selecccionar el que presente el menor error de prediccion
-    \item Decision 3 (Asistente conversacional o un servivio externo): Puede que los usuarios del sistema tengan dudas sobre el funcionamiento de Thary, pero que no quieran tener que salir del sistema para consultar como funciona. Teniendo esto en cuenta, se plantearon dos alternativas, la primera consistia en implemenar un servicio de inteligencia artificial en la nube, o implementar un chatbot ejecutado localmente mediante la api de Ollama. Al final, se opto por esta ultima, debido a factores como de presupuesto, seguridad, ya que asi nos aseguramos que ninguna consulta realizada por el usuario con informacion sensible tenga que salir del entorno donde esta alojado el sistema, aunque es probable que la calidad de las respuestas del asistente dependen del modelo local disponible, y su disponibilidad depende de que el servicio Ollama se encuentre corriendo sin problemas.
-    \item Decision 4 (Validacion temporal y validacion cruzada): A la hora de validar los resultados de Thary, los cuales son conseguidos a partir de series de tiempo (historial de consumo mensual), se penso en dos propuestas, la primera se basaba en hacer una validacion cruzada aleatoria, que supone hacer una particion sin considerar el orden cronologico, mientras que la segunda se basaba en una validacion cruzada temporal de origen movil, en el que se generan varias particiones de entrenamiento y pruebas consecutivas. Se decicio optar por la segunda opcion, 
-\end{itemize}
-        
-\paragraph{Representación de la Arquitectura (Modelo C4)}
-% Guia: diagramas C4: contexto, contenedores, componentes y (si aplica) codigo.
-
-% ---------------------------------------------------------------------
-% EJEMPLO DE FIGURA (borrelo y ponga la suya)
-%   - guarde su imagen en la carpeta images/
-%   - \includegraphics[width=...]{nombre-del-archivo}  (sin la extension)
-%   - el \label debe ir DESPUES del \caption
-%   - se referencia en el texto con \ref{fig:c4-contexto}
-% ---------------------------------------------------------------------
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\textwidth]{templatefigures/Nivel1_Contexto}
-    \caption{Diagrama de contexto del sistema (nivel 1 del modelo C4).}
-    \label{fig:c4-contexto}
-\end{figure}
-
-Como se observa en la Fig. \ref{fig:c4-contexto}, el sistema interactúa con los actores identificados en la sección \ref{sec:stakeholders} y como se implemento el uso de Ollama como asistente conversacional.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\textwidth]{templatefigures/Nivel2_Contenedores}
-    \caption{Diagrama de contenedores del sistema (nivel 2 del modelo C4).}
-    \label{fig:c4-contenedor}
-\end{figure}
-
-En la figura \ref{fig:c4-contenedor} se puede observar como se organizaron los contenedores del sistema Thary, factores como la aplicacion web, el motor de prediccion, el almacenamiento de datos y el asistente conversacional son contenedores independientes que se comunican entre si para el correcto funcionamiento del sistema. 
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\textwidth]{templatefigures/Nivel3_Componentes}
-    \caption{Diagrama de componentes del sistema (nivel 3 del modelo C4).}
-    \label{fig:c4-componente}
-\end{figure}
-
-Finalmenente, el diagrama de componentes detalla a profundidad el funcionamiendo interno del motor de predicciones.
+\input{sections/diseño_arquitectura.tex}
 
 \subsubsection{Diseño Detallado}
-
-\paragraph{Modelo de Datos}
-
-Conceptualmente, el modelo de datos del sistema Thary utiliza un modelo relacional, en el que la informacion se organiza en 12 tablas relacionadas entre si, definidas mediante claves foraneas: empresas, usuarios, pedidos, actividad (el historial de movimientos), y corridas. Esta ultima es la tabla principal que representa cada vez que un usuario (administrador) sube un CSV, junto con 7 tablas que vienen de cada una de las corridas: \texttt{segmentacion}, \texttt{metricas\_modelos}, \texttt{predicciones\_backtest}, \texttt{pronostico\_futuro}, \texttt{reorder}, \texttt{validacion\_cruzada\_folds}, \texttt{validacion\_cruzada\_resumen}. Cada archivo que se sube crea una fila nueva en corridas, aunque no se borra el historial, la app solo muestra la corrida más reciente.
-
-Logica y Fisicamente, el modelo hace uso de MySql (motor de base de datos relacional), el sistema se conecta a este usando SQLAlchemy. En la tabla \texttt{empresas}, se almacena el id y el nombre de cada organizacion que es registrada en el sistema, por otra parte, en la tabla \texttt{usuarios} se guarda la informacion del usuario, como su nombre, correo electronico, contraseña (cifrada), el rol, ya sea admin o empleado, y el id de la empresa a la que pertenece. La tabla pedido también se almacena de forma independiente en el archivo \texttt{pedidos.json}, este archivo está separado de los resultados del procesamiento y es único para cada empresa, así se garantiza que cuando se cargue un nuevo historial, no se elimine el registro de los pedidos ya confirmados. Por otro lado, las entidades de registro de consumo historico, recomendacion de reposicion y comportamiento del producto son generadas despues de que el sistema procese el archivo CSV que fue cargado por el administrador. Estos resultados se guardan en los archivos \texttt{segmentacion\_productos.csv} y \texttt{reorder\_table.csv}, en una carpeta de resultados distinta para cada empresa.
-
-No toda la informacion se queda en la base de datos, ya que los archivos CSV que el usuario sube, las graficas generadas y el modelo XGBoost entrenado se siguen almacenando como archivos en disco, los cuales estan organizados en carpetas por empresa. Solo se traslada a MySQL la informacion que pueda estructurarse en filas y columnas. 
-% Guia: modelo conceptual, logico y fisico.
-% El diccionario de datos va en el Anexo B.
-%
-% ---------------------------------------------------------------------
-% EJEMPLO DE TABLA (borrela y ponga la suya)
-%   - en esta plantilla el rotulo va ENCIMA de la tabla
-%   - la columna X reparte el ancho sobrante automaticamente
-%   - se referencia en el texto con \ref{tab:entidades}
-% ---------------------------------------------------------------------
-\begin{table}[H]
-    \centering
-    \caption{Entidades principales del modelo de datos.}
-    \label{tab:entidades}
-    \begin{tabularx}{\textwidth}{lXl}
-        \toprule
-        \textbf{Entidad} & \textbf{Descripción} & \textbf{Cardinalidad} \\
-        \midrule
-        Empresa & Organización que utiliza el sistema, identificada de forma única. & 1 : N \\
-        Usuario & Persona registrada en el sistema, con un rol (administrador o personal de inventario), asociada a una empresa mediante clave foránea. & 1 : N \\
-        Pedido & Proveedor, cantidad, costo y usuario responsable de un pedido confirmado, asociado a una empresa. & 1 : N \\
-        Corrida & Registro de un procesamiento de archivo, con sus parámetros y métricas globales; tabla padre de los resultados detallados del pipeline. & 1 : N \\
-        Resultados de la corrida & Conjunto de tablas hijas de Corrida: segmentación, métricas por modelo, predicciones de backtest, pronóstico futuro, reposición y validación cruzada. & N : 1 (respecto a Corrida) \\
-        Actividad & Bitácora de acciones realizadas por los usuarios (subir archivo, confirmar/deshacer pedido, crear usuario), asociada a una empresa. & 1 : N \\
-        \bottomrule
-    \end{tabularx}
-\end{table}
-
-
-La Tabla \ref{tab:entidades} resume las entidades del modelo con el detalle de cada campo y su cardinalidad
-
-----
-
-\begin{minted}{python}
-ETIQUETAS_COLUMNAS_OBLIGATORIAS = {
-    "fecha": "Fecha (o Date, Sale_Date)",
-    "producto_id": "Producto (o Product, Product_ID)",
-    "demanda": "Demanda (o Demand, Sales, Quantity_Sold)",
-}
-
-
-def cargar_y_limpiar(ruta_archivo):
-    try:
-        df = pd.read_csv(ruta_archivo)
-    except pd.errors.EmptyDataError:
-        raise ValueError("El archivo está vacío. Sube un CSV con al menos una fila de datos.")
-    except pd.errors.ParserError:
-        raise ValueError(
-            "No se pudo leer el archivo como CSV. Verifica que sea un archivo de texto "
-            "separado por comas (por ejemplo, no un Excel renombrado a .csv)."
-        )
-    except UnicodeDecodeError:
-        raise ValueError(
-            "El archivo tiene una codificación de caracteres que el sistema no reconoce. "
-            "Guárdalo como CSV con codificación UTF-8 e intenta de nuevo."
-        )
-
-    if df.empty:
-        raise ValueError("El archivo no tiene filas de datos, solo encabezados.")
-
-    df = df.rename(columns={
-        "Sale_Date": "fecha", "Date": "fecha", "date": "fecha", "Fecha": "fecha",
-        "Product_ID": "producto_id", "Product": "producto_id", "Producto": "producto_id",
-        "Quantity_Sold": "demanda", "Sales": "demanda", "Demand": "demanda", "Demanda": "demanda",
-# ... variantes adicionales para precio, inventario, categoria, proveedor y lead time
-    })
-
-    columnas_faltantes = [c for c in ETIQUETAS_COLUMNAS_OBLIGATORIAS if c not in df.columns]
-    if columnas_faltantes:
-        faltan = ", ".join(ETIQUETAS_COLUMNAS_OBLIGATORIAS[c] for c in columnas_faltantes)
-        raise ValueError(
-            f"Al archivo le falta al menos una columna obligatoria: {faltan}. "
-            "Agrégala al CSV (con ese nombre exacto u otro de los aceptados) y vuelve a subirlo."
-        )
-\end{minted}
-
-En esta sección del archivo (\texttt{services/prediccion/carga\_datos.py}), se observa la etapa de carga y limpieza de los datos. Para garantizar que el sistema pueda adaptarse y funcionar para todo tipo de dominio de inventarios, se normalizan los nombres de las columnas de los archivos CSV con el fin de mantener un esquema más heterogéneo, de manera que el sistema pueda aceptar archivos de distintos dominios sin tener la necesidad de modificar el resto del pipeline. Para facilitarle al usuario el proceso de cargar un archivo, se capturan los errores mas comunes para el sistema a la hora de leer un CSV y se muestran a manera de mensaje de error en un lenguaje sencillo y facil de entender.
-
-Otra practica que fue aplicada es el manejo de errores con mensajes dirigidos al usuario final, de esta manera, se evita que se propaguen los errores internos del sistema y el usuario sabe que es lo que esta ocurriendo y que es lo que se debe hacer para resolverlo.
-\paragraph{Diseño UX/UI}
-% Guia: flujos de usuario, wireframes y criterios de usabilidad y accesibilidad.
-Para realizar el diseño de interaccion de Thary, se decidio separar las pantallas en dos: Una dirigida exclusivamente a los administradores y otra dirigida a los empleados del inventario. Al ingresar al sistema, un usuario con el rol de administrador sigue el siguiente flujo: El administrador inicia en la pantalla de carga de archivo (\textit{index}), al haber cargado el archivo correctamnete y que este sea valido, se le redirige automaticamente al dashboard con los resultados. En el sidebar, ademas de encontrar demas opciones como estado del inventario, presupuesto y pedidos, el administrador puede navegar hacia la gestion de usuarios, donde puede crear cuentas nuevas para su personal de inventario. 
-
-El flujo de los empleados es bastante similar, con la diferencia de que el perfil de un empleado cuenta con menos privilegios que el perfil de un administrador, por lo que al iniciar sesion, el empleado inicia directamente en el dashboard de la demanda pronosticada en base al csv que ya anteriormente fue cargado al sistema por el administrador que creo su cuenta, ya desde ahi, puede navegar a las mismas funcionalidades del analisis de los datos que el administrador: estado del inventario, presupuesto y pedidos. 
-
-Una vez finalizadas sus tareas, los usuarios pueden cerrar sesion en su cuenta.
-
-Los criterios de usabilidad que fueron tomados en cuenta fueron:
-
-\begin{itemize}
-    \item Uso de alertas visuales codificadas por color para indicar facilmente que productos se encuentran en o por debajo de su punto de reposicion y requieren ser reabastecidos inmediatamente.
-    \item Se estandarizo el uso del formato de la moneda colombiana en la seccion de presupuestos y montos monetarios.
-    \item Cuando un usuario con el rol de empleado inicie sesion, pero su respectivo administrador no subio ningun archivo csv, en ves de ver la pantalla del dashboard, vera una pantalla con el mensaje de que una vez el admin cargue el archivo, podra ver los analisis.
-    \item Se incorporo un boton de acceso a un asistente conversacional que despliega una ventana emergente de chat en la que podra resolver sus dudas sobre el funcionamiento del sistema y el analisis de los datos.
-\end{itemize}
-
-En cuanto a criterios de accesibilidad, se tomaron en cuenta los criterios de usabilidad, pero no se tomaron en cuenta mecanismos adicionales para hacer mas accesible el sistema como algun tipo de lector de pantalla para personas con discapacidad visual, o implementar un sistema de navegacion completa por teclado para alguna persona que no pueda usar un mouse. Estas falencias se reconocen como una limitacion del diseño actual, y se espera mejorarlas en el futuro. 
+\input{sections/diseño_detallado.tex}
 
 \subsubsection{Análisis de Amenazas y Diseño Seguro}
 % Guia: modelado de amenazas (STRIDE u otro) y controles de diseno seguro.
-Debido a su naturaleza, Thary es un sistema que maneja informacion que podria considerarse potencialmente sensible, como los datos de los usuarios, de consumo, entre otros. Teniendo esto en cuenta, se realizo un analisis en el que se identificaron las amenazas siguiendo el modelado de amenzasas STRIDE:
-
-\begin{itemize}
-    \item \textbf{Suplantación de identidad}: mitigada mediante autenticación basada en usuario y contraseña, almacenando esta última mediante un algoritmo de hash (\textit{scrypt}) y nunca en texto plano.
-    \item \textbf{Manipulación de datos}: Para evitar la manipulacion de los datos, se garantiza que la cantidad y el costo de un pedido confirmado se tome siempre del análisis generado por el sistema, y no de valores que el usuario pueda modificar en el formulario de confirmación.
-    \item \textbf{Repudio}: Aunque Thary no cuenta con un sistema en el que se registre quien inicio sesion y cuando, a la hora de confirmar un pedido, en \texttt{pedidos.json} se registra el nombre del usuario responsable, y la fecha y hora de confirmacion, lo que motoga el riesgo a la hora de confirmar los pedidos, pero no para demas acciones del sistema com la carga de un archivo y la creacion de un usaurio.
-    \item \textbf{Divulgación de información}: Se evita que exista divulgacion de informacion mediante el aislamiento de los datos por empresa, de forma que ninguna organización pueda acceder a los datos de otra.
-    \item \textbf{Denegacion de servicio}:  
-    \item \textbf{Elevación de privilegios}: Para evitar este riesgo, se implemento un control de acceso basado en roles, de forma que las funciones de carga de archivos, procesamiento y consulta del panel técnico estén restringidas exclusivamente al perfil administrador.
-\end{itemize}
+\input{sections/analisis_amenazas.tex}

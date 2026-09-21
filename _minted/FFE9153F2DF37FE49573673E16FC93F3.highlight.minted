@@ -1,0 +1,11 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+    \PYG{c+c1}{\PYGZsh{} ...}
+    \PYG{c+c1}{\PYGZsh{} (Inventory Demand Forecast (XGBoost Reg))}
+    \PYG{n}{stats\PYGZus{}cols} \PYG{o}{=} \PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}demanda\PYGZus{}total\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}media\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}desviacion\PYGZdq{}}\PYG{p}{]}
+    \PYG{n}{df\PYGZus{}mensual} \PYG{o}{=} \PYG{n}{df\PYGZus{}mensual}\PYG{o}{.}\PYG{n}{merge}\PYG{p}{(}
+        \PYG{n}{producto\PYGZus{}comportamiento}\PYG{p}{[[}\PYG{l+s+s2}{\PYGZdq{}producto\PYGZus{}id\PYGZdq{}}\PYG{p}{]} \PYG{o}{+} \PYG{n}{stats\PYGZus{}cols}\PYG{p}{]}\PYG{o}{.}\PYG{n}{rename}\PYG{p}{(}
+            \PYG{n}{columns}\PYG{o}{=}\PYG{p}{\PYGZob{}}\PYG{l+s+s2}{\PYGZdq{}media\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}media\PYGZus{}producto\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}desviacion\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}desviacion\PYGZus{}producto\PYGZdq{}}\PYG{p}{\PYGZcb{}}
+        \PYG{p}{),}
+        \PYG{n}{on}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}producto\PYGZus{}id\PYGZdq{}}\PYG{p}{,} \PYG{n}{how}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}left\PYGZdq{}}
+    \PYG{p}{)}
+\end{MintedVerbatim}

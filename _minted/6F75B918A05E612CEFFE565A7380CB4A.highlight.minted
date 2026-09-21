@@ -1,0 +1,5 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+    \PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{crear\PYGZus{}usuario}\PYG{p}{(}\PYG{n}{nombre}\PYG{p}{,} \PYG{n}{username}\PYG{p}{,} \PYG{n}{email}\PYG{p}{,} \PYG{n}{password}\PYG{p}{,} \PYG{n}{rol}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}empleado\PYGZdq{}}\PYG{p}{,} \PYG{n}{empresa\PYGZus{}id}\PYG{o}{=}\PYG{k+kc}{None}\PYG{p}{):}
+    \PYG{c+c1}{\PYGZsh{}...}
+    \PYG{n}{password\PYGZus{}hash} \PYG{o}{=} \PYG{n}{generate\PYGZus{}password\PYGZus{}hash}\PYG{p}{(}\PYG{n}{password}\PYG{p}{)}
+\end{MintedVerbatim}

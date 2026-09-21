@@ -1,0 +1,9 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{construir\PYGZus{}features}\PYG{p}{(}\PYG{n}{df\PYGZus{}mensual}\PYG{p}{,} \PYG{n}{producto\PYGZus{}comportamiento}\PYG{p}{):}
+    \PYG{c+c1}{\PYGZsh{} ...}
+    \PYG{n}{df\PYGZus{}mensual} \PYG{o}{=} \PYG{n}{df\PYGZus{}mensual}\PYG{o}{.}\PYG{n}{merge}\PYG{p}{(}
+        \PYG{n}{producto\PYGZus{}comportamiento}\PYG{p}{[[}\PYG{l+s+s2}{\PYGZdq{}producto\PYGZus{}id\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}categoria\PYGZus{}abc\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}variabilidad\PYGZdq{}}\PYG{p}{]],}
+        \PYG{n}{on}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}producto\PYGZus{}id\PYGZdq{}}\PYG{p}{,} \PYG{n}{how}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}left\PYGZdq{}}
+    \PYG{p}{)}
+
+\end{MintedVerbatim}

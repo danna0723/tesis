@@ -1,0 +1,58 @@
+La segunda etapa del pipeline (\texttt{app/services/prediccion/segmentacion.py}) se basa en poder clasificar cada producto segun dos criterios principales:
+
+\begin{itemize}
+    \item Clasificacion ABC: Esta clasificacion permite poder identificar cual es la importancia relativa de cada producto dentro de la demanda total. Se calcula ordenando los productos de mayor a menor en base a su demanda total y se guarda su porcentaje. 
+    
+    Los productos que en conjunto representan hasta el 80\% de la demanda, se clasifican como categoria A, es decir, los mas importantes. Los que se encuentran entre el 80\% y el 95\% se clasifican como categoria B. El resto de productos se clasifican como categoria C.
+    
+    Esta clasificacion permite que en el dashbpard, el usuario pueda entender que tan importante y que tan erratico es el consumo de cada producto 
+    
+    \item Variabilidad: La variabilidad del consumo de los productos permite poder identificar cuales son los productos que presentan un comportamiento mas estable y cuales son los que presentan un comportamiento mas irregular, se calcula en base al coeficiente de variacion (la desviacion estandar dividida entre la media de la demanda), clasificando a cada producto como de variabilidad Baja (menor a 0.5), Media (entre 0.5 y 1) o Alta (mayor o igual a 1).
+
+\end{itemize}
+
+\begin{minted}{python}
+def calcular_comportamiento_producto(df, df_mensual):
+    producto_comportamiento = (
+        df_mensual.groupby("producto_id")["demanda"]
+        .agg(demanda_total="sum", media="mean", desviacion="std")
+        .reset_index()
+    )
+    producto_comportamiento["cv"] = (
+        producto_comportamiento["desviacion"] / producto_comportamiento["media"]
+    ).replace([np.inf, -np.inf], np.nan)
+
+    def clasificar_variabilidad(cv):
+        if pd.isna(cv):
+            return "Sin datos"
+        if cv < 0.5:
+            return "Baja"
+        elif cv < 1:
+            return "Media"
+        else:
+            return "Alta"
+
+    producto_comportamiento["variabilidad"] = producto_comportamiento["cv"].apply(clasificar_variabilidad)
+
+    producto_comportamiento = producto_comportamiento.sort_values("demanda_total", ascending=False).reset_index(drop=True)
+    total_demanda = producto_comportamiento["demanda_total"].sum()
+    if total_demanda > 0:
+        producto_comportamiento["demanda_acumulada_pct"] = producto_comportamiento["demanda_total"].cumsum() / total_demanda
+    else:
+        producto_comportamiento["demanda_acumulada_pct"] = 0
+
+    def clasificar_abc(pct):
+        if pct <= 0.80:
+            return "A"
+        elif pct <= 0.95:
+            return "B"
+        else:
+            return "C"
+
+    producto_comportamiento["categoria_abc"] = producto_comportamiento["demanda_acumulada_pct"].apply(clasificar_abc)
+
+    # ...
+    return producto_comportamiento
+\end{minted}
+
+Es en esta etapa en la que se calculan estadisticas historicas como (\texttt{media\_producto} y \texttt{desviacion\_producto}).

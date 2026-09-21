@@ -1,0 +1,9 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+    \PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{pedido\PYGZus{}confirmar}\PYG{p}{():}
+        \PYG{k}{if} \PYG{n}{confirmados\PYGZus{}ahora}\PYG{p}{:}
+            \PYG{n}{lista} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}, \PYGZdq{}}\PYG{o}{.}\PYG{n}{join}\PYG{p}{(}\PYG{n}{seleccionados}\PYG{p}{[:}\PYG{l+m+mi}{5}\PYG{p}{])} \PYG{o}{+} \PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}…\PYGZdq{}} \PYG{k}{if} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{seleccionados}\PYG{p}{)} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{5} \PYG{k}{else} \PYG{l+s+s2}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+            \PYG{n}{registrar\PYGZus{}actividad}\PYG{p}{(}
+                \PYG{n}{session}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}empresa\PYGZus{}id\PYGZdq{}}\PYG{p}{],} \PYG{n}{session}\PYG{o}{.}\PYG{n}{get}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}username\PYGZdq{}}\PYG{p}{),} \PYG{n}{usuario}\PYG{p}{,}
+                \PYG{l+s+s2}{\PYGZdq{}pedido\PYGZus{}confirmado\PYGZdq{}}\PYG{p}{,} \PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}Confirmó }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{confirmados\PYGZus{}ahora}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{ pedido(s): }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{lista}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
+            \PYG{p}{)}
+\end{MintedVerbatim}

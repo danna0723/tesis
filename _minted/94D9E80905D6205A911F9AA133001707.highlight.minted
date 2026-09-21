@@ -1,0 +1,6 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+    \PYG{c+c1}{\PYGZsh{} ...}
+    \PYG{c+c1}{\PYGZsh{} (Inventory Demand Forecast (XGBoost Reg))}
+    \PYG{k}{if} \PYG{l+s+s2}{\PYGZdq{}inventario\PYGZdq{}} \PYG{o+ow}{in} \PYG{n}{df\PYGZus{}mensual}\PYG{o}{.}\PYG{n}{columns}\PYG{p}{:}
+        \PYG{n}{df\PYGZus{}mensual}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}inventario\PYGZus{}lag\PYGZus{}1\PYGZdq{}}\PYG{p}{]} \PYG{o}{=} \PYG{n}{df\PYGZus{}mensual}\PYG{o}{.}\PYG{n}{groupby}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}producto\PYGZus{}id\PYGZdq{}}\PYG{p}{)[}\PYG{l+s+s2}{\PYGZdq{}inventario\PYGZdq{}}\PYG{p}{]}\PYG{o}{.}\PYG{n}{shift}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{)}
+\end{MintedVerbatim}

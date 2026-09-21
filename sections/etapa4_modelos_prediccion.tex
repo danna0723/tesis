@@ -1,0 +1,22 @@
+Esta etapa se reparte en los siguientes archivos:
+
+\begin{itemize}
+\item \texttt{app/services/prediccion/modelos.py}
+\item \texttt{app/services/prediccion/regresion\_lineal.py}
+\end{itemize}
+
+Al incio del archivo \texttt{modelos.py}, se define 
+
+
+las funciones que permiten entrenar y evaluar los tres modelos de demanda que se van a utilizar en el sistema: Media Móvil, Regresión Lineal y XGBoost.
+
+
+Se entrenan los tres modelos de demanda con los que va a trabajar del sistema: Media Móvil, Regresión Lineal y XGBoost, y se evalua su desempeño y se elige el mejor modelo para cada producto:
+
+\subparagraph{Media Móvil.}
+
+Media movil hace referencia al metodo mas simple de los tres. La tecnica con la que se implemento tambien se basa fuertemente en el repositorio "Demand Forecasting \& Inventory Optimization for Consumer Products" (https://github.com/dhruvi002/demand-forecast-inventory-optimizer), y consiste en simplemente reutilizar la columna de {media\_movil\_3} que ya se tienen desde la etapa anterior de features. No se tiene que hacer ningun entrenemiento. 
+
+\begin{minted}{python}
+
+\end{minted}

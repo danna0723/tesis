@@ -1,0 +1,12 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+    \PYG{c+c1}{\PYGZsh{} ...}
+    \PYG{c+c1}{\PYGZsh{} (Inventory Demand Forecast (XGBoost Reg))}
+    \PYG{n}{feature\PYGZus{}history} \PYG{o}{=} \PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}lag\PYGZus{}1\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}lag\PYGZus{}2\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}lag\PYGZus{}3\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}media\PYGZus{}movil\PYGZus{}3\PYGZdq{}}\PYG{p}{]}
+    \PYG{n}{df\PYGZus{}model} \PYG{o}{=} \PYG{n}{df\PYGZus{}mensual}\PYG{o}{.}\PYG{n}{dropna}\PYG{p}{(}\PYG{n}{subset}\PYG{o}{=}\PYG{n}{feature\PYGZus{}history}\PYG{p}{)}\PYG{o}{.}\PYG{n}{copy}\PYG{p}{()}
+
+    \PYG{k}{if} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{df\PYGZus{}model}\PYG{p}{)} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{:}
+        \PYG{k}{raise} \PYG{n+ne}{ValueError}\PYG{p}{(}
+            \PYG{l+s+s2}{\PYGZdq{}Ningún producto tiene al menos 3 meses seguidos de historial, que es lo mínimo \PYGZdq{}}
+            \PYG{l+s+s2}{\PYGZdq{}para calcular tendencias. Sube un archivo con más meses continuos de datos.\PYGZdq{}}
+        \PYG{p}{)}
+\end{MintedVerbatim}
