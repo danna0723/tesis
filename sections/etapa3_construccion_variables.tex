@@ -54,7 +54,7 @@ Por otra parte, la metodologia de implementar el uso de lags, tambien se tomo de
 
 \begin{minted}{python}
     # ... 
-    # (Demand Forecasting & Inventory Optimization for Consumer Products)
+    # (Ejemplo 1 - SKU Demand Forecasting)
     df_mensual["lag_1"] = df_mensual.groupby("producto_id")["demanda"].shift(1)
     df_mensual["lag_2"] = df_mensual.groupby("producto_id")["demanda"].shift(2)
     df_mensual["lag_3"] = df_mensual.groupby("producto_id")["demanda"].shift(3)
@@ -75,7 +75,7 @@ En cuanto a la implementacion, se incluyo en la funcion de (\texttt{construir\_f
 
 \begin{minted}{python}
     # ...
-    # (Demand Forecasting & Inventory Optimization for Consumer Products)
+    # (Ejemplo 1 - SKU Demand Forecasting)
 
     df_mensual["media_movil_3"] = df_mensual.groupby("producto_id")["demanda"].transform(
         lambda x: x.shift(1).rolling(3).mean()
@@ -88,7 +88,7 @@ En cuanto a la implementacion, se incluyo en la funcion de (\texttt{construir\_f
     )
 \end{minted}
 
-Por otra parte, para la construccion de la etapa de Features tambien se tomo en cuenta el repositorio en Kaggle \textit{Forecasting Inventory Demand Using XGBoost} \cite{ejemplo3_ksmooi_inventorydemand} o \textit{Ejemplo 3 (XGBoost)} \cite{ejemplo2_demandforecast}. De este repositorio, se tomo el uso de el promedio del producto, pero esta vez, calculados en base a todo el historial completo y no solo en base a los ultimos 3 o 6 meses. 
+Por otra parte, para la construccion de la etapa de Features tambien se tomo en cuenta el repositorio en Kaggle \textit{Forecasting Inventory Demand Using XGBoost} \cite{ejemplo3_ksmooi_inventorydemand} o \textit{Ejemplo 3 (XGBoost)} \cite{ejemplo3_ksmooi_inventorydemand}. De este repositorio, se tomo el uso de el promedio del producto, pero esta vez, calculados en base a todo el historial completo y no solo en base a los ultimos 3 o 6 meses. 
 
 Como extension propuesta por el proyecto, junto al promedio tambien se incluyo la desviacion del producto, esto para poder seguir una misma estructura en todo el sistema, ya que si se tiene la (\texttt{media\_movil\_3}) y la (\texttt{desviacion\_movil\_3}), es decir, el nivel y la variabilidad de los ultimos 3 meses, es conveniente tener la media y desviacion de todo el historial del producto.
 
@@ -96,7 +96,7 @@ Estos valores ya fueron calculados en la etapa de segmentacion, y simplemente so
 
 \begin{minted}{python}
     # ...
-    # (Inventory Demand Forecast (XGBoost Reg))
+    # (Forecasting Inventory Demand Using XGBoost)
     stats_cols = ["demanda_total", "media", "desviacion"]
     df_mensual = df_mensual.merge(
         producto_comportamiento[["producto_id"] + stats_cols].rename(
@@ -112,13 +112,12 @@ Despues, se calculca cuanto stock habia el mes anterior. La condicion (\texttt{i
 
 \begin{minted}{python}
     # ...
-    # (Inventory Demand Forecast (XGBoost Reg))
+    # (Forecasting Inventory Demand Using XGBoost))
     if "inventario" in df_mensual.columns:
         df_mensual["inventario_lag_1"] = df_mensual.groupby("producto_id")["inventario"].shift(1)
 \end{minted}
 
-En esta parte, se implemento otra idea del repositorio ``Demand Forecasting
-\textbackslash \& Inventory Optimization for Consumer Products'' para poder descartar las filas sin historial suficiente para tener los lags. Para esto, se define una lista con nueve nombres de las columnas obligatiorias para poder entrenar, con (\texttt{(dropna(subset=feature\_history))}) se revisan las 4 columnas y elimina cualquier fila que tenga un espacio vacio, posteriormente el resultado se guarda en (\texttt{(df\_model)}), que es la tabla final que se usara para entrenar el modelo.
+En esta parte, se implemento otra idea del \textit{Ejemplo 1 (SKU Demand Forecasting)} \cite{ejemplo1_demandforecast} para poder descartar las filas sin historial suficiente para tener los lags. Para esto, se define una lista con nueve nombres de las columnas obligatiorias para poder entrenar, con (\texttt{(dropna(subset=feature\_history))}) se revisan las 4 columnas y elimina cualquier fila que tenga un espacio vacio, posteriormente el resultado se guarda en (\texttt{(df\_model)}), que es la tabla final que se usara para entrenar el modelo.
 
 \begin{minted}{python}
     # ...

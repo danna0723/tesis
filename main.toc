@@ -57,40 +57,39 @@
 \contentsline {subparagraph}{Definicion de variables y funciones basicas}{53}{subparagraph*.30}%
 \contentsline {subparagraph}{Modelos de demanda}{55}{subparagraph*.31}%
 \contentsline {subparagraph}{XgBoost}{55}{subparagraph*.32}%
-\contentsline {subparagraph}{Media Móvil.}{55}{subparagraph*.33}%
-\contentsline {subparagraph}{XgBoost}{56}{subparagraph*.34}%
-\contentsline {subparagraph}{Regresion Lineal}{56}{subparagraph*.35}%
-\contentsline {paragraph}{Selección del campeón por producto}{56}{paragraph*.36}%
-\contentsline {paragraph}{Pronóstico futuro}{56}{paragraph*.37}%
-\contentsline {paragraph}{Cálculo de reposición (EOQ/ROP)}{56}{paragraph*.38}%
-\contentsline {paragraph}{Modelo de Datos}{56}{paragraph*.39}%
-\contentsline {paragraph}{Diseño UX/UI}{61}{paragraph*.43}%
-\contentsline {subsubsection}{\numberline {3.2.6}Análisis de Amenazas y Diseño Seguro}{68}{subsubsection.3.2.6}%
-\contentsline {subsection}{\numberline {3.3}Construcción, Integración y Despliegue}{71}{subsection.3.3}%
-\contentsline {paragraph}{Construcción}{71}{paragraph*.61}%
-\contentsline {paragraph}{Integración}{73}{paragraph*.62}%
-\contentsline {subparagraph}{Integración continua (CI)}{75}{subparagraph*.63}%
-\contentsline {paragraph}{Despliegue}{76}{paragraph*.64}%
-\contentsline {subsection}{\numberline {3.4}Plan de Verificación y Validación}{80}{subsection.3.4}%
-\contentsline {paragraph}{Estrategia de verificación}{80}{paragraph*.70}%
-\contentsline {paragraph}{Estrategia de validación del modelo de predicción}{80}{paragraph*.71}%
-\contentsline {paragraph}{Criterios de aceptación}{80}{paragraph*.72}%
-\contentsline {paragraph}{Plan de validación con usuarios}{80}{paragraph*.73}%
-\contentsline {section}{\numberline {4}Capítulo 4: Análisis de Resultados y Juicio de Ingeniería}{81}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Resultados de Verificación (Pruebas de Software)}{81}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Resultados de Validación (Evaluación del Usuario)}{81}{subsection.4.2}%
-\contentsline {subsubsection}{\numberline {4.2.1}Validación del modelo de predicción}{81}{subsubsection.4.2.1}%
-\contentsline {subsubsection}{\numberline {4.2.2}Consistencia mediante validación cruzada temporal}{82}{subsubsection.4.2.2}%
-\contentsline {subsection}{\numberline {4.3}Evaluación de la Seguridad y Estándares}{85}{subsection.4.3}%
-\contentsline {subsection}{\numberline {4.4}Análisis de Impactos de la Solución}{85}{subsection.4.4}%
-\contentsline {subsection}{\numberline {4.5}Conclusiones}{85}{subsection.4.5}%
-\contentsline {subsection}{\numberline {4.6}Recomendaciones de Operación y Mantenibilidad}{85}{subsection.4.6}%
-\contentsline {subsection}{\numberline {4.7}Trabajos Futuros}{85}{subsection.4.7}%
-\contentsline {subsection}{\numberline {4.8}Declaración de Uso Responsable de IA}{85}{subsection.4.8}%
-\contentsline {section}{Referencias Bibliográficas}{86}{section*.77}%
-\contentsline {section}{ANEXOS}{88}{section*.78}%
-\contentsline {section}{\numberline {Anexo A}Documento completo SRS (historias de usuario / backlog)}{89}{section.1}%
-\contentsline {section}{\numberline {Anexo B}Modelos de datos extensos, diccionarios de datos, mockups}{101}{section.2}%
-\contentsline {section}{\numberline {Anexo C}Manual de usuario y/o guía de instalación y despliegue}{102}{section.3}%
-\contentsline {section}{\numberline {Anexo D}Enlaces a repositorios de código fuente y tableros de gestión (Azure DevOps, Jira, GitHub)}{103}{section.4}%
-\contentsline {section}{\numberline {Anexo E}Protocolo y seguimiento de la revisión sistemática de literatura (si aplica)}{104}{section.5}%
+\contentsline {subparagraph}{Media Móvil.}{57}{subparagraph*.33}%
+\contentsline {subparagraph}{Regresion Lineal}{58}{subparagraph*.34}%
+\contentsline {paragraph}{Selección del campeón por producto}{58}{paragraph*.35}%
+\contentsline {paragraph}{Pronóstico futuro}{58}{paragraph*.36}%
+\contentsline {paragraph}{Cálculo de reposición (EOQ/ROP)}{59}{paragraph*.37}%
+\contentsline {paragraph}{Modelo de Datos}{59}{paragraph*.38}%
+\contentsline {paragraph}{Diseño UX/UI}{63}{paragraph*.42}%
+\contentsline {subsubsection}{\numberline {3.2.6}Análisis de Amenazas y Diseño Seguro}{70}{subsubsection.3.2.6}%
+\contentsline {subsection}{\numberline {3.3}Construcción, Integración y Despliegue}{73}{subsection.3.3}%
+\contentsline {paragraph}{Construcción}{73}{paragraph*.60}%
+\contentsline {paragraph}{Integración}{75}{paragraph*.61}%
+\contentsline {subparagraph}{Integración continua (CI)}{77}{subparagraph*.62}%
+\contentsline {paragraph}{Despliegue}{78}{paragraph*.63}%
+\contentsline {subsection}{\numberline {3.4}Plan de Verificación y Validación}{82}{subsection.3.4}%
+\contentsline {paragraph}{Estrategia de verificación}{82}{paragraph*.69}%
+\contentsline {paragraph}{Estrategia de validación del modelo de predicción}{82}{paragraph*.70}%
+\contentsline {paragraph}{Criterios de aceptación}{82}{paragraph*.71}%
+\contentsline {paragraph}{Plan de validación con usuarios}{82}{paragraph*.72}%
+\contentsline {section}{\numberline {4}Capítulo 4: Análisis de Resultados y Juicio de Ingeniería}{83}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Resultados de Verificación (Pruebas de Software)}{83}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Resultados de Validación (Evaluación del Usuario)}{83}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}Validación del modelo de predicción}{83}{subsubsection.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2}Consistencia mediante validación cruzada temporal}{84}{subsubsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.3}Evaluación de la Seguridad y Estándares}{87}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Análisis de Impactos de la Solución}{87}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Conclusiones}{87}{subsection.4.5}%
+\contentsline {subsection}{\numberline {4.6}Recomendaciones de Operación y Mantenibilidad}{87}{subsection.4.6}%
+\contentsline {subsection}{\numberline {4.7}Trabajos Futuros}{87}{subsection.4.7}%
+\contentsline {subsection}{\numberline {4.8}Declaración de Uso Responsable de IA}{87}{subsection.4.8}%
+\contentsline {section}{Referencias Bibliográficas}{88}{section*.76}%
+\contentsline {section}{ANEXOS}{90}{section*.77}%
+\contentsline {section}{\numberline {Anexo A}Documento completo SRS (historias de usuario / backlog)}{91}{section.1}%
+\contentsline {section}{\numberline {Anexo B}Modelos de datos extensos, diccionarios de datos, mockups}{103}{section.2}%
+\contentsline {section}{\numberline {Anexo C}Manual de usuario y/o guía de instalación y despliegue}{104}{section.3}%
+\contentsline {section}{\numberline {Anexo D}Enlaces a repositorios de código fuente y tableros de gestión (Azure DevOps, Jira, GitHub)}{105}{section.4}%
+\contentsline {section}{\numberline {Anexo E}Protocolo y seguimiento de la revisión sistemática de literatura (si aplica)}{106}{section.5}%

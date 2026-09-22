@@ -68,28 +68,89 @@ Las funciones que permiten entrenar y evaluar los tres modelos de demanda que se
 
 \subparagraph{XgBoost}
 
-La implementacion de XgBoost se hizo basandose en los repositorios "Demand Forecasting \& Inventory Optimization for Consumer Products" (https://github.com/dhruvi002/demand-forecast-inventory-optimizer) y .
+La implementacion de XGBoost se hizo combinando los hiperparametros de \textit{Ejemplo 1 (SKU Demand Forecasting)} \cite{ejemplo1_demandforecast} con la transformacion del objetivo propuesta en \textit{Ejemplo 3 (XGBoost)} \cite{ejemplo3_ksmooi_inventorydemand}.
+
+\textit{Ejemplo 3 (XGBoost)} \cite{ejemplo3_ksmooi_inventorydemand} cuenta con una configuracion muchisimo mas simple de la que necesitaria Thary, ya que en el caso del ejemplo, se estaba trabajando con aproximadamente 60 millones de filas, por lo que se priorizo la velocidad sobre el ajuste fino de hiperparamtros, por lo que no cuenta con factores como algun control de sobreajuste:
 
 \begin{minted}{python}
-
+# Define the parameters for the XGBoost model
+params = {
+    'max_depth': 8,                  # Maximum depth of a tree
+    'eta': 0.5,                      # Learning rate
+    'objective': 'reg:squarederror'  # Objective function for regression
+}
 \end{minted}
+
+Por otra parte, el \textit{Ejemplo 1 (SKU Demand Forecasting)} \cite{ejemplo1_demandforecast} si cuenta con una configuracion mas completa que se podria reutilizar, en este se arma un XGBRegressor mas cuidado en el que se incluten variables como \texttt{learning\_rate=0.05}, \texttt{subsample=0.8}, \texttt{colsample\_bytree=0.8}, pero principalmente se escogio seguir la logica de este ejemplo porque de los cuatro ejemplos revisados, es el unico que consiste en un sistema completo con una premisa bastante similar a la de Thary, ya que ofrece pronostico de demanda, traduccion de ese pronostocp en recomendacopnes de reposicion, punto de reorden, EOQ, y todo eso bajo restricciones de lead time y presupuesto.
+
+Es por eso, que se adopto su enfoque general completo:
+
+\begin{itemize}
+    \item Variables
+    \item modelos
+    \item hiperparametros
+    \item comparacion de modelos
+    \item logica de reposicion
+\end{itemize}
+
+Los otros ejemplos se revisaron posteriormente cuando se necesito mejorar aspectosm agregar nuevas funcionalidades o en general, agregarle mas valor y robustez a Thary.
+
+Los hiperparámetros utilizados son los mismos que se encuentran en el \textit{Ejemplo 1 (SKU Demand Forecasting)} \cite{ejemplo1_demandforecast}. Como ya se explico anteriormente, al ser el ejemplo mas cercano a una implementacion completa de un sistema con las caracteristicas de Thary, se opto por mantener su logica de entrenamiento y ajuste de hiperparametros, con la diferencia de que \texttt{n\_estimators} se aumento a 500, \texttt{objective} se cambio a \texttt{reg:squarederror}, mientras que en el ejemplo original no se especificaba. Esto se cambio ya que se buscaba implementar el uso de minimos cuadrados para poder estimar la bondad de los modelos.
+
+Parametros como \texttt{verbosity} fueron omitidos en Thary, pero se incluyo \texttt{n\_jobs}, el cual permite utilizar todos los nucleos de procesamiento disponibles en la maquina donde se ejecuta el entrenamiento, en lugar de un unico nucleo. Esto contribuye a reducir el tiempo de entrenamiento del modelo cuando se procesan catalogos con un numero elevado de productos.
+
+\begin{minted}{python}
+def entrenar_xgboost(X_train, y_train_log, X_test):
+    model = xgb.XGBRegressor(
+        objective="reg:squarederror", n_estimators=500, 
+        learning_rate=0.05,
+        max_depth=4, 
+        subsample=0.8, 
+        colsample_bytree=0.8,
+        reg_alpha=0.1, 
+        reg_lambda=1.0, 
+        random_state=42, 
+        n_jobs=-1
+    )
+    model.fit(X_train, y_train_log)
+    pred_xgb = model.predict(X_test)
+    pred_xgb = np.maximum(np.expm1(pred_xgb), 0)
+    return model, pred_xgb
+\end{minted}
+
+En cuanto a la transformacion logaritmica, se implemento siguiendo la logica del \textit{Ejemplo 3 (XGBoost)} \cite{ejemplo3_ksmooi_inventorydemand}, en el que el modelo no entrena directamente sobre \texttt{y\_train}, que seria la demanda real, si no sobre \texttt{y\_train\_log}, que es la transformacion logaritmica de \texttt{y\_train}. 
+
+Esto porque en la vida real, la demanda suele tener una distribucion en la que puede haber muchos productos con demanda baja y pocos con picos muy altos. Si se entrenara directamente sobre esos valores el modelo podria enfocarse demasiado en los pocos casos extremos, esto llevaria a que se prediciera peor la mayoria de los casos normales. El logaritmo lo que hace es parejar esa diferencia: hace que los valores muy grandes dejen de pesar tanto en comparacion con los valores mas pequeños, asi el modelo le presta atención equilibrada a todos los productos y no solo a los que tienen demanda extrema. Se usa \texttt{log1p} porque la demanda puede valer 0, y el logaritmo de 0 no existe
+
 
 \subparagraph{Media Móvil.}
 
-Media movil hace referencia al metodo mas simple de los tres. La tecnica con la que se implemento tambien se basa fuertemente en el repositorio "Demand Forecasting \& Inventory Optimization for Consumer Products" (https://github.com/dhruvi002/demand-forecast-inventory-optimizer), y consiste en simplemente reutilizar la columna de \texttt{media\_movil\_3} que ya se tienen desde la etapa anterior de features. No se tiene que hacer ningun entrenemiento. 
+Media movil hace referencia al metodo mas simple de los tres. La tecnica con la que se implemento tambien se basa fuertemente en el \textit{Ejemplo 1 (SKU Demand Forecasting)} \cite{ejemplo1_demandforecast}, y consiste en simplemente reutilizar la columna de \texttt{media\_movil\_3} que ya se tienen desde la etapa anterior de features. No se tiene que hacer ningun entrenemiento. 
 
 \begin{minted}{python}
-
+def prediccion_baseline_movil(test_df):
+    return np.maximum(test_df["media_movil_3"].values, 0)
 \end{minted}
 
-\subparagraph{XgBoost}
+La funcion recibe como parametro el \texttt{test\_df} y posteriormente, para todas las filas, devuelve el valor \texttt{media\_movil\_3} que ya se habia calculado anteriormente.
 
-\begin{minted}{python}
-
-\end{minted}
 
 \subparagraph{Regresion Lineal}
 
-\begin{minted}{python}
+Para implementar regresion lineal, se adapato la logica del \textit{Ejemplo 4 (BoomBikes)} \cite{ejemplo4_boombikes}, al ser el modelo que mas pasos requiere, se implemento de manera individual en el archivo \texttt{regresion\_lineal.py}.
 
+\begin{minted}{python}
+    def _seleccionar_features_regresion(X_train, y_train, max_p_valor=0.05, max_vif=5.0):
+        candidatas = [c for c in X_train.columns if X_train[c].std() > 0]
+        if len(candidatas) < 2 or len(X_train) <= len(candidatas) + 1:
+            return candidatas
 \end{minted}
+
+Inicialmente, se filtran y excluyen las columnas que no varian demasiado, descartando las que tienen una desviacion estandar de 0, ya que una desviacion estandar con este valor indica queria las columas donde el valor es siempre el mismo número, sin ninguna variación
+
+con \texttt{std() > 0}, esto se hace porque cuando se entrena regresion lineal, no siempre conviene usar todas las variables disponibles porque no todas tienen algo significativo que aportar. Es incluso perjudicial para el modelo, ya que una columna sin variacion no le sirve de nada al modelo (no hay nada que "aprender" de un número que nunca cambia), y además rompe matemáticamente un cálculo que viene más adelante.
+
+Ademas, 
+
+
+Es por eso que en esta funcion se selecciona automaticamente cual es el mejor subconjunto de variables a usar para cada producto

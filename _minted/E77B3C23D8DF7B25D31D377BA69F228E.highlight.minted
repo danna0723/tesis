@@ -1,0 +1,6 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+    \PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{\PYGZus{}seleccionar\PYGZus{}features\PYGZus{}regresion}\PYG{p}{(}\PYG{n}{X\PYGZus{}train}\PYG{p}{,} \PYG{n}{y\PYGZus{}train}\PYG{p}{,} \PYG{n}{max\PYGZus{}p\PYGZus{}valor}\PYG{o}{=}\PYG{l+m+mf}{0.05}\PYG{p}{,} \PYG{n}{max\PYGZus{}vif}\PYG{o}{=}\PYG{l+m+mf}{5.0}\PYG{p}{):}
+        \PYG{n}{candidatas} \PYG{o}{=} \PYG{p}{[}\PYG{n}{c} \PYG{k}{for} \PYG{n}{c} \PYG{o+ow}{in} \PYG{n}{X\PYGZus{}train}\PYG{o}{.}\PYG{n}{columns} \PYG{k}{if} \PYG{n}{X\PYGZus{}train}\PYG{p}{[}\PYG{n}{c}\PYG{p}{]}\PYG{o}{.}\PYG{n}{std}\PYG{p}{()} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{0}\PYG{p}{]}
+        \PYG{k}{if} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{candidatas}\PYG{p}{)} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{2} \PYG{o+ow}{or} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{X\PYGZus{}train}\PYG{p}{)} \PYG{o}{\PYGZlt{}=} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{candidatas}\PYG{p}{)} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{:}
+            \PYG{k}{return} \PYG{n}{candidatas}
+\end{MintedVerbatim}

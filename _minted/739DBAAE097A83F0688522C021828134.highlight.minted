@@ -1,0 +1,18 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{entrenar\PYGZus{}xgboost}\PYG{p}{(}\PYG{n}{X\PYGZus{}train}\PYG{p}{,} \PYG{n}{y\PYGZus{}train\PYGZus{}log}\PYG{p}{,} \PYG{n}{X\PYGZus{}test}\PYG{p}{):}
+    \PYG{n}{model} \PYG{o}{=} \PYG{n}{xgb}\PYG{o}{.}\PYG{n}{XGBRegressor}\PYG{p}{(}
+        \PYG{n}{objective}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}reg:squarederror\PYGZdq{}}\PYG{p}{,} \PYG{n}{n\PYGZus{}estimators}\PYG{o}{=}\PYG{l+m+mi}{500}\PYG{p}{,}
+        \PYG{n}{learning\PYGZus{}rate}\PYG{o}{=}\PYG{l+m+mf}{0.05}\PYG{p}{,}
+        \PYG{n}{max\PYGZus{}depth}\PYG{o}{=}\PYG{l+m+mi}{4}\PYG{p}{,}
+        \PYG{n}{subsample}\PYG{o}{=}\PYG{l+m+mf}{0.8}\PYG{p}{,}
+        \PYG{n}{colsample\PYGZus{}bytree}\PYG{o}{=}\PYG{l+m+mf}{0.8}\PYG{p}{,}
+        \PYG{n}{reg\PYGZus{}alpha}\PYG{o}{=}\PYG{l+m+mf}{0.1}\PYG{p}{,}
+        \PYG{n}{reg\PYGZus{}lambda}\PYG{o}{=}\PYG{l+m+mf}{1.0}\PYG{p}{,}
+        \PYG{n}{random\PYGZus{}state}\PYG{o}{=}\PYG{l+m+mi}{42}\PYG{p}{,}
+        \PYG{n}{n\PYGZus{}jobs}\PYG{o}{=\PYGZhy{}}\PYG{l+m+mi}{1}
+    \PYG{p}{)}
+    \PYG{n}{model}\PYG{o}{.}\PYG{n}{fit}\PYG{p}{(}\PYG{n}{X\PYGZus{}train}\PYG{p}{,} \PYG{n}{y\PYGZus{}train\PYGZus{}log}\PYG{p}{)}
+    \PYG{n}{pred\PYGZus{}xgb} \PYG{o}{=} \PYG{n}{model}\PYG{o}{.}\PYG{n}{predict}\PYG{p}{(}\PYG{n}{X\PYGZus{}test}\PYG{p}{)}
+    \PYG{n}{pred\PYGZus{}xgb} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{maximum}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{expm1}\PYG{p}{(}\PYG{n}{pred\PYGZus{}xgb}\PYG{p}{),} \PYG{l+m+mi}{0}\PYG{p}{)}
+    \PYG{k}{return} \PYG{n}{model}\PYG{p}{,} \PYG{n}{pred\PYGZus{}xgb}
+\end{MintedVerbatim}
