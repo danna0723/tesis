@@ -88,3 +88,25 @@ XGBoost presenta capacidad para modelar relaciones complejas y puede utilizarse 
 \end{flushleft}
 
 \end{table}
+
+\subsubsection{Implementaciones de referencia consultadas}
+
+Ademas de los estudios academicos revisados en la Seccion 2.2.1, se consultaron cuatro implementaciones practicas de codigo abierto, disponibles en Kaggle y GitHub, que sirvieron como base y punto de partida para la construccion del pipeline de prediccion de Thary. La Tabla \ref{tab:implementaciones_referencia} resume cada una de estas implementaciones, el identificador que se usara para referirse a ellas a lo largo del documento, y el aporte que realizaron al diseño del sistema.
+
+\begin{table}[H]
+    \centering
+    \caption{Implementaciones de referencia consultadas para el desarrollo de Thary.}
+    \label{tab:implementaciones_referencia}
+    \begin{tabularx}{\textwidth}{lp{2.2cm}XX}
+        \toprule
+        \textbf{ID} & \textbf{Autor} & \textbf{Título} & \textbf{Aporte a Thary} \\
+        \midrule
+        Ejemplo 1 (SKU Demand Forecasting) & Dhruvi Shah \cite{ejemplo1_demandforecast} & \textit{Demand Forecasting \& Inventory Optimization for Consumer Products} & Base para el flujo general de prediccion y calculo de reposicion \\
+        Ejemplo 2 (Media Móvil) & Samir Saci \cite{ejemplo2_saci2020mlretail} & \textit{Machine Learning for Retail Demand Forecasting: Comparative Study of Demand Forecasting Methods for a Retail Store (XGBoost Model vs. Rolling Mean)} & Base para el uso de la media movil como modelo candidato de comparacion \\
+        Ejemplo 3 (XGBoost) & ksmooi \cite{ejemplo3_ksmooi_inventorydemand} & \textit{Forecasting Inventory Demand Using XGBoost} & Base para el entrenamiento y ajuste del modelo XGBoost \\
+        Ejemplo 4 (BoomBikes) & Tushar Verma \cite{ejemplo4_boombikes} & \textit{Linear Regression: Demand Forecasting} & Base para la metodologia de seleccion de variables en el modelo de Regresion Lineal (RFE, eliminacion por p-valor y VIF) \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+A lo largo del Capitulo 3 se hace referencia a estas cuatro implementaciones mediante el identificador presentado en la Tabla \ref{tab:implementaciones_referencia} (Ejemplo 1, Ejemplo 2, Ejemplo 3 o Ejemplo 4), indicando en cada caso que partes especificas de Thary se basaron en ellas y cuales corresponden a extensiones propias desarrolladas durante el proyecto.

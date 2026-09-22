@@ -19,7 +19,7 @@ def construir_features(df_mensual, producto_comportamiento):
 
 \end{minted}
 
-Posteriormente, se extraen tanto el año como el mes de cada ejemplo, esto adaptado del repositorio "Demand Forecasting \& Inventory Optimization for Consumer Products" (https://github.com/dhruvi002/demand-forecast-inventory-optimizer). Con la diferencia de que en Thary, estos datos se incluyeron con el fin de en la implementacion que se tomo como guia, el mes "month", queda como un feature final para el modelo, mientras que en Thary, este dato posteriormente sea tranformado en \texttt{mes\_sin} y \texttt{mes\_cos}, proceso que se explicara mas adelante:
+Posteriormente, se extraen tanto el año como el mes de cada ejemplo, esto adaptado del repositorio \textit{Demand Forecasting \& Inventory Optimization for Consumer Products} \cite{ejemplo1_demandforecast}, al que en este trabajo se le referira como \textit{Ejemplo 1 (SKU Demand Forecasting)}. Con la diferencia de que en Thary, estos datos se incluyeron con el fin de en la implementacion que se tomo como guia, el mes "month", queda como un feature final para el modelo, mientras que en Thary, este dato posteriormente sea tranformado en \texttt{mes\_sin} y \texttt{mes\_cos}, proceso que se explicara mas adelante:
 
 \begin{minted}{python}
     df_mensual["año"] = df_mensual["fecha"].dt.year
@@ -50,7 +50,7 @@ A la hora de armar la funcion para construir los features se tomaron en cuenta d
     df_mensual["mes_cos"] = np.cos(2 * np.pi * df_mensual["mes"] / 12)
 \end{minted}
 
-Por otra parte, la metodologia de implementar el uso de lags, tambien se tomo del repositorio "Demand Forecasting \& Inventory Optimization for Consumer Products" (https://github.com/dhruvi002/demand-forecast-inventory-optimizer) y se adapto a las necesidades del sistema Thary, agregando la codificacion cíclica de los meses y la inclusion de features adicionales como el inventario y el precio.
+Por otra parte, la metodologia de implementar el uso de lags, tambien se tomo del \textit{Ejemplo 1 (SKU Demand Forecasting)} \cite{ejemplo1_demandforecast} y se adapto a las necesidades del sistema Thary, agregando la codificacion cíclica de los meses y la inclusion de features adicionales como el inventario y el precio.
 
 \begin{minted}{python}
     # ... 
@@ -61,7 +61,7 @@ Por otra parte, la metodologia de implementar el uso de lags, tambien se tomo de
     df_mensual["lag_6"] = df_mensual.groupby("producto_id")["demanda"].shift(6)
 \end{minted}
 
-Otra estrategia que se tomo del repositorio "Demand Forecasting \& Inventory Optimization for Consumer Products", fue el uso de las estadísticas móviles. Estas aportan al sistema ya que consisten en un resumen de varios meses juntos. Mientras que los rezagos solo representan cuanto se vendio exactamente en un mes, las estadísticas móviles son un resumen de varios meses juntos.
+Otra estrategia que se tomo del \textit{Ejemplo 1 (SKU Demand Forecasting)} \cite{ejemplo1_demandforecast}, fue el uso de las estadísticas móviles. Estas aportan al sistema ya que consisten en un resumen de varios meses juntos. Mientras que los rezagos solo representan cuanto se vendio exactamente en un mes, las estadísticas móviles son un resumen de varios meses juntos.
 
 \begin{itemize}
 \item \texttt{media\_movil\_3} y \texttt{media\_movil\_6}: Estas variables representan cual es el nivel reciente de la demanda de los productos calculando el promedio de los ultimos 3 y 6 meses. Esto ayuda que el modelo pueda distingir un producto que vende de manera estable de uno irregular, ya que de ser ventas regulares, la media movil de 3 meses sera muy similar a la de 6 meses, mientras que si es inestable, ambas medias seran muy diferentes.
@@ -88,7 +88,7 @@ En cuanto a la implementacion, se incluyo en la funcion de (\texttt{construir\_f
     )
 \end{minted}
 
-Por otra parte, para la construccion de la etapa de Features tambien se tomo en cuenta el repositorio en Kaggle "Inventory Demand Forecast (XGBoost Reg)" (https://www.kaggle.com/code/ksmooi/inventory-demand-forecast-xgboost-reg). De este repositorio, se tomo el uso de el promedio del producto, pero esta vez, calculados en base a todo el historial completo y no solo en base a los ultimos 3 o 6 meses. 
+Por otra parte, para la construccion de la etapa de Features tambien se tomo en cuenta el repositorio en Kaggle \textit{Forecasting Inventory Demand Using XGBoost} \cite{ejemplo3_ksmooi_inventorydemand} o \textit{Ejemplo 3 (XGBoost)} \cite{ejemplo2_demandforecast}. De este repositorio, se tomo el uso de el promedio del producto, pero esta vez, calculados en base a todo el historial completo y no solo en base a los ultimos 3 o 6 meses. 
 
 Como extension propuesta por el proyecto, junto al promedio tambien se incluyo la desviacion del producto, esto para poder seguir una misma estructura en todo el sistema, ya que si se tiene la (\texttt{media\_movil\_3}) y la (\texttt{desviacion\_movil\_3}), es decir, el nivel y la variabilidad de los ultimos 3 meses, es conveniente tener la media y desviacion de todo el historial del producto.
 

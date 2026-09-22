@@ -1,0 +1,7 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n}{MESES\PYGZus{}ARCHIVO\PYGZus{}UMBRAL\PYGZus{}TEST\PYGZus{}GRANDE} \PYG{o}{=} \PYG{l+m+mi}{18}
+\PYG{n}{TEST\PYGZus{}SIZE\PYGZus{}MESES\PYGZus{}DEFAULT} \PYG{o}{=} \PYG{l+m+mi}{3}
+\PYG{n}{TEST\PYGZus{}SIZE\PYGZus{}MESES\PYGZus{}GRANDE} \PYG{o}{=} \PYG{l+m+mi}{6}
+
+\PYG{n}{MESES\PYGZus{}PERDIDOS\PYGZus{}POR\PYGZus{}REZAGOS} \PYG{o}{=} \PYG{l+m+mi}{3}
+\end{MintedVerbatim}

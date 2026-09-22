@@ -358,6 +358,102 @@
       \field{pages}{378\bibrangedash 390}
       \range{pages}{13}
     \endentry
+    \entry{ejemplo1_demandforecast}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=c21b21695e15bb9c8da0d4c151f18b22}{%
+           family={Shah},
+           familyi={S\bibinitperiod},
+           given={Dhruvi},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{c21b21695e15bb9c8da0d4c151f18b22}
+      \strng{fullhash}{c21b21695e15bb9c8da0d4c151f18b22}
+      \strng{fullhashraw}{c21b21695e15bb9c8da0d4c151f18b22}
+      \strng{bibnamehash}{c21b21695e15bb9c8da0d4c151f18b22}
+      \strng{authorbibnamehash}{c21b21695e15bb9c8da0d4c151f18b22}
+      \strng{authornamehash}{c21b21695e15bb9c8da0d4c151f18b22}
+      \strng{authorfullhash}{c21b21695e15bb9c8da0d4c151f18b22}
+      \strng{authorfullhashraw}{c21b21695e15bb9c8da0d4c151f18b22}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{GitHub repository}
+      \field{note}{Disponible en: \url{https://github.com/dhruvi002/demand-forecast-inventory-optimizer}}
+      \field{title}{{Demand Forecasting \& Inventory Optimization for Consumer Products}}
+      \field{year}{2026}
+    \endentry
+    \entry{ejemplo2_saci2020mlretail}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=0c6aae0f62e37c6cb627568980767d23}{%
+           family={Saci},
+           familyi={S\bibinitperiod},
+           given={Samir},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Towards Data Science}%
+      }
+      \strng{namehash}{0c6aae0f62e37c6cb627568980767d23}
+      \strng{fullhash}{0c6aae0f62e37c6cb627568980767d23}
+      \strng{fullhashraw}{0c6aae0f62e37c6cb627568980767d23}
+      \strng{bibnamehash}{0c6aae0f62e37c6cb627568980767d23}
+      \strng{authorbibnamehash}{0c6aae0f62e37c6cb627568980767d23}
+      \strng{authornamehash}{0c6aae0f62e37c6cb627568980767d23}
+      \strng{authorfullhash}{0c6aae0f62e37c6cb627568980767d23}
+      \strng{authorfullhashraw}{0c6aae0f62e37c6cb627568980767d23}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{8}
+      \field{note}{Disponible en: \url{https://www.samirsaci.com/inventory-management-for-retail-stochastic-demand-2/?source=post_page-----743b2f4e4057}}
+      \field{title}{Machine Learning for Retail Demand Forecasting: Comparative Study of Demand Forecasting Methods for a Retail Store (XGBoost Model vs. Rolling Mean)}
+      \field{year}{2020}
+    \endentry
+    \entry{ejemplo3_ksmooi_inventorydemand}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=fcfc6fa61e4c91d7d95fc68e6aa0ffa2}{%
+           family={{ksmooi}},
+           familyi={k\bibinitperiod}}}%
+      }
+      \strng{namehash}{fcfc6fa61e4c91d7d95fc68e6aa0ffa2}
+      \strng{fullhash}{fcfc6fa61e4c91d7d95fc68e6aa0ffa2}
+      \strng{fullhashraw}{fcfc6fa61e4c91d7d95fc68e6aa0ffa2}
+      \strng{bibnamehash}{fcfc6fa61e4c91d7d95fc68e6aa0ffa2}
+      \strng{authorbibnamehash}{fcfc6fa61e4c91d7d95fc68e6aa0ffa2}
+      \strng{authornamehash}{fcfc6fa61e4c91d7d95fc68e6aa0ffa2}
+      \strng{authorfullhash}{fcfc6fa61e4c91d7d95fc68e6aa0ffa2}
+      \strng{authorfullhashraw}{fcfc6fa61e4c91d7d95fc68e6aa0ffa2}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.kaggle.com/code/ksmooi/inventory-demand-forecast-xgboost-reg}}
+      \field{note}{Kaggle Notebook}
+      \field{title}{Forecasting Inventory Demand Using XGBoost}
+    \endentry
+    \entry{ejemplo4_boombikes}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=89dfea52b1e1caffff95d27784186164}{%
+           family={{Tushar Verma}},
+           familyi={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{89dfea52b1e1caffff95d27784186164}
+      \strng{fullhash}{89dfea52b1e1caffff95d27784186164}
+      \strng{fullhashraw}{89dfea52b1e1caffff95d27784186164}
+      \strng{bibnamehash}{89dfea52b1e1caffff95d27784186164}
+      \strng{authorbibnamehash}{89dfea52b1e1caffff95d27784186164}
+      \strng{authornamehash}{89dfea52b1e1caffff95d27784186164}
+      \strng{authorfullhash}{89dfea52b1e1caffff95d27784186164}
+      \strng{authorfullhashraw}{89dfea52b1e1caffff95d27784186164}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Disponible en: \url{https://github.com/21-f3000932/LinearRegression_Demand-forecasting/tree/main}}
+      \field{title}{Linear Regression: Demand Forecasting}
+    \endentry
   \enddatalist
   \missing{c4model}
   \missing{iso12207}

@@ -1,0 +1,7 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{tamano\PYGZus{}test\PYGZus{}backtest}\PYG{p}{(}\PYG{n}{n\PYGZus{}meses\PYGZus{}usables}\PYG{p}{):}
+    \PYG{n}{n\PYGZus{}meses\PYGZus{}archivo\PYGZus{}original} \PYG{o}{=} \PYG{n}{n\PYGZus{}meses\PYGZus{}usables} \PYG{o}{+} \PYG{n}{MESES\PYGZus{}PERDIDOS\PYGZus{}POR\PYGZus{}REZAGOS}
+    \PYG{k}{if} \PYG{n}{n\PYGZus{}meses\PYGZus{}archivo\PYGZus{}original} \PYG{o}{\PYGZgt{}=} \PYG{n}{MESES\PYGZus{}ARCHIVO\PYGZus{}UMBRAL\PYGZus{}TEST\PYGZus{}GRANDE}\PYG{p}{:}
+        \PYG{k}{return} \PYG{n}{TEST\PYGZus{}SIZE\PYGZus{}MESES\PYGZus{}GRANDE}
+    \PYG{k}{return} \PYG{n}{TEST\PYGZus{}SIZE\PYGZus{}MESES\PYGZus{}DEFAULT}
+\end{MintedVerbatim}

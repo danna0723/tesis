@@ -1,0 +1,3 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n}{NIVEL\PYGZus{}SIGNIFICANCIA\PYGZus{}DM} \PYG{o}{=} \PYG{l+m+mf}{0.05}
+\end{MintedVerbatim}

@@ -5,17 +5,90 @@ Esta etapa se reparte en los siguientes archivos:
 \item \texttt{app/services/prediccion/regresion\_lineal.py}
 \end{itemize}
 
-Al incio del archivo \texttt{modelos.py}, se define 
+\subparagraph{Definicion de variables y funciones basicas}
+
+Al incio del archivo \texttt{modelos.py}, se define el nivel de significancia \texttt{NIVEL\_SIGNIFICANCIA\_DM} como 5\%, esta variable se va a usar posteriormente a la hora de evaluar si un resultado es estadisticamente significativo:
+
+\begin{minted}{python}
+NIVEL_SIGNIFICANCIA_DM = 0.05
+\end{minted}
+
+Como parte de la propuesta de Thary,tambien se implemenaron las siguientes cuatro variables:
+
+\begin{minted}{python}
+MESES_ARCHIVO_UMBRAL_TEST_GRANDE = 18
+TEST_SIZE_MESES_DEFAULT = 3
+TEST_SIZE_MESES_GRANDE = 6
+
+MESES_PERDIDOS_POR_REZAGOS = 3
+\end{minted}
+
+Por defecto, el periodo de prueba son 3 meses, pero cuando se cuenta con un periodo de prueba mas grande, de 18 meses o mas, este pasa de 3 meses a 6 meses.
+
+Esta decision se tomo despues de identififcar un problema con el que contaba el sistema. Como punto de partida, el sistema elige el mejor modelo para cada producto comparando el MAE de los 3 modelos sobre 3 meses del historial, el problema era que con solo 3 meses, el resultado podria no ser lo suficientemente confiable, esto debido a que con tan pocos datos, un solo mes que sea atipico puede terminar haciendo que un modelo "gane" sin que eso refleje una diferencia real, sobretodo porque el MAE es una medicion que cuenta con mucha varianza. Entre los riesgos identificados se encuentra: poca capacidad de distinguir modelos parecidos, inestabilidad del resultado y sesgo estacional.
+
+Antes de llegar a la solucion definitva se planteo una primera propuesta, en la que si el archivo contaba con menos de 18 meses, se haria la comparacion del MAE de los 3 modelos sobre 3 meses, pero si contaba con 18 meses o mas, la comparacion se haria sobre 6 meses. Pero enrealidad, esta solucion no resolvia el problema "de raiz", solo mitigaba el problema de que hubiera pocos meses de prueba, ademas de que la decision de que 18 meses fuese el punto de corte no tenia respaldo alguno.
+
+Por eso fue que se corrigio y re-interpreto el enfoque de la solucion, fundamentandola en que el problema a solucionar no era el numero de meses, si no el calculo del error, es decir, que tan confiable es la comparacion de error entre los modelos. 
+
+Fue aqui donde se propuso la prueba Diebold-Mariano, la cual consiste en una prueba estadistica que permite medir si la diferencia de error que hay entre dos modelos es significativa o es solo ruido. La prueba Diebold-Mariano requiere de un nivel de significancia, que se definio como 0.5\%.
+
+Por otro lado,\texttt{MESES\_PERDIDOS\_POR\_REZAGOS} es el número fijo de meses que se pierden al calcular los rezagos (visto en la etapa anterior), es necesario para disctribuir los meses utilizables del total de meses que subió el usuario en el archivo.
+
+Una vez definidas las variables, la primera funcion implementada en \texttt{modelos.py} es \texttt{tamano\_test\_backtest}. Esta funcion principalmente se encarga de implementar la solucion ya explicada, recibe como parametro \texttt{n\_meses\_usables}, la cantidad de meses que quedaron disponibles despues de que se hayan perdido los primeros por el calculo de los lags, y devuelve cuántos meses de esos son los que se van a usar como período de prueba (backtest).
+
+\begin{minted}{python}
+def tamano_test_backtest(n_meses_usables):
+    n_meses_archivo_original = n_meses_usables + MESES_PERDIDOS_POR_REZAGOS
+    if n_meses_archivo_original >= MESES_ARCHIVO_UMBRAL_TEST_GRANDE:
+        return TEST_SIZE_MESES_GRANDE
+    return TEST_SIZE_MESES_DEFAULT
+\end{minted}
+
+Como el umbral de desicion (\texttt{MESES\_ARCHIVO\_UMBRAL\_TEST\_GRANDE = 18}) toma en cuenta el archivo completo, y la funcion recibe la cantidad de meses disponibles ya con los 3 meses de lag descontados, con \texttt{n\_meses\_archivo\_original = n\_meses\_usables + MESES\_PERDIDOS\_POR\_REZAGOS} se le suma esos 3 meses de vuelta, para saber cuántos meses tenía el archivo que el usuario subió originalmente
+
+Luego se compara si el total de meses completo cuenta con 18 meses, de hacelo devuelvve el tamaño de test grande con 6 meses y de no hacerlo devuelve el tamaño de test por defecto de 3 meses.
+
+Esta función se llama desde \texttt{sistema\_prediccion.py}, para decidir el tamaño del split que se usa para elegir el campeón y generar los resultados, y desde \texttt{validacion.py}, para que los \textit{folds} de la validación cruzada temporal usen ese mismo tamaño de test y conservar un criterio estandarizado en ambas partes.
+
+Es parte de la solucion que se propone en Thary, esta funcion no existe en alguna de las implementaciones que fueron revisadas ya que ninguna adapta el tamaño del perido de prueba seun la cantidad de historia disponible. 
 
 
-las funciones que permiten entrenar y evaluar los tres modelos de demanda que se van a utilizar en el sistema: Media Móvil, Regresión Lineal y XGBoost.
+\begin{minted}{python}
+def tamano_test_backtest(n_meses_usables):
+    n_meses_archivo_original = n_meses_usables + MESES_PERDIDOS_POR_REZAGOS
+    if n_meses_archivo_original >= MESES_ARCHIVO_UMBRAL_TEST_GRANDE:
+        return TEST_SIZE_MESES_GRANDE
+    return TEST_SIZE_MESES_DEFAULT
+\end{minted}
 
+\subparagraph{Modelos de demanda}
 
-Se entrenan los tres modelos de demanda con los que va a trabajar del sistema: Media Móvil, Regresión Lineal y XGBoost, y se evalua su desempeño y se elige el mejor modelo para cada producto:
+Las funciones que permiten entrenar y evaluar los tres modelos de demanda que se van a utilizar en el sistema: Media Móvil, Regresión Lineal y XGBoost. Estos fueron elegidos luego de realizar una revision de literatura en la que se compararon 5 modelos para la prediccion de la demanda, tal como se vio en el capitulo 2.2 "Antecedentes", de los cuales se escogieron: XgBoost y regresion lineal al ser los que presentan mejor desempeño en este tipo de problemas, y adicionalmente se incluyo media movil como un modelo mas sencillo que puede ser util para productos con demanda estable o que no cuenten con suficiente historial implementar para un modelo mas complejo.
+
+\subparagraph{XgBoost}
+
+La implementacion de XgBoost se hizo basandose en los repositorios "Demand Forecasting \& Inventory Optimization for Consumer Products" (https://github.com/dhruvi002/demand-forecast-inventory-optimizer) y .
+
+\begin{minted}{python}
+
+\end{minted}
 
 \subparagraph{Media Móvil.}
 
-Media movil hace referencia al metodo mas simple de los tres. La tecnica con la que se implemento tambien se basa fuertemente en el repositorio "Demand Forecasting \& Inventory Optimization for Consumer Products" (https://github.com/dhruvi002/demand-forecast-inventory-optimizer), y consiste en simplemente reutilizar la columna de {media\_movil\_3} que ya se tienen desde la etapa anterior de features. No se tiene que hacer ningun entrenemiento. 
+Media movil hace referencia al metodo mas simple de los tres. La tecnica con la que se implemento tambien se basa fuertemente en el repositorio "Demand Forecasting \& Inventory Optimization for Consumer Products" (https://github.com/dhruvi002/demand-forecast-inventory-optimizer), y consiste en simplemente reutilizar la columna de \texttt{media\_movil\_3} que ya se tienen desde la etapa anterior de features. No se tiene que hacer ningun entrenemiento. 
+
+\begin{minted}{python}
+
+\end{minted}
+
+\subparagraph{XgBoost}
+
+\begin{minted}{python}
+
+\end{minted}
+
+\subparagraph{Regresion Lineal}
 
 \begin{minted}{python}
 

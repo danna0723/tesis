@@ -1,0 +1,22 @@
+\babel@toc {english}{}\relax 
+\babel@toc {english}{}\relax 
+\babel@toc {english}{}\relax 
+\contentsline {table}{\numberline {I}{\ignorespaces Comparación de técnicas de predicción aplicadas a problemas de demanda y series de tiempo}}{25}{table.caption.14}%
+\contentsline {table}{\numberline {II}{\ignorespaces Implementaciones de referencia consultadas para el desarrollo de Thary.}}{26}{table.caption.15}%
+\contentsline {table}{\numberline {III}{\ignorespaces Análisis de interés e influencia de los stakeholders}}{31}{table.caption.16}%
+\contentsline {table}{\numberline {IV}{\ignorespaces Trazabilidad entre casos de uso y requisitos funcionales}}{36}{table.caption.19}%
+\contentsline {table}{\numberline {V}{\ignorespaces Entidades principales del modelo de datos.}}{57}{table.caption.40}%
+\contentsline {table}{\numberline {VI}{\ignorespaces Métricas del holdout final por modelo.}}{81}{table.caption.74}%
+\contentsline {table}{\numberline {VII}{\ignorespaces Resumen de la validación cruzada temporal (promedio $\pm $ desviación, 3 folds).}}{84}{table.caption.76}%
+\contentsline {table}{\numberline {VIII}{\ignorespaces Especificación del caso de uso CU-01: Iniciar sesión}}{89}{table.caption.79}%
+\contentsline {table}{\numberline {IX}{\ignorespaces Especificación del caso de uso CU-02: Cargar historial de consumo}}{90}{table.caption.80}%
+\contentsline {table}{\numberline {X}{\ignorespaces Especificación del caso de uso CU-03: Procesar archivo}}{91}{table.caption.81}%
+\contentsline {table}{\numberline {XI}{\ignorespaces Especificación del caso de uso CU-04: Consultar demanda pronosticada}}{92}{table.caption.82}%
+\contentsline {table}{\numberline {XII}{\ignorespaces Especificación del caso de uso CU-05: Consultar estado del inventario}}{93}{table.caption.83}%
+\contentsline {table}{\numberline {XIII}{\ignorespaces Especificación del caso de uso CU-06: Consultar recomendaciones de reposición y presupuesto}}{94}{table.caption.84}%
+\contentsline {table}{\numberline {XIV}{\ignorespaces Especificación del caso de uso CU-07: Registrar pedido}}{95}{table.caption.85}%
+\contentsline {table}{\numberline {XV}{\ignorespaces Especificación del caso de uso CU-08: Gestionar usuarios}}{96}{table.caption.86}%
+\contentsline {table}{\numberline {XVI}{\ignorespaces Especificación del caso de uso CU-09: Deshacer pedido}}{97}{table.caption.87}%
+\contentsline {table}{\numberline {XVII}{\ignorespaces Especificación del caso de uso CU-10: Consultar actividad de la empresa}}{98}{table.caption.88}%
+\contentsline {table}{\numberline {XVIII}{\ignorespaces Especificación del caso de uso CU-11: Consultar calendario de pedidos}}{99}{table.caption.89}%
+\contentsline {table}{\numberline {XIX}{\ignorespaces Especificación del caso de uso CU-12: Consultar perfil}}{100}{table.caption.90}%

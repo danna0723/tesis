@@ -31,6 +31,6 @@
         }
     ],
     "latex-workshop.latex.recipe.default": "xelatex -> biber -> xelatex*2",
-    "latex-workshop.latex.autoBuild.run": "onSave",
+    "latex-workshop.latex.autoBuild.run": "never",
     "latex-workshop.view.pdf.viewer": "tab"
 }

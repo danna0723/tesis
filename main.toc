@@ -1,0 +1,96 @@
+\babel@toc {english}{}\relax 
+\contentsline {section}{Resumen}{9}{section*.1}%
+\contentsline {section}{Abstract}{10}{section*.2}%
+\babel@toc {english}{}\relax 
+\babel@toc {english}{}\relax 
+\contentsline {section}{Glosario}{11}{section*.3}%
+\contentsline {section}{\numberline {1}Capítulo 1: Introducción}{13}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Contexto}{13}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Planteamiento del Problema}{13}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Justificación del Problema}{14}{subsection.1.3}%
+\contentsline {subsubsection}{\numberline {1.3.1}Impactos}{14}{subsubsection.1.3.1}%
+\contentsline {subsection}{\numberline {1.4}Propuesta de Solución}{15}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Pregunta de Investigación}{16}{subsection.1.5}%
+\contentsline {subsubsection}{\numberline {1.5.1}Preguntas Derivadas}{16}{subsubsection.1.5.1}%
+\contentsline {subsection}{\numberline {1.6}Objetivos}{17}{subsection.1.6}%
+\contentsline {subsubsection}{\numberline {1.6.1}Objetivo General}{17}{subsubsection.1.6.1}%
+\contentsline {subsubsection}{\numberline {1.6.2}Objetivos Específicos}{17}{subsubsection.1.6.2}%
+\contentsline {subsection}{\numberline {1.7}Restricciones}{17}{subsection.1.7}%
+\contentsline {subsection}{\numberline {1.8}Recursos y Viabilidad Técnica}{18}{subsection.1.8}%
+\contentsline {section}{\numberline {2}Capítulo 2: Marco de Referencia}{19}{section.2}%
+\contentsline {subsubsection}{\numberline {2.0.1}Criterios de inclusión}{19}{subsubsection.2.0.1}%
+\contentsline {subsubsection}{\numberline {2.0.2}Criterios de exclusión}{19}{subsubsection.2.0.2}%
+\contentsline {subsection}{\numberline {2.1}Fundamentos Teóricos}{19}{subsection.2.1}%
+\contentsline {subsubsection}{\numberline {2.1.1}Gestion de inventarios}{19}{subsubsection.2.1.1}%
+\contentsline {paragraph}{Tipos de gestion de inventario}{20}{paragraph*.6}%
+\contentsline {subsubsection}{\numberline {2.1.2}Prediccion de demanda}{20}{subsubsection.2.1.2}%
+\contentsline {subsubsection}{\numberline {2.1.3}Series de tiempo}{21}{subsubsection.2.1.3}%
+\contentsline {subsubsection}{\numberline {2.1.4}Modelos de prediccion de demanda}{21}{subsubsection.2.1.4}%
+\contentsline {paragraph}{Redes Neuronales Artificiales (RNA)}{21}{paragraph*.7}%
+\contentsline {subparagraph}{Long Short-Term Memory (LSTM)}{21}{subparagraph*.8}%
+\contentsline {subparagraph}{Gated Recurrent Unit (GRU)}{22}{subparagraph*.9}%
+\contentsline {paragraph}{Modelos estadísticos y de Machine Learning tradicionales}{23}{paragraph*.10}%
+\contentsline {subparagraph}{Regresión lineal}{23}{subparagraph*.11}%
+\contentsline {paragraph}{Modelos basados en árboles de decisión}{23}{paragraph*.12}%
+\contentsline {subparagraph}{XGBoost}{23}{subparagraph*.13}%
+\contentsline {subsection}{\numberline {2.2}Antecedentes}{24}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Comparación de modelos de predicción de demanda}{24}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}Implementaciones de referencia consultadas}{26}{subsubsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.3}Estándares de Ingeniería Aplicables}{27}{subsection.2.3}%
+\contentsline {section}{\numberline {3}Capítulo 3: Diseño y Desarrollo}{28}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Enfoque Metodológico}{28}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}Gestión del Proyecto (Planeación)}{29}{subsubsection.3.1.1}%
+\contentsline {subsubsection}{\numberline {3.1.2}Ciclo de Vida del Software (Ejecución)}{29}{subsubsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.2}Procesos Técnicos y Diseño (ISO/IEC/IEEE 12207)}{30}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Identificación de Stakeholders}{30}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}Elicitación de Requisitos}{31}{subsubsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.3}Especificación de Requisitos de Software (SRS)}{33}{subsubsection.3.2.3}%
+\contentsline {subsubsection}{\numberline {3.2.4}Diseño de la Arquitectura}{38}{subsubsection.3.2.4}%
+\contentsline {paragraph}{Escenarios Arquitecturales}{38}{paragraph*.20}%
+\contentsline {paragraph}{Análisis de Alternativas y Decisiones de Diseño (ADRs)}{39}{paragraph*.21}%
+\contentsline {paragraph}{Representación de la Arquitectura (Modelo C4)}{41}{paragraph*.22}%
+\contentsline {subsubsection}{\numberline {3.2.5}Diseño Detallado}{43}{subsubsection.3.2.5}%
+\contentsline {paragraph}{Etapa 1: Carga y limpieza de datos}{43}{paragraph*.26}%
+\contentsline {paragraph}{Etapa 2: Segmentación de productos}{44}{paragraph*.27}%
+\contentsline {paragraph}{Etapa 3: Construcción de variables}{46}{paragraph*.28}%
+\contentsline {paragraph}{Etapa 4: Modelos de predicción}{53}{paragraph*.29}%
+\contentsline {subparagraph}{Definicion de variables y funciones basicas}{53}{subparagraph*.30}%
+\contentsline {subparagraph}{Modelos de demanda}{55}{subparagraph*.31}%
+\contentsline {subparagraph}{XgBoost}{55}{subparagraph*.32}%
+\contentsline {subparagraph}{Media Móvil.}{55}{subparagraph*.33}%
+\contentsline {subparagraph}{XgBoost}{56}{subparagraph*.34}%
+\contentsline {subparagraph}{Regresion Lineal}{56}{subparagraph*.35}%
+\contentsline {paragraph}{Selección del campeón por producto}{56}{paragraph*.36}%
+\contentsline {paragraph}{Pronóstico futuro}{56}{paragraph*.37}%
+\contentsline {paragraph}{Cálculo de reposición (EOQ/ROP)}{56}{paragraph*.38}%
+\contentsline {paragraph}{Modelo de Datos}{56}{paragraph*.39}%
+\contentsline {paragraph}{Diseño UX/UI}{61}{paragraph*.43}%
+\contentsline {subsubsection}{\numberline {3.2.6}Análisis de Amenazas y Diseño Seguro}{68}{subsubsection.3.2.6}%
+\contentsline {subsection}{\numberline {3.3}Construcción, Integración y Despliegue}{71}{subsection.3.3}%
+\contentsline {paragraph}{Construcción}{71}{paragraph*.61}%
+\contentsline {paragraph}{Integración}{73}{paragraph*.62}%
+\contentsline {subparagraph}{Integración continua (CI)}{75}{subparagraph*.63}%
+\contentsline {paragraph}{Despliegue}{76}{paragraph*.64}%
+\contentsline {subsection}{\numberline {3.4}Plan de Verificación y Validación}{80}{subsection.3.4}%
+\contentsline {paragraph}{Estrategia de verificación}{80}{paragraph*.70}%
+\contentsline {paragraph}{Estrategia de validación del modelo de predicción}{80}{paragraph*.71}%
+\contentsline {paragraph}{Criterios de aceptación}{80}{paragraph*.72}%
+\contentsline {paragraph}{Plan de validación con usuarios}{80}{paragraph*.73}%
+\contentsline {section}{\numberline {4}Capítulo 4: Análisis de Resultados y Juicio de Ingeniería}{81}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Resultados de Verificación (Pruebas de Software)}{81}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Resultados de Validación (Evaluación del Usuario)}{81}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}Validación del modelo de predicción}{81}{subsubsection.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2}Consistencia mediante validación cruzada temporal}{82}{subsubsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.3}Evaluación de la Seguridad y Estándares}{85}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Análisis de Impactos de la Solución}{85}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Conclusiones}{85}{subsection.4.5}%
+\contentsline {subsection}{\numberline {4.6}Recomendaciones de Operación y Mantenibilidad}{85}{subsection.4.6}%
+\contentsline {subsection}{\numberline {4.7}Trabajos Futuros}{85}{subsection.4.7}%
+\contentsline {subsection}{\numberline {4.8}Declaración de Uso Responsable de IA}{85}{subsection.4.8}%
+\contentsline {section}{Referencias Bibliográficas}{86}{section*.77}%
+\contentsline {section}{ANEXOS}{88}{section*.78}%
+\contentsline {section}{\numberline {Anexo A}Documento completo SRS (historias de usuario / backlog)}{89}{section.1}%
+\contentsline {section}{\numberline {Anexo B}Modelos de datos extensos, diccionarios de datos, mockups}{101}{section.2}%
+\contentsline {section}{\numberline {Anexo C}Manual de usuario y/o guía de instalación y despliegue}{102}{section.3}%
+\contentsline {section}{\numberline {Anexo D}Enlaces a repositorios de código fuente y tableros de gestión (Azure DevOps, Jira, GitHub)}{103}{section.4}%
+\contentsline {section}{\numberline {Anexo E}Protocolo y seguimiento de la revisión sistemática de literatura (si aplica)}{104}{section.5}%
