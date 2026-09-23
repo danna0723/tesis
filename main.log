@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.12) (preloaded format=xelatex 2026.9.9)  21 SEP 2026 23:37
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.12) (preloaded format=xelatex 2026.9.9)  23 SEP 2026 10:04
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1642,12 +1642,12 @@ File: templatefigures/Nivel3_Componentes.png Graphic file (type bmp)
 \pydata@fh@0=\write9
 \openout9 = `_FAD58DE7366495DB4650CFEFAC2FCD61.data.minted'.
 
-runsystem(latexminted config  --timestamp 20260921233707 FAD58DE7366495DB4650CF
+runsystem(latexminted config  --timestamp 20260923100448 FAD58DE7366495DB4650CF
 EFAC2FCD61)...executed.
 
 
 (_FAD58DE7366495DB4650CFEFAC2FCD61.config.minted)
-runsystem(latexminted cleanconfig  --timestamp 20260921233707 FAD58DE7366495DB4
+runsystem(latexminted cleanconfig  --timestamp 20260923100448 FAD58DE7366495DB4
 650CFEFAC2FCD61)...executed.
 
  (_minted/default.style.minted) (_minted/676FDD3D6E8A68D7A00A52E2E2DCA9EE.highl
@@ -1675,24 +1675,34 @@ LaTeX Font Info:    Font shape `TU/texgyrecursor(0)/m/it' will be
 (_minted/6385A0D36747C7C9131F11706E972E6B.highlight.minted)
 (_minted/9CF018CE2C3A79D4F3DFCC377FCF3AB1.highlight.minted) [53]
 (_minted/C6CA803DAD6A7EB8F4581A51C2A80A87.highlight.minted) [54]
-(_minted/C6CA803DAD6A7EB8F4581A51C2A80A87.highlight.minted)
-(_minted/72B164CBCAEB2E501A077438591A6D89.highlight.minted [55])
+(_minted/72B164CBCAEB2E501A077438591A6D89.highlight.minted) [55]
 (_minted/739DBAAE097A83F0688522C021828134.highlight.minted [56])
-(_minted/0DA38C635DD527F8230E77D8B489E7F9.highlight.minted [57])
-(_minted/E77B3C23D8DF7B25D31D377BA69F228E.highlight.minted)) [58]
-(sections/modelo_datos.tex [59]
-(_minted/4A5BFD544CAC683864C12F46026834C1.highlight.minted [60])
-(_minted/8DD128728F3054749A379D2911907557.highlight.minted [61])
+(_minted/0DA38C635DD527F8230E77D8B489E7F9.highlight.minted) [57]
+(_minted/E77B3C23D8DF7B25D31D377BA69F228E.highlight.minted)
+(_minted/4D9B0407788EAD40F364B165A4058449.highlight.minted) [58]
+(_minted/C22A5FD65548B769423E1F3BE61D4577.highlight.minted) [59]
+(_minted/96877CEAD7BB9C6EBBBCF6FF2A444D85.highlight.minted)
+(_minted/3379F04BAC241D5ACACD7241CDA03FFD.highlight.minted [60])
+(_minted/B9B8098CF509568CB09A92583A7441CA.highlight.minted) [61]
+(_minted/09F4196D86BEE71DBF18F4E818790914.highlight.minted))
+(sections/seleccion_campeon.tex [62]
+(_minted/C0A04925B1F0AC20EE4F567DAD2DFC54.highlight.minted)
+(_minted/BDBEC82557F26B0D1B7684056FDE3637.highlight.minted) [63]
+(_minted/81A5EB574124AF2CF0F0CC408F41EA17.highlight.minted [64])
+(_minted/C6CA803DAD6A7EB8F4581A51C2A80A87.highlight.minted)) [65]
+(sections/modelo_datos.tex [66]
+(_minted/4A5BFD544CAC683864C12F46026834C1.highlight.minted [67])
+(_minted/8DD128728F3054749A379D2911907557.highlight.minted [68])
 File: templatefigures/mysql_workbench_empresas.png Graphic file (type bmp)
 <templatefigures/mysql_workbench_empresas.png>
- [62]
+ [69]
 File: templatefigures/mysql_workbench_corridas.png Graphic file (type bmp)
 <templatefigures/mysql_workbench_corridas.png>
 )
 (sections/diseño_ux_ui.tex
 File: templatefigures/logo.png Graphic file (type bmp)
 <templatefigures/logo.png>
- [63]
+ [70]
 File: templatefigures/ux_login.png Graphic file (type bmp)
 <templatefigures/ux_login.png>
 File: templatefigures/ux_registro.png Graphic file (type bmp)
@@ -1701,14 +1711,14 @@ File: templatefigures/ux_dashboard.png Graphic file (type bmp)
 <templatefigures/ux_dashboard.png>
 File: templatefigures/ux_prediccion.png Graphic file (type bmp)
 <templatefigures/ux_prediccion.png>
- [64]
+ [71]
 File: templatefigures/ux_usuarios.png Graphic file (type bmp)
 <templatefigures/ux_usuarios.png>
 File: templatefigures/ux_sidebar_empleado.png Graphic file (type bmp)
 <templatefigures/ux_sidebar_empleado.png>
 File: templatefigures/ux_sidebar_administrador.png Graphic file (type bmp)
 <templatefigures/ux_sidebar_administrador.png>
- [65]
+ [72]
 File: templatefigures/ux_estado_inventario.png Graphic file (type bmp)
 <templatefigures/ux_estado_inventario.png>
 File: templatefigures/ux_presupuesto.png Graphic file (type bmp)
@@ -1725,7 +1735,7 @@ Overfull \hbox (116.17517pt too wide) in paragraph at lines 91--92
  [][] 
  []
 
-[66]
+[73]
 File: templatefigures/ux_pedidos.png Graphic file (type bmp)
 <templatefigures/ux_pedidos.png>
 
@@ -1746,22 +1756,22 @@ File: templatefigures/ux_calendario_pedidos.png Graphic file (type bmp)
 <templatefigures/ux_calendario_pedidos.png>
 File: templatefigures/ux_cerrar_sesion.png Graphic file (type bmp)
 <templatefigures/ux_cerrar_sesion.png>
-[67]
+[74]
 File: templatefigures/ux_alertas_visuales.png Graphic file (type bmp)
 <templatefigures/ux_alertas_visuales.png>
 File: templatefigures/ux_dashboard_empleado.png Graphic file (type bmp)
 <templatefigures/ux_dashboard_empleado.png>
- [68]
+ [75]
 File: templatefigures/ux_dashboard_claro.png Graphic file (type bmp)
 <templatefigures/ux_dashboard_claro.png>
 File: templatefigures/ux_dashboard_mobile.png Graphic file (type bmp)
 <templatefigures/ux_dashboard_mobile.png>
- [69])) (sections/analisis_amenazas.tex [70]
+ [76])) (sections/analisis_amenazas.tex [77]
 (_minted/6F75B918A05E612CEFFE565A7380CB4A.highlight.minted)
 (_minted/4E8F3F73C93238E9FFA5E8B42F7EFEAA.highlight.minted)
-(_minted/81DAD8D6206678F42BB5B2D373F0B387.highlight.minted) [71]
+(_minted/81DAD8D6206678F42BB5B2D373F0B387.highlight.minted) [78]
 (_minted/9E4C09E8184209590DB37ADB848602D2.highlight.minted)
-(_minted/ECD3B3FCC9F08291E5546BB21388F1AE.highlight.minted) [72]))
+(_minted/ECD3B3FCC9F08291E5546BB21388F1AE.highlight.minted) [79]))
 (sections/construccion_despliegue.tex
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
@@ -1865,7 +1875,7 @@ Missing character: There is no ─ in font [texgyrecursor-regular.otf]/OT:script
 latn;language=dflt;!
 Missing character: There is no ─ in font [texgyrecursor-regular.otf]/OT:script=
 latn;language=dflt;!
-[73]
+[80]
 Missing character: There is no │ in font [texgyrecursor-regular.otf]/OT:script=
 latn;language=dflt;!
 Missing character: There is no │ in font [texgyrecursor-regular.otf]/OT:script=
@@ -2040,24 +2050,24 @@ Missing character: There is no ─ in font [texgyrecursor-regular.otf]/OT:script
 latn;language=dflt;!
 Missing character: There is no ─ in font [texgyrecursor-regular.otf]/OT:script=
 latn;language=dflt;!
-[74] (_minted/1F6F785AA32757865E37CA9EC0B429E4.highlight.minted)
-(_minted/5E2995772A16F3E79C38E8769A572304.highlight.minted [75])
-(_minted/3433F6EF2A7F59CA8E9512CF87CDEA61.highlight.minted) [76]
+[81] (_minted/1F6F785AA32757865E37CA9EC0B429E4.highlight.minted)
+(_minted/5E2995772A16F3E79C38E8769A572304.highlight.minted [82])
+(_minted/3433F6EF2A7F59CA8E9512CF87CDEA61.highlight.minted) [83]
 (_minted/2AF517DB605F2DA3F1AC9972ACA69C0B.highlight.minted)
-(_minted/1E7FD43384ED7949A0AF159EDA38F5F9.highlight.minted [77])
+(_minted/1E7FD43384ED7949A0AF159EDA38F5F9.highlight.minted [84])
 File: templatefigures/railway_servicios.png Graphic file (type bmp)
 <templatefigures/railway_servicios.png>
- [78]
+ [85]
 (_minted/D9E1FDFCE3F5BD234322D134FA0EFF1C.highlight.minted)
 File: templatefigures/railway_deploy_details.png Graphic file (type bmp)
 <templatefigures/railway_deploy_details.png>
- [79]
+ [86]
 File: templatefigures/railway_variables.png Graphic file (type bmp)
 <templatefigures/railway_variables.png>
- [80]
+ [87]
 File: templatefigures/railway_mysql_tablas.png Graphic file (type bmp)
 <templatefigures/railway_mysql_tablas.png>
- [81]
+ [88]
 File: templatefigures/thary_login_produccion.png Graphic file (type bmp)
 <templatefigures/thary_login_produccion.png>
 )
@@ -2066,34 +2076,34 @@ File: templatefigures/thary_login_produccion.png Graphic file (type bmp)
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
 (hyperref)                than one, level fixed on input line 4.
 
-)) (sections/capitulo4_resultados.tex [82]
+)) (sections/capitulo4_resultados.tex [89]
 (sections/resultados_verificacion.tex) (sections/resultados_validacion.tex
 File: templatefigures/comparacion_WAPE_porcentaje.png Graphic file (type bmp)
 <templatefigures/comparacion_WAPE_porcentaje.png>
 
-[83
+[90
 
-] [84] (_minted/3542C0AC6571E8F53AD41E16A8F09DE2.highlight.minted) [85]
-[86])) [87]
+] [91] (_minted/3542C0AC6571E8F53AD41E16A8F09DE2.highlight.minted) [92]
+[93])) [94]
 LaTeX Font Info:    Font shape `TU/TeXGyreTermesX(0)/m/sc' will be
 (Font)              scaled to size 12.0pt on input line 200.
- [88
+ [95
 
 
-] [89] (anexos/anexos.tex [90
+] [96] (anexos/anexos.tex [97
 
 
 
-] [91
+] [98
 
-] [92] [93] [94] [95] [96]
-[97] [98] [99] [100] [101] [102] [103
+] [99] [100] [101] [102]
+[103] [104] [105] [106] [107] [108] [109] [110
 
-] [104
+] [111
 
-] [105
+] [112
 
-]) [106
+]) [113
 
 ] (main.aux)
  ***********
@@ -2107,12 +2117,12 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 33402 strings out of 402986
- 704748 string characters out of 5448711
- 1815407 words of memory out of 5000000
- 61394 multiletter control sequences out of 15000+600000
+ 33471 strings out of 402986
+ 708270 string characters out of 5448711
+ 1815414 words of memory out of 5000000
+ 61433 multiletter control sequences out of 15000+600000
  636277 words of font info for 111 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  91i,13n,120p,1785b,5575s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.pdf (106 pages).
+Output written on main.pdf (113 pages).

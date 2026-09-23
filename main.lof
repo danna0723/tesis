@@ -8,25 +8,25 @@
 \contentsline {figure}{\numberline {5}{\ignorespaces Diagrama de contexto del sistema (nivel 1 del modelo C4).}}{41}{figure.caption.23}%
 \contentsline {figure}{\numberline {6}{\ignorespaces Diagrama de contenedores del sistema (nivel 2 del modelo C4).}}{42}{figure.caption.24}%
 \contentsline {figure}{\numberline {7}{\ignorespaces Diagrama de componentes del sistema (nivel 3 del modelo C4).}}{42}{figure.caption.25}%
-\contentsline {figure}{\numberline {8}{\ignorespaces Estructura de la tabla \texttt {empresas} vista desde MySQL Workbench, conectado a la base de datos local.}}{62}{figure.caption.40}%
-\contentsline {figure}{\numberline {9}{\ignorespaces Consulta sobre la tabla \texttt {corridas} en MySQL Workbench, mostrando el esquema completo de 12 tablas y el historial acumulado de corridas.}}{63}{figure.caption.41}%
-\contentsline {figure}{\numberline {10}{\ignorespaces Logotipo de Thary, compuesto por el nombre del sistema y el icono representativo del búho}}{63}{figure.caption.43}%
-\contentsline {figure}{\numberline {11}{\ignorespaces Pantalla de inicio de sesion de Thary}}{64}{figure.caption.44}%
-\contentsline {figure}{\numberline {12}{\ignorespaces Pantalla de registro de Thary}}{64}{figure.caption.45}%
-\contentsline {figure}{\numberline {13}{\ignorespaces Pantalla de dashboard de Thary}}{64}{figure.caption.46}%
-\contentsline {figure}{\numberline {14}{\ignorespaces Pantalla de predicción de demanda de Thary}}{65}{figure.caption.47}%
-\contentsline {figure}{\numberline {15}{\ignorespaces Pantalla de gestión de usuarios de Thary}}{65}{figure.caption.48}%
-\contentsline {figure}{\numberline {17}{\ignorespaces Estado del inventario}}{66}{figure.caption.50}%
-\contentsline {figure}{\numberline {20}{\ignorespaces Próximos pedidos}}{67}{figure.caption.53}%
-\contentsline {figure}{\numberline {21}{\ignorespaces Calendario de pedidos}}{67}{figure.caption.54}%
-\contentsline {figure}{\numberline {22}{\ignorespaces Cerrar sesión}}{68}{figure.caption.55}%
-\contentsline {figure}{\numberline {23}{\ignorespaces Alertas visuales}}{68}{figure.caption.56}%
-\contentsline {figure}{\numberline {24}{\ignorespaces Dashboard del empleado}}{68}{figure.caption.57}%
-\contentsline {figure}{\numberline {25}{\ignorespaces Dashboard en modo claro}}{69}{figure.caption.58}%
-\contentsline {figure}{\numberline {26}{\ignorespaces Dashboard en modo mobile}}{70}{figure.caption.59}%
-\contentsline {figure}{\numberline {27}{\ignorespaces Servicios desplegados en Railway: aplicación web (Thary) y base de datos MySQL.}}{79}{figure.caption.64}%
-\contentsline {figure}{\numberline {28}{\ignorespaces Detalles de construcción y despliegue del servicio Thary en Railway.}}{80}{figure.caption.65}%
-\contentsline {figure}{\numberline {29}{\ignorespaces Variables de entorno del servicio Thary en Railway, con los valores ocultos.}}{81}{figure.caption.66}%
-\contentsline {figure}{\numberline {30}{\ignorespaces Tablas del esquema relacional de Thary en el entorno de producción, vistas desde el explorador de datos de Railway.}}{81}{figure.caption.67}%
-\contentsline {figure}{\numberline {31}{\ignorespaces Pantalla de inicio de sesión de Thary, accedida desde su URL pública en Railway.}}{82}{figure.caption.68}%
-\contentsline {figure}{\numberline {32}{\ignorespaces Comparación de WAPE entre los tres modelos candidatos (holdout final).}}{84}{figure.caption.74}%
+\contentsline {figure}{\numberline {8}{\ignorespaces Estructura de la tabla \texttt {empresas} vista desde MySQL Workbench, conectado a la base de datos local.}}{69}{figure.caption.40}%
+\contentsline {figure}{\numberline {9}{\ignorespaces Consulta sobre la tabla \texttt {corridas} en MySQL Workbench, mostrando el esquema completo de 12 tablas y el historial acumulado de corridas.}}{70}{figure.caption.41}%
+\contentsline {figure}{\numberline {10}{\ignorespaces Logotipo de Thary, compuesto por el nombre del sistema y el icono representativo del búho}}{70}{figure.caption.43}%
+\contentsline {figure}{\numberline {11}{\ignorespaces Pantalla de inicio de sesion de Thary}}{71}{figure.caption.44}%
+\contentsline {figure}{\numberline {12}{\ignorespaces Pantalla de registro de Thary}}{71}{figure.caption.45}%
+\contentsline {figure}{\numberline {13}{\ignorespaces Pantalla de dashboard de Thary}}{71}{figure.caption.46}%
+\contentsline {figure}{\numberline {14}{\ignorespaces Pantalla de predicción de demanda de Thary}}{72}{figure.caption.47}%
+\contentsline {figure}{\numberline {15}{\ignorespaces Pantalla de gestión de usuarios de Thary}}{72}{figure.caption.48}%
+\contentsline {figure}{\numberline {17}{\ignorespaces Estado del inventario}}{73}{figure.caption.50}%
+\contentsline {figure}{\numberline {20}{\ignorespaces Próximos pedidos}}{74}{figure.caption.53}%
+\contentsline {figure}{\numberline {21}{\ignorespaces Calendario de pedidos}}{74}{figure.caption.54}%
+\contentsline {figure}{\numberline {22}{\ignorespaces Cerrar sesión}}{75}{figure.caption.55}%
+\contentsline {figure}{\numberline {23}{\ignorespaces Alertas visuales}}{75}{figure.caption.56}%
+\contentsline {figure}{\numberline {24}{\ignorespaces Dashboard del empleado}}{75}{figure.caption.57}%
+\contentsline {figure}{\numberline {25}{\ignorespaces Dashboard en modo claro}}{76}{figure.caption.58}%
+\contentsline {figure}{\numberline {26}{\ignorespaces Dashboard en modo mobile}}{77}{figure.caption.59}%
+\contentsline {figure}{\numberline {27}{\ignorespaces Servicios desplegados en Railway: aplicación web (Thary) y base de datos MySQL.}}{86}{figure.caption.64}%
+\contentsline {figure}{\numberline {28}{\ignorespaces Detalles de construcción y despliegue del servicio Thary en Railway.}}{87}{figure.caption.65}%
+\contentsline {figure}{\numberline {29}{\ignorespaces Variables de entorno del servicio Thary en Railway, con los valores ocultos.}}{88}{figure.caption.66}%
+\contentsline {figure}{\numberline {30}{\ignorespaces Tablas del esquema relacional de Thary en el entorno de producción, vistas desde el explorador de datos de Railway.}}{88}{figure.caption.67}%
+\contentsline {figure}{\numberline {31}{\ignorespaces Pantalla de inicio de sesión de Thary, accedida desde su URL pública en Railway.}}{89}{figure.caption.68}%
+\contentsline {figure}{\numberline {32}{\ignorespaces Comparación de WAPE entre los tres modelos candidatos (holdout final).}}{91}{figure.caption.74}%

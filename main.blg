@@ -1,21 +1,21 @@
 [0] Config.pm:328> INFO - This is Biber 2.21
 [1] Config.pm:331> INFO - Logfile is 'main.blg'
-[361] biber-MSWIN64:342> INFO - === 
-[435] Biber.pm:421> INFO - Reading 'main.bcf'
-[696] Biber.pm:1002> INFO - Found 16 citekeys in bib section 0
-[729] Biber.pm:4487> INFO - Processing section 0
-[748] Biber.pm:4678> INFO - Looking for bibtex file 'bibs/sample.bib' for section 0
-[840] bibtex.pm:1713> INFO - LaTeX decoding ...
-[876] bibtex.pm:1519> INFO - Found BibTeX data source 'bibs/sample.bib'
-[1089] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[1089] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[1089] Biber.pm:4307> INFO - Sorting list 'none/global//global/global/global' of type 'entry' with template 'none' and locale 'en-US'
-[1089] Biber.pm:4313> INFO - No sort tailoring available for locale 'en-US'
-[1116] bbl.pm:676> INFO - Writing 'main.bbl' with encoding 'UTF-8'
-[1129] bbl.pm:779> INFO - Output to main.bbl
-[1130] Biber.pm:132> WARN - legacy year field '2024-11-05' in entry '10596_69801' is not an integer - this will probably not sort properly.
-[1130] Biber.pm:132> WARN - BibTeX subsystem: C:\Users\Home\AppData\Local\Temp\biber_tmp_Le8e\4f254e11deca8776044b2c0962cb1230_24988.utf8, line 51, warning: 6 characters of junk seen at toplevel
-[1130] Biber.pm:132> WARN - I didn't find a database entry for 'iso12207' (section 0)
-[1130] Biber.pm:132> WARN - I didn't find a database entry for 'sommerville2016' (section 0)
-[1130] Biber.pm:132> WARN - I didn't find a database entry for 'c4model' (section 0)
-[1130] Biber.pm:134> INFO - WARNINGS: 5
+[900] biber-MSWIN64:342> INFO - === 
+[1095] Biber.pm:421> INFO - Reading 'main.bcf'
+[1843] Biber.pm:1002> INFO - Found 16 citekeys in bib section 0
+[1952] Biber.pm:4487> INFO - Processing section 0
+[2031] Biber.pm:4678> INFO - Looking for bibtex file 'bibs/sample.bib' for section 0
+[2247] bibtex.pm:1713> INFO - LaTeX decoding ...
+[2341] bibtex.pm:1519> INFO - Found BibTeX data source 'bibs/sample.bib'
+[3144] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[3144] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[3144] Biber.pm:4307> INFO - Sorting list 'none/global//global/global/global' of type 'entry' with template 'none' and locale 'en-US'
+[3144] Biber.pm:4313> INFO - No sort tailoring available for locale 'en-US'
+[3235] bbl.pm:676> INFO - Writing 'main.bbl' with encoding 'UTF-8'
+[3275] bbl.pm:779> INFO - Output to main.bbl
+[3277] Biber.pm:132> WARN - legacy year field '2024-11-05' in entry '10596_69801' is not an integer - this will probably not sort properly.
+[3277] Biber.pm:132> WARN - BibTeX subsystem: C:\Users\Home\AppData\Local\Temp\biber_tmp_gmUS\4f254e11deca8776044b2c0962cb1230_7768.utf8, line 51, warning: 6 characters of junk seen at toplevel
+[3277] Biber.pm:132> WARN - I didn't find a database entry for 'iso12207' (section 0)
+[3277] Biber.pm:132> WARN - I didn't find a database entry for 'sommerville2016' (section 0)
+[3278] Biber.pm:132> WARN - I didn't find a database entry for 'c4model' (section 0)
+[3278] Biber.pm:134> INFO - WARNINGS: 5

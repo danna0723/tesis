@@ -1,0 +1,14 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{elegir\PYGZus{}campeon\PYGZus{}por\PYGZus{}producto}\PYG{p}{(}\PYG{n}{resultados\PYGZus{}prediccion}\PYG{p}{):}
+    \PYG{n}{errores\PYGZus{}por\PYGZus{}metodo} \PYG{o}{=} \PYG{n}{pd}\PYG{o}{.}\PYG{n}{DataFrame}\PYG{p}{(\PYGZob{}}
+        \PYG{n}{metodo}\PYG{p}{:} \PYG{p}{(}\PYG{n}{resultados\PYGZus{}prediccion}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}demanda\PYGZdq{}}\PYG{p}{]} \PYG{o}{\PYGZhy{}} \PYG{n}{resultados\PYGZus{}prediccion}\PYG{p}{[}\PYG{n}{columna}\PYG{p}{])}\PYG{o}{.}\PYG{n}{abs}\PYG{p}{()}
+        \PYG{k}{for} \PYG{n}{metodo}\PYG{p}{,} \PYG{n}{columna} \PYG{o+ow}{in} \PYG{n}{COLUMNA\PYGZus{}PREDICCION\PYGZus{}POR\PYGZus{}METODO}\PYG{o}{.}\PYG{n}{items}\PYG{p}{()}
+    \PYG{p}{\PYGZcb{})}
+    \PYG{n}{productos} \PYG{o}{=} \PYG{n}{resultados\PYGZus{}prediccion}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}producto\PYGZus{}id\PYGZdq{}}\PYG{p}{]}
+    \PYG{n}{errores\PYGZus{}por\PYGZus{}producto} \PYG{o}{=} \PYG{n}{errores\PYGZus{}por\PYGZus{}metodo}\PYG{o}{.}\PYG{n}{groupby}\PYG{p}{(}\PYG{n}{productos}\PYG{p}{)}\PYG{o}{.}\PYG{n}{mean}\PYG{p}{()}
+
+    \PYG{n}{metodos} \PYG{o}{=} \PYG{n}{errores\PYGZus{}por\PYGZus{}producto}\PYG{o}{.}\PYG{n}{columns}\PYG{o}{.}\PYG{n}{to\PYGZus{}numpy}\PYG{p}{()}
+    \PYG{n}{orden} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{argsort}\PYG{p}{(}\PYG{n}{errores\PYGZus{}por\PYGZus{}producto}\PYG{o}{.}\PYG{n}{to\PYGZus{}numpy}\PYG{p}{(),} \PYG{n}{axis}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{)}
+    \PYG{n}{mejor\PYGZus{}metodo} \PYG{o}{=} \PYG{n}{pd}\PYG{o}{.}\PYG{n}{Series}\PYG{p}{(}\PYG{n}{metodos}\PYG{p}{[}\PYG{n}{orden}\PYG{p}{[:,} \PYG{l+m+mi}{0}\PYG{p}{]],} \PYG{n}{index}\PYG{o}{=}\PYG{n}{errores\PYGZus{}por\PYGZus{}producto}\PYG{o}{.}\PYG{n}{index}\PYG{p}{)}
+    \PYG{n}{segundo\PYGZus{}metodo} \PYG{o}{=} \PYG{n}{pd}\PYG{o}{.}\PYG{n}{Series}\PYG{p}{(}\PYG{n}{metodos}\PYG{p}{[}\PYG{n}{orden}\PYG{p}{[:,} \PYG{l+m+mi}{1}\PYG{p}{]],} \PYG{n}{index}\PYG{o}{=}\PYG{n}{errores\PYGZus{}por\PYGZus{}producto}\PYG{o}{.}\PYG{n}{index}\PYG{p}{)}
+\end{MintedVerbatim}

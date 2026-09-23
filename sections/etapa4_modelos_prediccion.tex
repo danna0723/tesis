@@ -31,7 +31,7 @@ Antes de llegar a la solucion definitva se planteo una primera propuesta, en la 
 
 Por eso fue que se corrigio y re-interpreto el enfoque de la solucion, fundamentandola en que el problema a solucionar no era el numero de meses, si no el calculo del error, es decir, que tan confiable es la comparacion de error entre los modelos. 
 
-Fue aqui donde se propuso la prueba Diebold-Mariano, la cual consiste en una prueba estadistica que permite medir si la diferencia de error que hay entre dos modelos es significativa o es solo ruido. La prueba Diebold-Mariano requiere de un nivel de significancia, que se definio como 0.5\%.
+Fue aqui donde se propuso la prueba Diebold-Mariano, la cual consiste en una prueba estadistica que permite medir si la diferencia de error que hay entre dos modelos es significativa o es solo ruido. La prueba Diebold-Mariano requiere de un nivel de significancia, que se definio como 5\%.
 
 Por otro lado,\texttt{MESES\_PERDIDOS\_POR\_REZAGOS} es el número fijo de meses que se pierden al calcular los rezagos (visto en la etapa anterior), es necesario para disctribuir los meses utilizables del total de meses que subió el usuario en el archivo.
 
@@ -51,16 +51,7 @@ Luego se compara si el total de meses completo cuenta con 18 meses, de hacelo de
 
 Esta función se llama desde \texttt{sistema\_prediccion.py}, para decidir el tamaño del split que se usa para elegir el campeón y generar los resultados, y desde \texttt{validacion.py}, para que los \textit{folds} de la validación cruzada temporal usen ese mismo tamaño de test y conservar un criterio estandarizado en ambas partes.
 
-Es parte de la solucion que se propone en Thary, esta funcion no existe en alguna de las implementaciones que fueron revisadas ya que ninguna adapta el tamaño del perido de prueba seun la cantidad de historia disponible. 
-
-
-\begin{minted}{python}
-def tamano_test_backtest(n_meses_usables):
-    n_meses_archivo_original = n_meses_usables + MESES_PERDIDOS_POR_REZAGOS
-    if n_meses_archivo_original >= MESES_ARCHIVO_UMBRAL_TEST_GRANDE:
-        return TEST_SIZE_MESES_GRANDE
-    return TEST_SIZE_MESES_DEFAULT
-\end{minted}
+Es parte de la solucion que se propone en Thary, esta funcion no ninguna en alguna de las implementaciones que fueron revisadas ya que ninguna adapta el tamaño del perido de prueba seun la cantidad de historia disponible. 
 
 \subparagraph{Modelos de demanda}
 
@@ -146,11 +137,116 @@ Para implementar regresion lineal, se adapato la logica del \textit{Ejemplo 4 (B
             return candidatas
 \end{minted}
 
-Inicialmente, se filtran y excluyen las columnas que no varian demasiado, descartando las que tienen una desviacion estandar de 0, ya que una desviacion estandar con este valor indica queria las columas donde el valor es siempre el mismo número, sin ninguna variación
+Inicialmente, se filtran y excluyen las columnas que no varian demasiado, descartando las que tienen una desviacion estandar de 0, ya que una desviacion estandar con este valor indica que en esas columnas el valor es siempre el mismo numero.
 
-con \texttt{std() > 0}, esto se hace porque cuando se entrena regresion lineal, no siempre conviene usar todas las variables disponibles porque no todas tienen algo significativo que aportar. Es incluso perjudicial para el modelo, ya que una columna sin variacion no le sirve de nada al modelo (no hay nada que "aprender" de un número que nunca cambia), y además rompe matemáticamente un cálculo que viene más adelante.
+con \texttt{std() > 0}, esto se hace porque cuando se entrena regresion lineal, no siempre conviene usar todas las variables disponibles porque no todas tienen algo significativo que aportar. Es incluso perjudicial para el modelo, ya que una columna sin variacion no le sirve de nada al modelo (no hay nada que "aprender" de un número que nunca cambia).
 
-Ademas, 
+Posteriormente, se convierten todos los valores de cada columna a un rango entre 0 y 1, para mantener las proporciones relativas con \texttt{MinMaxScaler}. Se ajusta \texttt{fit\_transform} usando solo los datos con los que se hace el entrenamiento, no se puede incluir a los de prueba porque eso haria que el sistema vea los datos que se supone debe predecir.  
 
+\begin{minted}{python}
+    try:
+        scaler = MinMaxScaler()
+        X_train_esc = pd.DataFrame(
+            scaler.fit_transform(X_train[candidatas]),
+            columns=candidatas, index=X_train.index
+        )
+\end{minted}
 
-Es por eso que en esta funcion se selecciona automaticamente cual es el mejor subconjunto de variables a usar para cada producto
+En esta parte se incluye Recursive Feature Elimination (RFE). Este consiste en un metodo que entrena varias veces un modelo de regresion lineal, y en cada una se elimina la variable que aporte menos al modelo hasta que al final, se quede con un numero controlado de variables, en este caso, tienen que ser 2 variables como minimo para posteriormente poder realizar el analisis, pero no pueden ser mas de 8 variables porque no se pueden dejar demasiadas \texttt{n\_rfe = max(2, min(8, len(candidatas) - 1))}.
+
+Finalmente, \texttt{seleccionadas} es la lista de columnas que sobrevivieron esta primera etapa, aunque es posible que aun existan variables redundantes:
+
+\begin{minted}{python}
+    n_rfe = max(2, min(8, len(candidatas) - 1))
+    rfe = RFE(LinearRegression(), n_features_to_select=n_rfe)
+    rfe.fit(X_train_esc, y_train)
+    seleccionadas = [c for c, usar in zip(candidatas, rfe.support_) if usar]
+\end{minted}
+
+La segunda etapa para seleccionar varibles consiste en calcular el VIF o Factor de Inflación de Varianza para cada variable. Este se encarga de medir que tan redundante es una variable en comparacion con las demas, el criterio para decidir esto es estimar si una variable se puede predecir con exactitud a partir de las otras, de ser este el caso, su VIF sera muy alto y eso es un problema porque el modelo no podria distinguir cuál de las dos variables redundantes es la que esta causando el efecto.
+
+En la implementacion de Thary, entre las variables que se considerian redundantes se encuentran:
+
+\begin{itemize}
+    \item \texttt{inventario} y \texttt{inventario\_lag\_1}: Escencialmente tienden a ser casi la misma variable, en muchos casos, es bastante probable que el inventario de un mes sea bastante parecido al del mes anterior.
+    \item Los lags (\texttt{lag\_1}, \texttt{lag\_2}, \texttt{lag\_3}, \texttt{lag\_6}): Tambien es comun que la demanda de un producto tienda a ser similar a la de meses anteriores, si un producto vendio bien un mes, es muy probable que tambien venda mes el siguiente mes, lo que a la larga hace que los lags sean variables muy parecidas entre si.
+    \item (\texttt{media\_movil\_3} y \texttt{media\_movil\_6}) con los lags: Que todos los Lags sean similares llevaria a que, inevitablemente, la media movil de 3 meses y la de 6 meses tambien lo sean debido a que se calculan a partir de promediar los lags.
+    \item (\texttt{media\_producto}) y las medias móviles: (\texttt{media\_producto}) consiste en el promedio historico general del producto, si los productos cuentan con un comportamiento estable, es probable que sea similar a (\texttt{media\_movil\_3} y \texttt{media\_movil\_6}), por lo que tambien se considera una variable redundante.
+\end{itemize}
+
+Teniendo esto en cuenta, las variables que no se considerarian redundantes son: \texttt{año}, \texttt{mes\_cos}, \texttt{mes\_sin}, \texttt{desviacion\_movil\_3} y \texttt{desviacion\_producto}.
+
+\begin{minted}{python}
+    while len(seleccionadas) > 1:
+        X_sm = sm.add_constant(X_train_esc[seleccionadas])
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore", category=SingularMatrixWarning)
+            warnings.simplefilter("ignore", category=UserWarning)
+            vif = pd.DataFrame({
+                "feature": seleccionadas,
+                "VIF": [variance_inflation_factor(X_sm.values, i + 1) for i in range(len(seleccionadas))]
+            })
+\end{minted}
+
+Posteriormente, se quitan las variables con un VIF infinito que nisiquiera se puede calcular, ya que de ser este el caso, significaria que la variable es tan redundante con otra que rompe las matemáticas del modelo. Esto ocurriria porque a la hora de calcular los coeficientes de la regresion lineal, el algoritmo necesita calcular cuanto aporta cada variable a la predicción, y para eso, necesita poder distinguir el efecto individual de cada una. El problema es que si dos variables son casi idénticas entre sí , es imposible distinguirlas.
+
+Es por eso, que en esta etapa esas variables son eliminadas.En las siguientes lineas de codigo, se revisa cual variable tiene el VIF mas alto si ya no hay variables con VIF infinito, si el valor del vif mas alto supera el limite que se definio en \texttt{max\_vif}, esa variable se elimina y finalmente se vuelve a repetir el proceso desde el principio hasta que se halla calculado el VIF de las variables restantes y todas estas cuenten con un VIF menor al limite establecido.
+
+\begin{minted}{python}
+    vif_problema = vif[~np.isfinite(vif["VIF"])]
+    if not vif_problema.empty:
+        seleccionadas.remove(vif_problema.iloc[0]["feature"])
+        continue
+
+    peor_vif_fila = vif.loc[vif["VIF"].idxmax()]
+    if peor_vif_fila["VIF"] > max_vif:
+        seleccionadas.remove(peor_vif_fila["feature"])
+        continue
+\end{minted}
+
+Una vez completado el proceso de eliminacion de las variables redundantes, se prosigue con la implementacion del entrenamiento del modelo de regresion lineal, en el que se revisa el "p-valor" de cada variable. 
+
+El P-valor consiste en una medida estadistica que indica que tan probable es que la variable que se esta revisando este relacionada con la demanda solo por casualidad y no porque de verdad dicha variable este relacionada de verdad con la demanda. En este caso, si se encuentra que la variable que cuenta con el peor p-valor supera el limite de \texttt{max\_p\_valor}, que es estandarizado como 0.05 al representar el 95\% de confianza en estadistica, se elimina la variable y se repite el proceso. 
+
+El bucle se detiene cuando ya no haya ninguna variable con el VIF alto o con el P-valor alto, al cumplir con ambos criterios, solo se contara con variables limpias y estadisticamente significativas para el proceso. 
+
+De haber algun fallo durante esta etapa, simplemente se devuelve la lista completa de variables con el fin de garantizar de que el pipeline no se rompa y el sistema pueda continuar funcionando.
+
+\begin{minted}{python}
+        modelo_ols = sm.OLS(y_train, X_sm).fit()
+        p_valores = modelo_ols.pvalues.drop("const")
+        peor_p_nombre = p_valores.idxmax()
+        peor_p_valor = p_valores[peor_p_nombre]
+
+        if peor_p_valor > max_p_valor:
+            seleccionadas.remove(peor_p_nombre)
+        else:
+            break
+
+    return seleccionadas
+except Exception:
+    return candidatas
+\end{minted}
+
+Por otro lado, en ese mismo archivo, se implemento la funcion \texttt{entrenar\_regresion\_lineal}, que se encarga de entrenar el modelo de regresion lineal y devolver las predicciones, tambien es a la que se llama desde el resto del sistema.
+
+La funcion llama a \texttt{\_seleccionar\_features\_regresion} para obtener la lista de variables que se van a usar en el entrenamiento del modelo, (si por algun motivo, dicha funcion le devuelve una lista que se encuentre vacia, se usan todas las variables originales.)
+
+El modelo es entrenado con las variables limpias asegurandose que las predicciones no sean negativas al no ser algo que tenga sentido en este contexto. 
+
+Finalmente, devuelve el modelo entrenado, las predicciones y la lista de variables que se usaron para entrenar el modelo.
+
+\begin{minted}{python}
+def entrenar_regresion_lineal(X_train, y_train, X_test, feature_cols):
+    features_lr = _seleccionar_features_regresion(X_train, y_train)
+    if not features_lr:
+        features_lr = list(feature_cols)
+
+    modelo_lr = LinearRegression()
+    modelo_lr.fit(X_train[features_lr], y_train)
+    pred_lr = modelo_lr.predict(X_test[features_lr])
+    pred_lr = np.maximum(pred_lr, 0)
+
+    return modelo_lr, pred_lr, features_lr
+
+\end{minted}

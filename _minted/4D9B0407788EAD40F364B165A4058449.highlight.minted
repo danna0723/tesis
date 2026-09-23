@@ -1,0 +1,8 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+    \PYG{k}{try}\PYG{p}{:}
+        \PYG{n}{scaler} \PYG{o}{=} \PYG{n}{MinMaxScaler}\PYG{p}{()}
+        \PYG{n}{X\PYGZus{}train\PYGZus{}esc} \PYG{o}{=} \PYG{n}{pd}\PYG{o}{.}\PYG{n}{DataFrame}\PYG{p}{(}
+            \PYG{n}{scaler}\PYG{o}{.}\PYG{n}{fit\PYGZus{}transform}\PYG{p}{(}\PYG{n}{X\PYGZus{}train}\PYG{p}{[}\PYG{n}{candidatas}\PYG{p}{]),}
+            \PYG{n}{columns}\PYG{o}{=}\PYG{n}{candidatas}\PYG{p}{,} \PYG{n}{index}\PYG{o}{=}\PYG{n}{X\PYGZus{}train}\PYG{o}{.}\PYG{n}{index}
+        \PYG{p}{)}
+\end{MintedVerbatim}

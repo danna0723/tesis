@@ -1,0 +1,11 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+    \PYG{n}{vif\PYGZus{}problema} \PYG{o}{=} \PYG{n}{vif}\PYG{p}{[}\PYG{o}{\PYGZti{}}\PYG{n}{np}\PYG{o}{.}\PYG{n}{isfinite}\PYG{p}{(}\PYG{n}{vif}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}VIF\PYGZdq{}}\PYG{p}{])]}
+    \PYG{k}{if} \PYG{o+ow}{not} \PYG{n}{vif\PYGZus{}problema}\PYG{o}{.}\PYG{n}{empty}\PYG{p}{:}
+        \PYG{n}{seleccionadas}\PYG{o}{.}\PYG{n}{remove}\PYG{p}{(}\PYG{n}{vif\PYGZus{}problema}\PYG{o}{.}\PYG{n}{iloc}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{][}\PYG{l+s+s2}{\PYGZdq{}feature\PYGZdq{}}\PYG{p}{])}
+        \PYG{k}{continue}
+
+    \PYG{n}{peor\PYGZus{}vif\PYGZus{}fila} \PYG{o}{=} \PYG{n}{vif}\PYG{o}{.}\PYG{n}{loc}\PYG{p}{[}\PYG{n}{vif}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}VIF\PYGZdq{}}\PYG{p}{]}\PYG{o}{.}\PYG{n}{idxmax}\PYG{p}{()]}
+    \PYG{k}{if} \PYG{n}{peor\PYGZus{}vif\PYGZus{}fila}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}VIF\PYGZdq{}}\PYG{p}{]} \PYG{o}{\PYGZgt{}} \PYG{n}{max\PYGZus{}vif}\PYG{p}{:}
+        \PYG{n}{seleccionadas}\PYG{o}{.}\PYG{n}{remove}\PYG{p}{(}\PYG{n}{peor\PYGZus{}vif\PYGZus{}fila}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}feature\PYGZdq{}}\PYG{p}{])}
+        \PYG{k}{continue}
+\end{MintedVerbatim}

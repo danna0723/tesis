@@ -1,0 +1,11 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+    \PYG{k}{while} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{seleccionadas}\PYG{p}{)} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{1}\PYG{p}{:}
+        \PYG{n}{X\PYGZus{}sm} \PYG{o}{=} \PYG{n}{sm}\PYG{o}{.}\PYG{n}{add\PYGZus{}constant}\PYG{p}{(}\PYG{n}{X\PYGZus{}train\PYGZus{}esc}\PYG{p}{[}\PYG{n}{seleccionadas}\PYG{p}{])}
+        \PYG{k}{with} \PYG{n}{warnings}\PYG{o}{.}\PYG{n}{catch\PYGZus{}warnings}\PYG{p}{():}
+            \PYG{n}{warnings}\PYG{o}{.}\PYG{n}{simplefilter}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}ignore\PYGZdq{}}\PYG{p}{,} \PYG{n}{category}\PYG{o}{=}\PYG{n}{SingularMatrixWarning}\PYG{p}{)}
+            \PYG{n}{warnings}\PYG{o}{.}\PYG{n}{simplefilter}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}ignore\PYGZdq{}}\PYG{p}{,} \PYG{n}{category}\PYG{o}{=}\PYG{n+ne}{UserWarning}\PYG{p}{)}
+            \PYG{n}{vif} \PYG{o}{=} \PYG{n}{pd}\PYG{o}{.}\PYG{n}{DataFrame}\PYG{p}{(\PYGZob{}}
+                \PYG{l+s+s2}{\PYGZdq{}feature\PYGZdq{}}\PYG{p}{:} \PYG{n}{seleccionadas}\PYG{p}{,}
+                \PYG{l+s+s2}{\PYGZdq{}VIF\PYGZdq{}}\PYG{p}{:} \PYG{p}{[}\PYG{n}{variance\PYGZus{}inflation\PYGZus{}factor}\PYG{p}{(}\PYG{n}{X\PYGZus{}sm}\PYG{o}{.}\PYG{n}{values}\PYG{p}{,} \PYG{n}{i} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{seleccionadas}\PYG{p}{))]}
+            \PYG{p}{\PYGZcb{})}
+\end{MintedVerbatim}

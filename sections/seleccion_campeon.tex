@@ -1,0 +1,95 @@
+El sistema de prediccion Thary no usa el mismo metodo para todos los productos del catalogo. Para cada uno de los productos se selecciona cual de los tres modelos candidatos usar para su pronostico. 
+
+Esta desicion se tomo de manera independiente para el sistema Thary, ya que al revisar las implementaciones de los 4 sistemas de prediccion en las que se baso el sistema, se evidencio que estos simplemente usaban el mejor modelo para todo el catalogo por igual.
+
+En una primera version del sistema, la seleccion del mejor modelo por producto se hacia en base a cual de los 3 obtuvo un menor MAE. El problema con esta estrategia es que el backtest generalmente solo cuenta con entre 3 y 6 meses de datos si es que se cuenta con un archivo mas grande, son pocos meses, por lo que el hecho de que un modelo tenga el MAE mas bajo no es prueba de que sea mejor, podria darse por diferentes factores o por casualidad. 
+
+Es por eso que para seleccionar el mejor modelo, lo primero que se hace es calcular el MAE de los 3 modelos, se identifican los dos modelos que obtengan el menor MAE para cada producto. Esto usando \texttt{np.argsort} sobre la tabla de errores:
+
+\begin{minted}{python}
+def elegir_campeon_por_producto(resultados_prediccion):
+    errores_por_metodo = pd.DataFrame({
+        metodo: (resultados_prediccion["demanda"] - resultados_prediccion[columna]).abs()
+        for metodo, columna in COLUMNA_PREDICCION_POR_METODO.items()
+    })
+    productos = resultados_prediccion["producto_id"]
+    errores_por_producto = errores_por_metodo.groupby(productos).mean()
+
+    metodos = errores_por_producto.columns.to_numpy()
+    orden = np.argsort(errores_por_producto.to_numpy(), axis=1)
+    mejor_metodo = pd.Series(metodos[orden[:, 0]], index=errores_por_producto.index)
+    segundo_metodo = pd.Series(metodos[orden[:, 1]], index=errores_por_producto.index)
+\end{minted}
+
+Se calcula la diferencia de error entre el mejor y el segundo mejor modelo para cada uno de los productos mes a mes, y se resume esa diferencia con su media, desviación estándar y cantidad de observaciones:
+
+\begin{minted}{python}
+    mejor_por_fila = productos.map(mejor_metodo)
+    segundo_por_fila = productos.map(segundo_metodo)
+    error_mejor = np.select(
+        [mejor_por_fila == metodo for metodo in errores_por_metodo.columns],
+        [errores_por_metodo[metodo] for metodo in errores_por_metodo.columns],
+    )
+    error_segundo = np.select(
+        [segundo_por_fila == metodo for metodo in errores_por_metodo.columns],
+        [errores_por_metodo[metodo] for metodo in errores_por_metodo.columns],
+    )
+    diferencia = pd.Series(error_mejor - error_segundo, index=resultados_prediccion.index)
+    stats_diferencia = diferencia.groupby(productos).agg(d_media="mean", d_std="std", n="count")
+\end{minted}
+
+Se implemento la prueba de Diebold-Mariano \textbf{Diebold-Mariano} (Diebold, F. X., \& Mariano, R. S. (1995). "Comparing predictive accuracy." \textit{Journal of Business \& Economic Statistics}, 13(3), 253–263). El problema que resuelve es que cuando se comparan dos modelos para un producto, se quiere saber si el modelo ganador realmente es mejor o si por algun motivo, tuvo suerte en esos pocos 3 meses, ya que un solo mes con un comportamiento atipico puede hacer que un modelo gane sin que eso signifique que sea mejor. 
+
+La prueba Diebold-Mariano permite determinar estadisticamente si la diferencia de error entre el mejor y el segundo mejor modelo es estadisticamente significativa, o si es solo ruido. La prueba consiste en observar mes a mes cuanto le ganó un modelo al otro. Si esa diferencia es consistente — un modelo le gana al otro casi todos los meses, por una cantidad parecida — es una señal fuerte de que la ventaja es real. Si la diferencia varía mucho de un mes a otro (a veces gana uno, a veces el otro, por cantidades muy distintas), es señal de que lo que viste como "ganador" fue más bien casualidad. 
+
+Debido a que la prueba clasica esta pensada para muestras grandes, se adapto para muestras pequeñas siguiendo \textbf{Harvey, Leybourne y Newbold (1997)}, la correccion consistio en ajustar (\texttt{dm\_ajustado = dm * sqrt((n-1)/n)}) y lo compara contra una distribución t de Student con n-1 grados de libertad, en vez de la normal estándar de la prueba original. 
+
+La implementacion de la prueba consiste en inicialmente medir que tan confiable es el promedio de las diferencias, dado que se calculó con pocos datos. Cuanto más dispersas son las diferencias (\texttt{d\_std}) o menos meses tiene (\texttt{n}), más "ruidoso" es ese promedio.
+
+Para comparar que tan grande es la ventaja promedio con que tan confiable es, si la ventaja promedio es grande PERO el error estándar (la inconsistencia) también es grande, dm es pequeño, lo cual es señal de que la ventaja no es confiable
+
+\begin{minted}{python}
+        error_estandar = stats_diferencia["d_std"] / np.sqrt(stats_diferencia["n"])
+        dm = stats_diferencia["d_media"] / error_estandar
+        correccion_hln = np.sqrt((stats_diferencia["n"] - 1) / stats_diferencia["n"])
+        dm_ajustado = dm * correccion_hln
+        grados_libertad = (stats_diferencia["n"] - 1).clip(lower=1)
+        p_valor = pd.Series(
+            2 * (1 - stats.t.cdf(dm_ajustado.abs(), df=grados_libertad)),
+            index=stats_diferencia.index,
+        )
+
+    suficientes_datos = stats_diferencia["n"] >= 2
+    sin_varianza = stats_diferencia["d_std"].fillna(0) == 0
+    significativo = suficientes_datos & (p_valor < NIVEL_SIGNIFICANCIA_DM) & ~sin_varianza
+
+    campeon = mejor_metodo.copy()
+    campeon[~significativo] = "Media móvil"
+    return campeon
+\end{minted}
+
+Se descararia el resultado del MAE y se usaria el modelo de media movil si:
+
+\begin{itemize}
+    \item La diferencia no resulta estadisticamente significativa, es decir, que el p-valor de la prueba Diebold-Mariano es mayor al nivel de significancia definido (5\%).
+    \item Los dos métodos se equivocaron exactamente igual (varianza cero, sin evidencia de que uno sea mejor)
+    \item No hay al menos 2 meses para medir varianza
+\end{itemize}
+
+En estos casos se selccionaria la media movil en vez del modelo que gano por una diferencia que no es significativa y podria tratarse solo de ruido.
+
+Al aplicar estos mecanismos al sitema, se evidencio un cambio en el resultado real. Se probo este cambio sobre el catálogo completo de la clínica Nuestra Señora de los remedios que cuenta con 856 productos, la distribución del método campeón cambió drásticamente.
+
+Antes de implementar las modificaciones y solo se tenia en cuenta el MAE mas bajo, el modelo campeon para la mayoría de los productos era XGBoost, ya que el 96.8\% de los productos (829 de 856) terminaran usando Media Móvil, porque la diferencia de error contra los otros métodos no alcanzaba a ser estadísticamente significativa con tan pocos meses de backtest.
+
+En cuanto al tamaño del periodo de prueba, cuando se cuenta con un test fijo de 3 meses, la prueba de Diebold-Mariano siempre tendría solo 2 grados de libertad, sin importar cuánta historia tenga el archivo — nunca ganaría más poder estadístico para detectar diferencias reales. Por eso, el tamaño del período de prueba se ajusta según el historial disponible:
+
+\begin{minted}{python}
+def tamano_test_backtest(n_meses_usables):
+    n_meses_archivo_original = n_meses_usables + MESES_PERDIDOS_POR_REZAGOS
+    if n_meses_archivo_original >= MESES_ARCHIVO_UMBRAL_TEST_GRANDE:
+        return TEST_SIZE_MESES_GRANDE
+    return TEST_SIZE_MESES_DEFAULT
+\end{minted}
+
+Con archivos largos (18 meses del archivo original o más), se usa un test de 6 meses en vez de 3, dándole más grados de libertad y más poder estadístico a la prueba de Diebold-Mariano. El corte de 18 meses es una heurística práctica definida para este proyecto, no un valor tomado de una fuente bibliográfica externa — a diferencia del nivel de significancia o de la prueba de Diebold-Mariano en sí, que sí tienen respaldo en la literatura.

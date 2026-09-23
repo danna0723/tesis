@@ -1,0 +1,6 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+    \PYG{n}{n\PYGZus{}rfe} \PYG{o}{=} \PYG{n+nb}{max}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{n+nb}{min}\PYG{p}{(}\PYG{l+m+mi}{8}\PYG{p}{,} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{candidatas}\PYG{p}{)} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{))}
+    \PYG{n}{rfe} \PYG{o}{=} \PYG{n}{RFE}\PYG{p}{(}\PYG{n}{LinearRegression}\PYG{p}{(),} \PYG{n}{n\PYGZus{}features\PYGZus{}to\PYGZus{}select}\PYG{o}{=}\PYG{n}{n\PYGZus{}rfe}\PYG{p}{)}
+    \PYG{n}{rfe}\PYG{o}{.}\PYG{n}{fit}\PYG{p}{(}\PYG{n}{X\PYGZus{}train\PYGZus{}esc}\PYG{p}{,} \PYG{n}{y\PYGZus{}train}\PYG{p}{)}
+    \PYG{n}{seleccionadas} \PYG{o}{=} \PYG{p}{[}\PYG{n}{c} \PYG{k}{for} \PYG{n}{c}\PYG{p}{,} \PYG{n}{usar} \PYG{o+ow}{in} \PYG{n+nb}{zip}\PYG{p}{(}\PYG{n}{candidatas}\PYG{p}{,} \PYG{n}{rfe}\PYG{o}{.}\PYG{n}{support\PYGZus{}}\PYG{p}{)} \PYG{k}{if} \PYG{n}{usar}\PYG{p}{]}
+\end{MintedVerbatim}

@@ -1,0 +1,14 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{entrenar\PYGZus{}regresion\PYGZus{}lineal}\PYG{p}{(}\PYG{n}{X\PYGZus{}train}\PYG{p}{,} \PYG{n}{y\PYGZus{}train}\PYG{p}{,} \PYG{n}{X\PYGZus{}test}\PYG{p}{,} \PYG{n}{feature\PYGZus{}cols}\PYG{p}{):}
+    \PYG{n}{features\PYGZus{}lr} \PYG{o}{=} \PYG{n}{\PYGZus{}seleccionar\PYGZus{}features\PYGZus{}regresion}\PYG{p}{(}\PYG{n}{X\PYGZus{}train}\PYG{p}{,} \PYG{n}{y\PYGZus{}train}\PYG{p}{)}
+    \PYG{k}{if} \PYG{o+ow}{not} \PYG{n}{features\PYGZus{}lr}\PYG{p}{:}
+        \PYG{n}{features\PYGZus{}lr} \PYG{o}{=} \PYG{n+nb}{list}\PYG{p}{(}\PYG{n}{feature\PYGZus{}cols}\PYG{p}{)}
+
+    \PYG{n}{modelo\PYGZus{}lr} \PYG{o}{=} \PYG{n}{LinearRegression}\PYG{p}{()}
+    \PYG{n}{modelo\PYGZus{}lr}\PYG{o}{.}\PYG{n}{fit}\PYG{p}{(}\PYG{n}{X\PYGZus{}train}\PYG{p}{[}\PYG{n}{features\PYGZus{}lr}\PYG{p}{],} \PYG{n}{y\PYGZus{}train}\PYG{p}{)}
+    \PYG{n}{pred\PYGZus{}lr} \PYG{o}{=} \PYG{n}{modelo\PYGZus{}lr}\PYG{o}{.}\PYG{n}{predict}\PYG{p}{(}\PYG{n}{X\PYGZus{}test}\PYG{p}{[}\PYG{n}{features\PYGZus{}lr}\PYG{p}{])}
+    \PYG{n}{pred\PYGZus{}lr} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{maximum}\PYG{p}{(}\PYG{n}{pred\PYGZus{}lr}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{)}
+
+    \PYG{k}{return} \PYG{n}{modelo\PYGZus{}lr}\PYG{p}{,} \PYG{n}{pred\PYGZus{}lr}\PYG{p}{,} \PYG{n}{features\PYGZus{}lr}
+
+\end{MintedVerbatim}

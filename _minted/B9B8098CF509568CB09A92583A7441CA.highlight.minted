@@ -1,0 +1,15 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+        \PYG{n}{modelo\PYGZus{}ols} \PYG{o}{=} \PYG{n}{sm}\PYG{o}{.}\PYG{n}{OLS}\PYG{p}{(}\PYG{n}{y\PYGZus{}train}\PYG{p}{,} \PYG{n}{X\PYGZus{}sm}\PYG{p}{)}\PYG{o}{.}\PYG{n}{fit}\PYG{p}{()}
+        \PYG{n}{p\PYGZus{}valores} \PYG{o}{=} \PYG{n}{modelo\PYGZus{}ols}\PYG{o}{.}\PYG{n}{pvalues}\PYG{o}{.}\PYG{n}{drop}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}const\PYGZdq{}}\PYG{p}{)}
+        \PYG{n}{peor\PYGZus{}p\PYGZus{}nombre} \PYG{o}{=} \PYG{n}{p\PYGZus{}valores}\PYG{o}{.}\PYG{n}{idxmax}\PYG{p}{()}
+        \PYG{n}{peor\PYGZus{}p\PYGZus{}valor} \PYG{o}{=} \PYG{n}{p\PYGZus{}valores}\PYG{p}{[}\PYG{n}{peor\PYGZus{}p\PYGZus{}nombre}\PYG{p}{]}
+
+        \PYG{k}{if} \PYG{n}{peor\PYGZus{}p\PYGZus{}valor} \PYG{o}{\PYGZgt{}} \PYG{n}{max\PYGZus{}p\PYGZus{}valor}\PYG{p}{:}
+            \PYG{n}{seleccionadas}\PYG{o}{.}\PYG{n}{remove}\PYG{p}{(}\PYG{n}{peor\PYGZus{}p\PYGZus{}nombre}\PYG{p}{)}
+        \PYG{k}{else}\PYG{p}{:}
+            \PYG{k}{break}
+
+    \PYG{k}{return} \PYG{n}{seleccionadas}
+\PYG{k}{except} \PYG{n+ne}{Exception}\PYG{p}{:}
+    \PYG{k}{return} \PYG{n}{candidatas}
+\end{MintedVerbatim}

@@ -1,0 +1,14 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+    \PYG{n}{mejor\PYGZus{}por\PYGZus{}fila} \PYG{o}{=} \PYG{n}{productos}\PYG{o}{.}\PYG{n}{map}\PYG{p}{(}\PYG{n}{mejor\PYGZus{}metodo}\PYG{p}{)}
+    \PYG{n}{segundo\PYGZus{}por\PYGZus{}fila} \PYG{o}{=} \PYG{n}{productos}\PYG{o}{.}\PYG{n}{map}\PYG{p}{(}\PYG{n}{segundo\PYGZus{}metodo}\PYG{p}{)}
+    \PYG{n}{error\PYGZus{}mejor} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{select}\PYG{p}{(}
+        \PYG{p}{[}\PYG{n}{mejor\PYGZus{}por\PYGZus{}fila} \PYG{o}{==} \PYG{n}{metodo} \PYG{k}{for} \PYG{n}{metodo} \PYG{o+ow}{in} \PYG{n}{errores\PYGZus{}por\PYGZus{}metodo}\PYG{o}{.}\PYG{n}{columns}\PYG{p}{],}
+        \PYG{p}{[}\PYG{n}{errores\PYGZus{}por\PYGZus{}metodo}\PYG{p}{[}\PYG{n}{metodo}\PYG{p}{]} \PYG{k}{for} \PYG{n}{metodo} \PYG{o+ow}{in} \PYG{n}{errores\PYGZus{}por\PYGZus{}metodo}\PYG{o}{.}\PYG{n}{columns}\PYG{p}{],}
+    \PYG{p}{)}
+    \PYG{n}{error\PYGZus{}segundo} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{select}\PYG{p}{(}
+        \PYG{p}{[}\PYG{n}{segundo\PYGZus{}por\PYGZus{}fila} \PYG{o}{==} \PYG{n}{metodo} \PYG{k}{for} \PYG{n}{metodo} \PYG{o+ow}{in} \PYG{n}{errores\PYGZus{}por\PYGZus{}metodo}\PYG{o}{.}\PYG{n}{columns}\PYG{p}{],}
+        \PYG{p}{[}\PYG{n}{errores\PYGZus{}por\PYGZus{}metodo}\PYG{p}{[}\PYG{n}{metodo}\PYG{p}{]} \PYG{k}{for} \PYG{n}{metodo} \PYG{o+ow}{in} \PYG{n}{errores\PYGZus{}por\PYGZus{}metodo}\PYG{o}{.}\PYG{n}{columns}\PYG{p}{],}
+    \PYG{p}{)}
+    \PYG{n}{diferencia} \PYG{o}{=} \PYG{n}{pd}\PYG{o}{.}\PYG{n}{Series}\PYG{p}{(}\PYG{n}{error\PYGZus{}mejor} \PYG{o}{\PYGZhy{}} \PYG{n}{error\PYGZus{}segundo}\PYG{p}{,} \PYG{n}{index}\PYG{o}{=}\PYG{n}{resultados\PYGZus{}prediccion}\PYG{o}{.}\PYG{n}{index}\PYG{p}{)}
+    \PYG{n}{stats\PYGZus{}diferencia} \PYG{o}{=} \PYG{n}{diferencia}\PYG{o}{.}\PYG{n}{groupby}\PYG{p}{(}\PYG{n}{productos}\PYG{p}{)}\PYG{o}{.}\PYG{n}{agg}\PYG{p}{(}\PYG{n}{d\PYGZus{}media}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}mean\PYGZdq{}}\PYG{p}{,} \PYG{n}{d\PYGZus{}std}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}std\PYGZdq{}}\PYG{p}{,} \PYG{n}{n}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}count\PYGZdq{}}\PYG{p}{)}
+\end{MintedVerbatim}
