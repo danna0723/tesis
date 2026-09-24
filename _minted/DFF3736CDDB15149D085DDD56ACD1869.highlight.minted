@@ -1,0 +1,28 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+    \PYG{n}{metodo\PYGZus{}campeon} \PYG{o}{=} \PYG{n}{segmento}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}metodo\PYGZus{}campeon\PYGZdq{}}\PYG{p}{]}
+    \PYG{k}{if} \PYG{p}{(}
+        \PYG{n}{metodo\PYGZus{}campeon} \PYG{o}{!=} \PYG{l+s+s2}{\PYGZdq{}Media móvil\PYGZdq{}}
+        \PYG{o+ow}{and} \PYG{n}{media\PYGZus{}movil\PYGZus{}3} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{0}
+        \PYG{o+ow}{and} \PYG{n}{predicciones\PYGZus{}por\PYGZus{}metodo}\PYG{p}{[}\PYG{n}{metodo\PYGZus{}campeon}\PYG{p}{]} \PYG{o}{\PYGZlt{}} \PYG{n}{media\PYGZus{}movil\PYGZus{}3} \PYG{o}{*} \PYG{l+m+mf}{0.5}
+    \PYG{p}{):}
+        \PYG{n}{metodo\PYGZus{}usado} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}Media móvil\PYGZdq{}}
+    \PYG{k}{else}\PYG{p}{:}
+        \PYG{n}{metodo\PYGZus{}usado} \PYG{o}{=} \PYG{n}{metodo\PYGZus{}campeon}
+
+    \PYG{n}{pred\PYGZus{}final\PYGZus{}futuro} \PYG{o}{=} \PYG{n}{predicciones\PYGZus{}por\PYGZus{}metodo}\PYG{p}{[}\PYG{n}{metodo\PYGZus{}usado}\PYG{p}{]}
+
+    \PYG{n}{pronostico\PYGZus{}futuro}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(\PYGZob{}}
+        \PYG{l+s+s2}{\PYGZdq{}producto\PYGZus{}id\PYGZdq{}}\PYG{p}{:} \PYG{n}{producto}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}nombre\PYGZus{}producto\PYGZdq{}}\PYG{p}{:} \PYG{n}{segmento}\PYG{o}{.}\PYG{n}{get}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}nombre\PYGZus{}producto\PYGZdq{}}\PYG{p}{),}
+        \PYG{l+s+s2}{\PYGZdq{}categoria\PYGZdq{}}\PYG{p}{:} \PYG{n}{segmento}\PYG{o}{.}\PYG{n}{get}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}categoria\PYGZdq{}}\PYG{p}{),}
+        \PYG{l+s+s2}{\PYGZdq{}mes\PYGZus{}pronosticado\PYGZdq{}}\PYG{p}{:} \PYG{n}{mes\PYGZus{}objetivo}\PYG{o}{.}\PYG{n}{strftime}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}\PYGZpc{}Y\PYGZhy{}\PYGZpc{}m\PYGZdq{}}\PYG{p}{),}
+        \PYG{l+s+s2}{\PYGZdq{}horizonte\PYGZdq{}}\PYG{p}{:} \PYG{n}{h} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}prediccion\PYGZus{}xgboost\PYGZdq{}}\PYG{p}{:} \PYG{n+nb}{round}\PYG{p}{(}\PYG{n}{pred\PYGZus{}xgb\PYGZus{}futuro}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{),}
+        \PYG{l+s+s2}{\PYGZdq{}prediccion\PYGZus{}regresion\PYGZus{}lineal\PYGZdq{}}\PYG{p}{:} \PYG{n+nb}{round}\PYG{p}{(}\PYG{n}{pred\PYGZus{}lr\PYGZus{}futuro}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{),}
+        \PYG{l+s+s2}{\PYGZdq{}prediccion\PYGZus{}baseline\PYGZdq{}}\PYG{p}{:} \PYG{n+nb}{round}\PYG{p}{(}\PYG{n}{pred\PYGZus{}baseline\PYGZus{}futuro}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{),}
+        \PYG{l+s+s2}{\PYGZdq{}prediccion\PYGZus{}final\PYGZdq{}}\PYG{p}{:} \PYG{n+nb}{round}\PYG{p}{(}\PYG{n}{pred\PYGZus{}final\PYGZus{}futuro}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{),}
+        \PYG{l+s+s2}{\PYGZdq{}metodo\PYGZus{}usado\PYGZdq{}}\PYG{p}{:} \PYG{n}{metodo\PYGZus{}usado}\PYG{p}{,}
+    \PYG{p}{\PYGZcb{})}
+
+    \PYG{n}{estado}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}demandas\PYGZdq{}}\PYG{p}{]}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{pred\PYGZus{}final\PYGZus{}futuro}\PYG{p}{)}
+\end{MintedVerbatim}

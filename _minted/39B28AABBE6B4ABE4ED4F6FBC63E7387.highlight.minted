@@ -1,0 +1,16 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{generar\PYGZus{}pronostico\PYGZus{}futuro}\PYG{p}{(}
+    \PYG{n}{df\PYGZus{}mensual}\PYG{p}{,} \PYG{n}{producto\PYGZus{}comportamiento}\PYG{p}{,} \PYG{n}{model}\PYG{p}{,} \PYG{n}{feature\PYGZus{}cols}\PYG{p}{,} \PYG{n}{modelo\PYGZus{}lr}\PYG{p}{,} \PYG{n}{features\PYGZus{}lr}\PYG{p}{,}
+    \PYG{n}{horizonte\PYGZus{}meses}\PYG{o}{=}\PYG{n}{HORIZONTE\PYGZus{}MESES\PYGZus{}DEFAULT}\PYG{p}{,}
+\PYG{p}{):}
+    \PYG{n}{proximo\PYGZus{}mes} \PYG{o}{=} \PYG{n}{df\PYGZus{}mensual}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}fecha\PYGZdq{}}\PYG{p}{]}\PYG{o}{.}\PYG{n}{max}\PYG{p}{()} \PYG{o}{+} \PYG{n}{pd}\PYG{o}{.}\PYG{n}{DateOffset}\PYG{p}{(}\PYG{n}{months}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{)}
+    \PYG{n}{meses\PYGZus{}pronosticados} \PYG{o}{=} \PYG{p}{[}
+        \PYG{p}{(}\PYG{n}{proximo\PYGZus{}mes} \PYG{o}{+} \PYG{n}{pd}\PYG{o}{.}\PYG{n}{DateOffset}\PYG{p}{(}\PYG{n}{months}\PYG{o}{=}\PYG{n}{h}\PYG{p}{))}\PYG{o}{.}\PYG{n}{strftime}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}\PYGZpc{}Y\PYGZhy{}\PYGZpc{}m\PYGZdq{}}\PYG{p}{)}
+        \PYG{k}{for} \PYG{n}{h} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{horizonte\PYGZus{}meses}\PYG{p}{)}
+    \PYG{p}{]}
+    \PYG{n}{meses\PYGZus{}pronosticados\PYGZus{}legibles} \PYG{o}{=} \PYG{p}{[}
+        \PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{NOMBRES\PYGZus{}MES\PYGZus{}ES}\PYG{p}{[(}\PYG{n}{proximo\PYGZus{}mes}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{pd}\PYG{o}{.}\PYG{n}{DateOffset}\PYG{p}{(}\PYG{n}{months}\PYG{o}{=}\PYG{n}{h}\PYG{p}{))}\PYG{o}{.}\PYG{n}{month}\PYG{p}{]}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{ \PYGZdq{}}
+        \PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+si}{\PYGZob{}}\PYG{p}{(}\PYG{n}{proximo\PYGZus{}mes}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{pd}\PYG{o}{.}\PYG{n}{DateOffset}\PYG{p}{(}\PYG{n}{months}\PYG{o}{=}\PYG{n}{h}\PYG{p}{))}\PYG{o}{.}\PYG{n}{year}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZdq{}}
+        \PYG{k}{for} \PYG{n}{h} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{horizonte\PYGZus{}meses}\PYG{p}{)}
+    \PYG{p}{]}
+\end{MintedVerbatim}

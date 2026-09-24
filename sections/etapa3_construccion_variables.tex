@@ -9,6 +9,8 @@ En esta etapa, (\texttt{app/services/prediccion/features.py}), se adapta el hist
 
 La implementacion de esta etapa empieza con un merge incial, en este merge se trae las categorias abc y variabilidad a la tabla. Aunque no se usan como variables de entrada (\texttt{feature\_cols}), se incluyen porque posteriormente se necesitaran para mostrarlas en el dashboard y tabla de predicciones:
 
+\Needspace{9\baselineskip}
+\captionof{listing}{Unión de las categorías ABC y de variabilidad a la tabla mensual.}\label{lst:features_merge}
 \begin{minted}{python}
 def construir_features(df_mensual, producto_comportamiento):
     # ...
@@ -21,6 +23,8 @@ def construir_features(df_mensual, producto_comportamiento):
 
 Posteriormente, se extraen tanto el año como el mes de cada ejemplo, esto adaptado del repositorio \textit{Demand Forecasting \& Inventory Optimization for Consumer Products} \cite{ejemplo1_demandforecast}, al que en este trabajo se le referira como \textit{Ejemplo 1 (SKU Demand Forecasting)}. Con la diferencia de que en Thary, estos datos se incluyeron con el fin de en la implementacion que se tomo como guia, el mes "month", queda como un feature final para el modelo, mientras que en Thary, este dato posteriormente sea tranformado en \texttt{mes\_sin} y \texttt{mes\_cos}, proceso que se explicara mas adelante:
 
+\Needspace{4\baselineskip}
+\captionof{listing}{Extracción del año y del mes de cada registro.}\label{lst:features_anio_mes}
 \begin{minted}{python}
     df_mensual["año"] = df_mensual["fecha"].dt.year
     df_mensual["mes"] = df_mensual["fecha"].dt.month
@@ -44,6 +48,8 @@ Una vez que el modelo entienda la cercania real de los meses, es capaz de dejar 
 
 A la hora de armar la funcion para construir los features se tomaron en cuenta diferentes implementaciones previas de distintos estudios con diferentes propuestas para un sistema de prediccion de demanda, se compararon y se seleccionaron aquellas que se apataban mejor a las necesidades del sistema y le aportaban valos al mismo, junto con la implementacion de nuevas ideas y mejoras que se fueron propuestas e implemantadas en Thary. Una de estas propuestas nuevas fue la codificacion ciclica del mes, que como ya se explico antes, consiste en representar los meses mediante dos valores calculados con seno y coseno, como se puede ver a continuacion:
 
+\Needspace{5\baselineskip}
+\captionof{listing}{Codificación cíclica del mes mediante seno y coseno.}\label{lst:features_ciclico}
 \begin{minted}{python}
     # ...
     df_mensual["mes_sin"] = np.sin(2 * np.pi * df_mensual["mes"] / 12)
@@ -52,6 +58,8 @@ A la hora de armar la funcion para construir los features se tomaron en cuenta d
 
 Por otra parte, la metodologia de implementar el uso de lags, tambien se tomo del \textit{Ejemplo 1 (SKU Demand Forecasting)} \cite{ejemplo1_demandforecast} y se adapto a las necesidades del sistema Thary, agregando la codificacion cíclica de los meses y la inclusion de features adicionales como el inventario y el precio.
 
+\Needspace{8\baselineskip}
+\captionof{listing}{Cálculo de los rezagos \texttt{lag\_1}, \texttt{lag\_2}, \texttt{lag\_3} y \texttt{lag\_6} por producto.}\label{lst:features_lags}
 \begin{minted}{python}
     # ... 
     # (Ejemplo 1 - SKU Demand Forecasting)
@@ -73,6 +81,8 @@ En general, el modelo puede ver el comportamiento general reciente de los produc
 En cuanto a la implementacion, se incluyo en la funcion de (\texttt{construir\_features}), en el que cada línea calcula por producto (\texttt{groupby("producto\_id")}) una estadística sobre una ventana de meses anteriores (\texttt{.shift(1)}) para no incluir el mes actual, evitando fuga de datos.
 
 
+\Needspace{10\baselineskip}
+\captionof{listing}{Cálculo de las estadísticas móviles \texttt{media\_movil\_3}, \texttt{media\_movil\_6} y \texttt{desviacion\_movil\_3}.}\label{lst:features_moviles}
 \begin{minted}{python}
     # ...
     # (Ejemplo 1 - SKU Demand Forecasting)
@@ -94,6 +104,8 @@ Como extension propuesta por el proyecto, junto al promedio tambien se incluyo l
 
 Estos valores ya fueron calculados en la etapa de segmentacion, y simplemente son agregados en los features para que el modelo tambien los use como variables de entrada.
 
+\Needspace{10\baselineskip}
+\captionof{listing}{Incorporación de la media y la desviación históricas de cada producto.}\label{lst:features_historicas}
 \begin{minted}{python}
     # ...
     # (Forecasting Inventory Demand Using XGBoost)
@@ -110,6 +122,8 @@ Despues, se calculca cuanto stock habia el mes anterior. La condicion (\texttt{i
 
 (\texttt{(inventario\_lag\_1)}) es el inventario del mes anterior, con (\texttt{.groupby("producto\_id")}) se asegura que este se calcule por separado para cada producto, esto con la intencion de evitar que el inventario de un producto se vaya a mezclar con otro, esto usando (\texttt{(shift(1))}) para poder obtener el inventario del mes anterior. Si no se hace esto, el modelo podria aprender que el inventario de un producto es igual al del mes actual, lo cual no es correcto y generaria predicciones erroneas. 
 
+\Needspace{6\baselineskip}
+\captionof{listing}{Cálculo del inventario del mes anterior (\texttt{inventario\_lag\_1}).}\label{lst:features_inventario_lag}
 \begin{minted}{python}
     # ...
     # (Forecasting Inventory Demand Using XGBoost))
@@ -119,6 +133,8 @@ Despues, se calculca cuanto stock habia el mes anterior. La condicion (\texttt{i
 
 En esta parte, se implemento otra idea del \textit{Ejemplo 1 (SKU Demand Forecasting)} \cite{ejemplo1_demandforecast} para poder descartar las filas sin historial suficiente para tener los lags. Para esto, se define una lista con nueve nombres de las columnas obligatiorias para poder entrenar, con (\texttt{(dropna(subset=feature\_history))}) se revisan las 4 columnas y elimina cualquier fila que tenga un espacio vacio, posteriormente el resultado se guarda en (\texttt{(df\_model)}), que es la tabla final que se usara para entrenar el modelo.
 
+\Needspace{10\baselineskip}
+\captionof{listing}{Descarte de las filas sin historial suficiente para calcular los rezagos.}\label{lst:features_dropna}
 \begin{minted}{python}
     # ...
     # (Inventory Demand Forecast (XGBoost Reg))
@@ -134,6 +150,8 @@ En esta parte, se implemento otra idea del \textit{Ejemplo 1 (SKU Demand Forecas
 
 Otro de los conceptos que fueron propuestos en Thary es el tratamiento que se decidio darle a la variable con los precios de venta de los productos. Aunque el CSV pueda incluir esa variable, el modelo solo usa su valor actual (el precio de ese mes), sin calcular cómo cambió respecto al mes anterior. Esto debido a que por naturaleza, el precio de un producto puede influir en la demanda de un producto, ya que cuando algo baja de precio, la gente tiende a comprar más, mientras que cuando este sube, las personas compran menos. El problema es que si esta regla se repite muy seguido, se corre el riesgo de que el modelo aprenda que el cambio de precio predice muy bien la demanda, entonces, aunque el precio es una variable que si se tiene en cuenta, se excluye por completo su variabilidad de un mes a otro.  
 
+\Needspace{10\baselineskip}
+\captionof{listing}{Lista de variables de entrada (\texttt{feature\_cols}) y variables opcionales de precio e inventario.}\label{lst:features_lista}
 \begin{minted}{python}
     # ...
     feature_cols = [
@@ -154,6 +172,8 @@ Finalmente, como extension propia de Thary, se hace un relleno final. Para esto,
 
 La fila pasaria el filtro porque \texttt{lag\_6} no esta en \texttt{feature\_history}, pero inevitablemente terminara en \texttt{feature\_cols}, y ahi es donde se ejecuta este bloque final, si \texttt{lag\_6} es vavio en esa fila se rellena con 0.
 
+\Needspace{6\baselineskip}
+\captionof{listing}{Relleno final de los valores vacíos de las variables de entrada con 0.}\label{lst:features_relleno}
 \begin{minted}{python}
     # ...
     for col in feature_cols:

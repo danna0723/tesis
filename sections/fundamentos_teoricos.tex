@@ -4,7 +4,7 @@ La gestion de inventarios consiste en el proceso que se realiza sobre la mercanc
 
 Los pasos basicos para realizar una correcta gestion de inventario consiste en: Compra del inventario, en el que los productos se entregan al almacen o punto de venta, Almacenamiento del inventario, en el que este se guarda hasta que se necesite y Aprovechamiento del inventario, en donde se controla la cantidad de productos que hay a la venta para finalmente enviarlo o venderlo a los clientes.\cite{ibm_inventario}
 
-\paragraph{Tipos de gestion de inventario}
+\subsubsection{Tipos de gestion de inventario}
 
 \begin{description}
     \item[Gestión periódica de inventarios] Este método implica realizar un recuento físico del inventario a intervalos específicos. Se toma el inventario al inicio del periodo, se suman las nuevas compras y se deduce el inventario final para calcular el costo de las mercancías vendidas (COGS).\cite{ibm_inventario}
@@ -32,10 +32,10 @@ Se utilizan estos modelos para hacer predicciones, los datos se agrupan en inter
 
 \subsubsection{Modelos de prediccion de demanda}
 
-\paragraph{Redes Neuronales Artificiales (RNA)}\mbox{}\\
+\subsubsection{Redes Neuronales Artificiales (RNA)}
 Las redes neuronales artificiales (RNA) son técnicas útiles para la previsión de la demanda, gracias a su capacidad para manejar datos no lineales y captar relaciones funcionales sutiles entre datos empíricos, incluso cuando las relaciones subyacentes son desconocidas o difíciles de describir.
 
-    \subparagraph{Long Short-Term Memory (LSTM)}\mbox{}\\
+    \paragraph{Long Short-Term Memory (LSTM)}\mbox{}\\
     Las redes neuronales de memoria a largo y corto plazo o LSTM es un tipo de red neuronal que se ha demostrado eficaz en la predicción de series temporales, esta tecnica esta diseñada para procesar datos secuenciales y temporales que fue creada para superar las limitaciones de las redes neuronales tradicionales.\cite{10124729}.
 
     Su funcionamiento se basa en una estrictura de memoria que permite a la red aprender y recordar información a lo largo del tiempo, lo que es especialmente útil para capturar dependencias a largo plazo en los datos. LSTM cuenta con las tres siguientes puertas: 
@@ -70,7 +70,7 @@ Las redes neuronales artificiales (RNA) son técnicas útiles para la previsión
     \end{description}
 
 
-    \subparagraph{Gated Recurrent Unit (GRU)}\mbox{}\\
+    \paragraph{Gated Recurrent Unit (GRU)}\mbox{}\\
     Gru es modelo de prediccion bastante parecido a LSTM, pero con una arquitectura mucho mas simple, lo que la hace muchisimo mas compacta y potencialmente menos costosa computacionalmente que una LSTM equivalente. Estas han demostrado tener exito en diferentes aplicaciones relacionadas con datos secuenciales o temporales, principalmente si son secuencias largas. GRU reduce el numero de tres redes compuestas distintas que usa LSTM en solo 2, esto mediante la combinacion de la compuerta de entrada y la compuerta de olvido mediante una suma directa. Las compuertas de GRU se denominan: Compuerta de actualizacion y Compuerta de reinicio. \cite{Salem2022}
 
     El modelo GRU se presenta como:
@@ -92,8 +92,8 @@ Las redes neuronales artificiales (RNA) son técnicas útiles para la previsión
         r_t = \sigma (U_r h_{t-1} + W_r x_t + b_r)
     \end{equation}
 
-\paragraph{Modelos estadísticos y de Machine Learning tradicionales}
-    \subparagraph{Regresión lineal}\mbox{}\\
+\subsubsection{Modelos estadísticos y de Machine Learning tradicionales}
+    \paragraph{Regresión lineal}\mbox{}\\
     Los modelos de regresion son utilizados para resolver problemas de prediccion, el objetivo de este modelo puede ser explicativo, donde se busca, por ejempo, evaluar como ciertas variables independientes afectan a una variable dependiente, o predictivo, en el que se busca estimar el valor de la variable dependiente en funcion de las independientes \cite{pelaez2016modelos}.
 
     Un modelo de regresion se expresa como: 
@@ -104,8 +104,8 @@ Las redes neuronales artificiales (RNA) son técnicas útiles para la previsión
 
     Existen distintas opciones para poder estimar un modelo de regresion, siendo las mas comunes: Regresion lineal  y regresion logistica. La eleccion depende del tipo de variable dependiente que se tenga, si es una variable continua se utiliza regresion lineal, mientras que si se trata de una variable dicotomica se utiliza una variable dicotomica.
 
-\paragraph{Modelos basados en árboles de decisión}
-    \subparagraph{XGBoost}\mbox{}\\
+\subsubsection{Modelos basados en árboles de decisión}
+    \paragraph{XGBoost}\mbox{}\\
     XGBoost se ha utilizado ampliamente en numerosos campos para lograr resultados de vanguardia (state-of-the-art) en tareas relacionadas con datos y predicción. Su funcionamiento consiste en en un sistema de aprendizaje automatizado basado en el metodo de Tree Boosting que incluye un algoritmo de aprendizaje de arboles. EL Tree Boosting es un algoritmo de aprendizaje por conjuntos o ensemble learning, capaz de transformar varios clasificadores debiles en uno fuerte con el objetivo de obtener un mejor rendimiento en le clasificacion, es decir, se combinan multiples arboles para obtener un modelo mas potente. Un modelo tree boosting se escribe de la siguiente manera\cite{ren2017novel}:
 
     \begin{equation}

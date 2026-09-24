@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.12) (preloaded format=xelatex 2026.9.9)  23 SEP 2026 10:04
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.12) (preloaded format=xelatex 2026.9.9)  24 SEP 2026 00:35
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -822,9 +822,11 @@ Package caption Info: New subtype `subfigure' on input line 238.
 Package caption Info: New subtype `subtable' on input line 238.
 \c@subtable=\count408
 )
-(C:\Users\Home\AppData\Local\Programs\MiKTeX\tex/latex/adjustbox\adjustbox.sty
+(C:\Users\Home\AppData\Local\Programs\MiKTeX\tex/latex/needspace\needspace.sty
+Package: needspace 2025/03/13 v1.3e reserve vertical space
+) (C:\Users\Home\AppData\Local\Programs\MiKTeX\tex/latex/adjustbox\adjustbox.st
+y
 Package: adjustbox 2025/02/26 v1.3c Adjusting TeX boxes (trim, clip, ...)
-
 (C:\Users\Home\AppData\Local\Programs\MiKTeX\tex/latex/adjustbox\adjcalc.sty
 Package: adjcalc 2012/05/16 v1.1 Provides advanced setlength with multiple back
 -ends (calc, etex, pgfmath)
@@ -1126,7 +1128,15 @@ Package biblatex Info: ... and expl3
 (C:\Users\Home\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\blx-case-expl3.
 sty
 Package: blx-case-expl3 2025/07/10 v3.21 expl3 case changing code for biblatex
-))) (template/sections_config.tex) (template/toc.tex) (template/config.tex)
+))) (template/sections_config.tex) (template/toc.tex
+\c@listings=\count537
+\cftbeforelistingsskip=\skip150
+\cftlistingsindent=\skip151
+\cftlistingsnumwidth=\skip152
+\c@loldepth=\count538
+\cftbeforeloltitleskip=\skip153
+\cftafterloltitleskip=\skip154
+) (template/config.tex)
 (template/celdas.tex) (parametros.tex)
 (C:\Users\Home\AppData\Local\Programs\MiKTeX\tex/latex/setspace\setspace.sty
 Package: setspace 2022/12/04 v6.7b set line spacing
@@ -1154,7 +1164,7 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 estring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count537
+\c@section@level=\count539
 )
 (C:\Users\Home\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringenc.st
 y
@@ -1162,15 +1172,15 @@ Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
 )
 )
 \@linkdim=\dimen294
-\Hy@linkcounter=\count538
-\Hy@pagecounter=\count539
+\Hy@linkcounter=\count540
+\Hy@pagecounter=\count541
  (C:\Users\Home\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
 File: pd1enc.def 2025-07-12 v7.01o Hyperref: PDFDocEncoding definition (HO)
 )
 (C:\Users\Home\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-\Hy@SavedSpaceFactor=\count540
+\Hy@SavedSpaceFactor=\count542
 
 (C:\Users\Home\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
 File: puenc.def 2025-07-12 v7.01o Hyperref: PDF Unicode definition (HO)
@@ -1182,7 +1192,7 @@ Package hyperref Info: Plain pages OFF on input line 4210.
 Package hyperref Info: Backreferencing OFF on input line 4215.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4462.
-\c@Hy@tempcnt=\count541
+\c@Hy@tempcnt=\count543
 LaTeX Info: Redefining \url on input line 4801.
 \XeTeXLinkMargin=\dimen295
 
@@ -1194,7 +1204,7 @@ sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
-\Fld@menulength=\count542
+\Fld@menulength=\count544
 \Field@Width=\dimen296
 \Fld@charsize=\dimen297
 Package hyperref Info: Hyper figures OFF on input line 6078.
@@ -1204,19 +1214,19 @@ Package hyperref Info: backreferencing OFF on input line 6093.
 Package hyperref Info: Link coloring OFF on input line 6098.
 Package hyperref Info: Link coloring with OCG OFF on input line 6103.
 Package hyperref Info: PDF/A mode OFF on input line 6108.
-\Hy@abspage=\count543
-\c@Item=\count544
-\c@Hfootnote=\count545
+\Hy@abspage=\count545
+\c@Item=\count546
+\c@Hfootnote=\count547
 )
 Package hyperref Info: Driver (autodetected): hxetex.
 
 (C:\Users\Home\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hxetex.def
 File: hxetex.def 2025-07-12 v7.01o Hyperref driver for XeTeX
 \pdfm@box=\box73
-\c@Hy@AnnotLevel=\count546
-\HyField@AnnotCount=\count547
-\Fld@listcount=\count548
-\c@bookmark@seq@number=\count549
+\c@Hy@AnnotLevel=\count548
+\HyField@AnnotCount=\count549
+\Fld@listcount=\count550
+\c@bookmark@seq@number=\count551
 
 (C:\Users\Home\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfile
 check.sty
@@ -1229,7 +1239,7 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 84.
 )
-\Hy@SectionHShift=\skip150
+\Hy@SectionHShift=\skip155
 )
 Package hyperref Info: Option `bookmarksnumbered' set `true' on input line 77.
 
@@ -1438,6 +1448,20 @@ Package biblatex Warning: The following entry could not be found
 
 Package biblatex Warning: The following entry could not be found
 (biblatex)                in the database:
+(biblatex)                chopra2020supply
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                ejemplo2_lstm_inventory
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
 (biblatex)                iso12207
 (biblatex)                Please verify the spelling and rerun
 (biblatex)                LaTeX afterwards.
@@ -1497,28 +1521,73 @@ LaTeX Font Info:    Font shape `TU/TeXGyreTermesX(0)/b/n' will be
 ]) (main.toc [4
 
 
-] [5]
-Overfull \hbox (6.728pt too wide) detected at line 91
+]
+Overfull \hbox (6.0pt too wide) detected at line 54
+\TU/TeXGyreTermesX(0)/m/n/12 3.2.10 
+ []
+
+
+Overfull \hbox (6.0pt too wide) detected at line 55
+\TU/TeXGyreTermesX(0)/m/n/12 3.2.11 
+ []
+
+
+Overfull \hbox (6.0pt too wide) detected at line 56
+\TU/TeXGyreTermesX(0)/m/n/12 3.2.12 
+ []
+
+
+Overfull \hbox (6.0pt too wide) detected at line 62
+\TU/TeXGyreTermesX(0)/m/n/12 3.2.13 
+ []
+
+
+Overfull \hbox (6.0pt too wide) detected at line 63
+\TU/TeXGyreTermesX(0)/m/n/12 3.2.14 
+ []
+
+
+Overfull \hbox (6.0pt too wide) detected at line 65
+\TU/TeXGyreTermesX(0)/m/n/12 3.2.15 
+ []
+
+
+Overfull \hbox (6.0pt too wide) detected at line 69
+\TU/TeXGyreTermesX(0)/m/n/12 3.2.16 
+ []
+
+
+Overfull \hbox (6.0pt too wide) detected at line 70
+\TU/TeXGyreTermesX(0)/m/n/12 3.2.17 
+ []
+
+[5]
+Overfull \hbox (6.0pt too wide) detected at line 71
+\TU/TeXGyreTermesX(0)/m/n/12 3.2.18 
+ []
+
+
+Overfull \hbox (6.728pt too wide) detected at line 95
 \TU/TeXGyreTermesX(0)/b/n/12 Anexo A 
  []
 
 
-Overfull \hbox (6.068pt too wide) detected at line 92
+Overfull \hbox (6.068pt too wide) detected at line 96
 \TU/TeXGyreTermesX(0)/b/n/12 Anexo B 
  []
 
 
-Overfull \hbox (6.728pt too wide) detected at line 93
+Overfull \hbox (6.728pt too wide) detected at line 97
 \TU/TeXGyreTermesX(0)/b/n/12 Anexo C 
  []
 
 
-Overfull \hbox (6.728pt too wide) detected at line 94
+Overfull \hbox (6.728pt too wide) detected at line 98
 \TU/TeXGyreTermesX(0)/b/n/12 Anexo D 
  []
 
 
-Overfull \hbox (6.068pt too wide) detected at line 95
+Overfull \hbox (6.068pt too wide) detected at line 99
 \TU/TeXGyreTermesX(0)/b/n/12 Anexo E 
  []
 
@@ -1548,30 +1617,42 @@ LaTeX Font Info:    Font shape `TU/texgyrecursor(0)/m/n' will be
  [8
 
 
-] (sections/resumen.tex
+] (main.lol
+LaTeX Font Info:    Font shape `TU/TeXGyreTermesX(0)/m/it' will be
+(Font)              scaled to size 12.0pt on input line 14.
+ [9
+
+
+])
+\tf@lol=\write9
+\openout9 = `main.lol'.
+
+ [10] (sections/resumen.tex
 LaTeX Font Info:    Font shape `TU/TeXGyreTermesX(0)/m/n' will be
 (Font)              scaled to size 10.95pt on input line 2.
 LaTeX Font Info:    Font shape `TU/TeXGyreTermesX(0)/b/n' will be
 (Font)              scaled to size 10.95pt on input line 2.
 LaTeX Font Info:    Font shape `TU/TeXGyreTermesX(0)/b/it' will be
 (Font)              scaled to size 10.95pt on input line 2.
-) [9
+) [11
 
 
-] (sections/abstract.tex)
-[10
+]
+(sections/abstract.tex) [12
 
 
-] (sections/glosario.tex) (sections/capitulo1_introduccion.tex [11
+] (sections/glosario.tex)
+(sections/capitulo1_introduccion.tex [13
 
 
-] [12]
-(sections/contexto.tex) (sections/plante.tex [13
+] [14] (sections/contexto.tex)
+(sections/plante.tex [15
 
 ]
 File: templatefigures/entradas_salidas.png Graphic file (type bmp)
 <templatefigures/entradas_salidas.png>
-) (sections/justificacion.tex) (sections/propuesta_solucion.tex [14]
+) (sections/justificacion.tex)
+(sections/propuesta_solucion.tex [16]
 File: templatefigures/propuesta.png Graphic file (type bmp)
 <templatefigures/propuesta.png>
 
@@ -1580,147 +1661,324 @@ Overfull \hbox (0.2128pt too wide) in paragraph at lines 9--14
 que permitira visualizar los resultados de manera
  []
 
-) [15] (sections/pregunta_investigacion.tex [16]) (sections/objetivos.tex)
+) [17] (sections/pregunta_investigacion.tex [18]) (sections/objetivos.tex)
 (sections/objetivo_general.tex) (sections/objetivos_especificos.tex)
-(sections/alcance_restricciones.tex [17]) (sections/recursos_viabilidad.tex))
-(sections/capitulo2_marco_referencia.tex [18] (sections/criterios.tex
+(sections/alcance_restricciones.tex [19]) (sections/recursos_viabilidad.tex))
+(sections/capitulo2_marco_referencia.tex [20] (sections/criterios.tex
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
 (hyperref)                than one, level fixed on input line 1.
 
-) (sections/fundamentos_teoricos.tex [19
+) (sections/fundamentos_teoricos.tex [21
 
-]
-LaTeX Font Info:    Font shape `TU/TeXGyreTermesX(0)/m/it' will be
-(Font)              scaled to size 12.0pt on input line 7.
+] [22]
 LaTeX Font Info:    Font shape `TU/TeXGyreTermesX(0)/b/it' will be
-(Font)              scaled to size 12.0pt on input line 7.
- [20] [21] [22] [23])
+(Font)              scaled to size 12.0pt on input line 38.
+ [23] [24] [25])
 
-LaTeX Warning: Citation 'iso12207' on page 24 undefined on input line 13.
+LaTeX Warning: Citation 'iso12207' on page 26 undefined on input line 13.
 
 
-LaTeX Warning: Citation 'sommerville2016' on page 24 undefined on input line 14
+LaTeX Warning: Citation 'sommerville2016' on page 26 undefined on input line 14
 .
 
 
-LaTeX Warning: Citation 'c4model' on page 24 undefined on input line 15.
+LaTeX Warning: Citation 'c4model' on page 26 undefined on input line 15.
 
 (sections/antecedentes.tex
 LaTeX Font Info:    Font shape `TU/TeXGyreTermesX(0)/m/it' will be
 (Font)              scaled to size 10.95pt on input line 81.
 LaTeX Font Info:    Font shape `TU/TeXGyreTermesX(0)/m/it' will be
 (Font)              scaled to size 10.0pt on input line 87.
- [24] [25]) [26] (sections/estandares_aplicables.tex)) (sections/capitulo3_dise
-no_desarrollo.tex [27]
-(sections/enfoque_metodologico.tex [28
+ [26] [27]) [28] (sections/estandares_aplicables.tex)) (sections/capitulo3_dise
+no_desarrollo.tex [29]
+(sections/enfoque_metodologico.tex [30
 
-] [29]) (sections/procesos_tecnicos.tex
-[30] [31] [32] (sections/especificacion_requisitos.tex
+] [31]) (sections/procesos_tecnicos.tex
+[32] [33] [34] (sections/especificacion_requisitos.tex
 File: templatefigures/caso_de_uso_admin.png Graphic file (type bmp)
 <templatefigures/caso_de_uso_admin.png>
- [33]
+ [35]
 File: templatefigures/caso_de_uso_personal.png Graphic file (type bmp)
 <templatefigures/caso_de_uso_personal.png>
- [34] [35] [36]
+ [36] [37] [38]
 Overfull \hbox (0.10083pt too wide) in paragraph at lines 79--80
 \TU/TeXGyreTermesX(0)/m/n/12 corresponde al RF-11, y le permite al administrado
 r consultar la bitacora completa de acciones
  []
 
-) (sections/diseño_arquitectura.tex [37] [38] [39]
+) (sections/diseño_arquitectura.tex [39] [40] [41]
 File: templatefigures/Nivel1_Contexto.png Graphic file (type bmp)
 <templatefigures/Nivel1_Contexto.png>
- [40]
+ [42]
 File: templatefigures/Nivel2_Contenedores.png Graphic file (type bmp)
 <templatefigures/Nivel2_Contenedores.png>
- [41]
+ [43]
 File: templatefigures/Nivel3_Componentes.png Graphic file (type bmp)
 <templatefigures/Nivel3_Componentes.png>
 )
-(sections/diseño_detallado.tex [42] (sections/etapa1_carga.tex
-\pydata@fh@0=\write9
-\openout9 = `_FAD58DE7366495DB4650CFEFAC2FCD61.data.minted'.
+(sections/diseño_detallado.tex [44] (sections/etapa1_carga.tex
 
-runsystem(latexminted config  --timestamp 20260923100448 FAD58DE7366495DB4650CF
+Package caption Warning: \setcaptiontype
+(caption)                outside box or environment on input line 5.
+See the caption package documentation for explanation.
+
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 5.
+See the caption package documentation for explanation.
+
+Package hyperref Info: bookmark level for unknown listing defaults to 0 on inpu
+t line 5.
+\pydata@fh@0=\write10
+\openout10 = `_FAD58DE7366495DB4650CFEFAC2FCD61.data.minted'.
+
+runsystem(latexminted config  --timestamp 20260924003508 FAD58DE7366495DB4650CF
 EFAC2FCD61)...executed.
 
-
 (_FAD58DE7366495DB4650CFEFAC2FCD61.config.minted)
-runsystem(latexminted cleanconfig  --timestamp 20260923100448 FAD58DE7366495DB4
+runsystem(latexminted cleanconfig  --timestamp 20260924003508 FAD58DE7366495DB4
 650CFEFAC2FCD61)...executed.
 
  (_minted/default.style.minted) (_minted/676FDD3D6E8A68D7A00A52E2E2DCA9EE.highl
 ight.minted
 LaTeX Font Info:    Font shape `TU/texgyrecursor(0)/b/n' will be
 (Font)              scaled to size 12.35687pt on input line 9.
- [43]
+ [45]
 LaTeX Font Info:    Font shape `TU/texgyrecursor(0)/m/it' will be
 (Font)              scaled to size 12.94958pt on input line 32.
 ))
-(sections/etapa2_segmentacion.tex [44]
-(_minted/23C6151BA532DA3F36AF65A2DB2E7922.highlight.minted [45]))
-(sections/etapa3_construccion_variables.tex
-(_minted/B9A39490A8804DC3158436697C136568.highlight.minted [46])
-(_minted/76E280305BFEE4D651FD4B3B44A6EBB9.highlight.minted) [47]
-(_minted/6110EA39867CF7934AC7443DCEFDC7C6.highlight.minted)
-(_minted/41B6246987A2E10D3C6D975B0974F558.highlight.minted [48])
-(_minted/D37357669655F5071217E98EE20107C6.highlight.minted [49])
-(_minted/E1D93BC85152D01C5C6780F7BEFF0ED7.highlight.minted) [50]
+(sections/etapa2_segmentacion.tex [46]
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 15.
+See the caption package documentation for explanation.
+
+(_minted/23C6151BA532DA3F36AF65A2DB2E7922.highlight.minted [47]))
+(sections/etapa3_construccion_variables.tex [48]
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 13.
+See the caption package documentation for explanation.
+
+(_minted/B9A39490A8804DC3158436697C136568.highlight.minted)
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 27.
+See the caption package documentation for explanation.
+
+(_minted/76E280305BFEE4D651FD4B3B44A6EBB9.highlight.minted) [49]
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 52.
+See the caption package documentation for explanation.
+
+(_minted/6110EA39867CF7934AC7443DCEFDC7C6.highlight.minted) [50]
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 62.
+See the caption package documentation for explanation.
+
+(_minted/41B6246987A2E10D3C6D975B0974F558.highlight.minted) [51]
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 85.
+See the caption package documentation for explanation.
+
+(_minted/D37357669655F5071217E98EE20107C6.highlight.minted)
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 108.
+See the caption package documentation for explanation.
+
+(_minted/E1D93BC85152D01C5C6780F7BEFF0ED7.highlight.minted) [52]
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 126.
+See the caption package documentation for explanation.
+
 (_minted/135DCB4EF17B504D0BF0ABE35747D080.highlight.minted)
-(_minted/5A8187584628E913DFD7A8BC59C6E465.highlight.minted)
-(_minted/C5A5B8BA644393E35EC686A842FC82D0.highlight.minted [51])
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 137.
+See the caption package documentation for explanation.
+
+(_minted/5A8187584628E913DFD7A8BC59C6E465.highlight.minted) [53]
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 154.
+See the caption package documentation for explanation.
+
+(_minted/C5A5B8BA644393E35EC686A842FC82D0.highlight.minted) [54]
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 176.
+See the caption package documentation for explanation.
+
 (_minted/D2A9EBD0FFF065936889466D57B0C3DE.highlight.minted))
-(sections/etapa4_modelos_prediccion.tex [52]
+(sections/etapa4_modelos_prediccion.tex
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 13.
+See the caption package documentation for explanation.
+
 (_minted/6385A0D36747C7C9131F11706E972E6B.highlight.minted)
-(_minted/9CF018CE2C3A79D4F3DFCC377FCF3AB1.highlight.minted) [53]
-(_minted/C6CA803DAD6A7EB8F4581A51C2A80A87.highlight.minted) [54]
-(_minted/72B164CBCAEB2E501A077438591A6D89.highlight.minted) [55]
-(_minted/739DBAAE097A83F0688522C021828134.highlight.minted [56])
-(_minted/0DA38C635DD527F8230E77D8B489E7F9.highlight.minted) [57]
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 21.
+See the caption package documentation for explanation.
+
+(_minted/9CF018CE2C3A79D4F3DFCC377FCF3AB1.highlight.minted) [55]
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 45.
+See the caption package documentation for explanation.
+
+(_minted/C6CA803DAD6A7EB8F4581A51C2A80A87.highlight.minted) [56]
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 73.
+See the caption package documentation for explanation.
+
+(_minted/72B164CBCAEB2E501A077438591A6D89.highlight.minted) [57]
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 102.
+See the caption package documentation for explanation.
+
+(_minted/739DBAAE097A83F0688522C021828134.highlight.minted [58])
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 132.
+See the caption package documentation for explanation.
+
+(_minted/0DA38C635DD527F8230E77D8B489E7F9.highlight.minted) [59]
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 146.
+See the caption package documentation for explanation.
+
 (_minted/E77B3C23D8DF7B25D31D377BA69F228E.highlight.minted)
-(_minted/4D9B0407788EAD40F364B165A4058449.highlight.minted) [58]
-(_minted/C22A5FD65548B769423E1F3BE61D4577.highlight.minted) [59]
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 161.
+See the caption package documentation for explanation.
+
+(_minted/4D9B0407788EAD40F364B165A4058449.highlight.minted) [60]
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 176.
+See the caption package documentation for explanation.
+
+(_minted/C22A5FD65548B769423E1F3BE61D4577.highlight.minted) [61]
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 198.
+See the caption package documentation for explanation.
+
 (_minted/96877CEAD7BB9C6EBBBCF6FF2A444D85.highlight.minted)
-(_minted/3379F04BAC241D5ACACD7241CDA03FFD.highlight.minted [60])
-(_minted/B9B8098CF509568CB09A92583A7441CA.highlight.minted) [61]
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 216.
+See the caption package documentation for explanation.
+
+(_minted/3379F04BAC241D5ACACD7241CDA03FFD.highlight.minted) [62]
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 238.
+See the caption package documentation for explanation.
+
+(_minted/B9B8098CF509568CB09A92583A7441CA.highlight.minted) [63]
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 264.
+See the caption package documentation for explanation.
+
 (_minted/09F4196D86BEE71DBF18F4E818790914.highlight.minted))
-(sections/seleccion_campeon.tex [62]
+(sections/seleccion_campeon.tex [64]
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 10.
+See the caption package documentation for explanation.
+
 (_minted/C0A04925B1F0AC20EE4F567DAD2DFC54.highlight.minted)
-(_minted/BDBEC82557F26B0D1B7684056FDE3637.highlight.minted) [63]
-(_minted/81A5EB574124AF2CF0F0CC408F41EA17.highlight.minted [64])
-(_minted/C6CA803DAD6A7EB8F4581A51C2A80A87.highlight.minted)) [65]
-(sections/modelo_datos.tex [66]
-(_minted/4A5BFD544CAC683864C12F46026834C1.highlight.minted [67])
-(_minted/8DD128728F3054749A379D2911907557.highlight.minted [68])
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 29.
+See the caption package documentation for explanation.
+
+(_minted/BDBEC82557F26B0D1B7684056FDE3637.highlight.minted) [65]
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 56.
+See the caption package documentation for explanation.
+
+(_minted/81A5EB574124AF2CF0F0CC408F41EA17.highlight.minted [66]) [67]
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 111.
+See the caption package documentation for explanation.
+
+(_minted/C6CA803DAD6A7EB8F4581A51C2A80A87.highlight.minted))
+(sections/pronostico_futuro.tex
+(_minted/39B28AABBE6B4ABE4ED4F6FBC63E7387.highlight.minted [68])
+(_minted/3EB27F60FFAF361E4684B5C05A7B7CA5.highlight.minted [69]) [70]
+(_minted/001AA4C8A67EFDC2538764D07051ECEB.highlight.minted) [71]
+(_minted/DFF3736CDDB15149D085DDD56ACD1869.highlight.minted [72]))
+(sections/calculo_reposicion.tex
+
+LaTeX Warning: Citation 'ejemplo2_lstm_inventory' on page 73 undefined on input
+ line 3.
+
+(_minted/01A848295DA24146D0399C13324AD808.highlight.minted) [73]
+(_minted/19914D2E8AA5103C7F7217B48CB84120.highlight.minted)
+(_minted/3B475A46A555FEF0FBED9FDE925811DE.highlight.minted)
+
+LaTeX Warning: Citation 'chopra2020supply' on page 74 undefined on input line 4
+3.
+
+(_minted/4CDA8F081D6910E1187AEE91458EB8A1.highlight.minted))
+(sections/modelo_datos.tex [74] [75] [76]
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 44.
+See the caption package documentation for explanation.
+
+(_minted/4A5BFD544CAC683864C12F46026834C1.highlight.minted) [77]
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 73.
+See the caption package documentation for explanation.
+
+(_minted/8DD128728F3054749A379D2911907557.highlight.minted)
 File: templatefigures/mysql_workbench_empresas.png Graphic file (type bmp)
 <templatefigures/mysql_workbench_empresas.png>
- [69]
+ [78]
 File: templatefigures/mysql_workbench_corridas.png Graphic file (type bmp)
 <templatefigures/mysql_workbench_corridas.png>
-)
+) [79]
 (sections/diseño_ux_ui.tex
 File: templatefigures/logo.png Graphic file (type bmp)
 <templatefigures/logo.png>
- [70]
 File: templatefigures/ux_login.png Graphic file (type bmp)
 <templatefigures/ux_login.png>
 File: templatefigures/ux_registro.png Graphic file (type bmp)
 <templatefigures/ux_registro.png>
+ [80]
 File: templatefigures/ux_dashboard.png Graphic file (type bmp)
 <templatefigures/ux_dashboard.png>
 File: templatefigures/ux_prediccion.png Graphic file (type bmp)
 <templatefigures/ux_prediccion.png>
- [71]
 File: templatefigures/ux_usuarios.png Graphic file (type bmp)
 <templatefigures/ux_usuarios.png>
+ [81]
 File: templatefigures/ux_sidebar_empleado.png Graphic file (type bmp)
 <templatefigures/ux_sidebar_empleado.png>
 File: templatefigures/ux_sidebar_administrador.png Graphic file (type bmp)
 <templatefigures/ux_sidebar_administrador.png>
- [72]
 File: templatefigures/ux_estado_inventario.png Graphic file (type bmp)
 <templatefigures/ux_estado_inventario.png>
+ [82]
 File: templatefigures/ux_presupuesto.png Graphic file (type bmp)
 <templatefigures/ux_presupuesto.png>
 
@@ -1735,7 +1993,6 @@ Overfull \hbox (116.17517pt too wide) in paragraph at lines 91--92
  [][] 
  []
 
-[73]
 File: templatefigures/ux_pedidos.png Graphic file (type bmp)
 <templatefigures/ux_pedidos.png>
 
@@ -1750,33 +2007,55 @@ Overfull \hbox (120.22531pt too wide) in paragraph at lines 110--111
  [][] 
  []
 
+[83]
 File: templatefigures/ux_prox_pedidos.png Graphic file (type bmp)
 <templatefigures/ux_prox_pedidos.png>
 File: templatefigures/ux_calendario_pedidos.png Graphic file (type bmp)
 <templatefigures/ux_calendario_pedidos.png>
 File: templatefigures/ux_cerrar_sesion.png Graphic file (type bmp)
 <templatefigures/ux_cerrar_sesion.png>
-[74]
+ [84]
 File: templatefigures/ux_alertas_visuales.png Graphic file (type bmp)
 <templatefigures/ux_alertas_visuales.png>
 File: templatefigures/ux_dashboard_empleado.png Graphic file (type bmp)
 <templatefigures/ux_dashboard_empleado.png>
- [75]
+ [85]
 File: templatefigures/ux_dashboard_claro.png Graphic file (type bmp)
 <templatefigures/ux_dashboard_claro.png>
 File: templatefigures/ux_dashboard_mobile.png Graphic file (type bmp)
 <templatefigures/ux_dashboard_mobile.png>
- [76])) (sections/analisis_amenazas.tex [77]
+ [86])) (sections/analisis_amenazas.tex [87]
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 7.
+See the caption package documentation for explanation.
+
 (_minted/6F75B918A05E612CEFFE565A7380CB4A.highlight.minted)
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 15.
+See the caption package documentation for explanation.
+
 (_minted/4E8F3F73C93238E9FFA5E8B42F7EFEAA.highlight.minted)
-(_minted/81DAD8D6206678F42BB5B2D373F0B387.highlight.minted) [78]
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 27.
+See the caption package documentation for explanation.
+
+(_minted/81DAD8D6206678F42BB5B2D373F0B387.highlight.minted [88])
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 49.
+See the caption package documentation for explanation.
+
 (_minted/9E4C09E8184209590DB37ADB848602D2.highlight.minted)
-(_minted/ECD3B3FCC9F08291E5546BB21388F1AE.highlight.minted) [79]))
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 63.
+See the caption package documentation for explanation.
+
+(_minted/ECD3B3FCC9F08291E5546BB21388F1AE.highlight.minted) [89]))
 (sections/construccion_despliegue.tex
-
-Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 10.
-
 Missing character: There is no ├ in font [texgyrecursor-regular.otf]/OT:script=
 latn;language=dflt;!
 Missing character: There is no ─ in font [texgyrecursor-regular.otf]/OT:script=
@@ -1865,6 +2144,7 @@ Missing character: There is no ─ in font [texgyrecursor-regular.otf]/OT:script
 latn;language=dflt;!
 Missing character: There is no ─ in font [texgyrecursor-regular.otf]/OT:script=
 latn;language=dflt;!
+[90]
 Missing character: There is no │ in font [texgyrecursor-regular.otf]/OT:script=
 latn;language=dflt;!
 Missing character: There is no │ in font [texgyrecursor-regular.otf]/OT:script=
@@ -1875,7 +2155,6 @@ Missing character: There is no ─ in font [texgyrecursor-regular.otf]/OT:script
 latn;language=dflt;!
 Missing character: There is no ─ in font [texgyrecursor-regular.otf]/OT:script=
 latn;language=dflt;!
-[80]
 Missing character: There is no │ in font [texgyrecursor-regular.otf]/OT:script=
 latn;language=dflt;!
 Missing character: There is no │ in font [texgyrecursor-regular.otf]/OT:script=
@@ -2050,60 +2329,91 @@ Missing character: There is no ─ in font [texgyrecursor-regular.otf]/OT:script
 latn;language=dflt;!
 Missing character: There is no ─ in font [texgyrecursor-regular.otf]/OT:script=
 latn;language=dflt;!
-[81] (_minted/1F6F785AA32757865E37CA9EC0B429E4.highlight.minted)
-(_minted/5E2995772A16F3E79C38E8769A572304.highlight.minted [82])
-(_minted/3433F6EF2A7F59CA8E9512CF87CDEA61.highlight.minted) [83]
-(_minted/2AF517DB605F2DA3F1AC9972ACA69C0B.highlight.minted)
-(_minted/1E7FD43384ED7949A0AF159EDA38F5F9.highlight.minted [84])
+[91]
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 60.
+See the caption package documentation for explanation.
+
+(_minted/1F6F785AA32757865E37CA9EC0B429E4.highlight.minted)
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 71.
+See the caption package documentation for explanation.
+
+(_minted/5E2995772A16F3E79C38E8769A572304.highlight.minted [92])
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 110.
+See the caption package documentation for explanation.
+
+(_minted/3433F6EF2A7F59CA8E9512CF87CDEA61.highlight.minted) [93]
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 126.
+See the caption package documentation for explanation.
+
+(_minted/2AF517DB605F2DA3F1AC9972ACA69C0B.highlight.minted) [94]
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 146.
+See the caption package documentation for explanation.
+
+(_minted/1E7FD43384ED7949A0AF159EDA38F5F9.highlight.minted)
 File: templatefigures/railway_servicios.png Graphic file (type bmp)
 <templatefigures/railway_servicios.png>
- [85]
+ [95]
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 192.
+See the caption package documentation for explanation.
+
 (_minted/D9E1FDFCE3F5BD234322D134FA0EFF1C.highlight.minted)
 File: templatefigures/railway_deploy_details.png Graphic file (type bmp)
 <templatefigures/railway_deploy_details.png>
- [86]
+ [96]
 File: templatefigures/railway_variables.png Graphic file (type bmp)
 <templatefigures/railway_variables.png>
- [87]
+ [97]
 File: templatefigures/railway_mysql_tablas.png Graphic file (type bmp)
 <templatefigures/railway_mysql_tablas.png>
- [88]
+ [98]
 File: templatefigures/thary_login_produccion.png Graphic file (type bmp)
 <templatefigures/thary_login_produccion.png>
 )
-(sections/plan_verificacion_validacion.tex
-
-Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 4.
-
-)) (sections/capitulo4_resultados.tex [89]
-(sections/resultados_verificacion.tex) (sections/resultados_validacion.tex
+(sections/plan_verificacion_validacion.tex)) (sections/capitulo4_resultados.tex
+[99] (sections/resultados_verificacion.tex) (sections/resultados_validacion.tex
 File: templatefigures/comparacion_WAPE_porcentaje.png Graphic file (type bmp)
 <templatefigures/comparacion_WAPE_porcentaje.png>
+[100
 
-[90
+] [101]
 
-] [91] (_minted/3542C0AC6571E8F53AD41E16A8F09DE2.highlight.minted) [92]
-[93])) [94]
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 47.
+See the caption package documentation for explanation.
+
+(_minted/3542C0AC6571E8F53AD41E16A8F09DE2.highlight.minted) [102] [103]))
+[104]
 LaTeX Font Info:    Font shape `TU/TeXGyreTermesX(0)/m/sc' will be
-(Font)              scaled to size 12.0pt on input line 200.
- [95
+(Font)              scaled to size 12.0pt on input line 203.
+ [105
 
 
-] [96] (anexos/anexos.tex [97
+] [106] (anexos/anexos.tex [107
 
 
 
-] [98
+] [108
 
-] [99] [100] [101] [102]
-[103] [104] [105] [106] [107] [108] [109] [110
+] [109] [110] [111] [112]
+[113] [114] [115] [116] [117] [118] [119] [120
 
-] [111
+] [121
 
-] [112
+] [122
 
-]) [113
+]) [123
 
 ] (main.aux)
  ***********
@@ -2111,18 +2421,18 @@ LaTeX2e <2025-11-01>
 L3 programming layer <2020/03/25>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 488A57824BFB4303BF5F83E73B10640E;21672.
+(rerunfilecheck)             Checksum: 9064542D5EE0F04B40594A2ACE54017B;23372.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 33471 strings out of 402986
- 708270 string characters out of 5448711
- 1815414 words of memory out of 5000000
- 61433 multiletter control sequences out of 15000+600000
+ 33662 strings out of 402986
+ 714551 string characters out of 5448711
+ 1821083 words of memory out of 5000000
+ 61588 multiletter control sequences out of 15000+600000
  636277 words of font info for 111 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  91i,13n,120p,1785b,5575s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.pdf (113 pages).
+Output written on main.pdf (123 pages).

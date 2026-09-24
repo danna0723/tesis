@@ -1,0 +1,153 @@
+El cálculo del pronóstico futuro es la funcionalidad principal del sistema, es decir, predecir la demanda de los productos en los meses posteriores al último mes del archivo CSV cargado por el usuario.
+
+Después de que el usuario sube el archivo CSV con el historial de consumo, el sistema le permite configurar tanto el presupuesto disponible como el número de meses que desea pronosticar. Se implementó en \texttt{app/services/prediccion/pronostico\_futuro.py}:
+
+\begin{minted}{python}
+def generar_pronostico_futuro(
+    df_mensual, producto_comportamiento, model, feature_cols, modelo_lr, features_lr,
+    horizonte_meses=HORIZONTE_MESES_DEFAULT,
+):
+    proximo_mes = df_mensual["fecha"].max() + pd.DateOffset(months=1)
+    meses_pronosticados = [
+        (proximo_mes + pd.DateOffset(months=h)).strftime("%Y-%m")
+        for h in range(horizonte_meses)
+    ]
+    meses_pronosticados_legibles = [
+        f"{NOMBRES_MES_ES[(proximo_mes + pd.DateOffset(months=h)).month]} "
+        f"{(proximo_mes + pd.DateOffset(months=h)).year}"
+        for h in range(horizonte_meses)
+    ]
+\end{minted}
+
+En donde, se toma el último mes con datos del archivo, se le suma un mes, y desde ahí se generan los \texttt{horizonte\_meses} meses consecutivos que se van a pronosticar.
+
+\paragraph{Ciclo recursivo}
+
+Para poder calcular el pronóstico futuro, se necesita del mes anterior para predecir el mes futuro, pero cuando se quiere predecir varios meses hacia adelante, el mes anterior a ese todavía no existe. Para resolverlo, Thary utiliza una estrategia recursiva \cite{BENTAIEB20127067}, es decir, para predecir un mes se usa la predicción del mes anterior como si fuera un mes real. Es recursiva porque el resultado de un mes se vuelve la entrada para predecir el mes siguiente. Es una característica propia de Thary respecto a los ejemplos de referencia \textit{Ejemplo 1 (SKU Demand Forecasting)} \cite{ejemplo1_demandforecast} y \textit{Ejemplo 3 (XGBoost)} \cite{ejemplo3_ksmooi_inventorydemand}, ya que estos solo pueden pronosticar el mes siguiente al último dato. La desventaja es que, al usar los meses pronosticados como entrada, es probable que el error vaya acumulándose y creciendo a medida que se pronostican meses más lejanos.
+
+\begin{minted}{python}
+for h in range(horizonte_meses):
+    mes_objetivo = proximo_mes + pd.DateOffset(months=h)
+
+    filas_features = []
+    metadatos = []
+
+    for producto in productos_validos:
+        estado = estado_por_producto[producto]
+        demandas = estado["demandas"]
+        ultima_fila = estado["ultima_fila"]
+
+        lag_1 = demandas[-1]
+        lag_2 = demandas[-2]
+        lag_3 = demandas[-3]
+        lag_6 = demandas[-6] if len(demandas) >= 6 else 0
+
+        media_movil_3 = np.mean(demandas[-3:])
+        media_movil_6 = np.mean(demandas[-6:]) if len(demandas) >= 6 else np.mean(demandas)
+        desviacion_movil_3 = np.std(demandas[-3:])
+
+        fila_features = {
+            "año": mes_objetivo.year,
+            "mes_sin": np.sin(2 * np.pi * mes_objetivo.month / 12),
+            "mes_cos": np.cos(2 * np.pi * mes_objetivo.month / 12),
+            "lag_1": lag_1,
+            "lag_2": lag_2,
+            "lag_3": lag_3,
+            "lag_6": lag_6,
+            "media_movil_3": media_movil_3,
+            "media_movil_6": media_movil_6,
+            "desviacion_movil_3": desviacion_movil_3,
+            "media_producto": ultima_fila.get("media_producto", 0),
+            "desviacion_producto": ultima_fila.get("desviacion_producto", 0),
+        }
+\end{minted}
+
+En esta parte se preparan los datos de entrada que el modelo necesita para cada uno de los meses que se quiere pronosticar. La estructura cuenta con dos ciclos: el primero recorre los meses a pronosticar, por lo que, de querer predecir los próximos 3 meses con un archivo de 856 productos, el ciclo se ejecutará 3 veces, y el segundo, en cada una de las ejecuciones del primero, recorre los productos que se quieren pronosticar (los que tienen al menos 3 meses de historial), en este caso 856.
+
+\begin{itemize}
+    \item Los lags \texttt{lag\_1 = demandas[-1]}, \texttt{lag\_2 = demandas[-2]}, \texttt{lag\_3 = demandas[-3]} y \texttt{lag\_6 = demandas[-6]} contienen las unidades vendidas hace 1, 2, 3 y 6 meses, respectivamente (si hay menos de 6 meses, \texttt{lag\_6} es 0).
+    \item \texttt{media\_movil\_3 = np.mean(demandas[-3:])}: Consiste en el promedio de los últimos 3 meses.
+    \item \texttt{media\_movil\_6 = np.mean(demandas[-6:])}: Promedio de los últimos 6 meses (si hay menos de 6, el de los meses disponibles).
+    \item \texttt{desviacion\_movil\_3 = np.std(demandas[-3:])}: Consiste en la desviación estándar de los últimos 3 meses.
+    \item \texttt{año}, \texttt{mes\_sin}, \texttt{mes\_cos}: Estas variables se calculan del mes que se está pronosticando.
+    \item \texttt{media\_producto} y \texttt{desviacion\_producto}: Consisten en el promedio y la desviación estándar del producto. Se toman de la última fila del producto y no cambian entre vueltas; si esa columna no existe, se usa 0.
+\end{itemize}
+
+
+Estos datos se guardan en el diccionario \texttt{fila\_features}, que contiene las variables de entrada con las que el modelo fue entrenado. 
+
+En el segundo ciclo, cada producto aporta una fila con sus variables de entrada. Al terminar de recorrerlos todos, se tienen las filas de todos los productos acumuladas en \texttt{filas\_features}, listas para que el modelo las use. En esta parte todavía no se predice nada.
+
+El proceso es recursivo porque la lista de demanda de cada producto no es fija, se va actualizando al terminar cada mes, ya que la predicción obtenida se agrega al final de la lista, de manera que en el próximo mes se utilicen esos datos para la predicción. Así, en el primer mes pronosticado el \texttt{lag\_1} es la demanda real del último mes del archivo, mientras que en el segundo mes pronosticado es la predicción del primero.
+
+Se arma una tabla con las variables de todos los productos y se llama a \texttt{predict()} una sola vez por modelo, para predecir los productos de todo el lote. De esta manera, se pueden predecir todos los productos de un mes en una sola llamada al modelo, lo que mejora el rendimiento del sistema, ya que se obtienen los mismos resultados que si se llamara al modelo producto por producto y es mucho más rápido. Para cada uno de los productos se obtienen las tres predicciones de los 3 modelos.
+
+
+\begin{minted}{python}
+    X_futuro_lote = pd.DataFrame(filas_features)[feature_cols]
+    preds_xgb_lote = np.maximum(np.expm1(model.predict(X_futuro_lote)), 0)
+    preds_lr_lote = np.maximum(modelo_lr.predict(X_futuro_lote[features_lr]), 0)
+
+    for (producto, media_movil_3), pred_xgb_futuro, pred_lr_futuro in zip(metadatos, preds_xgb_lote, preds_lr_lote):
+        estado = estado_por_producto[producto]
+        segmento = estado["segmento"]
+
+        pred_xgb_futuro = float(pred_xgb_futuro)
+        pred_lr_futuro = float(pred_lr_futuro)
+        pred_baseline_futuro = float(max(media_movil_3, 0))
+\end{minted}
+
+Una vez que se tienen las 3 predicciones de los modelos, se tiene que seleccionar cuál de los 3 se va a usar para cada producto, guardar dicha selección y tenerla disponible para el siguiente mes. 
+
+La selección del modelo ya se tiene lista desde la etapa anterior de "selección de modelo". Siempre se usa el resultado del mejor modelo, a no ser que ese resultado sea incoherente, para esos casos, se implementó la salvaguarda, en la que se usa la media móvil en su lugar.
+
+Las condiciones para considerar un resultado incoherente son:
+
+\begin{itemize}
+    \item El modelo tiene que ser XGBoost o Regresion Lineal
+    \item Media movil tiene que ser mayor de 0, es decir, el producto tiene que haber vendido algo en los ultimos 3 meses
+    \item La prediccion del modelo ganador es menor que la mitad de la media movil de los ultimos 3 meses, es decir, el modelo ganador predice que se va a vender menos de la mitad de lo que se ha vendido en los ultimos 3 meses.
+\end{itemize}
+
+Se tiene el diccionario \texttt{predicciones\_por\_metodo} que cuenta con las 3 predicciones, de aqui es donde se obtiene el metodo elegido y posteriormente, con \texttt{pronostico\_futuro.append(\{...\})} se guarda una fila con:
+
+\begin{itemize}
+    \item Identificacion del producto: \texttt{producto\_id}, \texttt{nombre\_producto} y \texttt{categoria}
+    \item Mes pronosticado: \texttt{mes\_pronosticado}
+    \item Las 3 predicciones de los 3 modelos: \texttt{prediccion\_xgboost}, \texttt{prediccion\_regresion\_lineal} y \texttt{prediccion\_baseline}
+    \item Prediccion final: La que se le mostrara al usuario final (\texttt{prediccion\_final})
+    \item Método usado: \texttt{metodo\_usado}, este puede cambiar si al final se recurrió a usar la salvaguarda.
+\end{itemize}
+
+Por ultimo, se agrega la predicción hecha al final de la lista de demandas del producto, por lo que en el mes siguiente, \texttt{demandas[-1]} (el \texttt{lag\_1}) ya no representara la demanda real, sino la predicción recien hecha.
+
+\begin{minted}{python}
+    metodo_campeon = segmento["metodo_campeon"]
+    if (
+        metodo_campeon != "Media móvil"
+        and media_movil_3 > 0
+        and predicciones_por_metodo[metodo_campeon] < media_movil_3 * 0.5
+    ):
+        metodo_usado = "Media móvil"
+    else:
+        metodo_usado = metodo_campeon
+
+    pred_final_futuro = predicciones_por_metodo[metodo_usado]
+
+    pronostico_futuro.append({
+        "producto_id": producto,
+        "nombre_producto": segmento.get("nombre_producto"),
+        "categoria": segmento.get("categoria"),
+        "mes_pronosticado": mes_objetivo.strftime("%Y-%m"),
+        "horizonte": h + 1,
+        "prediccion_xgboost": round(pred_xgb_futuro, 2),
+        "prediccion_regresion_lineal": round(pred_lr_futuro, 2),
+        "prediccion_baseline": round(pred_baseline_futuro, 2),
+        "prediccion_final": round(pred_final_futuro, 2),
+        "metodo_usado": metodo_usado,
+    })
+
+    estado["demandas"].append(pred_final_futuro)
+\end{minted}
+
+Para mostrarle los resultados al usuario, se arma una tabla en la que se resume la predicción de la demanda de los productos, mostrando su id y nombre, la predicción final de cada mes pronosticado (una columna por mes, en unidades enteras) y el total. Esta tabla se puede descargar en formato CSV para su posterior análisis.

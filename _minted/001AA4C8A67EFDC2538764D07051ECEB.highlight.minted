@@ -1,0 +1,13 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+    \PYG{n}{X\PYGZus{}futuro\PYGZus{}lote} \PYG{o}{=} \PYG{n}{pd}\PYG{o}{.}\PYG{n}{DataFrame}\PYG{p}{(}\PYG{n}{filas\PYGZus{}features}\PYG{p}{)[}\PYG{n}{feature\PYGZus{}cols}\PYG{p}{]}
+    \PYG{n}{preds\PYGZus{}xgb\PYGZus{}lote} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{maximum}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{expm1}\PYG{p}{(}\PYG{n}{model}\PYG{o}{.}\PYG{n}{predict}\PYG{p}{(}\PYG{n}{X\PYGZus{}futuro\PYGZus{}lote}\PYG{p}{)),} \PYG{l+m+mi}{0}\PYG{p}{)}
+    \PYG{n}{preds\PYGZus{}lr\PYGZus{}lote} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{maximum}\PYG{p}{(}\PYG{n}{modelo\PYGZus{}lr}\PYG{o}{.}\PYG{n}{predict}\PYG{p}{(}\PYG{n}{X\PYGZus{}futuro\PYGZus{}lote}\PYG{p}{[}\PYG{n}{features\PYGZus{}lr}\PYG{p}{]),} \PYG{l+m+mi}{0}\PYG{p}{)}
+
+    \PYG{k}{for} \PYG{p}{(}\PYG{n}{producto}\PYG{p}{,} \PYG{n}{media\PYGZus{}movil\PYGZus{}3}\PYG{p}{),} \PYG{n}{pred\PYGZus{}xgb\PYGZus{}futuro}\PYG{p}{,} \PYG{n}{pred\PYGZus{}lr\PYGZus{}futuro} \PYG{o+ow}{in} \PYG{n+nb}{zip}\PYG{p}{(}\PYG{n}{metadatos}\PYG{p}{,} \PYG{n}{preds\PYGZus{}xgb\PYGZus{}lote}\PYG{p}{,} \PYG{n}{preds\PYGZus{}lr\PYGZus{}lote}\PYG{p}{):}
+        \PYG{n}{estado} \PYG{o}{=} \PYG{n}{estado\PYGZus{}por\PYGZus{}producto}\PYG{p}{[}\PYG{n}{producto}\PYG{p}{]}
+        \PYG{n}{segmento} \PYG{o}{=} \PYG{n}{estado}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}segmento\PYGZdq{}}\PYG{p}{]}
+
+        \PYG{n}{pred\PYGZus{}xgb\PYGZus{}futuro} \PYG{o}{=} \PYG{n+nb}{float}\PYG{p}{(}\PYG{n}{pred\PYGZus{}xgb\PYGZus{}futuro}\PYG{p}{)}
+        \PYG{n}{pred\PYGZus{}lr\PYGZus{}futuro} \PYG{o}{=} \PYG{n+nb}{float}\PYG{p}{(}\PYG{n}{pred\PYGZus{}lr\PYGZus{}futuro}\PYG{p}{)}
+        \PYG{n}{pred\PYGZus{}baseline\PYGZus{}futuro} \PYG{o}{=} \PYG{n+nb}{float}\PYG{p}{(}\PYG{n+nb}{max}\PYG{p}{(}\PYG{n}{media\PYGZus{}movil\PYGZus{}3}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{))}
+\end{MintedVerbatim}

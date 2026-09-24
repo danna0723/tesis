@@ -1,0 +1,10 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{calcular\PYGZus{}tabla\PYGZus{}reorden}\PYG{p}{(}
+    \PYG{n}{df\PYGZus{}model}\PYG{p}{,} \PYG{n}{df\PYGZus{}mensual}\PYG{p}{,} \PYG{n}{producto\PYGZus{}comportamiento}\PYG{p}{,} \PYG{n}{pronostico\PYGZus{}futuro\PYGZus{}df}\PYG{p}{,}
+    \PYG{n}{presupuesto\PYGZus{}capital\PYGZus{}trabajo}\PYG{o}{=}\PYG{k+kc}{None}
+\PYG{p}{):}
+    \PYG{c+c1}{\PYGZsh{}...}
+    \PYG{n}{stats\PYGZus{}pronostico} \PYG{o}{=} \PYG{n}{pronostico\PYGZus{}futuro\PYGZus{}df}\PYG{o}{.}\PYG{n}{groupby}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}producto\PYGZus{}id\PYGZdq{}}\PYG{p}{)[}\PYG{l+s+s2}{\PYGZdq{}prediccion\PYGZus{}final\PYGZdq{}}\PYG{p}{]}\PYG{o}{.}\PYG{n}{agg}\PYG{p}{(}
+        \PYG{n}{demanda\PYGZus{}promedio}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}mean\PYGZdq{}}\PYG{p}{,} \PYG{n}{desviacion\PYGZus{}demanda}\PYG{o}{=}\PYG{k}{lambda} \PYG{n}{x}\PYG{p}{:} \PYG{n}{np}\PYG{o}{.}\PYG{n}{std}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)}
+    \PYG{p}{)}
+\end{MintedVerbatim}

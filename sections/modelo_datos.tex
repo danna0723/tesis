@@ -40,6 +40,8 @@ La Tabla \ref{tab:entidades} resume las entidades del modelo con el detalle de c
 
 La clave foranea (\texttt{FOREIGN KEY}) de \texttt{usuarios} hacia \texttt{empresas} rechaza cualquier intento de crear un usuario sin una empresa asociada, garantizando el aislamiento de la informacion entre organizaciones. La relacion entre \texttt{corridas} y \texttt{segmentacion} es de dependencia en la que no tiene ningun sentido tener una fila en segmentacion si no sabemos a que corrida pertenece, \texttt{ON DELETE CASCADE} implica que, si se elimina una corrida, todas sus filas de segmentacion (junto con las metricas, predicciones, reposicion y validacion cruzada) se eliminan junto con ella:
 
+\Needspace{10\baselineskip}
+\captionof{listing}{Definición de las tablas \texttt{empresas}, \texttt{usuarios}, \texttt{corridas} y \texttt{segmentacion} con sus claves foráneas.}\label{lst:sql_tablas}
 \begin{minted}{sql}
 CREATE TABLE empresas (
     id VARCHAR(32) PRIMARY KEY
@@ -67,6 +69,8 @@ CREATE TABLE segmentacion (
 
 En el siguiente fragmento, extraido de \texttt{app/services/db.py}, se observa como Thary establece la conexion hacia el motor de MySQL:
 
+\Needspace{10\baselineskip}
+\captionof{listing}{Configuración de la conexión a MySQL (\texttt{app/services/db.py}).}\label{lst:conexion_mysql}
 \begin{minted}{python}
 _engine = None
 

@@ -6,6 +6,11 @@ nec mi et neque pharetra sollicitudin. Praesent imperdiet mi nec ante.}
 \captionsetup[table]{labelfont=bf, labelsep=newline}
 \captionsetup[figure]{labelfont=bf, labelsep=period}
 
+% bloques de codigo (minted): se numeran como "Codigo N", con el rotulo encima del bloque
+% uso: \captionof{listing}{Leyenda}\label{lst:etiqueta} antes de \begin{minted}
+\renewcommand{\listingscaption}{Código}
+\captionsetup[listing]{labelfont=bf, labelsep=period, position=top, aboveskip=12pt, belowskip=6pt}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %        key words - palabras clave
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

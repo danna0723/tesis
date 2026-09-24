@@ -10,7 +10,7 @@ En cuanto a porque se decidió llevar la organizacion mediante un pipeline, esta
 
 Por otro lado, a la hora de elegir como se manejaria la persistencia de la informacion, se opto por usar un modelo de base de datos relacional (MySQL).Esta desicion se tomo considerando la necesidad de poder contar con un historial con las corridas anteriores del sistema. Adicional a esto, la arquitectura de Thary contempla el aislamiento de los datos para cada organizacion, de manera que todas cuentan con un espcio independiente evitando que puedan acceder a informacion de otro usuario. 
 
-\paragraph{Escenarios Arquitecturales}
+\subsubsection{Escenarios Arquitecturales}
 % Guia: escenarios de calidad (rendimiento, disponibilidad, seguridad) que
 % guian la arquitectura.
 Para garantizar que Thary cuenta con una arquitectura que es capaz de responder a los atributos de calidad necesarios para un proyecto con sus caracteristicas, se plantaron los siguientes escenarios:
@@ -23,7 +23,7 @@ Para garantizar que Thary cuenta con una arquitectura que es capaz de responder 
 \end{itemize}
 
 Estos escenarios permiten poder verificar que las desiciones arquitectonicas tomadas respondan a las necesidades que tiene el sistema, facilitando que posteriormente se pueda comprobar el funcionamiento de Thary
-\paragraph{Análisis de Alternativas y Decisiones de Diseño (ADRs)}
+\subsubsection{Análisis de Alternativas y Decisiones de Diseño (ADRs)}
 % Guia: alternativas evaluadas y decisiones de arquitectura (ADR):
 % contexto, decision, consecuencias.
 
@@ -37,7 +37,7 @@ Las decisiones de diseño que fueron adoptadas durante todo el desarrollo del si
     \item Decision 3 (Validacion temporal y validacion cruzada): A la hora de validar los resultados de Thary, los cuales son conseguidos a partir de series de tiempo (historial de consumo mensual), se penso en dos propuestas, la primera se basaba en hacer una validacion cruzada aleatoria, que supone hacer una particion sin considerar el orden cronologico, mientras que la segunda se basaba en una validacion cruzada temporal de origen movil, en el que se generan varias particiones de entrenamiento y pruebas consecutivas. Se decicio optar por la segunda opcion, ya que la primera terminaria mezclando datos del futuro, lo cual se quiere evitar ya que la idea es representar un escenario real de uso del sistema, en el que no se tendrian estos datos del futuro. Es por esto que a pesar de que repetir el entrenamiento sobre varias particiones en lugar de una sola representa un mayor costo computacional, se eligio porque resulta mas representativa al desempeño real que se espera que tenga el sistema.    
 \end{itemize}
         
-\paragraph{Representación de la Arquitectura (Modelo C4)}
+\subsubsection{Representación de la Arquitectura (Modelo C4)}
 % Guia: diagramas C4: contexto, contenedores, componentes y (si aplica) codigo.
 
 % ---------------------------------------------------------------------

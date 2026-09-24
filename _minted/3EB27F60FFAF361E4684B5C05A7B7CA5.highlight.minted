@@ -1,0 +1,36 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{for} \PYG{n}{h} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{horizonte\PYGZus{}meses}\PYG{p}{):}
+    \PYG{n}{mes\PYGZus{}objetivo} \PYG{o}{=} \PYG{n}{proximo\PYGZus{}mes} \PYG{o}{+} \PYG{n}{pd}\PYG{o}{.}\PYG{n}{DateOffset}\PYG{p}{(}\PYG{n}{months}\PYG{o}{=}\PYG{n}{h}\PYG{p}{)}
+
+    \PYG{n}{filas\PYGZus{}features} \PYG{o}{=} \PYG{p}{[]}
+    \PYG{n}{metadatos} \PYG{o}{=} \PYG{p}{[]}
+
+    \PYG{k}{for} \PYG{n}{producto} \PYG{o+ow}{in} \PYG{n}{productos\PYGZus{}validos}\PYG{p}{:}
+        \PYG{n}{estado} \PYG{o}{=} \PYG{n}{estado\PYGZus{}por\PYGZus{}producto}\PYG{p}{[}\PYG{n}{producto}\PYG{p}{]}
+        \PYG{n}{demandas} \PYG{o}{=} \PYG{n}{estado}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}demandas\PYGZdq{}}\PYG{p}{]}
+        \PYG{n}{ultima\PYGZus{}fila} \PYG{o}{=} \PYG{n}{estado}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}ultima\PYGZus{}fila\PYGZdq{}}\PYG{p}{]}
+
+        \PYG{n}{lag\PYGZus{}1} \PYG{o}{=} \PYG{n}{demandas}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}
+        \PYG{n}{lag\PYGZus{}2} \PYG{o}{=} \PYG{n}{demandas}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{]}
+        \PYG{n}{lag\PYGZus{}3} \PYG{o}{=} \PYG{n}{demandas}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{3}\PYG{p}{]}
+        \PYG{n}{lag\PYGZus{}6} \PYG{o}{=} \PYG{n}{demandas}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{6}\PYG{p}{]} \PYG{k}{if} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{demandas}\PYG{p}{)} \PYG{o}{\PYGZgt{}=} \PYG{l+m+mi}{6} \PYG{k}{else} \PYG{l+m+mi}{0}
+
+        \PYG{n}{media\PYGZus{}movil\PYGZus{}3} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{mean}\PYG{p}{(}\PYG{n}{demandas}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{3}\PYG{p}{:])}
+        \PYG{n}{media\PYGZus{}movil\PYGZus{}6} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{mean}\PYG{p}{(}\PYG{n}{demandas}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{6}\PYG{p}{:])} \PYG{k}{if} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{demandas}\PYG{p}{)} \PYG{o}{\PYGZgt{}=} \PYG{l+m+mi}{6} \PYG{k}{else} \PYG{n}{np}\PYG{o}{.}\PYG{n}{mean}\PYG{p}{(}\PYG{n}{demandas}\PYG{p}{)}
+        \PYG{n}{desviacion\PYGZus{}movil\PYGZus{}3} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{std}\PYG{p}{(}\PYG{n}{demandas}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{3}\PYG{p}{:])}
+
+        \PYG{n}{fila\PYGZus{}features} \PYG{o}{=} \PYG{p}{\PYGZob{}}
+            \PYG{l+s+s2}{\PYGZdq{}año\PYGZdq{}}\PYG{p}{:} \PYG{n}{mes\PYGZus{}objetivo}\PYG{o}{.}\PYG{n}{year}\PYG{p}{,}
+            \PYG{l+s+s2}{\PYGZdq{}mes\PYGZus{}sin\PYGZdq{}}\PYG{p}{:} \PYG{n}{np}\PYG{o}{.}\PYG{n}{sin}\PYG{p}{(}\PYG{l+m+mi}{2} \PYG{o}{*} \PYG{n}{np}\PYG{o}{.}\PYG{n}{pi} \PYG{o}{*} \PYG{n}{mes\PYGZus{}objetivo}\PYG{o}{.}\PYG{n}{month} \PYG{o}{/} \PYG{l+m+mi}{12}\PYG{p}{),}
+            \PYG{l+s+s2}{\PYGZdq{}mes\PYGZus{}cos\PYGZdq{}}\PYG{p}{:} \PYG{n}{np}\PYG{o}{.}\PYG{n}{cos}\PYG{p}{(}\PYG{l+m+mi}{2} \PYG{o}{*} \PYG{n}{np}\PYG{o}{.}\PYG{n}{pi} \PYG{o}{*} \PYG{n}{mes\PYGZus{}objetivo}\PYG{o}{.}\PYG{n}{month} \PYG{o}{/} \PYG{l+m+mi}{12}\PYG{p}{),}
+            \PYG{l+s+s2}{\PYGZdq{}lag\PYGZus{}1\PYGZdq{}}\PYG{p}{:} \PYG{n}{lag\PYGZus{}1}\PYG{p}{,}
+            \PYG{l+s+s2}{\PYGZdq{}lag\PYGZus{}2\PYGZdq{}}\PYG{p}{:} \PYG{n}{lag\PYGZus{}2}\PYG{p}{,}
+            \PYG{l+s+s2}{\PYGZdq{}lag\PYGZus{}3\PYGZdq{}}\PYG{p}{:} \PYG{n}{lag\PYGZus{}3}\PYG{p}{,}
+            \PYG{l+s+s2}{\PYGZdq{}lag\PYGZus{}6\PYGZdq{}}\PYG{p}{:} \PYG{n}{lag\PYGZus{}6}\PYG{p}{,}
+            \PYG{l+s+s2}{\PYGZdq{}media\PYGZus{}movil\PYGZus{}3\PYGZdq{}}\PYG{p}{:} \PYG{n}{media\PYGZus{}movil\PYGZus{}3}\PYG{p}{,}
+            \PYG{l+s+s2}{\PYGZdq{}media\PYGZus{}movil\PYGZus{}6\PYGZdq{}}\PYG{p}{:} \PYG{n}{media\PYGZus{}movil\PYGZus{}6}\PYG{p}{,}
+            \PYG{l+s+s2}{\PYGZdq{}desviacion\PYGZus{}movil\PYGZus{}3\PYGZdq{}}\PYG{p}{:} \PYG{n}{desviacion\PYGZus{}movil\PYGZus{}3}\PYG{p}{,}
+            \PYG{l+s+s2}{\PYGZdq{}media\PYGZus{}producto\PYGZdq{}}\PYG{p}{:} \PYG{n}{ultima\PYGZus{}fila}\PYG{o}{.}\PYG{n}{get}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}media\PYGZus{}producto\PYGZdq{}}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{),}
+            \PYG{l+s+s2}{\PYGZdq{}desviacion\PYGZus{}producto\PYGZdq{}}\PYG{p}{:} \PYG{n}{ultima\PYGZus{}fila}\PYG{o}{.}\PYG{n}{get}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}desviacion\PYGZus{}producto\PYGZdq{}}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{),}
+        \PYG{p}{\PYGZcb{}}
+\end{MintedVerbatim}

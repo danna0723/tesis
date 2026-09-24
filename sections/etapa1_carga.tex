@@ -1,6 +1,8 @@
 La primera etapa del pipeline (\texttt{app/services/prediccion/carga\_datos.py}) recibe el archivo CSV cargado por el administrador y lo normaliza hacia un esquema interno unico:
 
 
+\Needspace{10\baselineskip}
+\captionof{listing}{Función \texttt{cargar\_y\_limpiar} y etiquetas de las columnas obligatorias.}\label{lst:carga_limpieza}
 \begin{minted}{python}
 ETIQUETAS_COLUMNAS_OBLIGATORIAS = {
     "fecha": "Fecha (o Date, Sale_Date)",

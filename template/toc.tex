@@ -11,6 +11,18 @@
 \renewcommand{\cfttoctitlefont}{\hspace*{\fill}\Huge\bfseries}
 \renewcommand{\cftaftertoctitle}{\hspace*{\fill}}
 
+% lista de codigos (bloques minted numerados con \captionof{listing})
+% define \listoflistings; las entradas que escribe \captionof{listing} usan \l@listing,
+% que se enlaza al formato de entrada creado por tocloft para la lista
+\newlistof{listings}{lol}{LISTA DE CÓDIGOS}
+\makeatletter
+\let\l@listing\l@listings
+\makeatother
+\renewcommand{\cftloltitlefont}{\hspace*{\fill}\Huge\bfseries}
+\renewcommand{\cftafterloltitle}{\hspace*{\fill}}
+\setlength{\cftlistingsindent}{0em}
+\setlength{\cftlistingsnumwidth}{2.3em}
+
 \setcounter{tocdepth}{5}
 \setlength{\cftsecindent}{0pt}% Remove indent for \section
 \setlength{\cftsubsecindent}{1.5em}% Remove indent for \subsection

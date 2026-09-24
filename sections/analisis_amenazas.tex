@@ -3,12 +3,16 @@ Debido a su naturaleza, Thary es un sistema que maneja informacion que podria co
 \begin{itemize}
     \item \textbf{Suplantación de identidad}: Mitigada mediante autenticación basada en usuario y contraseña, almacenando esta última mediante un algoritmo de hash (\textit{scrypt}, el metodo por defecto de \texttt{werkzeug.security}) y nunca en texto plano.
     
+    \Needspace{5\baselineskip}
+    \captionof{listing}{Función \texttt{crear\_usuario}, que almacena la contraseña como hash.}\label{lst:crear_usuario}
     \begin{minted}{python}
     def crear_usuario(nombre, username, email, password, rol="empleado", empresa_id=None):
     #...
     password_hash = generate_password_hash(password)
     \end{minted}
 
+    \Needspace{7\baselineskip}
+    \captionof{listing}{Función \texttt{verificar\_credenciales}, que compara la contraseña ingresada con su hash.}\label{lst:verificar_credenciales}
     \begin{minted}{python}
     def verificar_credenciales(username_o_email, password):
     #...
@@ -19,6 +23,8 @@ Debido a su naturaleza, Thary es un sistema que maneja informacion que podria co
 
     \item \textbf{Manipulación de datos}: Para evitar la manipulacion de los datos, se garantiza que la cantidad y el costo de un pedido confirmado se tome siempre del análisis generado por el sistema, y no de valores que el usuario pueda modificar en el formulario de confirmación.
     
+    \Needspace{10\baselineskip}
+    \captionof{listing}{Función \texttt{pedido\_confirmar}, que registra los pedidos con la cantidad y el costo calculados por el sistema.}\label{lst:pedido_confirmar_valores}
     \begin{minted}{python}
     def pedido_confirmar():
     #...
@@ -39,6 +45,8 @@ Debido a su naturaleza, Thary es un sistema que maneja informacion que podria co
 
     \item \textbf{Repudio}: El sistema Thary cuenta con una tabla en la base de datos llamada "Actividad", en la cual se lleva un registro de todas las acciones relevantes que los usuarios realizan en el sistema, guardando informacion como el nombre del usuario, fecha y hora del evento, y la accion que fue realizada.
     
+    \Needspace{9\baselineskip}
+    \captionof{listing}{Registro de la actividad del usuario al confirmar un pedido (función \texttt{pedido\_confirmar}).}\label{lst:pedido_confirmar_actividad}
     \begin{minted}{python}
     def pedido_confirmar():
         if confirmados_ahora:
@@ -51,6 +59,8 @@ Debido a su naturaleza, Thary es un sistema que maneja informacion que podria co
 
     \item \textbf{Divulgación de información}: Se evita que exista divulgacion de informacion mediante el aislamiento de los datos por empresa, de forma que ninguna organización pueda acceder a los datos de otra.
     
+    \Needspace{10\baselineskip}
+    \captionof{listing}{Función \texttt{carpeta\_uploads}, que aísla los archivos cargados por cada empresa.}\label{lst:carpeta_uploads}
     \begin{minted}{python}
     def carpeta_uploads(empresa_id):
     ruta = os.path.join(current_app.config["UPLOAD_FOLDER_BASE"], empresa_id)

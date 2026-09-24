@@ -7,7 +7,7 @@ A la hora de ejecutar el sistema en Flask, se tiene que ejecutar el comando \tex
 
 Por su parte, el control de versiones del sistema se llevo a cabo mediante una seria de commits en GitHub en el que se documentaron los cambios mas significativos del sistema durante todo el tiempo de desarrollo. 
 
-\paragraph{Construcción}
+\subsubsection{Construcción}
 
 La principal practica de codificacion que se siguio durante el desarrollo e implementacion del sistema Thary es la separacion de responsabilidades, practica la cual se vio reflejada en la organizacion de archivos y carpetas del proyecto:
 
@@ -52,10 +52,12 @@ Como complemento a esta organizacion, se incorporaron pruebas automatizadas escr
 
 (Los resultados obtenidos al ejecutar esta suite de pruebas se presentan en el Capitulo 4.)
 
-\paragraph{Integración}
+\subsubsection{Integración}
 
 Las rutas de la aplicacion se organizan en el archivo \texttt{app/\_\_init\_\_.py}, mediante el mecanismo de Blueprints de Flask, el cual permite que se pueda agrupar un conjunto de vistas en un modulo independiente y registrarlo en la aplicacion principal. Thary cuenta con dos blueprints: \texttt{main\_bp} (dashboard, inventario, presupuesto, pedidos y panel tecnico) y \texttt{auth\_bp} (inicio de sesion, registro y gestion de usuarios), que se registran de la siguiente manera:
 
+\Needspace{4\baselineskip}
+\captionof{listing}{Registro de los blueprints \texttt{main\_bp} y \texttt{auth\_bp} en la aplicación Flask.}\label{lst:registro_blueprints}
 \begin{minted}{python}
 app.register_blueprint(main_bp)
 app.register_blueprint(auth_bp)
@@ -65,6 +67,8 @@ Esta organizacion permite que cada blueprint se desarrolle y se pruebe de forma 
 
 Por otra parte, para integrar correctamente el modelo de prediccion con la aplicacion web, en el archivo \texttt{services/sistema\_prediccion.py} se incluyo una funcion de entrada, \texttt{ejecutar\_sistema()}, la cual se encarga de orquestar secuencialmente las nueve etapas del pipeline y devolver un resultado. Esta decision de integracion se tomo tomando en cuenta la separacion de capas ya establecida para todo el proyecto. En este caso, la capa de servicios de dominio se mantiene independiente de la de presentacion.
 
+\Needspace{10\baselineskip}
+\captionof{listing}{Función \texttt{ejecutar\_sistema}, que orquesta las nueve etapas del pipeline.}\label{lst:ejecutar_sistema}
 \begin{minted}{python}
 def ejecutar_sistema(
     ruta_archivo, carpeta_resultados=None, presupuesto_capital_trabajo=None, horizonte_meses=None
@@ -102,6 +106,8 @@ def ejecutar_sistema(
 Otro punto de integracion relevante es que Thary tiene dos maneras de almacenar la informacion: la base de datos relacional (MySQL), para datos que sean estructurados como numeros o textos cortos y el sistema de archivos para archivos que por su naturaleza no se podria poner en una tabla, en el caso de Thary, estos archivos serian el archivo del modelo XGBoost ya entrenado, y las imagenes de las graficas. Cada vez que se procesa un CSV, en MySQL se agrega una fila nueva, nunca se borra nada, pero los archivos, es decir, las graficas, modelo entrenado, etc, van siempre a la misma carpeta de la empresa a la que pertenezcan, y cada vez que se procesa un nuevo archivo, se sobrescriben los anteriores. Asi que, si se hace una serie de corridas, en MySQL habra varias filas completas, pero en la carpeta, solo existiran los archivos de la ultima corrida. 
 
 \texttt{app/routes/main.py}:
+\Needspace{8\baselineskip}
+\captionof{listing}{Función \texttt{carpeta\_resultados}, que define la carpeta de resultados de cada empresa.}\label{lst:carpeta_resultados}
 \begin{minted}{python}
 def carpeta_resultados(empresa_id):
     """Carpeta donde ejecutar_sistema escribe el pronostico, los
@@ -116,6 +122,8 @@ La ruta de la carpeta depende del id de la empresa (\texttt{empresa\_id}), y no 
 Por otra parte, tal como se explico en capitulos anteriores, se definio un control de acceso basado en roles, esto con el objetivo de poder diferenciar a que funcionalidades debe tener acceso un usuario dependiendo de su rol. El administrador (\texttt{admin}) debe ser el unico usuario que cuente con todos los privilegios de acceso a la informacion sensible de la organizacion, mientras que para otros usuarios con menor rango, (\texttt{empleado}), convendria restringir este acceso completo a solo aquellas funcionalidades menos invasivas que sean necesarias para el desempeño de su trabajo, como todas aquellas que describen el analisis de los datos y la lista de pedidos: 
 
 \texttt{app/services/auth.py}:
+\Needspace{10\baselineskip}
+\captionof{listing}{Decorador \texttt{admin\_required}, que restringe el acceso de una ruta al perfil administrador.}\label{lst:admin_required}
 \begin{minted}{python}
 def admin_required(vista):
     @wraps(vista)
@@ -130,10 +138,12 @@ def admin_required(vista):
     return envoltura
 \end{minted}
 
-\subparagraph{Integración continua (CI)}
+\paragraph{Integración continua (CI)}
 
 El proyecto utilizo GitHub Actions para la automatizacion de pruebas unitarias (\texttt{.github/workflows/tests.yml}). Este se ejecuta automaticamente cada vez que se haga un \textit{push} o \textit{pull request} en el repositorio. El archivo cuenta con una configuracion que permite instalar tanto Python como todas las dependencias necesarias, y ejecuta las pruebas unitarias con \texttt{pytest}:  
 
+\Needspace{10\baselineskip}
+\captionof{listing}{Flujo de trabajo de GitHub Actions para ejecutar las pruebas automatizadas (\texttt{tests.yml}).}\label{lst:github_actions}
 \begin{minted}{yaml}
 name: Tests
 
@@ -163,7 +173,7 @@ un equipo que dependa de constantes despliegues, el beneficio de
 un pipeline de CD completo es menor frente a la complejidad adicional que
 implicaría configurarlo.
 
-\paragraph{Despliegue}
+\subsubsection{Despliegue}
 
 El despliegue del sistema Thary (además del entorno de desarrollo local), se encuentra en la nube mediante la plataforma Railway. 
 
@@ -178,6 +188,8 @@ Como se ve en la figura, Thary y la base de datos, se encuentran corriendo en Ra
 
 La aplicacion se ejecuta mediante un servidor WSGI de produccion (Gunicorn), configurado a traves del archivo \texttt{Procfile}:
 
+\Needspace{3\baselineskip}
+\captionof{listing}{Contenido del archivo \texttt{Procfile} para el servidor Gunicorn.}\label{lst:procfile}
 \begin{minted}{text}
 web: gunicorn run:app --bind 0.0.0.0:$PORT
 \end{minted}
@@ -191,7 +203,7 @@ web: gunicorn run:app --bind 0.0.0.0:$PORT
 
 Railway detecta y se encarga de ejecutar este comando \textit{start command} cuando se realiza un despliegue. Automaticamente identifica la version de python con la que se esta trabajando, en este caso, \texttt{.python-version} (3.13).  El proyecto fija todas sus dependencias en \texttt{requirements.txt}, incluyendo las versiones exactas de las librerias de prediccion (pandas, scikit-learn, XGBoost, statsmodels) y las necesarias para la conexion a la base de datos (\texttt{SQLAlchemy}, \texttt{PyMySQL}) y el servidor de produccion (\texttt{gunicorn}).
 
-En cuanto a la persistencia de los datos, esta se manejó mediante MySQL. La configuracion de conexion a la base de datos solo se obtiene de las variables de entorno, tal como se detallo en la Seccion 3.2.9 (funcion \texttt{\_config()}).
+En cuanto a la persistencia de los datos, esta se manejó mediante MySQL. La configuracion de conexion a la base de datos solo se obtiene de las variables de entorno, tal como se detallo en la Seccion \ref{sec:modelo_datos} (funcion \texttt{\_config()}).
 
 % \begin{minted}{python}
 % def _config():
