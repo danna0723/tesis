@@ -1,0 +1,18 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n}{presupuesto\PYGZus{}por\PYGZus{}producto} \PYG{o}{=} \PYG{n}{working\PYGZus{}capital\PYGZus{}budget} \PYG{o}{/} \PYG{n}{n\PYGZus{}productos\PYGZus{}activos}
+
+\PYG{k}{if} \PYG{o+ow}{not} \PYG{n}{pd}\PYG{o}{.}\PYG{n}{isna}\PYG{p}{(}\PYG{n}{costo\PYGZus{}unitario\PYGZus{}producto}\PYG{p}{)} \PYG{o+ow}{and} \PYG{n}{costo\PYGZus{}unitario\PYGZus{}producto} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{0}\PYG{p}{:}
+    \PYG{n}{limite\PYGZus{}presupuesto} \PYG{o}{=} \PYG{n+nb}{int}\PYG{p}{(}\PYG{n}{presupuesto\PYGZus{}por\PYGZus{}producto} \PYG{o}{/} \PYG{n}{costo\PYGZus{}unitario\PYGZus{}producto}\PYG{p}{)}
+\PYG{k}{else}\PYG{p}{:}
+    \PYG{n}{limite\PYGZus{}presupuesto} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{nan}
+
+\PYG{k}{if} \PYG{o+ow}{not} \PYG{n}{pd}\PYG{o}{.}\PYG{n}{isna}\PYG{p}{(}\PYG{n}{eoq}\PYG{p}{):}
+    \PYG{n}{cantidad\PYGZus{}sugerida} \PYG{o}{=} \PYG{n}{eoq}
+\PYG{k}{elif} \PYG{o+ow}{not} \PYG{n}{pd}\PYG{o}{.}\PYG{n}{isna}\PYG{p}{(}\PYG{n}{inventario\PYGZus{}actual}\PYG{p}{):}
+    \PYG{n}{cantidad\PYGZus{}sugerida} \PYG{o}{=} \PYG{n+nb}{max}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{punto\PYGZus{}reorden} \PYG{o}{\PYGZhy{}} \PYG{n}{inventario\PYGZus{}actual}\PYG{p}{)}
+\PYG{k}{else}\PYG{p}{:}
+    \PYG{n}{cantidad\PYGZus{}sugerida} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{nan}
+
+\PYG{k}{if} \PYG{o+ow}{not} \PYG{n}{pd}\PYG{o}{.}\PYG{n}{isna}\PYG{p}{(}\PYG{n}{cantidad\PYGZus{}sugerida}\PYG{p}{)} \PYG{o+ow}{and} \PYG{o+ow}{not} \PYG{n}{pd}\PYG{o}{.}\PYG{n}{isna}\PYG{p}{(}\PYG{n}{limite\PYGZus{}presupuesto}\PYG{p}{):}
+    \PYG{n}{cantidad\PYGZus{}sugerida} \PYG{o}{=} \PYG{n+nb}{min}\PYG{p}{(}\PYG{n}{cantidad\PYGZus{}sugerida}\PYG{p}{,} \PYG{n}{limite\PYGZus{}presupuesto}\PYG{p}{)}
+\end{MintedVerbatim}

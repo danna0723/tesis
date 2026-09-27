@@ -1,0 +1,18 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n}{ya\PYGZus{}hay\PYGZus{}que\PYGZus{}pedir} \PYG{o}{=} \PYG{o+ow}{not} \PYG{n}{pd}\PYG{o}{.}\PYG{n}{isna}\PYG{p}{(}\PYG{n}{inventario\PYGZus{}actual}\PYG{p}{)} \PYG{o+ow}{and} \PYG{n}{inventario\PYGZus{}actual} \PYG{o}{\PYGZlt{}=} \PYG{n}{punto\PYGZus{}reorden}
+\PYG{k}{if} \PYG{n}{pd}\PYG{o}{.}\PYG{n}{isna}\PYG{p}{(}\PYG{n}{inventario\PYGZus{}actual}\PYG{p}{):}
+    \PYG{n}{fecha\PYGZus{}estimada\PYGZus{}pedido} \PYG{o}{=} \PYG{k+kc}{None}
+    \PYG{n}{dias\PYGZus{}para\PYGZus{}pedido} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{nan}
+\PYG{k}{elif} \PYG{n}{ya\PYGZus{}hay\PYGZus{}que\PYGZus{}pedir}\PYG{p}{:}
+    \PYG{n}{fecha\PYGZus{}estimada\PYGZus{}pedido} \PYG{o}{=} \PYG{n}{fecha\PYGZus{}referencia}
+    \PYG{n}{dias\PYGZus{}para\PYGZus{}pedido} \PYG{o}{=} \PYG{l+m+mi}{0}
+\PYG{k}{elif} \PYG{n}{demanda\PYGZus{}promedio} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{0}\PYG{p}{:}
+    \PYG{n}{demanda\PYGZus{}diaria} \PYG{o}{=} \PYG{n}{demanda\PYGZus{}promedio} \PYG{o}{/} \PYG{n}{DIAS\PYGZus{}POR\PYGZus{}MES}
+    \PYG{n}{dias\PYGZus{}para\PYGZus{}pedido} \PYG{o}{=} \PYG{n+nb}{min}\PYG{p}{(}
+        \PYG{p}{(}\PYG{n}{inventario\PYGZus{}actual} \PYG{o}{\PYGZhy{}} \PYG{n}{punto\PYGZus{}reorden}\PYG{p}{)} \PYG{o}{/} \PYG{n}{demanda\PYGZus{}diaria}\PYG{p}{,}
+        \PYG{n}{DIAS\PYGZus{}PARA\PYGZus{}PEDIDO\PYGZus{}TECHO}\PYG{p}{,}
+    \PYG{p}{)}
+    \PYG{n}{fecha\PYGZus{}estimada\PYGZus{}pedido} \PYG{o}{=} \PYG{n}{fecha\PYGZus{}referencia} \PYG{o}{+} \PYG{n}{pd}\PYG{o}{.}\PYG{n}{Timedelta}\PYG{p}{(}\PYG{n}{days}\PYG{o}{=}\PYG{n}{dias\PYGZus{}para\PYGZus{}pedido}\PYG{p}{)}
+\PYG{k}{else}\PYG{p}{:}
+    \PYG{n}{fecha\PYGZus{}estimada\PYGZus{}pedido} \PYG{o}{=} \PYG{k+kc}{None}
+\end{MintedVerbatim}

@@ -22,35 +22,34 @@ Como se puede ver en los diagramas, los casos de uso identificados se relacionan
 \centering
 \caption{Trazabilidad entre casos de uso y requisitos funcionales}
 \label{tab:trazabilidad_casos_uso}
-\begin{tabularx}{\textwidth}{>{\centering\arraybackslash}p{1.2cm} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X >{\centering\arraybackslash}p{3cm}}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}p{1.2cm}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\centering\arraybackslash}p{3cm}|}
 \hline
 \textbf{ID} & \textbf{Caso de uso} & \textbf{Actor principal} & \textbf{Requisitos relacionados} \\
 \hline
-
 CU-01 & Iniciar sesión & Usuario registrado & RF-09 \\
-
+\hline
 CU-02 & Cargar historial de consumo & Administrador & RF-01, RF-07 \\
-
+\hline
 CU-03 & Procesar archivo & Administrador & RF-02, RF-07 \\
-
+\hline
 CU-04 & Consultar demanda pronosticada & Personal de Inventario & RF-02, RF-05 \\
-
+\hline
 CU-05 & Consultar estado del inventario & Personal de Inventario & RF-04, RF-05 \\
-
+\hline
 CU-06 & Consultar recomendaciones de reposición y presupuesto & Personal de Inventario & RF-03, RF-05 \\
-
+\hline
 CU-07 & Registrar pedido & Personal de Inventario & RF-06 \\
-
+\hline
 CU-08 & Gestionar usuarios & Administrador & RF-08 \\
-
+\hline
 CU-09 & Deshacer pedido & Personal de Inventario & RF-10 \\
-
+\hline
 CU-10 & Consultar actividad de la empresa & Administrador & RF-11 \\
-
+\hline
 CU-11 & Consultar calendario de pedidos & Personal de Inventario & RF-12 \\
-
+\hline
 CU-12 & Consultar perfil & Usuario registrado & RF-13 \\
-
 \hline
 \end{tabularx}
 \end{table}

@@ -1,0 +1,25 @@
+En esta etapa de verificacion, se busca garantizar que los resultados dados por
+el sistema sean confiables en comparacion con los datos reales.
+
+Teniendo en cuenta que en el sistema se esta trabajando con historiales de consumo mensual, es decir, series de tiempo, se decidio implementar una estrategia de validacion que respetara el orden cronologico de la informacion, en la que los datos mas antiguos siempre son los datos de entrenamiento y los mas recientes se usan como datos de prueba, los cuales no se le muestran al sistema durante el entrenamiento, ya que son estos los que posteriormente tendra que predecir.
+
+Es por esto que se decidio implementar un sistema de validacion cruzada para los
+datos, en el que se repite el proceso de entrenamiento y evaluacion sobre
+distintas ventanas de tiempo sucesivas, para verificar que el funcionamiento del
+sistema sea estable y consistente a lo largo del tiempo, y que no dependa de las
+particularidades de un periodo especifico para dar buenos resultados. Si al
+finalizar la validacion cruzada se observa que el sistema tuvo un desempeño
+similar en todos los periodos evaluados, se puede concluir que ese modelo es
+confiable; sin embargo, si ocurre lo contrario y solo tuvo un desempeño decente
+en un periodo especifico, dicho modelo no es confiable, y solo tuvo buenos
+resultados en ese periodo por casualidad o por condiciones particulares del
+mismo.
+
+Para cada ventana de tiempo de la validacion cruzada se calculan las metricas de MAE, RMSE, Mediana del Error, R\textsuperscript{2}, MAPE y WAPE, comparando el desempeño de los tres modelos candidatos (Media Movil, Regresion Lineal y XGBoost) entre si.
+
+Adiciconalmente, tambien se evalua la seccion en la que se combinan los resultados de prediccion de los modelos XGBoost y Media Movil, en el que se estima si el promedio de ambos modelos reduce el error en comparacion a usar ambos modelos por separado. Esto permite determinar si la decision de implementar un sistema con tres modelos de prediccion, y escoger el de mejor desempeño para cada producto, aporta valor en comparacion con simplemente usar un solo modelo para todos los productos.
+    
+
+En cada evaluacion varia el tamaño de prueba (funcion \texttt{tamano\_test\_backtest}), si se cuenta con un historial de consumo con una cantidad de datos mas amplia, se puede usar un periodo de prueba mas grande. Esto tambien es conveniente a la hora de evaluar la prueba de  Diebold-Mariano correspondiente a la selecccion del mejor modelo, ya que esta prueba ayuda a determinar si la seleccion de dicho modelo se dio porque de verdad es el modelo con mejores resultados o si la diferencia que tiene con el segundo mejor modelo podria tratarse solo de ruido.
+
+En general, la estrategia de seleccion del modelo ganador aplica parte de la estrategia de validacion, ya que solo se puede considerar un modelo como ganador para un producto si existe suficiente evidencia estadistica para afirmar que su ventaja en comparacion con los demas modelos es real.

@@ -358,6 +358,227 @@
       \field{pages}{378\bibrangedash 390}
       \range{pages}{13}
     \endentry
+    \entry{kochak2015demand}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=b11c8a0915523fb317d84c3e57371e54}{%
+           family={Kochak},
+           familyi={K\bibinitperiod},
+           given={Ashvin},
+           giveni={A\bibinitperiod}}}%
+        {{hash=3e306a405cbd9a8224e6edcd394d1482}{%
+           family={Sharma},
+           familyi={S\bibinitperiod},
+           given={Suman},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{2}{%
+        {International Journal of Life Sciences Biotechnology}%
+        {Pharma Research}%
+      }
+      \strng{namehash}{e3d1b10e3127039cf7c5b05690d07cf8}
+      \strng{fullhash}{e3d1b10e3127039cf7c5b05690d07cf8}
+      \strng{fullhashraw}{e3d1b10e3127039cf7c5b05690d07cf8}
+      \strng{bibnamehash}{e3d1b10e3127039cf7c5b05690d07cf8}
+      \strng{authorbibnamehash}{e3d1b10e3127039cf7c5b05690d07cf8}
+      \strng{authornamehash}{e3d1b10e3127039cf7c5b05690d07cf8}
+      \strng{authorfullhash}{e3d1b10e3127039cf7c5b05690d07cf8}
+      \strng{authorfullhashraw}{e3d1b10e3127039cf7c5b05690d07cf8}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{International journal of mechanical engineering and robotics research}
+      \field{note}{Disponible en: \url{https://www.ijmerr.com/v4n1/ijmerr_v4n1_10.pdf}}
+      \field{number}{1}
+      \field{title}{Demand forecasting using neural network for supply chain management}
+      \field{volume}{4}
+      \field{year}{2015}
+      \field{pages}{96\bibrangedash 104}
+      \range{pages}{9}
+    \endentry
+    \entry{yadav2023lstm}{misc}{}{}
+      \name{author}{5}{}{%
+        {{hash=85ab18731443c77decccb29c5cd8d326}{%
+           family={Yadav},
+           familyi={Y\bibinitperiod},
+           given={Mithileshkumar},
+           giveni={M\bibinitperiod}}}%
+        {{hash=cc7d06efd3004675a31a20142eefb061}{%
+           family={Patil},
+           familyi={P\bibinitperiod},
+           given={Rajesh},
+           giveni={R\bibinitperiod}}}%
+        {{hash=116c327a1e368cf74d2aa53d5a4ebd09}{%
+           family={Bhirud},
+           familyi={B\bibinitperiod},
+           given={Bharati},
+           giveni={B\bibinitperiod}}}%
+        {{hash=915d6ed849e0765c0a77324d68716585}{%
+           family={Chavle},
+           familyi={C\bibinitperiod},
+           given={Pranjal},
+           giveni={P\bibinitperiod}}}%
+        {{hash=478a2275777ca1db91ab87fead9498f3}{%
+           family={Bhosale},
+           familyi={B\bibinitperiod},
+           given={Surendra},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{8f222c2a5df7629d25eff9beab8a8b79}
+      \strng{fullhash}{102f007c21a9cf836c5b955ddcacf470}
+      \strng{fullhashraw}{102f007c21a9cf836c5b955ddcacf470}
+      \strng{bibnamehash}{102f007c21a9cf836c5b955ddcacf470}
+      \strng{authorbibnamehash}{102f007c21a9cf836c5b955ddcacf470}
+      \strng{authornamehash}{8f222c2a5df7629d25eff9beab8a8b79}
+      \strng{authorfullhash}{102f007c21a9cf836c5b955ddcacf470}
+      \strng{authorfullhashraw}{102f007c21a9cf836c5b955ddcacf470}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{9}
+      \field{note}{Disponible en: \url{https://www.researchgate.net/publication/373555323_LSTM_Model_based_Demand_Forecasting_in_Supply_Chain_using_Efficient_Optimizer}}
+      \field{title}{LSTM Model based Demand Forecasting in Supply Chain using Efficient Optimizer}
+      \field{year}{2023}
+    \endentry
+    \entry{lin2024abc}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=517fb2c1e73ee22fc068e1f8835109f0}{%
+           family={Lin},
+           familyi={L\bibinitperiod},
+           given={Yiheng},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \strng{namehash}{517fb2c1e73ee22fc068e1f8835109f0}
+      \strng{fullhash}{517fb2c1e73ee22fc068e1f8835109f0}
+      \strng{fullhashraw}{517fb2c1e73ee22fc068e1f8835109f0}
+      \strng{bibnamehash}{517fb2c1e73ee22fc068e1f8835109f0}
+      \strng{authorbibnamehash}{517fb2c1e73ee22fc068e1f8835109f0}
+      \strng{authornamehash}{517fb2c1e73ee22fc068e1f8835109f0}
+      \strng{authorfullhash}{517fb2c1e73ee22fc068e1f8835109f0}
+      \strng{authorfullhashraw}{517fb2c1e73ee22fc068e1f8835109f0}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Advances in Economics, Management and Political Sciences}
+      \field{month}{12}
+      \field{note}{Disponible en: \url{https://www.researchgate.net/publication/387236283_Application_of_ABC_Analysis_and_Linear_Regression_Model_in_Inventory_Management}}
+      \field{title}{Application of ABC Analysis and Linear Regression Model in Inventory Management}
+      \field{volume}{126}
+      \field{year}{2024}
+      \field{pages}{111\bibrangedash 119}
+      \range{pages}{9}
+      \verb{doi}
+      \verb 10.54254/2754-1169/2024.18326
+      \endverb
+    \endentry
+    \entry{gupta2022stocknet}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=5ec6af3efc8dcf2ab79c1d2e28820c0a}{%
+           family={Gupta},
+           familyi={G\bibinitperiod},
+           given={Umang},
+           giveni={U\bibinitperiod}}}%
+        {{hash=5cee38fbccd4234418392062001b9790}{%
+           family={Bhattacharjee},
+           familyi={B\bibinitperiod},
+           given={Vandana},
+           giveni={V\bibinitperiod}}}%
+        {{hash=fb34468c5d86c9b227987d7c7677cf32}{%
+           family={Bishnu},
+           familyi={B\bibinitperiod},
+           given={Partha\bibnamedelima Sarathi},
+           giveni={P\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \strng{namehash}{3ecc9dce9551ff5a2b5f2b0c1f6d34f5}
+      \strng{fullhash}{933a54eab598f54db8d6c8dd7bc5cb73}
+      \strng{fullhashraw}{933a54eab598f54db8d6c8dd7bc5cb73}
+      \strng{bibnamehash}{933a54eab598f54db8d6c8dd7bc5cb73}
+      \strng{authorbibnamehash}{933a54eab598f54db8d6c8dd7bc5cb73}
+      \strng{authornamehash}{3ecc9dce9551ff5a2b5f2b0c1f6d34f5}
+      \strng{authorfullhash}{933a54eab598f54db8d6c8dd7bc5cb73}
+      \strng{authorfullhashraw}{933a54eab598f54db8d6c8dd7bc5cb73}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0957-4174}
+      \field{journaltitle}{Expert Systems with Applications}
+      \field{title}{StockNet---GRU based stock index prediction}
+      \field{volume}{207}
+      \field{year}{2022}
+      \field{pages}{117986}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1016/j.eswa.2022.117986
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S0957417422012131
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S0957417422012131
+      \endverb
+      \keyw{Gated recurrent unit,Overfitting,Stock market index}
+    \endentry
+    \entry{nagadevi2025xgboost}{article}{}{}
+      \name{author}{5}{}{%
+        {{hash=92aeca8ce9641b13f1cb4371005cf0d4}{%
+           family={Nagadevi},
+           familyi={N\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+        {{hash=1f26b3e48feb9a3bb56943f7dbec947a}{%
+           family={Abirami},
+           familyi={A\bibinitperiod},
+           given={G.},
+           giveni={G\bibinitperiod}}}%
+        {{hash=cfeaf264df01e4e7f7f26849e057c29b}{%
+           family={Vidhya},
+           familyi={V\bibinitperiod},
+           given={R.},
+           giveni={R\bibinitperiod}}}%
+        {{hash=db6eb9d25dfd5ea10b02d9a42e3f7b0e}{%
+           family={Selvakumar},
+           familyi={S\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+        {{hash=eec0fd71c73f47e6911b1f8a416ec8db}{%
+           family={Vijayalakshmi},
+           familyi={V\bibinitperiod},
+           given={C.},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{ac4b6dded842549c0c8b219e06896d7a}
+      \strng{fullhash}{2c08c5255abf97e3676f79ad13f5f28b}
+      \strng{fullhashraw}{2c08c5255abf97e3676f79ad13f5f28b}
+      \strng{bibnamehash}{2c08c5255abf97e3676f79ad13f5f28b}
+      \strng{authorbibnamehash}{2c08c5255abf97e3676f79ad13f5f28b}
+      \strng{authornamehash}{ac4b6dded842549c0c8b219e06896d7a}
+      \strng{authorfullhash}{2c08c5255abf97e3676f79ad13f5f28b}
+      \strng{authorfullhashraw}{2c08c5255abf97e3676f79ad13f5f28b}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{International Journal of Interactive Mobile Technologies (iJIM)}
+      \field{month}{9}
+      \field{number}{18}
+      \field{title}{XGBoost-Based Demand Forecasting in Supply Chain Management Using Machine Learning Algorithm}
+      \field{volume}{19}
+      \field{year}{2025}
+      \field{pages}{161\bibrangedash 174}
+      \range{pages}{14}
+      \verb{doi}
+      \verb 10.3991/ijim.v19i18.57253
+      \endverb
+      \verb{urlraw}
+      \verb https://online-journals.org/index.php/i-jim/article/view/57253
+      \endverb
+      \verb{url}
+      \verb https://online-journals.org/index.php/i-jim/article/view/57253
+      \endverb
+    \endentry
     \entry{ejemplo1_demandforecast}{misc}{}{}
       \name{author}{1}{}{%
         {{hash=c21b21695e15bb9c8da0d4c151f18b22}{%
@@ -447,12 +668,87 @@
       \strng{authornamehash}{89dfea52b1e1caffff95d27784186164}
       \strng{authorfullhash}{89dfea52b1e1caffff95d27784186164}
       \strng{authorfullhashraw}{89dfea52b1e1caffff95d27784186164}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{note}{Disponible en: \url{https://github.com/21-f3000932/LinearRegression_Demand-forecasting/tree/main}}
       \field{title}{Linear Regression: Demand Forecasting}
+    \endentry
+    \entry{iso12207}{standard}{}{}
+      \name{author}{1}{}{%
+        {{hash=81077c206f392162560480542b37f0cd}{%
+           family={{ISO/IEC/IEEE}},
+           familyi={I\bibinitperiod}}}%
+      }
+      \strng{namehash}{81077c206f392162560480542b37f0cd}
+      \strng{fullhash}{81077c206f392162560480542b37f0cd}
+      \strng{fullhashraw}{81077c206f392162560480542b37f0cd}
+      \strng{bibnamehash}{81077c206f392162560480542b37f0cd}
+      \strng{authorbibnamehash}{81077c206f392162560480542b37f0cd}
+      \strng{authornamehash}{81077c206f392162560480542b37f0cd}
+      \strng{authorfullhash}{81077c206f392162560480542b37f0cd}
+      \strng{authorfullhashraw}{81077c206f392162560480542b37f0cd}
+      \field{extraname}{1}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{2}
+      \field{howpublished}{International Standard}
+      \field{month}{4}
+      \field{note}{Disponible en: \url{https://www.iso.org/standard/90219.html}}
+      \field{title}{{ISO/IEC/IEEE 12207:2026 -- Systems and software engineering -- Software life cycle processes}}
+      \field{year}{2026}
+    \endentry
+    \entry{ieee29148}{standard}{}{}
+      \name{author}{1}{}{%
+        {{hash=81077c206f392162560480542b37f0cd}{%
+           family={{ISO/IEC/IEEE}},
+           familyi={I\bibinitperiod}}}%
+      }
+      \strng{namehash}{81077c206f392162560480542b37f0cd}
+      \strng{fullhash}{81077c206f392162560480542b37f0cd}
+      \strng{fullhashraw}{81077c206f392162560480542b37f0cd}
+      \strng{bibnamehash}{81077c206f392162560480542b37f0cd}
+      \strng{authorbibnamehash}{81077c206f392162560480542b37f0cd}
+      \strng{authornamehash}{81077c206f392162560480542b37f0cd}
+      \strng{authorfullhash}{81077c206f392162560480542b37f0cd}
+      \strng{authorfullhashraw}{81077c206f392162560480542b37f0cd}
+      \field{extraname}{2}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{2}
+      \field{howpublished}{International Standard}
+      \field{note}{Revisada y confirmada en 2024. Disponible en: \url{https://www.iso.org/standard/72089.html}}
+      \field{title}{{ISO/IEC/IEEE 29148:2018 -- Systems and software engineering -- Life cycle processes -- Requirements engineering}}
+      \field{year}{2018}
+    \endentry
+    \entry{iso25010}{standard}{}{}
+      \name{author}{1}{}{%
+        {{hash=0828a8408614177181026ea908d5594a}{%
+           family={{ISO/IEC}},
+           familyi={I\bibinitperiod}}}%
+      }
+      \strng{namehash}{0828a8408614177181026ea908d5594a}
+      \strng{fullhash}{0828a8408614177181026ea908d5594a}
+      \strng{fullhashraw}{0828a8408614177181026ea908d5594a}
+      \strng{bibnamehash}{0828a8408614177181026ea908d5594a}
+      \strng{authorbibnamehash}{0828a8408614177181026ea908d5594a}
+      \strng{authornamehash}{0828a8408614177181026ea908d5594a}
+      \strng{authorfullhash}{0828a8408614177181026ea908d5594a}
+      \strng{authorfullhashraw}{0828a8408614177181026ea908d5594a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{2}
+      \field{howpublished}{International Standard}
+      \field{note}{Disponible en: \url{https://www.iso.org/standard/78176.html}}
+      \field{title}{{ISO/IEC 25010:2023 -- Systems and software engineering -- Systems and software Quality Requirements and Evaluation (SQuaRE) -- Product quality model}}
+      \field{year}{2023}
     \endentry
     \entry{diebold_mariano}{article}{}{}
       \name{author}{2}{}{%
@@ -507,8 +803,8 @@
       \strng{authornamehash}{15cc2e3b52b5ea2d3045be532376a348}
       \strng{authorfullhash}{15cc2e3b52b5ea2d3045be532376a348}
       \strng{authorfullhashraw}{15cc2e3b52b5ea2d3045be532376a348}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of Business \& Economic Statistics}
@@ -554,8 +850,8 @@
       \strng{authornamehash}{a94134a9a47323f623caebc874fd31e0}
       \strng{authorfullhash}{6a8516283f88da3ced1934fcd0ac84a7}
       \strng{authorfullhashraw}{6a8516283f88da3ced1934fcd0ac84a7}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Multi-step ahead forecasting is still an open challenge in time series forecasting. Several approaches that deal with this complex problem have been proposed in the literature but an extensive comparison on a large number of tasks is still missing. This paper aims to fill this gap by reviewing existing strategies for multi-step ahead forecasting and comparing them in theoretical and practical terms. To attain such an objective, we performed a large scale comparison of these different strategies using a large experimental benchmark (namely the 111 series from the NN5 forecasting competition). In addition, we considered the effects of deseasonalization, input variable selection, and forecast combination on these strategies and on multi-step ahead forecasting at large. The following three findings appear to be consistently supported by the experimental results: Multiple-Output strategies are the best performing approaches, deseasonalization leads to uniformly improved forecast accuracy, and input selection is more effective when performed in conjunction with deseasonalization.}
@@ -579,11 +875,6 @@
       \keyw{Time series forecasting,Multi-step ahead forecasting,Long-term forecasting,Strategies of forecasting,Machine learning,Lazy Learning,NN5 forecasting competition,Friedman test}
     \endentry
   \enddatalist
-  \missing{c4model}
-  \missing{chopra2020supply}
-  \missing{ejemplo2_lstm_inventory}
-  \missing{iso12207}
-  \missing{sommerville2016}
 \endrefsection
 \endinput
 

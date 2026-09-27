@@ -1,0 +1,24 @@
+Despues de completar todo el desarrollo de Thary, se identificaron diferentes oportunidades de mejora que podrian hacer que el sistema mejore su desempeño, seguridad, eficiencia y en general, ser un mejor producto para el usuario final. Aunque dichas oportunidades fueron identificadas, no pudieron ser implementadas en esta version del sistema debido al alcance del proyecto y demas limitaciones. Aun asi, se consideran aportes valiosos que valen la pena ser documentados para futuras actualizaciones y versiones del sistema.
+
+
+\subsubsection{Realizacion de validacion con usuarios}
+
+La validacion de usabilidad fue realizada y documentada en el capitulo 4, seccion 4.3, sin embargo, esta consto con un caracter informal y con un numero bastante reducido de participantes. Es por eso que se propone como trabajo futuro realizar un estudio de usabilidad mas formal, el cual cuente con un mayor numero de participantes con el perfil del usuario objetivo (es decir, personas relacionadas con la administracion de productos en inventarios, ya sea con el rol de personal de inventario o de administrador). Tambien convendria incluir metricas cuantitativas de satisfaccion y facilidad de uso como implementar cuestionarios estandarizados como el System Usability Scale, mas alla de solo pedir que prueben el sistema y recopilar feedback.
+
+
+\subsubsection{Conservacion del historial de artefactos por corrida}
+
+El sistema esta configurado de manera que cada vez que se procesa un archivo, MySQL guarda un registro nuevo sin borrar los anteriores, sin embargo, los archivos asociados a esa corrida como el modelo entrenado y las graficas, se guardan siempre en la misma carpeta, por lo que se sobrescriben con cada nueva ejecucion. Esto significa que solo se guardan los archivos de la ejecucion mas reciente, aunque en la base de datos si exista el historial completo de todas las ejecuciones anteriores.
+Es por esto que seria valioso encontrar alguna manera para poder guardar diferentes archivos por cada corrida, para en el futuro, poder comparar como se comportaba el modelo entrenado en distintos momentos, y no solo ver sus metricas ya calculadas.
+
+\subsubsection{Validacion en otros dominios de inventario}
+
+Uno de los requerimientos no funcionales mas importantes de Thary es que el sistema debe de poder ser utilizado para adaptarse a distintos dominios de inventarios, sin embargo, a la hora de probar y validar el sistema, solo se utilizo como caso de estudio un unico dominio: el de la farmacia hospitalaria, mas especificamente, el consumo de medicamentos e insumos medicos de la Clinica Nuestra Señora de los Remedios del año 2021. Esto se hizo porque era el unico dominio para el cual se contaba con un dataset real que representara el comportamiento de la demanda de una serie de productos de manera realista y organica. A pesar de que no se descarta que el sistema pueda ser utilizado en otros dominios de inventario, como retail, ferreteria, alimentos, etc., el realizar mas pruebas con datasets reales de dichos dominios variados seria beneficioso para probar la adaptabilidad del sistema y confirmar que el desempeño del sistema se mantiene en otros contextos.
+
+\subsubsection{Exploracion de modelos de aprendizaje profundo}
+
+Durante la revision de literatura se exploraron diferentes tecnicas de Deep Learning con las que es posible realizar predicciones de series de tiempo. Entre ellas, se descartaron LSTM y GRU como modelos candidatos para el sistema Thary, aun asi, en un trabajo futuro se podria rescatar la posibilidad de integrar alguna de estas tecnicas como una cuarta o quinta alternativa al mecanismo de seleccion de mejor modelo por producto. Principalmente en escenarios donde se cuente con un historial de consumo mas extenso al utilizado en el caso de estudio actual, dado que este tipo de modelos suele requerir mayor cantidad de datos para superar a tecnicas mas simples.
+
+\subsubsection{Reevaluacion del asistente conversacional}
+
+Durante una primera version de Thary, se implemento un asistente conversacional basado en un modelo de lenguaje ejecutado localmente (Ollama), el cual fue posteriormente descartado como una de las funcionalidades del sistema en la version final. Se podria considerar en el futuro reevaluar la reactivacion de esta funcionalidad, incluyendo un analisis mas detallado de su valor real para el usuario final.

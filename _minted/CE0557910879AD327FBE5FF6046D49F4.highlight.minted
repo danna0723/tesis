@@ -1,0 +1,8 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n}{demanda\PYGZus{}anual\PYGZus{}estimada} \PYG{o}{=} \PYG{n}{demanda\PYGZus{}promedio} \PYG{o}{*} \PYG{l+m+mi}{12}
+\PYG{k}{if} \PYG{o+ow}{not} \PYG{n}{pd}\PYG{o}{.}\PYG{n}{isna}\PYG{p}{(}\PYG{n}{costo\PYGZus{}unitario\PYGZus{}producto}\PYG{p}{)} \PYG{o+ow}{and} \PYG{o+ow}{not} \PYG{n}{pd}\PYG{o}{.}\PYG{n}{isna}\PYG{p}{(}\PYG{n}{porcentaje\PYGZus{}mantenimiento}\PYG{p}{)} \PYG{o+ow}{and} \PYG{o+ow}{not} \PYG{n}{pd}\PYG{o}{.}\PYG{n}{isna}\PYG{p}{(}\PYG{n}{costo\PYGZus{}pedido\PYGZus{}producto}\PYG{p}{):}
+    \PYG{n}{costo\PYGZus{}mantenimiento\PYGZus{}unitario} \PYG{o}{=} \PYG{n}{costo\PYGZus{}unitario\PYGZus{}producto} \PYG{o}{*} \PYG{n}{porcentaje\PYGZus{}mantenimiento}
+    \PYG{n}{eoq} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{sqrt}\PYG{p}{((}\PYG{l+m+mi}{2} \PYG{o}{*} \PYG{n}{demanda\PYGZus{}anual\PYGZus{}estimada} \PYG{o}{*} \PYG{n}{costo\PYGZus{}pedido\PYGZus{}producto}\PYG{p}{)} \PYG{o}{/} \PYG{n}{costo\PYGZus{}mantenimiento\PYGZus{}unitario}\PYG{p}{)} \PYG{k}{if} \PYG{n}{costo\PYGZus{}mantenimiento\PYGZus{}unitario} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{0} \PYG{k}{else} \PYG{n}{np}\PYG{o}{.}\PYG{n}{nan}
+\PYG{k}{else}\PYG{p}{:}
+    \PYG{n}{eoq} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{nan}
+\end{MintedVerbatim}

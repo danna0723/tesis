@@ -1,0 +1,15 @@
+La estrategia de verificacion del sistema Thary consiste la realizacion de pruebas mediante el uso de pytest. Las pruebas se realizan sobre aquellos componentes del sistema que de fallar, podrian comprometer la calidad y confiabilidad de las predicciones de los productos o toda la funcionalidad del sistema general. Las pruebas se implementaron en el directorio \texttt{tests} en 4 archivos diferentes cada uno enfocado en verificar el correcto funcionamiento de uno de los componentes del sistema: 
+
+\begin{itemize}
+    \item \texttt{test\_carga\_datos.py}: En esta prueba se verifica de que el sistema le permita a los usuarios el poder carar archivos CSV de forma correcta. Se verifica que el sistema no se rompa al recibir archivos con datos de entrada incorrectos, incompletos o faltantes. De existir alguno de estos errores, el sistema debe mostrar un mensaje de error al usuario para cada caso en el que se le indique de forma clara que errores son los que tiene el CSV y que debe corregir antes de cargarlo nuevamente. Por ultimo, en esta prueba tambien se verifica que el sistema cumpla con el RNF-02 y que sea capaz de reconocer columnas heterogeneas (en español e ingles) y que las procese correctamente.
+    
+    \item \texttt{test\_modelos.py}: En esta prueba se verifica que la logica de seleccion del mejor modelo por producto funcione correctamente, para esto se garantiza que la validacion que se hace con la prueba de Diebold-Mariano con la correccion de Harvey-Leybourne-Newbold para confirmar que la diferencia de error entre modelos es realmente
+    significativa, tambien se ejecute sin problemas.
+
+    \item \texttt{test\_reposicion.py}: Durante esta prueba se verifica que los calculos de: Stock de seguridad, EOQ (calculos de stock de seguridad), punto de reorden y costo de ruptura (stockout) se realicen correctamente para posteriormente, ser mostrados al usuario en la interfaz de una manera clara y comprensible.
+    \item \texttt{test\_combinacion.py}: En esta prueba se verifica que el peso que se usa para combinar los resultados que dan los modelos XgBoost y media movil, sean calculados correctamente. Tambien se comprueba que no halla errores en casos como en el que las dos predicciones combinadas son identicas.
+\end{itemize}
+
+Para los calculos que tienen una unica respuesta correcta (\texttt{test\_reposicion.py}, \texttt{test\_combinacion.py}, y \texttt{test\_modelos.py}), se aplica un enfoque llamado \textit{oraculo conocido}, el cual consiste en antes de hacer una prueba, primero calcular manualmente con base a la formula correspondiente, cual es el resultado correcto que el sistema deberia dar, y despues se verifica si el sistema entrego o no dicho resultado. 
+
+Adicional a esto, el sistema tambien implemento el uso de GitHub Actions (\texttt{.github/workflows/tests.yml}), para poder ejecutar todas estas pruebas de manera automatica cada que se haga un commit en el repositorio donde se encuentra el sistema. De este manera, se automatiza el proceso y se evita tener que depender de que alguien tenga que ejecutar las pruebas manualmente cada cierto tiempo.

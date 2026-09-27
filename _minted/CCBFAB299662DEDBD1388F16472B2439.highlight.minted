@@ -1,0 +1,60 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n}{ETIQUETAS\PYGZus{}COLUMNAS\PYGZus{}OBLIGATORIAS} \PYG{o}{=} \PYG{p}{\PYGZob{}}
+    \PYG{l+s+s2}{\PYGZdq{}fecha\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Fecha (o Date, Sale\PYGZus{}Date)\PYGZdq{}}\PYG{p}{,}
+    \PYG{l+s+s2}{\PYGZdq{}producto\PYGZus{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Código (o Code, Id, Product\PYGZus{}ID)\PYGZdq{}}\PYG{p}{,}
+    \PYG{l+s+s2}{\PYGZdq{}demanda\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Cantidad (o Quantity, Demanda, Demand)\PYGZdq{}}\PYG{p}{,}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{n}{SINONIMOS\PYGZus{}COLUMNAS} \PYG{o}{=} \PYG{p}{\PYGZob{}}
+    \PYG{l+s+s2}{\PYGZdq{}fecha\PYGZdq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}Fecha\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}Date\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}Sale\PYGZus{}Date\PYGZdq{}}\PYG{p}{],}
+    \PYG{l+s+s2}{\PYGZdq{}producto\PYGZus{}id\PYGZdq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}Product\PYGZus{}ID\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}Codigo\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}Code\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}Id\PYGZdq{}}\PYG{p}{],}
+    \PYG{l+s+s2}{\PYGZdq{}demanda\PYGZdq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}Demanda\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}Demand\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}Quantity\PYGZus{}Sold\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}Sales\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}Cantidad\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}Quantity\PYGZdq{}}\PYG{p}{],}
+    \PYG{c+c1}{\PYGZsh{} ... variantes adicionales para precio, inventario, categoria, proveedor y lead time}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{n}{NOMBRES\PYGZus{}PRODUCTO\PYGZus{}AMBIGUOS} \PYG{o}{=} \PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}Producto\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}Product\PYGZdq{}}\PYG{p}{]}
+
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{\PYGZus{}normalizar\PYGZus{}encabezado}\PYG{p}{(}\PYG{n}{nombre}\PYG{p}{):}
+\PYG{+w}{    }\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}Minúsculas, sin tildes, con espacios/guiones como \PYGZdq{}\PYGZus{}\PYGZdq{}.\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+    \PYG{n}{texto} \PYG{o}{=} \PYG{n}{unicodedata}\PYG{o}{.}\PYG{n}{normalize}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}NFKD\PYGZdq{}}\PYG{p}{,} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{nombre}\PYG{p}{))}\PYG{o}{.}\PYG{n}{encode}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}ascii\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}ignore\PYGZdq{}}\PYG{p}{)}\PYG{o}{.}\PYG{n}{decode}\PYG{p}{()}
+    \PYG{k}{return} \PYG{n}{re}\PYG{o}{.}\PYG{n}{sub}\PYG{p}{(}\PYG{l+s+sa}{r}\PYG{l+s+s2}{\PYGZdq{}[\PYGZbs{}s\PYGZbs{}\PYGZhy{}]+\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}\PYGZus{}\PYGZdq{}}\PYG{p}{,} \PYG{n}{texto}\PYG{o}{.}\PYG{n}{strip}\PYG{p}{()}\PYG{o}{.}\PYG{n}{lower}\PYG{p}{())}
+
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{\PYGZus{}renombrar\PYGZus{}columnas}\PYG{p}{(}\PYG{n}{df}\PYG{p}{):}
+\PYG{+w}{    }\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}Renombra las columnas del archivo a los nombres internos. Si el}
+\PYG{l+s+sd}{    archivo trae \PYGZdq{}Producto\PYGZdq{}/\PYGZdq{}Product\PYGZdq{} y ademas ya tiene una columna de}
+\PYG{l+s+sd}{    codigo clara (Codigo, Code, Id, Product\PYGZus{}ID), esa columna ambigua se}
+\PYG{l+s+sd}{    toma como el NOMBRE del producto en vez de su identificador.\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+    \PYG{c+c1}{\PYGZsh{} ... logica de resolucion por prioridad y ambiguedad (ver codigo fuente)}
+
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{cargar\PYGZus{}y\PYGZus{}limpiar}\PYG{p}{(}\PYG{n}{ruta\PYGZus{}archivo}\PYG{p}{):}
+    \PYG{k}{try}\PYG{p}{:}
+        \PYG{n}{df} \PYG{o}{=} \PYG{n}{pd}\PYG{o}{.}\PYG{n}{read\PYGZus{}csv}\PYG{p}{(}\PYG{n}{ruta\PYGZus{}archivo}\PYG{p}{)}
+    \PYG{k}{except} \PYG{n}{pd}\PYG{o}{.}\PYG{n}{errors}\PYG{o}{.}\PYG{n}{EmptyDataError}\PYG{p}{:}
+        \PYG{k}{raise} \PYG{n+ne}{ValueError}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}El archivo está vacío. Sube un CSV con al menos una fila de datos.\PYGZdq{}}\PYG{p}{)}
+    \PYG{k}{except} \PYG{n}{pd}\PYG{o}{.}\PYG{n}{errors}\PYG{o}{.}\PYG{n}{ParserError}\PYG{p}{:}
+        \PYG{k}{raise} \PYG{n+ne}{ValueError}\PYG{p}{(}
+            \PYG{l+s+s2}{\PYGZdq{}No se pudo leer el archivo como CSV. Verifica que sea un archivo de texto \PYGZdq{}}
+            \PYG{l+s+s2}{\PYGZdq{}separado por comas (por ejemplo, no un Excel renombrado a .csv).\PYGZdq{}}
+        \PYG{p}{)}
+    \PYG{k}{except} \PYG{n+ne}{UnicodeDecodeError}\PYG{p}{:}
+        \PYG{k}{raise} \PYG{n+ne}{ValueError}\PYG{p}{(}
+            \PYG{l+s+s2}{\PYGZdq{}El archivo tiene una codificación de caracteres que el sistema no reconoce. \PYGZdq{}}
+            \PYG{l+s+s2}{\PYGZdq{}Guárdalo como CSV con codificación UTF\PYGZhy{}8 e intenta de nuevo.\PYGZdq{}}
+        \PYG{p}{)}
+
+    \PYG{k}{if} \PYG{n}{df}\PYG{o}{.}\PYG{n}{empty}\PYG{p}{:}
+        \PYG{k}{raise} \PYG{n+ne}{ValueError}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}El archivo no tiene filas de datos, solo encabezados.\PYGZdq{}}\PYG{p}{)}
+
+    \PYG{n}{df} \PYG{o}{=} \PYG{n}{\PYGZus{}renombrar\PYGZus{}columnas}\PYG{p}{(}\PYG{n}{df}\PYG{p}{)}
+
+    \PYG{n}{columnas\PYGZus{}faltantes} \PYG{o}{=} \PYG{p}{[}\PYG{n}{c} \PYG{k}{for} \PYG{n}{c} \PYG{o+ow}{in} \PYG{n}{ETIQUETAS\PYGZus{}COLUMNAS\PYGZus{}OBLIGATORIAS} \PYG{k}{if} \PYG{n}{c} \PYG{o+ow}{not} \PYG{o+ow}{in} \PYG{n}{df}\PYG{o}{.}\PYG{n}{columns}\PYG{p}{]}
+    \PYG{k}{if} \PYG{n}{columnas\PYGZus{}faltantes}\PYG{p}{:}
+        \PYG{n}{faltan} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}, \PYGZdq{}}\PYG{o}{.}\PYG{n}{join}\PYG{p}{(}\PYG{n}{ETIQUETAS\PYGZus{}COLUMNAS\PYGZus{}OBLIGATORIAS}\PYG{p}{[}\PYG{n}{c}\PYG{p}{]} \PYG{k}{for} \PYG{n}{c} \PYG{o+ow}{in} \PYG{n}{columnas\PYGZus{}faltantes}\PYG{p}{)}
+        \PYG{k}{raise} \PYG{n+ne}{ValueError}\PYG{p}{(}
+            \PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}Al archivo le falta al menos una columna obligatoria: }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{faltan}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{. \PYGZdq{}}
+            \PYG{l+s+s2}{\PYGZdq{}Agrégala al CSV (con ese nombre exacto u otro de los aceptados) y vuelve a subirlo.\PYGZdq{}}
+        \PYG{p}{)}
+\end{MintedVerbatim}

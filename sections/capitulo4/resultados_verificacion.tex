@@ -1,0 +1,42 @@
+La verificacion del sistema de Thary se llevo a cabo mediante pruebas automatizadas escritas con \textit{pytest}, ya explicadas en la Seccion \ref{sec:verificacion_validacion}. Los resultados de estas pruebas se obtuvieron ejecutando el comando \texttt{pytest tests/ -v} en la terminal.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{templatefigures/pytest_resultados_verbose}
+    \caption{Ejecucion detallada de la suite de pruebas mediante \texttt{pytest tests/ -v}, mostrando cada prueba individual.}
+    \label{fig:pytest_verbose}
+\end{figure}
+
+\begin{table}[H]
+    \centering
+    \caption{Resultados de la suite de pruebas automatizadas por archivo.}
+    \label{tab:resultados_pruebas}
+    \begin{tabularx}{\textwidth}{lXc}
+        \toprule
+        \textbf{Archivo} & \textbf{Componente verificado} & \textbf{Resultado} \\
+        \midrule
+        \texttt{test\_carga\_datos.py} & Carga y limpieza de datos, incluyendo el reconocimiento de columnas heterogeneas & 13/13 exitosas \\
+        \texttt{test\_combinacion.py} & Combinacion de pronosticos & 7/7 exitosas \\
+        \texttt{test\_modelos.py} & Seleccion del modelo campeon y prueba Diebold-Mariano & 8/8 exitosas \\
+        \texttt{test\_reposicion.py} & Calculo de reposicion (stock de seguridad, punto de reorden, EOQ, costo de ruptura) & 15/15 exitosas \\
+        \midrule
+        \textbf{Total} & & \textbf{43/43 exitosas} \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{templatefigures/pytest_resultados_resumen}
+    \caption{Resumen final de la ejecucion mediante \texttt{pytest tests/ -q}.}
+    \label{fig:pytest_resumen}
+\end{figure}
+
+Como se puede ver en la Fig. \ref{fig:pytest_verbose}, la Tabla \ref{tab:resultados_pruebas} y la Fig. \ref{fig:pytest_resumen}, las 43 pruebas se ejecutaron correctamente en un tiempo de 5.56 segundos. Se registro una unica advertencia (\textit{warning}) relacionada con el formato de fechas de pandas al procesar un archivo de prueba con fechas invalidas a proposito, sin que esto afecte el resultado de la prueba.
+
+
+Se detecto un bug menor en el que la columna de "Precio" en español no era reconocida por el sistema a pesar de que la interfaz de carga la anunciaba como aceptada. Se arreglo el problema y dentro de \texttt{test\_carga\_datos.py} se incluyo la prueba \texttt{test\_reconoce\_la\_columna\_precio\_en\_espanol}, cuyo resultado exitoso confirma que la correccion aplicada sigue vigente.
+
+El mecanismo de reconocimiento de columnas se reforzo con seis pruebas adicionales que verifican, entre otros casos: que el sistema ignore mayusculas y tildes en los encabezados, que resuelva correctamente la ambiguedad entre "Producto" como codigo o como nombre del producto (segun si el archivo ya trae una columna de codigo clara), y que priorice la columna correcta cuando un archivo trae mas de un candidato para el mismo destino (por ejemplo, un "Id" de transaccion junto a un "Product\_ID" real). Estas pruebas se describen con mayor detalle en la Seccion 3.2.8.
+
+Además de las pruebas automáticas, se revisó de forma manual que la función principal de Thary se hiciera bien de principio a fin. Es decir, que el sistema dejara cargar un archivo, procesarlo, mostrar los resultados y confirmar un pedido sin errores. Las etapas de segmentación de productos, construcción de variables, y las rutas y autenticación de la aplicación web no tienen pruebas automáticas. Esto se reconoce como una limitación de la revisión.

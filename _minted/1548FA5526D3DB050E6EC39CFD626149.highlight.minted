@@ -1,0 +1,5 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+python\PYG{+w}{ }\PYGZhy{}m\PYG{+w}{ }venv\PYG{+w}{ }venv
+venv\PYG{l+s+se}{\PYGZbs{}S}cripts\PYG{l+s+se}{\PYGZbs{}a}ctivate\PYG{+w}{       }\PYG{c+c1}{\PYGZsh{} En Windows}
+pip\PYG{+w}{ }install\PYG{+w}{ }\PYGZhy{}r\PYG{+w}{ }requirements.txt
+\end{MintedVerbatim}

@@ -6,9 +6,32 @@ La primera etapa del pipeline (\texttt{app/services/prediccion/carga\_datos.py})
 \begin{minted}{python}
 ETIQUETAS_COLUMNAS_OBLIGATORIAS = {
     "fecha": "Fecha (o Date, Sale_Date)",
-    "producto_id": "Producto (o Product, Product_ID)",
-    "demanda": "Demanda (o Demand, Sales, Quantity_Sold)",
+    "producto_id": "Código (o Code, Id, Product_ID)",
+    "demanda": "Cantidad (o Quantity, Demanda, Demand)",
 }
+
+SINONIMOS_COLUMNAS = {
+    "fecha": ["Fecha", "Date", "Sale_Date"],
+    "producto_id": ["Product_ID", "Codigo", "Code", "Id"],
+    "demanda": ["Demanda", "Demand", "Quantity_Sold", "Sales", "Cantidad", "Quantity"],
+    # ... variantes adicionales para precio, inventario, categoria, proveedor y lead time
+}
+
+NOMBRES_PRODUCTO_AMBIGUOS = ["Producto", "Product"]
+
+
+def _normalizar_encabezado(nombre):
+    """Minúsculas, sin tildes, con espacios/guiones como "_"."""
+    texto = unicodedata.normalize("NFKD", str(nombre)).encode("ascii", "ignore").decode()
+    return re.sub(r"[\s\-]+", "_", texto.strip().lower())
+
+
+def _renombrar_columnas(df):
+    """Renombra las columnas del archivo a los nombres internos. Si el
+    archivo trae "Producto"/"Product" y ademas ya tiene una columna de
+    codigo clara (Codigo, Code, Id, Product_ID), esa columna ambigua se
+    toma como el NOMBRE del producto en vez de su identificador."""
+    # ... logica de resolucion por prioridad y ambiguedad (ver codigo fuente)
 
 
 def cargar_y_limpiar(ruta_archivo):
@@ -30,12 +53,7 @@ def cargar_y_limpiar(ruta_archivo):
     if df.empty:
         raise ValueError("El archivo no tiene filas de datos, solo encabezados.")
 
-    df = df.rename(columns={
-        "Sale_Date": "fecha", "Date": "fecha", "date": "fecha", "Fecha": "fecha",
-        "Product_ID": "producto_id", "Product": "producto_id", "Producto": "producto_id",
-        "Quantity_Sold": "demanda", "Sales": "demanda", "Demand": "demanda", "Demanda": "demanda",
-# ... variantes adicionales para precio, inventario, categoria, proveedor y lead time
-    })
+    df = _renombrar_columnas(df)
 
     columnas_faltantes = [c for c in ETIQUETAS_COLUMNAS_OBLIGATORIAS if c not in df.columns]
     if columnas_faltantes:
@@ -46,6 +64,9 @@ def cargar_y_limpiar(ruta_archivo):
         )
 \end{minted}
 
-En esta sección del archivo (\texttt{app/services/prediccion/carga\_datos.py}), se observa la etapa de carga y limpieza de los datos. Para garantizar que el sistema pueda adaptarse y funcionar para todo tipo de dominio de inventarios, se normalizan los nombres de las columnas de los archivos CSV con el fin de mantener un esquema más heterogéneo, de manera que el sistema pueda aceptar archivos de distintos dominios sin tener la necesidad de modificar el resto del pipeline. Para facilitarle al usuario el proceso de cargar un archivo, se capturan los errores mas comunes para el sistema a la hora de leer un CSV y se muestran a manera de mensaje de error en un lenguaje sencillo y facil de entender.
+
+En esta sección del archivo (\texttt{app/services/prediccion/carga\_datos.py}), se observa la etapa de carga y limpieza de los datos. Para garantizar que el sistema pueda adaptarse y funcionar para todo tipo de dominio de inventarios, se normalizan los nombres de las columnas de los archivos CSV con el fin de mantener un esquema unico interno, de manera que el sistema pueda aceptar archivos de distintos dominios sin tener la necesidad de modificar el resto del pipeline.
+
+Para facilitarle al usuario el proceso de cargar un archivo, se capturan los errores mas comunes para el sistema a la hora de leer un CSV y se muestran a manera de mensaje de error en un lenguaje sencillo y facil de entender.
 
 Otra practica que fue aplicada es el manejo de errores con mensajes dirigidos al usuario final, de esta manera, se evita que se propaguen los errores internos del sistema y el usuario sabe que es lo que esta ocurriendo y que es lo que se debe hacer para resolverlo.

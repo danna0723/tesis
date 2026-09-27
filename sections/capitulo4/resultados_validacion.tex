@@ -1,0 +1,11 @@
+Para validar la usabilidad de Thary, se siguio el plan que ya se definifo en la Seccion 3.4.4. La realizacion de la retroalimacion fue hecha por el desarrollador del sistema y por una persona encargade de la gestion de inventarios en el dominio de salud, esto con el fin de obtener una perspectiva externa a la del equipo de desarrollo.
+
+Para un usuario registrado como administrador el flujo del sistema se pudo completar sin dificultad e incluyo: inicio de sesion, carga y procesamiento del historial de consumo, consulta del dashboard de demanda pronosticada, del estado del inventario, del presupuesto y del calendario de pedidos y confirmacion (y reversion) de un pedido sugerido. 
+
+Una vez completado todo el proceso, la interfaz fue percibida como intuitiva y facil de usar, no fue necesario que existiera alguna explicacion adicional mas alla de la que la propia interfaz del sistema proporcionaba a la hora de completar cada una de las tareas.
+
+Como resultado de esta validacion, se aporto una mejora de la usabilidad del sistema. El gestor de inventario que probo el sistema sugirio una mejora concreta: incorporar  una plantilla de archivo CSV descargable desde la propia interfaz que le sirviera a los usuarios de guía sobre el formato y columnas esperadas antes de cargar su propio histórico de consumo.  Esta sugerencia se identifico como valiosa porque, si bien Thary ya estaba diseñado para aceptar distintas variantes de nombres de columna, y en la pantalla de carga se incluye un manual con los nombres de las columnas, la incorporacion de una plantilla facilita aun mas este proceso al mostrarle al usuario el formato esperado antes de que intente cargar su propio archivo.
+
+Esta sugerencia se implemento en el sistema incluyendo el archivo \texttt{plantilla\_thary.csv}, el cual esta disponible para descarga desde la interfaz de carga de archivo.
+
+Se reconoce que esta validacion tuvo un caracter informal y con un numero reducido de participantes (dos personas), no obstante, al incluir a una persona con experiencia real en gestion de inventario en el dominio de salud, la retroalimentacion obtenida se considera representativa del tipo de usuario final para el cual Thary fue diseñado, y se identifica como una linea de trabajo futuro la realizacion de una validacion de usabilidad mas extensa, con un numero mayor de participantes.

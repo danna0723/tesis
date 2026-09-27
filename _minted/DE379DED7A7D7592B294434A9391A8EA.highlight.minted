@@ -1,0 +1,4 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+git\PYG{+w}{ }clone\PYG{+w}{ }https://github.com/danna0723/Thary\PYGZus{}Proyecto.git
+\PYG{n+nb}{cd}\PYG{+w}{ }Thary\PYGZus{}Proyecto
+\end{MintedVerbatim}

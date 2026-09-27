@@ -26,41 +26,38 @@
 \centering
 \caption{Especificación del caso de uso CU-01: Iniciar sesión}
 \label{tab:cu01_login}
-\begin{tabularx}{\textwidth}{>{\bfseries}p{3.5cm} X}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{|>{\bfseries}p{3.5cm}|X|}
 \hline
 Elemento & Especificación \\
 \hline
-
 ID & CU-01 \\
-
+\hline
 Nombre & Iniciar sesión \\
-
+\hline
 Actor principal & Usuario registrado \\
-
+\hline
 Requisitos relacionados & RF-10 \\
-
+\hline
 Objetivo & El objetivo es permitir que los usuarios registrados accedan al sistema utilizando sus credenciales. \\
-
+\hline
 Precondiciones & Para poder iniciar sesión, el usuario debe encontrarse previamente registrado en el sistema. \\
-
+\hline
 Postcondiciones & El usuario accede exitosamente al sistema y puede acceder a las funcionalidades a las que tenga acceso dependiendo de su rol. \\
-
+\hline
 Flujo principal &
 \begin{enumerate}
     \item El usuario ingresa su usuaario y contraseña.
     \item El sistema valida que la informacion sea correcta.
     \item El sistema identifica el perfil del usuario.
     \item El sistema permite el acceso a Thary.
-\end{enumerate}
-\\
-
+\end{enumerate} \\
+\hline
 Flujos alternativos &
 \begin{enumerate}
     \item Si el usuario o la contraseña introducidos son incorrectas, el sistema le informa el usuario que los datos ingresados no son válidos.
     \item Si el usuario no está registrado, el sistema rechaza el acceso y el usuario tiene la oportunidad de registrarse.
-\end{enumerate}
-\\
-
+\end{enumerate} \\
 \hline
 \end{tabularx}
 \end{table}
@@ -70,30 +67,29 @@ Flujos alternativos &
 \centering
 \caption{Especificación del caso de uso CU-02: Cargar historial de consumo}
 \label{tab:cu02_cargar_historial}
-\begin{tabularx}{\textwidth}{>{\bfseries}p{3.5cm} X}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{|>{\bfseries}p{3.5cm}|X|}
 \hline
 Elemento & Especificación \\
 \hline
-
 ID & CU-02 \\
-
+\hline
 Nombre & Cargar historial de consumo \\
-
+\hline
 Actor principal & Administrador \\
-
+\hline
 Requisitos relacionados & RF-01, RF-07 \\
-
+\hline
 Objetivo & El objetivo del caso de uso es permitirle al Administrador poder cargar un archivo CSV que contenga el historial de consumo de los productos del inventario. \\
-
+\hline
 Precondiciones &
 \begin{itemize}
     \item Para acceder a esta funcionalidad, el usuario debe haber iniciado sesión con perfil de Administrador.
     \item El archivo debe subirse en formato de CSV.
-\end{itemize}
-\\
-
-Postcondiciones & El archivo es recibido por el sistema para su posterior procesamiento\\
-
+\end{itemize} \\
+\hline
+Postcondiciones & El archivo es recibido por el sistema para su posterior procesamiento \\
+\hline
 Flujo principal &
 \begin{enumerate}
     \item El Administrador inicia sesion y es recibido por la pantalla inicial que le da la opcion de subir un archivo csv.
@@ -101,17 +97,14 @@ Flujo principal &
     \item El sistema recibe el archivo.
     \item El sistema se encarga de validar el formato y que contenga los campos mínimos requeridos para el funcionamiento del sistema como: fecha, ID del producto y cantidad demandada de cada uno.
     \item El sistema informa que el archivo fue cargado correctamente.
-\end{enumerate}
-\\
-
+\end{enumerate} \\
+\hline
 Flujos alternativos &
 \begin{enumerate}
     \item Si el archivo no tiene formato CSV, el sistema informa el error con el mensaje "El archivo debe tener extensión .csv"
     \item Si faltan campos obligatorios, el sistema rechaza el archivo e informa cuáles son los datos requeridos, ejemplo: Falta la columna obligatoria: fecha"
     \item Si el usuario no cuenta con los permisos de Administrador, Thary simplemente no le muestra la opcion de carga archivo, limitandose con solo mostrarle el dashboard con los resultados y demas pantallas con informacion.
-\end{enumerate}
-\\
-
+\end{enumerate} \\
 \hline
 \end{tabularx}
 \end{table}
@@ -120,30 +113,29 @@ Flujos alternativos &
 \centering
 \caption{Especificación del caso de uso CU-03: Procesar archivo}
 \label{tab:cu03_procesar_archivo}
-\begin{tabularx}{\textwidth}{>{\bfseries}p{3.5cm} X}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{|>{\bfseries}p{3.5cm}|X|}
 \hline
 Elemento & Especificación \\
 \hline
-
 ID & CU-03 \\
-
+\hline
 Nombre & Procesar archivo \\
-
+\hline
 Actor principal & Administrador \\
-
+\hline
 Requisitos relacionados & RF-02, RF-07 \\
-
+\hline
 Objetivo & Iniciar el procesamiento del historial de consumo previamente cargado para generar las estimaciones de demanda. \\
-
+\hline
 Precondiciones &
 \begin{itemize}
     \item El Administrador debe haber iniciado sesión.
     \item Debe existir un archivo de historial cargado y válido.
-\end{itemize}
-\\
-
+\end{itemize} \\
+\hline
 Postcondiciones & El sistema procesa los datos, ejecuta el proceso de predicción y genera los resultados de demanda para los productos. \\
-
+\hline
 Flujo principal &
 \begin{enumerate}
     \item El Administrador accede al panel de procesamiento.
@@ -153,17 +145,14 @@ Flujo principal &
     \item El sistema ejecuta el proceso de predicción.
     \item El sistema genera las estimaciones de demanda mensual para los productos.
     \item El sistema genera los resultados necesarios para las etapas posteriores.
-\end{enumerate}
-\\
-
+\end{enumerate} \\
+\hline
 Flujos alternativos &
 \begin{enumerate}
     \item Si no existe un archivo válido, el sistema informa al Administrador que debe cargar un historial.
     \item Si ocurre un error durante el procesamiento, el sistema informa que no fue posible completar la operación.
     \item Si el usuario no es Administrador, el sistema impide la ejecución.
-\end{enumerate}
-\\
-
+\end{enumerate} \\
 \hline
 \end{tabularx}
 \end{table}
@@ -172,36 +161,34 @@ Flujos alternativos &
 \centering
 \caption{Especificación del caso de uso CU-04: Consultar demanda pronosticada}
 \label{tab:cu04_demanda_pronosticada}
-\begin{tabularx}{\textwidth}{>{\bfseries}p{3.5cm} X}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{|>{\bfseries}p{3.5cm}|X|}
 \hline
 Elemento & Especificación \\
 \hline
-
 ID & CU-04 \\
-
+\hline
 Nombre & Consultar demanda pronosticada \\
-
+\hline
 Actor principal & Personal de Inventario \\
-
+\hline
 Requisitos relacionados & RF-02, RF-05 \\
-
+\hline
 Objetivo & Permitirle al los empleados del inventario consultar cual es la demanda mensual estimada para cada uno de los producto. \\
-
+\hline
 Precondiciones & Como precondicion, ya debe de existir un archivo procesado anteriormente por el administrador, tambien ya deben haber resultados de predicción disponibles. \\
-
+\hline
 Postcondiciones & El usuario visualiza las estimaciones de demanda correspondientes a los productos. \\
-
+\hline
 Flujo principal &
 \begin{enumerate}
     \item El usuario accede al dashboard con las predicciones.
     \item El sistema consulta los resultados generados.
     \item El sistema le muestra al usuario, sin importar si es administrador o usuario, la demanda pronosticada de los productos.
     \item El usuario consulta la información presentada.
-\end{enumerate}
-\\
-
-Flujos alternativos & Si no existen resultados de predicción, el sistema informa que primero debe realizarse el procesamiento del archivo mediante el siguiente mensaje "Todavía no hay datos cargados. En cuanto tu administrador suba un archivo, vas a poder ver el pronóstico, el inventario y confirmar pedidos."\\
-
+\end{enumerate} \\
+\hline
+Flujos alternativos & Si no existen resultados de predicción, el sistema informa que primero debe realizarse el procesamiento del archivo mediante el siguiente mensaje "Todavía no hay datos cargados. En cuanto tu administrador suba un archivo, vas a poder ver el pronóstico, el inventario y confirmar pedidos." \\
 \hline
 \end{tabularx}
 \end{table}
@@ -210,25 +197,25 @@ Flujos alternativos & Si no existen resultados de predicción, el sistema inform
 \centering
 \caption{Especificación del caso de uso CU-05: Consultar estado del inventario}
 \label{tab:cu05_estado_inventario}
-\begin{tabularx}{\textwidth}{>{\bfseries}p{3.5cm} X}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{|>{\bfseries}p{3.5cm}|X|}
 \hline
 Elemento & Especificación \\
 \hline
-
 ID & CU-05 \\
-
+\hline
 Nombre & Consultar estado del inventario \\
-
+\hline
 Actor principal & Personal de Inventario \\
-
+\hline
 Requisitos relacionados & RF-04, RF-05 \\
-
+\hline
 Objetivo & El objetivo es que se pueda consultar el inventario actual de los productos e identificar facilmente a aquellos que requieran atención o esten en mayor riesgo de desabatecimiento. \\
-
+\hline
 Precondiciones & Como precondicion para este caso de uso, es importante que ya exista información del inventario disponible y resultados del procesamiento. \\
-
+\hline
 Postcondiciones & Las postcondiciones son que el usuario puede visualizar sin problemas el estado actual del inventario y las alertas correspondientes para cada producto. \\
-
+\hline
 Flujo principal &
 \begin{enumerate}
     \item El usuario accede al módulo de "Estado de inventario".
@@ -236,11 +223,9 @@ Flujo principal &
     \item El sistema se encarga de comparar el inventario disponible con el punto de reposición de cada producto.
     \item El sistema identifica los productos que se encuentran en o por debajo de su punto de reposición.
     \item El sistema muestra las alertas visuales correspondientes dependiendo de cada caso, se marcaran de color rojo en caso de estar por debajo del punto de reposicion.
-\end{enumerate}
-\\
-
+\end{enumerate} \\
+\hline
 Flujos alternativos & Si no existe información de inventario para un producto, el sistema informa que no se dispone de los datos necesarios para determinar su estado. \\
-
 \hline
 \end{tabularx}
 \end{table}
@@ -249,25 +234,25 @@ Flujos alternativos & Si no existe información de inventario para un producto, 
 \centering
 \caption{Especificación del caso de uso CU-06: Consultar recomendaciones de reposición y presupuesto}
 \label{tab:cu06_recomendaciones}
-\begin{tabularx}{\textwidth}{>{\bfseries}p{3.5cm} X}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{|>{\bfseries}p{3.5cm}|X|}
 \hline
 Elemento & Especificación \\
 \hline
-
 ID & CU-06 \\
-
+\hline
 Nombre & Consultar recomendaciones de reposición y presupuesto \\
-
+\hline
 Actor principal & Personal de Inventario \\
-
+\hline
 Requisitos relacionados & RF-03, RF-05 \\
-
+\hline
 Objetivo & Permitir consultar las recomendaciones de reposición generadas para cada producto, teniendo en cuenta distintos datos como la demanda estimada, el inventario que ya se tiene disponible, el tiempo de entrega, que varia de producto a producto, y el presupuesto establecido. \\
-
+\hline
 Precondiciones & La principal precondicion es que debe existir un archivo csv ya procesado, y el sistema ya debe contar con toda la información necesaria para poder calcular las recomendaciones. \\
-
+\hline
 Postcondiciones & El usuario visualiza la cantidad recomendada de compra de una manera clara mediante el uso de graficas y tablas, tambien puede ver otros datos relevantes como el punto de reposición y información acerca del presupuesto. \\
-
+\hline
 Flujo principal &
 \begin{enumerate}
     \item El usuario accede al módulo de recomendaciones, es decir, el dashboard principal.
@@ -276,11 +261,9 @@ Flujo principal &
     \item El sistema considera el tiempo de entrega del proveedor y las restricciones presupuestales.
     \item El sistema calcula la recomendación de reposición.
     \item El sistema le muestra los resultados al usuario.
-\end{enumerate}
-\\
-
+\end{enumerate} \\
+\hline
 Flujos alternativos & Si no existen datos suficientes para realizar el cálculo, el sistema informa qué información se encuentra pendiente. \\
-
 \hline
 \end{tabularx}
 \end{table}
@@ -290,25 +273,25 @@ Flujos alternativos & Si no existen datos suficientes para realizar el cálculo,
 \centering
 \caption{Especificación del caso de uso CU-07: Registrar pedido}
 \label{tab:cu07_registrar_pedido}
-\begin{tabularx}{\textwidth}{>{\bfseries}p{3.5cm} X}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{|>{\bfseries}p{3.5cm}|X|}
 \hline
 Elemento & Especificación \\
 \hline
-
 ID & CU-07 \\
-
+\hline
 Nombre & Registrar pedido \\
-
+\hline
 Actor principal & Personal de Inventario \\
-
+\hline
 Requisitos relacionados & RF-06 \\
-
+\hline
 Objetivo & El objetivo es permitirle al Personal de Inventario registrar un pedido de reposición a partir de las recomendaciones generadas. \\
-
+\hline
 Precondiciones & El usuario debe haber iniciado sesión y debe existir información del producto y de la cantidad a solicitar. \\
-
+\hline
 Postcondiciones & El pedido queda registrado con la información correspondiente y asociado con el nombre del usuario responsable. \\
-
+\hline
 Flujo principal &
 \begin{enumerate}
     \item El usuario consulta la pagina de "Pedidos" del sistema.
@@ -318,11 +301,9 @@ Flujo principal &
     \item El sistema identifica al usuario responsable.
     \item El sistema guarda la información del pedido.
     \item El sistema confirma el registro.
-\end{enumerate}
-\\
-
+\end{enumerate} \\
+\hline
 Flujos alternativos & Si no se selcciona ningun producto, pero de todas maneras se hace click en el boton para registrar, saldra el siguiente mensaje: No seleccionaste ningún producto para confirmar" \\
-
 \hline
 \end{tabularx}
 \end{table}
@@ -331,25 +312,25 @@ Flujos alternativos & Si no se selcciona ningun producto, pero de todas maneras 
 \centering
 \caption{Especificación del caso de uso CU-08: Gestionar usuarios}
 \label{tab:cu08_gestionar_usuarios}
-\begin{tabularx}{\textwidth}{>{\bfseries}p{3.5cm} X}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{|>{\bfseries}p{3.5cm}|X|}
 \hline
 Elemento & Especificación \\
 \hline
-
 ID & CU-08 \\
-
+\hline
 Nombre & Gestionar usuarios \\
-
+\hline
 Actor principal & Administrador \\
-
+\hline
 Requisitos relacionados & RF-08 \\
-
-Objetivo & Permitirle al Administrador poder crear cuentas para sus empleados con menos privilegios a los de un administrador.\\
-
+\hline
+Objetivo & Permitirle al Administrador poder crear cuentas para sus empleados con menos privilegios a los de un administrador. \\
+\hline
 Precondiciones & El usuario debe haber iniciado sesión con perfil de Administrador. \\
-
+\hline
 Postcondiciones & El nuevo empleado queda registrado y puede utilizar el sistema con permisos restringidos. \\
-
+\hline
 Flujo principal &
 \begin{enumerate}
     \item El Administrador accede a la gestión de usuarios.
@@ -358,16 +339,13 @@ Flujo principal &
     \item Define el perfil o nivel de privilegios.
     \item El sistema valida la información.
     \item El sistema registra al nuevo usuario.
-\end{enumerate}
-\\
-
+\end{enumerate} \\
+\hline
 Flujos alternativos &
 \begin{enumerate}
     \item Si la información es inválida o incompleta, el sistema solicita corregirla mediante un mensaje de error.
     \item Si el usuario ya existe, el sistema informa que no puede crearse una cuenta duplicada.
-\end{enumerate}
-\\
-
+\end{enumerate} \\
 \hline
 \end{tabularx}
 \end{table}
@@ -376,30 +354,29 @@ Flujos alternativos &
 \centering
 \caption{Especificación del caso de uso CU-09: Deshacer pedido}
 \label{tab:cu09_deshacer_pedido}
-\begin{tabularx}{\textwidth}{>{\bfseries}p{3.5cm} X}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{|>{\bfseries}p{3.5cm}|X|}
 \hline
 Elemento & Especificación \\
 \hline
-
 ID & CU-09 \\
-
+\hline
 Nombre & Deshacer pedido \\
-
+\hline
 Actor principal & Personal de Inventario \\
-
+\hline
 Requisitos relacionados & RF-10 \\
-
+\hline
 Objetivo & El objetivo es permitirle al Personal de Inventario revertir un pedido previamente confirmado, en caso de haberse equivocado o de que la confirmacion ya no sea necesaria. \\
-
+\hline
 Precondiciones &
 \begin{itemize}
     \item El usuario debe haber iniciado sesion.
     \item Debe existir al menos un pedido previamente confirmado por el mismo usuario.
-\end{itemize}
-\\
-
+\end{itemize} \\
+\hline
 Postcondiciones & El pedido queda marcado como no confirmado, y vuelve a aparecer entre las recomendaciones pendientes de confirmar. \\
-
+\hline
 Flujo principal &
 \begin{enumerate}
     \item El usuario accede a la pagina de "Pedidos" del sistema.
@@ -408,16 +385,13 @@ Flujo principal &
     \item El sistema solicita confirmacion de la accion.
     \item El usuario confirma que desea deshacer el pedido.
     \item El sistema revierte el estado del pedido y lo registra en la bitacora de actividad.
-\end{enumerate}
-\\
-
+\end{enumerate} \\
+\hline
 Flujos alternativos &
 \begin{enumerate}
     \item Si el usuario cancela la confirmacion, el sistema no realiza ningun cambio y el pedido permanece confirmado.
     \item Si el pedido ya fue deshecho previamente por otro usuario, el sistema informa que la accion ya no es posible.
-\end{enumerate}
-\\
-
+\end{enumerate} \\
 \hline
 \end{tabularx}
 \end{table}
@@ -427,40 +401,37 @@ Flujos alternativos &
 \centering
 \caption{Especificación del caso de uso CU-10: Consultar actividad de la empresa}
 \label{tab:cu10_consultar_actividad}
-\begin{tabularx}{\textwidth}{>{\bfseries}p{3.5cm} X}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{|>{\bfseries}p{3.5cm}|X|}
 \hline
 Elemento & Especificación \\
 \hline
-
 ID & CU-10 \\
-
+\hline
 Nombre & Consultar actividad de la empresa \\
-
+\hline
 Actor principal & Administrador \\
-
+\hline
 Requisitos relacionados & RF-11 \\
-
+\hline
 Objetivo & Permitirle al Administrador consultar la bitacora completa de acciones realizadas por todos los usuarios de su empresa, con fines de auditoria. \\
-
+\hline
 Precondiciones &
 \begin{itemize}
     \item El usuario debe haber iniciado sesion con perfil de Administrador.
     \item Debe existir al menos un registro de actividad generado previamente en la empresa.
-\end{itemize}
-\\
-
+\end{itemize} \\
+\hline
 Postcondiciones & El administrador visualiza el listado de acciones realizadas por los usuarios de su empresa, ordenadas cronologicamente. \\
-
+\hline
 Flujo principal &
 \begin{enumerate}
     \item El Administrador accede al modulo de "Actividad".
     \item El sistema consulta el registro de actividad de la empresa del administrador.
     \item El sistema muestra el listado de acciones, indicando el usuario responsable, el tipo de accion y la fecha y hora en que ocurrio.
-\end{enumerate}
-\\
-
+\end{enumerate} \\
+\hline
 Flujos alternativos & Si aun no se ha registrado ninguna actividad en la empresa, el sistema informa que no hay eventos para mostrar. \\
-
 \hline
 \end{tabularx}
 \end{table}
@@ -470,36 +441,34 @@ Flujos alternativos & Si aun no se ha registrado ninguna actividad en la empresa
 \centering
 \caption{Especificación del caso de uso CU-11: Consultar calendario de pedidos}
 \label{tab:cu11_calendario_pedidos}
-\begin{tabularx}{\textwidth}{>{\bfseries}p{3.5cm} X}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{|>{\bfseries}p{3.5cm}|X|}
 \hline
 Elemento & Especificación \\
 \hline
-
 ID & CU-11 \\
-
+\hline
 Nombre & Consultar calendario de pedidos \\
-
+\hline
 Actor principal & Personal de Inventario \\
-
+\hline
 Requisitos relacionados & RF-12 \\
-
+\hline
 Objetivo & Permitirle al usuario visualizar en un calendario las fechas estimadas en las que debe realizarse el pedido de cada producto, segun las recomendaciones generadas por el sistema. \\
-
+\hline
 Precondiciones & Debe existir un archivo previamente procesado, con resultados de reposicion disponibles. \\
-
+\hline
 Postcondiciones & El usuario visualiza, organizadas por fecha, las recomendaciones de pedido proximas a vencer. \\
-
+\hline
 Flujo principal &
 \begin{enumerate}
     \item El usuario accede al modulo de "Calendario de pedidos".
     \item El sistema consulta las recomendaciones de reposicion vigentes.
     \item El sistema organiza dichas recomendaciones segun la fecha estimada en la que deberian realizarse.
     \item El sistema muestra el calendario con los pedidos proximos, por producto.
-\end{enumerate}
-\\
-
+\end{enumerate} \\
+\hline
 Flujos alternativos & Si no existen recomendaciones de reposicion disponibles, el sistema informa que primero debe procesarse un archivo. \\
-
 \hline
 \end{tabularx}
 \end{table}
@@ -509,51 +478,423 @@ Flujos alternativos & Si no existen recomendaciones de reposicion disponibles, e
 \centering
 \caption{Especificación del caso de uso CU-12: Consultar perfil}
 \label{tab:cu12_consultar_perfil}
-\begin{tabularx}{\textwidth}{>{\bfseries}p{3.5cm} X}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{|>{\bfseries}p{3.5cm}|X|}
 \hline
 Elemento & Especificación \\
 \hline
-
 ID & CU-12 \\
-
+\hline
 Nombre & Consultar perfil \\
-
+\hline
 Actor principal & Usuario registrado \\
-
+\hline
 Requisitos relacionados & RF-13 \\
-
+\hline
 Objetivo & Permitirle a cualquier usuario, sin importar su rol, consultar los datos de su propia cuenta y el historial de las acciones que el mismo ha realizado en el sistema. \\
-
+\hline
 Precondiciones & El usuario debe haber iniciado sesion. \\
-
+\hline
 Postcondiciones & El usuario visualiza la informacion de su cuenta y sus propios movimientos dentro del sistema. \\
-
+\hline
 Flujo principal &
 \begin{enumerate}
     \item El usuario accede al modulo de "Perfil".
     \item El sistema consulta los datos de la cuenta del usuario.
     \item El sistema consulta los movimientos propios del usuario (pedidos confirmados o revertidos, y si es administrador, tambien sus archivos cargados y los usuarios que ha creado).
     \item El sistema muestra la informacion recopilada.
-\end{enumerate}
-\\
-
+\end{enumerate} \\
+\hline
 Flujos alternativos & Si el usuario aun no ha realizado ninguna accion registrada en el sistema, el sistema muestra los datos de la cuenta sin movimientos asociados. \\
-
 \hline
 \end{tabularx}
 \end{table}
 
 \section{Modelos de datos extensos, diccionarios de datos, mockups}
-% Guia: modelos de datos extensos, diccionarios de datos y mockups.
+% Guía: modelos de datos extensos, diccionarios de datos y mockups.
 
+Este anexo presenta el diccionario de datos completo del esquema relacional de Thary, complementando la descripción resumida presentada en la Sección 3.2.9. Todas las tablas se implementan sobre MySQL, con codificación \texttt{utf8mb4} y motor de almacenamiento InnoDB.
+
+\subsection*{Tabla \texttt{empresas}}
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{lllX}
+\toprule
+\textbf{Campo} & \textbf{Tipo} & \textbf{Restricción} & \textbf{Descripción} \\
+\midrule
+id & VARCHAR(32) & PRIMARY KEY & Identificador único de la organización \\
+nombre\_empresa & VARCHAR(120) & & Nombre de la organización, visible en el encabezado \\
+fecha\_creacion & DATETIME & DEFAULT CURRENT\_TIMESTAMP & Fecha de registro de la empresa \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection*{Tabla \texttt{usuarios}}
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{lllX}
+\toprule
+\textbf{Campo} & \textbf{Tipo} & \textbf{Restricción} & \textbf{Descripción} \\
+\midrule
+id & INT & PRIMARY KEY, AUTO\_INCREMENT & Identificador único del usuario \\
+nombre & VARCHAR(120) & NOT NULL & Nombre completo del usuario \\
+username & VARCHAR(80) & NOT NULL, UNIQUE & Nombre de usuario para inicio de sesión \\
+email & VARCHAR(160) & NOT NULL, UNIQUE & Correo electrónico del usuario \\
+password\_hash & VARCHAR(255) & NOT NULL & Hash de la contraseña, generado con \textit{scrypt} \\
+rol & ENUM('admin','empleado') & NOT NULL, DEFAULT 'empleado' & Rol del usuario dentro de la empresa \\
+empresa\_id & VARCHAR(32) & NOT NULL, FK $\to$ empresas.id & Empresa a la que pertenece el usuario \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection*{Tabla \texttt{pedidos}}
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{lllX}
+\toprule
+\textbf{Campo} & \textbf{Tipo} & \textbf{Restricción} & \textbf{Descripción} \\
+\midrule
+id & INT & PRIMARY KEY, AUTO\_INCREMENT & Identificador único del pedido \\
+empresa\_id & VARCHAR(32) & NOT NULL, FK $\to$ empresas.id & Empresa a la que pertenece el pedido \\
+producto\_id & VARCHAR(64) & NOT NULL & Identificador del producto pedido \\
+proveedor & VARCHAR(160) & & Proveedor elegido para el pedido \\
+cantidad & DOUBLE & & Cantidad confirmada \\
+costo & DOUBLE & & Costo estimado del pedido \\
+usuario & VARCHAR(120) & & Usuario responsable de confirmar el pedido \\
+fecha\_hora & DATETIME & & Fecha y hora de confirmación \\
+\multicolumn{4}{l}{\textit{Clave única: (empresa\_id, producto\_id)}} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection*{Tabla \texttt{actividad}}
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{lllX}
+\toprule
+\textbf{Campo} & \textbf{Tipo} & \textbf{Restricción} & \textbf{Descripción} \\
+\midrule
+id & BIGINT & PRIMARY KEY, AUTO\_INCREMENT & Identificador único del evento \\
+empresa\_id & VARCHAR(32) & NOT NULL, FK $\to$ empresas.id & Empresa asociada al evento \\
+username & VARCHAR(80) & NOT NULL & Usuario que realizó la acción \\
+nombre\_usuario & VARCHAR(120) & NOT NULL & Nombre del usuario que realizó la acción \\
+tipo & VARCHAR(30) & NOT NULL & Tipo de acción (archivo\_subido, pedido\_confirmado, etc.) \\
+descripcion & VARCHAR(300) & NOT NULL & Descripción legible del evento \\
+fecha & DATETIME & DEFAULT CURRENT\_TIMESTAMP & Fecha y hora del evento \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection*{Tabla \texttt{corridas}}
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{lllX}
+\toprule
+\textbf{Campo} & \textbf{Tipo} & \textbf{Restricción} & \textbf{Descripción} \\
+\midrule
+id & INT & PRIMARY KEY, AUTO\_INCREMENT & Identificador de la corrida (tabla padre) \\
+empresa\_id & VARCHAR(32) & NOT NULL, FK $\to$ empresas.id & Empresa que ejecutó la corrida \\
+fecha\_corrida & DATETIME & DEFAULT CURRENT\_TIMESTAMP & Fecha de la corrida \\
+horizonte\_meses & INT & & Meses hacia adelante pronosticados \\
+presupuesto\_capital\_trabajo & DOUBLE & & Presupuesto total disponible \\
+presupuesto\_por\_producto & DOUBLE & & Presupuesto asignado por producto \\
+mape\_final & DOUBLE & & MAPE del sistema final \\
+wape\_final & DOUBLE & & WAPE del sistema final \\
+costo\_total\_pedidos\_urgentes & DOUBLE & & Costo total de productos en alerta \\
+valor\_total\_inventario & DOUBLE & & Valor total del inventario en la corrida \\
+productos\_sin\_dato\_inventario & INT & & Cantidad de productos sin inventario registrado \\
+productos\_en\_alerta & INT & & Cantidad de productos en o bajo el punto de reorden \\
+features\_regresion\_lineal & TEXT & & Variables seleccionadas por RFE/VIF (serializado) \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection*{Tabla \texttt{segmentacion}}
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{lllX}
+\toprule
+\textbf{Campo} & \textbf{Tipo} & \textbf{Restricción} & \textbf{Descripción} \\
+\midrule
+id & BIGINT & PRIMARY KEY, AUTO\_INCREMENT & Identificador único \\
+corrida\_id & INT & NOT NULL, FK $\to$ corridas.id (CASCADE) & Corrida a la que pertenece \\
+producto\_id & VARCHAR(64) & & Identificador del producto \\
+nombre\_producto & VARCHAR(200) & & Nombre del producto \\
+categoria & VARCHAR(120) & & Categoría o rubro del producto \\
+demanda\_total & DOUBLE & & Demanda total histórica \\
+media & DOUBLE & & Demanda promedio mensual \\
+desviacion & DOUBLE & & Desviación estándar de la demanda \\
+cv & DOUBLE & & Coeficiente de variación \\
+variabilidad & VARCHAR(20) & & Clasificación Alta/Media/Baja \\
+demanda\_acumulada\_pct & DOUBLE & & Porcentaje acumulado de demanda \\
+categoria\_abc & VARCHAR(5) & & Clasificación A/B/C \\
+metodo\_campeon & VARCHAR(40) & & Modelo seleccionado como campeón \\
+proveedor\_principal & VARCHAR(160) & & Proveedor principal del producto \\
+proveedor\_alterno & VARCHAR(160) & & Proveedor alterno del producto \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection*{Tabla \texttt{metricas\_modelos}}
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{lllX}
+\toprule
+\textbf{Campo} & \textbf{Tipo} & \textbf{Restricción} & \textbf{Descripción} \\
+\midrule
+id & BIGINT & PRIMARY KEY, AUTO\_INCREMENT & Identificador único \\
+corrida\_id & INT & NOT NULL, FK $\to$ corridas.id (CASCADE) & Corrida a la que pertenece \\
+modelo & VARCHAR(60) & & Nombre del modelo evaluado \\
+mae & DOUBLE & & Error absoluto medio \\
+rmse & DOUBLE & & Raíz del error cuadrático medio \\
+r2 & DOUBLE & & Coeficiente de determinación \\
+mediana\_error & DOUBLE & & Mediana del error absoluto \\
+mape & DOUBLE & & Error porcentual absoluto medio \\
+wape & DOUBLE & & Error porcentual absoluto ponderado \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection*{Tabla \texttt{predicciones\_backtest}}
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{lllX}
+\toprule
+\textbf{Campo} & \textbf{Tipo} & \textbf{Restricción} & \textbf{Descripción} \\
+\midrule
+id & BIGINT & PRIMARY KEY, AUTO\_INCREMENT & Identificador único \\
+corrida\_id & INT & NOT NULL, FK $\to$ corridas.id (CASCADE) & Corrida a la que pertenece \\
+fecha & VARCHAR(10) & & Fecha del mes evaluado (AAAA-MM-DD) \\
+producto\_id & VARCHAR(64) & & Identificador del producto \\
+demanda & DOUBLE & & Demanda real observada \\
+categoria\_abc & VARCHAR(5) & & Clasificación ABC del producto \\
+variabilidad & VARCHAR(20) & & Clasificación de variabilidad \\
+prediccion\_media\_movil & DOUBLE & & Predicción del modelo Media Móvil \\
+prediccion\_regresion\_lineal & DOUBLE & & Predicción del modelo Regresión Lineal \\
+prediccion\_xgboost & DOUBLE & & Predicción del modelo XGBoost \\
+prediccion\_final & DOUBLE & & Predicción del método campeón seleccionado \\
+error\_final & DOUBLE & & Error de la predicción final \\
+metodo\_usado & VARCHAR(40) & & Modelo seleccionado para ese producto y mes \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection*{Tabla \texttt{pronostico\_futuro}}
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{lllX}
+\toprule
+\textbf{Campo} & \textbf{Tipo} & \textbf{Restricción} & \textbf{Descripción} \\
+\midrule
+id & BIGINT & PRIMARY KEY, AUTO\_INCREMENT & Identificador único \\
+corrida\_id & INT & NOT NULL, FK $\to$ corridas.id (CASCADE) & Corrida a la que pertenece \\
+producto\_id & VARCHAR(64) & & Identificador del producto \\
+nombre\_producto & VARCHAR(200) & & Nombre del producto \\
+categoria & VARCHAR(120) & & Categoría del producto \\
+mes\_pronosticado & VARCHAR(7) & & Mes futuro pronosticado (AAAA-MM) \\
+horizonte & INT & & Número de mes dentro del horizonte \\
+prediccion\_xgboost & DOUBLE & & Predicción de XGBoost \\
+prediccion\_regresion\_lineal & DOUBLE & & Predicción de Regresión Lineal \\
+prediccion\_baseline & DOUBLE & & Predicción de Media Móvil \\
+prediccion\_final & DOUBLE & & Predicción del método campeón \\
+metodo\_usado & VARCHAR(40) & & Modelo seleccionado para ese producto \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection*{Tabla \texttt{reorder}}
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{lllX}
+\toprule
+\textbf{Campo} & \textbf{Tipo} & \textbf{Restricción} & \textbf{Descripción} \\
+\midrule
+id & BIGINT & PRIMARY KEY, AUTO\_INCREMENT & Identificador único \\
+corrida\_id & INT & NOT NULL, FK $\to$ corridas.id (CASCADE) & Corrida a la que pertenece \\
+producto\_id & VARCHAR(64) & & Identificador del producto \\
+nombre\_producto & VARCHAR(200) & & Nombre del producto \\
+categoria & VARCHAR(120) & & Categoría del producto \\
+proveedor\_principal & VARCHAR(160) & & Proveedor principal \\
+proveedor\_alterno & VARCHAR(160) & & Proveedor alterno \\
+categoria\_abc & VARCHAR(5) & & Clasificación ABC \\
+variabilidad & VARCHAR(20) & & Clasificación de variabilidad \\
+metodo\_pronostico & VARCHAR(40) & & Modelo usado para pronosticar \\
+demanda\_promedio\_mensual\_pronosticada & DOUBLE & & Demanda promedio pronosticada \\
+lead\_time\_semanas & DOUBLE & & Tiempo de entrega en semanas \\
+lead\_time\_meses & DOUBLE & & Tiempo de entrega en meses \\
+stock\_seguridad & DOUBLE & & Stock de seguridad calculado \\
+punto\_reorden & DOUBLE & & Punto de reorden calculado \\
+inventario\_actual & DOUBLE & & Inventario disponible actual \\
+eoq & DOUBLE & & Cantidad económica de pedido \\
+limite\_presupuesto\_unidades & DOUBLE & & Límite de unidades según presupuesto \\
+cantidad\_sugerida\_pedido & DOUBLE & & Cantidad final sugerida \\
+costo\_unitario & DOUBLE & & Costo unitario del producto \\
+costo\_estimado\_pedido & DOUBLE & & Costo total estimado del pedido \\
+valor\_inventario\_actual & DOUBLE & & Valor del inventario disponible \\
+margen\_unitario & DOUBLE & & Margen unitario del producto (precio menos costo unitario) \\
+costo\_ruptura\_estimado & DOUBLE & & Costo estimado de ruptura (\textit{stockout}) \\
+fecha\_estimada\_pedido & VARCHAR(10) & & Fecha estimada en que debería pedirse (AAAA-MM-DD) \\
+dias\_para\_pedido & INT & & Días restantes hasta la fecha estimada \\
+ordenar & VARCHAR(5) & & Indicador (``SI''/``NO'') de alerta de reposición \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection*{Tabla \texttt{validacion\_cruzada\_folds}}
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{lllX}
+\toprule
+\textbf{Campo} & \textbf{Tipo} & \textbf{Restricción} & \textbf{Descripción} \\
+\midrule
+id & BIGINT & PRIMARY KEY, AUTO\_INCREMENT & Identificador único \\
+corrida\_id & INT & NOT NULL, FK $\to$ corridas.id (CASCADE) & Corrida a la que pertenece \\
+fold & INT & & Número de fold (1, 2, 3...) \\
+meses\_entrenamiento & INT & & Meses usados para entrenar en ese fold \\
+periodo\_test & VARCHAR(30) & & Periodo evaluado en ese fold \\
+modelo & VARCHAR(40) & & Modelo evaluado (incluye ``Sistema final'') \\
+mae & DOUBLE & & MAE obtenido en ese fold \\
+rmse & DOUBLE & & RMSE obtenido en ese fold \\
+mape & DOUBLE & & MAPE obtenido en ese fold \\
+wape & DOUBLE & & WAPE obtenido en ese fold \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection*{Tabla \texttt{validacion\_cruzada\_resumen}}
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{lllX}
+\toprule
+\textbf{Campo} & \textbf{Tipo} & \textbf{Restricción} & \textbf{Descripción} \\
+\midrule
+id & BIGINT & PRIMARY KEY, AUTO\_INCREMENT & Identificador único \\
+corrida\_id & INT & NOT NULL, FK $\to$ corridas.id (CASCADE) & Corrida a la que pertenece \\
+modelo & VARCHAR(40) & & Modelo resumido \\
+metrica & VARCHAR(20) & & Métrica resumida (MAE, RMSE, MAPE, WAPE) \\
+promedio & DOUBLE & & Promedio de la métrica entre folds \\
+desvio & DOUBLE & & Desviación estándar entre folds \\
+folds & INT & & Número de folds considerados \\
+\bottomrule
+\end{tabularx}
+\end{table}
 
 \section{Manual de usuario y/o guía de instalación y despliegue}
-% Guia: manual de usuario y guia de instalacion y despliegue.
+% Guía: manual de usuario y guía de instalación y despliegue.
+
+\subsection*{Instalación en entorno local}
+
+\begin{enumerate}
+    \item Clonar el repositorio del proyecto y acceder a la carpeta creada:
+    \begin{minted}{bash}
+git clone https://github.com/danna0723/Thary_Proyecto.git
+cd Thary_Proyecto
+    \end{minted}
+    Se requiere tener instalado Python 3.12 o superior.
+    \item Crear un entorno virtual e instalar las dependencias:
+    \begin{minted}{bash}
+python -m venv venv
+venv\Scripts\activate       # En Windows
+pip install -r requirements.txt
+    \end{minted}
+    \item Tener un servidor MySQL corriendo localmente (o accesible mediante las variables del siguiente paso) y un usuario con permisos sobre la base de datos del sistema. Por ejemplo:
+    \begin{minted}{sql}
+CREATE USER 'thary_app'@'localhost' IDENTIFIED BY '<su_contraseña>';
+GRANT ALL PRIVILEGES ON sistema_inventario.* TO 'thary_app'@'localhost';
+    \end{minted}
+    Al iniciar, el sistema crea automáticamente la base de datos (si el usuario tiene permiso para hacerlo) y todas las tablas necesarias.
+    \item Configurar las variables de entorno para la conexión a MySQL (\texttt{DB\_HOST}, \texttt{DB\_PORT}, \texttt{DB\_USER}, \texttt{DB\_PASSWORD}, \texttt{DB\_NAME}), según lo descrito en la Sección 3.2.9. Si no se definen, el sistema usa los valores \texttt{127.0.0.1}, puerto \texttt{3307}, usuario \texttt{thary\_app} y base de datos \texttt{sistema\_inventario}, con contraseña vacía. Por ejemplo, en PowerShell:
+    \begin{minted}{powershell}
+$env:DB_PASSWORD = "<su_contraseña>"
+    \end{minted}
+    Las variables definidas de esta forma solo duran mientras la terminal esté abierta.
+    \item Ejecutar la aplicación. En este modo de desarrollo no hace falta definir \texttt{SECRET\_KEY}, porque se usa una clave de desarrollo por defecto:
+    \begin{minted}{bash}
+python run.py
+    \end{minted}
+    \item Acceder desde el navegador a \texttt{http://localhost:5000}.
+\end{enumerate}
+
+\subsection*{Despliegue en producción (Railway)}
+
+\begin{enumerate}
+    \item Crear un proyecto en Railway y agregar dos servicios: la aplicación web (conectada al repositorio de GitHub) y una instancia de MySQL.
+    \item Configurar las variables de entorno del servicio web:
+    \begin{itemize}
+        \item Las de conexión a la base de datos (\texttt{DB\_HOST}, \texttt{DB\_PORT}, \texttt{DB\_USER}, \texttt{DB\_PASSWORD}, \texttt{DB\_NAME}), apuntando a las credenciales del servicio MySQL de Railway.
+        \item \texttt{SECRET\_KEY}: una cadena aleatoria larga que se usa para firmar las sesiones de los usuarios. Sin esta variable la aplicación no arranca, y no debe compartirse ni escribirse en el código.
+    \end{itemize}
+    Los nombres de las variables no deben tener espacios al inicio ni al final, porque eso hace fallar la construcción del servicio.
+    \item El archivo \texttt{Procfile} ya define el comando de arranque en producción mediante Gunicorn:
+    \begin{minted}{text}
+web: gunicorn run:app --bind 0.0.0.0:$PORT --workers 2 --timeout 120
+    \end{minted}
+    \item Railway detecta automáticamente la versión de Python especificada en \texttt{.python-version} e instala las dependencias de \texttt{requirements.txt}.
+    \item Al iniciar, la aplicación crea automáticamente las tablas necesarias en la base de datos (función \texttt{crear\_tablas()}, Sección 3.2.9).
+    \item Se recomienda activar un volumen persistente para el servicio web y la funcionalidad de \textit{backups} automáticos para el servicio de MySQL (Sección 4.6).
+\end{enumerate}
+
+\subsection*{Manual de usuario}
+
+\subsubsection*{Administrador}
+\begin{enumerate}
+    \item Registrarse: quien crea una cuenta desde la pantalla de registro obtiene una empresa propia y queda como su administrador. Después, iniciar sesión.
+    \item Desde el menú lateral, entrar a ``Subir archivo''. Allí se indica el número de meses a pronosticar y el presupuesto disponible, y se carga un archivo CSV con el historial de consumo. Las columnas obligatorias son la fecha, el código del producto y la cantidad vendida; las opcionales habilitan funciones adicionales (por ejemplo, el inventario activa las alertas de pedido). La misma pantalla incluye el detalle de las columnas que reconoce el sistema y una plantilla de ejemplo descargable.
+    \item Seleccionar ``Procesar archivo'' para ejecutar el pipeline de predicción.
+    \item Consultar el ``Panel técnico'' para revisar la comparación de modelos y la segmentación de productos.
+    \item Crear cuentas nuevas para el personal de inventario desde ``Usuarios''.
+    \item Consultar la bitácora de actividad de la empresa desde ``Actividad''.
+\end{enumerate}
+
+\subsubsection*{Personal de inventario}
+\begin{enumerate}
+    \item Iniciar sesión con las credenciales proporcionadas por el administrador.
+    \item Consultar, dentro de ``Análisis'', el pronóstico de demanda, el estado del inventario, el presupuesto y costos, y el calendario de pedidos. El ícono de la campana, en la parte superior, indica cuántos productos necesitan pedido.
+    \item Descargar el pronóstico de demanda en formato CSV desde la pantalla de pronóstico, con la opción de elegir un rango de meses.
+    \item Confirmar un pedido sugerido desde la pantalla ``Pedido'', seleccionando el proveedor correspondiente.
+    \item Deshacer un pedido confirmado por error con el botón ``Deshacer'' de la misma pantalla.
+    \item Consultar su propio perfil y el historial de sus acciones desde ``Mi perfil''.
+\end{enumerate}
 
 
 \section{Enlaces a repositorios de código fuente y tableros de gestión (Azure DevOps, Jira, GitHub)}
-% Guia: enlaces a repositorios de codigo fuente y tableros de gestion.
+% Guía: enlaces a repositorios de código fuente y tableros de gestión.
+
+El código fuente de Thary se gestionó con el sistema de control de versiones Git, y el repositorio se alojó en GitHub. A continuación se presentan los enlaces a los recursos del proyecto.
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{lX}
+\toprule
+\textbf{Recurso} & \textbf{Enlace} \\
+\midrule
+Repositorio de código fuente (GitHub) & \url{https://github.com/danna0723/Thary_Proyecto} \\
+Flujo de integración continua (GitHub Actions) & \url{https://github.com/danna0723/Thary_Proyecto/actions} \\
+Historial de cambios (commits) & \url{https://github.com/danna0723/Thary_Proyecto/commits/main} \\
+Sistema desplegado (Railway) & \url{https://web-production-6ac7e5.up.railway.app} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection*{Repositorio de código fuente}
+
+El repositorio contiene la aplicación completa (código en \texttt{app/}), las pruebas automatizadas (\texttt{tests/}), la definición del flujo de integración continua (\texttt{.github/workflows/tests.yml}) y los archivos de configuración del despliegue (\texttt{Procfile} y \texttt{requirements.txt}). El desarrollo se realizó sobre una única rama principal (\texttt{main}), con un historial de 16 commits entre el 14 y el 26 de septiembre de 2026 al momento de redactar este documento.
+
+\subsection*{Integración y despliegue continuos}
+
+Cada envío de cambios (\textit{push}) o \textit{pull request} al repositorio ejecuta automáticamente las pruebas automatizadas mediante GitHub Actions, con Python 3.12. Además, el servicio en Railway está conectado al repositorio de GitHub, de modo que cada cambio enviado a la rama principal inicia un nuevo despliegue.
+
+\subsection*{Tableros de gestión}
+
+% Elige UNA de estas dos opciones y borra la otra:
+
+% OPCIÓN A (si NO usaste un tablero externo):
+Para el seguimiento del desarrollo del sistema no se utilizó alguna herramienta externa de gestión de proyectos como Jira o Azure DevOps, ya que el avance del desarrollo se registró mediante el historial de commits en GitHub, cuyos mensajes describen los cambios realizados en cada etapa.
+
+% OPCIÓN B (si SÍ usaste un tablero):
+% El seguimiento de las tareas del proyecto se realizó en \textit{<nombre de la herramienta>}, disponible en \url{<enlace al tablero>}.
 
 
 \section{Protocolo y seguimiento de la revisión sistemática de literatura (si aplica)}
 % Guia: protocolo y seguimiento de la revision sistematica de literatura.
+Este anexo no aplica al presente trabajo. La revision de literatura presentada en el Capitulo 2 se realizo mediante un proceso de busqueda y seleccion tradicional, con los criterios de inclusion y exclusion descritos en dicho caítulo, pero sin seguir un protocolo formal de revision sistematica.

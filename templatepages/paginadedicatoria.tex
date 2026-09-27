@@ -1,32 +1,42 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  PLANTILLA DE TRABAJO DE GRADO
+%  Universidad de San Buenaventura
+%  By GHS & PADIA - 2026-2
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Pagina de dedicatoria y agradecimientos
+%  El texto se toma de parametros.tex. Cada bloque se imprime solo si
+%  su comando no esta vacio.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%regresa el valor de 12 pixeles
 \normalsize
-%\thispagestyle{empty}
 
+\ifdefempty{\dedicatoria}{}{%
+  \begin{center}
+    \textbf{Dedicatoria}
+  \end{center}
 
-\noindent \begin{center}
-\textbf{Dedicatoria}
-\par\end{center}
+  \vspace{0.7mm}
 
- \vspace{0.7mm}
- 
- \begin{center}
-     Texto de dedicatoria centrado.
- \end{center}
+  \begin{center}
+    \dedicatoria
+  \end{center}
 
+  \vspace{6.0cm}
+}
 
- \vspace{6.0cm}
+\ifdefempty{\agradecimientos}{}{%
+  \begin{center}
+    \textbf{Agradecimientos}
+  \end{center}
 
-\noindent \begin{center} 
- \textbf{Agradecimientos}
-\par\end{center}
+  \vspace{0.7mm}
 
- \vspace{0.7mm}
- 
- \begin{center}
-     Texto de agradecimientos centrado.
- \end{center}
- 
- 
+  \begin{center}
+    \agradecimientos
+  \end{center}
+}
 
 \cleardoublepage{}

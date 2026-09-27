@@ -1,21 +1,19 @@
-\subsubsection{Validación del modelo de predicción}
+A continuacion, se presentan los resultados obtenidos en la validación del sistema Thary. Estos resultados se obtuvieron luego de aplicar la estrategia de validacion ya definida anteriormente, sobre el historial real de consumo de 856 productos (medicamentos) del año 2021 - 2022 en la Clinica Nuestra Señora de los remedios. 
 
-A continuacion, se presentan los resultados obtenidos en la validación del modelo de predicción. Estos resultados se obtuvieron luego de aplicar la estrategia de validacion ya definida anteriormente, sobre el historial real de consumo de 856 productos (medicamentos) del año 2021 - 2022 en la Clinica Nuestra Señora de los remedios. 
-
-Las metricas obtenidas al evaluar los tres modelos candidatos, junto con el metodo de seleccion de modelo por producto. Todo esto sobre el ultimo periodo de prueba disponible, que corresponde a junio 2022, con seis meses de entrenamiento previo.
+Las metricas obtenidas al evaluar los tres modelos candidatos, junto con el metodo de seleccion de modelo por producto. Todo esto sobre el ultimo periodo de prueba disponible, que corresponde al trimestre abril-junio de 2022, con seis meses de entrenamiento previo.
 
 \begin{table}[H]
     \centering
     \caption{Métricas del holdout final por modelo.}
     \label{tab:resultados_holdout}
-    \begin{tabularx}{\textwidth}{Xcccc}
+    \begin{tabularx}{\textwidth}{Xccccc}
         \toprule
-        \textbf{Modelo} & \textbf{MAE} & \textbf{RMSE} & \textbf{MAPE (\%)} & \textbf{WAPE (\%)} \\
+        \textbf{Modelo} & \textbf{MAE} & \textbf{RMSE} & \textbf{Mediana Error} & \textbf{MAPE (\%)} & \textbf{WAPE (\%)} \\
         \midrule
-        Media Móvil (3 meses) & 48.79 & 243.65 & 80.32 & 23.86 \\
-        Regresión Lineal      & 56.43 & 276.41 & 95.30 & 27.60 \\
-        XGBoost (log1p)       & 50.59 & 254.82 & 65.12 & 24.74 \\
-        \textbf{Sistema final (selección por producto)} & \textbf{39.60} & \textbf{207.14} & \textbf{57.63} & \textbf{19.37} \\
+        Media Móvil (3 meses) & 48.79 & 243.65 & 5.33 & 80.32 & 23.86 \\
+        Regresión Lineal      & 56.43 & 276.41 & 5.25 & 95.30 & 27.60 \\
+        XGBoost (log1p)       & 50.59 & 254.82 & 3.53 & 65.12 & 24.74 \\
+        \textbf{Sistema final (selección por producto)} & \textbf{48.47} & \textbf{243.55} & --- & \textbf{79.33} & \textbf{23.71} \\
         \bottomrule
     \end{tabularx}
 \end{table}
@@ -33,11 +31,10 @@ Despues de obtener los resultados anteriores, se propuso el uso de una validacio
 
 La idea principal, es probar el modelo varias veces simulando estar en un mes distinto al pasado, para poder evaluar si acierta de forma consistente y no solo una vez por casualidad. Para poder predecir un mes, solo se puede usar los meses que vinieron antes, no se pueden usar los datos que serian "Futuros", porque queremos simular un escenario real, y en ese caso, no se tendria esa informacion.
 
-
 \begin{enumerate}
-    \item Prueba 1 (Fold 1): Es el mas antiguo, se le enseña al modelo con los primeros 4 meses del año (Enero, febrero, Marzo, Abril), y se hace que el sistema adivine Mayo, Junio y Julio. Se compara lo que adivino contra los resultados reales de esos meses y se registra que tan grande fue el error.
-    \item Prueba 2 (Fold 2): En este segunda prueba o Fold, se le enseña al modelo con 5 meses en ves de 4, es decir, de enero a Mayo, y se le pide que prediga Junio, Julio y agosto, una vez mas, se comparar y se registra el error.
-    \item Prueba 3 (Fold 3): Por ultimo, se le enseña al modelo con 6 meses de Enero a junio y se le solicita al sistema que prediga julio , agosto y septiembre, se compara y, una vez mas, se registra el error.
+    \item Prueba 1 (Fold 1): Es el mas antiguo, se le enseña al modelo con los 4 meses previos a febrero de 2022, y se hace que el sistema adivine febrero, marzo y abril de 2022. Se compara lo que adivino contra los resultados reales de esos meses y se registra que tan grande fue el error.
+    \item Prueba 2 (Fold 2): En esta segunda prueba o Fold, se le enseña al modelo con 5 meses en vez de 4, es decir, los meses previos a marzo de 2022, y se le pide que prediga marzo, abril y mayo de 2022, una vez mas, se compara y se registra el error.
+    \item Prueba 3 (Fold 3): Por ultimo, se le enseña al modelo con los 6 meses previos a abril de 2022 y se le solicita al sistema que prediga abril, mayo y junio de 2022, se compara y, una vez mas, se registra el error. Este ultimo fold corresponde al mismo holdout final presentado en la Tabla \ref{tab:resultados_holdout}.
 \end{enumerate}
 
 
@@ -72,17 +69,16 @@ Se arma la funcion que genera las particiones \texttt{\_armar\_folds}, esta reci
 
 Al finalizar, los folds se ordenan en orden cronologico del mas antiguo al mas nuevo antes de ser devueltos.
 
-Al ya tener los folds organizados, el sistema entrena nuevamente los tres modelos candidatos, y selecciona el mejor modelo por producto, evaluando el resultado bajo la etiqueta de "Sistema final". Es decir, es la estrategia que usa Thary para predecir el consumo, en ves de escoger uno solo, para cada producto, el sistema entrena los 3 modelos y selecciona el que se equivoco menos conese producto en particular. El proceso se repite producto por producto.
+Al ya tener los folds organizados, el sistema entrena nuevamente los tres modelos candidatos, y selecciona el mejor modelo por producto, evaluando el resultado bajo la etiqueta de "Sistema final". Es decir, es la estrategia que usa Thary para predecir el consumo, en vez de escoger uno solo, para cada producto, el sistema entrena los 3 modelos y selecciona el que se equivoco menos con ese producto en particular.
 
-Un aspecto importante es que, la eleccion de que modelo usar para cada producto se hace solo con los datos de entrenamiento, antes de ver los datos de prueba. Esto demuestra que no se esta "haciendo trampa, ya que el sistema no tiene acceso a los datos de prueba, y por lo tanto, no puede "aprender" de ellos.
+Un aspecto importante es que, la eleccion de que modelo usar para cada producto se hace solo con los datos de entrenamiento, antes de ver los datos de prueba. Esto demuestra que no se esta "haciendo trampa", ya que el sistema no tiene acceso a los datos de prueba, y por lo tanto, no puede "aprender" de ellos.
 
-Aun asi, solo esto no basta para confiar en el resultado, ya que aun si el sistema esta eligiendo el modelo de forma honesto, un unico experimento podria haber salido bien por casualidad y no porque el sitema de verdad sea bueno.
+Aun asi, solo esto no basta para confiar en el resultado, ya que aun si el sistema esta eligiendo el modelo de forma honesta, un unico experimento podria haber salido bien por casualidad y no porque el sistema de verdad sea bueno.
 
 
-Es por eso que la validacion cruzada la aporto valor al sistema, ya que al repetir este mismo proceso (entrenamiento, eleccion del modelo y evaluacion) en diferentes periodos de prueba, se confirma que el resultado obtenido en el holdout final no fue un resultado aislado, sino que se repite de forma consistente en distintos periodos de prueba.
+Es por eso que la validacion cruzada aporto valor al sistema, ya que al repetir este mismo proceso (entrenamiento, eleccion del modelo y evaluacion) en diferentes periodos de prueba, se confirma que el resultado obtenido en el holdout final no fue un resultado aislado, sino que se repite de forma consistente en distintos periodos de prueba.
 
-En la siguiente tabla se describen el promedio y la desviiacion estandar de las metricas obtenidas en cada fold, para cada modelo candidato y el sistema final:
-
+En la siguiente tabla se describen el promedio y la desviacion estandar de las metricas obtenidas en cada fold, para cada modelo candidato y el sistema final:
 
 \begin{table}[H]
     \centering
@@ -95,18 +91,23 @@ En la siguiente tabla se describen el promedio y la desviiacion estandar de las 
         Media Móvil        & 44.27 $\pm$ 3.70  & 200.82 $\pm$ 41.31 & 82.38 $\pm$ 1.85  & 22.31 $\pm$ 1.29 \\
         Regresión Lineal   & 58.13 $\pm$ 2.21  & 270.35 $\pm$ 6.32  & 106.24 $\pm$ 10.64 & 29.38 $\pm$ 1.84 \\
         XGBoost            & 46.58 $\pm$ 3.46  & 223.64 $\pm$ 31.40 & 64.93 $\pm$ 2.25  & 23.48 $\pm$ 1.15 \\
-        \textbf{Sistema final} & \textbf{36.25 $\pm$ 2.54} & \textbf{174.24 $\pm$ 27.89} & \textbf{59.13 $\pm$ 1.84} & \textbf{18.27 $\pm$ 0.81} \\
+        \textbf{Sistema final} & \textbf{43.42 $\pm$ 3.77} & \textbf{190.50 $\pm$ 40.63} & \textbf{81.13 $\pm$ 1.56} & \textbf{21.88 $\pm$ 1.34} \\
         \bottomrule
     \end{tabularx}
 \end{table}
 
 De la tabla se puede observar que:
 
-De la tabla se puede observar que:
-
 \begin{itemize}
-    \item El sistema final es el que obtiene el mejor promedio en las cuatro metricas evaluadas, y tambien la menor desviacion estandar en todas ellas. Esto es significativo, porque demuestra que vale la pena la complejidad de elegir un modelo distinto para cada producto: el sistema final no solo es mas preciso en promedio, sino tambien mas consistente y estable entre los distintos periodos evaluados.
+    \item El sistema final es el que obtiene el mejor promedio en las cuatro
+    metricas evaluadas. En cuanto a la estabilidad entre folds, presenta la
+    menor desviacion estandar en RMSE y MAPE, aunque una desviacion ligeramente
+    mayor a la de la Media Movil en MAE y WAPE. Esto es significativo, porque
+    demuestra que vale la pena la complejidad de elegir un modelo distinto para
+    cada producto: el sistema final es consistentemente mas preciso en promedio,
+    aunque su ventaja en estabilidad no se cumple de forma uniforme en las
+    cuatro metricas.
     \item La media movil es el segundo mejor modelo, seguido por XGBoost y finalmente la regresion lineal. Cuando se comparan los tres modelos candidatos de forma individual, la media movil es la que obtiene un mejor MAE, RMSE y WAPE, mientras que solo XGBoost la supera en MAPE. El hecho de que ninguno de los dos modelos mas sofisticados domine de forma general sobre la linea base avala la decision de seleccionar un modelo distinto por producto, ya que no existe un unico modelo que sea el mejor en todos los casos.
     \item La Regresion Lineal es la que tiene los peores resultados en las cuatro metricas, ademas de que su MAPE es el que mas varia entre los 3 folds. Esto es coherente con la tendencia de este modelo a sobreestimar los productos de alta demanda, observada previamente en el analisis de dispersion entre modelos, lo que ayuda a explicar por que su error resulta mas alto que el de los otros dos modelos.
-    \item Finalmente, se observa que la efectividad del sistema final no se debe solamente a "elegir el mejor modelo en general", que en este caso seria la media movil, sino a elegir un modelo distinto para cada producto. En caso de haber elegido media movil para todos los productos, el error hubiera sido de 22.31\% de WAPE, mientras que al elegir el mejor modelo por producto, el error se reduce a 18.27\%.
+    \item Finalmente, se observa que la efectividad del sistema final no se debe solamente a "elegir el mejor modelo en general", que en este caso seria la media movil, sino a elegir un modelo distinto para cada producto. En caso de haber elegido media movil para todos los productos, el error hubiera sido de 22.31\% de WAPE, mientras que al elegir el mejor modelo por producto, validado mediante la prueba de Diebold-Mariano, el error se reduce a 21.88\%
 \end{itemize}

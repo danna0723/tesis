@@ -16,23 +16,35 @@ No toda la informacion se queda en la base de datos, ya que los archivos CSV que
     \centering
     \caption{Entidades principales del modelo de datos.}
     \label{tab:entidades}
-    \begin{tabularx}{\textwidth}{lXl}
-        \toprule
-        \textbf{Entidad} & \textbf{Descripción} & \textbf{Cardinalidad} \\
-        \midrule
-        Empresa & Organización que utiliza el sistema, identificada de forma única. & 1 : N \\
-        Usuario & Persona registrada en el sistema, con un rol, asociada a una empresa mediante clave foránea. & 1 : N \\
-        Pedido & Proveedor, cantidad, costo y usuario responsable de un pedido confirmado, asociado a una empresa. & 1 : N \\
-        Corrida & Registro de un procesamiento de archivo, con sus parámetros y métricas globales. & 1 : N \\
-        Segmentación & Clasificación ABC, variabilidad y método campeón por producto, para una corrida dada. & N : 1 \\
-        Métricas de modelos & MAE, RMSE, MAPE y WAPE de cada modelo candidato, para una corrida dada. & N : 1 \\
-        Predicciones de backtest & Demanda real y predicha por producto-mes, para el periodo de prueba de una corrida. & N : 1 \\
-        Pronóstico futuro & Demanda estimada para los próximos meses, por producto, para una corrida dada. & N : 1 \\
-        Reorden (reposición) & Punto de reorden, EOQ y cantidad sugerida por producto, para una corrida dada. & N : 1 \\
-        Validación cruzada (folds) & Métricas de error por modelo, calculadas en cada fold de la validación cruzada temporal. & N : 1 \\
-        Validación cruzada (resumen) & Promedio y desviación de las métricas de cada modelo, a través de los folds. & N : 1 \\
-        Actividad & Bitácora de acciones realizadas por los usuarios, asociada a una empresa. & 1 : N \\
-        \bottomrule
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabularx}{\textwidth}{|l|X|l|}
+    \hline
+    \textbf{Entidad} & \textbf{Descripción} & \textbf{Cardinalidad} \\
+    \hline
+    Empresa & Organización que utiliza el sistema, identificada de forma única. & 1 : N \\
+    \hline
+    Usuario & Persona registrada en el sistema, con un rol, asociada a una empresa mediante clave foránea. & 1 : N \\
+    \hline
+    Pedido & Proveedor, cantidad, costo y usuario responsable de un pedido confirmado, asociado a una empresa. & 1 : N \\
+    \hline
+    Corrida & Registro de un procesamiento de archivo, con sus parámetros y métricas globales. & 1 : N \\
+    \hline
+    Segmentación & Clasificación ABC, variabilidad y método campeón por producto, para una corrida dada. & N : 1 \\
+    \hline
+    Métricas de modelos & MAE, RMSE, MAPE y WAPE de cada modelo candidato, para una corrida dada. & N : 1 \\
+    \hline
+    Predicciones de backtest & Demanda real y predicha por producto-mes, para el periodo de prueba de una corrida. & N : 1 \\
+    \hline
+    Pronóstico futuro & Demanda estimada para los próximos meses, por producto, para una corrida dada. & N : 1 \\
+    \hline
+    Reorden (reposición) & Punto de reorden, EOQ y cantidad sugerida por producto, para una corrida dada. & N : 1 \\
+    \hline
+    Validación cruzada (folds) & Métricas de error por modelo, calculadas en cada fold de la validación cruzada temporal. & N : 1 \\
+    \hline
+    Validación cruzada (resumen) & Promedio y desviación de las métricas de cada modelo, a través de los folds. & N : 1 \\
+    \hline
+    Actividad & Bitácora de acciones realizadas por los usuarios, asociada a una empresa. & 1 : N \\
+    \hline
     \end{tabularx}
 \end{table}
 

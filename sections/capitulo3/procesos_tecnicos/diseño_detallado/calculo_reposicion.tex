@@ -1,0 +1,143 @@
+El calculo de la reposicion responde a la necesidad de determinar cuanto inventario de seguridad es conveniente mantener para cada producto en un nuevo pedido, junto a otra informacion relevante como en que nivel de inventario es mas conveniente hacer el pedido, que cantidad se debe pedir y en que fecha debe hacerse el pedido.
+
+Para esta parte, se utilizaron las formulas de gestion de inventraio clasicas para stock de seguridad, punto de reorden y cantidad económica de pedido (EOQ), los cuales tambien se usaron en los ejemplos de referencia \textit{Ejemplo 1 (SKU Demand Forecasting)} \cite{ejemplo1_demandforecast} y \textit{Ejemplo 2 (Machine Learning for Retail Demand Forecasting: Comparative Study of Demand Forecasting Methods for a Retail Store (XGBoost Model vs. Rolling Mean))} \cite{ejemplo2_saci2020mlretail}. En este aspecto, la propuesta de valor de Thary es que estas formulas se hacen en base al pronostico futuro que fue generado en la etapa anterior, y no en base a los datos historicos. 
+
+A partir de las predicciones finales de los meses pronosticados se calculan el promedio mensual $\bar{d}$ y su desviación estándar $\sigma_d$.    
+
+\begin{minted}{python}
+def calcular_tabla_reorden(
+    df_model, df_mensual, producto_comportamiento, pronostico_futuro_df,
+    presupuesto_capital_trabajo=None
+):
+    #...
+    stats_pronostico = pronostico_futuro_df.groupby("producto_id")["prediccion_final"].agg(
+        demanda_promedio="mean", desviacion_demanda=lambda x: np.std(x)
+    )
+\end{minted}
+
+\paragraph{Lead time}
+
+El lead time ($L$) de cada producto representa el tiempo en el que los proovedores entregarian el producto despues de hacer un pedido, en el sistema se expresa en meses para que sea consistente con la unidad de tiempo de las demandas. Para asegurar esto, si el archivo original contiene el lead time en semanas, el sistema convierte los semanas de lead time a meses, dividiendolas entre 4.345. De no tener el lead time, se asume un valor por defecto de 0.5 meses.
+
+\begin{minted}{python}
+lead_time_meses = (
+    fila_params["lead_time_semanas"] / 4.345
+    if "lead_time_semanas" in df_mensual.columns and not pd.isna(fila_params.get("lead_time_semanas"))
+    else LEAD_TIME_DEFAULT_MESES
+)
+\end{minted}
+
+\paragraph{Stock de seguridad y punto de reorden}
+
+El stock de seguridad es esa cantidad de productos extra que se guarda en el inventario para cubrir la variabilidad de la demanda mientras llega un pedido. 
+
+\[
+SS = Z \cdot \sigma_d \cdot \sqrt{L}
+\qquad\qquad
+\]
+
+\begin{minted}{python}
+stock_seguridad = SERVICE_LEVEL_Z * desviacion_demanda * np.sqrt(lead_time_meses)
+\end{minted}
+
+El \texttt{SERVICE\_LEVEL\_Z} corresponde a un nivel de servicio de 95\% (Z=1.65). Este porcentaje hace referencia a que se espera que el stock de seguridad sea suficiente para cubrir la demanda durante el lead time en 95\% de los casos.
+
+El punto de reorden es el nivel de inventario en el que, cuando se llega a este, se debe de hacer un nuevo pedido.
+
+\[
+ROP = \bar{d} \cdot L + SS
+\qquad\qquad
+\]
+
+\begin{minted}{python}
+punto_reorden = demanda_promedio * lead_time_meses + stock_seguridad
+\end{minted}
+
+En el que:
+\begin{itemize}
+    \item $\bar{d}$ es la demanda promedio.
+    \item $L$ es el lead time.
+    \item $SS$ es el stock de seguridad.
+\end{itemize}
+
+\paragraph{Cantidad económica de pedido (EOQ)}
+
+El EOQ consiste en la cantidad de cada pedido que minimiza los costos de inventario, considerando el costo de mantener inventario y el costo de hacer pedidos. La formula consiste en:
+
+\[
+EOQ = \sqrt{\frac{2 \cdot D \cdot S}{H}}
+\]
+
+En donde:
+
+\begin{itemize}
+    \item $D = 12 \cdot \bar{d}$: Demanda anual estimada
+    \item $S$ es el costo de hacer un pedido
+    \item $H$ es el costo anual de mantener una unidad en inventario, calculado como el costo unitario multiplicado por el porcentaje de costo de mantenimiento.
+\end{itemize}
+
+En el sistema, esto se implemento teniendo en cuenta que como el costo de pedido y el porcentaje de mantenimiento son columnas opcionales del archivo csv, por lo que el EOQ solo se calcula si estan disponibles en el archivo:
+
+\begin{minted}{python}
+demanda_anual_estimada = demanda_promedio * 12
+if not pd.isna(costo_unitario_producto) and not pd.isna(porcentaje_mantenimiento) and not pd.isna(costo_pedido_producto):
+    costo_mantenimiento_unitario = costo_unitario_producto * porcentaje_mantenimiento
+    eoq = np.sqrt((2 * demanda_anual_estimada * costo_pedido_producto) / costo_mantenimiento_unitario) if costo_mantenimiento_unitario > 0 else np.nan
+else:
+    eoq = np.nan
+\end{minted}
+
+\paragraph{Cantidad sugerida y presupuesto}
+
+
+La cantidad sugerida se calcula en base al EOQ, de no estarlo, pero se conoce el inventario actual, se sugiere la cantidad que falta para llegar al punto de reorden. Esto se propuso en el sistema Thary para poder hacer recomendaciones de pedidos en catalogos que no traigan costros de pedido o mantenimiento.
+
+En cuanto al presupuesto, la cantidad que el usuario incluye se reparte por igual entre todos los productis y el limite corresponde a la cantidad de unidades que ese monto permite comprar. La canidad final es el menor valor entre la cantidad calculada y el límite por presupuesto. El costo estimado del pedido se obtiene multiplicando esa cantidad por el costo unitario.
+
+\begin{minted}{python}
+presupuesto_por_producto = working_capital_budget / n_productos_activos
+
+if not pd.isna(costo_unitario_producto) and costo_unitario_producto > 0:
+    limite_presupuesto = int(presupuesto_por_producto / costo_unitario_producto)
+else:
+    limite_presupuesto = np.nan
+
+if not pd.isna(eoq):
+    cantidad_sugerida = eoq
+elif not pd.isna(inventario_actual):
+    cantidad_sugerida = max(0, punto_reorden - inventario_actual)
+else:
+    cantidad_sugerida = np.nan
+
+if not pd.isna(cantidad_sugerida) and not pd.isna(limite_presupuesto):
+    cantidad_sugerida = min(cantidad_sugerida, limite_presupuesto)
+\end{minted}
+
+\paragraph{Decisión de pedido y fecha estimada}
+
+Para poder organizar los pedidos de una manera eficiente y facil de interpretar, los productos se marcan con un indicador de si es necesario hacer un pedido o no, (\texttt{ordenar = "SI"}) cuando el inventario actual del producto es menor o igual al punto de reorden.
+
+Tambien se incluyo la fecha estimada en la que el inventario llegara a ese punto de reposicion, asumiendo que el consumo del inventario se matiene con el ritmo promedio ya pronosticado, la fecha de referencia es el ultimo mes del que se tiene informacion en el archivo csv. Si el inventario esta por debajo de lpunto de reorden, se usa la fecha del ultimo mes con datos de archivo. Por otra parte, si el inventario está por encima, se calculan los días que faltan para llegar al punto de reorden, dividiendo el inventario que sobra entre la demanda diaria, que es la demanda mensual pronosticada dividida entre 30.44 (días promedio por mes). Esos días se suman a la fecha de referencia y el resultado es la fecha estimada en la que se debe hacer el pedido. Se aplica un tope de 36\,500 días (100 años) para evitar valores absurdos en productos con demanda pronosticada casi nula. Si no hay inventario o no hay demanda pronosticada, no se puede estimar la fecha.
+
+\begin{minted}{python}
+ya_hay_que_pedir = not pd.isna(inventario_actual) and inventario_actual <= punto_reorden
+if pd.isna(inventario_actual):
+    fecha_estimada_pedido = None
+    dias_para_pedido = np.nan
+elif ya_hay_que_pedir:
+    fecha_estimada_pedido = fecha_referencia
+    dias_para_pedido = 0
+elif demanda_promedio > 0:
+    demanda_diaria = demanda_promedio / DIAS_POR_MES
+    dias_para_pedido = min(
+        (inventario_actual - punto_reorden) / demanda_diaria,
+        DIAS_PARA_PEDIDO_TECHO,
+    )
+    fecha_estimada_pedido = fecha_referencia + pd.Timedelta(days=dias_para_pedido)
+else:
+    fecha_estimada_pedido = None
+    dias_para_pedido = np.nan\end{minted}
+
+Como calculos adicionales, se incluyo que la tabla de reposición también calculara el valor del inventario actual y el margen de dinero que se dejaria de ganar si el producto se agota durante el lead time.
+
+Como principales limitaciones es que $\sigma_d$ sale de las predicciones y no del error de pronostico ni sobre la demanda real, por lo que mide que tanto varian las predicciones y no la incertidumbre real.

@@ -22,11 +22,11 @@ Debido a que existen diferentes modelos y tecnicas para la prediccion de la dema
 \hline
 
 \textbf{Referencia} &
-\textit{Demand Forecasting Using Neural Network for Supply Chain Management} &
-\textit{LSTM Model Based Demand Forecasting in Supply Chain Using Efficient Optimizer} &
-\textit{Application of ABC Analysis and Linear Regression Model in Inventory Management} &
-\textit{StockNet--GRU Based Stock Index Prediction} &
-\textit{XGBoost-Based Demand Forecasting in Supply Chain Management Using Machine Learning Algorithm} \\ 
+\textit{Demand Forecasting Using Neural Network for Supply Chain Management} \cite{kochak2015demand} &
+\textit{LSTM Model Based Demand Forecasting in Supply Chain Using Efficient Optimizer} \cite{yadav2023lstm} &
+\textit{Application of ABC Analysis and Linear Regression Model in Inventory Management} \cite{lin2024abc} &
+\textit{StockNet--GRU Based Stock Index Prediction} \cite{gupta2022stocknet} &
+\textit{XGBoost-Based Demand Forecasting in Supply Chain Management Using Machine Learning Algorithm} \cite{nagadevi2025xgboost} \\ 
 \hline
 
 \textbf{Datos utilizados} &
@@ -34,6 +34,7 @@ Datos históricos de ventas organizados como series de tiempo. Se emplean ventas
 Datos históricos de ventas organizados como series de tiempo. Incluyen fecha, unidades vendidas, ganancias y ubicación, seleccionando las variables relevantes para el entrenamiento. &
 Datos históricos de inventario y ventas. Incluyen información de productos, inventario, órdenes de compra y venta, cantidad y precio de venta, fecha, marcas, clasificación e impuestos. &
 Series de tiempo financieras correspondientes a precios históricos de apertura del índice bursátil CNX Nifty y de las 10 acciones con mayor correlación. Los datos se normalizan y organizan mediante ventanas deslizantes de 20 días. &
+
 Datos logísticos y de cadena de suministro relacionados con la demanda, incluyendo variables asociadas con proveedores y logística. Los datos se normalizan mediante Z-score y posteriormente se seleccionan las variables relevantes. \\ 
 \hline
 
@@ -66,6 +67,7 @@ Datos reales de consumo mensual de un filtro de combustible perteneciente a una 
 \textit{Sales Dataset} con información histórica de ventas utilizada para entrenar y evaluar el modelo. &
 Dataset de inventario de una tienda de comestibles (\textit{grocery store}) con información de productos, inventario y ventas. Después del preprocesamiento se utilizan aproximadamente 60 observaciones correspondientes a dos meses. &
 Índice bursátil CNX Nifty y las 10 acciones más correlacionadas del National Stock Exchange (NSE) de India, obtenidos desde Yahoo Finance. Contiene 5.904 días de negociación entre abril de 1996 y enero de 2020. &
+
 Dataset de demanda de cadena de suministro con información relacionada con logística y proveedores. Se utiliza para entrenar y evaluar el modelo de predicción. \\ 
 \hline
 
@@ -97,16 +99,37 @@ Ademas de los estudios academicos revisados en la Seccion 2.2.1, se consultaron 
     \centering
     \caption{Implementaciones de referencia consultadas para el desarrollo de Thary.}
     \label{tab:implementaciones_referencia}
-    \begin{tabularx}{\textwidth}{lp{2.2cm}XX}
-        \toprule
-        \textbf{ID} & \textbf{Autor} & \textbf{Título} & \textbf{Aporte a Thary} \\
-        \midrule
-        Ejemplo 1 (SKU Demand Forecasting) & Dhruvi Shah \cite{ejemplo1_demandforecast} & \textit{Demand Forecasting \& Inventory Optimization for Consumer Products} & Base para el flujo general de prediccion y calculo de reposicion \\
-        Ejemplo 2 (Media Móvil) & Samir Saci \cite{ejemplo2_saci2020mlretail} & \textit{Machine Learning for Retail Demand Forecasting: Comparative Study of Demand Forecasting Methods for a Retail Store (XGBoost Model vs. Rolling Mean)} & Base para el uso de la media movil como modelo candidato de comparacion \\
-        Ejemplo 3 (XGBoost) & ksmooi \cite{ejemplo3_ksmooi_inventorydemand} & \textit{Forecasting Inventory Demand Using XGBoost} & Base para el entrenamiento y ajuste del modelo XGBoost \\
-        Ejemplo 4 (BoomBikes) & Tushar Verma \cite{ejemplo4_boombikes} & \textit{Linear Regression: Demand Forecasting} & Base para la metodologia de seleccion de variables en el modelo de Regresion Lineal (RFE, eliminacion por p-valor y VIF) \\
-        \bottomrule
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabularx}{\textwidth}{|l|p{2.2cm}|X|X|}
+    \hline
+    \textbf{ID} & \textbf{Autor} & \textbf{Título} & \textbf{Aporte a Thary} \\
+    \hline
+    Ejemplo 1 (SKU Demand Forecasting) & Dhruvi Shah \cite{ejemplo1_demandforecast} & \textit{Demand Forecasting \& Inventory Optimization for Consumer Products} & Base para el flujo general de prediccion y calculo de reposicion \\
+    \hline
+    Ejemplo 2 (Media Móvil) & Samir Saci \cite{ejemplo2_saci2020mlretail} & \textit{Machine Learning for Retail Demand Forecasting: Comparative Study of Demand Forecasting Methods for a Retail Store (XGBoost Model vs. Rolling Mean)} & Base para el uso de la media movil como modelo candidato de comparacion \\
+    \hline
+    Ejemplo 3 (XGBoost) & ksmooi \cite{ejemplo3_ksmooi_inventorydemand} & \textit{Forecasting Inventory Demand Using XGBoost} & Base para el entrenamiento y ajuste del modelo XGBoost \\
+    \hline
+    Ejemplo 4 (BoomBikes) & Tushar Verma \cite{ejemplo4_boombikes} & \textit{Linear Regression: Demand Forecasting} & Base para la metodologia de seleccion de variables en el modelo de Regresion Lineal (RFE, eliminacion por p-valor y VIF) \\
+    \hline
     \end{tabularx}
 \end{table}
 
-A lo largo del Capitulo 3 se hace referencia a estas cuatro implementaciones mediante el identificador presentado en la Tabla \ref{tab:implementaciones_referencia} (Ejemplo 1, Ejemplo 2, Ejemplo 3 o Ejemplo 4), indicando en cada caso que partes especificas de Thary se basaron en ellas y cuales corresponden a extensiones propias desarrolladas durante el proyecto.
+A lo largo del Capitulo 3 se hace referencia a estas cuatro implementaciones
+mediante el identificador presentado en la Tabla \ref{tab:implementaciones_referencia} (Ejemplo 1, Ejemplo 2, Ejemplo 3 o Ejemplo 4),
+indicando en cada caso que partes especificas de Thary se basaron en ellas y
+cuales corresponden a extensiones propias desarrolladas durante el proyecto.
+
+\subsubsection{Brecha identificada}
+
+Una vez habiendo analizado algunas de las implementaciones ya existentes para la resolucion de una problematica similar a la planteada en este proyecto, se identifico que la mayoria de estas implementaciones no contemplan un enfoque de seleccion de modelos por producto, sino que utilizan un unico modelo (ANN, LSTM, Regresion Lineal, GRU o XGBoost) para todo el catalogo.
+
+El unico ejemplo que hace algo parecido a comparar varios modelos es el Ejemplo 2, que compara XGBoost frente a Media Movil, pero no incluye un mecanismo de seleccion automatica por producto.
+
+Esto puede generar problemas de prediccion, ya que no todos los productos tienen un comportamiento similar y por lo tanto, no todos los modelos son adecuados para todos los productos. 
+
+Ademas, la mayoria de estas implementaciones no cuentan con un mecanismo de validacion estadistica que permita confirmar que las diferencias observadas entre modelos sean reales y no producto del azar. Los estudios reportan unicamente el modelo con mejor metrica de error (MAE, RMSE, MAPE o $R^2$) como superior, sin verificar si dicha diferencia es estadisticamente significativa o podria explicarse por casualidad.
+
+Por ultimo, la mayoria de estas implementaciones solo se centran en la etapa de prediccion de la demanda, sin traducir los resultados a un analisis que pueda ayudar a los usuarios a tomar decisiones operativas de reposicion como punto de reorden, cantidad economica de pedido o costo de ruptura ante un posible desabastecimiento. Solo uno de los estudios academicos revisados, el de Lin \cite{lin2024abc} (Regresion Lineal, Tabla \ref{tab:comparacion_modelos}), incorpora un analisis de clasificacion ABC, pero de forma independiente al modelo predictivo, no como parte de un mismo sistema integrado.
+
+En resumen, la diferencia entre la propuesta de Thary en comparacion a los antecedentes revisados es que Thary busca integrar, dentro de un mismo sistema, la comparacion de multiples modelos candidatos, un mecanismo formal de seleccion respaldado estadisticamente, y su traduccion directa en recomendaciones operativas de inventario, aplicado y validado sobre un caso de estudio real, en este caso, del dominio de salud.

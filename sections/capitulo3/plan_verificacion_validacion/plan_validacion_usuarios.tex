@@ -1,0 +1,21 @@
+El plan de validacion de usuarios se incluyo como otra validacion a la verificacion del sistema en la que se busca poder evaluar si Thary es un sistema intuitivo y facil de usar para los usuarios finales, y que la informacion sea facil de comprender e interpretar, de manera que esta le ayude al usuario a tomar decisiones.
+
+La validacccion se realiza para los dos perfiles de usuario implementados: Administrador y Personal de Inventario. 
+
+Para su realizacion, se va a determinar si el usuario puede completar el flujo completo de uso del sistema sin asistencia adicional mas alla de la que brinda la propia interfaz:
+
+\begin{itemize}
+    \item \textbf{Administrador}: inicia sesion, carga y procesa el historial de consumo, consulta el panel tecnico de comparacion de modelos, crea una cuenta de personal de inventario, y revisa la bitacora de actividad de su empresa.
+    \item \textbf{Personal de Inventario}: inicia sesion, consulta el dashboard de demanda pronosticada, el estado del inventario, el calendario de pedidos y el presupuesto disponible, confirma un pedido sugerido a partir de las recomendaciones generadas, y revierte dicho pedido para verificar que la accion se pueda deshacer correctamente. Finalmente, consulta su propio perfil.
+\end{itemize}
+
+Durante este recorrido se observa si el usuario logra completar cada tarea sin asistencia adicional a la propia interfaz, prestando especial atencion a los siguientes aspectos:
+
+\begin{itemize}
+    \item Si las alertas de reposicion y las recomendaciones de compra son comprensibles sin necesidad de conocimientos tecnicos de modelado predictivo.
+    \item Si el usuario logra distinguir con claridad las pantallas y funcionalidades disponibles segun su rol.
+    \item Si el flujo de confirmar y, de ser necesario, deshacer un pedido resulta intuitivo y sin ambiguedad sobre el estado final del pedido.
+    \item Si la informacion del calendario de pedidos y del costo de ruptura (stockout) es interpretada correctamente como una alerta de urgencia, y no como un dato meramente informativo.
+\end{itemize}
+
+Al finalizar el recorrido, la percepción del usuario se recopila mediante una breve conversación en la que se le pregunta si encontró alguna pantalla o mensaje confuso y si considera que la información presentada sería útil para tomar decisiones reales de abastecimiento en su contexto laboral. Los resultados de esta validacion se documentan en el Capitulo 4.

@@ -1,0 +1,30 @@
+El desarrollo del sistema Thary se realizo en base a un conjunto de estandaresy normas de la ingenieria de sistemas, los cuales fueron aplicados de forma continua a lo largo de las distintas etapas del proyecto, y su implementacion y resultados son detallados en el Capitulo 3 y 4 respectivamente. 
+
+Se aplicaron estandares formales publicados por organismos oficiales como: ISO/IEC/IEEE 12207, IEEE 29148 e ISO/IEC 25010. Tambien se aplicaron las metodologias creadas por autores independientes: Modelo C4 y modelado de amenazas STRIDE.
+
+\paragraph{ISO/IEC/IEEE 12207 — Procesos del ciclo de vida del software}
+La norma ISO/IEC/IEEE 12207 del año 2026 \cite{iso12207} define un marco de procesos para todo el ciclo de vida del software, desde el inicio del proyecto hasta el final. 
+
+En Thary, esta norma orienta la organización de los procesos técnicos, los cuales incluyen: identificación de stakeholders, elicitacion y especificacion de requisitos, diseño de la arquitectura, diseño detallado, análisis de amenazas y el diseño seguro.
+
+\paragraph{ISO/IEC/IEEE 29148 — Ingeniería de requisitos}
+
+Por su parte, la norma ISO/IEC/IEEE 29148 \cite{ieee29148} se encarga de establecer una serie de lineamientos especificos para los procesos relacionados con la parte de ingenieria de requisitos, dichos procesos incluyen la elaboracion de especificaciones de requisitos de software (SRS) mediante casos de uso, por lo que esta norma fue la que se tomo en cuenta a la hora de realizar la construccion de dicha especificacion de requisitos(Seccion 3.2.3). Se estructuro en: requisitos funcionales, requisitos no funcionales, y su trazabilidad hacia los casos de uso, la cual fue documentada en detalle en el Anexo A.
+
+\paragraph{ISO/IEC 25010 — Calidad del producto de software}
+Se utilizo la norma ISO/IEC 25010 \cite{iso25010} para definir el modelo de caracteristicas de calidad del software, el cual fue utilizado como marco de referencia para los escenarios arquitecturales posteriormente definidos. 
+
+Entre los escenarios definidos que se relacionan directamente con las caracteristicas de calidad se encuentran:
+
+\begin{itemize}
+    \item El escenario de confiabilidad ante datos escasos el cual corresponde a la caracteristica de \textit{fiabilidad};
+    \item El escenario de desempeño ante catalogos extensos corresponde a \textit{eficiencia de desempeño};
+    \item El escenario de confidencialidad de la informacion corresponde a \textit{seguridad};
+    \item El escenario de adaptabilidad del formato de datos corresponde a \textit{portabilidad}.
+\end{itemize}
+
+\paragraph{Modelo C4}
+El Modelo C4 se utilizo para representar la arquitectura de Thary en distintos niveles(Contexto, Contenedores, Componentes), permitiendo tener tanto una vista general del sistema como el detalle interno del subsistema de prediccion.
+
+\paragraph{Modelado de amenazas STRIDE}
+Como parte del analisis de seguridad del sistema, se aplico el modelo STRIDE (\textit{Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege}), un modelo utilizado para la identificacion de amenazas durante el diseño de software. Este analisis permitio identificar y documentar las amenazas que podrian afectar el sistema dividiendolas en seis categorias, y las mitigaciones que se aplicarian a cada una de ellas.

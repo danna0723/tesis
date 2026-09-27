@@ -1,0 +1,36 @@
+\subsubsection{Identificación de Recursos}
+% Guia: recursos humanos, de hardware, software, licencias e infraestructura
+% requeridos.
+El desarrollo del proyecto cuenta con los siguientes recursos:
+
+\textbf{Recursos de software.} El proyecto se apoya en herramientas de software de codigo abierto, por lo que no se requiere de la adquisicion de alguna licencia de pago. Entre las herramientas utilizadas se encuentran:
+
+\begin{itemize}
+    \item Lenguaje de programacion Python, junto con las librerias Flask (framework web), pandas, scikit-learn, XGBoost, statsmodels y SQLAlchemy, entre otras, para el desarrollo del sistema y del pipeline de prediccion.
+    \item MySQL como motor de base de datos relacional, y MySQL Workbench como herramienta de administracion y consulta.
+    \item Git y GitHub para el control de versiones del codigo fuente, junto con GitHub Actions para la ejecucion automatizada de pruebas (integracion continua).
+    \item \textit{pytest} para la implementacion de las pruebas automatizadas del sistema.
+    \item Visual Studio Code como editor de codigo para el desarrollo del proyecto.
+\end{itemize}
+
+
+\textbf{Recursos humanos.} En cuanto a recursos humanos, el proyecto fue desarrollado individualmente por una unica persona que tomo los roles de investigacion, analista de datos y desarrolladora del sistema, esto junto a la orientacion del asesor del proyecto semanalmente.
+
+
+\textbf{Recursos de hardware.} Tanto el desarrollo del sistema como las pruebas se realizaron en un computador portatil con procesador Intel Core i5-6200U (2.30GHz), 16GB de memoria RAM y almacenamiento de 238GB en unidad de estado solido (SSD), sin requerir hardware especializado (como unidades de procesamiento grafico dedicadas) para el entrenamiento de los modelos de prediccion, dado el volumen de datos manejado en el caso de estudio (856 productos, con historial mensual limitado al año 2021).
+
+
+\textbf{Infraestructura y despliegue.} El despliegue del sistema se encuentra en la plataforma de hosting en la nube Railway, bajo un plan de uso gratuito, el cual es suficiente para el alcance del proyecto.
+
+
+\subsubsection{Análisis de Viabilidad}
+% Guia: viabilidad tecnica, economica, operativa y legal de la solucion propuesta.
+El analisis de viabilidad del proyecto se realiza teniendo en cuenta cuatro aspectos: tecnica, economica, operativa y legal. A continuacion se describen cada uno de ellos:
+
+\textbf{Viabilidad tecnica.} El proyecto se considera tecnicamente viable, dado que se apoya unicamente en tecnologias de codigo abierto que se encuentran ampliamente documentadas.
+
+\textbf{Viabilidad economica.} Debido a los limites con los que cuenta el proyecto, este se desarrollo implementando herramientas de acceso libre, que sean gratuitas o al menos tengan un plan gratuito, de manera que el costo economico del sistema es minimo.
+
+\textbf{Viabilidad operativa.} El diseño del sistema cuenta con una aplicacion web que es accesible desde un navegador, no es necesario que el usuario final tenga que instalar un software adicional, por lo que es facil de usar y adoptar en la operacion diaria. Ademas, la interfaz de usuario cuenta con un diseño intiutivo y facil de usar para cualquier tipo de usuario.
+
+\textbf{Viabilidad legal.} Los datos historicos reales que fueron usados para probar el sistema fueron proporcionados con fines exclusivamente academicos. El sistema cuenta con mecanismos de seguridad que garantizan la confidencialidad de la informacion manejada.
