@@ -11,11 +11,34 @@ Finalmente, el enfoque tambien incluye la evaluacion mediante el uso de un caso 
 La planeación del proyecto se estructuró en cuatro fases secuenciales, cada una con un conjunto de entregables y actividades que se detallan a continuacion:
 
 \begin{itemize}
-    \item Fase 1 (Fase de fundamentacion): En esta fase se plantean los objetivos del proyecto y realiza la revision de literatura y construccion del marco de referencia, se definen los criterios de inclusion y exclusion de los estudios consultados y se compara el desempeño reportado por los distintos modelos de prediccion de demanda.
+    \item Fase 1 (Fase de fundamentacion): En esta fase se plantean los objetivos del proyecto y se realiza la revision de literatura y construccion del marco de referencia, se definen los criterios de inclusion y exclusion de los estudios consultados y se compara el desempeño reportado por los distintos modelos de prediccion de demanda.
     \item Fase 2 (Fase de analisis y diseño): Se definen los requisitos del sistema, la arquitectura y el modelo de datos
-    \item Fase 3 (Fase de construccion): Se implementa el sistema de prediccion, con el modulo de calculo de puntos de reposicion y la interfaz de usuario, en esta fase se desarrollan el sistema identificando limitaciones en los datos o en los modelos, asi como limitaciones propias de la arquitectura inicial del sistema, las cuales se fueron corrigiendo a medida que avanzaba el desarrollo y surgian nuevas necesidades y propuestas para satisfacerlas. 
+    \item Fase 3 (Fase de construccion): Se implementa el sistema de prediccion, con el modulo de calculo de puntos de reposicion y la interfaz de usuario, en esta fase se desarrolla el sistema identificando limitaciones en los datos o en los modelos, asi como limitaciones propias de la arquitectura inicial del sistema, las cuales se fueron corrigiendo a medida que avanzaba el desarrollo y surgían nuevas necesidades y propuestas para satisfacerlas.
     \item Fase 4 (Fase de evaluacion): En la fase final se le aplica al sistema un plan de verificacion y validacion, que incluye la evaluacion de los modelos de prediccion de demanda y la validacion del sistema en el dominio de la salud, mediante el uso de un caso de estudio real.
 \end{itemize}
+
+\subsubsection{Identificación y mitigación de riesgos}
+
+Durante la planeación del proyecto se identificaron los siguientes riesgos, junto con las medidas de mitigación adoptadas para cada uno:
+
+\begin{table}[H]
+    \centering
+    \caption{Identificación y mitigación de riesgos del proyecto.}
+    \label{tab:riesgos}
+    \begin{tabularx}{\textwidth}{lXXcc}
+        \toprule
+        \textbf{ID} & \textbf{Riesgo} & \textbf{Mitigación} & \textbf{Probabilidad} & \textbf{Impacto} \\
+        \midrule
+        R1 & Limitación en la calidad de los datos históricos (2021) & Realizar limpieza y validación de datos, aplicar técnicas de preprocesamiento & Media & Alto \\
+        R2 & Baja precisión de los modelos de predicción & Probar diferentes modelos y ajustar parámetros & Media & Alto \\
+        R3 & Retrasos en el cronograma del proyecto & Planificación por fases y seguimiento continuo & Baja & Medio \\
+        R4 & Dependencia de un único conjunto de datos & Documentar limitaciones y considerar ampliación futura & Alta & Medio \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+Al finalizar el proyecto, los riesgos R1 y R2 se mitigaron mediante las etapas de carga y limpieza de datos (Sección 3.2.9) y la comparación empírica de los tres modelos candidatos (Sección 3.2.12), respectivamente. El riesgo R3 se controló mediante las cuatro fases de planeación descritas anteriormente en esta misma sección. El riesgo R4, por su parte, se materializó parcialmente: el sistema se validó únicamente sobre el dominio de salud, y la validación en otros dominios de inventario se documenta como una línea de trabajo futuro, tal como se había previsto en su mitigación original.
+
 
 \subsubsection{Ciclo de Vida del Software (Ejecución)}
 La ejecucion del proyecto se realizo siguiendo un ciclo de vida iterativo-incremental, en el cual el sistema se construyo en sucesivas versiones del mismo en el que en cada una de estas se iba ampliando o corrigiendo detalles de la anterior a partir de la evaluacion de los resultados obtenidos. La eleccion de esta estrategia se basa en la naturaleza del proyecto, en el que al estar trabajando en el desarrollo de un sistema de prediccion, es esperable que decisiones como la forma de representar los meses como variable de entrada, o el conjunto de variables historicas utilizadas por el modelo, no podrian definirse por adelantado, sino que se irian determinando y ajustando a medida que se experimentara y observara el comportamiento del sistema durante sus fases de desarrollo.

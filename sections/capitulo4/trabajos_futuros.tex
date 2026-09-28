@@ -22,3 +22,7 @@ Durante la revision de literatura se exploraron diferentes tecnicas de Deep Lear
 \subsubsection{Reevaluacion del asistente conversacional}
 
 Durante una primera version de Thary, se implemento un asistente conversacional basado en un modelo de lenguaje ejecutado localmente (Ollama), el cual fue posteriormente descartado como una de las funcionalidades del sistema en la version final. Se podria considerar en el futuro reevaluar la reactivacion de esta funcionalidad, incluyendo un analisis mas detallado de su valor real para el usuario final.
+
+\subsubsection{Combinación de pronósticos con métodos más sofisticados}
+
+La combinación de pronósticos implementada en Thary utiliza un único peso fijo, calculado por mínimos cuadrados sobre todo el periodo de backtest, que es el método más simple dentro de la literatura de combinación de pronósticos \cite{wang2023combinations}. Se propone como trabajo futuro explorar métodos más sofisticados, como pesos que varíen en el tiempo o combinaciones que incluyan los tres modelos candidatos en lugar de solo dos.

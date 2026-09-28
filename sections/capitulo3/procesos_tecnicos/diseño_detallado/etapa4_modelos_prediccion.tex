@@ -119,6 +119,26 @@ def entrenar_xgboost(X_train, y_train_log, X_test):
     return model, pred_xgb
 \end{minted}
 
+Cada uno de estos hiperparametros tiene un impacto especifico en como se entrena el modelo, y a continuacion se explica que efecto tiene el valor elegido para Thary:
+
+\begin{itemize}
+    \item \texttt{n\_estimators=500}: Es la cantidad de arboles que se entrenan uno tras otro. Con mas arboles, el modelo tiene mas oportunidades de corregir los errores que va dejando cada arbol anterior, pero tambien tarda mas en entrenarse. El Ejemplo 1 usa \texttt{n\_estimators=300}; se subio a 500 porque, al combinarse con una tasa de aprendizaje baja (\texttt{learning\_rate=0.05}), se necesitan mas arboles para que el modelo aprenda lo suficiente. Para confirmar que este cambio ayudaba, se probo con distintas cantidades de arboles (de 100 a 1200): con 300 (el valor original del Ejemplo 1) el error fue mayor que con 500, y subir mas alla de 500 lo seguia bajando, pero muy poco (menos de 1\% entre 500 y 1200), mientras que el tiempo de entrenamiento se triplicaba. Se eligio 500 por ser una mejora real sobre el valor original, sin pagar un tiempo de entrenamiento mucho mayor para una ganancia casi nula, algo relevante porque el modelo se vuelve a entrenar cada vez que un usuario sube un archivo.
+
+    \item \texttt{learning\_rate=0.05}: Es la tasa de aprendizaje (\textit{shrinkage}), y controla que tanto peso se le da a cada arbol nuevo que se agrega (Seccion 2.1.9). Con un valor bajo como 0.05, cada arbol individual aporta poco al resultado final, por lo que se necesitan muchos arboles (de ahi los 500) para que el modelo aprenda bien, pero a cambio, el modelo es menos propenso a memorizar el ruido de los datos de entrenamiento. Este valor es identico al del Ejemplo 1.
+
+    \item \texttt{max\_depth=4}: Limita cuantas divisiones puede hacer cada arbol (Seccion 2.1.9). Con una profundidad de 4, cada arbol es relativamente simple, lo que evita que un solo arbol se vuelva demasiado complejo y termine memorizando patrones muy especificos de los datos de entrenamiento en vez de aprender el comportamiento general de la demanda. Este valor es identico al del Ejemplo 1.
+
+    \item \texttt{subsample=0.8}: En cada arbol nuevo, solo se usa el 80\% de las filas de entrenamiento, escogidas al azar (Seccion 2.1.9). Esto hace que los arboles no vean siempre exactamente los mismos datos, lo que ayuda a que el modelo generalice mejor en vez de ajustarse demasiado a casos particulares del historial. Este valor es identico al del Ejemplo 1.
+
+    \item \texttt{colsample\_bytree=0.8}: De manera similar al anterior, pero con las variables (columnas): cada arbol solo usa el 80\% de las variables disponibles, tambien escogidas al azar. Esto evita que el modelo dependa siempre de las mismas variables para todos los arboles, lo que tambien ayuda a que generalice mejor. Este valor es identico al del Ejemplo 1.
+
+    \item \texttt{reg\_alpha=0.1} y \texttt{reg\_lambda=1.0}: Son los terminos de regularizacion L1 y L2 que penalizan la complejidad de cada arbol (Seccion 2.1.9). Un valor mas alto hace que el modelo sea mas conservador, prefiriendo arboles mas simples. Los dos valores se mantuvieron identicos al Ejemplo 1. Al probar otros valores de \texttt{reg\_alpha} sobre el archivo del caso de estudio, el resultado con 0.1 fue muy parecido al de no usar esta regularizacion, asi que se conservo el valor del Ejemplo 1 sin necesidad de cambiarlo.
+
+    \item \texttt{random\_state=42}: No afecta el resultado del modelo en si, sino que fija la semilla aleatoria que se usa en el \texttt{subsample} y el \texttt{colsample\_bytree}, para que cada vez que se entrene el modelo con los mismos datos, se obtenga exactamente el mismo resultado. Este valor tambien es identico al del Ejemplo 1.
+
+    \item \texttt{n\_jobs=-1}: Le indica a XGBoost que use todos los nucleos de procesamiento disponibles en la maquina, en vez de uno solo, lo que reduce el tiempo de entrenamiento cuando se procesan catalogos con muchos productos. Este parametro no viene del Ejemplo 1 (que no lo especifica); se agrego en Thary porque no afecta el resultado del modelo, solo la velocidad de entrenamiento.
+\end{itemize}
+
 En cuanto a la transformacion logaritmica, se implemento siguiendo la logica del \textit{Ejemplo 3 (XGBoost)} \cite{ejemplo3_ksmooi_inventorydemand}, en el que el modelo no entrena directamente sobre \texttt{y\_train}, que seria la demanda real, si no sobre \texttt{y\_train\_log}, que es la transformacion logaritmica de \texttt{y\_train}. 
 
 Esto porque en la vida real, la demanda suele tener una distribucion en la que puede haber muchos productos con demanda baja y pocos con picos muy altos. Si se entrenara directamente sobre esos valores el modelo podria enfocarse demasiado en los pocos casos extremos, esto llevaria a que se prediciera peor la mayoria de los casos normales. El logaritmo lo que hace es parejar esa diferencia: hace que los valores muy grandes dejen de pesar tanto en comparacion con los valores mas pequeños, asi el modelo le presta atención equilibrada a todos los productos y no solo a los que tienen demanda extrema. Se usa \texttt{log1p} porque la demanda puede valer 0, y el logaritmo de 0 no existe
@@ -137,6 +157,7 @@ def prediccion_baseline_movil(test_df):
 
 La funcion recibe como parametro el \texttt{test\_df} y posteriormente, para todas las filas, devuelve el valor \texttt{media\_movil\_3} que ya se habia calculado anteriormente.
 
+El unico parametro relevante de este modelo es el tamaño de la ventana que se promedia, en este caso, 3 meses (\texttt{media\_movil\_3}). Una ventana mas pequeña haria que el modelo reaccionara mas rapido a cambios recientes en la demanda, pero tambien lo haria mas sensible a meses atipicos. Una ventana mas grande suavizaria mas el resultado, pero tardaria mas en reflejar cambios reales en el comportamiento de un producto. Se eligio 3 meses siguiendo la misma logica del Ejemplo 1 (SKU Demand Forecasting) \cite{ejemplo1_demandforecast}, que tambien usa una ventana de este tamaño.
 
 \paragraph{Regresion Lineal}
 
@@ -169,6 +190,8 @@ Posteriormente, se convierten todos los valores de cada columna a un rango entre
 \end{minted}
 
 En esta parte se incluye Recursive Feature Elimination (RFE). Este consiste en un metodo que entrena varias veces un modelo de regresion lineal, y en cada una se elimina la variable que aporte menos al modelo hasta que al final, se quede con un numero controlado de variables, en este caso, tienen que ser 2 variables como minimo para posteriormente poder realizar el analisis, pero no pueden ser mas de 8 variables porque no se pueden dejar demasiadas \texttt{n\_rfe = max(2, min(8, len(candidatas) - 1))}.
+
+El \texttt{n\_rfe} define cuantas variables como maximo puede conservar el proceso de RFE (entre 2 y 8, segun \texttt{n\_rfe = max(2, min(8, len(candidatas) - 1))}). El limite inferior de 2 garantiza que quede al menos una variable ademas de la mas importante, y el limite superior de 8 evita que el modelo termine con demasiadas variables, ya que aunque RFE ya descarta las menos importantes, un numero muy alto de variables restantes haria mas lento el resto del proceso de seleccion (VIF y p-valor), que se aplican despues sobre las que sobrevivan a RFE.
 
 Finalmente, \texttt{seleccionadas} es la lista de columnas que sobrevivieron esta primera etapa, aunque es posible que aun existan variables redundantes:
 
