@@ -86,6 +86,89 @@
       \verb https://www.ibm.com/mx-es/think/topics/inventory-management
       \endverb
     \endentry
+    \entry{setyadi2024eoq}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=1f8df45faa0c02ae63de75611f207381}{%
+           family={Setyadi},
+           familyi={S\bibinitperiod},
+           given={Heribertus\bibnamedelima Ary},
+           giveni={H\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=60e86081f7e437c15240f0d9e5b22223}{%
+           family={Al\bibnamedelima Amin},
+           familyi={A\bibinitperiod\bibinitdelim A\bibinitperiod},
+           given={Budi},
+           giveni={B\bibinitperiod}}}%
+        {{hash=0ebfc38e569561b02e2bffbab92925c2}{%
+           family={Widodo},
+           familyi={W\bibinitperiod},
+           given={Pudji},
+           giveni={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{d546de9dc1fad3dcca224b5d9e07512d}
+      \strng{fullhash}{11121052fcd5a5ac9b75840fd070d4f2}
+      \strng{fullhashraw}{11121052fcd5a5ac9b75840fd070d4f2}
+      \strng{bibnamehash}{11121052fcd5a5ac9b75840fd070d4f2}
+      \strng{authorbibnamehash}{11121052fcd5a5ac9b75840fd070d4f2}
+      \strng{authornamehash}{d546de9dc1fad3dcca224b5d9e07512d}
+      \strng{authorfullhash}{11121052fcd5a5ac9b75840fd070d4f2}
+      \strng{authorfullhashraw}{11121052fcd5a5ac9b75840fd070d4f2}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Information Systems and Informatics}
+      \field{note}{Disponible en: \url{https://doaj.org/article/ec81c372e4604ad39a6690acfae59380}}
+      \field{number}{1}
+      \field{title}{Implementation Economic Order Quantity and Reorder Point Methods in Inventory Management Information Systems}
+      \field{volume}{6}
+      \field{year}{2024}
+      \field{pages}{103\bibrangedash 117}
+      \range{pages}{15}
+      \verb{doi}
+      \verb 10.51519/journalisi.v6i1.647
+      \endverb
+    \endentry
+    \entry{syntetos2005categorization}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=5b68228c5e6947b02f2888df5620c76c}{%
+           family={Syntetos},
+           familyi={S\bibinitperiod},
+           given={A.\bibnamedelimi A.},
+           giveni={A\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=d0ba77bd999002b79cbdeb83198abc51}{%
+           family={Boylan},
+           familyi={B\bibinitperiod},
+           given={J.\bibnamedelimi E.},
+           giveni={J\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=bac6b645ca568eef218a907003a101a3}{%
+           family={Croston},
+           familyi={C\bibinitperiod},
+           given={J.\bibnamedelimi D.},
+           giveni={J\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+      }
+      \strng{namehash}{901252fac8fd23e4435788b726848ce1}
+      \strng{fullhash}{46549b06dc07f9b63307175caea43c91}
+      \strng{fullhashraw}{46549b06dc07f9b63307175caea43c91}
+      \strng{bibnamehash}{46549b06dc07f9b63307175caea43c91}
+      \strng{authorbibnamehash}{46549b06dc07f9b63307175caea43c91}
+      \strng{authornamehash}{901252fac8fd23e4435788b726848ce1}
+      \strng{authorfullhash}{46549b06dc07f9b63307175caea43c91}
+      \strng{authorfullhashraw}{46549b06dc07f9b63307175caea43c91}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of the Operational Research Society}
+      \field{number}{5}
+      \field{title}{On the categorization of demand patterns}
+      \field{volume}{56}
+      \field{year}{2005}
+      \field{pages}{495\bibrangedash 503}
+      \range{pages}{9}
+      \verb{doi}
+      \verb 10.1057/palgrave.jors.2601841
+      \endverb
+    \endentry
     \entry{ibm_prevision_demanda}{online}{}{}
       \name{author}{1}{}{%
         {{hash=9ac2a54a168ac507d7520995890811ff}{%
@@ -103,8 +186,8 @@
       \strng{authornamehash}{9ac2a54a168ac507d7520995890811ff}
       \strng{authorfullhash}{9ac2a54a168ac507d7520995890811ff}
       \strng{authorfullhashraw}{9ac2a54a168ac507d7520995890811ff}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{¿Qué es la previsión de demanda?}
@@ -145,8 +228,8 @@
       \strng{authornamehash}{f3e05c7440ad9472b1c6d591d6be8e45}
       \strng{authorfullhash}{23fe3fc9e29bfd67668feaa2fb4fb0cd}
       \strng{authorfullhashraw}{23fe3fc9e29bfd67668feaa2fb4fb0cd}
-      \field{sortinit}{7}
-      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Proper inventory planning should incorporate factors changing over time, since static factors are not robust to this apparent variability. In models of inventories is necessary to recognize the great demand uncertainty. This paper reviews the state of the art of the most significant developments related to inventory models, especially those who consider dynamic demands in time. In addition, demand forecasting models and some techniques for optimizing inventories are analyzed, considering costs and service levels, among others. In the literature review, gaps have been identified related to the treatment of multivariate inventories as well as the use of Bayesian statistics for the purpose of optimization and the development of demand forecasts.}
@@ -189,8 +272,8 @@
       \strng{authornamehash}{c5171c601f07a716190810c640d556a6}
       \strng{authorfullhash}{c5171c601f07a716190810c640d556a6}
       \strng{authorfullhashraw}{c5171c601f07a716190810c640d556a6}
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Este trabajo se organiza en cuatro secciones principales que abordan de manera integral el análisis de series temporales aplicado a la predicción de demanda. La primera sección presenta el origen de los datos y realiza un análisis descriptivo de las ventas históricas, proporcionando una visión general inicial. La segunda sección explora los modelos de estrategia utilizados en el proyecto, como Power BI, ARIMA, SARIMAX y Prophet, herramientas clave en el análisis de datos temporales. La tercera sección se enfoca en un informe sobre la predicción de demanda técnica basada en el modelo SARIMAX, mientras que la cuarta sección detalla el análisis de series temporales del producto en estudio y concluye con recomendaciones y observaciones generales. Los métodos de análisis de series temporales se dividen en dos categorías: cualitativos y cuantitativos. Los métodos cualitativos, basados en el juicio humano y la experiencia, permiten identificar patrones y tendencias de forma subjetiva, mientras que los métodos cuantitativos emplean modelos matemáticos para detectar patrones en los datos de manera objetiva. Entre los métodos cuantitativos más comunes se encuentran la regresión lineal, el análisis de componentes principales y el modelo ARIMA. La estructura metodológica planteada en este trabajo no solo destaca la importancia de seleccionar la técnica adecuada, sino también de adaptar el modelo a los objetivos específicos de predicción y análisis. Esto proporciona una base sólida para que el análisis de series temporales no solo mejore las proyecciones de demanda, sino también optimice la gestión de recursos en función de las necesidades reales del mercado.}
@@ -202,6 +285,36 @@
       \verb{url}
       \verb https://repository.unad.edu.co/handle/10596/69801
       \endverb
+    \endentry
+    \entry{verma2019movingaverage}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=cb6110a1e166582cdc55cfb672327210}{%
+           family={Verma},
+           familyi={V\bibinitperiod},
+           given={Revendra},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{cb6110a1e166582cdc55cfb672327210}
+      \strng{fullhash}{cb6110a1e166582cdc55cfb672327210}
+      \strng{fullhashraw}{cb6110a1e166582cdc55cfb672327210}
+      \strng{bibnamehash}{cb6110a1e166582cdc55cfb672327210}
+      \strng{authorbibnamehash}{cb6110a1e166582cdc55cfb672327210}
+      \strng{authornamehash}{cb6110a1e166582cdc55cfb672327210}
+      \strng{authorfullhash}{cb6110a1e166582cdc55cfb672327210}
+      \strng{authorfullhashraw}{cb6110a1e166582cdc55cfb672327210}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{2394-4161}
+      \field{journaltitle}{MIJBR-MITS International Journal of Research}
+      \field{note}{Disponible en: \url{https://mits.ac.in/mits_new/public/uploads/jntua/d8cd460ac347bfb463616048e32ada5f.pdf}}
+      \field{number}{1}
+      \field{title}{Demand Forecasting of Spare Parts Store by Moving Average Method and Verification by Exponential Method}
+      \field{volume}{6}
+      \field{year}{2019}
+      \field{pages}{51}
+      \range{pages}{1}
     \endentry
     \entry{10124729}{article}{}{}
       \name{author}{2}{}{%
@@ -309,54 +422,562 @@
       \field{pages}{195\bibrangedash 214}
       \range{pages}{20}
     \endentry
-    \entry{ren2017novel}{inproceedings}{}{}
-      \name{author}{5}{}{%
-        {{hash=52dc027c9e14da50dfa7d5e647725987}{%
-           family={Ren},
-           familyi={R\bibinitperiod},
-           given={Xudie},
-           giveni={X\bibinitperiod}}}%
-        {{hash=0de3702db710a80b0a1168c806e60f67}{%
-           family={Guo},
+    \entry{guyon2002rfe}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=284a778b6c8e17f1aae38e288dc06036}{%
+           family={Guyon},
            familyi={G\bibinitperiod},
-           given={Haonan},
-           giveni={H\bibinitperiod}}}%
-        {{hash=fd4b78f09a00b455e6d7c1a495cb77a6}{%
-           family={Li},
-           familyi={L\bibinitperiod},
-           given={Shenghong},
-           giveni={S\bibinitperiod}}}%
-        {{hash=a5531c68b8460bd5ad5c47cf9ef6fc81}{%
-           family={Wang},
+           given={Isabelle},
+           giveni={I\bibinitperiod}}}%
+        {{hash=417a25f3511d7c21e76d4a15e67dd679}{%
+           family={Weston},
            familyi={W\bibinitperiod},
-           given={Shilin},
-           giveni={S\bibinitperiod}}}%
-        {{hash=c2af0f05e99850ddfe02b8fc2d66808b}{%
-           family={Li},
-           familyi={L\bibinitperiod},
-           given={Jianhua},
+           given={Jason},
            giveni={J\bibinitperiod}}}%
+        {{hash=c6d42b38aaca94bb6786c40d5cdbeca6}{%
+           family={Barnhill},
+           familyi={B\bibinitperiod},
+           given={Stephen},
+           giveni={S\bibinitperiod}}}%
+        {{hash=c2b3e05872463585b4be6aab10d10d63}{%
+           family={Vapnik},
+           familyi={V\bibinitperiod},
+           given={Vladimir},
+           giveni={V\bibinitperiod}}}%
       }
-      \list{organization}{1}{%
-        {Springer}%
-      }
-      \strng{namehash}{e027f79e12bb229349b636075316cd6c}
-      \strng{fullhash}{661650bb04d609e5d845fc4c7fab90ca}
-      \strng{fullhashraw}{661650bb04d609e5d845fc4c7fab90ca}
-      \strng{bibnamehash}{661650bb04d609e5d845fc4c7fab90ca}
-      \strng{authorbibnamehash}{661650bb04d609e5d845fc4c7fab90ca}
-      \strng{authornamehash}{e027f79e12bb229349b636075316cd6c}
-      \strng{authorfullhash}{661650bb04d609e5d845fc4c7fab90ca}
-      \strng{authorfullhashraw}{661650bb04d609e5d845fc4c7fab90ca}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \strng{namehash}{e1556a53b433ff03ee66d9c631b120fa}
+      \strng{fullhash}{4bf9e222836d368d563c8863b63a0c7f}
+      \strng{fullhashraw}{4bf9e222836d368d563c8863b63a0c7f}
+      \strng{bibnamehash}{4bf9e222836d368d563c8863b63a0c7f}
+      \strng{authorbibnamehash}{4bf9e222836d368d563c8863b63a0c7f}
+      \strng{authornamehash}{e1556a53b433ff03ee66d9c631b120fa}
+      \strng{authorfullhash}{4bf9e222836d368d563c8863b63a0c7f}
+      \strng{authorfullhashraw}{4bf9e222836d368d563c8863b63a0c7f}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{booktitle}{International workshop on digital watermarking}
-      \field{title}{A novel image classification method with CNN-XGBoost model}
-      \field{year}{2017}
-      \field{pages}{378\bibrangedash 390}
-      \range{pages}{13}
+      \field{journaltitle}{Machine Learning}
+      \field{note}{Disponible en: \url{https://doi.org/10.1023/A:1012487302797}}
+      \field{number}{1--3}
+      \field{title}{Gene selection for cancer classification using support vector machines}
+      \field{volume}{46}
+      \field{year}{2002}
+      \field{pages}{389\bibrangedash 422}
+      \range{pages}{34}
+      \verb{doi}
+      \verb 10.1023/A:1012487302797
+      \endverb
+    \endentry
+    \entry{obrien2007vif}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=5b2f5276d0a597cbfd50ba0754e614b8}{%
+           family={O'Brien},
+           familyi={O\bibinitperiod},
+           given={Robert\bibnamedelima M.},
+           giveni={R\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \strng{namehash}{5b2f5276d0a597cbfd50ba0754e614b8}
+      \strng{fullhash}{5b2f5276d0a597cbfd50ba0754e614b8}
+      \strng{fullhashraw}{5b2f5276d0a597cbfd50ba0754e614b8}
+      \strng{bibnamehash}{5b2f5276d0a597cbfd50ba0754e614b8}
+      \strng{authorbibnamehash}{5b2f5276d0a597cbfd50ba0754e614b8}
+      \strng{authornamehash}{5b2f5276d0a597cbfd50ba0754e614b8}
+      \strng{authorfullhash}{5b2f5276d0a597cbfd50ba0754e614b8}
+      \strng{authorfullhashraw}{5b2f5276d0a597cbfd50ba0754e614b8}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Quality \& Quantity}
+      \field{note}{Disponible en: \url{https://doi.org/10.1007/s11135-006-9018-6}}
+      \field{number}{5}
+      \field{title}{A caution regarding rules of thumb for variance inflation factors}
+      \field{volume}{41}
+      \field{year}{2007}
+      \field{pages}{673\bibrangedash 690}
+      \range{pages}{18}
+      \verb{doi}
+      \verb 10.1007/s11135-006-9018-6
+      \endverb
+    \endentry
+    \entry{chen2016xgboost}{inproceedings}{}{}
+      \name{author}{2}{}{%
+        {{hash=48461ccdf50ba5a54e29a354aa734c0b}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Tianqi},
+           giveni={T\bibinitperiod}}}%
+        {{hash=c9ab8ac486d7f85ac914b1a8e51e512b}{%
+           family={Guestrin},
+           familyi={G\bibinitperiod},
+           given={Carlos},
+           giveni={C\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {New York, NY, USA}%
+      }
+      \list{publisher}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{f79ceb030bcf791e5521f87ac6ada03b}
+      \strng{fullhash}{f79ceb030bcf791e5521f87ac6ada03b}
+      \strng{fullhashraw}{f79ceb030bcf791e5521f87ac6ada03b}
+      \strng{bibnamehash}{f79ceb030bcf791e5521f87ac6ada03b}
+      \strng{authorbibnamehash}{f79ceb030bcf791e5521f87ac6ada03b}
+      \strng{authornamehash}{f79ceb030bcf791e5521f87ac6ada03b}
+      \strng{authorfullhash}{f79ceb030bcf791e5521f87ac6ada03b}
+      \strng{authorfullhashraw}{f79ceb030bcf791e5521f87ac6ada03b}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining}
+      \field{note}{Disponible en: \url{https://doi.org/10.1145/2939672.2939785}}
+      \field{series}{KDD '16}
+      \field{title}{{XGBoost}: A Scalable Tree Boosting System}
+      \field{year}{2016}
+      \field{pages}{785\bibrangedash 794}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.1145/2939672.2939785
+      \endverb
+    \endentry
+    \entry{xgboostdocs}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=22d436eac46158db792e782fc2723b80}{%
+           family={{XGBoost Developers}},
+           familyi={X\bibinitperiod}}}%
+      }
+      \strng{namehash}{22d436eac46158db792e782fc2723b80}
+      \strng{fullhash}{22d436eac46158db792e782fc2723b80}
+      \strng{fullhashraw}{22d436eac46158db792e782fc2723b80}
+      \strng{bibnamehash}{22d436eac46158db792e782fc2723b80}
+      \strng{authorbibnamehash}{22d436eac46158db792e782fc2723b80}
+      \strng{authornamehash}{22d436eac46158db792e782fc2723b80}
+      \strng{authorfullhash}{22d436eac46158db792e782fc2723b80}
+      \strng{authorfullhashraw}{22d436eac46158db792e782fc2723b80}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{Documentacion oficial de XGBoost}
+      \field{note}{Disponible en: \url{https://xgboost.readthedocs.io/en/release_2.1.0/parameter.html}}
+      \field{title}{{XGBoost Parameters}}
+    \endentry
+    \entry{hewamalage2021rnn}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=bcedb4c1d2a852d41022a05e63751bf9}{%
+           family={Hewamalage},
+           familyi={H\bibinitperiod},
+           given={Hansika},
+           giveni={H\bibinitperiod}}}%
+        {{hash=fb7be81f0574878d688bb03f0abb8502}{%
+           family={Bergmeir},
+           familyi={B\bibinitperiod},
+           given={Christoph},
+           giveni={C\bibinitperiod}}}%
+        {{hash=d2ea33f311ab7e75395d319cf5cb988d}{%
+           family={Bandara},
+           familyi={B\bibinitperiod},
+           given={Kasun},
+           giveni={K\bibinitperiod}}}%
+      }
+      \strng{namehash}{bc9e04859eb50a11cb46beca8be22c45}
+      \strng{fullhash}{29e798ed628767a2e5b0b45cb594e1c7}
+      \strng{fullhashraw}{29e798ed628767a2e5b0b45cb594e1c7}
+      \strng{bibnamehash}{29e798ed628767a2e5b0b45cb594e1c7}
+      \strng{authorbibnamehash}{29e798ed628767a2e5b0b45cb594e1c7}
+      \strng{authornamehash}{bc9e04859eb50a11cb46beca8be22c45}
+      \strng{authorfullhash}{29e798ed628767a2e5b0b45cb594e1c7}
+      \strng{authorfullhashraw}{29e798ed628767a2e5b0b45cb594e1c7}
+      \field{extraname}{1}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{International Journal of Forecasting}
+      \field{note}{Disponible en: \url{https://arxiv.org/abs/1909.00590}}
+      \field{number}{1}
+      \field{title}{Recurrent Neural Networks for Time Series Forecasting: Current Status and Future Directions}
+      \field{volume}{37}
+      \field{year}{2021}
+      \field{pages}{388\bibrangedash 427}
+      \range{pages}{40}
+    \endentry
+    \entry{luetkepohl2009log}{report}{}{}
+      \name{author}{2}{}{%
+        {{hash=d400c31862099db9f37a97b35e10814d}{%
+           family={Lütkepohl},
+           familyi={L\bibinitperiod},
+           given={Helmut},
+           giveni={H\bibinitperiod}}}%
+        {{hash=6594c8034810990b26536afd6e6c6043}{%
+           family={Xu},
+           familyi={X\bibinitperiod},
+           given={Fang},
+           giveni={F\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {CESifo}%
+      }
+      \strng{namehash}{e69be6585a7bcadb6214504c61c634ba}
+      \strng{fullhash}{e69be6585a7bcadb6214504c61c634ba}
+      \strng{fullhashraw}{e69be6585a7bcadb6214504c61c634ba}
+      \strng{bibnamehash}{e69be6585a7bcadb6214504c61c634ba}
+      \strng{authorbibnamehash}{e69be6585a7bcadb6214504c61c634ba}
+      \strng{authornamehash}{e69be6585a7bcadb6214504c61c634ba}
+      \strng{authorfullhash}{e69be6585a7bcadb6214504c61c634ba}
+      \strng{authorfullhashraw}{e69be6585a7bcadb6214504c61c634ba}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Disponible en: \url{https://www.cesifo.org/en/publications/2009/working-paper/role-log-transformation-forecasting-economic-variables}}
+      \field{number}{2591}
+      \field{title}{The Role of the Log Transformation in Forecasting Economic Variables}
+      \field{type}{CESifo Working Paper}
+      \field{year}{2009}
+    \endentry
+    \entry{jahin2025mcdfn}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=6ec53b38d2143431674ce98015adb6a8}{%
+           family={Jahin},
+           familyi={J\bibinitperiod},
+           given={Md\bibnamedelima Abrar},
+           giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=8bdec6e2e828bbabb670976f053bb555}{%
+           family={Shahriar},
+           familyi={S\bibinitperiod},
+           given={Asef},
+           giveni={A\bibinitperiod}}}%
+        {{hash=1cfe61301a7debcdf37333519c84c880}{%
+           family={Amin},
+           familyi={A\bibinitperiod},
+           given={Md\bibnamedelima Al},
+           giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \strng{namehash}{41ca603b96a5d172ca15ac999b48a728}
+      \strng{fullhash}{1e9eae44b022001864dde1d870894ce3}
+      \strng{fullhashraw}{1e9eae44b022001864dde1d870894ce3}
+      \strng{bibnamehash}{1e9eae44b022001864dde1d870894ce3}
+      \strng{authorbibnamehash}{1e9eae44b022001864dde1d870894ce3}
+      \strng{authornamehash}{41ca603b96a5d172ca15ac999b48a728}
+      \strng{authorfullhash}{1e9eae44b022001864dde1d870894ce3}
+      \strng{authorfullhashraw}{1e9eae44b022001864dde1d870894ce3}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Evolutionary Intelligence}
+      \field{note}{Disponible en: \url{https://doi.org/10.1007/s12065-025-01053-7}}
+      \field{title}{{MCDFN}: Supply Chain Demand Forecasting via an Explainable Multi-Channel Data Fusion Network Model}
+      \field{year}{2025}
+      \verb{doi}
+      \verb 10.1007/s12065-025-01053-7
+      \endverb
+    \endentry
+    \entry{wang2023combinations}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=201ce602c48237b8f58d2607ae3dc96e}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Xiaoqian},
+           giveni={X\bibinitperiod}}}%
+        {{hash=2f709db8a046ae1d056e75c1f3aad31c}{%
+           family={Hyndman},
+           familyi={H\bibinitperiod},
+           given={Rob\bibnamedelima J.},
+           giveni={R\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=89b23cce0bb40099f7b69f6577f665fe}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Feng},
+           giveni={F\bibinitperiod}}}%
+        {{hash=19cdef69ea6e417b04dbe89b2bca786b}{%
+           family={Kang},
+           familyi={K\bibinitperiod},
+           given={Yanfei},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \strng{namehash}{9c9b7af522197e2b1702e3cc2b7f98db}
+      \strng{fullhash}{b27d0d88f682a434b1f55d770dbd34c9}
+      \strng{fullhashraw}{b27d0d88f682a434b1f55d770dbd34c9}
+      \strng{bibnamehash}{b27d0d88f682a434b1f55d770dbd34c9}
+      \strng{authorbibnamehash}{b27d0d88f682a434b1f55d770dbd34c9}
+      \strng{authornamehash}{9c9b7af522197e2b1702e3cc2b7f98db}
+      \strng{authorfullhash}{b27d0d88f682a434b1f55d770dbd34c9}
+      \strng{authorfullhashraw}{b27d0d88f682a434b1f55d770dbd34c9}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{International Journal of Forecasting}
+      \field{note}{Disponible en: \url{https://doi.org/10.1016/j.ijforecast.2022.11.005}}
+      \field{number}{4}
+      \field{title}{Forecast combinations: An over 50-year review}
+      \field{volume}{39}
+      \field{year}{2023}
+      \field{pages}{1518\bibrangedash 1547}
+      \range{pages}{30}
+      \verb{doi}
+      \verb 10.1016/j.ijforecast.2022.11.005
+      \endverb
+    \endentry
+    \entry{bates1969combination}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=5b6e32be3622a9aff32a57e288e6f579}{%
+           family={Bates},
+           familyi={B\bibinitperiod},
+           given={J.\bibnamedelimi M.},
+           giveni={J\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=90c4f36411724ec312077a54a0f71d60}{%
+           family={Granger},
+           familyi={G\bibinitperiod},
+           given={C.\bibnamedelimi W.\bibnamedelimi J.},
+           giveni={C\bibinitperiod\bibinitdelim W\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \strng{namehash}{eff2500053d70f182fdc49dfd66de945}
+      \strng{fullhash}{eff2500053d70f182fdc49dfd66de945}
+      \strng{fullhashraw}{eff2500053d70f182fdc49dfd66de945}
+      \strng{bibnamehash}{eff2500053d70f182fdc49dfd66de945}
+      \strng{authorbibnamehash}{eff2500053d70f182fdc49dfd66de945}
+      \strng{authornamehash}{eff2500053d70f182fdc49dfd66de945}
+      \strng{authorfullhash}{eff2500053d70f182fdc49dfd66de945}
+      \strng{authorfullhashraw}{eff2500053d70f182fdc49dfd66de945}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Operational Research Quarterly}
+      \field{number}{4}
+      \field{title}{The Combination of Forecasts}
+      \field{volume}{20}
+      \field{year}{1969}
+      \field{pages}{451\bibrangedash 468}
+      \range{pages}{18}
+    \endentry
+    \entry{granger1984improved}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=90c4f36411724ec312077a54a0f71d60}{%
+           family={Granger},
+           familyi={G\bibinitperiod},
+           given={C.\bibnamedelimi W.\bibnamedelimi J.},
+           giveni={C\bibinitperiod\bibinitdelim W\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=a9fa1471258d25790df489f76ac92dfc}{%
+           family={Ramanathan},
+           familyi={R\bibinitperiod},
+           given={R.},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{8c604c0e7ec8c55f1c4b56598263eb37}
+      \strng{fullhash}{8c604c0e7ec8c55f1c4b56598263eb37}
+      \strng{fullhashraw}{8c604c0e7ec8c55f1c4b56598263eb37}
+      \strng{bibnamehash}{8c604c0e7ec8c55f1c4b56598263eb37}
+      \strng{authorbibnamehash}{8c604c0e7ec8c55f1c4b56598263eb37}
+      \strng{authornamehash}{8c604c0e7ec8c55f1c4b56598263eb37}
+      \strng{authorfullhash}{8c604c0e7ec8c55f1c4b56598263eb37}
+      \strng{authorfullhashraw}{8c604c0e7ec8c55f1c4b56598263eb37}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Forecasting}
+      \field{note}{Disponible en: \url{https://doi.org/10.1002/for.3980030207}}
+      \field{number}{2}
+      \field{title}{Improved Methods of Combining Forecasts}
+      \field{volume}{3}
+      \field{year}{1984}
+      \field{pages}{197\bibrangedash 204}
+      \range{pages}{8}
+      \verb{doi}
+      \verb 10.1002/for.3980030207
+      \endverb
+    \endentry
+    \entry{hewamalage2023evaluation}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=bcedb4c1d2a852d41022a05e63751bf9}{%
+           family={Hewamalage},
+           familyi={H\bibinitperiod},
+           given={Hansika},
+           giveni={H\bibinitperiod}}}%
+        {{hash=dcb48c39391d3c56f62b0a477b388105}{%
+           family={Ackermann},
+           familyi={A\bibinitperiod},
+           given={Klaus},
+           giveni={K\bibinitperiod}}}%
+        {{hash=fb7be81f0574878d688bb03f0abb8502}{%
+           family={Bergmeir},
+           familyi={B\bibinitperiod},
+           given={Christoph},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{bc9e04859eb50a11cb46beca8be22c45}
+      \strng{fullhash}{e630202caf641bf7542eb6512e76a276}
+      \strng{fullhashraw}{e630202caf641bf7542eb6512e76a276}
+      \strng{bibnamehash}{e630202caf641bf7542eb6512e76a276}
+      \strng{authorbibnamehash}{e630202caf641bf7542eb6512e76a276}
+      \strng{authornamehash}{bc9e04859eb50a11cb46beca8be22c45}
+      \strng{authorfullhash}{e630202caf641bf7542eb6512e76a276}
+      \strng{authorfullhashraw}{e630202caf641bf7542eb6512e76a276}
+      \field{extraname}{2}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Data Mining and Knowledge Discovery}
+      \field{note}{Disponible en: \url{https://doi.org/10.1007/s10618-022-00894-5}. Copia gratuita: \url{https://arxiv.org/abs/2203.10716}}
+      \field{number}{2}
+      \field{title}{Forecast evaluation for data scientists: common pitfalls and best practices}
+      \field{volume}{37}
+      \field{year}{2023}
+      \field{pages}{788\bibrangedash 832}
+      \range{pages}{45}
+      \verb{doi}
+      \verb 10.1007/s10618-022-00894-5
+      \endverb
+    \endentry
+    \entry{kim2016maape}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=5aab05cbd99b01345f3029b3b6d12e4d}{%
+           family={Kim},
+           familyi={K\bibinitperiod},
+           given={Sungil},
+           giveni={S\bibinitperiod}}}%
+        {{hash=622467a1c0b8434f5b54b89c6b26072d}{%
+           family={Kim},
+           familyi={K\bibinitperiod},
+           given={Heeyoung},
+           giveni={H\bibinitperiod}}}%
+      }
+      \strng{namehash}{9dc81cbd121c94065d719e23a36e7239}
+      \strng{fullhash}{9dc81cbd121c94065d719e23a36e7239}
+      \strng{fullhashraw}{9dc81cbd121c94065d719e23a36e7239}
+      \strng{bibnamehash}{9dc81cbd121c94065d719e23a36e7239}
+      \strng{authorbibnamehash}{9dc81cbd121c94065d719e23a36e7239}
+      \strng{authornamehash}{9dc81cbd121c94065d719e23a36e7239}
+      \strng{authorfullhash}{9dc81cbd121c94065d719e23a36e7239}
+      \strng{authorfullhashraw}{9dc81cbd121c94065d719e23a36e7239}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{International Journal of Forecasting}
+      \field{note}{Disponible en: \url{https://ideas.repec.org/a/eee/intfor/v32y2016i3p669-679.html}}
+      \field{number}{3}
+      \field{title}{A new metric of absolute percentage error for intermittent demand forecasts}
+      \field{volume}{32}
+      \field{year}{2016}
+      \field{pages}{669\bibrangedash 679}
+      \range{pages}{11}
+    \endentry
+    \entry{diebold2015comparing}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=15cc2e3b52b5ea2d3045be532376a348}{%
+           family={Diebold},
+           familyi={D\bibinitperiod},
+           given={Francis\bibnamedelima X.},
+           giveni={F\bibinitperiod\bibinitdelim X\bibinitperiod}}}%
+      }
+      \strng{namehash}{15cc2e3b52b5ea2d3045be532376a348}
+      \strng{fullhash}{15cc2e3b52b5ea2d3045be532376a348}
+      \strng{fullhashraw}{15cc2e3b52b5ea2d3045be532376a348}
+      \strng{bibnamehash}{15cc2e3b52b5ea2d3045be532376a348}
+      \strng{authorbibnamehash}{15cc2e3b52b5ea2d3045be532376a348}
+      \strng{authornamehash}{15cc2e3b52b5ea2d3045be532376a348}
+      \strng{authorfullhash}{15cc2e3b52b5ea2d3045be532376a348}
+      \strng{authorfullhashraw}{15cc2e3b52b5ea2d3045be532376a348}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Business \& Economic Statistics}
+      \field{note}{Disponible en version working paper: \url{http://www.nber.org/papers/w18391.pdf}}
+      \field{number}{1}
+      \field{title}{Comparing Predictive Accuracy, Twenty Years Later: A Personal Perspective on the Use and Abuse of Diebold-Mariano Tests}
+      \field{volume}{33}
+      \field{year}{2015}
+      \field{pages}{1\bibrangedash 9}
+      \range{pages}{9}
+      \verb{doi}
+      \verb 10.1080/07350015.2014.983236
+      \endverb
+    \endentry
+    \entry{diebold_mariano}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=673f5dd0f5f9a74e3f8a278f9359a79a}{%
+           family={Diebold},
+           familyi={D\bibinitperiod},
+           given={Francis},
+           giveni={F\bibinitperiod}}}%
+        {{hash=78988e7485628c80775c2f96d76eaf71}{%
+           family={Mariano},
+           familyi={M\bibinitperiod},
+           given={Roberto},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{6a26e7b77616483aadc783f83723da9b}
+      \strng{fullhash}{6a26e7b77616483aadc783f83723da9b}
+      \strng{fullhashraw}{6a26e7b77616483aadc783f83723da9b}
+      \strng{bibnamehash}{6a26e7b77616483aadc783f83723da9b}
+      \strng{authorbibnamehash}{6a26e7b77616483aadc783f83723da9b}
+      \strng{authornamehash}{6a26e7b77616483aadc783f83723da9b}
+      \strng{authorfullhash}{6a26e7b77616483aadc783f83723da9b}
+      \strng{authorfullhashraw}{6a26e7b77616483aadc783f83723da9b}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Business \& Economic Statistics}
+      \field{month}{02}
+      \field{note}{Disponible en version working paper: \url{https://www.researchgate.net/publication/4722069_Comparing_Predictive_Accuracy/citation/download}}
+      \field{title}{Comparing Predictive Accuracy}
+      \field{volume}{20}
+      \field{year}{2002}
+      \field{pages}{134\bibrangedash 44}
+      \range{pages}{11}
+      \verb{doi}
+      \verb 10.1080/07350015.1995.10524599
+      \endverb
+    \endentry
+    \entry{harvey1997testing}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=4f63956032539faf2fc63521a396bb52}{%
+           family={Harvey},
+           familyi={H\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+        {{hash=a62820d4f34964c620f86ed9b329393e}{%
+           family={Leybourne},
+           familyi={L\bibinitperiod},
+           given={Stephen},
+           giveni={S\bibinitperiod}}}%
+        {{hash=22ddadabe7942d404c287252f9388594}{%
+           family={Newbold},
+           familyi={N\bibinitperiod},
+           given={Paul},
+           giveni={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{47731c0555c355a34dfebaa22db1b3a0}
+      \strng{fullhash}{6123759bd122dbc937b67571722809a4}
+      \strng{fullhashraw}{6123759bd122dbc937b67571722809a4}
+      \strng{bibnamehash}{6123759bd122dbc937b67571722809a4}
+      \strng{authorbibnamehash}{6123759bd122dbc937b67571722809a4}
+      \strng{authornamehash}{47731c0555c355a34dfebaa22db1b3a0}
+      \strng{authorfullhash}{6123759bd122dbc937b67571722809a4}
+      \strng{authorfullhashraw}{6123759bd122dbc937b67571722809a4}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{International Journal of Forecasting}
+      \field{note}{Disponible en: \url{https://ideas.repec.org/a/eee/intfor/v13y1997i2p281-291.html}}
+      \field{number}{2}
+      \field{title}{Testing the equality of prediction mean squared errors}
+      \field{volume}{13}
+      \field{year}{1997}
+      \field{pages}{281\bibrangedash 291}
+      \range{pages}{11}
     \endentry
     \entry{kochak2015demand}{article}{}{}
       \name{author}{2}{}{%
@@ -383,8 +1004,8 @@
       \strng{authornamehash}{e3d1b10e3127039cf7c5b05690d07cf8}
       \strng{authorfullhash}{e3d1b10e3127039cf7c5b05690d07cf8}
       \strng{authorfullhashraw}{e3d1b10e3127039cf7c5b05690d07cf8}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{International journal of mechanical engineering and robotics research}
@@ -432,8 +1053,8 @@
       \strng{authornamehash}{8f222c2a5df7629d25eff9beab8a8b79}
       \strng{authorfullhash}{102f007c21a9cf836c5b955ddcacf470}
       \strng{authorfullhashraw}{102f007c21a9cf836c5b955ddcacf470}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{month}{9}
@@ -457,8 +1078,8 @@
       \strng{authornamehash}{517fb2c1e73ee22fc068e1f8835109f0}
       \strng{authorfullhash}{517fb2c1e73ee22fc068e1f8835109f0}
       \strng{authorfullhashraw}{517fb2c1e73ee22fc068e1f8835109f0}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Advances in Economics, Management and Political Sciences}
@@ -499,8 +1120,8 @@
       \strng{authornamehash}{3ecc9dce9551ff5a2b5f2b0c1f6d34f5}
       \strng{authorfullhash}{933a54eab598f54db8d6c8dd7bc5cb73}
       \strng{authorfullhashraw}{933a54eab598f54db8d6c8dd7bc5cb73}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{issn}{0957-4174}
@@ -557,8 +1178,8 @@
       \strng{authornamehash}{ac4b6dded842549c0c8b219e06896d7a}
       \strng{authorfullhash}{2c08c5255abf97e3676f79ad13f5f28b}
       \strng{authorfullhashraw}{2c08c5255abf97e3676f79ad13f5f28b}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{International Journal of Interactive Mobile Technologies (iJIM)}
@@ -595,8 +1216,8 @@
       \strng{authornamehash}{c21b21695e15bb9c8da0d4c151f18b22}
       \strng{authorfullhash}{c21b21695e15bb9c8da0d4c151f18b22}
       \strng{authorfullhashraw}{c21b21695e15bb9c8da0d4c151f18b22}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{GitHub repository}
@@ -623,8 +1244,8 @@
       \strng{authornamehash}{0c6aae0f62e37c6cb627568980767d23}
       \strng{authorfullhash}{0c6aae0f62e37c6cb627568980767d23}
       \strng{authorfullhashraw}{0c6aae0f62e37c6cb627568980767d23}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{month}{8}
@@ -646,8 +1267,8 @@
       \strng{authornamehash}{fcfc6fa61e4c91d7d95fc68e6aa0ffa2}
       \strng{authorfullhash}{fcfc6fa61e4c91d7d95fc68e6aa0ffa2}
       \strng{authorfullhashraw}{fcfc6fa61e4c91d7d95fc68e6aa0ffa2}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://www.kaggle.com/code/ksmooi/inventory-demand-forecast-xgboost-reg}}
@@ -668,8 +1289,8 @@
       \strng{authornamehash}{89dfea52b1e1caffff95d27784186164}
       \strng{authorfullhash}{89dfea52b1e1caffff95d27784186164}
       \strng{authorfullhashraw}{89dfea52b1e1caffff95d27784186164}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{note}{Disponible en: \url{https://github.com/21-f3000932/LinearRegression_Demand-forecasting/tree/main}}
@@ -690,8 +1311,8 @@
       \strng{authorfullhash}{81077c206f392162560480542b37f0cd}
       \strng{authorfullhashraw}{81077c206f392162560480542b37f0cd}
       \field{extraname}{1}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{edition}{2}
@@ -716,8 +1337,8 @@
       \strng{authorfullhash}{81077c206f392162560480542b37f0cd}
       \strng{authorfullhashraw}{81077c206f392162560480542b37f0cd}
       \field{extraname}{2}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{edition}{2}
@@ -740,8 +1361,8 @@
       \strng{authornamehash}{0828a8408614177181026ea908d5594a}
       \strng{authorfullhash}{0828a8408614177181026ea908d5594a}
       \strng{authorfullhashraw}{0828a8408614177181026ea908d5594a}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{edition}{2}
@@ -749,75 +1370,6 @@
       \field{note}{Disponible en: \url{https://www.iso.org/standard/78176.html}}
       \field{title}{{ISO/IEC 25010:2023 -- Systems and software engineering -- Systems and software Quality Requirements and Evaluation (SQuaRE) -- Product quality model}}
       \field{year}{2023}
-    \endentry
-    \entry{diebold_mariano}{article}{}{}
-      \name{author}{2}{}{%
-        {{hash=673f5dd0f5f9a74e3f8a278f9359a79a}{%
-           family={Diebold},
-           familyi={D\bibinitperiod},
-           given={Francis},
-           giveni={F\bibinitperiod}}}%
-        {{hash=78988e7485628c80775c2f96d76eaf71}{%
-           family={Mariano},
-           familyi={M\bibinitperiod},
-           given={Roberto},
-           giveni={R\bibinitperiod}}}%
-      }
-      \strng{namehash}{6a26e7b77616483aadc783f83723da9b}
-      \strng{fullhash}{6a26e7b77616483aadc783f83723da9b}
-      \strng{fullhashraw}{6a26e7b77616483aadc783f83723da9b}
-      \strng{bibnamehash}{6a26e7b77616483aadc783f83723da9b}
-      \strng{authorbibnamehash}{6a26e7b77616483aadc783f83723da9b}
-      \strng{authornamehash}{6a26e7b77616483aadc783f83723da9b}
-      \strng{authorfullhash}{6a26e7b77616483aadc783f83723da9b}
-      \strng{authorfullhashraw}{6a26e7b77616483aadc783f83723da9b}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Journal of Business \& Economic Statistics}
-      \field{month}{02}
-      \field{note}{Disponible en version working paper: \url{https://www.researchgate.net/publication/4722069_Comparing_Predictive_Accuracy/citation/download}}
-      \field{title}{Comparing Predictive Accuracy}
-      \field{volume}{20}
-      \field{year}{2002}
-      \field{pages}{134\bibrangedash 44}
-      \range{pages}{11}
-      \verb{doi}
-      \verb 10.1080/07350015.1995.10524599
-      \endverb
-    \endentry
-    \entry{diebold2015comparing}{article}{}{}
-      \name{author}{1}{}{%
-        {{hash=15cc2e3b52b5ea2d3045be532376a348}{%
-           family={Diebold},
-           familyi={D\bibinitperiod},
-           given={Francis\bibnamedelima X.},
-           giveni={F\bibinitperiod\bibinitdelim X\bibinitperiod}}}%
-      }
-      \strng{namehash}{15cc2e3b52b5ea2d3045be532376a348}
-      \strng{fullhash}{15cc2e3b52b5ea2d3045be532376a348}
-      \strng{fullhashraw}{15cc2e3b52b5ea2d3045be532376a348}
-      \strng{bibnamehash}{15cc2e3b52b5ea2d3045be532376a348}
-      \strng{authorbibnamehash}{15cc2e3b52b5ea2d3045be532376a348}
-      \strng{authornamehash}{15cc2e3b52b5ea2d3045be532376a348}
-      \strng{authorfullhash}{15cc2e3b52b5ea2d3045be532376a348}
-      \strng{authorfullhashraw}{15cc2e3b52b5ea2d3045be532376a348}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Journal of Business \& Economic Statistics}
-      \field{note}{Disponible en version working paper: \url{http://www.nber.org/papers/w18391.pdf}}
-      \field{number}{1}
-      \field{title}{Comparing Predictive Accuracy, Twenty Years Later: A Personal Perspective on the Use and Abuse of Diebold-Mariano Tests}
-      \field{volume}{33}
-      \field{year}{2015}
-      \field{pages}{1\bibrangedash 9}
-      \range{pages}{9}
-      \verb{doi}
-      \verb 10.1080/07350015.2014.983236
-      \endverb
     \endentry
     \entry{BENTAIEB20127067}{article}{}{}
       \name{author}{4}{}{%
@@ -850,8 +1402,8 @@
       \strng{authornamehash}{a94134a9a47323f623caebc874fd31e0}
       \strng{authorfullhash}{6a8516283f88da3ced1934fcd0ac84a7}
       \strng{authorfullhashraw}{6a8516283f88da3ced1934fcd0ac84a7}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Multi-step ahead forecasting is still an open challenge in time series forecasting. Several approaches that deal with this complex problem have been proposed in the literature but an extensive comparison on a large number of tasks is still missing. This paper aims to fill this gap by reviewing existing strategies for multi-step ahead forecasting and comparing them in theoretical and practical terms. To attain such an objective, we performed a large scale comparison of these different strategies using a large experimental benchmark (namely the 111 series from the NN5 forecasting competition). In addition, we considered the effects of deseasonalization, input variable selection, and forecast combination on these strategies and on multi-step ahead forecasting at large. The following three findings appear to be consistently supported by the experimental results: Multiple-Output strategies are the best performing approaches, deseasonalization leads to uniformly improved forecast accuracy, and input selection is more effective when performed in conjunction with deseasonalization.}
@@ -875,6 +1427,7 @@
       \keyw{Time series forecasting,Multi-step ahead forecasting,Long-term forecasting,Strategies of forecasting,Machine learning,Lazy Learning,NN5 forecasting competition,Friedman test}
     \endentry
   \enddatalist
+  \missing{Mahendrawathi2011215}
 \endrefsection
 \endinput
 

@@ -1,0 +1,12 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{for} \PYG{n}{mes} \PYG{o+ow}{in} \PYG{n}{np}\PYG{o}{.}\PYG{n}{unique}\PYG{p}{(}\PYG{n}{meses}\PYG{p}{):}
+    \PYG{n}{es\PYGZus{}mes} \PYG{o}{=} \PYG{n}{meses} \PYG{o}{==} \PYG{n}{mes}
+    \PYG{n}{resto} \PYG{o}{=} \PYG{o}{\PYGZti{}}\PYG{n}{es\PYGZus{}mes}
+    \PYG{k}{if} \PYG{n}{resto}\PYG{o}{.}\PYG{n}{any}\PYG{p}{():}
+        \PYG{n}{w} \PYG{o}{=} \PYG{n}{\PYGZus{}peso\PYGZus{}minimos\PYGZus{}cuadrados}\PYG{p}{(}\PYG{n}{y}\PYG{p}{[}\PYG{n}{resto}\PYG{p}{],} \PYG{n}{pred\PYGZus{}xgb}\PYG{p}{[}\PYG{n}{resto}\PYG{p}{],} \PYG{n}{pred\PYGZus{}mm}\PYG{p}{[}\PYG{n}{resto}\PYG{p}{])}
+    \PYG{k}{else}\PYG{p}{:}
+        \PYG{n}{w} \PYG{o}{=} \PYG{l+m+mf}{0.5}
+
+    \PYG{n}{pesos\PYGZus{}por\PYGZus{}mes}\PYG{p}{[}\PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{mes}\PYG{p}{)]} \PYG{o}{=} \PYG{n+nb}{round}\PYG{p}{(}\PYG{n}{w}\PYG{p}{,} \PYG{l+m+mi}{4}\PYG{p}{)}
+    \PYG{n}{combinada}\PYG{p}{[}\PYG{n}{es\PYGZus{}mes}\PYG{p}{]} \PYG{o}{=} \PYG{n}{w} \PYG{o}{*} \PYG{n}{pred\PYGZus{}xgb}\PYG{p}{[}\PYG{n}{es\PYGZus{}mes}\PYG{p}{]} \PYG{o}{+} \PYG{p}{(}\PYG{l+m+mi}{1} \PYG{o}{\PYGZhy{}} \PYG{n}{w}\PYG{p}{)} \PYG{o}{*} \PYG{n}{pred\PYGZus{}mm}\PYG{p}{[}\PYG{n}{es\PYGZus{}mes}\PYG{p}{]}
+\end{MintedVerbatim}

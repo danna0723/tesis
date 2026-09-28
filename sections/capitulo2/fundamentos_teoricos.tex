@@ -17,134 +17,413 @@ Los pasos basicos para realizar una correcta gestion de inventario consiste en: 
 
 \subsubsection{Gestión de inventarios con demanda independiente}  % NUEVO
 
-    \paragraph{Cantidad Económica de Pedido (EOQ)}
-    \paragraph{Punto de reorden y stock de seguridad}
+\paragraph{Cantidad Económica de Pedido (EOQ)}\mbox{}\\
+La Cantidad Económica de Pedido (\textit{Economic Order Quantity}, EOQ) consiste en un modelo de gestion de inventario que permite determinar el tamaño que deberia tener un pedido para minimizar el costo total que supondria mantener el inventario. Toma en cuenta dos factores: El costo de hacer un pedido, el cual tiende a aumentar si se hacen muchos pedidos pequeños, y el costo de realizar el mantenimiento del inventario, el cual aumenta si el inventario es muy grande.\cite{setyadi2024eoq}. El modelo se expresa como:
+
+\begin{equation}
+EOQ = \sqrt{\frac{2DS}{H}}
+\end{equation}
+
+Donde $D$ es la demanda anual del producto, $S$ es el costo de realizar un pedido, y $H$ es el costo anual de mantener una unidad en inventario. El resultado es la cantidad de unidades que debe pedirse cada vez que se realiza una orden de compra, de forma que el costo total (ordenar + mantener) sea el minimo posible.
+
+\paragraph{Punto de reorden y stock de seguridad}\mbox{}\\
+
+El punto de reorden (\textit{Reorder Point}, ROP) consiste en la cantidad minima de producto que debe haber en el inventario, cuando se llega a dicho nivel, se debe generar una nueva orden de compra, de manera que el nuevo pedido llegue antes de que el inventario actual se agote \cite{setyadi2024eoq}. Este se calcula como:
+
+\begin{equation}
+ROP = d \cdot L + SS
+\end{equation}
+
+Donde $d$ es la demanda promedio por periodo, $L$ es el tiempo de entrega del proveedor (\textit{lead time}), y $SS$ es el stock de seguridad.
+
+El Stock de Seguridad se trata de una cantidad adicional de cada producto que se mantiene en el inventario como medida de seguridad frente a la variabilidad de la demanda o del tiempo de entrega de los proovedores, protegiendo a la organizacion de quedarse sin existencias ante una demanda mayor a la esperada durante el periodo de espera del pedido.
 
 \subsubsection{Clasificación de inventarios}                     % NUEVO
-    \paragraph{Clasificación ABC}
+    \paragraph{Clasificación ABC}\mbox{}\\
+    La clasificacion ABC es una tecnica que divide el catalogo de productos en tres categorias segun su importancia dentro de la demanda o el valor total acumulado. Esta clasificacion permite que se prioricen los productos de mayor impacto en ves de tratar a todo el catalogo con los mismos estandares \cite{Mahendrawathi2011215}.
+    
+    \begin{itemize}
+        \item La categoria A agrupa a los productos de mayor importancia (tipicamente aquellos que en conjunto representan la mayor parte de la demanda o el valor).
+        \item La categoria B a los de importancia intermedia.
+        \item La categoria C agrupa al resto de productos que representen un menor impacto individual.
+    \end{itemize}
+
     \paragraph{Coeficiente de variación y clasificación de la demanda}
 
+    Otro concepto importante a la hora de clasificar productos es poder clasificar la variabilidad de la demanda, ya que es probable que un producto que cuente con consumo estable se beneficie mas de metodos de prediccion mas simples, mientras que uno con consumo erratico puede requerir de un modelo mas complejo.
+    
+    Syntetos, Boylan y Croston \cite{syntetos2005categorization} proponen un esquema de clasificacion basado en el coeficiente de variacion al cuadrado ($CV^2$) y el intervalo promedio entre demandas, estableciendo umbrales que permiten distinguir entre patrones de demanda suave, erratica, intermitente y discontinua (\textit{lumpy}), cada uno de los cuales se beneficia de un metodo de pronostico distinto.
+
+    En cuanto al sistema, en Thary se retoma el concepto general de esta clasificacion, pero de forma simplificada: se calcula el coeficiente de variacion (CV, sin elevar al cuadrado), definido como la desviacion estandar de la demanda dividida entre su media, y se clasifica la demanda de cada producto en tres niveles (baja, media o alta variabilidad), sin considerar el intervalo entre demandas como parte del analisis.
 
 \subsubsection{Prediccion de demanda}
 
 La prediccion de la demanda es un proceso que permite mejorar la gestion de los niveles de inventario mediante la utilizacion de datos historicos. Una correcta prediccion de la demanda le permite a las organizaciones el poder tomar decisiones mas inteligentes a la hora de manejar sus provisiones, evitando la falta o exceso de productos, de esta manera, aumentando tanto la satisfaccion del cliente como la creacion de estraregias de negocio mas efectivas a corto y largo plazo \cite{ibm_prevision_demanda}.
 
-En los ultimos años, los mercados han evolucionado y se han vuelto cada vez mas exigentes en cuanto la calidad y precicion de los servicios, es por eso, que muchas organizaciones se ha visto inclinadas a incluir el uso de nuevas herramientas y tecnologias como Inteligencia Artificial. Machine Learning o analisis predictivo, para automatizar y perfeccionar esta tarea, ya que los metodos actuales estaticos que son la norma en muchas empresas y organizaciones han empezado a quedar obsoletas para satisfacer las necesidades del mercado actual.\cite{ibm_prevision_demanda, valencia2015}
+En los ultimos años, los mercados han evolucionado y se han vuelto cada vez mas exigentes en cuanto a la calidad y precision de los servicios, es por eso que muchas organizaciones se han visto inclinadas a incluir el uso de nuevas herramientas y tecnologias como Inteligencia Artificial, Machine Learning o analisis predictivo, para automatizar y perfeccionar esta tarea, ya que los metodos actuales estaticos que son la norma en muchas empresas y organizaciones han empezado a quedar obsoletos para satisfacer las necesidades del mercado actual \cite{ibm_prevision_demanda, valencia2015}.
 
-La principal debilidad de los modelos de inventario actuales es que al ser poco robustos, no toman en contemplacion diferentes factores externos de manera inteligente \cite{valencia2015}. 
+La principal debilidad de los modelos de inventario actuales es que al ser poco robustos, no toman en contemplacion diferentes factores externos de manera inteligente \cite{valencia2015}.
 
 \subsubsection{Series de tiempo}
 
-Las series temporales son usadas para analizar datos históricos recogidos en intervalos regulares, como ventas diarias o mensuales, para identificar patrones, tendencias estacionales y ciclos. Estos patrones se identifican mediante técnicas como gráficos ACF y PACF, tambien estos patrones sirven para ajustar modelos estadísticos o de aprendizaje automático (como ARIMA, SARIMAX o Prophet) que permiten proyectar valores futuros \cite{10596_69801}
+Las series temporales son usadas para analizar datos históricos recogidos en intervalos regulares, como ventas diarias o mensuales, para identificar patrones, tendencias estacionales y ciclos. Estos patrones se identifican mediante técnicas como gráficos ACF y PACF, tambien estos patrones sirven para ajustar modelos estadísticos o de aprendizaje automático (como ARIMA, SARIMAX o Prophet) que permiten proyectar valores futuros \cite{10596_69801}.
 
-Se utilizan estos modelos para hacer predicciones, los datos se agrupan en intervalos (mensualmente) para reducir variabilidad y facilitar el análisis. Tras el análisis de datos, se ajustan los modelos y se evalúan mediante métricas como el RMSE, para que las predicciones sirvan en la toma de decisiones de gestión y planificación de recursos
+Se utilizan estos modelos para hacer predicciones, los datos se agrupan en intervalos (mensualmente) para reducir variabilidad y facilitar el análisis. Tras el análisis de datos, se ajustan los modelos y se evalúan mediante métricas como el RMSE, para que las predicciones sirvan en la toma de decisiones de gestión y planificación de recursos.
 
 
 \subsubsection{Modelos de prediccion de demanda}
-\paragraph{Media Móvil}
+\paragraph{Media Móvil}\mbox{}\\
+La media movil consiste un metodo de pronostico que se utiliza para estimar la demanda futura de un producto a partir de promediar la cantidad de demanda de los periodos mas recientes, en lugar de utilizar todo el historial disponible. Este es uno de los metodos mas simples que existen para realizar pronosticos de demanda, ya que no requiere ajustar parametros complejos ni contar con un historial extenso para poder aplicarse \cite{verma2019movingaverage}.
+
+Debido a esta simplicidad, la media movil suele utilizarse como una linea base (\textit{baseline}) contra la cual se comparan modelos mas sofisticados, con el fin de determinar si estos ultimos realmente aportan una mejora que justifique su mayor complejidad. Es tambien un metodo que se comporta bien cuando el producto tiene un consumo relativamente estable, ya que al no depender de patrones complejos, no se ve tan afectado por variaciones puntuales del historial como si le podria ocurrir a un modelo mas complejo entrenado con pocos datos.
+
 \paragraph{Redes Neuronales Artificiales (RNA)}
 Las redes neuronales artificiales (RNA) son técnicas útiles para la previsión de la demanda, gracias a su capacidad para manejar datos no lineales y captar relaciones funcionales sutiles entre datos empíricos, incluso cuando las relaciones subyacentes son desconocidas o difíciles de describir.
 
-    \subparagraph{Long Short-Term Memory (LSTM)}\mbox{}\\
-    Las redes neuronales de memoria a largo y corto plazo o LSTM es un tipo de red neuronal que se ha demostrado eficaz en la predicción de series temporales, esta tecnica esta diseñada para procesar datos secuenciales y temporales que fue creada para superar las limitaciones de las redes neuronales tradicionales.\cite{10124729}.
+\paragraph{Long Short-Term Memory (LSTM) y Gated Recurrent Unit (GRU)}
+LSTM y GRU son variantes de redes neuronales recurrentes, diseñadas especificamente para el procesamiento de datos secuenciales, a diferencia de las RNA de tipo \textit{feed-forward}. Ambas incorporan mecanismos de memoria interna (compuertas) que les permiten capturar dependencias temporales de largo plazo en los datos, siendo GRU una variante mas simple y computacionalmente menos costosa que LSTM \cite{10124729, Salem2022}. Estas dos tecnicas fueron consideradas durante la revision de literatura, pero finalmente no se incorporaron como modelos candidatos en Thary, principalmente porque requieren un volumen de historial considerablemente mayor al disponible en el caso de estudio para superar a tecnicas mas simples.
 
-    Su funcionamiento se basa en una estrictura de memoria que permite a la red aprender y recordar información a lo largo del tiempo, lo que es especialmente útil para capturar dependencias a largo plazo en los datos. LSTM cuenta con las tres siguientes puertas: 
 
-    \begin{description}
-        \item[Puerta de olvido (forget gate):] Decide qué información se descarta. Esta se calcula mediante la función sigmoide, que toma como entrada el vector de entrada actual y el estado oculto anterior, de esta menra, generando un valor entre 0 y 1 para cada componente de la celda de la memoria. 
+    % \subparagraph{Long Short-Term Memory (LSTM)}\mbox{}\\
+    % Las redes neuronales de memoria a largo y corto plazo o LSTM es un tipo de red neuronal que se ha demostrado eficaz en la predicción de series temporales, esta tecnica esta diseñada para procesar datos secuenciales y temporales que fue creada para superar las limitaciones de las redes neuronales tradicionales.\cite{10124729}.
+
+    % Su funcionamiento se basa en una estrictura de memoria que permite a la red aprender y recordar información a lo largo del tiempo, lo que es especialmente útil para capturar dependencias a largo plazo en los datos. LSTM cuenta con las tres siguientes puertas: 
+
+    % \begin{description}
+    %     \item[Puerta de olvido (forget gate):] Decide qué información se descarta. Esta se calcula mediante la función sigmoide, que toma como entrada el vector de entrada actual y el estado oculto anterior, de esta menra, generando un valor entre 0 y 1 para cada componente de la celda de la memoria. 
         
-        \begin{equation}
-        f_t = \delta(W_f[h_{t-1}, X_t] + b_f)
-        \end{equation}   
+    %     \begin{equation}
+    %     f_t = \delta(W_f[h_{t-1}, X_t] + b_f)
+    %     \end{equation}   
 
-        \item[Puerta de entrada (input gate):] Decide qué información se almacena en la memoria. Tambien usa una funcion tanh para normalizar la informacion que pasa atraves de la red neuronal.
-        \begin{equation}
-        i_t = \delta(W_i[h_{t-1}, X_t] + b_i), \quad L_t = \tanh(W_c[h_{t-1}, X_t] + b_c)
-        \end{equation}
+    %     \item[Puerta de entrada (input gate):] Decide qué información se almacena en la memoria. Tambien usa una funcion tanh para normalizar la informacion que pasa atraves de la red neuronal.
+    %     \begin{equation}
+    %     i_t = \delta(W_i[h_{t-1}, X_t] + b_i), \quad L_t = \tanh(W_c[h_{t-1}, X_t] + b_c)
+    %     \end{equation}
 
-        \item[Puerta de salida (output gate):] Decide qué información se utiliza para generar la salida oculta actual.
-        \begin{equation}
-        o_t = \delta(W_o[h_{t-1}, X_t] + b_o)
-        \end{equation}
+    %     \item[Puerta de salida (output gate):] Decide qué información se utiliza para generar la salida oculta actual.
+    %     \begin{equation}
+    %     o_t = \delta(W_o[h_{t-1}, X_t] + b_o)
+    %     \end{equation}
 
-        La actualizacion del estado celular se realiza mediante:
+    %     La actualizacion del estado celular se realiza mediante:
 
-        \begin{equation}
-        C_t = f_t * C_{t-1} + i_t * L_t
-        \end{equation}
+    %     \begin{equation}
+    %     C_t = f_t * C_{t-1} + i_t * L_t
+    %     \end{equation}
 
-        Finalmente, la salida oculta se calcula aplicando la funcion tanh al estado celular y multiplicandolo por la puerta de salida como:
-        \begin{equation}
-        h_t = o_t * \tanh(C_t)
-        \end{equation}
-    \end{description}
+    %     Finalmente, la salida oculta se calcula aplicando la funcion tanh al estado celular y multiplicandolo por la puerta de salida como:
+    %     \begin{equation}
+    %     h_t = o_t * \tanh(C_t)
+    %     \end{equation}
+    % \end{description}
 
 
-    \subparagraph{Gated Recurrent Unit (GRU)}\mbox{}\\
-    Gru es modelo de prediccion bastante parecido a LSTM, pero con una arquitectura mucho mas simple, lo que la hace muchisimo mas compacta y potencialmente menos costosa computacionalmente que una LSTM equivalente. Estas han demostrado tener exito en diferentes aplicaciones relacionadas con datos secuenciales o temporales, principalmente si son secuencias largas. GRU reduce el numero de tres redes compuestas distintas que usa LSTM en solo 2, esto mediante la combinacion de la compuerta de entrada y la compuerta de olvido mediante una suma directa. Las compuertas de GRU se denominan: Compuerta de actualizacion y Compuerta de reinicio. \cite{Salem2022}
+    % \subparagraph{Gated Recurrent Unit (GRU)}\mbox{}\\
+    % Gru es modelo de prediccion bastante parecido a LSTM, pero con una arquitectura mucho mas simple, lo que la hace muchisimo mas compacta y potencialmente menos costosa computacionalmente que una LSTM equivalente. Estas han demostrado tener exito en diferentes aplicaciones relacionadas con datos secuenciales o temporales, principalmente si son secuencias largas. GRU reduce el numero de tres redes compuestas distintas que usa LSTM en solo 2, esto mediante la combinacion de la compuerta de entrada y la compuerta de olvido mediante una suma directa. Las compuertas de GRU se denominan: Compuerta de actualizacion y Compuerta de reinicio. \cite{Salem2022}
 
-    El modelo GRU se presenta como:
+    % El modelo GRU se presenta como:
 
-    \begin{equation}
-        h_t = g(Uh(r_t \odot h_{t-1}) + Wx_t + b_h)
-    \end{equation}
+    % \begin{equation}
+    %     h_t = g(Uh(r_t \odot h_{t-1}) + Wx_t + b_h)
+    % \end{equation}
 
-    \begin{equation}
-    h_t = (1 - z_t) \odot h_{t-1} + z_t \odot \tilde{h}_t
-    \end{equation}
-    donde $z_t$ es la compuerta de actualización, $r_t$ es la compuerta de reinicio y $\tilde{h}_t$ es la propuesta de nueva información. Las dos compuertas se presentan como:
+    % \begin{equation}
+    % h_t = (1 - z_t) \odot h_{t-1} + z_t \odot \tilde{h}_t
+    % \end{equation}
+    % donde $z_t$ es la compuerta de actualización, $r_t$ es la compuerta de reinicio y $\tilde{h}_t$ es la propuesta de nueva información. Las dos compuertas se presentan como:
 
-    \begin{equation}
-        z_t = \sigma (U_z h_{t-1} + W_z x_t + b_z)
-    \end{equation}
+    % \begin{equation}
+    %     z_t = \sigma (U_z h_{t-1} + W_z x_t + b_z)
+    % \end{equation}
 
-    \begin{equation}
-        r_t = \sigma (U_r h_{t-1} + W_r x_t + b_r)
-    \end{equation}
+    % \begin{equation}
+    %     r_t = \sigma (U_r h_{t-1} + W_r x_t + b_r)
+    % \end{equation}
 
 \subsubsection{Modelos estadísticos y de Machine Learning tradicionales}
     \paragraph{Regresión lineal}\mbox{}\\
-    Los modelos de regresion son utilizados para resolver problemas de prediccion, el objetivo de este modelo puede ser explicativo, donde se busca, por ejempo, evaluar como ciertas variables independientes afectan a una variable dependiente, o predictivo, en el que se busca estimar el valor de la variable dependiente en funcion de las independientes \cite{pelaez2016modelos}.
+    Los modelos de regresión son utilizados para resolver problemas de predicción; el objetivo de este modelo puede ser explicativo, donde se busca, por ejemplo, evaluar cómo ciertas variables independientes afectan a una variable dependiente, o predictivo, en el que se busca estimar el valor de la variable dependiente en función de las independientes \cite{pelaez2016modelos}.
+
 
     Un modelo de regresion se expresa como: 
 
     \begin{equation}
-    y = (x_1, x_2, ..., x_n) \beta + \epsilon
+        y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \dots + \beta_n x_n + \epsilon
     \end{equation}
 
-    Existen distintas opciones para poder estimar un modelo de regresion, siendo las mas comunes: Regresion lineal  y regresion logistica. La eleccion depende del tipo de variable dependiente que se tenga, si es una variable continua se utiliza regresion lineal, mientras que si se trata de una variable dicotomica se utiliza una variable dicotomica.
+    donde $y$ es la variable dependiente, $x_1, \dots, x_n$ son las variables independientes, $\beta_0$ es el intercepto, $\beta_1, \dots, \beta_n$ son los coeficientes de regresión y $\epsilon$ es el error aleatorio, es decir, la parte que no se puede explicar a partir de las variables incluidas en el modelo \cite{pelaez2016modelos}. Los coeficientes se estiman mediante el método de mínimos cuadrados, que consiste en calcular la suma de las distancias al cuadrado entre los puntos reales y los definidos por la recta estimada, de forma que la mejor estimación es la que minimiza estas distancias \cite{pelaez2016modelos}.
+
+    Existen distintas opciones para estimar un modelo de regresión, siendo las más comunes la regresión lineal y la regresión logística. La elección depende del tipo de variable dependiente: si es una variable continua se utiliza regresión lineal, mientras que si se trata de una variable dicotómica se utiliza regresión logística \cite{pelaez2016modelos}.
 
     \paragraph{Selección de variables en modelos de regresión}    % NUEVO
+    No todas las variables disponibles aportan información útil a un modelo de regresión, y construirlo con un exceso de ellas lo vuelve más complejo y menos confiable. Para decidir cuáles conservar existen distintas técnicas: la selección hacia adelante (\textit{forward}), que introduce variables en el modelo mientras cumplan una condición; la selección hacia atrás (\textit{backward}), que parte de un modelo con todas las variables y va suprimiendo las que cumplen una condición definida a priori hasta que no se pueda eliminar ninguna más; y la selección por pasos (\textit{stepwise}), que combina ambas \cite{pelaez2016modelos}. Cuando el objetivo del modelo es predictivo, se busca el que proporcione predicciones más fiables y, entre los que lo logran, el más sencillo posible \cite{pelaez2016modelos}.
+
+    Es necesario poder identificar cuales son las variables que realmente le aportan informacion al modelo de regresion, ya que de no hacerlo, el modelo podria volverse mas complejo innecesariamente y menos confiable. Para esto, existen distintas tecnicas de seleccion de variables: 
+    
+    \begin{itemize}
+        \item la seleccion hacia adelante (\textit{forward}), que introduce variables en el modelo mientras cumplan una condicion
+        \item la seleccion hacia atras (\textit{backward}), que parte de un modelo con todas las variables y va suprimiendo las que cumplen una condicion definida a priori hasta que no se pueda eliminar ninguna mas
+        \item la seleccion por pasos (\textit{stepwise}), que combina ambas \cite{pelaez2016modelos}
+    \end{itemize}
+    
+    En general, se busca el modelo que de las predicciones fiables, y que al mismo tiempo, lo haga de la manera mas sencilla posible \cite{pelaez2016modelos}. 
+
         \subparagraph{Eliminación Recursiva de Características (RFE)}
+        La eliminación recursiva de características fue propuesta por Guyon et al. \cite{guyon2002rfe}, y se usa para seleccionar algunas variables para crear un grupo mas pequeño de variables. El procedimiento consiste en entrenar un modelo lineal en el que primero se ordenan las variables según el peso que cada una tiene en el modelo, despues se elimina la menos importante y se repite el proceso con las variables restantes hasta quedarse con el número deseado \cite{guyon2002rfe}. Como el orden de importancia depende de la magnitud de los coeficientes, las variables deben estar en una escala comparable antes de aplicar el método. En Thary se aplica esta misma lógica de eliminación sobre el modelo de regresión lineal.
+
         \subparagraph{Significancia estadística (p-valor)}
+
+        Cuando se arma el modelo, para cada una de las variables se tiene que determinar si esta realmente tiene relacion con la demanda o solo da la ilusion de tenerla por coincidencia. Para responder esto inicialmente se asume que la variable no tiene relacion real con la demanda y se revisa si los datos respaldan o no esta suposicion. Esta revision se realiza mediante el calculo del p-valor, si este es menor que el nivel de significancia $\alpha$, se rechaza dicha hipótesis y se considera que el coeficiente es estadísticamente significativo \cite{pelaez2016modelos}. Un nivel de significancia común es $\alpha = 0.05$ (95\% de confianza), que es el que emplea Thary.
+
         \subparagraph{Multicolinealidad y Factor de Inflación de Varianza (VIF)}
+        Se habla de colinealidad cuando dos o más variables tienen practicamente la misma informacion, por lo que si el modelo recibe dichos datos no sabra a cual de las dos variables atribuirle el efecto, por lo que sus coeficientes se vuelven inestables y poco confiables \cite{pelaez2016modelos}. 
+        
+        El VIF o Factor de Inflación de Varianza, es el numero que mide cuanto se repite una variable en las demas variables del modelo \cite{obrien2007vif}. Se calcula como:
+
+        \begin{equation}
+        VIF_i = \frac{1}{1 - R_i^2}
+        \end{equation}
+
+        donde $R_i^2$ es la proporción de la varianza de la i-ésima variable independiente que se asocia con las demás variables independientes del modelo \cite{obrien2007vif}. El VIF indica cuántas veces aumenta la varianza del coeficiente estimado de esa variable respecto a la que tendría si no compartiera varianza con las demás ($R_i^2 = 0$) \cite{obrien2007vif}. Cuanto más se parece una variable a una combinación de las otras, más se acerca $R_i^2$ a 1 y más crece el VIF; en el caso extremo de dependencia lineal exacta, la tolerancia ($1 - R_i^2$) es cero, el VIF tiende a infinito y la solución del modelo deja de ser única \cite{obrien2007vif}.
+
+        Para decidir cuándo un VIF es demasiado alto se usan reglas prácticas, como los valores de 4, 5 o 10 \cite{obrien2007vif}. Thary usa el valor de 5, que corresponde a $R_i^2 = 0.80$: una variable se descarta cuando más del 80\,\% de su información ya está contenida en las demás. O'Brien advierte que estos valores no deben aplicarse de forma automática, ya que un VIF alto no siempre es un problema por sí solo, y que eliminar variables solo por su VIF, o seleccionarlas por pasos, puede dejar un modelo sin una base teórica sólida \cite{obrien2007vif}. Como Thary busca predecir y no interpretar cada coeficiente, usa este límite como un criterio práctico para evitar modelos inestables, aceptando esta limitación.
 
 \subsubsection{Modelos basados en árboles de decisión}
     \paragraph{XGBoost}\mbox{}\\
-    XGBoost se ha utilizado ampliamente en numerosos campos para lograr resultados de vanguardia (state-of-the-art) en tareas relacionadas con datos y predicción. Su funcionamiento consiste en en un sistema de aprendizaje automatizado basado en el metodo de Tree Boosting que incluye un algoritmo de aprendizaje de arboles. EL Tree Boosting es un algoritmo de aprendizaje por conjuntos o ensemble learning, capaz de transformar varios clasificadores debiles en uno fuerte con el objetivo de obtener un mejor rendimiento en le clasificacion, es decir, se combinan multiples arboles para obtener un modelo mas potente. Un modelo tree boosting se escribe de la siguiente manera\cite{ren2017novel}:
+    % XGBoost se ha utilizado ampliamente en numerosos campos para lograr resultados de vanguardia (state-of-the-art) en tareas relacionadas con datos y predicción. Su funcionamiento consiste en en un sistema de aprendizaje automatizado basado en el metodo de Tree Boosting que incluye un algoritmo de aprendizaje de arboles. EL Tree Boosting es un algoritmo de aprendizaje por conjuntos o ensemble learning, capaz de transformar varios clasificadores debiles en uno fuerte con el objetivo de obtener un mejor rendimiento en le clasificacion, es decir, se combinan multiples arboles para obtener un modelo mas potente. Un modelo tree boosting se escribe de la siguiente manera\cite{ren2017novel}:
+
+    XGBoost (\textit{Extreme Gradient Boosting}) es un sistema de aprendizaje automático basado en el método de \textit{tree boosting}, que se ha utilizado ampliamente para obtener resultados de vanguardia (\textit{state-of-the-art}) en tareas relacionadas con datos y predicción \cite{chen2016xgboost}. 
+    
+    Su funcionamiento consiste en en un sistema de aprendizaje automatizado basado en el metodo de Tree Boosting, el cual que incluye un algoritmo de aprendizaje de arboles o por conjuntos: (\textit{ensemble learning}). Este se basa en la idea de que en lugar de depender de un solo modelo, se combinen muchos árboles sencillos para obtener uno más potente. Cada uno de estos árboles es un árbol de regresión, que divide las observaciones según los valores de sus variables hasta llegar a una hoja, y a cada hoja se le asigna un peso, que es el valor que aporta a la predicción \cite{chen2016xgboost}. La predicción final para una observación es la suma de lo que aporta cada árbol, y se escribe de la siguiente manera \cite{chen2016xgboost}:
 
     \begin{equation}
         \hat{y_i} = \sum_{k=1}^{K} f_k(x_i), f_k \in F
     \end{equation}
-    
+
     Donde:
     \begin{equation}
         F = \{f(x) = w_{q(x)}\} (q: R^m \rightarrow T, w \in R^T)
     \end{equation}
+
+    es el espacio de los árboles de regresión. En estas ecuaciones, $K$ es la cantidad de árboles, $f_k$ es el $k$-ésimo árbol, $q$ es la estructura del árbol, que asigna cada observación a una hoja, $T$ es el número de hojas y $w$ son los pesos de las hojas \cite{chen2016xgboost}.
+
+    Los árboles no se entrenan todos a la vez, sino que se entrena uno por uno, en cada paso se agrega el árbol que más mejora el modelo construido hasta ese momento \cite{chen2016xgboost}. El problema de este proceso es que, si no se controla, los árboles pueden volverse demasiado complejos y memorizar los datos de entrenamiento en vez de aprender el patrón general, lo que se conoce como sobreajuste. Es por esto que XGBoost agrega al error de predicción un término de regularización que penaliza la complejidad de cada árbol \cite{chen2016xgboost}:
+
+    \begin{equation}
+    \Omega(f) = \gamma T + \frac{1}{2}\lambda \lVert w \rVert^2
+    \end{equation}
+
+    donde $\gamma$ penaliza cada hoja adicional y $\lambda$ penaliza los pesos grandes en las hojas. De esta manera, el modelo tiende a preferir árboles simples que sigan siendo predictivos. La librería incluye además una penalización de tipo L1 sobre los pesos (\texttt{alpha}), y en ambos casos, aumentar su valor hace que el modelo sea más conservador \cite{xgboostdocs}.
+
+    Para reducir aún más el sobreajuste se utilizan dos técnicas adicionales. La primera es la tasa de aprendizaje (\textit{shrinkage}), que escala por un factor $\eta$ el peso de cada árbol que se agrega, de modo que se reduce la influencia de cada árbol individual y se deja espacio para que los árboles siguientes mejoren el modelo \cite{chen2016xgboost}. La segunda es el submuestreo: en cada iteración se puede usar solo una fracción aleatoria de las observaciones de entrenamiento \cite{xgboostdocs}, y solo una fracción de las variables al construir cada árbol \cite{chen2016xgboost, xgboostdocs}. Además, la profundidad máxima limita cuántas divisiones puede hacer cada árbol, y con ello su complejidad.
+
+    Todos estos son mecanismos que se incluyen en la configuracion del modelo XGBoost en Thary.
+
+\subsubsection{Transformaciones de variables}
+
+    \paragraph{Transformación logarítmica}\mbox{}\\
+    La demanda de un producto normalmente tiene muchos meses con valores bajos y pocos meses con valores muy altos, por lo que si el modelo se entrena directamente con esos valores, se enfocaría demasiado en los casos extremos y predeciría peor la mayoría de los casos normales. Para reducir este problema se aplica una transformación logarítmica, que hace que los valores muy grandes dejen de pesar tanto frente a los pequeños, y de esta manera se estabiliza la varianza de la serie, algo que se considera una de las formas más directas de lograrlo \cite{hewamalage2021rnn}.
+
+    Un problema del logaritmo es que no está definido para el cero ni para valores negativos \cite{hewamalage2021rnn}, y como la demanda mensual de un producto puede ser cero, se utiliza una versión que le suma 1 a la demanda antes de aplicar el logaritmo, conocida como \texttt{log1p} \cite{hewamalage2021rnn}:
+
+    \begin{equation}
+    w_t = \log(y_t + 1)
+    \end{equation}
+
+    Con esto, un mes con demanda cero sigue siendo cero después de la transformación, ya que $\log(0 + 1) = 0$. Cuando el modelo hace su predicción en esta escala transformada, se tiene que devolver a la escala original con la operación inversa, que es $y_t = e^{w_t} - 1$, porque lo que interesa es la demanda en unidades reales.
+
+    Aun así, hay que tener en cuenta que esta transformación no siempre mejora el pronóstico, ya que su beneficio depende de que realmente logre estabilizar la varianza de la serie: si lo logra, puede mejorar la precisión, pero si no lo logra, puede perjudicarla \cite{luetkepohl2009log}. En Thary se aplica a la demanda antes de entrenar XGBoost, y las predicciones se devuelven a la escala original antes de compararlas con las de los demás modelos (Sección 3.2.8).
+
+    \paragraph{Codificación cíclica de variables periódicas}\mbox{}\\
+    Las variables de calendario como el mes se repiten cada cierto tiempo, es decir, después de diciembre vuelve a empezar enero. El problema es que si el mes se representa como un número del 1 al 12, el modelo va a ver a diciembre (12) y a enero (1) como dos meses muy lejanos entre sí, cuando en realidad son meses consecutivos. Para evitar esto se utiliza la codificación cíclica, que representa el mes con dos valores calculados con seno y coseno, de manera que la periodicidad quede representada de una forma que los modelos puedan interpretar \cite{jahin2025mcdfn}:
+
+    \begin{equation}
+    mes\_sin = \sin\left(mes \times \frac{2\pi}{12}\right), \qquad mes\_cos = \cos\left(mes \times \frac{2\pi}{12}\right)
+    \end{equation}
+
+    Estos dos valores ubican a cada mes como un punto en un círculo, y así diciembre y enero quedan tan cerca entre sí como cualquier otro par de meses consecutivos. Por ejemplo, diciembre queda en el punto $(0, 1)$, enero en $(0.50, 0.87)$ y febrero en $(0.87, 0.50)$, por lo que la distancia entre diciembre y enero es de aproximadamente 0.52, igual que la de enero a febrero. En cambio, con números enteros, la diferencia entre 12 y 1 sería de 11 unidades, mientras que la de enero a febrero sería de 1.
+
+    Se necesitan los dos valores y no solo uno, ya que con el seno por sí solo, meses distintos pueden dar el mismo resultado, por ejemplo, el mes 1 y el mes 5 tienen ambos un seno de 0.5, y es la combinación de seno y coseno la que permite identificar cada mes de forma única. En Thary, el mes se representa de esta manera (\texttt{mes\_sin} y \texttt{mes\_cos}), como se explica en la Etapa 3.
+
+    \subsubsection{Combinación de pronósticos}
+
+    Cuando se cuenta con varios modelos de predicción para un mismo producto, lo habitual es quedarse con el que se equivoca menos, pero de esta manera se descarta por completo la información que podrían aportar los demás. La combinación de pronósticos plantea otra alternativa: en vez de escoger uno solo, combinar varios pronósticos en uno, con el objetivo de mejorar la precisión aprovechando la información de distintas fuentes y de no depender de un único "mejor" pronóstico \cite{wang2023combinations}. Esta idea fue introducida por Bates y Granger \cite{bates1969combination}.
+
+    La forma más común de hacerlo es con un promedio ponderado. Si se tienen dos pronósticos, $\hat{y}_1$ y $\hat{y}_2$, la combinación se calcula como \cite{bates1969combination}:
+
+    \begin{equation}
+    \hat{y}_c = w \cdot \hat{y}_1 + (1 - w) \cdot \hat{y}_2
+    \end{equation}
+
+    donde $w$ es el peso que se le da al primer pronóstico y $(1 - w)$ el que se le da al segundo, por lo que los dos pesos siempre suman 1. Por ejemplo, si un modelo predice una demanda de 100 y el otro de 60, con $w = 0.5$ la combinación da 80, y con $w = 0.75$ da 90. Mientras $w$ se mantenga entre 0 y 1, la combinación siempre queda entre las dos predicciones.
+
+    La pregunta es cuánto peso darle a cada modelo. Bates y Granger propusieron que el peso dependa de los errores que cada pronóstico tuvo en el pasado, de forma que el que se equivocó menos recibe un peso mayor \cite{bates1969combination}. Después, Granger y Ramanathan propusieron calcular los pesos con una regresión por mínimos cuadrados, en la que la demanda real es la variable que se quiere explicar y los pronósticos pasados de cada modelo son las variables explicativas \cite{granger1984improved, wang2023combinations}. Su propuesta tiene tres variantes según las restricciones que se le pongan a la regresión, y la que obliga a que los pesos sumen 1 y no incluye constante da los mismos pesos ``óptimos'' de Bates y Granger \cite{wang2023combinations}. Granger y Ramanathan señalaron que la variante sin restricciones y con constante es superior, aunque otros autores advierten que al usarla hay que tener en cuenta la estacionariedad de la serie, la correlación entre los errores y la multicolinealidad \cite{wang2023combinations}.
+
+    En Thary se utiliza la variante con pesos que suman 1 y sin constante, ya que de esta manera la combinación es un promedio ponderado fácil de interpretar. Con esta variante, el peso $w$ que mejor se ajusta a la demanda real se obtiene minimizando la suma de los errores al cuadrado de la combinación:
+
+    \begin{equation}
+    \min_{w} \sum_{i} \left( y_i - \left( w \cdot \hat{y}_{1,i} + (1 - w) \cdot \hat{y}_{2,i} \right) \right)^2
+    \end{equation}
+
+    donde $y_i$ es la demanda real. Reordenando, esto equivale a una regresión por mínimos cuadrados sin constante de $(y_i - \hat{y}_{2,i})$ sobre $(\hat{y}_{1,i} - \hat{y}_{2,i})$, que tiene una solución directa:
+
+    \begin{equation}
+    w = \frac{\sum_{i} (y_i - \hat{y}_{2,i})(\hat{y}_{1,i} - \hat{y}_{2,i})}{\sum_{i} (\hat{y}_{1,i} - \hat{y}_{2,i})^2}
+    \end{equation}
+
+    Siguiendo el ejemplo anterior, si un modelo predijo 100, el otro 60 y la demanda real fue 90, el peso que mejor se ajusta es $w = 0.75$, ya que $0.75 \cdot 100 + 0.25 \cdot 60 = 90$. 
     
-    Representa el espacio de los arboles de regresion o clasifiacion
+    El peso no es una cantidad de unidades, sino una proporción que indica qué tan cerca quedó la demanda real de cada modelo. Siguiendo el ejemplo anterior, a la predicción de 60 le faltaron 30 unidades para llegar a la demanda real, y entre las dos predicciones hay 40 unidades de diferencia, por lo que el peso que mejor se ajusta es $w = 30/40 = 0.75$, ya que $0.75 \cdot 100 + 0.25 \cdot 60 = 90$. Cuando se tienen muchos meses y productos, el peso es el valor que mejor se ajusta a todos los casos a la vez. En Thary este cálculo se hace entre XGBoost y Media Móvil, y el peso se limita entre 0 y 1 para que siempre sea un promedio ponderado, ya que si la demanda real queda fuera del rango entre las dos predicciones, el cálculo daría un peso mayor a 1 o menor a 0. La combinación se evalúa únicamente como un análisis complementario en el panel técnico, sin participar en la selección del modelo campeón.
 
-\subsubsection{Combinación de pronósticos}                       % NUEVO
+    En Thary este cálculo se hace entre XGBoost y Media Móvil, el peso se limita entre 0 y 1 para que siempre sea un promedio ponderado, y la combinación se evalúa únicamente como un análisis complementario en el panel técnico, sin participar en la selección del modelo campeón.
 
-\subsubsection{Métricas de evaluación de pronósticos}            % NUEVO
-    \paragraph{Error Absoluto Medio (MAE)}
-    \paragraph{Raíz del Error Cuadrático Medio (RMSE)}
-    \paragraph{Mediana del Error}
-    \paragraph{Coeficiente de Determinación (R²)}
-    \paragraph{Error Porcentual Absoluto Medio (MAPE)}
-    \paragraph{Error Porcentual Absoluto Ponderado (WAPE)}
 
-\subsubsection{Validación de modelos de series de tiempo}        % NUEVO
-    \paragraph{Validación cruzada temporal (walk-forward)}
-    \paragraph{Prueba de Diebold-Mariano}
-    \paragraph{Corrección de muestra pequeña (Harvey-Leybourne-Newbold)}
+\subsubsection{Métricas de evaluación de pronósticos}
+
+Para saber qué tan bien predice un modelo, se compara la predicción con lo que realmente ocurrió, y la diferencia entre ambos valores es el error del pronóstico \cite{hewamalage2023evaluation}:
+
+\begin{equation}
+e_t = y_t - \hat{y}_t
+\end{equation}
+
+donde $y_t$ es la demanda real y $\hat{y}_t$ es la predicción para el mes $t$. Como se tiene un error por cada producto y cada mes, se necesita una forma de resumirlos en un solo número, y a cada forma de hacerlo se le llama métrica. El problema es que no existe una métrica que funcione bien en todas las situaciones, ya que cada una tiene casos en los que falla \cite{hewamalage2023evaluation}, por lo que es recomendable evaluar los mismos pronósticos con varias métricas a la vez, para comprobar que se comportan bien bajo distintos criterios \cite{hewamalage2023evaluation}. Es por esto que Thary calcula seis métricas, que se explican a continuación con un mismo ejemplo de cuatro meses (Tabla \ref{tab:ejemplo_metricas}). En todas ellas, menos en el R\textsuperscript{2}, un valor más bajo significa un mejor modelo.
+
+\begin{table}[H]
+    \centering
+    \caption{Ejemplo de cuatro meses utilizado para explicar las métricas.}
+    \label{tab:ejemplo_metricas}
+    \begin{tabularx}{0.8\textwidth}{cccc}
+        \toprule
+        \textbf{Mes} & \textbf{Demanda real} & \textbf{Predicción} & \textbf{Error absoluto} \\
+        \midrule
+        1 & 10 & 12 & 2 \\
+        2 & 20 & 15 & 5 \\
+        3 & 0  & 2  & 2 \\
+        4 & 30 & 36 & 6 \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\paragraph{Error Absoluto Medio (MAE)}\mbox{}\\
+El MAE es el promedio de los errores, sin importar si la predicción quedó por encima o por debajo de la demanda real \cite{hewamalage2023evaluation}:
+
+\begin{equation}
+MAE = \frac{1}{n}\sum_{t=1}^{n} \lvert y_t - \hat{y}_t \rvert
+\end{equation}
+
+Se expresa en las mismas unidades de la demanda, por lo que es fácil de interpretar. En el ejemplo, el MAE es $(2 + 5 + 2 + 6)/4 = 3.75$, es decir, en promedio la predicción se equivoca por 3.75 unidades. Un aspecto a tener en cuenta es que, cuando se calcula con todos los productos juntos, los productos de mayor demanda dominan el resultado, ya que sus errores en unidades son más grandes \cite{hewamalage2023evaluation}.
+
+\paragraph{Raíz del Error Cuadrático Medio (RMSE)}\mbox{}\\
+En cuanto al RMSE, este es parecido al MAE, pero los errores se elevan al cuadrado antes de promediarlos y después se saca la raíz, para que el resultado vuelva a quedar en las unidades de la demanda \cite{hewamalage2023evaluation}:
+
+\begin{equation}
+RMSE = \sqrt{\frac{1}{n}\sum_{t=1}^{n} (y_t - \hat{y}_t)^2}
+\end{equation}
+
+Como los errores se elevan al cuadrado, los errores grandes pesan mucho más que los pequeños, por lo que el RMSE es más sensible a los valores atípicos que el MAE \cite{hewamalage2023evaluation}. En el ejemplo, el RMSE es $\sqrt{(4 + 25 + 4 + 36)/4} = 4.15$. La diferencia se ve mejor con otro caso: si un producto tuviera un error de 97 unidades y otros tres de 1 unidad, el MAE sería 25, pero el RMSE sería 48.5. Es por esto que conviene mirar los dos, ya que cuando el RMSE es mucho mayor que el MAE, significa que hay unos pocos errores muy grandes.
+
+\paragraph{Mediana del Error}\mbox{}\\
+La mediana del error es la mediana de los errores absolutos, es decir, el valor que queda en la mitad cuando los errores se ordenan de menor a mayor \cite{hewamalage2023evaluation}. A diferencia del MAE, que es un promedio, la mediana no se deja arrastrar por unos pocos casos con error muy grande, ya que la mediana se ve menos afectada por los valores atípicos que el promedio \cite{hewamalage2023evaluation}. En el ejemplo, los errores ordenados son 2, 2, 5 y 6, por lo que la mediana es $(2 + 5)/2 = 3.5$. En el caso anterior del error de 97 unidades y tres de 1 unidad, el MAE era 25, pero la mediana es solo 1. En Thary se calcula junto al MAE para revisar si el MAE de un modelo está siendo inflado por pocos productos, o si de verdad representa el error típico del catálogo.
+
+\paragraph{Coeficiente de Determinación (R\textsuperscript{2})}\mbox{}\\
+El R\textsuperscript{2} indica qué proporción de la variabilidad de la demanda real logra explicar el modelo, y multiplicado por 100 se interpreta como el porcentaje de la varianza que queda explicada \cite{pelaez2016modelos}. Se calcula como:
+
+\begin{equation}
+R^2 = 1 - \frac{\sum_{t=1}^{n} (y_t - \hat{y}_t)^2}{\sum_{t=1}^{n} (y_t - \bar{y})^2}
+\end{equation}
+
+donde $\bar{y}$ es el promedio de la demanda real. Con esta fórmula, un R\textsuperscript{2} de 1 significa predicciones perfectas, un R\textsuperscript{2} de 0 significa que el modelo no es mejor que predecir siempre el promedio de la demanda, y un valor negativo significa que es peor que eso. En el ejemplo, el promedio de la demanda real es 15, por lo que el denominador es $25 + 25 + 225 + 225 = 500$, y el R\textsuperscript{2} es $1 - 69/500 = 0.862$, es decir, el modelo explica el 86.2\,\% de la variabilidad de la demanda.
+
+\paragraph{Error Porcentual Absoluto Medio (MAPE)}\mbox{}\\
+Otra métrica que se utiliza es el MAPE, que indica qué porcentaje de la demanda real se falló en promedio. Para calcularlo, primero se divide el error de cada mes entre la demanda real de ese mes, para expresarlo como porcentaje, y después se promedian esos porcentajes \cite{hewamalage2023evaluation}:
+
+\begin{equation}
+MAPE = \frac{1}{n}\sum_{t=1}^{n} \left\lvert \frac{100\,(y_t - \hat{y}_t)}{y_t} \right\rvert
+\end{equation}
+
+Al ser un porcentaje, es fácil de entender y de comparar entre productos con distintos volúmenes. Sin embargo, tiene dos problemas. El primero es que cuando la demanda real es cero no se puede calcular, ya que se divide entre cero, y cuando es cercana a cero da valores muy grandes \cite{kim2016maape}. El segundo es que cuando la demanda es pequeña, el porcentaje exagera el error \cite{hewamalage2023evaluation}: por ejemplo, si un producto vende 1 unidad y se predicen 2, el error es de 100\,\%, aunque solo se hayan equivocado por una unidad. En Thary, por el primer problema, el MAPE se calcula únicamente con los meses en los que la demanda real es mayor que cero. En el ejemplo, se excluye el mes 3 y el MAPE es $(20\,\% + 25\,\% + 20\,\%)/3 = 21.67\,\%$.
+
+\paragraph{Error Porcentual Absoluto Ponderado (WAPE)}\mbox{}\\
+El WAPE, en vez de calcular un porcentaje para cada mes y promediarlo, divide el error total entre la demanda total \cite{hewamalage2023evaluation}:
+
+\begin{equation}
+WAPE = \frac{\sum_{t=1}^{n} \lvert y_t - \hat{y}_t \rvert}{\sum_{t=1}^{n} \lvert y_t \rvert} \times 100
+\end{equation}
+
+Es decir, indica qué porcentaje de la demanda total se falló. Como el denominador es la demanda total y no la de cada mes, un producto con demanda baja pesa poco en el resultado, y un mes con demanda cero no impide calcularlo mientras la demanda total sea mayor que cero. De esta manera, el WAPE ayuda a evitar el problema de los porcentajes exagerados cuando la demanda real es pequeña, ya que la escala se calcula con valores agregados \cite{hewamalage2023evaluation}. En el ejemplo, el WAPE es $15/60 = 25\,\%$. Aun así, el WAPE tiene sus propias limitaciones, por ejemplo en series con tendencias fuertes, ya que una escala calculada con varios meses puede no representar bien a todos ellos \cite{hewamalage2023evaluation}.
+
+En Thary, las seis métricas se calculan juntando las predicciones de todos los productos en el periodo de prueba, y el criterio de aceptación principal del sistema se define con el WAPE (Sección 3.4.3).
+
+\subsubsection{Validación de modelos de series de tiempo}
+
+Cuando se entrena un modelo de predicción no basta con que funcione bien con los datos con los que se entrenó, sino que hay que comprobar que también funciona con datos que nunca vio. En las series de tiempo esto tiene una dificultad adicional, ya que los datos tienen un orden, por lo que la forma de separar los datos de entrenamiento y de prueba, y la forma de decidir si un modelo es realmente mejor que otro, requieren técnicas propias \cite{hewamalage2023evaluation}. A continuación se explican las tres que se utilizan en Thary.
+
+\paragraph{Validación cruzada temporal (walk-forward)}\mbox{}\\
+En la validación cruzada tradicional (\textit{k-fold}), los datos se mezclan al azar y se dividen en partes, y cada parte se usa por turnos para evaluar el modelo \cite{hewamalage2023evaluation}. En una serie de tiempo esto es un problema, ya que el modelo termina entrenándose con meses posteriores a los que después tiene que predecir, es decir, con información del futuro que en la realidad no tendría \cite{hewamalage2023evaluation}. A esto se le conoce como fuga de datos (\textit{data leakage}), que consiste en usar durante el entrenamiento datos de prueba, o datos que no estarían disponibles al momento de predecir \cite{hewamalage2023evaluation}.
+
+Para evitarlo se utiliza el esquema de origen móvil (\textit{rolling origin}), también llamado validación cruzada de series de tiempo, en el que siempre se respeta el orden cronológico: el modelo se entrena únicamente con los meses anteriores al periodo de prueba, y el punto de corte, llamado origen del pronóstico, se va desplazando hacia adelante en el tiempo, de manera que se generan varios periodos de prueba en vez de uno solo \cite{hewamalage2023evaluation}. Cada vez que el origen avanza, los meses que antes eran de prueba pasan a formar parte del entrenamiento del siguiente paso \cite{hewamalage2023evaluation}. Existen dos variantes: la ventana expansiva (\textit{expanding window}), en la que el entrenamiento crece en cada paso, y la ventana móvil (\textit{rolling window}), en la que el tamaño del entrenamiento se mantiene constante y se van descartando los meses más antiguos. La ventana expansiva es una buena opción cuando las series son cortas \cite{hewamalage2023evaluation}.
+
+Por ejemplo, con 9 meses de historial y una ventana de prueba de 3 meses, una ventana expansiva genera 3 pruebas: la primera entrena con los meses 1 al 4 y evalúa del 5 al 7, la segunda entrena del 1 al 5 y evalúa del 6 al 8, y la tercera entrena del 1 al 6 y evalúa del 7 al 9. En este documento a este esquema se le llama validación cruzada temporal o \textit{walk-forward}, y es el que utiliza Thary (Sección 4.2). Un problema de este esquema es que los primeros pasos pueden contar con pocos datos de entrenamiento \cite{hewamalage2023evaluation}, algo que ocurre en Thary, donde el primer fold se entrena con solo 4 meses.
+
+\paragraph{Prueba de Diebold-Mariano}\mbox{}\\
+La validación cruzada entrega los errores de cada modelo mes a mes, pero no responde una pregunta importante: si un modelo tiene un error promedio menor que otro, ¿de verdad es mejor, o solo tuvo suerte en esos meses? En una muestra concreta siempre uno de los dos tiene que ganar, aunque en realidad ambos sean igual de buenos \cite{diebold2015comparing}. La prueba de Diebold-Mariano \cite{diebold_mariano} es una herramienta estadística para responder eso, ya que permite evaluar si una superioridad aparente es significativa \cite{diebold2015comparing}.
+
+Su funcionamiento se puede explicar en cuatro pasos:
+
+\begin{enumerate}
+    \item Se define una pérdida $L(e_t)$, que es una forma de medir qué tan costoso es el error de cada mes. Por ejemplo, la pérdida cuadrática es $L(e_t) = e_t^2$ \cite{diebold2015comparing}. En Thary se utiliza el error absoluto, $L(e_t) = |e_t|$.
+    \item Se calcula, mes a mes, la diferencia entre la pérdida del modelo 1 y la del modelo 2 \cite{diebold2015comparing}:
+    \begin{equation}
+    d_t = L(e_{1t}) - L(e_{2t})
+    \end{equation}
+    \item Se plantea la hipótesis nula de que los dos modelos tienen la misma pérdida esperada, es decir, que el promedio de las diferencias es cero, $E(d_t) = 0$ \cite{diebold2015comparing}.
+    \item Se calcula el estadístico \cite{diebold2015comparing}:
+    \begin{equation}
+    DM = \frac{\bar{d}}{\hat{\sigma}_{\bar{d}}}, \qquad \bar{d} = \frac{1}{T}\sum_{t=1}^{T} d_t
+    \end{equation}
+    donde $\bar{d}$ es el promedio de las diferencias, $\hat{\sigma}_{\bar{d}}$ es su error estándar y $T$ es el número de meses. Este estadístico se aproxima a una distribución normal estándar \cite{diebold2015comparing}.
+\end{enumerate}
+
+Es decir, se trata de una prueba de que el promedio de una serie, en este caso la serie de diferencias, es igual a cero \cite{diebold2015comparing}. Si el p-valor es menor al nivel de significancia $\alpha$ (0.05 en Thary), se rechaza la hipótesis nula y se considera que la diferencia entre los modelos es real. Un aspecto importante es que las diferencias pueden estar correlacionadas entre meses, por lo que el error estándar debería calcularse de forma robusta \cite{diebold2015comparing}.
+
+
+Cabe aclarar que Diebold \cite{diebold2015comparing} señala que esta prueba fue diseñada para comparar pronósticos y no modelos, y que para comparar modelos existen procedimientos más sencillos que usan toda la muestra. Aun así, el mismo autor reconoce que el análisis fuera de muestra puede ser útil para conocer el desempeño predictivo comparado en un periodo histórico \cite{diebold2015comparing}. En Thary se usa con este último propósito, sobre los pronósticos del backtest de cada producto, y se reconoce como una limitación. Además, en Thary el error estándar se calcula de forma sencilla, como la desviación estándar de las diferencias dividida entre $\sqrt{T}$, sin el ajuste por autocorrelación, ya que el backtest solo cuenta con entre 3 y 6 meses por producto.
+
+\paragraph{Corrección de muestra pequeña (Harvey-Leybourne-Newbold)}\mbox{}\\
+La prueba de Diebold-Mariano usa la distribución normal, que es una aproximación que funciona bien cuando se tienen muchos datos. Con pocos datos esta aproximación puede ser muy mala, y la prueba puede rechazar la hipótesis nula más veces de las que debería, es decir, declarar como significativas diferencias que no lo son \cite{diebold_mariano, harvey1997testing}. Como Thary solo cuenta con entre 3 y 6 meses de backtest por producto, este problema es especialmente relevante.
+
+Harvey, Leybourne y Newbold \cite{harvey1997testing} propusieron dos ajustes: corregir el estadístico y compararlo contra una distribución $t$ de Student con $T - 1$ grados de libertad, en vez de la normal. El estadístico corregido es:
+
+\begin{equation}
+DM^{*} = \sqrt{\frac{T + 1 - 2h + h(h-1)/T}{T}} \cdot DM
+\end{equation}
+
+donde $h$ es el horizonte del pronóstico, es decir, cuántos meses hacia adelante se predice. Cuando se predice un mes hacia adelante ($h = 1$), la fórmula se simplifica a $DM^{*} = \sqrt{(T-1)/T} \cdot DM$, que es la que utiliza Thary. La corrección hace dos cosas: reduce un poco el estadístico, y usa una distribución $t$ que exige un valor más grande para declarar significativa una diferencia cuando hay pocos datos. En otras palabras, con pocos meses se necesita una ventaja más clara y sostenida para creerla.
+
+La Tabla \ref{tab:ejemplo_dm} muestra dos casos de un producto con 4 meses de backtest, en los que el mejor modelo tiene el mismo error, pero el segundo modelo cambia.
+
+\begin{table}[H]
+    \centering
+    \caption{Ejemplo de la prueba de Diebold-Mariano con y sin la corrección de muestra pequeña ($T = 4$, $h = 1$).}
+    \label{tab:ejemplo_dm}
+    \begin{tabularx}{\textwidth}{Xcc}
+        \toprule
+        & \textbf{Caso A} & \textbf{Caso B} \\
+        \midrule
+        Error absoluto del mejor modelo (4 meses) & 2, 3, 2, 3 & 2, 3, 2, 3 \\
+        Error absoluto del segundo modelo & 4, 3, 6, 9 & 7, 9, 6, 8 \\
+        Diferencias $d_t$ & $-2, 0, -4, -6$ & $-5, -6, -4, -5$ \\
+        Promedio $\bar{d}$ & $-3$ & $-5$ \\
+        Desviación estándar de $d_t$ & 2.58 & 0.82 \\
+        $DM$ & $-2.32$ & $-12.25$ \\
+        p-valor sin corrección (normal) & 0.020 & $\approx 0$ \\
+        $DM^{*}$ & $-2.01$ & $-10.61$ \\
+        p-valor con corrección ($t$, 3 g.l.) & 0.138 & 0.002 \\
+
+        \textbf{Conclusión} ($\alpha = 0.05$) & \textbf{No significativa} & \textbf{Significativa} \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+En el caso A, el mejor modelo tiene un MAE de 2.5 frente a 5.5 del segundo, es decir, menos de la mitad del error, pero su ventaja no es sostenida: en el segundo mes ambos se equivocan igual. Sin la corrección parecería significativa (p-valor de 0.020), pero con la corrección deja de serlo (0.138), por lo que en Thary ese producto usaría la Media Móvil. En el caso B, en cambio, la ventaja es grande y se repite todos los meses, por lo que sigue siendo significativa aun con la corrección y el producto conserva su mejor modelo.
