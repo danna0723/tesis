@@ -112,8 +112,8 @@
       \strng{authornamehash}{d546de9dc1fad3dcca224b5d9e07512d}
       \strng{authorfullhash}{11121052fcd5a5ac9b75840fd070d4f2}
       \strng{authorfullhashraw}{11121052fcd5a5ac9b75840fd070d4f2}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of Information Systems and Informatics}
@@ -154,8 +154,8 @@
       \strng{authornamehash}{901252fac8fd23e4435788b726848ce1}
       \strng{authorfullhash}{46549b06dc07f9b63307175caea43c91}
       \strng{authorfullhashraw}{46549b06dc07f9b63307175caea43c91}
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of the Operational Research Society}
@@ -186,8 +186,8 @@
       \strng{authornamehash}{9ac2a54a168ac507d7520995890811ff}
       \strng{authorfullhash}{9ac2a54a168ac507d7520995890811ff}
       \strng{authorfullhashraw}{9ac2a54a168ac507d7520995890811ff}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{¿Qué es la previsión de demanda?}
@@ -228,8 +228,8 @@
       \strng{authornamehash}{f3e05c7440ad9472b1c6d591d6be8e45}
       \strng{authorfullhash}{23fe3fc9e29bfd67668feaa2fb4fb0cd}
       \strng{authorfullhashraw}{23fe3fc9e29bfd67668feaa2fb4fb0cd}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Proper inventory planning should incorporate factors changing over time, since static factors are not robust to this apparent variability. In models of inventories is necessary to recognize the great demand uncertainty. This paper reviews the state of the art of the most significant developments related to inventory models, especially those who consider dynamic demands in time. In addition, demand forecasting models and some techniques for optimizing inventories are analyzed, considering costs and service levels, among others. In the literature review, gaps have been identified related to the treatment of multivariate inventories as well as the use of Bayesian statistics for the purpose of optimization and the development of demand forecasts.}
@@ -315,6 +315,44 @@
       \field{year}{2019}
       \field{pages}{51}
       \range{pages}{1}
+    \endentry
+    \entry{kochak2015demand}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=b11c8a0915523fb317d84c3e57371e54}{%
+           family={Kochak},
+           familyi={K\bibinitperiod},
+           given={Ashvin},
+           giveni={A\bibinitperiod}}}%
+        {{hash=3e306a405cbd9a8224e6edcd394d1482}{%
+           family={Sharma},
+           familyi={S\bibinitperiod},
+           given={Suman},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{2}{%
+        {International Journal of Life Sciences Biotechnology}%
+        {Pharma Research}%
+      }
+      \strng{namehash}{e3d1b10e3127039cf7c5b05690d07cf8}
+      \strng{fullhash}{e3d1b10e3127039cf7c5b05690d07cf8}
+      \strng{fullhashraw}{e3d1b10e3127039cf7c5b05690d07cf8}
+      \strng{bibnamehash}{e3d1b10e3127039cf7c5b05690d07cf8}
+      \strng{authorbibnamehash}{e3d1b10e3127039cf7c5b05690d07cf8}
+      \strng{authornamehash}{e3d1b10e3127039cf7c5b05690d07cf8}
+      \strng{authorfullhash}{e3d1b10e3127039cf7c5b05690d07cf8}
+      \strng{authorfullhashraw}{e3d1b10e3127039cf7c5b05690d07cf8}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{International journal of mechanical engineering and robotics research}
+      \field{note}{Disponible en: \url{https://www.ijmerr.com/v4n1/ijmerr_v4n1_10.pdf}}
+      \field{number}{1}
+      \field{title}{Demand forecasting using neural network for supply chain management}
+      \field{volume}{4}
+      \field{year}{2015}
+      \field{pages}{96\bibrangedash 104}
+      \range{pages}{9}
     \endentry
     \entry{10124729}{article}{}{}
       \name{author}{2}{}{%
@@ -557,8 +595,8 @@
       \strng{authornamehash}{22d436eac46158db792e782fc2723b80}
       \strng{authorfullhash}{22d436eac46158db792e782fc2723b80}
       \strng{authorfullhashraw}{22d436eac46158db792e782fc2723b80}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{Documentacion oficial de XGBoost}
@@ -745,8 +783,8 @@
       \strng{authornamehash}{eff2500053d70f182fdc49dfd66de945}
       \strng{authorfullhash}{eff2500053d70f182fdc49dfd66de945}
       \strng{authorfullhashraw}{eff2500053d70f182fdc49dfd66de945}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Operational Research Quarterly}
@@ -887,12 +925,12 @@
       \strng{authornamehash}{15cc2e3b52b5ea2d3045be532376a348}
       \strng{authorfullhash}{15cc2e3b52b5ea2d3045be532376a348}
       \strng{authorfullhashraw}{15cc2e3b52b5ea2d3045be532376a348}
-      \field{sortinit}{8}
-      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of Business \& Economic Statistics}
-      \field{note}{Disponible en version working paper: \url{http://www.nber.org/papers/w18391.pdf}}
+      \field{note}{Disponible en: \url{https://doi.org/10.1080/07350015.2014.983236}. Copia gratuita: \url{https://www.nber.org/papers/w18391.pdf}}
       \field{number}{1}
       \field{title}{Comparing Predictive Accuracy, Twenty Years Later: A Personal Perspective on the Use and Abuse of Diebold-Mariano Tests}
       \field{volume}{33}
@@ -905,36 +943,36 @@
     \endentry
     \entry{diebold_mariano}{article}{}{}
       \name{author}{2}{}{%
-        {{hash=673f5dd0f5f9a74e3f8a278f9359a79a}{%
+        {{hash=15cc2e3b52b5ea2d3045be532376a348}{%
            family={Diebold},
            familyi={D\bibinitperiod},
-           given={Francis},
-           giveni={F\bibinitperiod}}}%
-        {{hash=78988e7485628c80775c2f96d76eaf71}{%
+           given={Francis\bibnamedelima X.},
+           giveni={F\bibinitperiod\bibinitdelim X\bibinitperiod}}}%
+        {{hash=2c47ca2ba3f38cb3329258e8242da091}{%
            family={Mariano},
            familyi={M\bibinitperiod},
-           given={Roberto},
-           giveni={R\bibinitperiod}}}%
+           given={Roberto\bibnamedelima S.},
+           giveni={R\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
       }
-      \strng{namehash}{6a26e7b77616483aadc783f83723da9b}
-      \strng{fullhash}{6a26e7b77616483aadc783f83723da9b}
-      \strng{fullhashraw}{6a26e7b77616483aadc783f83723da9b}
-      \strng{bibnamehash}{6a26e7b77616483aadc783f83723da9b}
-      \strng{authorbibnamehash}{6a26e7b77616483aadc783f83723da9b}
-      \strng{authornamehash}{6a26e7b77616483aadc783f83723da9b}
-      \strng{authorfullhash}{6a26e7b77616483aadc783f83723da9b}
-      \strng{authorfullhashraw}{6a26e7b77616483aadc783f83723da9b}
+      \strng{namehash}{b22e93c16ed1af110c2b6d60db37bd6c}
+      \strng{fullhash}{b22e93c16ed1af110c2b6d60db37bd6c}
+      \strng{fullhashraw}{b22e93c16ed1af110c2b6d60db37bd6c}
+      \strng{bibnamehash}{b22e93c16ed1af110c2b6d60db37bd6c}
+      \strng{authorbibnamehash}{b22e93c16ed1af110c2b6d60db37bd6c}
+      \strng{authornamehash}{b22e93c16ed1af110c2b6d60db37bd6c}
+      \strng{authorfullhash}{b22e93c16ed1af110c2b6d60db37bd6c}
+      \strng{authorfullhashraw}{b22e93c16ed1af110c2b6d60db37bd6c}
       \field{sortinit}{8}
       \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of Business \& Economic Statistics}
-      \field{month}{02}
-      \field{note}{Disponible en version working paper: \url{https://www.researchgate.net/publication/4722069_Comparing_Predictive_Accuracy/citation/download}}
+      \field{note}{Disponible en: \url{https://doi.org/10.1080/07350015.1995.10524599}. Copia gratuita del autor: \url{https://www.sas.upenn.edu/~fdiebold/papers/paper68/pa.dm.pdf}}
+      \field{number}{3}
       \field{title}{Comparing Predictive Accuracy}
-      \field{volume}{20}
-      \field{year}{2002}
-      \field{pages}{134\bibrangedash 44}
+      \field{volume}{13}
+      \field{year}{1995}
+      \field{pages}{253\bibrangedash 263}
       \range{pages}{11}
       \verb{doi}
       \verb 10.1080/07350015.1995.10524599
@@ -978,44 +1016,6 @@
       \field{year}{1997}
       \field{pages}{281\bibrangedash 291}
       \range{pages}{11}
-    \endentry
-    \entry{kochak2015demand}{article}{}{}
-      \name{author}{2}{}{%
-        {{hash=b11c8a0915523fb317d84c3e57371e54}{%
-           family={Kochak},
-           familyi={K\bibinitperiod},
-           given={Ashvin},
-           giveni={A\bibinitperiod}}}%
-        {{hash=3e306a405cbd9a8224e6edcd394d1482}{%
-           family={Sharma},
-           familyi={S\bibinitperiod},
-           given={Suman},
-           giveni={S\bibinitperiod}}}%
-      }
-      \list{publisher}{2}{%
-        {International Journal of Life Sciences Biotechnology}%
-        {Pharma Research}%
-      }
-      \strng{namehash}{e3d1b10e3127039cf7c5b05690d07cf8}
-      \strng{fullhash}{e3d1b10e3127039cf7c5b05690d07cf8}
-      \strng{fullhashraw}{e3d1b10e3127039cf7c5b05690d07cf8}
-      \strng{bibnamehash}{e3d1b10e3127039cf7c5b05690d07cf8}
-      \strng{authorbibnamehash}{e3d1b10e3127039cf7c5b05690d07cf8}
-      \strng{authornamehash}{e3d1b10e3127039cf7c5b05690d07cf8}
-      \strng{authorfullhash}{e3d1b10e3127039cf7c5b05690d07cf8}
-      \strng{authorfullhashraw}{e3d1b10e3127039cf7c5b05690d07cf8}
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{International journal of mechanical engineering and robotics research}
-      \field{note}{Disponible en: \url{https://www.ijmerr.com/v4n1/ijmerr_v4n1_10.pdf}}
-      \field{number}{1}
-      \field{title}{Demand forecasting using neural network for supply chain management}
-      \field{volume}{4}
-      \field{year}{2015}
-      \field{pages}{96\bibrangedash 104}
-      \range{pages}{9}
     \endentry
     \entry{yadav2023lstm}{misc}{}{}
       \name{author}{5}{}{%

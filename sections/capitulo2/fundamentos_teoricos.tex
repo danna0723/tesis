@@ -1,24 +1,24 @@
-\subsubsection{Gestion de inventarios}
+\subsubsection{Gestión de inventarios}
 
-La gestion de inventarios consiste en el proceso que se realiza sobre la mercancia para conocer la cantidad disponible, esto permitiendo analizar los niveles de existencia y la aproximacion del consumo real.\cite{meana2024gestión}
+La gestión de inventarios consiste en el proceso que se realiza sobre la mercancia para conocer la cantidad disponible, esto permitiendo analizar los niveles de existencia y la aproximacion del consumo real.\cite{meana2024gestión}
 
-Los pasos basicos para realizar una correcta gestion de inventario consiste en: Compra del inventario, en el que los productos se entregan al almacen o punto de venta, Almacenamiento del inventario, en el que este se guarda hasta que se necesite y Aprovechamiento del inventario, en donde se controla la cantidad de productos que hay a la venta para finalmente enviarlo o venderlo a los clientes.\cite{ibm_inventario}
+Los pasos basicos para realizar una correcta gestión de inventario consiste en: Compra del inventario, en el que los productos se entregan al almacen o punto de venta, Almacenamiento del inventario, en el que este se guarda hasta que se necesite y Aprovechamiento del inventario, en donde se controla la cantidad de productos que hay a la venta para finalmente enviarlo o venderlo a los clientes.\cite{ibm_inventario}
 
-\subsubsection{Tipos de gestion de inventario}
+% \subsubsection{Tipos de gestión de inventario}
 
-\begin{description}
-    \item[Gestión periódica de inventarios] Este método implica realizar un recuento físico del inventario a intervalos específicos. Se toma el inventario al inicio del periodo, se suman las nuevas compras y se deduce el inventario final para calcular el costo de las mercancías vendidas (COGS).\cite{ibm_inventario}
+% \begin{description}
+%     \item[Gestión periódica de inventarios] Este método implica realizar un recuento físico del inventario a intervalos específicos. Se toma el inventario al inicio del periodo, se suman las nuevas compras y se deduce el inventario final para calcular el costo de las mercancías vendidas (COGS).\cite{ibm_inventario}
 
-    \item[Gestión de inventario de códigos de barras] Utiliza un sistema que asigna un número único a cada producto. Permite asociar datos como proveedor, dimensiones del producto, peso y cantidad en stock.\cite{ibm_inventario}
+%     \item[Gestión de inventario de códigos de barras] Utiliza un sistema que asigna un número único a cada producto. Permite asociar datos como proveedor, dimensiones del producto, peso y cantidad en stock.\cite{ibm_inventario}
 
-    \item[Gestión de inventario RFID] Transmite de forma inalámbrica la identidad de un producto mediante un número de serie único. Mejora la eficiencia y visibilidad del inventario, facilitando el seguimiento de artículos.\cite{ibm_inventario}
+%     \item[Gestión de inventario RFID] Transmite de forma inalámbrica la identidad de un producto mediante un número de serie único. Mejora la eficiencia y visibilidad del inventario, facilitando el seguimiento de artículos.\cite{ibm_inventario}
     
-\end{description}
+% \end{description}
 
 \subsubsection{Gestión de inventarios con demanda independiente}  % NUEVO
 
 \paragraph{Cantidad Económica de Pedido (EOQ)}\mbox{}\\
-La Cantidad Económica de Pedido (\textit{Economic Order Quantity}, EOQ) consiste en un modelo de gestion de inventario que permite determinar el tamaño que deberia tener un pedido para minimizar el costo total que supondria mantener el inventario. Toma en cuenta dos factores: El costo de hacer un pedido, el cual tiende a aumentar si se hacen muchos pedidos pequeños, y el costo de realizar el mantenimiento del inventario, el cual aumenta si el inventario es muy grande.\cite{setyadi2024eoq}. El modelo se expresa como:
+La Cantidad Económica de Pedido (\textit{Economic Order Quantity}, EOQ) consiste en un modelo de gestión de inventario que permite determinar el tamaño que deberia tener un pedido para minimizar el costo total que supondria mantener el inventario. Toma en cuenta dos factores: El costo de hacer un pedido, el cual tiende a aumentar si se hacen muchos pedidos pequeños, y el costo de realizar el mantenimiento del inventario, el cual aumenta si el inventario es muy grande.\cite{setyadi2024eoq}. El modelo se expresa como:
 
 \begin{equation}
 EOQ = \sqrt{\frac{2DS}{H}}
@@ -58,7 +58,7 @@ El Stock de Seguridad se trata de una cantidad adicional de cada producto que se
 
 \subsubsection{Prediccion de demanda}
 
-La prediccion de la demanda es un proceso que permite mejorar la gestion de los niveles de inventario mediante la utilizacion de datos historicos. Una correcta prediccion de la demanda le permite a las organizaciones el poder tomar decisiones mas inteligentes a la hora de manejar sus provisiones, evitando la falta o exceso de productos, de esta manera, aumentando tanto la satisfaccion del cliente como la creacion de estraregias de negocio mas efectivas a corto y largo plazo \cite{ibm_prevision_demanda}.
+La prediccion de la demanda es un proceso que permite mejorar la gestión de los niveles de inventario mediante la utilizacion de datos historicos. Una correcta prediccion de la demanda le permite a las organizaciones el poder tomar decisiones mas inteligentes a la hora de manejar sus provisiones, evitando la falta o exceso de productos, de esta manera, aumentando tanto la satisfaccion del cliente como la creacion de estraregias de negocio mas efectivas a corto y largo plazo \cite{ibm_prevision_demanda}.
 
 En los ultimos años, los mercados han evolucionado y se han vuelto cada vez mas exigentes en cuanto a la calidad y precision de los servicios, es por eso que muchas organizaciones se han visto inclinadas a incluir el uso de nuevas herramientas y tecnologias como Inteligencia Artificial, Machine Learning o analisis predictivo, para automatizar y perfeccionar esta tarea, ya que los metodos actuales estaticos que son la norma en muchas empresas y organizaciones han empezado a quedar obsoletos para satisfacer las necesidades del mercado actual \cite{ibm_prevision_demanda, valencia2015}.
 
@@ -78,7 +78,7 @@ La media movil consiste un metodo de pronostico que se utiliza para estimar la d
 Debido a esta simplicidad, la media movil suele utilizarse como una linea base (\textit{baseline}) contra la cual se comparan modelos mas sofisticados, con el fin de determinar si estos ultimos realmente aportan una mejora que justifique su mayor complejidad. Es tambien un metodo que se comporta bien cuando el producto tiene un consumo relativamente estable, ya que al no depender de patrones complejos, no se ve tan afectado por variaciones puntuales del historial como si le podria ocurrir a un modelo mas complejo entrenado con pocos datos.
 
 \paragraph{Redes Neuronales Artificiales (RNA)}
-Las redes neuronales artificiales (RNA) son técnicas útiles para la previsión de la demanda, gracias a su capacidad para manejar datos no lineales y captar relaciones funcionales sutiles entre datos empíricos, incluso cuando las relaciones subyacentes son desconocidas o difíciles de describir.
+Las redes neuronales artificiales (RNA) son una técnica que se ha aplicado con frecuencia a la predicción de demanda \cite{kochak2015demand}. A diferencia de un modelo como la regresión lineal, que solo capta relaciones directas entre las variables, las RNA pueden captar relaciones más complejas y no lineales entre los datos, incluso cuando esa relación no se conoce de antemano \cite{kochak2015demand}. Es por esto que resultan útiles cuando la demanda no responde de forma proporcional a sus variables de entrada, algo difícil de conseguir con métodos más simples.
 
 \paragraph{Long Short-Term Memory (LSTM) y Gated Recurrent Unit (GRU)}
 LSTM y GRU son variantes de redes neuronales recurrentes, diseñadas especificamente para el procesamiento de datos secuenciales, a diferencia de las RNA de tipo \textit{feed-forward}. Ambas incorporan mecanismos de memoria interna (compuertas) que les permiten capturar dependencias temporales de largo plazo en los datos, siendo GRU una variante mas simple y computacionalmente menos costosa que LSTM \cite{10124729, Salem2022}. Estas dos tecnicas fueron consideradas durante la revision de literatura, pero finalmente no se incorporaron como modelos candidatos en Thary, principalmente porque requieren un volumen de historial considerablemente mayor al disponible en el caso de estudio para superar a tecnicas mas simples.
@@ -233,7 +233,7 @@ LSTM y GRU son variantes de redes neuronales recurrentes, diseñadas especificam
 
     Con esto, un mes con demanda cero sigue siendo cero después de la transformación, ya que $\log(0 + 1) = 0$. Cuando el modelo hace su predicción en esta escala transformada, se tiene que devolver a la escala original con la operación inversa, que es $y_t = e^{w_t} - 1$, porque lo que interesa es la demanda en unidades reales.
 
-    Aun así, hay que tener en cuenta que esta transformación no siempre mejora el pronóstico, ya que su beneficio depende de que realmente logre estabilizar la varianza de la serie: si lo logra, puede mejorar la precisión, pero si no lo logra, puede perjudicarla \cite{luetkepohl2009log}. En Thary se aplica a la demanda antes de entrenar XGBoost, y las predicciones se devuelven a la escala original antes de compararlas con las de los demás modelos (Sección 3.2.8).
+    Aun así, hay que tener en cuenta que esta transformación no siempre mejora el pronóstico, ya que su beneficio depende de que realmente logre estabilizar la varianza de la serie: si lo logra, puede mejorar la precisión, pero si no lo logra, puede perjudicarla \cite{luetkepohl2009log}. En Thary se aplica a la demanda antes de entrenar XGBoost, y las predicciones se devuelven a la escala original antes de compararlas con las de los demás modelos.
 
     \paragraph{Codificación cíclica de variables periódicas}\mbox{}\\
     Las variables de calendario como el mes se repiten cada cierto tiempo, es decir, después de diciembre vuelve a empezar enero. El problema es que si el mes se representa como un número del 1 al 12, el modelo va a ver a diciembre (12) y a enero (1) como dos meses muy lejanos entre sí, cuando en realidad son meses consecutivos. Para evitar esto se utiliza la codificación cíclica, que representa el mes con dos valores calculados con seno y coseno, de manera que la periodicidad quede representada de una forma que los modelos puedan interpretar \cite{jahin2025mcdfn}:

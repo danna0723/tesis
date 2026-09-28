@@ -513,7 +513,7 @@ Flujos alternativos & Si el usuario aun no ha realizado ninguna accion registrad
 \section{Modelos de datos extensos, diccionarios de datos, mockups}
 % Guía: modelos de datos extensos, diccionarios de datos y mockups.
 
-Este anexo presenta el diccionario de datos completo del esquema relacional de Thary, complementando la descripción resumida presentada en la Sección 3.2.9. Todas las tablas se implementan sobre MySQL, con codificación \texttt{utf8mb4} y motor de almacenamiento InnoDB.
+Este anexo presenta el diccionario de datos completo del esquema relacional de Thary, complementando la descripción resumida presentada en el capitulo 3. Todas las tablas se implementan sobre MySQL, con codificación \texttt{utf8mb4} y motor de almacenamiento InnoDB.
 
 \subsection*{Tabla \texttt{empresas}}
 \begin{table}[H]
@@ -803,7 +803,7 @@ CREATE USER 'thary_app'@'localhost' IDENTIFIED BY '<su_contraseña>';
 GRANT ALL PRIVILEGES ON sistema_inventario.* TO 'thary_app'@'localhost';
     \end{minted}
     Al iniciar, el sistema crea automáticamente la base de datos (si el usuario tiene permiso para hacerlo) y todas las tablas necesarias.
-    \item Configurar las variables de entorno para la conexión a MySQL (\texttt{DB\_HOST}, \texttt{DB\_PORT}, \texttt{DB\_USER}, \texttt{DB\_PASSWORD}, \texttt{DB\_NAME}), según lo descrito en la Sección 3.2.9. Si no se definen, el sistema usa los valores \texttt{127.0.0.1}, puerto \texttt{3307}, usuario \texttt{thary\_app} y base de datos \texttt{sistema\_inventario}, con contraseña vacía. Por ejemplo, en PowerShell:
+    \item Configurar las variables de entorno para la conexión a MySQL (\texttt{DB\_HOST}, \texttt{DB\_PORT}, \texttt{DB\_USER}, \texttt{DB\_PASSWORD}, \texttt{DB\_NAME}). Si no se definen, el sistema usa los valores \texttt{127.0.0.1}, puerto \texttt{3307}, usuario \texttt{thary\_app} y base de datos \texttt{sistema\_inventario}, con contraseña vacía. Por ejemplo, en PowerShell:
     \begin{minted}{powershell}
 $env:DB_PASSWORD = "<su_contraseña>"
     \end{minted}
@@ -830,7 +830,7 @@ python run.py
 web: gunicorn run:app --bind 0.0.0.0:$PORT --workers 2 --timeout 120
     \end{minted}
     \item Railway detecta automáticamente la versión de Python especificada en \texttt{.python-version} e instala las dependencias de \texttt{requirements.txt}.
-    \item Al iniciar, la aplicación crea automáticamente las tablas necesarias en la base de datos (función \texttt{crear\_tablas()}, Sección 3.2.9).
+    \item Al iniciar, la aplicación crea automáticamente las tablas necesarias en la base de datos (función \texttt{crear\_tablas()}).
     \item Se recomienda activar un volumen persistente para el servicio web y la funcionalidad de \textit{backups} automáticos para el servicio de MySQL (Sección 4.6).
 \end{enumerate}
 
