@@ -1,61 +1,61 @@
 % Guia: respuesta directa a los objetivos y a la pregunta de investigacion.
 
-La correcta gestion de inventarios es una actividad critica para cualquier organizacion, ya que un inventario que no se gestione de manera adecuada puede generar problemas como costos innecesarios, perdida de ventas y clientes insatisfechos, entre otros. Es por eso que, el poder contar con una herramienta que permita realizar una acertada prediccion de demanda de los productos es un elemento clave para la gestion de inventarios, ya que permite obtener un analisis detallado de las cantidades necesarias de cada producto y en base a eso, tomar decisiones informadas.
+La correcta gestión de inventarios es una actividad critica para cualquier organización, ya que un inventario que no se gestione de manera adecuada puede generar problemas como costos innecesarios, pérdida de ventas y clientes insatisfechos, entre otros. Es por eso que, el poder contar con una herramienta que permita realizar una acertada predicción de demanda de los productos es un elemento clave para la gestión de inventarios, ya que permite obtener un análisis detallado de las cantidades necesarias de cada producto y en base a eso, tomar decisiones informadas.
 
-Es en este contexto en el que se planteo la siguiente pregunta de investigacion: ¿Como se puede diseñar e implementar un sistema de apoyo a la decision que, mediante modelos de prediccion de demanda, permita estimar las cantidades necesarias de productos en un sistema de gestion de inventarios?
+Es en este contexto en el que se planteo la siguiente pregunta de investigación: ¿Como se puede diseñar e implementar un sistema de apoyo a la decisión que, mediante modelos de predicción de demanda, permita estimar las cantidades necesarias de productos en un sistema de gestión de inventarios?
 
-Dicha pregunta se respondio a traves del cumplimiento del siguiente objetivo general: Desarrollar un sistema que le permita a los usuarios poder predecir cual va a ser la demanda mensual de productos mediante el analisis de datos historicos, para garantizar su correcta planificacion y abastecimiento.
+Dicha pregunta se respondió a través del cumplimiento del siguiente objetivo general: Desarrollar un sistema que le permita a los usuarios poder predecir cual va a ser la demanda mensual de productos mediante el análisis de datos históricos, para garantizar su correcta planificación y abastecimiento.
 
-A partir del desarrollo, implementacion y posterior evaluacion de los resultados del sistema (Capitulos 3 y 4), se puede concluir que si es posible realizar el diseño de un sistema con dichas caracteristicas y que este le ofrezca resultados confiables y faciles de entender a los usuarios. Esto es posible siempre y cuando el sistema cumpla con las siguientes caracteristicas:
+A partir del desarrollo, implementación y posterior evaluación de los resultados del sistema (Capítulos 3 y 4), se puede concluir que si es posible realizar el diseño de un sistema con dichas características y que este le ofrezca resultados confiables y fáciles de entender a los usuarios. Esto es posible siempre y cuando el sistema cumpla con las siguientes características:
 
 \begin{itemize}
-    \item un enfoque empirico de seleccion de modelos por producto en lugar de un unico modelo generalizado
-    \item un mecanismo de validacion estadistica que confirme que las diferencias observadas entre modelos sean reales y no producto del azar
-    \item una arquitectura de software que traduzca esas predicciones en recomendaciones operativas concretas (punto de reorden, cantidad economica de pedido, y alertas de reposicion)
+    \item un enfoque empirico de selección de modelos por producto en lugar de un único modelo generalizado
+    \item un mecanismo de validación estadística que confirme que las diferencias observadas entre modelos sean reales y no producto del azar
+    \item una arquitectura de software que traduzca esas predicciones en recomendaciones operativas concretas (punto de reorden, cantidad económica de pedido, y alertas de reposición)
 \end{itemize}
 
-Tambien se logro el cumplimiento de todos los objetivos especificos que fueron planteados en la primera etapa del desarrollo del sistema:
+También se logró el cumplimiento de todos los objetivos específicos que fueron planteados en la primera etapa del desarrollo del sistema:
 
-\textbf{Identificar las fuentes de datos relevantes, incluyendo el historial de consumo y las variables del inventario necesarias para la prediccion de la demanda de productos.} 
+\textbf{Identificar las fuentes de datos relevantes, incluyendo el historial de consumo y las variables del inventario necesarias para la predicción de la demanda de productos.} 
 
-Se concluyo que las fuentes de datos relevantes para el funcionamiento basico de Thary, ademas del historial de demanda, que incluye rezagos de 1, 2, 3 y 6 meses, y medias moviles de 3 y 6 meses, son:
+Se concluyo que las fuentes de datos relevantes para el funcionamiento basico de Thary, además del historial de demanda, que incluye rezagos de 1, 2, 3 y 6 meses, y medias móviles de 3 y 6 meses, son:
 
 \begin{itemize}
     \item variables de calendario
-    \item estadisticas historicas del propio producto (media y desviacion)
+    \item estadísticas históricas del propio producto (media y desviación)
     \item variables de inventario como el nivel actual de existencias y el costo unitario
 \end{itemize}
 
-Por otra parte, otras variables que tambien se incorporaron para complementar el analisis con recomendaciones de reposicion, pero que no son necesarias para el funcionamiento de prediccion de demanda basico del sistema, son:
+Por otra parte, otras variables que también se incorporaron para complementar el análisis con recomendaciones de reposición, pero que no son necesarias para el funcionamiento de predicción de demanda basico del sistema, son:
 
 \begin{itemize}
     \item el tiempo de entrega de los proveedores (\textit{lead time}) y sus nombres (proveedor principal y alterno)
-    \item el presupuesto de capital de trabajo disponible, usado para acotar la cantidad sugerida de pedido cuando este no alcanza para cubrir la cantidad economica de pedido (EOQ) ideal
+    \item el presupuesto de capital de trabajo disponible, usado para acotar la cantidad sugerida de pedido cuando este no alcanza para cubrir la cantidad económica de pedido (EOQ) ideal
     \item el margen unitario del producto, usado para estimar el costo de ruptura (\textit{stockout}) ante un posible desabastecimiento
 \end{itemize}
 
-\textbf{Seleccionar modelos de prediccion de demanda adecuados para estimar el consumo o venta mensual de productos en diferentes contextos de los inventarios.} 
+\textbf{Seleccionar modelos de predicción de demanda adecuados para estimar el consumo o venta mensual de productos en diferentes contextos de los inventarios.} 
 
-Se concluyo que aunque no existe un unico modelo que sea universalmente superior, se pueden aprovechar las ventajas de cada uno de los modelos seleccionados: Media Movil, Regresion Lineal y XGBoost. La estrategia adoptada consiste en seleccionar el modelo con menor error por cada producto individualmente, y validar dicha seleccion mediante la prueba de Diebold-Mariano.
+Se concluyo que aunque no existe un único modelo que sea universalmente superior, se pueden aprovechar las ventajas de cada uno de los modelos seleccionados: Media Móvil, Regresión Lineal y XGBoost. La estrategia adoptada consiste en seleccionar el modelo con menor error por cada producto individualmente, y validar dicha selección mediante la prueba de Diebold-Mariano.
 
-Al aplicar esta estrategia, el sistema obtuvo un WAPE promedio de 18.27\%, una cifra inferior al 22.31\% que obtuvo el uso de la Media Movil aplicada a todo el catalogo en los tres periodos de la validacion cruzada temporal. Esto confirma que la seleccion de modelos es mas efectiva cuando se hace por producto y no una eleccion unica para todo un catalogo.
+Al aplicar esta estrategia, el sistema obtuvo un WAPE promedio de 21.88\%, una cifra inferior al 22.31\% que obtuvo la Media Móvil aplicada a todo el catálogo en los tres periodos de la validación cruzada temporal. Esto confirma que la selección de modelos es más efectiva cuando se hace por producto, y no mediante una elección única para todo un catálogo.
 
-\textbf{Incorporar variables como el tiempo de entrega de proveedores y el punto de reposicion dentro del sistema para complementar las estimaciones de demanda.} 
+\textbf{Incorporar variables como el tiempo de entrega de proveedores y el punto de reposición dentro del sistema para complementar las estimaciones de demanda.} 
 
-Se incorporaron variables como el tiempo de entrega (\textit{lead time}) y el nivel de inventario actual, las cuales permitieron calcular el stock de seguridad y el punto de reorden, complementados con la cantidad economica de pedido (EOQ) y el costo de ruptura (\textit{stockout}) estimado. 
+Se incorporaron variables como el tiempo de entrega (\textit{lead time}) y el nivel de inventario actual, las cuales permitieron calcular el stock de seguridad y el punto de reorden, complementados con la cantidad económica de pedido (EOQ) y el costo de ruptura (\textit{stockout}) estimado. 
 
-Al ejecutar el sistema sobre el caso de estudio, se pudieron identificar 200 de 856 productos (23.4\% del catalogo) en estado de alerta de reposicion, con un valor total de inventario de \$270.810.382 y un costo de ruptura estimado de \$17.859.670 para los productos en alerta con margen unitario disponible.
+Al ejecutar el sistema sobre el caso de estudio, se pudieron identificar 200 de 856 productos (23.4\% del catálogo) en estado de alerta de reposición, con un valor total de inventario de \$270.810.382. En cuanto al costo de ruptura, este no se pudo calcular sobre datos reales, ya que el archivo del caso de estudio no incluye precios de venta. Por esto, se uso precios estimados de forma ilustrativa, con los que el sistema calculó un costo de ruptura de \$17.859.670 para los productos en alerta con margen unitario disponible, lo cual confirma que esta función funciona correctamente, aunque esta cifra en especifico no representa el impacto economico real del caso de estudio.
 
-\textbf{Diseñar un modulo de visualizacion que presente las predicciones de manera clara y comprensible para apoyar la toma de decisiones del usuario.} 
+\textbf{Diseñar un módulo de visualización que presente las predicciones de manera clara y comprensible para apoyar la toma de decisiones del usuario.} 
 
-El diseño de las interfaces se realizo con el objetivo de que sean comprensibles incluso para usuarios que no cuenten con conocimientos tecnicos, y que a la vez les permita tomar decisiones informadas sobre la gestion de inventarios.
+El diseño de las interfaces se realizo con el objetivo de que sean comprensibles incluso para usuarios que no cuenten con conocimientos técnicos, y que a la vez les permita tomar decisiones informadas sobre la gestión de inventarios.
 
-Se diseñaron pantallas diferenciadas por rol, en la que el administrador tiene acceso a informacion mas sensible como las pantallas para subir un archivo de datos csv o la creacion de nuevos usuarios y el historial de movimientos de la empresa, por su parte el empleado solo podria acceder a las pestañas que cuenten con los analisis de los resultados. Ambos roles pueden acceder a las pantallas de visualizacion con alertas visuales codificadas por color, tablas y graficas, que permiten identificar rapidamente los productos que requieren atencion.
+Se diseñaron pantallas diferenciadas por rol, en la que el administrador tiene acceso a información más sensible como las pantallas para subir un archivo de datos csv o la creación de nuevos usuarios y el historial de movimientos de la empresa, por su parte el empleado solo podría acceder a las pestañas que cuenten con los análisis de los resultados. Ambos roles pueden acceder a las pantallas de visualización con alertas visuales codificadas por color, tablas y gráficas, que permiten identificar rápidamente los productos que requieren atención.
 
-La validacion de este modulo con un gestor de inventario real del dominio de salud confirmo que la interfaz por si sola resulta lo suficientemente comprensible para un usuario, sin necesidad de guia adicional ni conocimientos tecnicos de modelado predictivo.
+La validación de este módulo con un gestor de inventario real del dominio de salud confirmó que la interfaz por si sola resulta lo suficientemente comprensible para un usuario, sin necesidad de guia adicional ni conocimientos técnicos de modelado predictivo.
 
-\textbf{Evaluar el desempeño del sistema desarrollado mediante la realizacion de pruebas con datos historicos, con el fin de analizar la precision de las predicciones generadas y verificar su utilidad en el apoyo a la toma de decisiones en la gestion del inventario.} 
+\textbf{Evaluar el desempeño del sistema desarrollado mediante la realización de pruebas con datos históricos, con el fin de analizar la precisión de las predicciones generadas y verificar su utilidad en el apoyo a la toma de decisiones en la gestión del inventario.} 
 
-Por ultimo, el sistema se evaluo mediante la realizacion de 37 pruebas automatizadas que resultaron exitosas. Tambien se realizó una validacion cruzada temporal sobre el historial real de la clinica (que fue el caso de estudio con el que se hicieron las pruebas), confirmando una mejora estadisticamente significativa del sistema final frente a la utilizacion unica de la Media Movil. En cuanto a la utilidad practica del sistema en la toma de decisiones, esta se valido mediante la retroalimentacion y aprobacion dada por un usuario real.
+Por último, el sistema se evaluó mediante la realización de 37 pruebas automatizadas que resultaron exitosas. También se realizó una validación cruzada temporal sobre el historial real de la clínica (que fue el caso de estudio con el que se hicieron las pruebas), confirmando una mejora estadísticamente significativa del sistema final frente a la utilización única de la Media Móvil. En cuanto a la utilidad práctica del sistema en la toma de decisiones, esta se validó mediante la retroalimentación y aprobación dada por un usuario real.
 
-En conclusion, la evidencia recolectada a lo largo de este documento permite concluir que Thary responde satisfactoriamente a la pregunta de investigacion planteada, ya que es posible diseñar e implementar un sistema de apoyo a la decision que, mediante prediccion de demanda, estime las cantidades necesarias de productos en un sistema de gestion de inventarios, siempre que se adopte un enfoque de seleccion de modelos por producto, un mecanismo de validacion estadistica riguroso, y una arquitectura de software capaz de traducir esas predicciones en recomendaciones concretas. Esto se logro con algunas limitaciones reconocidasque se documentan como lineas de trabajo futuro en la siguiente seccion.
+En conclusión, la evidencia recolectada a lo largo de este documento permite concluir que Thary responde satisfactoriamente a la pregunta de investigación planteada, ya que es posible diseñar e implementar un sistema de apoyo a la decisión que, mediante predicción de demanda, estime las cantidades necesarias de productos en un sistema de gestión de inventarios, siempre que se adopte un enfoque de selección de modelos por producto, un mecanismo de validación estadística riguroso, y una arquitectura de software capaz de traducir esas predicciones en recomendaciones concretas. Esto se logró con algunas limitaciones reconocidasque se documentan como líneas de trabajo futuro en la siguiente sección.

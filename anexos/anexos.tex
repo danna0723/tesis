@@ -47,8 +47,8 @@ Postcondiciones & El usuario accede exitosamente al sistema y puede acceder a la
 \hline
 Flujo principal &
 \begin{enumerate}
-    \item El usuario ingresa su usuaario y contraseña.
-    \item El sistema valida que la informacion sea correcta.
+    \item El usuario ingresa su usuario y contraseña.
+    \item El sistema valida que la información sea correcta.
     \item El sistema identifica el perfil del usuario.
     \item El sistema permite el acceso a Thary.
 \end{enumerate} \\
@@ -92,7 +92,7 @@ Postcondiciones & El archivo es recibido por el sistema para su posterior proces
 \hline
 Flujo principal &
 \begin{enumerate}
-    \item El Administrador inicia sesion y es recibido por la pantalla inicial que le da la opcion de subir un archivo csv.
+    \item El Administrador inicia sesión y es recibido por la pantalla inicial que le da la opción de subir un archivo csv.
     \item El Administrador selecciona un archivo CSV.
     \item El sistema recibe el archivo.
     \item El sistema se encarga de validar el formato y que contenga los campos mínimos requeridos para el funcionamiento del sistema como: fecha, ID del producto y cantidad demandada de cada uno.
@@ -103,7 +103,7 @@ Flujos alternativos &
 \begin{enumerate}
     \item Si el archivo no tiene formato CSV, el sistema informa el error con el mensaje "El archivo debe tener extensión .csv"
     \item Si faltan campos obligatorios, el sistema rechaza el archivo e informa cuáles son los datos requeridos, ejemplo: Falta la columna obligatoria: fecha"
-    \item Si el usuario no cuenta con los permisos de Administrador, Thary simplemente no le muestra la opcion de carga archivo, limitandose con solo mostrarle el dashboard con los resultados y demas pantallas con informacion.
+    \item Si el usuario no cuenta con los permisos de Administrador, Thary simplemente no le muestra la opción de carga archivo, limitandose con solo mostrarle el dashboard con los resultados y demas pantallas con información.
 \end{enumerate} \\
 \hline
 \end{tabularx}
@@ -176,7 +176,7 @@ Requisitos relacionados & RF-02, RF-05 \\
 \hline
 Objetivo & Permitirle al los empleados del inventario consultar cual es la demanda mensual estimada para cada uno de los producto. \\
 \hline
-Precondiciones & Como precondicion, ya debe de existir un archivo procesado anteriormente por el administrador, tambien ya deben haber resultados de predicción disponibles. \\
+Precondiciones & Como precondición, ya debe de existir un archivo procesado anteriormente por el administrador, también ya deben haber resultados de predicción disponibles. \\
 \hline
 Postcondiciones & El usuario visualiza las estimaciones de demanda correspondientes a los productos. \\
 \hline
@@ -210,19 +210,19 @@ Actor principal & Personal de Inventario \\
 \hline
 Requisitos relacionados & RF-04, RF-05 \\
 \hline
-Objetivo & El objetivo es que se pueda consultar el inventario actual de los productos e identificar facilmente a aquellos que requieran atención o esten en mayor riesgo de desabatecimiento. \\
+Objetivo & El objetivo es que se pueda consultar el inventario actual de los productos e identificar fácilmente a aquellos que requieran atención o esten en mayor riesgo de desabatecimiento. \\
 \hline
-Precondiciones & Como precondicion para este caso de uso, es importante que ya exista información del inventario disponible y resultados del procesamiento. \\
+Precondiciones & Como precondición para este caso de uso, es importante que ya exista información del inventario disponible y resultados del procesamiento. \\
 \hline
 Postcondiciones & Las postcondiciones son que el usuario puede visualizar sin problemas el estado actual del inventario y las alertas correspondientes para cada producto. \\
 \hline
 Flujo principal &
 \begin{enumerate}
     \item El usuario accede al módulo de "Estado de inventario".
-    \item El sistema consulta la informacion actual del inventario.
+    \item El sistema consulta la información actual del inventario.
     \item El sistema se encarga de comparar el inventario disponible con el punto de reposición de cada producto.
     \item El sistema identifica los productos que se encuentran en o por debajo de su punto de reposición.
-    \item El sistema muestra las alertas visuales correspondientes dependiendo de cada caso, se marcaran de color rojo en caso de estar por debajo del punto de reposicion.
+    \item El sistema muestra las alertas visuales correspondientes dependiendo de cada caso, se marcaran de color rojo en caso de estar por debajo del punto de reposición.
 \end{enumerate} \\
 \hline
 Flujos alternativos & Si no existe información de inventario para un producto, el sistema informa que no se dispone de los datos necesarios para determinar su estado. \\
@@ -247,11 +247,11 @@ Actor principal & Personal de Inventario \\
 \hline
 Requisitos relacionados & RF-03, RF-05 \\
 \hline
-Objetivo & Permitir consultar las recomendaciones de reposición generadas para cada producto, teniendo en cuenta distintos datos como la demanda estimada, el inventario que ya se tiene disponible, el tiempo de entrega, que varia de producto a producto, y el presupuesto establecido. \\
+Objetivo & Permitir consultar las recomendaciones de reposición generadas para cada producto, teniendo en cuenta distintos datos como la demanda estimada, el inventario que ya se tiene disponible, el tiempo de entrega, que varía de producto a producto, y el presupuesto establecido. \\
 \hline
-Precondiciones & La principal precondicion es que debe existir un archivo csv ya procesado, y el sistema ya debe contar con toda la información necesaria para poder calcular las recomendaciones. \\
+Precondiciones & La principal precondición es que debe existir un archivo csv ya procesado, y el sistema ya debe contar con toda la información necesaria para poder calcular las recomendaciones. \\
 \hline
-Postcondiciones & El usuario visualiza la cantidad recomendada de compra de una manera clara mediante el uso de graficas y tablas, tambien puede ver otros datos relevantes como el punto de reposición y información acerca del presupuesto. \\
+Postcondiciones & El usuario visualiza la cantidad recomendada de compra de una manera clara mediante el uso de gráficas y tablas, también puede ver otros datos relevantes como el punto de reposición y información acerca del presupuesto. \\
 \hline
 Flujo principal &
 \begin{enumerate}
@@ -294,7 +294,7 @@ Postcondiciones & El pedido queda registrado con la información correspondiente
 \hline
 Flujo principal &
 \begin{enumerate}
-    \item El usuario consulta la pagina de "Pedidos" del sistema.
+    \item El usuario consulta la página de "Pedidos" del sistema.
     \item Selecciona uno de los pedidos para registrarlos.
     \item Selecciona el proveedor.
     \item A partir de esto, el sistema registra la fecha del pedido.
@@ -303,7 +303,7 @@ Flujo principal &
     \item El sistema confirma el registro.
 \end{enumerate} \\
 \hline
-Flujos alternativos & Si no se selcciona ningun producto, pero de todas maneras se hace click en el boton para registrar, saldra el siguiente mensaje: No seleccionaste ningún producto para confirmar" \\
+Flujos alternativos & Si no se selcciona ningún producto, pero de todas maneras se hace click en el boton para registrar, saldra el siguiente mensaje: No seleccionaste ningún producto para confirmar" \\
 \hline
 \end{tabularx}
 \end{table}
@@ -367,11 +367,11 @@ Actor principal & Personal de Inventario \\
 \hline
 Requisitos relacionados & RF-10 \\
 \hline
-Objetivo & El objetivo es permitirle al Personal de Inventario revertir un pedido previamente confirmado, en caso de haberse equivocado o de que la confirmacion ya no sea necesaria. \\
+Objetivo & El objetivo es permitirle al Personal de Inventario revertir un pedido previamente confirmado, en caso de haberse equivocado o de que la confirmación ya no sea necesaria. \\
 \hline
 Precondiciones &
 \begin{itemize}
-    \item El usuario debe haber iniciado sesion.
+    \item El usuario debe haber iniciado sesión.
     \item Debe existir al menos un pedido previamente confirmado por el mismo usuario.
 \end{itemize} \\
 \hline
@@ -379,18 +379,18 @@ Postcondiciones & El pedido queda marcado como no confirmado, y vuelve a aparece
 \hline
 Flujo principal &
 \begin{enumerate}
-    \item El usuario accede a la pagina de "Pedidos" del sistema.
+    \item El usuario accede a la página de "Pedidos" del sistema.
     \item Consulta el historial de pedidos confirmados.
     \item Selecciona el pedido que desea deshacer.
-    \item El sistema solicita confirmacion de la accion.
+    \item El sistema solicita confirmación de la acción.
     \item El usuario confirma que desea deshacer el pedido.
     \item El sistema revierte el estado del pedido y lo registra en la bitacora de actividad.
 \end{enumerate} \\
 \hline
 Flujos alternativos &
 \begin{enumerate}
-    \item Si el usuario cancela la confirmacion, el sistema no realiza ningun cambio y el pedido permanece confirmado.
-    \item Si el pedido ya fue deshecho previamente por otro usuario, el sistema informa que la accion ya no es posible.
+    \item Si el usuario cancela la confirmación, el sistema no realiza ningún cambio y el pedido permanece confirmado.
+    \item Si el pedido ya fue deshecho previamente por otro usuario, el sistema informa que la acción ya no es posible.
 \end{enumerate} \\
 \hline
 \end{tabularx}
@@ -418,7 +418,7 @@ Objetivo & Permitirle al Administrador consultar la bitacora completa de accione
 \hline
 Precondiciones &
 \begin{itemize}
-    \item El usuario debe haber iniciado sesion con perfil de Administrador.
+    \item El usuario debe haber iniciado sesión con perfil de Administrador.
     \item Debe existir al menos un registro de actividad generado previamente en la empresa.
 \end{itemize} \\
 \hline
@@ -426,12 +426,12 @@ Postcondiciones & El administrador visualiza el listado de acciones realizadas p
 \hline
 Flujo principal &
 \begin{enumerate}
-    \item El Administrador accede al modulo de "Actividad".
+    \item El Administrador accede al módulo de "Actividad".
     \item El sistema consulta el registro de actividad de la empresa del administrador.
-    \item El sistema muestra el listado de acciones, indicando el usuario responsable, el tipo de accion y la fecha y hora en que ocurrio.
+    \item El sistema muestra el listado de acciones, indicando el usuario responsable, el tipo de acción y la fecha y hora en que ocurrió.
 \end{enumerate} \\
 \hline
-Flujos alternativos & Si aun no se ha registrado ninguna actividad en la empresa, el sistema informa que no hay eventos para mostrar. \\
+Flujos alternativos & Si aún no se ha registrado ninguna actividad en la empresa, el sistema informa que no hay eventos para mostrar. \\
 \hline
 \end{tabularx}
 \end{table}
@@ -454,21 +454,21 @@ Actor principal & Personal de Inventario \\
 \hline
 Requisitos relacionados & RF-12 \\
 \hline
-Objetivo & Permitirle al usuario visualizar en un calendario las fechas estimadas en las que debe realizarse el pedido de cada producto, segun las recomendaciones generadas por el sistema. \\
+Objetivo & Permitirle al usuario visualizar en un calendario las fechas estimadas en las que debe realizarse el pedido de cada producto, según las recomendaciones generadas por el sistema. \\
 \hline
-Precondiciones & Debe existir un archivo previamente procesado, con resultados de reposicion disponibles. \\
+Precondiciones & Debe existir un archivo previamente procesado, con resultados de reposición disponibles. \\
 \hline
 Postcondiciones & El usuario visualiza, organizadas por fecha, las recomendaciones de pedido proximas a vencer. \\
 \hline
 Flujo principal &
 \begin{enumerate}
-    \item El usuario accede al modulo de "Calendario de pedidos".
-    \item El sistema consulta las recomendaciones de reposicion vigentes.
-    \item El sistema organiza dichas recomendaciones segun la fecha estimada en la que deberian realizarse.
+    \item El usuario accede al módulo de "Calendario de pedidos".
+    \item El sistema consulta las recomendaciones de reposición vigentes.
+    \item El sistema organiza dichas recomendaciones según la fecha estimada en la que deberían realizarse.
     \item El sistema muestra el calendario con los pedidos proximos, por producto.
 \end{enumerate} \\
 \hline
-Flujos alternativos & Si no existen recomendaciones de reposicion disponibles, el sistema informa que primero debe procesarse un archivo. \\
+Flujos alternativos & Si no existen recomendaciones de reposición disponibles, el sistema informa que primero debe procesarse un archivo. \\
 \hline
 \end{tabularx}
 \end{table}
@@ -493,19 +493,19 @@ Requisitos relacionados & RF-13 \\
 \hline
 Objetivo & Permitirle a cualquier usuario, sin importar su rol, consultar los datos de su propia cuenta y el historial de las acciones que el mismo ha realizado en el sistema. \\
 \hline
-Precondiciones & El usuario debe haber iniciado sesion. \\
+Precondiciones & El usuario debe haber iniciado sesión. \\
 \hline
-Postcondiciones & El usuario visualiza la informacion de su cuenta y sus propios movimientos dentro del sistema. \\
+Postcondiciones & El usuario visualiza la información de su cuenta y sus propios movimientos dentro del sistema. \\
 \hline
 Flujo principal &
 \begin{enumerate}
-    \item El usuario accede al modulo de "Perfil".
+    \item El usuario accede al módulo de "Perfil".
     \item El sistema consulta los datos de la cuenta del usuario.
-    \item El sistema consulta los movimientos propios del usuario (pedidos confirmados o revertidos, y si es administrador, tambien sus archivos cargados y los usuarios que ha creado).
-    \item El sistema muestra la informacion recopilada.
+    \item El sistema consulta los movimientos propios del usuario (pedidos confirmados o revertidos, y si es administrador, también sus archivos cargados y los usuarios que ha creado).
+    \item El sistema muestra la información recopilada.
 \end{enumerate} \\
 \hline
-Flujos alternativos & Si el usuario aun no ha realizado ninguna accion registrada en el sistema, el sistema muestra los datos de la cuenta sin movimientos asociados. \\
+Flujos alternativos & Si el usuario aún no ha realizado ninguna acción registrada en el sistema, el sistema muestra los datos de la cuenta sin movimientos asociados. \\
 \hline
 \end{tabularx}
 \end{table}
@@ -513,269 +513,401 @@ Flujos alternativos & Si el usuario aun no ha realizado ninguna accion registrad
 \section{Modelos de datos extensos, diccionarios de datos, mockups}
 % Guía: modelos de datos extensos, diccionarios de datos y mockups.
 
-Este anexo presenta el diccionario de datos completo del esquema relacional de Thary, complementando la descripción resumida presentada en el capitulo 3. Todas las tablas se implementan sobre MySQL, con codificación \texttt{utf8mb4} y motor de almacenamiento InnoDB.
+Este anexo presenta el diccionario de datos completo del esquema relacional de Thary, complementando la descripción resumida presentada en el capítulo 3. Todas las tablas se implementan sobre MySQL, con codificación \texttt{utf8mb4} y motor de almacenamiento InnoDB.
 
 \subsection*{Tabla \texttt{empresas}}
 \begin{table}[H]
 \centering
-\begin{tabularx}{\textwidth}{lllX}
-\toprule
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{3.0cm}|l|>{\raggedright\arraybackslash}p{3.2cm}|X|}
+\hline
 \textbf{Campo} & \textbf{Tipo} & \textbf{Restricción} & \textbf{Descripción} \\
-\midrule
+\hline
 id & VARCHAR(32) & PRIMARY KEY & Identificador único de la organización \\
-nombre\_empresa & VARCHAR(120) & & Nombre de la organización, visible en el encabezado \\
-fecha\_creacion & DATETIME & DEFAULT CURRENT\_TIMESTAMP & Fecha de registro de la empresa \\
-\bottomrule
+\hline
+nombre\_\discretionary{}{}{}empresa & VARCHAR(120) & & Nombre de la organización, visible en el encabezado \\
+\hline
+fecha\_\discretionary{}{}{}creación & DATETIME & DEFAULT CURRENT\_\discretionary{}{}{}TIMESTAMP & Fecha de registro de la empresa \\
+\hline
 \end{tabularx}
 \end{table}
 
 \subsection*{Tabla \texttt{usuarios}}
 \begin{table}[H]
 \centering
-\begin{tabularx}{\textwidth}{lllX}
-\toprule
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{3.0cm}|l|>{\raggedright\arraybackslash}p{3.2cm}|X|}
+\hline
 \textbf{Campo} & \textbf{Tipo} & \textbf{Restricción} & \textbf{Descripción} \\
-\midrule
-id & INT & PRIMARY KEY, AUTO\_INCREMENT & Identificador único del usuario \\
+\hline
+id & INT & PRIMARY KEY, AUTO\_\discretionary{}{}{}INCREMENT & Identificador único del usuario \\
+\hline
 nombre & VARCHAR(120) & NOT NULL & Nombre completo del usuario \\
+\hline
 username & VARCHAR(80) & NOT NULL, UNIQUE & Nombre de usuario para inicio de sesión \\
+\hline
 email & VARCHAR(160) & NOT NULL, UNIQUE & Correo electrónico del usuario \\
-password\_hash & VARCHAR(255) & NOT NULL & Hash de la contraseña, generado con \textit{scrypt} \\
+\hline
+password\_\discretionary{}{}{}hash & VARCHAR(255) & NOT NULL & Hash de la contraseña, generado con \textit{scrypt} \\
+\hline
 rol & ENUM('admin','empleado') & NOT NULL, DEFAULT 'empleado' & Rol del usuario dentro de la empresa \\
-empresa\_id & VARCHAR(32) & NOT NULL, FK $\to$ empresas.id & Empresa a la que pertenece el usuario \\
-\bottomrule
+\hline
+empresa\_\discretionary{}{}{}id & VARCHAR(32) & NOT NULL, FK $\to$ empresas.id & Empresa a la que pertenece el usuario \\
+\hline
 \end{tabularx}
 \end{table}
 
 \subsection*{Tabla \texttt{pedidos}}
 \begin{table}[H]
 \centering
-\begin{tabularx}{\textwidth}{lllX}
-\toprule
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{3.0cm}|l|>{\raggedright\arraybackslash}p{3.2cm}|X|}
+\hline
 \textbf{Campo} & \textbf{Tipo} & \textbf{Restricción} & \textbf{Descripción} \\
-\midrule
-id & INT & PRIMARY KEY, AUTO\_INCREMENT & Identificador único del pedido \\
-empresa\_id & VARCHAR(32) & NOT NULL, FK $\to$ empresas.id & Empresa a la que pertenece el pedido \\
-producto\_id & VARCHAR(64) & NOT NULL & Identificador del producto pedido \\
+\hline
+id & INT & PRIMARY KEY, AUTO\_\discretionary{}{}{}INCREMENT & Identificador único del pedido \\
+\hline
+empresa\_\discretionary{}{}{}id & VARCHAR(32) & NOT NULL, FK $\to$ empresas.id & Empresa a la que pertenece el pedido \\
+\hline
+producto\_\discretionary{}{}{}id & VARCHAR(64) & NOT NULL & Identificador del producto pedido \\
+\hline
 proveedor & VARCHAR(160) & & Proveedor elegido para el pedido \\
+\hline
 cantidad & DOUBLE & & Cantidad confirmada \\
+\hline
 costo & DOUBLE & & Costo estimado del pedido \\
+\hline
 usuario & VARCHAR(120) & & Usuario responsable de confirmar el pedido \\
-fecha\_hora & DATETIME & & Fecha y hora de confirmación \\
+\hline
+fecha\_\discretionary{}{}{}hora & DATETIME & & Fecha y hora de confirmación \\
+\hline
 \multicolumn{4}{l}{\textit{Clave única: (empresa\_id, producto\_id)}} \\
-\bottomrule
+\hline
 \end{tabularx}
 \end{table}
 
 \subsection*{Tabla \texttt{actividad}}
 \begin{table}[H]
 \centering
-\begin{tabularx}{\textwidth}{lllX}
-\toprule
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{3.0cm}|l|>{\raggedright\arraybackslash}p{3.2cm}|X|}
+\hline
 \textbf{Campo} & \textbf{Tipo} & \textbf{Restricción} & \textbf{Descripción} \\
-\midrule
-id & BIGINT & PRIMARY KEY, AUTO\_INCREMENT & Identificador único del evento \\
-empresa\_id & VARCHAR(32) & NOT NULL, FK $\to$ empresas.id & Empresa asociada al evento \\
+\hline
+id & BIGINT & PRIMARY KEY, AUTO\_\discretionary{}{}{}INCREMENT & Identificador único del evento \\
+\hline
+empresa\_\discretionary{}{}{}id & VARCHAR(32) & NOT NULL, FK $\to$ empresas.id & Empresa asociada al evento \\
+\hline
 username & VARCHAR(80) & NOT NULL & Usuario que realizó la acción \\
-nombre\_usuario & VARCHAR(120) & NOT NULL & Nombre del usuario que realizó la acción \\
+\hline
+nombre\_\discretionary{}{}{}usuario & VARCHAR(120) & NOT NULL & Nombre del usuario que realizó la acción \\
+\hline
 tipo & VARCHAR(30) & NOT NULL & Tipo de acción (archivo\_subido, pedido\_confirmado, etc.) \\
+\hline
 descripcion & VARCHAR(300) & NOT NULL & Descripción legible del evento \\
-fecha & DATETIME & DEFAULT CURRENT\_TIMESTAMP & Fecha y hora del evento \\
-\bottomrule
+\hline
+fecha & DATETIME & DEFAULT CURRENT\_\discretionary{}{}{}TIMESTAMP & Fecha y hora del evento \\
+\hline
 \end{tabularx}
 \end{table}
 
 \subsection*{Tabla \texttt{corridas}}
 \begin{table}[H]
 \centering
-\begin{tabularx}{\textwidth}{lllX}
-\toprule
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{3.0cm}|l|>{\raggedright\arraybackslash}p{3.2cm}|X|}
+\hline
 \textbf{Campo} & \textbf{Tipo} & \textbf{Restricción} & \textbf{Descripción} \\
-\midrule
-id & INT & PRIMARY KEY, AUTO\_INCREMENT & Identificador de la corrida (tabla padre) \\
-empresa\_id & VARCHAR(32) & NOT NULL, FK $\to$ empresas.id & Empresa que ejecutó la corrida \\
-fecha\_corrida & DATETIME & DEFAULT CURRENT\_TIMESTAMP & Fecha de la corrida \\
-horizonte\_meses & INT & & Meses hacia adelante pronosticados \\
-presupuesto\_capital\_trabajo & DOUBLE & & Presupuesto total disponible \\
-presupuesto\_por\_producto & DOUBLE & & Presupuesto asignado por producto \\
-mape\_final & DOUBLE & & MAPE del sistema final \\
-wape\_final & DOUBLE & & WAPE del sistema final \\
-costo\_total\_pedidos\_urgentes & DOUBLE & & Costo total de productos en alerta \\
-valor\_total\_inventario & DOUBLE & & Valor total del inventario en la corrida \\
-productos\_sin\_dato\_inventario & INT & & Cantidad de productos sin inventario registrado \\
-productos\_en\_alerta & INT & & Cantidad de productos en o bajo el punto de reorden \\
-features\_regresion\_lineal & TEXT & & Variables seleccionadas por RFE/VIF (serializado) \\
-\bottomrule
+\hline
+id & INT & PRIMARY KEY, AUTO\_\discretionary{}{}{}INCREMENT & Identificador de la corrida (tabla padre) \\
+\hline
+empresa\_\discretionary{}{}{}id & VARCHAR(32) & NOT NULL, FK $\to$ empresas.id & Empresa que ejecutó la corrida \\
+\hline
+fecha\_\discretionary{}{}{}corrida & DATETIME & DEFAULT CURRENT\_\discretionary{}{}{}TIMESTAMP & Fecha de la corrida \\
+\hline
+horizonte\_\discretionary{}{}{}meses & INT & & Meses hacia adelante pronosticados \\
+\hline
+presupuesto\_\discretionary{}{}{}capital\_\discretionary{}{}{}trabajo & DOUBLE & & Presupuesto total disponible \\
+\hline
+presupuesto\_\discretionary{}{}{}por\_\discretionary{}{}{}producto & DOUBLE & & Presupuesto asignado por producto \\
+\hline
+mape\_\discretionary{}{}{}final & DOUBLE & & MAPE del sistema final \\
+\hline
+wape\_\discretionary{}{}{}final & DOUBLE & & WAPE del sistema final \\
+\hline
+costo\_\discretionary{}{}{}total\_\discretionary{}{}{}pedidos\_\discretionary{}{}{}urgentes & DOUBLE & & Costo total de productos en alerta \\
+\hline
+valor\_\discretionary{}{}{}total\_\discretionary{}{}{}inventario & DOUBLE & & Valor total del inventario en la corrida \\
+\hline
+productos\_\discretionary{}{}{}sin\_\discretionary{}{}{}dato\_\discretionary{}{}{}inventario & INT & & Cantidad de productos sin inventario registrado \\
+\hline
+productos\_\discretionary{}{}{}en\_\discretionary{}{}{}alerta & INT & & Cantidad de productos en o bajo el punto de reorden \\
+\hline
+features\_\discretionary{}{}{}regresión\_\discretionary{}{}{}lineal & TEXT & & Variables seleccionadas por RFE/VIF (serializado) \\
+\hline
 \end{tabularx}
 \end{table}
 
 \subsection*{Tabla \texttt{segmentacion}}
 \begin{table}[H]
 \centering
-\begin{tabularx}{\textwidth}{lllX}
-\toprule
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{3.0cm}|l|>{\raggedright\arraybackslash}p{3.2cm}|X|}
+\hline
 \textbf{Campo} & \textbf{Tipo} & \textbf{Restricción} & \textbf{Descripción} \\
-\midrule
-id & BIGINT & PRIMARY KEY, AUTO\_INCREMENT & Identificador único \\
-corrida\_id & INT & NOT NULL, FK $\to$ corridas.id (CASCADE) & Corrida a la que pertenece \\
-producto\_id & VARCHAR(64) & & Identificador del producto \\
-nombre\_producto & VARCHAR(200) & & Nombre del producto \\
-categoria & VARCHAR(120) & & Categoría o rubro del producto \\
-demanda\_total & DOUBLE & & Demanda total histórica \\
+\hline
+id & BIGINT & PRIMARY KEY, AUTO\_\discretionary{}{}{}INCREMENT & Identificador único \\
+\hline
+corrida\_\discretionary{}{}{}id & INT & NOT NULL, FK $\to$ corridas.id (CASCADE) & Corrida a la que pertenece \\
+\hline
+producto\_\discretionary{}{}{}id & VARCHAR(64) & & Identificador del producto \\
+\hline
+nombre\_\discretionary{}{}{}producto & VARCHAR(200) & & Nombre del producto \\
+\hline
+categoría & VARCHAR(120) & & Categoría o rubro del producto \\
+\hline
+demanda\_\discretionary{}{}{}total & DOUBLE & & Demanda total histórica \\
+\hline
 media & DOUBLE & & Demanda promedio mensual \\
-desviacion & DOUBLE & & Desviación estándar de la demanda \\
+\hline
+desviación & DOUBLE & & Desviación estándar de la demanda \\
+\hline
 cv & DOUBLE & & Coeficiente de variación \\
+\hline
 variabilidad & VARCHAR(20) & & Clasificación Alta/Media/Baja \\
-demanda\_acumulada\_pct & DOUBLE & & Porcentaje acumulado de demanda \\
-categoria\_abc & VARCHAR(5) & & Clasificación A/B/C \\
-metodo\_campeon & VARCHAR(40) & & Modelo seleccionado como campeón \\
-proveedor\_principal & VARCHAR(160) & & Proveedor principal del producto \\
-proveedor\_alterno & VARCHAR(160) & & Proveedor alterno del producto \\
-\bottomrule
+\hline
+demanda\_\discretionary{}{}{}acumulada\_\discretionary{}{}{}pct & DOUBLE & & Porcentaje acumulado de demanda \\
+\hline
+categoría\_\discretionary{}{}{}abc & VARCHAR(5) & & Clasificación A/B/C \\
+\hline
+método\_\discretionary{}{}{}campeón & VARCHAR(40) & & Modelo seleccionado como campeón \\
+\hline
+proveedor\_\discretionary{}{}{}principal & VARCHAR(160) & & Proveedor principal del producto \\
+\hline
+proveedor\_\discretionary{}{}{}alterno & VARCHAR(160) & & Proveedor alterno del producto \\
+\hline
 \end{tabularx}
 \end{table}
 
 \subsection*{Tabla \texttt{metricas\_modelos}}
 \begin{table}[H]
 \centering
-\begin{tabularx}{\textwidth}{lllX}
-\toprule
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{3.0cm}|l|>{\raggedright\arraybackslash}p{3.2cm}|X|}
+\hline
 \textbf{Campo} & \textbf{Tipo} & \textbf{Restricción} & \textbf{Descripción} \\
-\midrule
-id & BIGINT & PRIMARY KEY, AUTO\_INCREMENT & Identificador único \\
-corrida\_id & INT & NOT NULL, FK $\to$ corridas.id (CASCADE) & Corrida a la que pertenece \\
+\hline
+id & BIGINT & PRIMARY KEY, AUTO\_\discretionary{}{}{}INCREMENT & Identificador único \\
+\hline
+corrida\_\discretionary{}{}{}id & INT & NOT NULL, FK $\to$ corridas.id (CASCADE) & Corrida a la que pertenece \\
+\hline
 modelo & VARCHAR(60) & & Nombre del modelo evaluado \\
+\hline
 mae & DOUBLE & & Error absoluto medio \\
+\hline
 rmse & DOUBLE & & Raíz del error cuadrático medio \\
+\hline
 r2 & DOUBLE & & Coeficiente de determinación \\
-mediana\_error & DOUBLE & & Mediana del error absoluto \\
+\hline
+mediana\_\discretionary{}{}{}error & DOUBLE & & Mediana del error absoluto \\
+\hline
 mape & DOUBLE & & Error porcentual absoluto medio \\
+\hline
 wape & DOUBLE & & Error porcentual absoluto ponderado \\
-\bottomrule
+\hline
 \end{tabularx}
 \end{table}
 
 \subsection*{Tabla \texttt{predicciones\_backtest}}
 \begin{table}[H]
 \centering
-\begin{tabularx}{\textwidth}{lllX}
-\toprule
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{3.0cm}|l|>{\raggedright\arraybackslash}p{3.2cm}|X|}
+\hline
 \textbf{Campo} & \textbf{Tipo} & \textbf{Restricción} & \textbf{Descripción} \\
-\midrule
-id & BIGINT & PRIMARY KEY, AUTO\_INCREMENT & Identificador único \\
-corrida\_id & INT & NOT NULL, FK $\to$ corridas.id (CASCADE) & Corrida a la que pertenece \\
+\hline
+id & BIGINT & PRIMARY KEY, AUTO\_\discretionary{}{}{}INCREMENT & Identificador único \\
+\hline
+corrida\_\discretionary{}{}{}id & INT & NOT NULL, FK $\to$ corridas.id (CASCADE) & Corrida a la que pertenece \\
+\hline
 fecha & VARCHAR(10) & & Fecha del mes evaluado (AAAA-MM-DD) \\
-producto\_id & VARCHAR(64) & & Identificador del producto \\
+\hline
+producto\_\discretionary{}{}{}id & VARCHAR(64) & & Identificador del producto \\
+\hline
 demanda & DOUBLE & & Demanda real observada \\
-categoria\_abc & VARCHAR(5) & & Clasificación ABC del producto \\
+\hline
+categoría\_\discretionary{}{}{}abc & VARCHAR(5) & & Clasificación ABC del producto \\
+\hline
 variabilidad & VARCHAR(20) & & Clasificación de variabilidad \\
-prediccion\_media\_movil & DOUBLE & & Predicción del modelo Media Móvil \\
-prediccion\_regresion\_lineal & DOUBLE & & Predicción del modelo Regresión Lineal \\
-prediccion\_xgboost & DOUBLE & & Predicción del modelo XGBoost \\
-prediccion\_final & DOUBLE & & Predicción del método campeón seleccionado \\
-error\_final & DOUBLE & & Error de la predicción final \\
-metodo\_usado & VARCHAR(40) & & Modelo seleccionado para ese producto y mes \\
-\bottomrule
+\hline
+predicción\_\discretionary{}{}{}media\_\discretionary{}{}{}móvil & DOUBLE & & Predicción del modelo Media Móvil \\
+\hline
+predicción\_\discretionary{}{}{}regresión\_\discretionary{}{}{}lineal & DOUBLE & & Predicción del modelo Regresión Lineal \\
+\hline
+predicción\_\discretionary{}{}{}xgboost & DOUBLE & & Predicción del modelo XGBoost \\
+\hline
+predicción\_\discretionary{}{}{}final & DOUBLE & & Predicción del método campeón seleccionado \\
+\hline
+error\_\discretionary{}{}{}final & DOUBLE & & Error de la predicción final \\
+\hline
+método\_\discretionary{}{}{}usado & VARCHAR(40) & & Modelo seleccionado para ese producto y mes \\
+\hline
 \end{tabularx}
 \end{table}
 
 \subsection*{Tabla \texttt{pronostico\_futuro}}
 \begin{table}[H]
 \centering
-\begin{tabularx}{\textwidth}{lllX}
-\toprule
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{3.0cm}|l|>{\raggedright\arraybackslash}p{3.2cm}|X|}
+\hline
 \textbf{Campo} & \textbf{Tipo} & \textbf{Restricción} & \textbf{Descripción} \\
-\midrule
-id & BIGINT & PRIMARY KEY, AUTO\_INCREMENT & Identificador único \\
-corrida\_id & INT & NOT NULL, FK $\to$ corridas.id (CASCADE) & Corrida a la que pertenece \\
-producto\_id & VARCHAR(64) & & Identificador del producto \\
-nombre\_producto & VARCHAR(200) & & Nombre del producto \\
-categoria & VARCHAR(120) & & Categoría del producto \\
-mes\_pronosticado & VARCHAR(7) & & Mes futuro pronosticado (AAAA-MM) \\
+\hline
+id & BIGINT & PRIMARY KEY, AUTO\_\discretionary{}{}{}INCREMENT & Identificador único \\
+\hline
+corrida\_\discretionary{}{}{}id & INT & NOT NULL, FK $\to$ corridas.id (CASCADE) & Corrida a la que pertenece \\
+\hline
+producto\_\discretionary{}{}{}id & VARCHAR(64) & & Identificador del producto \\
+\hline
+nombre\_\discretionary{}{}{}producto & VARCHAR(200) & & Nombre del producto \\
+\hline
+categoría & VARCHAR(120) & & Categoría del producto \\
+\hline
+mes\_\discretionary{}{}{}pronosticado & VARCHAR(7) & & Mes futuro pronosticado (AAAA-MM) \\
+\hline
 horizonte & INT & & Número de mes dentro del horizonte \\
-prediccion\_xgboost & DOUBLE & & Predicción de XGBoost \\
-prediccion\_regresion\_lineal & DOUBLE & & Predicción de Regresión Lineal \\
-prediccion\_baseline & DOUBLE & & Predicción de Media Móvil \\
-prediccion\_final & DOUBLE & & Predicción del método campeón \\
-metodo\_usado & VARCHAR(40) & & Modelo seleccionado para ese producto \\
-\bottomrule
+\hline
+predicción\_\discretionary{}{}{}xgboost & DOUBLE & & Predicción de XGBoost \\
+\hline
+predicción\_\discretionary{}{}{}regresión\_\discretionary{}{}{}lineal & DOUBLE & & Predicción de Regresión Lineal \\
+\hline
+predicción\_\discretionary{}{}{}baseline & DOUBLE & & Predicción de Media Móvil \\
+\hline
+predicción\_\discretionary{}{}{}final & DOUBLE & & Predicción del método campeón \\
+\hline
+método\_\discretionary{}{}{}usado & VARCHAR(40) & & Modelo seleccionado para ese producto \\
+\hline
 \end{tabularx}
 \end{table}
 
 \subsection*{Tabla \texttt{reorder}}
 \begin{table}[H]
 \centering
-\begin{tabularx}{\textwidth}{lllX}
-\toprule
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{3.0cm}|l|>{\raggedright\arraybackslash}p{3.2cm}|X|}
+\hline
 \textbf{Campo} & \textbf{Tipo} & \textbf{Restricción} & \textbf{Descripción} \\
-\midrule
-id & BIGINT & PRIMARY KEY, AUTO\_INCREMENT & Identificador único \\
-corrida\_id & INT & NOT NULL, FK $\to$ corridas.id (CASCADE) & Corrida a la que pertenece \\
-producto\_id & VARCHAR(64) & & Identificador del producto \\
-nombre\_producto & VARCHAR(200) & & Nombre del producto \\
-categoria & VARCHAR(120) & & Categoría del producto \\
-proveedor\_principal & VARCHAR(160) & & Proveedor principal \\
-proveedor\_alterno & VARCHAR(160) & & Proveedor alterno \\
-categoria\_abc & VARCHAR(5) & & Clasificación ABC \\
+\hline
+id & BIGINT & PRIMARY KEY, AUTO\_\discretionary{}{}{}INCREMENT & Identificador único \\
+\hline
+corrida\_\discretionary{}{}{}id & INT & NOT NULL, FK $\to$ corridas.id (CASCADE) & Corrida a la que pertenece \\
+\hline
+producto\_\discretionary{}{}{}id & VARCHAR(64) & & Identificador del producto \\
+\hline
+nombre\_\discretionary{}{}{}producto & VARCHAR(200) & & Nombre del producto \\
+\hline
+categoría & VARCHAR(120) & & Categoría del producto \\
+\hline
+proveedor\_\discretionary{}{}{}principal & VARCHAR(160) & & Proveedor principal \\
+\hline
+proveedor\_\discretionary{}{}{}alterno & VARCHAR(160) & & Proveedor alterno \\
+\hline
+categoría\_\discretionary{}{}{}abc & VARCHAR(5) & & Clasificación ABC \\
+\hline
 variabilidad & VARCHAR(20) & & Clasificación de variabilidad \\
-metodo\_pronostico & VARCHAR(40) & & Modelo usado para pronosticar \\
-demanda\_promedio\_mensual\_pronosticada & DOUBLE & & Demanda promedio pronosticada \\
-lead\_time\_semanas & DOUBLE & & Tiempo de entrega en semanas \\
-lead\_time\_meses & DOUBLE & & Tiempo de entrega en meses \\
-stock\_seguridad & DOUBLE & & Stock de seguridad calculado \\
-punto\_reorden & DOUBLE & & Punto de reorden calculado \\
-inventario\_actual & DOUBLE & & Inventario disponible actual \\
+\hline
+método\_\discretionary{}{}{}pronóstico & VARCHAR(40) & & Modelo usado para pronosticar \\
+\hline
+demanda\_\discretionary{}{}{}promedio\_\discretionary{}{}{}mensual\_\discretionary{}{}{}pronosticada & DOUBLE & & Demanda promedio pronosticada \\
+\hline
+lead\_\discretionary{}{}{}time\_\discretionary{}{}{}semanas & DOUBLE & & Tiempo de entrega en semanas \\
+\hline
+lead\_\discretionary{}{}{}time\_\discretionary{}{}{}meses & DOUBLE & & Tiempo de entrega en meses \\
+\hline
+stock\_\discretionary{}{}{}seguridad & DOUBLE & & Stock de seguridad calculado \\
+\hline
+punto\_\discretionary{}{}{}reorden & DOUBLE & & Punto de reorden calculado \\
+\hline
+inventario\_\discretionary{}{}{}actual & DOUBLE & & Inventario disponible actual \\
+\hline
 eoq & DOUBLE & & Cantidad económica de pedido \\
-limite\_presupuesto\_unidades & DOUBLE & & Límite de unidades según presupuesto \\
-cantidad\_sugerida\_pedido & DOUBLE & & Cantidad final sugerida \\
-costo\_unitario & DOUBLE & & Costo unitario del producto \\
-costo\_estimado\_pedido & DOUBLE & & Costo total estimado del pedido \\
-valor\_inventario\_actual & DOUBLE & & Valor del inventario disponible \\
-margen\_unitario & DOUBLE & & Margen unitario del producto (precio menos costo unitario) \\
-costo\_ruptura\_estimado & DOUBLE & & Costo estimado de ruptura (\textit{stockout}) \\
-fecha\_estimada\_pedido & VARCHAR(10) & & Fecha estimada en que debería pedirse (AAAA-MM-DD) \\
-dias\_para\_pedido & INT & & Días restantes hasta la fecha estimada \\
+\hline
+límite\_\discretionary{}{}{}presupuesto\_\discretionary{}{}{}unidades & DOUBLE & & Límite de unidades según presupuesto \\
+\hline
+cantidad\_\discretionary{}{}{}sugerida\_\discretionary{}{}{}pedido & DOUBLE & & Cantidad final sugerida \\
+\hline
+costo\_\discretionary{}{}{}unitario & DOUBLE & & Costo unitario del producto \\
+\hline
+costo\_\discretionary{}{}{}estimado\_\discretionary{}{}{}pedido & DOUBLE & & Costo total estimado del pedido \\
+\hline
+valor\_\discretionary{}{}{}inventario\_\discretionary{}{}{}actual & DOUBLE & & Valor del inventario disponible \\
+\hline
+margen\_\discretionary{}{}{}unitario & DOUBLE & & Margen unitario del producto (precio menos costo unitario) \\
+\hline
+costo\_\discretionary{}{}{}ruptura\_\discretionary{}{}{}estimado & DOUBLE & & Costo estimado de ruptura (\textit{stockout}) \\
+\hline
+fecha\_\discretionary{}{}{}estimada\_\discretionary{}{}{}pedido & VARCHAR(10) & & Fecha estimada en que debería pedirse (AAAA-MM-DD) \\
+\hline
+dias\_\discretionary{}{}{}para\_\discretionary{}{}{}pedido & INT & & Días restantes hasta la fecha estimada \\
+\hline
 ordenar & VARCHAR(5) & & Indicador (``SI''/``NO'') de alerta de reposición \\
-\bottomrule
+\hline
 \end{tabularx}
 \end{table}
 
 \subsection*{Tabla \texttt{validacion\_cruzada\_folds}}
 \begin{table}[H]
 \centering
-\begin{tabularx}{\textwidth}{lllX}
-\toprule
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{3.0cm}|l|>{\raggedright\arraybackslash}p{3.2cm}|X|}
+\hline
 \textbf{Campo} & \textbf{Tipo} & \textbf{Restricción} & \textbf{Descripción} \\
-\midrule
-id & BIGINT & PRIMARY KEY, AUTO\_INCREMENT & Identificador único \\
-corrida\_id & INT & NOT NULL, FK $\to$ corridas.id (CASCADE) & Corrida a la que pertenece \\
+\hline
+id & BIGINT & PRIMARY KEY, AUTO\_\discretionary{}{}{}INCREMENT & Identificador único \\
+\hline
+corrida\_\discretionary{}{}{}id & INT & NOT NULL, FK $\to$ corridas.id (CASCADE) & Corrida a la que pertenece \\
+\hline
 fold & INT & & Número de fold (1, 2, 3...) \\
-meses\_entrenamiento & INT & & Meses usados para entrenar en ese fold \\
-periodo\_test & VARCHAR(30) & & Periodo evaluado en ese fold \\
+\hline
+meses\_\discretionary{}{}{}entrenamiento & INT & & Meses usados para entrenar en ese fold \\
+\hline
+periodo\_\discretionary{}{}{}test & VARCHAR(30) & & Periodo evaluado en ese fold \\
+\hline
 modelo & VARCHAR(40) & & Modelo evaluado (incluye ``Sistema final'') \\
+\hline
 mae & DOUBLE & & MAE obtenido en ese fold \\
+\hline
 rmse & DOUBLE & & RMSE obtenido en ese fold \\
+\hline
 mape & DOUBLE & & MAPE obtenido en ese fold \\
+\hline
 wape & DOUBLE & & WAPE obtenido en ese fold \\
-\bottomrule
+\hline
 \end{tabularx}
 \end{table}
 
 \subsection*{Tabla \texttt{validacion\_cruzada\_resumen}}
 \begin{table}[H]
 \centering
-\begin{tabularx}{\textwidth}{lllX}
-\toprule
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{3.0cm}|l|>{\raggedright\arraybackslash}p{3.2cm}|X|}
+\hline
 \textbf{Campo} & \textbf{Tipo} & \textbf{Restricción} & \textbf{Descripción} \\
-\midrule
-id & BIGINT & PRIMARY KEY, AUTO\_INCREMENT & Identificador único \\
-corrida\_id & INT & NOT NULL, FK $\to$ corridas.id (CASCADE) & Corrida a la que pertenece \\
+\hline
+id & BIGINT & PRIMARY KEY, AUTO\_\discretionary{}{}{}INCREMENT & Identificador único \\
+\hline
+corrida\_\discretionary{}{}{}id & INT & NOT NULL, FK $\to$ corridas.id (CASCADE) & Corrida a la que pertenece \\
+\hline
 modelo & VARCHAR(40) & & Modelo resumido \\
-metrica & VARCHAR(20) & & Métrica resumida (MAE, RMSE, MAPE, WAPE) \\
+\hline
+métrica & VARCHAR(20) & & Métrica resumida (MAE, RMSE, MAPE, WAPE) \\
+\hline
 promedio & DOUBLE & & Promedio de la métrica entre folds \\
+\hline
 desvio & DOUBLE & & Desviación estándar entre folds \\
+\hline
 folds & INT & & Número de folds considerados \\
-\bottomrule
+\hline
 \end{tabularx}
 \end{table}
 
@@ -831,7 +963,7 @@ web: gunicorn run:app --bind 0.0.0.0:$PORT --workers 2 --timeout 120
     \end{minted}
     \item Railway detecta automáticamente la versión de Python especificada en \texttt{.python-version} e instala las dependencias de \texttt{requirements.txt}.
     \item Al iniciar, la aplicación crea automáticamente las tablas necesarias en la base de datos (función \texttt{crear\_tablas()}).
-    \item Se recomienda activar un volumen persistente para el servicio web y la funcionalidad de \textit{backups} automáticos para el servicio de MySQL (Sección 4.6).
+    \item Se recomienda activar un volumen persistente para el servicio web y la funcionalidad de \textit{backups} automáticos para el servicio de MySQL (Sección 4.7.1).
 \end{enumerate}
 
 \subsection*{Manual de usuario}
@@ -864,15 +996,19 @@ El código fuente de Thary se gestionó con el sistema de control de versiones G
 
 \begin{table}[H]
 \centering
-\begin{tabularx}{\textwidth}{lX}
-\toprule
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
 \textbf{Recurso} & \textbf{Enlace} \\
-\midrule
+\hline
 Repositorio de código fuente (GitHub) & \url{https://github.com/danna0723/Thary_Proyecto} \\
+\hline
 Flujo de integración continua (GitHub Actions) & \url{https://github.com/danna0723/Thary_Proyecto/actions} \\
+\hline
 Historial de cambios (commits) & \url{https://github.com/danna0723/Thary_Proyecto/commits/main} \\
+\hline
 Sistema desplegado (Railway) & \url{https://web-production-6ac7e5.up.railway.app} \\
-\bottomrule
+\hline
 \end{tabularx}
 \end{table}
 
@@ -897,4 +1033,4 @@ Para el seguimiento del desarrollo del sistema no se utilizó alguna herramienta
 
 \section{Protocolo y seguimiento de la revisión sistemática de literatura (si aplica)}
 % Guia: protocolo y seguimiento de la revision sistematica de literatura.
-Este anexo no aplica al presente trabajo. La revision de literatura presentada en el Capitulo 2 se realizo mediante un proceso de busqueda y seleccion tradicional, con los criterios de inclusion y exclusion descritos en dicho caítulo, pero sin seguir un protocolo formal de revision sistematica.
+Este anexo no aplica al presente trabajo. La revisión de literatura presentada en el Capítulo 2 se realizo mediante un proceso de busqueda y selección tradicional, con los criterios de inclusión y exclusion descritos en dicho caítulo, pero sin seguir un protocolo formal de revisión sistematica.

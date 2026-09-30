@@ -19,7 +19,7 @@
 
 \refsection{0}
   \datalist[entry]{none/global//global/global/global}
-    \entry{meana2024gestión}{book}{}{}
+    \entry{meana2024gestion}{book}{}{}
       \name{author}{1}{}{%
         {{hash=f8eb06a8a920e0e6e5e8e5cb5a2efdff}{%
            family={MEANA\bibnamedelima COALLA},
@@ -78,6 +78,7 @@
       \field{urlday}{5}
       \field{urlmonth}{8}
       \field{urlyear}{2026}
+      \field{year}{2024}
       \field{urldateera}{ce}
       \verb{urlraw}
       \verb https://www.ibm.com/mx-es/think/topics/inventory-management
@@ -128,6 +129,43 @@
       \verb 10.51519/journalisi.v6i1.647
       \endverb
     \endentry
+    \entry{mahendrawathi2011abc}{inproceedings}{}{}
+      \name{author}{3}{}{%
+        {{hash=4540df8fbb09bc076db4fadda64e6e40}{%
+           family={Mahendrawathi},
+           familyi={M\bibinitperiod},
+           given={E.R.},
+           giveni={E\bibinitperiod}}}%
+        {{hash=60d703a666ff6cfa651d72f35bea1b00}{%
+           family={Nurul\bibnamedelima Laili},
+           familyi={N\bibinitperiod\bibinitdelim L\bibinitperiod},
+           given={Eliza},
+           giveni={E\bibinitperiod}}}%
+        {{hash=54c14c355a79d46ffa30ea3d8d0c290b}{%
+           family={Kusumawardani},
+           familyi={K\bibinitperiod},
+           given={Renny\bibnamedelima P.},
+           giveni={R\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+      }
+      \strng{namehash}{6e99340d87a8c27aa5259890b2213bb5}
+      \strng{fullhash}{2427a72919440c7f0514bcc43790de5f}
+      \strng{fullhashraw}{2427a72919440c7f0514bcc43790de5f}
+      \strng{bibnamehash}{2427a72919440c7f0514bcc43790de5f}
+      \strng{authorbibnamehash}{2427a72919440c7f0514bcc43790de5f}
+      \strng{authornamehash}{6e99340d87a8c27aa5259890b2213bb5}
+      \strng{authorfullhash}{2427a72919440c7f0514bcc43790de5f}
+      \strng{authorfullhashraw}{2427a72919440c7f0514bcc43790de5f}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{ICACSIS 2011 - 2011 International Conference on Advanced Computer Science and Information Systems, Proceedings}
+      \field{note}{Disponible en: \url{https://www.scopus.com/inward/record.uri?eid=2-s2.0-84857290700}}
+      \field{title}{Classification of hospital pharmaceutical drug inventory items by combining ABC analysis and fuzzy classification}
+      \field{year}{2011}
+      \field{pages}{215\bibrangedash 220}
+      \range{pages}{6}
+    \endentry
     \entry{syntetos2005categorization}{article}{}{}
       \name{author}{3}{}{%
         {{hash=5b68228c5e6947b02f2888df5620c76c}{%
@@ -170,22 +208,29 @@
       \endverb
     \endentry
     \entry{ibm_prevision_demanda}{online}{}{}
-      \name{author}{1}{}{%
-        {{hash=9ac2a54a168ac507d7520995890811ff}{%
-           family={{Teaganne Finn , Ian Smalley}},
-           familyi={T\bibinitperiod}}}%
+      \name{author}{2}{}{%
+        {{hash=c153f3b3fd3f02207339f756d0e46af1}{%
+           family={Finn},
+           familyi={F\bibinitperiod},
+           given={Teaganne},
+           giveni={T\bibinitperiod}}}%
+        {{hash=d08dfe1fb1123075ed9c0b177fdef575}{%
+           family={Smalley},
+           familyi={S\bibinitperiod},
+           given={Ian},
+           giveni={I\bibinitperiod}}}%
       }
       \list{organization}{1}{%
         {IBM Think}%
       }
-      \strng{namehash}{9ac2a54a168ac507d7520995890811ff}
-      \strng{fullhash}{9ac2a54a168ac507d7520995890811ff}
-      \strng{fullhashraw}{9ac2a54a168ac507d7520995890811ff}
-      \strng{bibnamehash}{9ac2a54a168ac507d7520995890811ff}
-      \strng{authorbibnamehash}{9ac2a54a168ac507d7520995890811ff}
-      \strng{authornamehash}{9ac2a54a168ac507d7520995890811ff}
-      \strng{authorfullhash}{9ac2a54a168ac507d7520995890811ff}
-      \strng{authorfullhashraw}{9ac2a54a168ac507d7520995890811ff}
+      \strng{namehash}{3f15202ce4245a45d216564fdc7b07be}
+      \strng{fullhash}{3f15202ce4245a45d216564fdc7b07be}
+      \strng{fullhashraw}{3f15202ce4245a45d216564fdc7b07be}
+      \strng{bibnamehash}{3f15202ce4245a45d216564fdc7b07be}
+      \strng{authorbibnamehash}{3f15202ce4245a45d216564fdc7b07be}
+      \strng{authornamehash}{3f15202ce4245a45d216564fdc7b07be}
+      \strng{authorfullhash}{3f15202ce4245a45d216564fdc7b07be}
+      \strng{authorfullhashraw}{3f15202ce4245a45d216564fdc7b07be}
       \field{sortinit}{7}
       \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
       \field{labelnamesource}{author}
@@ -194,6 +239,7 @@
       \field{urlday}{5}
       \field{urlmonth}{8}
       \field{urlyear}{2026}
+      \field{year}{2024}
       \field{urldateera}{ce}
       \verb{urlraw}
       \verb https://www.ibm.com/es-es/think/topics/demand-forecasting
@@ -232,7 +278,6 @@
       \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{abstract}{Proper inventory planning should incorporate factors changing over time, since static factors are not robust to this apparent variability. In models of inventories is necessary to recognize the great demand uncertainty. This paper reviews the state of the art of the most significant developments related to inventory models, especially those who consider dynamic demands in time. In addition, demand forecasting models and some techniques for optimizing inventories are analyzed, considering costs and service levels, among others. In the literature review, gaps have been identified related to the treatment of multivariate inventories as well as the use of Bayesian statistics for the purpose of optimization and the development of demand forecasts.}
       \field{journaltitle}{DYNA}
       \field{month}{3}
       \field{number}{190}
@@ -253,32 +298,32 @@
     \endentry
     \entry{10596_69801}{misc}{}{}
       \name{author}{2}{}{%
-        {{hash=702cab7b24ec329839a5bd89ad471ddc}{%
-           family={Fernando},
-           familyi={F\bibinitperiod},
-           given={Sánchez\bibnamedelimb Cuervo\bibnamedelima Samuel},
-           giveni={S\bibinitperiod\bibinitdelim C\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
-        {{hash=c3ece406aa9588f1ea0d0ee807e44f19}{%
-           family={Camilo},
-           familyi={C\bibinitperiod},
-           given={Ortega\bibnamedelimb Betancur\bibnamedelima Cristian},
-           giveni={O\bibinitperiod\bibinitdelim B\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=1f980fa1c17ff4b385197d949a283b92}{%
+           family={Sánchez\bibnamedelima Cuervo},
+           familyi={S\bibinitperiod\bibinitdelim C\bibinitperiod},
+           given={Samuel\bibnamedelima Fernando},
+           giveni={S\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+        {{hash=e7bee140cfd2dd69bbf50828720dfae6}{%
+           family={Ortega\bibnamedelima Betancur},
+           familyi={O\bibinitperiod\bibinitdelim B\bibinitperiod},
+           given={Cristian\bibnamedelima Camilo},
+           giveni={C\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
       }
-      \strng{namehash}{c5171c601f07a716190810c640d556a6}
-      \strng{fullhash}{c5171c601f07a716190810c640d556a6}
-      \strng{fullhashraw}{c5171c601f07a716190810c640d556a6}
-      \strng{bibnamehash}{c5171c601f07a716190810c640d556a6}
-      \strng{authorbibnamehash}{c5171c601f07a716190810c640d556a6}
-      \strng{authornamehash}{c5171c601f07a716190810c640d556a6}
-      \strng{authorfullhash}{c5171c601f07a716190810c640d556a6}
-      \strng{authorfullhashraw}{c5171c601f07a716190810c640d556a6}
+      \strng{namehash}{3d6bb679aada22523b09d09c707368b6}
+      \strng{fullhash}{3d6bb679aada22523b09d09c707368b6}
+      \strng{fullhashraw}{3d6bb679aada22523b09d09c707368b6}
+      \strng{bibnamehash}{3d6bb679aada22523b09d09c707368b6}
+      \strng{authorbibnamehash}{3d6bb679aada22523b09d09c707368b6}
+      \strng{authornamehash}{3d6bb679aada22523b09d09c707368b6}
+      \strng{authorfullhash}{3d6bb679aada22523b09d09c707368b6}
+      \strng{authorfullhashraw}{3d6bb679aada22523b09d09c707368b6}
       \field{sortinit}{1}
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{abstract}{Este trabajo se organiza en cuatro secciones principales que abordan de manera integral el análisis de series temporales aplicado a la predicción de demanda. La primera sección presenta el origen de los datos y realiza un análisis descriptivo de las ventas históricas, proporcionando una visión general inicial. La segunda sección explora los modelos de estrategia utilizados en el proyecto, como Power BI, ARIMA, SARIMAX y Prophet, herramientas clave en el análisis de datos temporales. La tercera sección se enfoca en un informe sobre la predicción de demanda técnica basada en el modelo SARIMAX, mientras que la cuarta sección detalla el análisis de series temporales del producto en estudio y concluye con recomendaciones y observaciones generales. Los métodos de análisis de series temporales se dividen en dos categorías: cualitativos y cuantitativos. Los métodos cualitativos, basados en el juicio humano y la experiencia, permiten identificar patrones y tendencias de forma subjetiva, mientras que los métodos cuantitativos emplean modelos matemáticos para detectar patrones en los datos de manera objetiva. Entre los métodos cuantitativos más comunes se encuentran la regresión lineal, el análisis de componentes principales y el modelo ARIMA. La estructura metodológica planteada en este trabajo no solo destaca la importancia de seleccionar la técnica adecuada, sino también de adaptar el modelo a los objetivos específicos de predicción y análisis. Esto proporciona una base sólida para que el análisis de series temporales no solo mejore las proyecciones de demanda, sino también optimice la gestión de recursos en función de las necesidades reales del mercado.}
+      \field{month}{11}
       \field{title}{Análisis de series temporales para predicción de demanda de productos}
-      \field{year}{2024-11-05}
+      \field{year}{2024}
       \verb{urlraw}
       \verb https://repository.unad.edu.co/handle/10596/69801
       \endverb
@@ -302,6 +347,7 @@
       \strng{authornamehash}{cb6110a1e166582cdc55cfb672327210}
       \strng{authorfullhash}{cb6110a1e166582cdc55cfb672327210}
       \strng{authorfullhashraw}{cb6110a1e166582cdc55cfb672327210}
+      \field{extraname}{1}
       \field{sortinit}{1}
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
@@ -388,9 +434,8 @@
       \verb{doi}
       \verb 10.1109/ACCESS.2023.3276628
       \endverb
-      \keyw{Time series analysis;Predictive models;Forecasting;Data models;Logic gates;Decoding;Autoregressive processes;Time series forecasting;long short-term memory networks;encoder and decoder model;attention mechanisms}
     \endentry
-    \entry{Salem2022}{article}{}{}
+    \entry{Salem2022}{incollection}{}{}
       \name{author}{1}{}{%
         {{hash=562329d35461b8ad79d7293e6f6f7164}{%
            family={Salem},
@@ -416,7 +461,6 @@
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{abstract}{We describe the standard Gated Recurrent Unit (GRU) in recurrent neural networks (RNNs) as was originally introduced. Next, by adopting the same notations as for LSTMs in the previous chapter, we directly show how it can viewed as a reduced form of the LSTM RNNs. Then, we explore further the parameter reductions in the GRU RNNs by way of introducing five slim GRU RNNs. These slim GRU RNNs retain the network structure and systematically reduce parameters in the ``update'' and ``reset'' gates. Finally, we demonstrate in illustrative case studies the comparative performance of the standard and the slim GRU RNNs. We evaluate the standard and three slim GRU variants on MNIST and IMDB datasets and show that all these GRU RNN perform comparatively.}
       \field{booktitle}{Recurrent Neural Networks: From Simple to Gated Architectures}
       \field{isbn}{978-3-030-89929-5}
       \field{title}{Gated RNN: The Gated Recurrent Unit (GRU) RNN}
@@ -602,6 +646,7 @@
       \field{howpublished}{Documentacion oficial de XGBoost}
       \field{note}{Disponible en: \url{https://xgboost.readthedocs.io/en/release_2.1.0/parameter.html}}
       \field{title}{{XGBoost Parameters}}
+      \field{year}{2024}
     \endentry
     \entry{hewamalage2021rnn}{article}{}{}
       \name{author}{3}{}{%
@@ -1134,12 +1179,6 @@
       \verb{doi}
       \verb 10.1016/j.eswa.2022.117986
       \endverb
-      \verb{urlraw}
-      \verb https://www.sciencedirect.com/science/article/pii/S0957417422012131
-      \endverb
-      \verb{url}
-      \verb https://www.sciencedirect.com/science/article/pii/S0957417422012131
-      \endverb
       \keyw{Gated recurrent unit,Overfitting,Stock market index}
     \endentry
     \entry{nagadevi2025xgboost}{article}{}{}
@@ -1249,7 +1288,7 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{month}{8}
-      \field{note}{Disponible en: \url{https://www.samirsaci.com/inventory-management-for-retail-stochastic-demand-2/?source=post_page-----743b2f4e4057}}
+      \field{note}{Disponible en: \url{https://www.samirsaci.com/inventory-management-for-retail-stochastic-demand-2/}}
       \field{title}{Machine Learning for Retail Demand Forecasting: Comparative Study of Demand Forecasting Methods for a Retail Store (XGBoost Model vs. Rolling Mean)}
       \field{year}{2020}
     \endentry
@@ -1271,30 +1310,35 @@
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{howpublished}{\url{https://www.kaggle.com/code/ksmooi/inventory-demand-forecast-xgboost-reg}}
-      \field{note}{Kaggle Notebook}
+      \field{howpublished}{Kaggle Notebook}
+      \field{note}{Disponible en: \url{https://www.kaggle.com/code/ksmooi/inventory-demand-forecast-xgboost-reg}}
       \field{title}{Forecasting Inventory Demand Using XGBoost}
+      \field{year}{2024}
     \endentry
     \entry{ejemplo4_boombikes}{misc}{}{}
       \name{author}{1}{}{%
-        {{hash=89dfea52b1e1caffff95d27784186164}{%
-           family={{Tushar Verma}},
-           familyi={T\bibinitperiod}}}%
+        {{hash=8095c28562f0ebe34fb31fbc11e4ee73}{%
+           family={Verma},
+           familyi={V\bibinitperiod},
+           given={Tushar},
+           giveni={T\bibinitperiod}}}%
       }
-      \strng{namehash}{89dfea52b1e1caffff95d27784186164}
-      \strng{fullhash}{89dfea52b1e1caffff95d27784186164}
-      \strng{fullhashraw}{89dfea52b1e1caffff95d27784186164}
-      \strng{bibnamehash}{89dfea52b1e1caffff95d27784186164}
-      \strng{authorbibnamehash}{89dfea52b1e1caffff95d27784186164}
-      \strng{authornamehash}{89dfea52b1e1caffff95d27784186164}
-      \strng{authorfullhash}{89dfea52b1e1caffff95d27784186164}
-      \strng{authorfullhashraw}{89dfea52b1e1caffff95d27784186164}
+      \strng{namehash}{8095c28562f0ebe34fb31fbc11e4ee73}
+      \strng{fullhash}{8095c28562f0ebe34fb31fbc11e4ee73}
+      \strng{fullhashraw}{8095c28562f0ebe34fb31fbc11e4ee73}
+      \strng{bibnamehash}{8095c28562f0ebe34fb31fbc11e4ee73}
+      \strng{authorbibnamehash}{8095c28562f0ebe34fb31fbc11e4ee73}
+      \strng{authornamehash}{8095c28562f0ebe34fb31fbc11e4ee73}
+      \strng{authorfullhash}{8095c28562f0ebe34fb31fbc11e4ee73}
+      \strng{authorfullhashraw}{8095c28562f0ebe34fb31fbc11e4ee73}
+      \field{extraname}{2}
       \field{sortinit}{1}
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{note}{Disponible en: \url{https://github.com/21-f3000932/LinearRegression_Demand-forecasting/tree/main}}
+      \field{note}{Notebook sobre el dataset BoomBikes (demanda de bicicletas compartidas). Disponible en: \url{https://github.com/21-f3000932/LinearRegression_Demand-forecasting/tree/main}}
       \field{title}{Linear Regression: Demand Forecasting}
+      \field{year}{2021}
     \endentry
     \entry{iso12207}{standard}{}{}
       \name{author}{1}{}{%
@@ -1406,8 +1450,6 @@
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{abstract}{Multi-step ahead forecasting is still an open challenge in time series forecasting. Several approaches that deal with this complex problem have been proposed in the literature but an extensive comparison on a large number of tasks is still missing. This paper aims to fill this gap by reviewing existing strategies for multi-step ahead forecasting and comparing them in theoretical and practical terms. To attain such an objective, we performed a large scale comparison of these different strategies using a large experimental benchmark (namely the 111 series from the NN5 forecasting competition). In addition, we considered the effects of deseasonalization, input variable selection, and forecast combination on these strategies and on multi-step ahead forecasting at large. The following three findings appear to be consistently supported by the experimental results: Multiple-Output strategies are the best performing approaches, deseasonalization leads to uniformly improved forecast accuracy, and input selection is more effective when performed in conjunction with deseasonalization.}
-      \field{issn}{0957-4174}
       \field{journaltitle}{Expert Systems with Applications}
       \field{number}{8}
       \field{title}{A review and comparison of strategies for multi-step ahead time series forecasting based on the NN5 forecasting competition}
@@ -1416,7 +1458,7 @@
       \field{pages}{7067\bibrangedash 7083}
       \range{pages}{17}
       \verb{doi}
-      \verb https://doi.org/10.1016/j.eswa.2012.01.039
+      \verb 10.1016/j.eswa.2012.01.039
       \endverb
       \verb{urlraw}
       \verb https://www.sciencedirect.com/science/article/pii/S0957417412000528
@@ -1424,10 +1466,8 @@
       \verb{url}
       \verb https://www.sciencedirect.com/science/article/pii/S0957417412000528
       \endverb
-      \keyw{Time series forecasting,Multi-step ahead forecasting,Long-term forecasting,Strategies of forecasting,Machine learning,Lazy Learning,NN5 forecasting competition,Friedman test}
     \endentry
   \enddatalist
-  \missing{Mahendrawathi2011215}
 \endrefsection
 \endinput
 

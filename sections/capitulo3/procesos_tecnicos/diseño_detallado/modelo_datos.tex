@@ -1,8 +1,8 @@
-Conceptualmente, el modelo de datos del sistema Thary utiliza un modelo relacional, en el que la informacion se organiza en 12 tablas relacionadas entre si, definidas mediante claves foraneas: empresas, usuarios, pedidos, actividad (el historial de movimientos), y corridas. Esta ultima es la tabla principal que representa cada vez que un usuario (administrador) sube un CSV, junto con 7 tablas que vienen de cada una de las corridas: \texttt{segmentacion}, \texttt{metricas\_modelos}, \texttt{predicciones\_backtest}, \texttt{pronostico\_futuro}, \texttt{reorder}, \texttt{validacion\_cruzada\_folds}, \texttt{validacion\_cruzada\_resumen}. Cada archivo que se sube crea una fila nueva en corridas, aunque no se borra el historial, la app solo muestra la corrida más reciente.
+Conceptualmente, el modelo de datos del sistema Thary utiliza un modelo relacional, en el que la información se organiza en 12 tablas relacionadas entre si, definidas mediante claves foraneas: empresas, usuarios, pedidos, actividad (el historial de movimientos), y corridas. Esta última es la tabla principal que representa cada vez que un usuario (administrador) sube un CSV, junto con 7 tablas que vienen de cada una de las corridas: \texttt{segmentacion}, \texttt{metricas\_modelos}, \texttt{predicciones\_backtest}, \texttt{pronostico\_futuro}, \texttt{reorder}, \texttt{validacion\_cruzada\_folds}, \texttt{validacion\_cruzada\_resumen}. Cada archivo que se sube crea una fila nueva en corridas, aunque no se borra el historial, la app solo muestra la corrida más reciente.
 
-Logica y Fisicamente, el modelo hace uso de MySql (motor de base de datos relacional), el sistema se conecta a este usando SQLAlchemy. En la tabla \texttt{empresas}, se almacena el id y el nombre de cada organizacion que es registrada en el sistema, por otra parte, en la tabla \texttt{usuarios} se guarda la informacion del usuario, como su nombre, correo electronico, contraseña (cifrada), el rol, ya sea admin o empleado, y el id de la empresa a la que pertenece. La tabla \texttt{pedidos} también se almacena de forma independiente separada de los resultados del procesamiento, y es única para cada empresa, así se garantiza que cuando se cargue un nuevo historial, no se elimine el registro de los pedidos ya confirmados. Por otro lado, las tablas de segmentacion, recomendacion de reposicion y comportamiento del producto son generadas despues de que el sistema procese el archivo CSV que fue cargado por el administrador. Estos resultados se guardan y quedan asociadas a la corrida que las origino mediante \texttt{corrida\_id}.
+Lógica y Fisicamente, el modelo hace uso de MySql (motor de base de datos relacional), el sistema se conecta a este usando SQLAlchemy. En la tabla \texttt{empresas}, se almacena el id y el nombre de cada organización que es registrada en el sistema, por otra parte, en la tabla \texttt{usuarios} se guarda la información del usuario, como su nombre, correo electronico, contraseña (cifrada), el rol, ya sea admin o empleado, y el id de la empresa a la que pertenece. La tabla \texttt{pedidos} también se almacena de forma independiente separada de los resultados del procesamiento, y es única para cada empresa, así se garantiza que cuando se cargue un nuevo historial, no se elimine el registro de los pedidos ya confirmados. Por otro lado, las tablas de segmentación, recomendación de reposición y comportamiento del producto son generadas después de que el sistema procese el archivo CSV que fue cargado por el administrador. Estos resultados se guardan y quedan asociadas a la corrida que las origino mediante \texttt{corrida\_id}.
 
-No toda la informacion se queda en la base de datos, ya que los archivos CSV que el usuario sube, las graficas generadas y el modelo XGBoost entrenado se siguen almacenando como archivos en disco, los cuales estan organizados en carpetas por empresa. Solo se traslada a MySQL la informacion que pueda estructurarse en filas y columnas. 
+No toda la información se queda en la base de datos, ya que los archivos CSV que el usuario sube, las gráficas generadas y el modelo XGBoost entrenado se siguen almacenando como archivos en disco, los cuales estan organizados en carpetas por empresa. Solo se traslada a MySQL la información que pueda estructurarse en filas y columnas. 
 % Guia: modelo conceptual, logico y fisico.
 % El diccionario de datos va en el Anexo B.
 %
@@ -50,7 +50,7 @@ No toda la informacion se queda en la base de datos, ya que los archivos CSV que
 
 La Tabla \ref{tab:entidades} resume las entidades del modelo con el detalle de cada campo y su cardinalidad.
 
-La clave foranea (\texttt{FOREIGN KEY}) de \texttt{usuarios} hacia \texttt{empresas} rechaza cualquier intento de crear un usuario sin una empresa asociada, garantizando el aislamiento de la informacion entre organizaciones. La relacion entre \texttt{corridas} y \texttt{segmentacion} es de dependencia en la que no tiene ningun sentido tener una fila en segmentacion si no sabemos a que corrida pertenece, \texttt{ON DELETE CASCADE} implica que, si se elimina una corrida, todas sus filas de segmentacion (junto con las metricas, predicciones, reposicion y validacion cruzada) se eliminan junto con ella:
+La clave foranea (\texttt{FOREIGN KEY}) de \texttt{usuarios} hacia \texttt{empresas} rechaza cualquier intento de crear un usuario sin una empresa asociada, garantizando el aislamiento de la información entre organizaciones. La relación entre \texttt{corridas} y \texttt{segmentacion} es de dependencia en la que no tiene ningún sentido tener una fila en segmentación si no sabemos a qué corrida pertenece, \texttt{ON DELETE CASCADE} implica que, si se elimina una corrida, todas sus filas de segmentación (junto con las métricas, predicciones, reposición y validación cruzada) se eliminan junto con ella:
 
 \Needspace{10\baselineskip}
 \captionof{listing}{Definición de las tablas \texttt{empresas}, \texttt{usuarios}, \texttt{corridas} y \texttt{segmentacion} con sus claves foráneas.}\label{lst:sql_tablas}
@@ -79,7 +79,7 @@ CREATE TABLE segmentacion (
 )
 \end{minted}
 
-En el siguiente fragmento, extraido de \texttt{app/services/db.py}, se observa como Thary establece la conexion hacia el motor de MySQL:
+En el siguiente fragmento, extraido de \texttt{app/services/db.py}, se observa como Thary establece la conexión hacia el motor de MySQL:
 
 \Needspace{10\baselineskip}
 \captionof{listing}{Configuración de la conexión a MySQL (\texttt{app/services/db.py}).}\label{lst:conexion_mysql}
@@ -109,9 +109,9 @@ def get_engine():
     return _engine
 \end{minted}
 
-Como se puede ver, la configuracion de(\texttt{\_config()}) no se obtiene de valores fijos, si no de las variables de entorno. Mientras que el motor (\texttt{engine}) solo se crea una vez durante toda la ejecucion de la aplicacion en ves de abrir una conexion nueva con cada solicitud, esto ayuda a que se evite el costo de tener que establecer una conexion nueva a la base de datos por cada peticion HTTP que sea recibida por Thary.
+Como se puede ver, la configuración de(\texttt{\_config()}) no se obtiene de valores fijos, sino de las variables de entorno. Mientras que el motor (\texttt{engine}) solo se crea una vez durante toda la ejecución de la aplicación en vez de abrir una conexión nueva con cada solicitud, esto ayuda a que se evite el costo de tener que establecer una conexión nueva a la base de datos por cada petición HTTP que sea recibida por Thary.
 
-Una vez realizada esta conexion, se utilizo mySQL Workbench para verificar que la base de datos y las tablas fueron creadas correctamente:
+Una vez realizada esta conexión, se utilizó mySQL Workbench para verificar que la base de datos y las tablas fueron creadas correctamente:
 
 \begin{figure}[H]
     \centering
@@ -120,7 +120,7 @@ Una vez realizada esta conexion, se utilizo mySQL Workbench para verificar que l
     \label{fig:mysql_workbench_empresas}
 \end{figure}
 
-La tabla \texttt{empresas} existe en la base de datos con las columnas descritas anteriormente: un identificador de tipo \texttt{varchar(32)} como clave primaria, el nombre de la empresa, y la fecha de creacion del registro.
+La tabla \texttt{empresas} existe en la base de datos con las columnas descritas anteriormente: un identificador de tipo \texttt{varchar(32)} como clave primaria, el nombre de la empresa, y la fecha de creación del registro.
 
 \begin{figure}[H]
     \centering
@@ -129,4 +129,4 @@ La tabla \texttt{empresas} existe en la base de datos con las columnas descritas
     \label{fig:mysql_workbench_corridas}
 \end{figure}
 
-La Fig. \ref{fig:mysql_workbench_corridas} muestra la confirmacion de que cada procesamiento de archivo genera una fila nueva en \texttt{corridas} sin eliminar las anteriores. Existen multiples filas asociadas a una misma empresa, correspondientes a distintas corridas realizadas en distintasfechas y horas.
+La Fig. \ref{fig:mysql_workbench_corridas} muestra la confirmación de que cada procesamiento de archivo genera una fila nueva en \texttt{corridas} sin eliminar las anteriores. Existen múltiples filas asociadas a una misma empresa, correspondientes a distintas corridas realizadas en distintasfechas y horas.

@@ -1,6 +1,6 @@
 \subsubsection{Gestión de inventarios}
 
-La gestión de inventarios consiste en el proceso que se realiza sobre la mercancia para conocer la cantidad disponible, esto permitiendo analizar los niveles de existencia y la aproximacion del consumo real.\cite{meana2024gestión}
+La gestión de inventarios consiste en el proceso que se realiza sobre la mercancia para conocer la cantidad disponible, esto permitiendo analizar los niveles de existencia y la aproximacion del consumo real.\cite{meana2024gestion}
 
 Los pasos basicos para realizar una correcta gestión de inventario consiste en: Compra del inventario, en el que los productos se entregan al almacen o punto de venta, Almacenamiento del inventario, en el que este se guarda hasta que se necesite y Aprovechamiento del inventario, en donde se controla la cantidad de productos que hay a la venta para finalmente enviarlo o venderlo a los clientes.\cite{ibm_inventario}
 
@@ -18,17 +18,17 @@ Los pasos basicos para realizar una correcta gestión de inventario consiste en:
 \subsubsection{Gestión de inventarios con demanda independiente}  % NUEVO
 
 \paragraph{Cantidad Económica de Pedido (EOQ)}\mbox{}\\
-La Cantidad Económica de Pedido (\textit{Economic Order Quantity}, EOQ) consiste en un modelo de gestión de inventario que permite determinar el tamaño que deberia tener un pedido para minimizar el costo total que supondria mantener el inventario. Toma en cuenta dos factores: El costo de hacer un pedido, el cual tiende a aumentar si se hacen muchos pedidos pequeños, y el costo de realizar el mantenimiento del inventario, el cual aumenta si el inventario es muy grande.\cite{setyadi2024eoq}. El modelo se expresa como:
+La Cantidad Económica de Pedido (\textit{Economic Order Quantity}, EOQ) consiste en un modelo de gestión de inventario que permite determinar el tamaño que debería tener un pedido para minimizar el costo total que supondría mantener el inventario. Toma en cuenta dos factores: El costo de hacer un pedido, el cual tiende a aumentar si se hacen muchos pedidos pequeños, y el costo de realizar el mantenimiento del inventario, el cual aumenta si el inventario es muy grande.\cite{setyadi2024eoq}. El modelo se expresa como:
 
 \begin{equation}
 EOQ = \sqrt{\frac{2DS}{H}}
 \end{equation}
 
-Donde $D$ es la demanda anual del producto, $S$ es el costo de realizar un pedido, y $H$ es el costo anual de mantener una unidad en inventario. El resultado es la cantidad de unidades que debe pedirse cada vez que se realiza una orden de compra, de forma que el costo total (ordenar + mantener) sea el minimo posible.
+Donde $D$ es la demanda anual del producto, $S$ es el costo de realizar un pedido, y $H$ es el costo anual de mantener una unidad en inventario. El resultado es la cantidad de unidades que debe pedirse cada vez que se realiza una orden de compra, de forma que el costo total (ordenar + mantener) sea el mínimo posible.
 
 \paragraph{Punto de reorden y stock de seguridad}\mbox{}\\
 
-El punto de reorden (\textit{Reorder Point}, ROP) consiste en la cantidad minima de producto que debe haber en el inventario, cuando se llega a dicho nivel, se debe generar una nueva orden de compra, de manera que el nuevo pedido llegue antes de que el inventario actual se agote \cite{setyadi2024eoq}. Este se calcula como:
+El punto de reorden (\textit{Reorder Point}, ROP) consiste en la cantidad mínima de producto que debe haber en el inventario, cuando se llega a dicho nivel, se debe generar una nueva orden de compra, de manera que el nuevo pedido llegue antes de que el inventario actual se agote \cite{setyadi2024eoq}. Este se calcula como:
 
 \begin{equation}
 ROP = d \cdot L + SS
@@ -36,52 +36,52 @@ ROP = d \cdot L + SS
 
 Donde $d$ es la demanda promedio por periodo, $L$ es el tiempo de entrega del proveedor (\textit{lead time}), y $SS$ es el stock de seguridad.
 
-El Stock de Seguridad se trata de una cantidad adicional de cada producto que se mantiene en el inventario como medida de seguridad frente a la variabilidad de la demanda o del tiempo de entrega de los proovedores, protegiendo a la organizacion de quedarse sin existencias ante una demanda mayor a la esperada durante el periodo de espera del pedido.
+El Stock de Seguridad se trata de una cantidad adicional de cada producto que se mantiene en el inventario como medida de seguridad frente a la variabilidad de la demanda o del tiempo de entrega de los proovedores, protegiendo a la organización de quedarse sin existencias ante una demanda mayor a la esperada durante el periodo de espera del pedido.
 
 \subsubsection{Clasificación de inventarios}                     % NUEVO
     \paragraph{Clasificación ABC}\mbox{}\\
-    La clasificacion ABC es una tecnica que divide el catalogo de productos en tres categorias segun su importancia dentro de la demanda o el valor total acumulado. Esta clasificacion permite que se prioricen los productos de mayor impacto en ves de tratar a todo el catalogo con los mismos estandares \cite{Mahendrawathi2011215}.
+    La clasificación ABC es una técnica que divide el catálogo de productos en tres categorías según su importancia dentro de la demanda o el valor total acumulado. Esta clasificación permite que se prioricen los productos de mayor impacto en vez de tratar a todo el catálogo con los mismos estándares \cite{mahendrawathi2011abc}.
     
     \begin{itemize}
-        \item La categoria A agrupa a los productos de mayor importancia (tipicamente aquellos que en conjunto representan la mayor parte de la demanda o el valor).
-        \item La categoria B a los de importancia intermedia.
-        \item La categoria C agrupa al resto de productos que representen un menor impacto individual.
+        \item La categoría A agrupa a los productos de mayor importancia (tipicamente aquellos que en conjunto representan la mayor parte de la demanda o el valor).
+        \item La categoría B a los de importancia intermedia.
+        \item La categoría C agrupa al resto de productos que representen un menor impacto individual.
     \end{itemize}
 
     \paragraph{Coeficiente de variación y clasificación de la demanda}
 
-    Otro concepto importante a la hora de clasificar productos es poder clasificar la variabilidad de la demanda, ya que es probable que un producto que cuente con consumo estable se beneficie mas de metodos de prediccion mas simples, mientras que uno con consumo erratico puede requerir de un modelo mas complejo.
+    Otro concepto importante a la hora de clasificar productos es poder clasificar la variabilidad de la demanda, ya que es probable que un producto que cuente con consumo estable se beneficie más de métodos de predicción más simples, mientras que uno con consumo errático puede requerir de un modelo más complejo.
     
-    Syntetos, Boylan y Croston \cite{syntetos2005categorization} proponen un esquema de clasificacion basado en el coeficiente de variacion al cuadrado ($CV^2$) y el intervalo promedio entre demandas, estableciendo umbrales que permiten distinguir entre patrones de demanda suave, erratica, intermitente y discontinua (\textit{lumpy}), cada uno de los cuales se beneficia de un metodo de pronostico distinto.
+    Syntetos, Boylan y Croston \cite{syntetos2005categorization} proponen un esquema de clasificación basado en el coeficiente de variación al cuadrado ($CV^2$) y el intervalo promedio entre demandas, estableciendo umbrales que permiten distinguir entre patrones de demanda suave, errática, intermitente y discontinua (\textit{lumpy}), cada uno de los cuales se beneficia de un método de pronóstico distinto.
 
-    En cuanto al sistema, en Thary se retoma el concepto general de esta clasificacion, pero de forma simplificada: se calcula el coeficiente de variacion (CV, sin elevar al cuadrado), definido como la desviacion estandar de la demanda dividida entre su media, y se clasifica la demanda de cada producto en tres niveles (baja, media o alta variabilidad), sin considerar el intervalo entre demandas como parte del analisis.
+    En cuanto al sistema, en Thary se retoma el concepto general de esta clasificación, pero de forma simplificada: se calcula el coeficiente de variación (CV, sin elevar al cuadrado), definido como la desviación estándar de la demanda dividida entre su media, y se clasifica la demanda de cada producto en tres niveles (baja, media o alta variabilidad), sin considerar el intervalo entre demandas como parte del análisis.
 
-\subsubsection{Prediccion de demanda}
+\subsubsection{Predicción de demanda}
 
-La prediccion de la demanda es un proceso que permite mejorar la gestión de los niveles de inventario mediante la utilizacion de datos historicos. Una correcta prediccion de la demanda le permite a las organizaciones el poder tomar decisiones mas inteligentes a la hora de manejar sus provisiones, evitando la falta o exceso de productos, de esta manera, aumentando tanto la satisfaccion del cliente como la creacion de estraregias de negocio mas efectivas a corto y largo plazo \cite{ibm_prevision_demanda}.
+La predicción de la demanda es un proceso que permite mejorar la gestión de los niveles de inventario mediante la utilización de datos históricos. Una correcta predicción de la demanda le permite a las organizaciones el poder tomar decisiones más inteligentes a la hora de manejar sus provisiones, evitando la falta o exceso de productos, de esta manera, aumentando tanto la satisfacción del cliente como la creación de estraregias de negocio más efectivas a corto y largo plazo \cite{ibm_prevision_demanda}.
 
-En los ultimos años, los mercados han evolucionado y se han vuelto cada vez mas exigentes en cuanto a la calidad y precision de los servicios, es por eso que muchas organizaciones se han visto inclinadas a incluir el uso de nuevas herramientas y tecnologias como Inteligencia Artificial, Machine Learning o analisis predictivo, para automatizar y perfeccionar esta tarea, ya que los metodos actuales estaticos que son la norma en muchas empresas y organizaciones han empezado a quedar obsoletos para satisfacer las necesidades del mercado actual \cite{ibm_prevision_demanda, valencia2015}.
+En los últimos años, los mercados han evolucionado y se han vuelto cada vez más exigentes en cuanto a la calidad y precisión de los servicios, es por eso que muchas organizaciones se han visto inclinadas a incluir el uso de nuevas herramientas y tecnologias como Inteligencia Artificial, Machine Learning o análisis predictivo, para automatizar y perfeccionar esta tarea, ya que los métodos actuales estaticos que son la norma en muchas empresas y organizaciones han empezado a quedar obsoletos para satisfacer las necesidades del mercado actual \cite{ibm_prevision_demanda, valencia2015}.
 
 La principal debilidad de los modelos de inventario actuales es que al ser poco robustos, no toman en contemplacion diferentes factores externos de manera inteligente \cite{valencia2015}.
 
 \subsubsection{Series de tiempo}
 
-Las series temporales son usadas para analizar datos históricos recogidos en intervalos regulares, como ventas diarias o mensuales, para identificar patrones, tendencias estacionales y ciclos. Estos patrones se identifican mediante técnicas como gráficos ACF y PACF, tambien estos patrones sirven para ajustar modelos estadísticos o de aprendizaje automático (como ARIMA, SARIMAX o Prophet) que permiten proyectar valores futuros \cite{10596_69801}.
+Las series temporales son usadas para analizar datos históricos recogidos en intervalos regulares, como ventas diarias o mensuales, para identificar patrones, tendencias estacionales y ciclos. Estos patrones se identifican mediante técnicas como gráficos ACF y PACF, también estos patrones sirven para ajustar modelos estadísticos o de aprendizaje automático (como ARIMA, SARIMAX o Prophet) que permiten proyectar valores futuros \cite{10596_69801}.
 
 Se utilizan estos modelos para hacer predicciones, los datos se agrupan en intervalos (mensualmente) para reducir variabilidad y facilitar el análisis. Tras el análisis de datos, se ajustan los modelos y se evalúan mediante métricas como el RMSE, para que las predicciones sirvan en la toma de decisiones de gestión y planificación de recursos.
 
 
-\subsubsection{Modelos de prediccion de demanda}
+\subsubsection{Modelos de predicción de demanda}
 \paragraph{Media Móvil}\mbox{}\\
-La media movil consiste un metodo de pronostico que se utiliza para estimar la demanda futura de un producto a partir de promediar la cantidad de demanda de los periodos mas recientes, en lugar de utilizar todo el historial disponible. Este es uno de los metodos mas simples que existen para realizar pronosticos de demanda, ya que no requiere ajustar parametros complejos ni contar con un historial extenso para poder aplicarse \cite{verma2019movingaverage}.
+La media móvil consiste un método de pronóstico que se utiliza para estimar la demanda futura de un producto a partir de promediar la cantidad de demanda de los periodos más recientes, en lugar de utilizar todo el historial disponible. Este es uno de los métodos más simples que existen para realizar pronósticos de demanda, ya que no requiere ajustar parámetros complejos ni contar con un historial extenso para poder aplicarse \cite{verma2019movingaverage}.
 
-Debido a esta simplicidad, la media movil suele utilizarse como una linea base (\textit{baseline}) contra la cual se comparan modelos mas sofisticados, con el fin de determinar si estos ultimos realmente aportan una mejora que justifique su mayor complejidad. Es tambien un metodo que se comporta bien cuando el producto tiene un consumo relativamente estable, ya que al no depender de patrones complejos, no se ve tan afectado por variaciones puntuales del historial como si le podria ocurrir a un modelo mas complejo entrenado con pocos datos.
+Debido a esta simplicidad, la media móvil suele utilizarse como una línea base (\textit{baseline}) contra la cual se comparan modelos más sofisticados, con el fin de determinar si estos últimos realmente aportan una mejora que justifique su mayor complejidad. Es también un método que se comporta bien cuando el producto tiene un consumo relativamente estable, ya que al no depender de patrones complejos, no se ve tan afectado por variaciones puntuales del historial como si le podría ocurrir a un modelo más complejo entrenado con pocos datos.
 
 \paragraph{Redes Neuronales Artificiales (RNA)}
 Las redes neuronales artificiales (RNA) son una técnica que se ha aplicado con frecuencia a la predicción de demanda \cite{kochak2015demand}. A diferencia de un modelo como la regresión lineal, que solo capta relaciones directas entre las variables, las RNA pueden captar relaciones más complejas y no lineales entre los datos, incluso cuando esa relación no se conoce de antemano \cite{kochak2015demand}. Es por esto que resultan útiles cuando la demanda no responde de forma proporcional a sus variables de entrada, algo difícil de conseguir con métodos más simples.
 
 \paragraph{Long Short-Term Memory (LSTM) y Gated Recurrent Unit (GRU)}
-LSTM y GRU son variantes de redes neuronales recurrentes, diseñadas especificamente para el procesamiento de datos secuenciales, a diferencia de las RNA de tipo \textit{feed-forward}. Ambas incorporan mecanismos de memoria interna (compuertas) que les permiten capturar dependencias temporales de largo plazo en los datos, siendo GRU una variante mas simple y computacionalmente menos costosa que LSTM \cite{10124729, Salem2022}. Estas dos tecnicas fueron consideradas durante la revision de literatura, pero finalmente no se incorporaron como modelos candidatos en Thary, principalmente porque requieren un volumen de historial considerablemente mayor al disponible en el caso de estudio para superar a tecnicas mas simples.
+LSTM y GRU son variantes de redes neuronales recurrentes, diseñadas especificamente para el procesamiento de datos secuenciales, a diferencia de las RNA de tipo \textit{feed-forward}. Ambas incorporan mecanismos de memoria interna (compuertas) que les permiten capturar dependencias temporales de largo plazo en los datos, siendo GRU una variante más simple y computacionalmente menos costosa que LSTM \cite{10124729, Salem2022}. Estas dos técnicas fueron consideradas durante la revisión de literatura, pero finalmente no se incorporaron como modelos candidatos en Thary, principalmente porque requieren un volumen de historial considerablemente mayor al disponible en el caso de estudio para superar a técnicas más simples.
 
 
     % \subparagraph{Long Short-Term Memory (LSTM)}\mbox{}\\
@@ -146,7 +146,7 @@ LSTM y GRU son variantes de redes neuronales recurrentes, diseñadas especificam
     Los modelos de regresión son utilizados para resolver problemas de predicción; el objetivo de este modelo puede ser explicativo, donde se busca, por ejemplo, evaluar cómo ciertas variables independientes afectan a una variable dependiente, o predictivo, en el que se busca estimar el valor de la variable dependiente en función de las independientes \cite{pelaez2016modelos}.
 
 
-    Un modelo de regresion se expresa como: 
+    Un modelo de regresión se expresa como: 
 
     \begin{equation}
         y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \dots + \beta_n x_n + \epsilon
@@ -159,27 +159,27 @@ LSTM y GRU son variantes de redes neuronales recurrentes, diseñadas especificam
     \paragraph{Selección de variables en modelos de regresión}    % NUEVO
     No todas las variables disponibles aportan información útil a un modelo de regresión, y construirlo con un exceso de ellas lo vuelve más complejo y menos confiable. Para decidir cuáles conservar existen distintas técnicas: la selección hacia adelante (\textit{forward}), que introduce variables en el modelo mientras cumplan una condición; la selección hacia atrás (\textit{backward}), que parte de un modelo con todas las variables y va suprimiendo las que cumplen una condición definida a priori hasta que no se pueda eliminar ninguna más; y la selección por pasos (\textit{stepwise}), que combina ambas \cite{pelaez2016modelos}. Cuando el objetivo del modelo es predictivo, se busca el que proporcione predicciones más fiables y, entre los que lo logran, el más sencillo posible \cite{pelaez2016modelos}.
 
-    Es necesario poder identificar cuales son las variables que realmente le aportan informacion al modelo de regresion, ya que de no hacerlo, el modelo podria volverse mas complejo innecesariamente y menos confiable. Para esto, existen distintas tecnicas de seleccion de variables: 
+    Es necesario poder identificar cuales son las variables que realmente le aportan información al modelo de regresión, ya que de no hacerlo, el modelo podría volverse más complejo innecesariamente y menos confiable. Para esto, existen distintas técnicas de selección de variables: 
     
     \begin{itemize}
-        \item la seleccion hacia adelante (\textit{forward}), que introduce variables en el modelo mientras cumplan una condicion
-        \item la seleccion hacia atras (\textit{backward}), que parte de un modelo con todas las variables y va suprimiendo las que cumplen una condicion definida a priori hasta que no se pueda eliminar ninguna mas
-        \item la seleccion por pasos (\textit{stepwise}), que combina ambas \cite{pelaez2016modelos}
+        \item la selección hacia adelante (\textit{forward}), que introduce variables en el modelo mientras cumplan una condición
+        \item la selección hacia atrás (\textit{backward}), que parte de un modelo con todas las variables y va suprimiendo las que cumplen una condición definida a priori hasta que no se pueda eliminar ninguna más
+        \item la selección por pasos (\textit{stepwise}), que combina ambas \cite{pelaez2016modelos}
     \end{itemize}
     
-    En general, se busca el modelo que de las predicciones fiables, y que al mismo tiempo, lo haga de la manera mas sencilla posible \cite{pelaez2016modelos}. 
+    En general, se busca el modelo que de las predicciones fiables, y que al mismo tiempo, lo haga de la manera más sencilla posible \cite{pelaez2016modelos}. 
 
         \subparagraph{Eliminación Recursiva de Características (RFE)}
-        La eliminación recursiva de características fue propuesta por Guyon et al. \cite{guyon2002rfe}, y se usa para seleccionar algunas variables para crear un grupo mas pequeño de variables. El procedimiento consiste en entrenar un modelo lineal en el que primero se ordenan las variables según el peso que cada una tiene en el modelo, despues se elimina la menos importante y se repite el proceso con las variables restantes hasta quedarse con el número deseado \cite{guyon2002rfe}. Como el orden de importancia depende de la magnitud de los coeficientes, las variables deben estar en una escala comparable antes de aplicar el método. En Thary se aplica esta misma lógica de eliminación sobre el modelo de regresión lineal.
+        La eliminación recursiva de características fue propuesta por Guyon et al. \cite{guyon2002rfe}, y se usa para seleccionar algunas variables para crear un grupo más pequeño de variables. El procedimiento consiste en entrenar un modelo lineal en el que primero se ordenan las variables según el peso que cada una tiene en el modelo, después se elimina la menos importante y se repite el proceso con las variables restantes hasta quedarse con el número deseado \cite{guyon2002rfe}. Como el orden de importancia depende de la magnitud de los coeficientes, las variables deben estar en una escala comparable antes de aplicar el método. En Thary se aplica esta misma lógica de eliminación sobre el modelo de regresión lineal.
 
         \subparagraph{Significancia estadística (p-valor)}
 
-        Cuando se arma el modelo, para cada una de las variables se tiene que determinar si esta realmente tiene relacion con la demanda o solo da la ilusion de tenerla por coincidencia. Para responder esto inicialmente se asume que la variable no tiene relacion real con la demanda y se revisa si los datos respaldan o no esta suposicion. Esta revision se realiza mediante el calculo del p-valor, si este es menor que el nivel de significancia $\alpha$, se rechaza dicha hipótesis y se considera que el coeficiente es estadísticamente significativo \cite{pelaez2016modelos}. Un nivel de significancia común es $\alpha = 0.05$ (95\% de confianza), que es el que emplea Thary.
+        Cuando se arma el modelo, para cada una de las variables se tiene que determinar si esta realmente tiene relación con la demanda o solo da la ilusión de tenerla por coincidencia. Para responder esto inicialmente se asume que la variable no tiene relación real con la demanda y se revisa si los datos respaldan o no esta suposición. Esta revisión se realiza mediante el cálculo del p-valor, si este es menor que el nivel de significancia $\alpha$, se rechaza dicha hipótesis y se considera que el coeficiente es estadísticamente significativo \cite{pelaez2016modelos}. Un nivel de significancia común es $\alpha = 0.05$ (95\% de confianza), que es el que emplea Thary.
 
         \subparagraph{Multicolinealidad y Factor de Inflación de Varianza (VIF)}
-        Se habla de colinealidad cuando dos o más variables tienen practicamente la misma informacion, por lo que si el modelo recibe dichos datos no sabra a cual de las dos variables atribuirle el efecto, por lo que sus coeficientes se vuelven inestables y poco confiables \cite{pelaez2016modelos}. 
+        Se habla de colinealidad cuando dos o más variables tienen prácticamente la misma información, por lo que si el modelo recibe dichos datos no sabra a cual de las dos variables atribuirle el efecto, por lo que sus coeficientes se vuelven inestables y poco confiables \cite{pelaez2016modelos}. 
         
-        El VIF o Factor de Inflación de Varianza, es el numero que mide cuanto se repite una variable en las demas variables del modelo \cite{obrien2007vif}. Se calcula como:
+        El VIF o Factor de Inflación de Varianza, es el número que mide cuanto se repite una variable en las demas variables del modelo \cite{obrien2007vif}. Se calcula como:
 
         \begin{equation}
         VIF_i = \frac{1}{1 - R_i^2}
@@ -195,7 +195,7 @@ LSTM y GRU son variantes de redes neuronales recurrentes, diseñadas especificam
 
     XGBoost (\textit{Extreme Gradient Boosting}) es un sistema de aprendizaje automático basado en el método de \textit{tree boosting}, que se ha utilizado ampliamente para obtener resultados de vanguardia (\textit{state-of-the-art}) en tareas relacionadas con datos y predicción \cite{chen2016xgboost}. 
     
-    Su funcionamiento consiste en en un sistema de aprendizaje automatizado basado en el metodo de Tree Boosting, el cual que incluye un algoritmo de aprendizaje de arboles o por conjuntos: (\textit{ensemble learning}). Este se basa en la idea de que en lugar de depender de un solo modelo, se combinen muchos árboles sencillos para obtener uno más potente. Cada uno de estos árboles es un árbol de regresión, que divide las observaciones según los valores de sus variables hasta llegar a una hoja, y a cada hoja se le asigna un peso, que es el valor que aporta a la predicción \cite{chen2016xgboost}. La predicción final para una observación es la suma de lo que aporta cada árbol, y se escribe de la siguiente manera \cite{chen2016xgboost}:
+    Su funcionamiento consiste en en un sistema de aprendizaje automatizado basado en el método de Tree Boosting, el cual que incluye un algoritmo de aprendizaje de arboles o por conjuntos: (\textit{ensemble learning}). Este se basa en la idea de que en lugar de depender de un solo modelo, se combinen muchos árboles sencillos para obtener uno más potente. Cada uno de estos árboles es un árbol de regresión, que divide las observaciones según los valores de sus variables hasta llegar a una hoja, y a cada hoja se le asigna un peso, que es el valor que aporta a la predicción \cite{chen2016xgboost}. La predicción final para una observación es la suma de lo que aporta cada árbol, y se escribe de la siguiente manera \cite{chen2016xgboost}:
 
     \begin{equation}
         \hat{y_i} = \sum_{k=1}^{K} f_k(x_i), f_k \in F
@@ -218,7 +218,7 @@ LSTM y GRU son variantes de redes neuronales recurrentes, diseñadas especificam
 
     Para reducir aún más el sobreajuste se utilizan dos técnicas adicionales. La primera es la tasa de aprendizaje (\textit{shrinkage}), que escala por un factor $\eta$ el peso de cada árbol que se agrega, de modo que se reduce la influencia de cada árbol individual y se deja espacio para que los árboles siguientes mejoren el modelo \cite{chen2016xgboost}. La segunda es el submuestreo: en cada iteración se puede usar solo una fracción aleatoria de las observaciones de entrenamiento \cite{xgboostdocs}, y solo una fracción de las variables al construir cada árbol \cite{chen2016xgboost, xgboostdocs}. Además, la profundidad máxima limita cuántas divisiones puede hacer cada árbol, y con ello su complejidad.
 
-    Todos estos son mecanismos que se incluyen en la configuracion del modelo XGBoost en Thary.
+    Todos estos son mecanismos que se incluyen en la configuración del modelo XGBoost en Thary.
 
 \subsubsection{Transformaciones de variables}
 
@@ -293,16 +293,20 @@ donde $y_t$ es la demanda real y $\hat{y}_t$ es la predicción para el mes $t$. 
     \centering
     \caption{Ejemplo de cuatro meses utilizado para explicar las métricas.}
     \label{tab:ejemplo_metricas}
-    \begin{tabularx}{0.8\textwidth}{cccc}
-        \toprule
-        \textbf{Mes} & \textbf{Demanda real} & \textbf{Predicción} & \textbf{Error absoluto} \\
-        \midrule
-        1 & 10 & 12 & 2 \\
-        2 & 20 & 15 & 5 \\
-        3 & 0  & 2  & 2 \\
-        4 & 30 & 36 & 6 \\
-        \bottomrule
-    \end{tabularx}
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabular}{|c|c|c|c|}
+    \hline
+    \textbf{Mes} & \textbf{Demanda real} & \textbf{Predicción} & \textbf{Error absoluto} \\
+    \hline
+    1 & 10 & 12 & 2 \\
+    \hline
+    2 & 20 & 15 & 5 \\
+    \hline
+    3 & 0  & 2  & 2 \\
+    \hline
+    4 & 30 & 36 & 6 \\
+    \hline
+    \end{tabular}
 \end{table}
 
 \paragraph{Error Absoluto Medio (MAE)}\mbox{}\\
@@ -407,22 +411,31 @@ La Tabla \ref{tab:ejemplo_dm} muestra dos casos de un producto con 4 meses de ba
     \centering
     \caption{Ejemplo de la prueba de Diebold-Mariano con y sin la corrección de muestra pequeña ($T = 4$, $h = 1$).}
     \label{tab:ejemplo_dm}
-    \begin{tabularx}{\textwidth}{Xcc}
-        \toprule
-        & \textbf{Caso A} & \textbf{Caso B} \\
-        \midrule
-        Error absoluto del mejor modelo (4 meses) & 2, 3, 2, 3 & 2, 3, 2, 3 \\
-        Error absoluto del segundo modelo & 4, 3, 6, 9 & 7, 9, 6, 8 \\
-        Diferencias $d_t$ & $-2, 0, -4, -6$ & $-5, -6, -4, -5$ \\
-        Promedio $\bar{d}$ & $-3$ & $-5$ \\
-        Desviación estándar de $d_t$ & 2.58 & 0.82 \\
-        $DM$ & $-2.32$ & $-12.25$ \\
-        p-valor sin corrección (normal) & 0.020 & $\approx 0$ \\
-        $DM^{*}$ & $-2.01$ & $-10.61$ \\
-        p-valor con corrección ($t$, 3 g.l.) & 0.138 & 0.002 \\
-
-        \textbf{Conclusión} ($\alpha = 0.05$) & \textbf{No significativa} & \textbf{Significativa} \\
-        \bottomrule
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabularx}{\textwidth}{|X|c|c|}
+    \hline
+    & \textbf{Caso A} & \textbf{Caso B} \\
+    \hline
+    Error absoluto del mejor modelo (4 meses) & 2, 3, 2, 3 & 2, 3, 2, 3 \\
+    \hline
+    Error absoluto del segundo modelo & 4, 3, 6, 9 & 7, 9, 6, 8 \\
+    \hline
+    Diferencias $d_t$ & $-2, 0, -4, -6$ & $-5, -6, -4, -5$ \\
+    \hline
+    Promedio $\bar{d}$ & $-3$ & $-5$ \\
+    \hline
+    Desviación estándar de $d_t$ & 2.58 & 0.82 \\
+    \hline
+    $DM$ & $-2.32$ & $-12.25$ \\
+    \hline
+    p-valor sin corrección (normal) & 0.020 & $\approx 0$ \\
+    \hline
+    $DM^{*}$ & $-2.01$ & $-10.61$ \\
+    \hline
+    p-valor con corrección ($t$, 3 g.l.) & 0.138 & 0.002 \\
+    \hline
+    \textbf{Conclusión} ($\alpha = 0.05$) & \textbf{No significativa} & \textbf{Significativa} \\
+    \hline
     \end{tabularx}
 \end{table}
 

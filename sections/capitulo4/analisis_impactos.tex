@@ -1,39 +1,41 @@
-En el siguiente capitulo se detallan los impactos que el sistema Thary tiene desde distintos campos que abarcan: impacto tecnico, impacto social, impacto economico, impacto ambiental e impacto etico.
+En el siguiente capítulo se detallan los impactos que el sistema Thary tiene desde distintos campos que abarcan: impacto técnico, impacto social, impacto económico, impacto ambiental e impacto etico.
 
-Con este analisis se busca darle al lector una vision general de la propuesta de valor del sistema y como su existencia supondria un cambio positivo en la forma en la que se gestionan los inventarios en cualquier tipo de dominio de cualquier organizacion.
+Con este análisis se busca darle al lector una visión general de la propuesta de valor del sistema y como su existencia supondría un cambio positivo en la forma en la que se gestionan los inventarios en cualquier tipo de dominio de cualquier organización.
 
 Para esto, se compara la evidencia real obtenida al ejecutar el sistema con los impactos iniciales que fueron declarados, con el fin de determinar si los impactos esperados fueron alcanzados.
 
 \subsubsection{Impacto técnico}
-Los impactos tecnicos hacen referencia a la mejora en la eficiencia que la tecnologia implementada en el sistema Thary aporta al proceso de gestion de inventarios mediante la prediccion de demanda.
+Los impactos técnicos hacen referencia a la mejora en la eficiencia que la tecnologia implementada en el sistema Thary aporta al proceso de gestión de inventarios mediante la predicción de demanda.
 
-Sin el sistema, el personal de inventario tiene que revisar producto por producto la cantidad de productos existentes, el historial de consumo y el tiempo de entrega de cada proveedor para posteriormente, en base a esa informacion, generar reportes y tomar decisiones de compra.
+Sin el sistema, el personal de inventario tiene que revisar producto por producto la cantidad de productos existentes, el historial de consumo y el tiempo de entrega de cada proveedor para posteriormente, en base a esa información, generar reportes y tomar decisiones de compra.
 
-Thary se encarga de automatizar todo este proceso. Cuando el sistema procesa un historial completo, en este caso, se probo con el de la Clinica Nuestra Señora de los Remedios (con 856 productos), Thary genera de forma automatica la clasificacion ABC y de variabilidad, el pronostico de demanda, y las recomendaciones de reposicion para la totalidad del catalogo en una sola ejecucion.
+Thary se encarga de automatizar todo este proceso. Cuando el sistema procesa un historial completo, en este caso, se probó con el de la Clínica Nuestra Señora de los Remedios (con 856 productos), Thary genera de forma automática la clasificación ABC y de variabilidad, el pronóstico de demanda, y las recomendaciones de reposición para la totalidad del catálogo en una sola ejecución.
 
-El mecanismo de seleccion de modelo por producto y sus resultados se validan estadisticamente mediante el uso de la prueba de Diebold-Mariano. Sus resultados demostraron una mejora respecto a utilizar un unico modelo para todo el catalogo: el WAPE promedio del sistema final (18.27\%) fue consistentemente menor al de la Media Movil aplicada de forma generalizada (22.31\%) a lo largo de los tres periodos de la validacion cruzada temporal, representando una mejora relativa de aproximadamente 18\%.
+El mecanismo de selección de modelo por producto y sus resultados se validan estadísticamente mediante el uso de la prueba de Diebold-Mariano. Sus resultados demostraron una mejora respecto a utilizar un único modelo para todo el catálogo: el WAPE promedio del sistema final (21.88\%) fue consistentemente menor al de la Media Móvil aplicada de forma generalizada (22.31\%) a lo largo de los tres periodos de la validación cruzada temporal, representando una mejora relativa de aproximadamente 2\%.
 
 \subsubsection{Impacto social}
-En cuanto a impacto social, se puede considerar que el principal impacto de Thary en este aspecto es que gracias a las herramientas que ofrece, agiliza un proceso que de hacerse manual, ademas de ser lento, es propenso a errores humanos. 
+En cuanto a impacto social, se puede considerar que el principal impacto de Thary en este aspecto es que gracias a las herramientas que ofrece, agiliza un proceso que de hacerse manual, además de ser lento, es propenso a errores humanos. 
 
-En general, Thary ayuda a mejorar la disponibilidad de productos, la eficiencia general del personal y las ventas mediante una mejor planificacion de inventarios. 
+En general, Thary ayuda a mejorar la disponibilidad de productos, la eficiencia general del personal y las ventas mediante una mejor planificación de inventarios. 
 
-En el caso de estudio utilizado para validar el sistema, se identificaron de forma temprana los productos en riesgo de agotarse (200 de 856 productos, 23.4\% del catalogo, en estado de alerta). El sistema le ofrece al personal de inventario visibilidad anticipada para prevenir desabastecimientos y tomar decisiones de compra de forma oportuna.
+En el caso de estudio utilizado para validar el sistema, se identificaron de forma temprana los productos en riesgo de agotarse (200 de 856 productos, 23.4\% del catálogo, en estado de alerta). El sistema le ofrece al personal de inventario visibilidad anticipada para prevenir desabastecimientos y tomar decisiones de compra de forma oportuna.
 
-Este impacto se confirmo durante la validacion con usuarios, en la que un gestor de inventario con experiencia real en el dominio de salud completo el flujo completo del sistema sin dificultad, y su retroalimentacion llevo a una mejora en la usabilidad (la inclusion de una plantilla de CSV descargable), evidenciando que, efectivamente, el sistema es facil de usar por su usuario final objetivo.
+Este impacto se confirmó durante la validación con usuarios, en la que un gestor de inventario con experiencia real en el dominio de salud completo el flujo completo del sistema sin dificultad, y su retroalimentación llevó a una mejora en la usabilidad (la inclusión de una plantilla de CSV descargable), evidenciando que, efectivamente, el sistema es fácil de usar por su usuario final objetivo.
 
 \subsubsection{Impacto económico}
-Respecto a impactos economicos, Thary dispone de una pestaña especifica para costos y presupuestos. Al ejecutar el sistema sobre el catalogo completo del caso de estudio se reporto un valor total de inventario actual de \$270.810.382 (calculado como la suma del inventario disponible multiplicado por el costo unitario de cada producto, sobre 772 de los 856 productos que contaban con costo unitario disponible en el archivo CSV). Esto permitio saber cuanta cantidad de capital estaba inmovilizada en el inventario en ese momento especifico.
+Respecto a impactos económicos, Thary dispone de una pestaña específica para costos y presupuestos. Al ejecutar el sistema sobre el catálogo completo del caso de estudio se reportó un valor total de inventario actual de \$270.810.382 (calculado como la suma del inventario disponible multiplicado por el costo unitario de cada producto, sobre 772 de los 856 productos que contaban con costo unitario disponible en el archivo CSV). Esto permitió saber cuanta cantidad de capital estaba inmovilizada en el inventario en ese momento específico.
 
-Tambien se incluyo el calculo de el costo de ruptura (stockout), funcionalidad que se incorporo en una version posterior del modulo de reposicion del sistema. La cual permitira saber una estimacion de que cantidad de dinero se dejaria de percibir si un producto se agota antes de recibir el siguiente pedido. En este caso, se estimo un costo de ruptura total de \$17.859.670, calculado sobre 118 de los 200 productos en alerta que contaban con margen unitario disponible. 
+También se incluyó el cálculo del costo de ruptura (stockout), que estima cuánto dinero se dejaría de percibir si un producto se agota antes de recibir el siguiente pedido. Para poder calcular esto, se necesita conocer el precio de venta de cada producto, y esta es una columna que el archivo del caso de estudio no incluye, por lo que no fue posible calcular un costo de ruptura real para la Clínica Nuestra Señora de los Remedios.
+
+Es por esto que, para poder verificar que la función funcionara correctamente, se generaron precios de venta estimados (ficticios) a partir del costo unitario de cada producto, aplicando un margen supuesto según su categoría. Con estos precios ilustrativos, el sistema estimó un costo de ruptura total de \$17.859.670 sobre 118 de los 200 productos en alerta que contaban con margen unitario disponible. Esta cifra confirma que la función calcula bien lo que tiene que calcular, pero no se debe interpretar como el impacto económico real del caso de estudio, ya que los precios usados no son los reales de la clínica.
 
 \subsubsection{Impacto ambiental}
 
-Los impactos ambientales se resumen en que, al evitar el sobre-stock y el desabastecimiento, se reduce el riesgo de que productos con fecha de vencimiento caduquen en el inventario antes de ser utilizados, lo cual seria un desperdicio tanto economico como de recursos. Aunque es un impacto que no se midio de manera formal o cuantitativa, se considera que es otro de los impactos positivos que Thary ofrece.
+Los impactos ambientales se resumen en que, al evitar el sobre-stock y el desabastecimiento, se reduce el riesgo de que productos con fecha de vencimiento caduquen en el inventario antes de ser utilizados, lo cual sería un desperdicio tanto económico como de recursos. Aunque es un impacto que no se midió de manera formal o cuantitativa, se considera que es otro de los impactos positivos que Thary ofrece.
 
 \subsubsection{Impacto ético}
 
-Finalmente, en cuanto a impactos eticos, se considera que un criterio etico con el que cuenta Thary es el hecho de no exponer informacion sensible de las organizaciones que decidan usar el sistema a terceros, teniendo en cuenta la sensibilidad de los datos manejados (historial de consumo, informacion de usuarios) desde etapas tempranas del desarrollo del sistema.
+Finalmente, en cuanto a impactos eticos, se considera que un criterio etico con el que cuenta Thary es el hecho de no exponer información sensible de las organizaciones que decidan usar el sistema a terceros, teniendo en cuenta la sensibilidad de los datos manejados (historial de consumo, información de usuarios) desde etapas tempranas del desarrollo del sistema.
 
-La seguridad de los datos es un factor que se considero desde el diseño del sistema, mediante el analisis de amenazas STRIDE y las mitigaciones correspondientes, las cuales incluyen conceptos como el aislamiento de datos entre organizaciones y el cifrado de credenciales.
+La seguridad de los datos es un factor que se consideró desde el diseño del sistema, mediante el análisis de amenazas STRIDE y las mitigaciones correspondientes, las cuales incluyen conceptos como el aislamiento de datos entre organizaciones y el cifrado de credenciales.
 

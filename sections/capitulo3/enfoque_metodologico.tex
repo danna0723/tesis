@@ -1,20 +1,20 @@
-El enfoque metodológico de este proyecto se basa en dos componentes principales. El primero se enfoca en determinar de manera empirica cual o cuales modelos de prediccion de demanda resultan mas adecuados para el caso de estudio. El segundo componente se centra en la estructuracion de dicho modelo dentro de una herramienta funcional, siguiendo procesos tecnicos alineados con la norma ISO/IEC/IEEE 12207. 
+El enfoque metodológico de este proyecto se basa en dos componentes principales. El primero se enfoca en determinar de manera empirica cual o cuales modelos de predicción de demanda resultan más adecuados para el caso de estudio. El segundo componente se centra en la estructuración de dicho modelo dentro de una herramienta funcional, siguiendo procesos técnicos alineados con la norma ISO/IEC/IEEE 12207. 
 
-Para la evaluacion de los modelos de prediccion, el enfoque adoptado es empirico y por producto, ya que en lugar de seleccionar un unico modelo ganador para la totalidad del catalogo de productos, se entrenan y comparan distintos modelos candidatos, y para cada producto, se selecciona de forma individual aquel que presente el menor error de pronostico durante el periodo de prueba. Esta decision responde a que no existe un modelo que universalmente pueda adaptarse a todos los patrones de demanda como: productos de consumo estable, esporadico o altamente variable, cada uno de los patrones puede favorecerse de distintas tecnicas. Por otra parte, en cuanto a la seleccion de variables del modelo de Regresion Lineal, este se llevo a cabo siguiendo la misma metodologia reportada en la literatura revisada en el Capitulo 2, es decir, teniendo en cuenta factores como la eliminacion recursiva de caracteristicas seguida de eliminacion hacia atras por significancia estadistica y factor de inflacion de varianza.
+Para la evaluación de los modelos de predicción, el enfoque adoptado es empirico y por producto, ya que en lugar de seleccionar un único modelo ganador para la totalidad del catálogo de productos, se entrenan y comparan distintos modelos candidatos, y para cada producto, se selecciona de forma individual aquel que presente el menor error de pronóstico durante el periodo de prueba. Esta decisión responde a que no existe un modelo que universalmente pueda adaptarse a todos los patrones de demanda como: productos de consumo estable, esporadico o altamente variable, cada uno de los patrones puede favorecerse de distintas técnicas. Por otra parte, en cuanto a la selección de variables del modelo de Regresión Lineal, este se llevó a cabo siguiendo la misma metodologia reportada en la literatura revisada en el Capítulo 2, es decir, teniendo en cuenta factores como la eliminación recursiva de características seguida de eliminación hacia atrás por significancia estadística y factor de inflacion de varianza.
 
-Debido a que los datos que fueron empleados corresponden a series de tiempo (registros de consumo mensual), se respeta el orden cronologico de la informacion. La separacion entre los datos de entrenamiento y prueba se realiza por fecha, de manera que, se entrenan con los periodos mas antiguos y se evalua sobre los mas recientes. Adicionalmente, se incorpora un procedimiento de validacion cruzada que repite el proceso de entrenamiento y evaluacion sobre distintas ventanas de tiempo sucesivas, con el fin de confirmar que el desempeño del sistema no dependa de las particularidades de un solo periodo de prueba.
+Debido a que los datos que fueron empleados corresponden a series de tiempo (registros de consumo mensual), se respeta el orden cronológico de la información. La separación entre los datos de entrenamiento y prueba se realiza por fecha, de manera que, se entrenan con los periodos más antiguos y se evalua sobre los más recientes. Adicionalmente, se incorpora un procedimiento de validación cruzada que repite el proceso de entrenamiento y evaluación sobre distintas ventanas de tiempo sucesivas, con el fin de confirmar que el desempeño del sistema no dependa de las particularidades de un solo periodo de prueba.
 
-Finalmente, el enfoque tambien incluye la evaluacion mediante el uso de un caso de estudio real, ya que se usaron los datos historicos de consumo del año 2021 de la clinica Nuestra Señora de los Remedios, que constituye la validacion del sistema en el dominio de la salud. 
+Finalmente, el enfoque también incluye la evaluación mediante el uso de un caso de estudio real, ya que se usaron los datos históricos de consumo del año 2021 de la clínica Nuestra Señora de los Remedios, que constituye la validación del sistema en el dominio de la salud. 
 
 \subsubsection{Gestión del Proyecto (Planeación)}
 
-La planeación del proyecto se estructuró en cuatro fases secuenciales, cada una con un conjunto de entregables y actividades que se detallan a continuacion:
+La planeación del proyecto se estructuró en cuatro fases secuenciales, cada una con un conjunto de entregables y actividades que se detallan a continuación:
 
 \begin{itemize}
-    \item Fase 1 (Fase de fundamentacion): En esta fase se plantean los objetivos del proyecto y se realiza la revision de literatura y construccion del marco de referencia, se definen los criterios de inclusion y exclusion de los estudios consultados y se compara el desempeño reportado por los distintos modelos de prediccion de demanda.
-    \item Fase 2 (Fase de analisis y diseño): Se definen los requisitos del sistema, la arquitectura y el modelo de datos
-    \item Fase 3 (Fase de construccion): Se implementa el sistema de prediccion, con el modulo de calculo de puntos de reposicion y la interfaz de usuario, en esta fase se desarrolla el sistema identificando limitaciones en los datos o en los modelos, asi como limitaciones propias de la arquitectura inicial del sistema, las cuales se fueron corrigiendo a medida que avanzaba el desarrollo y surgían nuevas necesidades y propuestas para satisfacerlas.
-    \item Fase 4 (Fase de evaluacion): En la fase final se le aplica al sistema un plan de verificacion y validacion, que incluye la evaluacion de los modelos de prediccion de demanda y la validacion del sistema en el dominio de la salud, mediante el uso de un caso de estudio real.
+    \item Fase 1 (Fase de fundamentacion): En esta fase se plantean los objetivos del proyecto y se realiza la revisión de literatura y construcción del marco de referencia, se definen los criterios de inclusión y exclusion de los estudios consultados y se compara el desempeño reportado por los distintos modelos de predicción de demanda.
+    \item Fase 2 (Fase de análisis y diseño): Se definen los requisitos del sistema, la arquitectura y el modelo de datos
+    \item Fase 3 (Fase de construcción): Se implementa el sistema de predicción, con el módulo de cálculo de puntos de reposición y la interfaz de usuario, en esta fase se desarrolla el sistema identificando limitaciones en los datos o en los modelos, así como limitaciones propias de la arquitectura inicial del sistema, las cuales se fueron corrigiendo a medida que avanzaba el desarrollo y surgían nuevas necesidades y propuestas para satisfacerlas.
+    \item Fase 4 (Fase de evaluación): En la fase final se le aplica al sistema un plan de verificación y validación, que incluye la evaluación de los modelos de predicción de demanda y la validación del sistema en el dominio de la salud, mediante el uso de un caso de estudio real.
 \end{itemize}
 
 \subsubsection{Identificación y mitigación de riesgos}
@@ -25,28 +25,32 @@ Durante la planeación del proyecto se identificaron los siguientes riesgos, jun
     \centering
     \caption{Identificación y mitigación de riesgos del proyecto.}
     \label{tab:riesgos}
-    \begin{tabularx}{\textwidth}{lXXcc}
-        \toprule
-        \textbf{ID} & \textbf{Riesgo} & \textbf{Mitigación} & \textbf{Probabilidad} & \textbf{Impacto} \\
-        \midrule
-        R1 & Limitación en la calidad de los datos históricos (2021) & Realizar limpieza y validación de datos, aplicar técnicas de preprocesamiento & Media & Alto \\
-        R2 & Baja precisión de los modelos de predicción & Probar diferentes modelos y ajustar parámetros & Media & Alto \\
-        R3 & Retrasos en el cronograma del proyecto & Planificación por fases y seguimiento continuo & Baja & Medio \\
-        R4 & Dependencia de un único conjunto de datos & Documentar limitaciones y considerar ampliación futura & Alta & Medio \\
-        \bottomrule
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabularx}{\textwidth}{|l|X|X|c|c|}
+    \hline
+    \textbf{ID} & \textbf{Riesgo} & \textbf{Mitigación} & \textbf{Probabilidad} & \textbf{Impacto} \\
+    \hline
+    R1 & Limitación en la calidad de los datos históricos (2021) & Realizar limpieza y validación de datos, aplicar técnicas de preprocesamiento & Media & Alto \\
+    \hline
+    R2 & Baja precisión de los modelos de predicción & Probar diferentes modelos y ajustar parámetros & Media & Alto \\
+    \hline
+    R3 & Retrasos en el cronograma del proyecto & Planificación por fases y seguimiento continuo & Baja & Medio \\
+    \hline
+    R4 & Dependencia de un único conjunto de datos & Documentar limitaciones y considerar ampliación futura & Alta & Medio \\
+    \hline
     \end{tabularx}
 \end{table}
 
-Al finalizar el proyecto, los riesgos R1 y R2 se mitigaron mediante las etapas de carga y limpieza de datos (Sección 3.2.9) y la comparación empírica de los tres modelos candidatos (Sección 3.2.12), respectivamente. El riesgo R3 se controló mediante las cuatro fases de planeación descritas anteriormente en esta misma sección. El riesgo R4, por su parte, se materializó parcialmente: el sistema se validó únicamente sobre el dominio de salud, y la validación en otros dominios de inventario se documenta como una línea de trabajo futuro, tal como se había previsto en su mitigación original.
+Al finalizar el proyecto, los riesgos R1 y R2 se mitigaron mediante las etapas de carga y limpieza de datos (Sección 3.2.9) y la comparación empírica de los tres modelos candidatos (Sección 3.2.13), respectivamente. El riesgo R3 se controló mediante las cuatro fases de planeación descritas anteriormente en esta misma sección. El riesgo R4, por su parte, se materializó parcialmente: el sistema se validó únicamente sobre el dominio de salud, y la validación en otros dominios de inventario se documenta como una línea de trabajo futuro, tal como se había previsto en su mitigación original.
 
 
 \subsubsection{Ciclo de Vida del Software (Ejecución)}
-La ejecucion del proyecto se realizo siguiendo un ciclo de vida iterativo-incremental, en el cual el sistema se construyo en sucesivas versiones del mismo en el que en cada una de estas se iba ampliando o corrigiendo detalles de la anterior a partir de la evaluacion de los resultados obtenidos. La eleccion de esta estrategia se basa en la naturaleza del proyecto, en el que al estar trabajando en el desarrollo de un sistema de prediccion, es esperable que decisiones como la forma de representar los meses como variable de entrada, o el conjunto de variables historicas utilizadas por el modelo, no podrian definirse por adelantado, sino que se irian determinando y ajustando a medida que se experimentara y observara el comportamiento del sistema durante sus fases de desarrollo.
+La ejecución del proyecto se realizo siguiendo un ciclo de vida iterativo-incremental, en el cual el sistema se construyó en sucesivas versiones del mismo en el que en cada una de estas se iba ampliando o corrigiendo detalles de la anterior a partir de la evaluación de los resultados obtenidos. La elección de esta estrategia se basa en la naturaleza del proyecto, en el que al estar trabajando en el desarrollo de un sistema de predicción, es esperable que decisiones como la forma de representar los meses como variable de entrada, o el conjunto de variables históricas utilizadas por el modelo, no podrían definirse por adelantado, sino que se irian determinando y ajustando a medida que se experimentara y observara el comportamiento del sistema durante sus fases de desarrollo.
 
-Un ejemplo de una de estas decisiones fue el como se llevaría a cabo la persistencia de la informacion en el sistema. En una primera version se llevo a cabo mediante archivos estructurados, pero posteriormente se migro hacia una base de datos relacional al requerir un mayor control y almacenamiento de la informacion, mas especificamente, es necesario el poder mantener un historial de auditoria y de corridas anteriores, algo que no se habia contemplado por completo desde el inicio del proyecto. 
+Un ejemplo de una de estas decisiones fue el como se llevaría a cabo la persistencia de la información en el sistema. En una primera versión se llevó a cabo mediante archivos estructurados, pero posteriormente se migró hacia una base de datos relacional al requerir un mayor control y almacenamiento de la información, más especificamente, es necesario el poder mantener un historial de auditoria y de corridas anteriores, algo que no se habia contemplado por completo desde el inicio del proyecto. 
 
 Otro ejemplo es que durante las pruebas realizadas, se encontró un error en el que el sistema no podia reconocer la columna "precio" en español a pesar de que la interfaz la anunciaba como si hubiese sido aceptada.
 
-De igual forma, la manera en la que iban a incorporarse las pruebas automatizadas en el proyecto tambien fue un aspecto que no se planeo desde el inicio, sino que fue parte de los detalles que se fueron incorporando al desarrollo del sistema a medida que este avanzaba.
+De igual forma, la manera en la que iban a incorporarse las pruebas automatizadas en el proyecto también fue un aspecto que no se planeo desde el inicio, sino que fue parte de los detalles que se fueron incorporando al desarrollo del sistema a medida que este avanzaba.
 
-En cuanto al diseño de la arquitectura del sistema, el diseño de la interfaz de usuario, y los mecanismos de control de acceso al sistema, se siguieron los procesos tecnicos que indica la norma ISO/IEC/IEEE 12207, que establece un conjunto de procesos a tener en cuenta como la identificacion de stakeholders, especificacion de requisitos, diseño arquitectonico, los cuales fueron definidos para el sistema.
+En cuanto al diseño de la arquitectura del sistema, el diseño de la interfaz de usuario, y los mecanismos de control de acceso al sistema, se siguieron los procesos técnicos que indica la norma ISO/IEC/IEEE 12207, que establece un conjunto de procesos a tener en cuenta como la identificación de stakeholders, especificación de requisitos, diseño arquitectonico, los cuales fueron definidos para el sistema.

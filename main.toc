@@ -31,9 +31,9 @@
 \contentsline {subsubsection}{\numberline {2.2.3}Clasificación de inventarios}{27}{subsubsection.2.2.3}%
 \contentsline {paragraph}{Clasificación ABC}{27}{paragraph*.8}%
 \contentsline {paragraph}{Coeficiente de variación y clasificación de la demanda}{27}{paragraph*.9}%
-\contentsline {subsubsection}{\numberline {2.2.4}Prediccion de demanda}{28}{subsubsection.2.2.4}%
+\contentsline {subsubsection}{\numberline {2.2.4}Predicción de demanda}{28}{subsubsection.2.2.4}%
 \contentsline {subsubsection}{\numberline {2.2.5}Series de tiempo}{28}{subsubsection.2.2.5}%
-\contentsline {subsubsection}{\numberline {2.2.6}Modelos de prediccion de demanda}{28}{subsubsection.2.2.6}%
+\contentsline {subsubsection}{\numberline {2.2.6}Modelos de predicción de demanda}{28}{subsubsection.2.2.6}%
 \contentsline {paragraph}{Media Móvil}{28}{paragraph*.10}%
 \contentsline {paragraph}{Redes Neuronales Artificiales (RNA)}{29}{paragraph*.11}%
 \contentsline {paragraph}{Long Short-Term Memory (LSTM) y Gated Recurrent Unit (GRU)}{29}{paragraph*.12}%
@@ -73,79 +73,81 @@
 \contentsline {section}{\numberline {3}Capítulo 3: Diseño y Desarrollo}{49}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Enfoque Metodológico}{49}{subsection.3.1}%
 \contentsline {subsubsection}{\numberline {3.1.1}Gestión del Proyecto (Planeación)}{50}{subsubsection.3.1.1}%
-\contentsline {subsubsection}{\numberline {3.1.2}Ciclo de Vida del Software (Ejecución)}{50}{subsubsection.3.1.2}%
-\contentsline {subsection}{\numberline {3.2}Procesos Técnicos y Diseño (ISO/IEC/IEEE 12207)}{51}{subsection.3.2}%
-\contentsline {subsubsection}{\numberline {3.2.1}Identificación de Stakeholders}{51}{subsubsection.3.2.1}%
-\contentsline {subsubsection}{\numberline {3.2.2}Elicitación de Requisitos}{52}{subsubsection.3.2.2}%
-\contentsline {subsubsection}{\numberline {3.2.3}Especificación de Requisitos de Software (SRS)}{54}{subsubsection.3.2.3}%
-\contentsline {subsubsection}{\numberline {3.2.4}Diseño de la Arquitectura}{59}{subsubsection.3.2.4}%
-\contentsline {subsubsection}{\numberline {3.2.5}Escenarios Arquitecturales}{59}{subsubsection.3.2.5}%
-\contentsline {subsubsection}{\numberline {3.2.6}Análisis de Alternativas y Decisiones de Diseño (ADRs)}{60}{subsubsection.3.2.6}%
-\contentsline {subsubsection}{\numberline {3.2.7}Representación de la Arquitectura (Modelo C4)}{62}{subsubsection.3.2.7}%
-\contentsline {subsubsection}{\numberline {3.2.8}Diseño Detallado}{64}{subsubsection.3.2.8}%
-\contentsline {subsubsection}{\numberline {3.2.9}Etapa 1: Carga y limpieza de datos}{64}{subsubsection.3.2.9}%
-\contentsline {subsubsection}{\numberline {3.2.10}Etapa 2: Segmentación de productos}{67}{subsubsection.3.2.10}%
-\contentsline {subsubsection}{\numberline {3.2.11}Etapa 3: Construcción de variables}{68}{subsubsection.3.2.11}%
-\contentsline {subsubsection}{\numberline {3.2.12}Etapa 4: Modelos de predicción}{75}{subsubsection.3.2.12}%
-\contentsline {paragraph}{Definicion de variables y funciones basicas}{75}{paragraph*.46}%
-\contentsline {paragraph}{Modelos de demanda}{77}{paragraph*.47}%
-\contentsline {paragraph}{XgBoost}{77}{paragraph*.48}%
-\contentsline {paragraph}{Media Móvil}{79}{paragraph*.49}%
-\contentsline {paragraph}{Regresion Lineal}{79}{paragraph*.50}%
-\contentsline {subsubsection}{\numberline {3.2.13}Selección del campeón por producto}{84}{subsubsection.3.2.13}%
-\contentsline {subsubsection}{\numberline {3.2.14}Combinación de pronósticos (análisis complementario)}{88}{subsubsection.3.2.14}%
-\contentsline {subsubsection}{\numberline {3.2.15}Pronóstico futuro}{90}{subsubsection.3.2.15}%
-\contentsline {paragraph}{Ciclo recursivo}{90}{paragraph*.51}%
-\contentsline {subsubsection}{\numberline {3.2.16}Cálculo de reposición (EOQ/ROP)}{95}{subsubsection.3.2.16}%
-\contentsline {paragraph}{Lead time}{95}{paragraph*.52}%
-\contentsline {paragraph}{Stock de seguridad y punto de reorden}{96}{paragraph*.53}%
-\contentsline {paragraph}{Cantidad económica de pedido (EOQ)}{96}{paragraph*.54}%
-\contentsline {paragraph}{Cantidad sugerida y presupuesto}{97}{paragraph*.55}%
-\contentsline {paragraph}{Decisión de pedido y fecha estimada}{98}{paragraph*.56}%
-\contentsline {subsubsection}{\numberline {3.2.17}Modelo de Datos}{99}{subsubsection.3.2.17}%
-\contentsline {subsubsection}{\numberline {3.2.18}Diseño UX/UI}{104}{subsubsection.3.2.18}%
-\contentsline {subsubsection}{\numberline {3.2.19}Análisis de Amenazas y Diseño Seguro}{112}{subsubsection.3.2.19}%
-\contentsline {subsection}{\numberline {3.3}Construcción, Integración y Despliegue}{114}{subsection.3.3}%
-\contentsline {subsubsection}{\numberline {3.3.1}Construcción}{114}{subsubsection.3.3.1}%
-\contentsline {subsubsection}{\numberline {3.3.2}Integración}{116}{subsubsection.3.3.2}%
-\contentsline {paragraph}{Integración continua (CI)}{118}{paragraph*.78}%
-\contentsline {subsubsection}{\numberline {3.3.3}Despliegue}{119}{subsubsection.3.3.3}%
-\contentsline {subsection}{\numberline {3.4}Plan de Verificación y Validación}{123}{subsection.3.4}%
-\contentsline {subsubsection}{\numberline {3.4.1}Estrategia de verificación}{123}{subsubsection.3.4.1}%
-\contentsline {subsubsection}{\numberline {3.4.2}Estrategia de validación del modelo de predicción}{124}{subsubsection.3.4.2}%
-\contentsline {subsubsection}{\numberline {3.4.3}Criterios de aceptación}{125}{subsubsection.3.4.3}%
-\contentsline {subsubsection}{\numberline {3.4.4}Plan de validación con usuarios}{126}{subsubsection.3.4.4}%
-\contentsline {section}{\numberline {4}Capítulo 4: Análisis de Resultados y Juicio de Ingeniería}{128}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Resultados de Verificación (Pruebas de Software)}{128}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Resultados de la Validación del Modelo de Predicción}{130}{subsection.4.2}%
-\contentsline {subsubsection}{\numberline {4.2.1}Consistencia mediante validación cruzada temporal}{131}{subsubsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.3}Resultados de Validación (Evaluación del Usuario)}{134}{subsection.4.3}%
-\contentsline {subsection}{\numberline {4.4}Evaluación de la Seguridad y Estándares}{134}{subsection.4.4}%
-\contentsline {subsubsection}{\numberline {4.4.1}Resultados del analisis de amenazas (STRIDE)}{134}{subsubsection.4.4.1}%
-\contentsline {subsubsection}{\numberline {4.4.2}Nivel de cumplimiento frente a los estandares declarados}{135}{subsubsection.4.4.2}%
-\contentsline {subsection}{\numberline {4.5}Análisis de Impactos de la Solución}{136}{subsection.4.5}%
-\contentsline {subsubsection}{\numberline {4.5.1}Impacto técnico}{136}{subsubsection.4.5.1}%
-\contentsline {subsubsection}{\numberline {4.5.2}Impacto social}{137}{subsubsection.4.5.2}%
-\contentsline {subsubsection}{\numberline {4.5.3}Impacto económico}{137}{subsubsection.4.5.3}%
-\contentsline {subsubsection}{\numberline {4.5.4}Impacto ambiental}{138}{subsubsection.4.5.4}%
-\contentsline {subsubsection}{\numberline {4.5.5}Impacto ético}{138}{subsubsection.4.5.5}%
-\contentsline {subsection}{\numberline {4.6}Conclusiones}{138}{subsection.4.6}%
-\contentsline {subsection}{\numberline {4.7}Recomendaciones de Operación y Mantenibilidad}{141}{subsection.4.7}%
-\contentsline {subsubsection}{\numberline {4.7.1}Continuidad y recuperacion de datos}{141}{subsubsection.4.7.1}%
-\contentsline {subsubsection}{\numberline {4.7.2}Seguridad}{142}{subsubsection.4.7.2}%
-\contentsline {subsubsection}{\numberline {4.7.3}Verificacion continua}{142}{subsubsection.4.7.3}%
-\contentsline {subsubsection}{\numberline {4.7.4}Accesibilidad y mantenibilidad de la interfaz}{143}{subsubsection.4.7.4}%
-\contentsline {subsection}{\numberline {4.8}Trabajos Futuros}{143}{subsection.4.8}%
-\contentsline {subsubsection}{\numberline {4.8.1}Realizacion de validacion con usuarios}{143}{subsubsection.4.8.1}%
-\contentsline {subsubsection}{\numberline {4.8.2}Conservacion del historial de artefactos por corrida}{143}{subsubsection.4.8.2}%
-\contentsline {subsubsection}{\numberline {4.8.3}Validacion en otros dominios de inventario}{144}{subsubsection.4.8.3}%
-\contentsline {subsubsection}{\numberline {4.8.4}Exploracion de modelos de aprendizaje profundo}{144}{subsubsection.4.8.4}%
-\contentsline {subsubsection}{\numberline {4.8.5}Reevaluacion del asistente conversacional}{144}{subsubsection.4.8.5}%
-\contentsline {subsection}{\numberline {4.9}Declaración de Uso Responsable de IA}{144}{subsection.4.9}%
-\contentsline {section}{Referencias Bibliográficas}{146}{section*.92}%
-\contentsline {section}{ANEXOS}{150}{section*.93}%
-\contentsline {section}{\numberline {Anexo A}Documento completo SRS (historias de usuario / backlog)}{151}{section.1}%
-\contentsline {section}{\numberline {Anexo B}Modelos de datos extensos, diccionarios de datos, mockups}{163}{section.2}%
-\contentsline {section}{\numberline {Anexo C}Manual de usuario y/o guía de instalación y despliegue}{175}{section.3}%
-\contentsline {section}{\numberline {Anexo D}Enlaces a repositorios de código fuente y tableros de gestión (Azure DevOps, Jira, GitHub)}{178}{section.4}%
-\contentsline {section}{\numberline {Anexo E}Protocolo y seguimiento de la revisión sistemática de literatura (si aplica)}{179}{section.5}%
+\contentsline {subsubsection}{\numberline {3.1.2}Identificación y mitigación de riesgos}{50}{subsubsection.3.1.2}%
+\contentsline {subsubsection}{\numberline {3.1.3}Ciclo de Vida del Software (Ejecución)}{51}{subsubsection.3.1.3}%
+\contentsline {subsection}{\numberline {3.2}Procesos Técnicos y Diseño (ISO/IEC/IEEE 12207)}{52}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Identificación de Stakeholders}{52}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}Elicitación de Requisitos}{53}{subsubsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.3}Especificación de Requisitos de Software (SRS)}{55}{subsubsection.3.2.3}%
+\contentsline {subsubsection}{\numberline {3.2.4}Diseño de la Arquitectura}{60}{subsubsection.3.2.4}%
+\contentsline {subsubsection}{\numberline {3.2.5}Escenarios Arquitecturales}{60}{subsubsection.3.2.5}%
+\contentsline {subsubsection}{\numberline {3.2.6}Análisis de Alternativas y Decisiones de Diseño (ADRs)}{61}{subsubsection.3.2.6}%
+\contentsline {subsubsection}{\numberline {3.2.7}Representación de la Arquitectura (Modelo C4)}{63}{subsubsection.3.2.7}%
+\contentsline {subsubsection}{\numberline {3.2.8}Diseño Detallado}{65}{subsubsection.3.2.8}%
+\contentsline {subsubsection}{\numberline {3.2.9}Etapa 1: Carga y limpieza de datos}{65}{subsubsection.3.2.9}%
+\contentsline {subsubsection}{\numberline {3.2.10}Etapa 2: Segmentación de productos}{68}{subsubsection.3.2.10}%
+\contentsline {subsubsection}{\numberline {3.2.11}Etapa 3: Construcción de variables}{69}{subsubsection.3.2.11}%
+\contentsline {subsubsection}{\numberline {3.2.12}Etapa 4: Modelos de predicción}{76}{subsubsection.3.2.12}%
+\contentsline {paragraph}{Definición de variables y funciones basicas}{76}{paragraph*.47}%
+\contentsline {paragraph}{Modelos de demanda}{78}{paragraph*.48}%
+\contentsline {paragraph}{Implementación de XgBoost}{78}{paragraph*.49}%
+\contentsline {paragraph}{Implementación de Media Móvil}{81}{paragraph*.50}%
+\contentsline {paragraph}{Implementación de Regresión Lineal}{82}{paragraph*.51}%
+\contentsline {subsubsection}{\numberline {3.2.13}Selección del campeón por producto}{87}{subsubsection.3.2.13}%
+\contentsline {subsubsection}{\numberline {3.2.14}Combinación de pronósticos (análisis complementario)}{91}{subsubsection.3.2.14}%
+\contentsline {subsubsection}{\numberline {3.2.15}Pronóstico futuro}{92}{subsubsection.3.2.15}%
+\contentsline {paragraph}{Ciclo recursivo}{93}{paragraph*.52}%
+\contentsline {subsubsection}{\numberline {3.2.16}Cálculo de reposición (EOQ/ROP)}{97}{subsubsection.3.2.16}%
+\contentsline {paragraph}{Lead time}{98}{paragraph*.53}%
+\contentsline {paragraph}{Stock de seguridad y punto de reorden}{98}{paragraph*.54}%
+\contentsline {paragraph}{Cantidad económica de pedido (EOQ)}{99}{paragraph*.55}%
+\contentsline {paragraph}{Cantidad sugerida y presupuesto}{99}{paragraph*.56}%
+\contentsline {paragraph}{Decisión de pedido y fecha estimada}{100}{paragraph*.57}%
+\contentsline {subsubsection}{\numberline {3.2.17}Modelo de Datos}{101}{subsubsection.3.2.17}%
+\contentsline {subsubsection}{\numberline {3.2.18}Diseño UX/UI}{106}{subsubsection.3.2.18}%
+\contentsline {subsubsection}{\numberline {3.2.19}Análisis de Amenazas y Diseño Seguro}{115}{subsubsection.3.2.19}%
+\contentsline {subsection}{\numberline {3.3}Construcción, Integración y Despliegue}{118}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.1}Construcción}{118}{subsubsection.3.3.1}%
+\contentsline {subsubsection}{\numberline {3.3.2}Integración}{120}{subsubsection.3.3.2}%
+\contentsline {paragraph}{Integración continua (CI)}{122}{paragraph*.79}%
+\contentsline {subsubsection}{\numberline {3.3.3}Despliegue}{123}{subsubsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.4}Plan de Verificación y Validación}{127}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}Estrategia de verificación}{127}{subsubsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.2}Estrategia de validación del modelo de predicción}{128}{subsubsection.3.4.2}%
+\contentsline {subsubsection}{\numberline {3.4.3}Criterios de aceptación}{129}{subsubsection.3.4.3}%
+\contentsline {subsubsection}{\numberline {3.4.4}Plan de validación con usuarios}{130}{subsubsection.3.4.4}%
+\contentsline {section}{\numberline {4}Capítulo 4: Análisis de Resultados y Juicio de Ingeniería}{132}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Resultados de Verificación (Pruebas de Software)}{132}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Resultados de la Validación del Modelo de Predicción}{134}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}Consistencia mediante validación cruzada temporal}{135}{subsubsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.3}Resultados de Validación (Evaluación del Usuario)}{138}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Evaluación de la Seguridad y Estándares}{139}{subsection.4.4}%
+\contentsline {subsubsection}{\numberline {4.4.1}Resultados del análisis de amenazas (STRIDE)}{139}{subsubsection.4.4.1}%
+\contentsline {subsubsection}{\numberline {4.4.2}Nivel de cumplimiento frente a los estandares declarados}{140}{subsubsection.4.4.2}%
+\contentsline {subsection}{\numberline {4.5}Análisis de Impactos de la Solución}{141}{subsection.4.5}%
+\contentsline {subsubsection}{\numberline {4.5.1}Impacto técnico}{141}{subsubsection.4.5.1}%
+\contentsline {subsubsection}{\numberline {4.5.2}Impacto social}{141}{subsubsection.4.5.2}%
+\contentsline {subsubsection}{\numberline {4.5.3}Impacto económico}{142}{subsubsection.4.5.3}%
+\contentsline {subsubsection}{\numberline {4.5.4}Impacto ambiental}{142}{subsubsection.4.5.4}%
+\contentsline {subsubsection}{\numberline {4.5.5}Impacto ético}{143}{subsubsection.4.5.5}%
+\contentsline {subsection}{\numberline {4.6}Conclusiones}{143}{subsection.4.6}%
+\contentsline {subsection}{\numberline {4.7}Recomendaciones de Operación y Mantenibilidad}{146}{subsection.4.7}%
+\contentsline {subsubsection}{\numberline {4.7.1}Continuidad y recuperación de datos}{146}{subsubsection.4.7.1}%
+\contentsline {subsubsection}{\numberline {4.7.2}Seguridad}{147}{subsubsection.4.7.2}%
+\contentsline {subsubsection}{\numberline {4.7.3}Verificación continua}{147}{subsubsection.4.7.3}%
+\contentsline {subsubsection}{\numberline {4.7.4}Accesibilidad y mantenibilidad de la interfaz}{147}{subsubsection.4.7.4}%
+\contentsline {subsection}{\numberline {4.8}Trabajos Futuros}{148}{subsection.4.8}%
+\contentsline {subsubsection}{\numberline {4.8.1}Realización de validación con usuarios}{148}{subsubsection.4.8.1}%
+\contentsline {subsubsection}{\numberline {4.8.2}Conservación del historial de artefactos por corrida}{148}{subsubsection.4.8.2}%
+\contentsline {subsubsection}{\numberline {4.8.3}Validación en otros dominios de inventario}{148}{subsubsection.4.8.3}%
+\contentsline {subsubsection}{\numberline {4.8.4}Exploración de modelos de aprendizaje profundo}{149}{subsubsection.4.8.4}%
+\contentsline {subsubsection}{\numberline {4.8.5}Reevaluación del asistente conversacional}{149}{subsubsection.4.8.5}%
+\contentsline {subsubsection}{\numberline {4.8.6}Combinación de pronósticos con métodos más sofisticados}{149}{subsubsection.4.8.6}%
+\contentsline {subsection}{\numberline {4.9}Declaración de Uso Responsable de IA}{149}{subsection.4.9}%
+\contentsline {section}{Referencias Bibliográficas}{151}{section*.93}%
+\contentsline {section}{ANEXOS}{156}{section*.94}%
+\contentsline {section}{\numberline {Anexo A}Documento completo SRS (historias de usuario / backlog)}{157}{section.1}%
+\contentsline {section}{\numberline {Anexo B}Modelos de datos extensos, diccionarios de datos, mockups}{169}{section.2}%
+\contentsline {section}{\numberline {Anexo C}Manual de usuario y/o guía de instalación y despliegue}{178}{section.3}%
+\contentsline {section}{\numberline {Anexo D}Enlaces a repositorios de código fuente y tableros de gestión (Azure DevOps, Jira, GitHub)}{181}{section.4}%
+\contentsline {section}{\numberline {Anexo E}Protocolo y seguimiento de la revisión sistemática de literatura (si aplica)}{182}{section.5}%

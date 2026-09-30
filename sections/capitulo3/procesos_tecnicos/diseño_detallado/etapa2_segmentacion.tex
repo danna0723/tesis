@@ -1,13 +1,13 @@
-La segunda etapa del pipeline (\texttt{app/services/prediccion/segmentacion.py}) se basa en poder clasificar cada producto segun dos criterios principales:
+La segunda etapa del pipeline (\texttt{app/services/prediccion/segmentacion.py}) se basa en poder clasificar cada producto según dos criterios principales:
 
 \begin{itemize}
-    \item Clasificacion ABC: Esta clasificacion permite poder identificar cual es la importancia relativa de cada producto dentro de la demanda total. Se calcula ordenando los productos de mayor a menor en base a su demanda total y se guarda su porcentaje. 
+    \item Clasificación ABC: Esta clasificación permite poder identificar cual es la importancia relativa de cada producto dentro de la demanda total. Se calcula ordenando los productos de mayor a menor en base a su demanda total y se guarda su porcentaje. 
     
-    Los productos que en conjunto representan hasta el 80\% de la demanda, se clasifican como categoria A, es decir, los mas importantes. Los que se encuentran entre el 80\% y el 95\% se clasifican como categoria B. El resto de productos se clasifican como categoria C.
+    Los productos que en conjunto representan hasta el 80\% de la demanda, se clasifican como categoría A, es decir, los más importantes. Los que se encuentran entre el 80\% y el 95\% se clasifican como categoría B. El resto de productos se clasifican como categoría C.
     
-    Esta clasificacion permite que en el dashbpard, el usuario pueda entender que tan importante y que tan erratico es el consumo de cada producto 
+    Esta clasificación permite que en el dashbpard, el usuario pueda entender que tan importante y que tan errático es el consumo de cada producto 
     
-    \item Variabilidad: La variabilidad del consumo de los productos permite poder identificar cuales son los productos que presentan un comportamiento mas estable y cuales son los que presentan un comportamiento mas irregular, se calcula en base al coeficiente de variacion (la desviacion estandar dividida entre la media de la demanda), clasificando a cada producto como de variabilidad Baja (menor a 0.5), Media (entre 0.5 y 1) o Alta (mayor o igual a 1).
+    \item Variabilidad: La variabilidad del consumo de los productos permite poder identificar cuales son los productos que presentan un comportamiento más estable y cuales son los que presentan un comportamiento más irregular, se calcula en base al coeficiente de variación (la desviación estándar dividida entre la media de la demanda), clasificando a cada producto como de variabilidad Baja (menor a 0.5), Media (entre 0.5 y 1) o Alta (mayor o igual a 1).
 
 \end{itemize}
 
@@ -57,4 +57,4 @@ def calcular_comportamiento_producto(df, df_mensual):
     return producto_comportamiento
 \end{minted}
 
-Es en esta etapa en la que se calculan estadisticas historicas como (\texttt{media\_producto} y \texttt{desviacion\_producto}).
+Es en esta etapa en la que se calculan estadísticas históricas como (\texttt{media\_producto} y \texttt{desviacion\_producto}).

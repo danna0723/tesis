@@ -2374,11 +2374,11 @@
     <bcf:datasource type="file" datatype="bibtex" glob="false">bibs/sample.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
-    <bcf:citekey order="1" intorder="1">meana2024gestión</bcf:citekey>
+    <bcf:citekey order="1" intorder="1">meana2024gestion</bcf:citekey>
     <bcf:citekey order="2" intorder="1">ibm_inventario</bcf:citekey>
     <bcf:citekey order="3" intorder="1">setyadi2024eoq</bcf:citekey>
     <bcf:citekey order="4" intorder="1">setyadi2024eoq</bcf:citekey>
-    <bcf:citekey order="5" intorder="1">Mahendrawathi2011215</bcf:citekey>
+    <bcf:citekey order="5" intorder="1">mahendrawathi2011abc</bcf:citekey>
     <bcf:citekey order="6" intorder="1">syntetos2005categorization</bcf:citekey>
     <bcf:citekey order="7" intorder="1">ibm_prevision_demanda</bcf:citekey>
     <bcf:citekey order="8" intorder="1">ibm_prevision_demanda</bcf:citekey>
@@ -2497,16 +2497,18 @@
     <bcf:citekey order="124" intorder="1">ejemplo1_demandforecast</bcf:citekey>
     <bcf:citekey order="125" intorder="1">ejemplo3_ksmooi_inventorydemand</bcf:citekey>
     <bcf:citekey order="126" intorder="1">ejemplo1_demandforecast</bcf:citekey>
-    <bcf:citekey order="127" intorder="1">ejemplo4_boombikes</bcf:citekey>
-    <bcf:citekey order="128" intorder="1">diebold_mariano</bcf:citekey>
-    <bcf:citekey order="129" intorder="1">diebold2015comparing</bcf:citekey>
-    <bcf:citekey order="130" intorder="1">bates1969combination</bcf:citekey>
-    <bcf:citekey order="130" intorder="2">granger1984improved</bcf:citekey>
-    <bcf:citekey order="131" intorder="1">BENTAIEB20127067</bcf:citekey>
-    <bcf:citekey order="132" intorder="1">ejemplo1_demandforecast</bcf:citekey>
-    <bcf:citekey order="133" intorder="1">ejemplo3_ksmooi_inventorydemand</bcf:citekey>
-    <bcf:citekey order="134" intorder="1">ejemplo1_demandforecast</bcf:citekey>
-    <bcf:citekey order="135" intorder="1">ejemplo2_saci2020mlretail</bcf:citekey>
+    <bcf:citekey order="127" intorder="1">ejemplo1_demandforecast</bcf:citekey>
+    <bcf:citekey order="128" intorder="1">ejemplo4_boombikes</bcf:citekey>
+    <bcf:citekey order="129" intorder="1">diebold_mariano</bcf:citekey>
+    <bcf:citekey order="130" intorder="1">diebold2015comparing</bcf:citekey>
+    <bcf:citekey order="131" intorder="1">bates1969combination</bcf:citekey>
+    <bcf:citekey order="131" intorder="2">granger1984improved</bcf:citekey>
+    <bcf:citekey order="132" intorder="1">BENTAIEB20127067</bcf:citekey>
+    <bcf:citekey order="133" intorder="1">ejemplo1_demandforecast</bcf:citekey>
+    <bcf:citekey order="134" intorder="1">ejemplo3_ksmooi_inventorydemand</bcf:citekey>
+    <bcf:citekey order="135" intorder="1">ejemplo1_demandforecast</bcf:citekey>
+    <bcf:citekey order="136" intorder="1">ejemplo2_saci2020mlretail</bcf:citekey>
+    <bcf:citekey order="137" intorder="1">wang2023combinations</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">

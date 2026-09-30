@@ -1,6 +1,6 @@
 \subsubsection{Comparación de modelos de predicción de demanda}
 
-Debido a que existen diferentes modelos y tecnicas para la prediccion de la demanda, se realizo una revision de literatura de diferentes estudios que emplean los modelos mas utilizados para la prediccion de la demanda, esto con el fin de realizar el siguiente analisis comparativo para determinar cual es el mas adecuado para la prediccion de demanda en el presente proyecto, teniendo en cuenta ventajas, limitaciones y caracteristicas como: tipo de datos utilizados, dominio de aplicación, tecnica de aplicacion, metricas de evaluacion y resultados obtenidos, dataset utilizado, entre otros.
+Debido a que existen diferentes modelos y técnicas para la predicción de la demanda, se realizo una revisión de literatura de diferentes estudios que emplean los modelos más utilizados para la predicción de la demanda, esto con el fin de realizar el siguiente análisis comparativo para determinar cual es el más adecuado para la predicción de demanda en el presente proyecto, teniendo en cuenta ventajas, limitaciones y características como: tipo de datos utilizados, dominio de aplicación, técnica de aplicación, métricas de evaluación y resultados obtenidos, dataset utilizado, entre otros.
 
 \begin{table}[H]
 \centering
@@ -59,7 +59,7 @@ Error absoluto de pronóstico (\textit{Forecasting Error}) y porcentaje de error
 RMSE para medir la diferencia entre valores reales y predichos. También se compara el tiempo promedio por época para evaluar la eficiencia computacional. &
 Coeficiente de determinación ($R^2$). El estudio reporta un valor de 70,57\,\% para la predicción de la cantidad vendida y cercano al 80\,\% para el precio de venta. &
 RMSE, MAE y MAPE. También se considera el tiempo de ejecución y se utiliza la prueba estadística de Wilcoxon para validar diferencias entre modelos. &
-MAE, RMSE y coeficiente de determinación. Se compara el desempeño de XGBoost con SARIMA, Decision Tree (DT) y Random Forest (RF). \\ 
+MAE, RMSE y coeficiente de determinación. Se compara el desempeño de XGBoost con SARIMA, Decisión Tree (DT) y Random Forest (RF). \\ 
 \hline
 
 \textbf{Dataset} &
@@ -93,7 +93,7 @@ XGBoost presenta capacidad para modelar relaciones complejas y puede utilizarse 
 
 \subsubsection{Implementaciones de referencia consultadas}
 
-Ademas de los estudios academicos revisados, se consultaron cuatro implementaciones practicas de codigo abierto, disponibles en Kaggle y GitHub, que sirvieron como base y punto de partida para la construccion del pipeline de prediccion de Thary. La Tabla \ref{tab:implementaciones_referencia} resume cada una de estas implementaciones, el identificador que se usara para referirse a ellas a lo largo del documento, y el aporte que realizaron al diseño del sistema.
+Además de los estudios académicos revisados, se consultaron cuatro implementaciones prácticas de código abierto, disponibles en Kaggle y GitHub, que sirvieron como base y punto de partida para la construcción del pipeline de predicción de Thary. La Tabla \ref{tab:implementaciones_referencia} resume cada una de estas implementaciones, el identificador que se usara para referirse a ellas a lo largo del documento, y el aporte que realizaron al diseño del sistema.
 
 \begin{table}[H]
     \centering
@@ -104,32 +104,32 @@ Ademas de los estudios academicos revisados, se consultaron cuatro implementacio
     \hline
     \textbf{ID} & \textbf{Autor} & \textbf{Título} & \textbf{Aporte a Thary} \\
     \hline
-    Ejemplo 1 (SKU Demand Forecasting) & Dhruvi Shah \cite{ejemplo1_demandforecast} & \textit{Demand Forecasting \& Inventory Optimization for Consumer Products} & Base para el flujo general de prediccion y calculo de reposicion \\
+    Ejemplo 1 (SKU Demand Forecasting) & Dhruvi Shah \cite{ejemplo1_demandforecast} & \textit{Demand Forecasting \& Inventory Optimization for Consumer Products} & Base para el flujo general de predicción y cálculo de reposición \\
     \hline
-    Ejemplo 2 (Media Móvil) & Samir Saci \cite{ejemplo2_saci2020mlretail} & \textit{Machine Learning for Retail Demand Forecasting: Comparative Study of Demand Forecasting Methods for a Retail Store (XGBoost Model vs. Rolling Mean)} & Base para el uso de la media movil como modelo candidato de comparacion \\
+    Ejemplo 2 (Media Móvil) & Samir Saci \cite{ejemplo2_saci2020mlretail} & \textit{Machine Learning for Retail Demand Forecasting: Comparative Study of Demand Forecasting Methods for a Retail Store (XGBoost Model vs. Rolling Mean)} & Base para el uso de la media móvil como modelo candidato de comparación \\
     \hline
     Ejemplo 3 (XGBoost) & ksmooi \cite{ejemplo3_ksmooi_inventorydemand} & \textit{Forecasting Inventory Demand Using XGBoost} & Base para el entrenamiento y ajuste del modelo XGBoost \\
     \hline
-    Ejemplo 4 (BoomBikes) & Tushar Verma \cite{ejemplo4_boombikes} & \textit{Linear Regression: Demand Forecasting} & Base para la metodologia de seleccion de variables en el modelo de Regresion Lineal (RFE, eliminacion por p-valor y VIF) \\
+    Ejemplo 4 (BoomBikes) & Tushar Verma \cite{ejemplo4_boombikes} & \textit{Linear Regression: Demand Forecasting} & Base para la metodologia de selección de variables en el modelo de Regresión Lineal (RFE, eliminación por p-valor y VIF) \\
     \hline
     \end{tabularx}
 \end{table}
 
-A lo largo del Capitulo 3 se hace referencia a estas cuatro implementaciones
+A lo largo del Capítulo 3 se hace referencia a estas cuatro implementaciones
 mediante el identificador presentado en la Tabla \ref{tab:implementaciones_referencia} (Ejemplo 1, Ejemplo 2, Ejemplo 3 o Ejemplo 4),
-indicando en cada caso que partes especificas de Thary se basaron en ellas y
+indicando en cada caso que partes específicas de Thary se basaron en ellas y
 cuales corresponden a extensiones propias desarrolladas durante el proyecto.
 
 \subsubsection{Brecha identificada}
 
-Una vez habiendo analizado algunas de las implementaciones ya existentes para la resolucion de una problematica similar a la planteada en este proyecto, se identifico que la mayoria de estas implementaciones no contemplan un enfoque de seleccion de modelos por producto, sino que utilizan un unico modelo (ANN, LSTM, Regresion Lineal, GRU o XGBoost) para todo el catalogo.
+Una vez habiendo analizado algunas de las implementaciones ya existentes para la resolución de una problemática similar a la planteada en este proyecto, se identificó que la mayoría de estas implementaciones no contemplan un enfoque de selección de modelos por producto, sino que utilizan un único modelo (ANN, LSTM, Regresión Lineal, GRU o XGBoost) para todo el catálogo.
 
-El unico ejemplo que hace algo parecido a comparar varios modelos es el Ejemplo 2, que compara XGBoost frente a Media Movil, pero no incluye un mecanismo de seleccion automatica por producto.
+El único ejemplo que hace algo parecido a comparar varios modelos es el Ejemplo 2, que compara XGBoost frente a Media Móvil, pero no incluye un mecanismo de selección automática por producto.
 
-Esto puede generar problemas de prediccion, ya que no todos los productos tienen un comportamiento similar y por lo tanto, no todos los modelos son adecuados para todos los productos. 
+Esto puede generar problemas de predicción, ya que no todos los productos tienen un comportamiento similar y por lo tanto, no todos los modelos son adecuados para todos los productos. 
 
-Ademas, la mayoria de estas implementaciones no cuentan con un mecanismo de validacion estadistica que permita confirmar que las diferencias observadas entre modelos sean reales y no producto del azar. Los estudios reportan unicamente el modelo con mejor metrica de error (MAE, RMSE, MAPE o $R^2$) como superior, sin verificar si dicha diferencia es estadisticamente significativa o podria explicarse por casualidad.
+Además, la mayoría de estas implementaciones no cuentan con un mecanismo de validación estadística que permita confirmar que las diferencias observadas entre modelos sean reales y no producto del azar. Los estudios reportan únicamente el modelo con mejor métrica de error (MAE, RMSE, MAPE o $R^2$) como superior, sin verificar si dicha diferencia es estadísticamente significativa o podría explicarse por casualidad.
 
-Por ultimo, la mayoria de estas implementaciones solo se centran en la etapa de prediccion de la demanda, sin traducir los resultados a un analisis que pueda ayudar a los usuarios a tomar decisiones operativas de reposicion como punto de reorden, cantidad economica de pedido o costo de ruptura ante un posible desabastecimiento. Solo uno de los estudios academicos revisados, el de Lin \cite{lin2024abc} (Regresion Lineal, Tabla \ref{tab:comparacion_modelos}), incorpora un analisis de clasificacion ABC, pero de forma independiente al modelo predictivo, no como parte de un mismo sistema integrado.
+Por último, la mayoría de estas implementaciones solo se centran en la etapa de predicción de la demanda, sin traducir los resultados a un análisis que pueda ayudar a los usuarios a tomar decisiones operativas de reposición como punto de reorden, cantidad económica de pedido o costo de ruptura ante un posible desabastecimiento. Solo uno de los estudios académicos revisados, el de Lin \cite{lin2024abc} (Regresión Lineal, Tabla \ref{tab:comparacion_modelos}), incorpora un análisis de clasificación ABC, pero de forma independiente al modelo predictivo, no como parte de un mismo sistema integrado.
 
-En resumen, la diferencia entre la propuesta de Thary en comparacion a los antecedentes revisados es que Thary busca integrar, dentro de un mismo sistema, la comparacion de multiples modelos candidatos, un mecanismo formal de seleccion respaldado estadisticamente, y su traduccion directa en recomendaciones operativas de inventario, aplicado y validado sobre un caso de estudio real, en este caso, del dominio de salud.
+En resumen, la diferencia entre la propuesta de Thary en comparación a los antecedentes revisados es que Thary busca integrar, dentro de un mismo sistema, la comparación de múltiples modelos candidatos, un mecanismo formal de selección respaldado estadísticamente, y su traducción directa en recomendaciones operativas de inventario, aplicado y validado sobre un caso de estudio real, en este caso, del dominio de salud.

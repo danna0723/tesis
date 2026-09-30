@@ -1,4 +1,4 @@
-La primera etapa del pipeline (\texttt{app/services/prediccion/carga\_datos.py}) recibe el archivo CSV cargado por el administrador y lo normaliza hacia un esquema interno unico:
+La primera etapa del pipeline (\texttt{app/services/prediccion/carga\_datos.py}) recibe el archivo CSV cargado por el administrador y lo normaliza hacia un esquema interno único:
 
 
 \Needspace{10\baselineskip}
@@ -65,8 +65,8 @@ def cargar_y_limpiar(ruta_archivo):
 \end{minted}
 
 
-En esta sección del archivo (\texttt{app/services/prediccion/carga\_datos.py}), se observa la etapa de carga y limpieza de los datos. Para garantizar que el sistema pueda adaptarse y funcionar para todo tipo de dominio de inventarios, se normalizan los nombres de las columnas de los archivos CSV con el fin de mantener un esquema unico interno, de manera que el sistema pueda aceptar archivos de distintos dominios sin tener la necesidad de modificar el resto del pipeline.
+En esta sección del archivo (\texttt{app/services/prediccion/carga\_datos.py}), se observa la etapa de carga y limpieza de los datos. Para garantizar que el sistema pueda adaptarse y funcionar para todo tipo de dominio de inventarios, se normalizan los nombres de las columnas de los archivos CSV con el fin de mantener un esquema único interno, de manera que el sistema pueda aceptar archivos de distintos dominios sin tener la necesidad de modificar el resto del pipeline.
 
-Para facilitarle al usuario el proceso de cargar un archivo, se capturan los errores mas comunes para el sistema a la hora de leer un CSV y se muestran a manera de mensaje de error en un lenguaje sencillo y facil de entender.
+Para facilitarle al usuario el proceso de cargar un archivo, se capturan los errores más comunes para el sistema a la hora de leer un CSV y se muestran a manera de mensaje de error en un lenguaje sencillo y fácil de entender.
 
-Otra practica que fue aplicada es el manejo de errores con mensajes dirigidos al usuario final, de esta manera, se evita que se propaguen los errores internos del sistema y el usuario sabe que es lo que esta ocurriendo y que es lo que se debe hacer para resolverlo.
+Otra práctica que fue aplicada es el manejo de errores con mensajes dirigidos al usuario final, de esta manera, se evita que se propaguen los errores internos del sistema y el usuario sabe qué es lo que está ocurriendo y qué es lo que se debe hacer para resolverlo.

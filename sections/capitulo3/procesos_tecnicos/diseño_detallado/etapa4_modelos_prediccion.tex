@@ -5,9 +5,9 @@ Esta etapa se reparte en los siguientes archivos:
 \item \texttt{app/services/prediccion/regresion\_lineal.py}
 \end{itemize}
 
-\paragraph{Definicion de variables y funciones basicas}
+\paragraph{Definición de variables y funciones basicas}
 
-Al incio del archivo \texttt{modelos.py}, se define el nivel de significancia \texttt{NIVEL\_SIGNIFICANCIA\_DM} como 5\%, esta variable se va a usar posteriormente a la hora de evaluar si un resultado es estadisticamente significativo:
+Al incio del archivo \texttt{modelos.py}, se define el nivel de significancia \texttt{NIVEL\_SIGNIFICANCIA\_DM} como 5\%, esta variable se va a usar posteriormente a la hora de evaluar si un resultado es estadísticamente significativo:
 
 \Needspace{3\baselineskip}
 \captionof{listing}{Nivel de significancia de la prueba de Diebold-Mariano.}\label{lst:nivel_significancia}
@@ -15,7 +15,7 @@ Al incio del archivo \texttt{modelos.py}, se define el nivel de significancia \t
 NIVEL_SIGNIFICANCIA_DM = 0.05
 \end{minted}
 
-Como parte de la propuesta de Thary,tambien se implemenaron las siguientes cuatro variables:
+Como parte de la propuesta de Thary,también se implemenaron las siguientes cuatro variables:
 
 \Needspace{7\baselineskip}
 \captionof{listing}{Constantes que definen el tamaño del periodo de prueba (\textit{backtest}).}\label{lst:constantes_backtest}
@@ -27,19 +27,19 @@ TEST_SIZE_MESES_GRANDE = 6
 MESES_PERDIDOS_POR_REZAGOS = 3
 \end{minted}
 
-Por defecto, el periodo de prueba son 3 meses, pero cuando se cuenta con un periodo de prueba mas grande, de 18 meses o mas, este pasa de 3 meses a 6 meses.
+Por defecto, el periodo de prueba son 3 meses, pero cuando se cuenta con un periodo de prueba más grande, de 18 meses o más, este pasa de 3 meses a 6 meses.
 
-Esta decision se tomo despues de identififcar un problema con el que contaba el sistema. Como punto de partida, el sistema elige el mejor modelo para cada producto comparando el MAE de los 3 modelos sobre 3 meses del historial, el problema era que con solo 3 meses, el resultado podria no ser lo suficientemente confiable, esto debido a que con tan pocos datos, un solo mes que sea atipico puede terminar haciendo que un modelo "gane" sin que eso refleje una diferencia real, sobretodo porque el MAE es una medicion que cuenta con mucha varianza. Entre los riesgos identificados se encuentra: poca capacidad de distinguir modelos parecidos, inestabilidad del resultado y sesgo estacional.
+Esta decisión se tomó después de identificar un problema con el que contaba el sistema. Como punto de partida, el sistema elige el mejor modelo para cada producto comparando el MAE de los 3 modelos sobre 3 meses del historial, el problema era que con solo 3 meses, el resultado podría no ser lo suficientemente confiable, esto debido a que con tan pocos datos, un solo mes que sea atípico puede terminar haciendo que un modelo "gane" sin que eso refleje una diferencia real, sobretodo porque el MAE es una medición que cuenta con mucha varianza. Entre los riesgos identificados se encuentra: poca capacidad de distinguir modelos parecidos, inestabilidad del resultado y sesgo estacional.
 
-Antes de llegar a la solucion definitva se planteo una primera propuesta, en la que si el archivo contaba con menos de 18 meses, se haria la comparacion del MAE de los 3 modelos sobre 3 meses, pero si contaba con 18 meses o mas, la comparacion se haria sobre 6 meses. Pero enrealidad, esta solucion no resolvia el problema "de raiz", solo mitigaba el problema de que hubiera pocos meses de prueba, ademas de que la decision de que 18 meses fuese el punto de corte no tenia respaldo alguno.
+Antes de llegar a la solución definitva se planteo una primera propuesta, en la que si el archivo contaba con menos de 18 meses, se haría la comparación del MAE de los 3 modelos sobre 3 meses, pero si contaba con 18 meses o más, la comparación se haría sobre 6 meses. Pero enrealidad, esta solución no resolvia el problema "de raiz", solo mitigaba el problema de que hubiera pocos meses de prueba, además de que la decisión de que 18 meses fuese el punto de corte no tenia respaldo alguno.
 
-Por eso fue que se corrigio y re-interpreto el enfoque de la solucion, fundamentandola en que el problema a solucionar no era el numero de meses, si no el calculo del error, es decir, que tan confiable es la comparacion de error entre los modelos. 
+Por eso fue que se corrigió y re-interpretó el enfoque de la solución, fundamentándola en que el problema a solucionar no era el número de meses, sino el cálculo del error, es decir, qué tan confiable es la comparación de error entre los modelos.
 
-Fue aqui donde se propuso la prueba Diebold-Mariano, la cual consiste en una prueba estadistica que permite medir si la diferencia de error que hay entre dos modelos es significativa o es solo ruido. La prueba Diebold-Mariano requiere de un nivel de significancia, que se definio como 5\%.
+Fue aquí donde se propuso la prueba Diebold-Mariano, la cual consiste en una prueba estadística que permite medir si la diferencia de error que hay entre dos modelos es significativa o es solo ruido. La prueba Diebold-Mariano requiere de un nivel de significancia, que se definió como 5\%.
 
 Por otro lado,\texttt{MESES\_PERDIDOS\_POR\_REZAGOS} es el número fijo de meses que se pierden al calcular los rezagos (visto en la etapa anterior), es necesario para disctribuir los meses utilizables del total de meses que subió el usuario en el archivo.
 
-Una vez definidas las variables, la primera funcion implementada en \texttt{modelos.py} es \texttt{tamano\_test\_backtest}. Esta funcion principalmente se encarga de implementar la solucion ya explicada, recibe como parametro \texttt{n\_meses\_usables}, la cantidad de meses que quedaron disponibles despues de que se hayan perdido los primeros por el calculo de los lags, y devuelve cuántos meses de esos son los que se van a usar como período de prueba (backtest).
+Una vez definidas las variables, la primera función implementada en \texttt{modelos.py} es \texttt{tamano\_test\_backtest}. Esta función principalmente se encarga de implementar la solución ya explicada, recibe como parámetro \texttt{n\_meses\_usables}, la cantidad de meses que quedaron disponibles después de que se hayan perdido los primeros por el cálculo de los lags, y devuelve cuántos meses de esos son los que se van a usar como período de prueba (backtest).
 
 \Needspace{7\baselineskip}
 \captionof{listing}{Función \texttt{tamano\_test\_backtest}, que decide el tamaño del periodo de prueba.}\label{lst:tamano_test_modelos}
@@ -51,23 +51,25 @@ def tamano_test_backtest(n_meses_usables):
     return TEST_SIZE_MESES_DEFAULT
 \end{minted}
 
-Como el umbral de desicion (\texttt{MESES\_ARCHIVO\_UMBRAL\_TEST\_GRANDE = 18}) toma en cuenta el archivo completo, y la funcion recibe la cantidad de meses disponibles ya con los 3 meses de lag descontados, con \texttt{n\_meses\_archivo\_original = n\_meses\_usables + MESES\_PERDIDOS\_POR\_REZAGOS} se le suma esos 3 meses de vuelta, para saber cuántos meses tenía el archivo que el usuario subió originalmente
+Como el umbral de decisión (\texttt{MESES\_ARCHIVO\_UMBRAL\_TEST\_GRANDE = 18}) toma en cuenta el archivo completo, y la función recibe la cantidad de meses disponibles ya con los 3 meses de lag descontados, con \texttt{n\_meses\_archivo\_original = n\_meses\_usables + MESES\_PERDIDOS\_POR\_REZAGOS} se le suma esos 3 meses de vuelta, para saber cuántos meses tenía el archivo que el usuario subió originalmente
 
 Luego se compara si el total de meses completo cuenta con 18 meses, de hacelo devuelvve el tamaño de test grande con 6 meses y de no hacerlo devuelve el tamaño de test por defecto de 3 meses.
 
 Esta función se llama desde \texttt{sistema\_prediccion.py}, para decidir el tamaño del split que se usa para elegir el campeón y generar los resultados, y desde \texttt{validacion.py}, para que los \textit{folds} de la validación cruzada temporal usen ese mismo tamaño de test y conservar un criterio estandarizado en ambas partes.
 
-Es parte de la solucion que se propone en Thary, esta funcion no ninguna en alguna de las implementaciones que fueron revisadas ya que ninguna adapta el tamaño del perido de prueba seun la cantidad de historia disponible. 
+Es parte de la solución que se propone en Thary, esta función no ninguna en alguna de las implementaciones que fueron revisadas ya que ninguna adapta el tamaño del perido de prueba seun la cantidad de historia disponible. 
 
 \paragraph{Modelos de demanda}
 
-Las funciones que permiten entrenar y evaluar los tres modelos de demanda que se van a utilizar en el sistema: Media Móvil, Regresión Lineal y XGBoost. Estos fueron elegidos luego de realizar una revision de literatura en la que se compararon 5 modelos para la prediccion de la demanda, tal como se vio en el capitulo "Antecedentes", de los cuales se escogieron: XgBoost y regresion lineal al ser los que presentan mejor desempeño en este tipo de problemas, y adicionalmente se incluyo media movil como un modelo mas sencillo que puede ser util para productos con demanda estable o que no cuenten con suficiente historial implementar para un modelo mas complejo.
+Las funciones que permiten entrenar y evaluar los tres modelos de demanda que se van a utilizar en el sistema: Media Móvil, Regresión Lineal y XGBoost. Estos fueron elegidos luego de realizar una revisión de literatura en la que se compararon 5 modelos para la predicción de la demanda, tal como se vio en el capítulo "Antecedentes", de los cuales se escogieron: XgBoost y regresión lineal al ser los que presentan mejor desempeño en este tipo de problemas, y adicionalmente se incluyó media móvil como un modelo más sencillo que puede ser útil para productos con demanda estable o que no cuenten con suficiente historial implementar para un modelo más complejo.
 
-\paragraph{XgBoost}
+\paragraph{Implementación de XgBoost}
 
-La implementacion de XGBoost se hizo combinando los hiperparametros de \textit{Ejemplo 1 (SKU Demand Forecasting)} \cite{ejemplo1_demandforecast} con la transformacion del objetivo propuesta en \textit{Ejemplo 3 (XGBoost)} \cite{ejemplo3_ksmooi_inventorydemand}.
+La implementación de XGBoost se hizo combinando los hiperparametros de \textit{Ejemplo 1 (SKU Demand Forecasting)} \cite{ejemplo1_demandforecast} con la transformación del objetivo propuesta en \textit{Ejemplo 3 (XGBoost)} \cite{ejemplo3_ksmooi_inventorydemand}.
 
-\textit{Ejemplo 3 (XGBoost)} \cite{ejemplo3_ksmooi_inventorydemand} cuenta con una configuracion muchisimo mas simple de la que necesitaria Thary, ya que en el caso del ejemplo, se estaba trabajando con aproximadamente 60 millones de filas, por lo que se priorizo la velocidad sobre el ajuste fino de hiperparamtros, por lo que no cuenta con factores como algun control de sobreajuste:
+
+\textit{Ejemplo 3 (XGBoost)} \cite{ejemplo3_ksmooi_inventorydemand} cuenta con una configuración muchísimo mas simple de la que necesitaría Thary, ya que en el caso del ejemplo, se estaba trabajando con aproximadamente 60 millones de filas, por lo que se priorizó la velocidad sobre el ajuste fino de hiperparámetros, por lo que no cuenta con factores como algún control de sobreajuste:
+
 
 \Needspace{8\baselineskip}
 \captionof{listing}{Parámetros del modelo XGBoost del \textit{Ejemplo 3}.}\label{lst:xgboost_ejemplo3}
@@ -80,23 +82,24 @@ params = {
 }
 \end{minted}
 
-Por otra parte, el \textit{Ejemplo 1 (SKU Demand Forecasting)} \cite{ejemplo1_demandforecast} si cuenta con una configuracion mas completa que se podria reutilizar, en este se arma un XGBRegressor mas cuidado en el que se incluten variables como \texttt{learning\_rate=0.05}, \texttt{subsample=0.8}, \texttt{colsample\_bytree=0.8}, pero principalmente se escogio seguir la logica de este ejemplo porque de los cuatro ejemplos revisados, es el unico que consiste en un sistema completo con una premisa bastante similar a la de Thary, ya que ofrece pronostico de demanda, traduccion de ese pronostocp en recomendacopnes de reposicion, punto de reorden, EOQ, y todo eso bajo restricciones de lead time y presupuesto.
 
-Es por eso, que se adopto su enfoque general completo:
+Por otra parte, el \textit{Ejemplo 1 (SKU Demand Forecasting)} \cite{ejemplo1_demandforecast} si cuenta con una configuración mas completa que se podría reutilizar, en este se arma un XGBRegressor mas cuidado en el que se incluyen variables como \texttt{n\_estimators=300}, \texttt{learning\_rate=0.05}, \texttt{subsample=0.8}, \texttt{colsample\_bytree=0.8}, pero principalmente se escogió seguir la lógica de este ejemplo porque de los cuatro ejemplos revisados, es el único que consiste en un sistema completo con una premisa bastante similar a la de Thary, ya que ofrece pronóstico de demanda, traducción de ese pronóstico en recomendaciones de reposición, punto de reorden, EOQ, y todo eso bajo restricciones de lead time y presupuesto.
+
+Es por eso, que se adoptó su enfoque general completo:
 
 \begin{itemize}
     \item Variables
     \item modelos
     \item hiperparametros
-    \item comparacion de modelos
-    \item logica de reposicion
+    \item comparación de modelos
+    \item lógica de reposición
 \end{itemize}
 
-Los otros ejemplos se revisaron posteriormente cuando se necesito mejorar aspectosm agregar nuevas funcionalidades o en general, agregarle mas valor y robustez a Thary.
+Los otros ejemplos se revisaron posteriormente cuando se necesitó mejorar aspectos, agregar nuevas funcionalidades o en general, agregarle mas valor y robustez a Thary.
 
-Los hiperparámetros utilizados son los mismos que se encuentran en el \textit{Ejemplo 1 (SKU Demand Forecasting)} \cite{ejemplo1_demandforecast}. Como ya se explico anteriormente, al ser el ejemplo mas cercano a una implementacion completa de un sistema con las caracteristicas de Thary, se opto por mantener su logica de entrenamiento y ajuste de hiperparametros, con la diferencia de que \texttt{n\_estimators} se aumento a 500, \texttt{objective} se cambio a \texttt{reg:squarederror}, mientras que en el ejemplo original no se especificaba. Esto se cambio ya que se buscaba implementar el uso de minimos cuadrados para poder estimar la bondad de los modelos.
+Los hiperparámetros utilizados parten de los mismos que se encuentran en el \textit{Ejemplo 1 (SKU Demand Forecasting)} \cite{ejemplo1_demandforecast}. Como ya se explicó anteriormente, al ser el ejemplo más cercano a una implementación completa de un sistema con las características de Thary, se optó por mantener su lógica de entrenamiento y ajuste de hiperparámetros , con la diferencia de que \texttt{n\_estimators} se aumentó de 300 a 500, y \texttt{objective} se fijó explícitamente en \texttt{reg:squarederror}, mientras que en el ejemplo original no se especificaba. Esto se cambió ya que se buscaba implementar el uso de mínimos cuadrados para poder estimar la bondad de los modelos.
 
-Parametros como \texttt{verbosity} fueron omitidos en Thary, pero se incluyo \texttt{n\_jobs}, el cual permite utilizar todos los nucleos de procesamiento disponibles en la maquina donde se ejecuta el entrenamiento, en lugar de un unico nucleo. Esto contribuye a reducir el tiempo de entrenamiento del modelo cuando se procesan catalogos con un numero elevado de productos.
+Parámetros como \texttt{verbosity} fueron omitidos en Thary, pero se incluyó \texttt{n\_jobs}, el cual permite utilizar todos los núcleos de procesamiento disponibles en la máquina donde se ejecuta el entrenamiento, en lugar de un único núcleo. Esto contribuye a reducir el tiempo de entrenamiento del modelo cuando se procesan catálogos con un número elevado de productos.
 
 \Needspace{10\baselineskip}
 \captionof{listing}{Función \texttt{entrenar\_xgboost}, con los hiperparámetros del modelo.}\label{lst:entrenar_xgboost}
@@ -119,34 +122,36 @@ def entrenar_xgboost(X_train, y_train_log, X_test):
     return model, pred_xgb
 \end{minted}
 
-Cada uno de estos hiperparametros tiene un impacto especifico en como se entrena el modelo, y a continuacion se explica que efecto tiene el valor elegido para Thary:
+Cada uno de estos hiperparámetros tiene un impacto específico en cómo se entrena el modelo, y a continuación se explica qué efecto tiene el valor elegido para Thary:
 
 \begin{itemize}
-    \item \texttt{n\_estimators=500}: Es la cantidad de arboles que se entrenan uno tras otro. Con mas arboles, el modelo tiene mas oportunidades de corregir los errores que va dejando cada arbol anterior, pero tambien tarda mas en entrenarse. El Ejemplo 1 usa \texttt{n\_estimators=300}; se subio a 500 porque, al combinarse con una tasa de aprendizaje baja (\texttt{learning\_rate=0.05}), se necesitan mas arboles para que el modelo aprenda lo suficiente. Para confirmar que este cambio ayudaba, se probo con distintas cantidades de arboles (de 100 a 1200): con 300 (el valor original del Ejemplo 1) el error fue mayor que con 500, y subir mas alla de 500 lo seguia bajando, pero muy poco (menos de 1\% entre 500 y 1200), mientras que el tiempo de entrenamiento se triplicaba. Se eligio 500 por ser una mejora real sobre el valor original, sin pagar un tiempo de entrenamiento mucho mayor para una ganancia casi nula, algo relevante porque el modelo se vuelve a entrenar cada vez que un usuario sube un archivo.
+    \item \texttt{n\_estimators=500}: Es la cantidad de árboles que se entrenan uno tras otro. Con más árboles, el modelo tiene más oportunidades de corregir los errores que va dejando cada árbol anterior, pero también tarda más en entrenarse. El Ejemplo 1 usa \texttt{n\_estimators=300}; se subió a 500 porque, al combinarse con una tasa de aprendizaje baja (\texttt{learning\_rate=0.05}), se necesitan más árboles para que el modelo aprenda lo suficiente. Para confirmar que este cambio ayudaba, se probó con distintas cantidades de árboles (de 100 a 1200): con 300 (el valor original del Ejemplo 1) el error fue mayor que con 500, y subir más allá de 500 lo seguía bajando, pero muy poco (menos de 1\% entre 500 y 1200), mientras que el tiempo de entrenamiento se triplicaba. Se eligió 500 por ser una mejora real sobre el valor original, sin pagar un tiempo de entrenamiento mucho mayor para una ganancia casi nula, algo relevante porque el modelo se vuelve a entrenar cada vez que un usuario sube un archivo.
 
-    \item \texttt{learning\_rate=0.05}: Es la tasa de aprendizaje (\textit{shrinkage}), y controla que tanto peso se le da a cada arbol nuevo que se agrega (Seccion 2.1.9). Con un valor bajo como 0.05, cada arbol individual aporta poco al resultado final, por lo que se necesitan muchos arboles (de ahi los 500) para que el modelo aprenda bien, pero a cambio, el modelo es menos propenso a memorizar el ruido de los datos de entrenamiento. Este valor es identico al del Ejemplo 1.
+    \item \texttt{learning\_rate=0.05}: Es la tasa de aprendizaje (\textit{shrinkage}), y controla cuánto peso se le da a cada árbol nuevo que se agrega (Sección 2.2.9). Con un valor bajo como 0.05, cada árbol individual aporta poco al resultado final, por lo que se necesitan muchos árboles (de ahí los 500) para que el modelo aprenda bien, pero a cambio, el modelo es menos propenso a memorizar el ruido de los datos de entrenamiento. Este valor es idéntico al del Ejemplo 1.
 
-    \item \texttt{max\_depth=4}: Limita cuantas divisiones puede hacer cada arbol (Seccion 2.1.9). Con una profundidad de 4, cada arbol es relativamente simple, lo que evita que un solo arbol se vuelva demasiado complejo y termine memorizando patrones muy especificos de los datos de entrenamiento en vez de aprender el comportamiento general de la demanda. Este valor es identico al del Ejemplo 1.
+    \item \texttt{max\_depth=4}: Limita cuántas divisiones puede hacer cada árbol (Sección 2.2.9). Con una profundidad de 4, cada árbol es relativamente simple, lo que evita que un solo árbol se vuelva demasiado complejo y termine memorizando patrones muy específicos de los datos de entrenamiento en vez de aprender el comportamiento general de la demanda. Este valor es idéntico al del Ejemplo 1.
 
-    \item \texttt{subsample=0.8}: En cada arbol nuevo, solo se usa el 80\% de las filas de entrenamiento, escogidas al azar (Seccion 2.1.9). Esto hace que los arboles no vean siempre exactamente los mismos datos, lo que ayuda a que el modelo generalice mejor en vez de ajustarse demasiado a casos particulares del historial. Este valor es identico al del Ejemplo 1.
+    \item \texttt{subsample=0.8}: En cada árbol nuevo, solo se usa el 80\% de las filas de entrenamiento, escogidas al azar (Sección 2.2.9). Esto hace que los árboles no vean siempre exactamente los mismos datos, lo que ayuda a que el modelo generalice mejor en vez de ajustarse demasiado a casos particulares del historial. Este valor es idéntico al del Ejemplo 1.
 
-    \item \texttt{colsample\_bytree=0.8}: De manera similar al anterior, pero con las variables (columnas): cada arbol solo usa el 80\% de las variables disponibles, tambien escogidas al azar. Esto evita que el modelo dependa siempre de las mismas variables para todos los arboles, lo que tambien ayuda a que generalice mejor. Este valor es identico al del Ejemplo 1.
+    \item \texttt{colsample\_bytree=0.8}: De manera similar al anterior, pero con las variables (columnas): cada árbol solo usa el 80\% de las variables disponibles, también escogidas al azar. Esto evita que el modelo dependa siempre de las mismas variables para todos los árboles, lo que también ayuda a que generalice mejor. Este valor es idéntico al del Ejemplo 1.
 
-    \item \texttt{reg\_alpha=0.1} y \texttt{reg\_lambda=1.0}: Son los terminos de regularizacion L1 y L2 que penalizan la complejidad de cada arbol (Seccion 2.1.9). Un valor mas alto hace que el modelo sea mas conservador, prefiriendo arboles mas simples. Los dos valores se mantuvieron identicos al Ejemplo 1. Al probar otros valores de \texttt{reg\_alpha} sobre el archivo del caso de estudio, el resultado con 0.1 fue muy parecido al de no usar esta regularizacion, asi que se conservo el valor del Ejemplo 1 sin necesidad de cambiarlo.
+    \item \texttt{reg\_alpha=0.1} y \texttt{reg\_lambda=1.0}: Son los términos de regularización L1 y L2 que penalizan la complejidad de cada árbol (Sección 2.2.9). Un valor más alto hace que el modelo sea más conservador, prefiriendo árboles más simples. Los dos valores se mantuvieron idénticos al Ejemplo 1. Al probar otros valores de \texttt{reg\_alpha} sobre el archivo del caso de estudio, el resultado con 0.1 fue muy parecido al de no usar esta regularización, así que se conservó el valor del Ejemplo 1 sin necesidad de cambiarlo.
 
-    \item \texttt{random\_state=42}: No afecta el resultado del modelo en si, sino que fija la semilla aleatoria que se usa en el \texttt{subsample} y el \texttt{colsample\_bytree}, para que cada vez que se entrene el modelo con los mismos datos, se obtenga exactamente el mismo resultado. Este valor tambien es identico al del Ejemplo 1.
+    \item \texttt{random\_state=42}: No afecta el resultado del modelo en sí, sino que fija la semilla aleatoria que se usa en el \texttt{subsample} y el \texttt{colsample\_bytree}, para que cada vez que se entrene el modelo con los mismos datos, se obtenga exactamente el mismo resultado. Este valor también es idéntico al del Ejemplo 1.
 
-    \item \texttt{n\_jobs=-1}: Le indica a XGBoost que use todos los nucleos de procesamiento disponibles en la maquina, en vez de uno solo, lo que reduce el tiempo de entrenamiento cuando se procesan catalogos con muchos productos. Este parametro no viene del Ejemplo 1 (que no lo especifica); se agrego en Thary porque no afecta el resultado del modelo, solo la velocidad de entrenamiento.
+    \item \texttt{n\_jobs=-1}: Le indica a XGBoost que use todos los núcleos de procesamiento disponibles en la máquina, en vez de uno solo, lo que reduce el tiempo de entrenamiento cuando se procesan catálogos con muchos productos. Este parámetro no viene del Ejemplo 1 (que no lo específica); se agregó en Thary porque no afecta el resultado del modelo, solo la velocidad de entrenamiento.
 \end{itemize}
 
-En cuanto a la transformacion logaritmica, se implemento siguiendo la logica del \textit{Ejemplo 3 (XGBoost)} \cite{ejemplo3_ksmooi_inventorydemand}, en el que el modelo no entrena directamente sobre \texttt{y\_train}, que seria la demanda real, si no sobre \texttt{y\_train\_log}, que es la transformacion logaritmica de \texttt{y\_train}. 
-
-Esto porque en la vida real, la demanda suele tener una distribucion en la que puede haber muchos productos con demanda baja y pocos con picos muy altos. Si se entrenara directamente sobre esos valores el modelo podria enfocarse demasiado en los pocos casos extremos, esto llevaria a que se prediciera peor la mayoria de los casos normales. El logaritmo lo que hace es parejar esa diferencia: hace que los valores muy grandes dejen de pesar tanto en comparacion con los valores mas pequeños, asi el modelo le presta atención equilibrada a todos los productos y no solo a los que tienen demanda extrema. Se usa \texttt{log1p} porque la demanda puede valer 0, y el logaritmo de 0 no existe
+En cuanto a la transformación logarítmica, se implementó siguiendo la lógica del \textit{Ejemplo 3 (XGBoost)} \cite{ejemplo3_ksmooi_inventorydemand}, en el que el modelo no entrena directamente sobre \texttt{y\_train}, que sería la demanda real, sino sobre \texttt{y\_train\_log}, que es la transformación logarítmica de \texttt{y\_train}.
 
 
-\paragraph{Media Móvil}
+Esto porque en la vida real, la demanda suele tener una distribución en la que puede haber muchos productos con demanda baja y pocos con picos muy altos. Si se entrenara directamente sobre esos valores el modelo podría enfocarse demasiado en los pocos casos extremos, esto llevaría a que se prediciera peor la mayoría de los casos normales. El logaritmo lo que hace es parejar esa diferencia: hace que los valores muy grandes dejen de pesar tanto en comparación con los valores más pequeños, así el modelo le presta atención equilibrada a todos los productos y no solo a los que tienen demanda extrema. Se usa \texttt{log1p} porque la demanda puede valer 0, y el logaritmo de 0 no existe.
 
-Media movil hace referencia al metodo mas simple de los tres. La tecnica con la que se implemento tambien se basa fuertemente en el \textit{Ejemplo 1 (SKU Demand Forecasting)} \cite{ejemplo1_demandforecast}, y consiste en simplemente reutilizar la columna de \texttt{media\_movil\_3} que ya se tienen desde la etapa anterior de features. No se tiene que hacer ningun entrenemiento. 
+
+
+\paragraph{Implementación de Media Móvil}
+
+Media móvil hace referencia al método más simple de los tres. La técnica con la que se implementó también se basa fuertemente en el \textit{Ejemplo 1 (SKU Demand Forecasting)} \cite{ejemplo1_demandforecast}, y consiste en simplemente reutilizar la columna de \texttt{media\_movil\_3} que ya se tiene desde la etapa anterior de features. No se tiene que hacer ningún entrenamiento.
 
 \Needspace{4\baselineskip}
 \captionof{listing}{Función \texttt{prediccion\_baseline\_movil}, que implementa el modelo de media móvil.}\label{lst:prediccion_media_movil}
@@ -155,13 +160,13 @@ def prediccion_baseline_movil(test_df):
     return np.maximum(test_df["media_movil_3"].values, 0)
 \end{minted}
 
-La funcion recibe como parametro el \texttt{test\_df} y posteriormente, para todas las filas, devuelve el valor \texttt{media\_movil\_3} que ya se habia calculado anteriormente.
+La función recibe como parámetro el \texttt{test\_df} y posteriormente, para todas las filas, devuelve el valor \texttt{media\_movil\_3} que ya se había calculado anteriormente.
 
-El unico parametro relevante de este modelo es el tamaño de la ventana que se promedia, en este caso, 3 meses (\texttt{media\_movil\_3}). Una ventana mas pequeña haria que el modelo reaccionara mas rapido a cambios recientes en la demanda, pero tambien lo haria mas sensible a meses atipicos. Una ventana mas grande suavizaria mas el resultado, pero tardaria mas en reflejar cambios reales en el comportamiento de un producto. Se eligio 3 meses siguiendo la misma logica del Ejemplo 1 (SKU Demand Forecasting) \cite{ejemplo1_demandforecast}, que tambien usa una ventana de este tamaño.
+El único parámetro relevante de este modelo es el tamaño de la ventana que se promedia, en este caso, 3 meses (\texttt{media\_movil\_3}). Una ventana más pequeña haría que el modelo reaccionara más rápido a cambios recientes en la demanda, pero también lo haría más sensible a meses atípicos. Una ventana más grande suavizaría más el resultado, pero tardaría más en reflejar cambios reales en el comportamiento de un producto. Se eligió 3 meses siguiendo la misma lógica del Ejemplo 1 (SKU Demand Forecasting) \cite{ejemplo1_demandforecast}, que también usa una ventana de este tamaño.
 
-\paragraph{Regresion Lineal}
+\paragraph{Implementación de Regresión Lineal}
 
-Para implementar regresion lineal, se adapato la logica del \textit{Ejemplo 4 (BoomBikes)} \cite{ejemplo4_boombikes}, al ser el modelo que mas pasos requiere, se implemento de manera individual en el archivo \texttt{regresion\_lineal.py}.
+Para implementar regresión lineal, se adaptó la lógica del \textit{Ejemplo 4 (BoomBikes)} \cite{ejemplo4_boombikes}, al ser el modelo que más pasos requiere, se implementó de manera individual en el archivo \texttt{regresion\_lineal.py}.
 
 \Needspace{6\baselineskip}
 \captionof{listing}{Filtro de las columnas sin variación (función \texttt{\_seleccionar\_features\_regresion}).}\label{lst:regresion_candidatas}
@@ -172,11 +177,11 @@ Para implementar regresion lineal, se adapato la logica del \textit{Ejemplo 4 (B
             return candidatas
 \end{minted}
 
-Inicialmente, se filtran y excluyen las columnas que no varian demasiado, descartando las que tienen una desviacion estandar de 0, ya que una desviacion estandar con este valor indica que en esas columnas el valor es siempre el mismo numero.
+Inicialmente, se filtran y excluyen las columnas que no varian demasiado, descartando las que tienen una desviación estándar de 0, ya que una desviación estándar con este valor indica que en esas columnas el valor es siempre el mismo número.
 
-con \texttt{std() > 0}, esto se hace porque cuando se entrena regresion lineal, no siempre conviene usar todas las variables disponibles porque no todas tienen algo significativo que aportar. Es incluso perjudicial para el modelo, ya que una columna sin variacion no le sirve de nada al modelo (no hay nada que "aprender" de un número que nunca cambia).
+con \texttt{std() > 0}, esto se hace porque cuando se entrena regresión lineal, no siempre conviene usar todas las variables disponibles porque no todas tienen algo significativo que aportar. Es incluso perjudicial para el modelo, ya que una columna sin variación no le sirve de nada al modelo (no hay nada que "aprender" de un número que nunca cambia).
 
-Posteriormente, se convierten todos los valores de cada columna a un rango entre 0 y 1, para mantener las proporciones relativas con \texttt{MinMaxScaler}. Se ajusta \texttt{fit\_transform} usando solo los datos con los que se hace el entrenamiento, no se puede incluir a los de prueba porque eso haria que el sistema vea los datos que se supone debe predecir.  
+Posteriormente, se convierten todos los valores de cada columna a un rango entre 0 y 1, para mantener las proporciones relativas con \texttt{MinMaxScaler}. Se ajusta \texttt{fit\_transform} usando solo los datos con los que se hace el entrenamiento, no se puede incluir a los de prueba porque eso haría que el sistema vea los datos que se supone debe predecir.  
 
 \Needspace{8\baselineskip}
 \captionof{listing}{Escalado de las variables con \texttt{MinMaxScaler}.}\label{lst:regresion_escalado}
@@ -189,11 +194,11 @@ Posteriormente, se convierten todos los valores de cada columna a un rango entre
         )
 \end{minted}
 
-En esta parte se incluye Recursive Feature Elimination (RFE). Este consiste en un metodo que entrena varias veces un modelo de regresion lineal, y en cada una se elimina la variable que aporte menos al modelo hasta que al final, se quede con un numero controlado de variables, en este caso, tienen que ser 2 variables como minimo para posteriormente poder realizar el analisis, pero no pueden ser mas de 8 variables porque no se pueden dejar demasiadas \texttt{n\_rfe = max(2, min(8, len(candidatas) - 1))}.
+En esta parte se incluye Recursive Feature Elimination (RFE). Este consiste en un método que entrena varias veces un modelo de regresión lineal, y en cada una se elimina la variable que aporte menos al modelo hasta que al final, se quede con un número controlado de variables, en este caso, tienen que ser 2 variables como mínimo para posteriormente poder realizar el análisis, pero no pueden ser más de 8 variables porque no se pueden dejar demasiadas \texttt{n\_rfe = max(2, min(8, len(candidatas) - 1))}.
 
-El \texttt{n\_rfe} define cuantas variables como maximo puede conservar el proceso de RFE (entre 2 y 8, segun \texttt{n\_rfe = max(2, min(8, len(candidatas) - 1))}). El limite inferior de 2 garantiza que quede al menos una variable ademas de la mas importante, y el limite superior de 8 evita que el modelo termine con demasiadas variables, ya que aunque RFE ya descarta las menos importantes, un numero muy alto de variables restantes haria mas lento el resto del proceso de seleccion (VIF y p-valor), que se aplican despues sobre las que sobrevivan a RFE.
+El \texttt{n\_rfe} define cuantas variables como máximo puede conservar el proceso de RFE (entre 2 y 8, según \texttt{n\_rfe = max(2, min(8, len(candidatas) - 1))}). El límite inferior de 2 garantiza que quede al menos una variable además de la más importante, y el límite superior de 8 evita que el modelo termine con demasiadas variables, ya que aunque RFE ya descarta las menos importantes, un número muy alto de variables restantes haría más lento el resto del proceso de selección (VIF y p-valor), que se aplican después sobre las que sobrevivan a RFE.
 
-Finalmente, \texttt{seleccionadas} es la lista de columnas que sobrevivieron esta primera etapa, aunque es posible que aun existan variables redundantes:
+Finalmente, \texttt{seleccionadas} es la lista de columnas que sobrevivieron esta primera etapa, aunque es posible que aún existan variables redundantes:
 
 \Needspace{6\baselineskip}
 \captionof{listing}{Selección de variables mediante \textit{Recursive Feature Elimination} (RFE).}\label{lst:regresion_rfe}
@@ -204,15 +209,15 @@ Finalmente, \texttt{seleccionadas} es la lista de columnas que sobrevivieron est
     seleccionadas = [c for c, usar in zip(candidatas, rfe.support_) if usar]
 \end{minted}
 
-La segunda etapa para seleccionar varibles consiste en calcular el VIF o Factor de Inflación de Varianza para cada variable. Este se encarga de medir que tan redundante es una variable en comparacion con las demas, el criterio para decidir esto es estimar si una variable se puede predecir con exactitud a partir de las otras, de ser este el caso, su VIF sera muy alto y eso es un problema porque el modelo no podria distinguir cuál de las dos variables redundantes es la que esta causando el efecto.
+La segunda etapa para seleccionar varibles consiste en calcular el VIF o Factor de Inflación de Varianza para cada variable. Este se encarga de medir que tan redundante es una variable en comparación con las demas, el criterio para decidir esto es estimar si una variable se puede predecir con exactitud a partir de las otras, de ser este el caso, su VIF será muy alto y eso es un problema porque el modelo no podría distinguir cuál de las dos variables redundantes es la que esta causando el efecto.
 
-En la implementacion de Thary, entre las variables que se considerian redundantes se encuentran:
+En la implementación de Thary, entre las variables que se considerian redundantes se encuentran:
 
 \begin{itemize}
     \item \texttt{inventario} y \texttt{inventario\_lag\_1}: Escencialmente tienden a ser casi la misma variable, en muchos casos, es bastante probable que el inventario de un mes sea bastante parecido al del mes anterior.
-    \item Los lags (\texttt{lag\_1}, \texttt{lag\_2}, \texttt{lag\_3}, \texttt{lag\_6}): Tambien es comun que la demanda de un producto tienda a ser similar a la de meses anteriores, si un producto vendio bien un mes, es muy probable que tambien venda mes el siguiente mes, lo que a la larga hace que los lags sean variables muy parecidas entre si.
-    \item (\texttt{media\_movil\_3} y \texttt{media\_movil\_6}) con los lags: Que todos los Lags sean similares llevaria a que, inevitablemente, la media movil de 3 meses y la de 6 meses tambien lo sean debido a que se calculan a partir de promediar los lags.
-    \item (\texttt{media\_producto}) y las medias móviles: (\texttt{media\_producto}) consiste en el promedio historico general del producto, si los productos cuentan con un comportamiento estable, es probable que sea similar a (\texttt{media\_movil\_3} y \texttt{media\_movil\_6}), por lo que tambien se considera una variable redundante.
+    \item Los lags (\texttt{lag\_1}, \texttt{lag\_2}, \texttt{lag\_3}, \texttt{lag\_6}): También es comun que la demanda de un producto tienda a ser similar a la de meses anteriores, si un producto vendió bien un mes, es muy probable que también venda mes el siguiente mes, lo que a la larga hace que los lags sean variables muy parecidas entre si.
+    \item (\texttt{media\_movil\_3} y \texttt{media\_movil\_6}) con los lags: Que todos los Lags sean similares llevaría a que, inevitablemente, la media móvil de 3 meses y la de 6 meses también lo sean debido a que se calculan a partir de promediar los lags.
+    \item (\texttt{media\_producto}) y las medias móviles: (\texttt{media\_producto}) consiste en el promedio histórico general del producto, si los productos cuentan con un comportamiento estable, es probable que sea similar a (\texttt{media\_movil\_3} y \texttt{media\_movil\_6}), por lo que también se considera una variable redundante.
 \end{itemize}
 
 Teniendo esto en cuenta, las variables que no se considerarian redundantes son: \texttt{año}, \texttt{mes\_cos}, \texttt{mes\_sin}, \texttt{desviacion\_movil\_3} y \texttt{desviacion\_producto}.
@@ -231,9 +236,9 @@ Teniendo esto en cuenta, las variables que no se considerarian redundantes son: 
             })
 \end{minted}
 
-Posteriormente, se quitan las variables con un VIF infinito que nisiquiera se puede calcular, ya que de ser este el caso, significaria que la variable es tan redundante con otra que rompe las matemáticas del modelo. Esto ocurriria porque a la hora de calcular los coeficientes de la regresion lineal, el algoritmo necesita calcular cuanto aporta cada variable a la predicción, y para eso, necesita poder distinguir el efecto individual de cada una. El problema es que si dos variables son casi idénticas entre sí , es imposible distinguirlas.
+Posteriormente, se quitan las variables con un VIF infinito que nisiquiera se puede calcular, ya que de ser este el caso, significaria que la variable es tan redundante con otra que rompe las matemáticas del modelo. Esto ocurriria porque a la hora de calcular los coeficientes de la regresión lineal, el algoritmo necesita calcular cuanto aporta cada variable a la predicción, y para eso, necesita poder distinguir el efecto individual de cada una. El problema es que si dos variables son casi idénticas entre sí , es imposible distinguirlas.
 
-Es por eso, que en esta etapa esas variables son eliminadas.En las siguientes lineas de codigo, se revisa cual variable tiene el VIF mas alto si ya no hay variables con VIF infinito, si el valor del vif mas alto supera el limite que se definio en \texttt{max\_vif}, esa variable se elimina y finalmente se vuelve a repetir el proceso desde el principio hasta que se halla calculado el VIF de las variables restantes y todas estas cuenten con un VIF menor al limite establecido.
+Es por eso, que en esta etapa esas variables son eliminadas.En las siguientes líneas de código, se revisa cual variable tiene el VIF más alto si ya no hay variables con VIF infinito, si el valor del vif más alto supera el límite que se definió en \texttt{max\_vif}, esa variable se elimina y finalmente se vuelve a repetir el proceso desde el principio hasta que se halla calculado el VIF de las variables restantes y todas estas cuenten con un VIF menor al límite establecido.
 
 \Needspace{10\baselineskip}
 \captionof{listing}{Eliminación de variables con VIF infinito o superior al límite.}\label{lst:regresion_eliminacion_vif}
@@ -249,13 +254,13 @@ Es por eso, que en esta etapa esas variables son eliminadas.En las siguientes li
         continue
 \end{minted}
 
-Una vez completado el proceso de eliminacion de las variables redundantes, se prosigue con la implementacion del entrenamiento del modelo de regresion lineal, en el que se revisa el "p-valor" de cada variable. 
+Una vez completado el proceso de eliminación de las variables redundantes, se prosigue con la implementación del entrenamiento del modelo de regresión lineal, en el que se revisa el "p-valor" de cada variable. 
 
-El P-valor consiste en una medida estadistica que indica que tan probable es que la variable que se esta revisando este relacionada con la demanda solo por casualidad y no porque de verdad dicha variable este relacionada de verdad con la demanda. En este caso, si se encuentra que la variable que cuenta con el peor p-valor supera el limite de \texttt{max\_p\_valor}, que es estandarizado como 0.05 al representar el 95\% de confianza en estadistica, se elimina la variable y se repite el proceso. 
+El P-valor consiste en una medida estadística que indica que tan probable es que la variable que se esta revisando este relacionada con la demanda solo por casualidad y no porque de verdad dicha variable este relacionada de verdad con la demanda. En este caso, si se encuentra que la variable que cuenta con el peor p-valor supera el límite de \texttt{max\_p\_valor}, que es estandarizado como 0.05 al representar el 95\% de confianza en estadística, se elimina la variable y se repite el proceso. 
 
-El bucle se detiene cuando ya no haya ninguna variable con el VIF alto o con el P-valor alto, al cumplir con ambos criterios, solo se contara con variables limpias y estadisticamente significativas para el proceso. 
+El bucle se detiene cuando ya no haya ninguna variable con el VIF alto o con el P-valor alto, al cumplir con ambos criterios, solo se contara con variables limpias y estadísticamente significativas para el proceso. 
 
-De haber algun fallo durante esta etapa, simplemente se devuelve la lista completa de variables con el fin de garantizar de que el pipeline no se rompa y el sistema pueda continuar funcionando.
+De haber algún fallo durante esta etapa, simplemente se devuelve la lista completa de variables con el fin de garantizar de que el pipeline no se rompa y el sistema pueda continuar funcionando.
 
 \Needspace{10\baselineskip}
 \captionof{listing}{Eliminación de variables según el p-valor del modelo OLS.}\label{lst:regresion_pvalor}
@@ -275,9 +280,9 @@ except Exception:
     return candidatas
 \end{minted}
 
-Por otro lado, en ese mismo archivo, se implemento la funcion \texttt{entrenar\_regresion\_lineal}, que se encarga de entrenar el modelo de regresion lineal y devolver las predicciones, tambien es a la que se llama desde el resto del sistema.
+Por otro lado, en ese mismo archivo, se implementó la función \texttt{entrenar\_regresion\_lineal}, que se encarga de entrenar el modelo de regresión lineal y devolver las predicciones, también es a la que se llama desde el resto del sistema.
 
-La funcion llama a \texttt{\_seleccionar\_features\_regresion} para obtener la lista de variables que se van a usar en el entrenamiento del modelo, (si por algun motivo, dicha funcion le devuelve una lista que se encuentre vacia, se usan todas las variables originales.)
+La función llama a \texttt{\_seleccionar\_features\_regresion} para obtener la lista de variables que se van a usar en el entrenamiento del modelo, (si por algún motivo, dicha función le devuelve una lista que se encuentre vacia, se usan todas las variables originales.)
 
 El modelo es entrenado con las variables limpias asegurandose que las predicciones no sean negativas al no ser algo que tenga sentido en este contexto. 
 

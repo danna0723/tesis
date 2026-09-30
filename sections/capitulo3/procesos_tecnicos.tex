@@ -1,13 +1,13 @@
-Los procesos tecnicos que guiaron el diseño y desarrollo del sistema Thary se estructuraron siguiendo la ISO/IEC/IEEE 12207, una norma que establece un conjunto de procesos estandar para el ciclo de vida del software. Dichos procesos fueron aplicados al desarrollo del sistema de la siguiente manera:
+Los procesos técnicos que guiaron el diseño y desarrollo del sistema Thary se estructuraron siguiendo la ISO/IEC/IEEE 12207, una norma que establece un conjunto de procesos estándar para el ciclo de vida del software. Dichos procesos fueron aplicados al desarrollo del sistema de la siguiente manera:
 
 \subsubsection{Identificación de Stakeholders}
 \label{sec:stakeholders}
-A partir del planteamiento del sistema y tras un analisis de sus caracteristicas y funcionalidades, se identificaron los siguientes stakeholders que estarian involucrados en el sistema, ya sea directa o indirectamente:
+A partir del planteamiento del sistema y tras un análisis de sus características y funcionalidades, se identificaron los siguientes stakeholders que estarían involucrados en el sistema, ya sea directa o indirectamente:
 
 \begin{itemize}
-    \item Personal encargado de la gestion del inventario y el abastecimiento: Es el usuario final que interactua con el sistema, es responsable de interpretar los resultados que Thary genera y tomar decisiones de reposicion en base a ellas.
+    \item Personal encargado de la gestión del inventario y el abastecimiento: Es el usuario final que interactua con el sistema, es responsable de interpretar los resultados que Thary genera y tomar decisiones de reposición en base a ellas.
     \item Equipo de desarrollo: Desarrolladores y diseñadores responsables de la implementación del sistema Thary, asegurando que cumpla con los requisitos y estándares establecidos.
-    \item Administradores del sistema: Es el perfil con permisos y privilegios, es responsable de cargar los datos historicos de consumo, es decir, el archivo de entrada, ejecutar el proceso de prediccion, ademas, puede crear nuevos usuarios para los empleados con menor rango.
+    \item Administradores del sistema: Es el perfil con permisos y privilegios, es responsable de cargar los datos históricos de consumo, es decir, el archivo de entrada, ejecutar el proceso de predicción, además, puede crear nuevos usuarios para los empleados con menor rango.
     \item Institucion usuaria del sistema: Es la entidad interesada en utilizar Thary para poder reducir el riesgo de desabastecimiento de productos. El sistema se planeo para poder adaptarse en distintos dominios, por lo que cualquier tipo de empresa puede usarlo.
     \item Proveedores de productos: Aunque los proveedores no interactuan con Thary, indirectamente son una variable importante para el sistema, ya que factores externos como el tiempo de entrega o lead time, marcan una gran diferencia en los resultados del sistema.
 \end{itemize} 
@@ -46,20 +46,20 @@ Equipo de desarrollo
 \end{table}
 
 \subsubsection{Elicitación de Requisitos}
-La elicitacion de requisitos consiste en poder identificar las necesidades del sistema a partir de los usuarios, en el caso de Thary, el proceso se llevo a cabo mediante dos fuentes principales de informacion, en primera instancia, la revision de literatura permitio analizar que variables suelen ser relevantes para este tipo de proyectos, y que salidas le aportan mayor valor al usuario. En segundo lugar, se realizo un analisis a un caso de estudio real, los datos usados durante el desarrollo del sistema eran datos autenticos de la Clinica Nuestra señora de los Remedios de la ciudad de Cali, lo cual permitio observar como se comportaria el sistema en un escenario real como la existencia de variaciones en la demanda o datos historicos no tan limpios como historiales incompletos o datos con errores, y que ajustes serian necesarios para mejorar su rendimiento.
+La elicitación de requisitos consiste en poder identificar las necesidades del sistema a partir de los usuarios, en el caso de Thary, el proceso se llevó a cabo mediante dos fuentes principales de información, en primera instancia, la revisión de literatura permitió analizar que variables suelen ser relevantes para este tipo de proyectos, y que salidas le aportan mayor valor al usuario. En segundo lugar, se realizo un análisis a un caso de estudio real, los datos usados durante el desarrollo del sistema eran datos auténticos de la Clínica Nuestra señora de los Remedios de la ciudad de Cali, lo cual permitió observar como se comportaría el sistema en un escenario real como la existencia de variaciones en la demanda o datos históricos no tan limpios como historiales incompletos o datos con errores, y que ajustes serían necesarios para mejorar su rendimiento.
 
 Es en base a todo esto, que se definieron los siguientes requisitos funcionales:
 
 \begin{itemize}
-    \item RF-01: El sistema debe permitir que un usuario registrado como admin pueda realizar la carga de un archivo CSV con datos como el historial de consumo mensual de los productos, validando que contenga los datos minimos requeridos: fecha, id del producto y cantidad demandada.
-    \item RF-02: El sistema debe generar una estimacion de la demanda mensual, esperada para cada producto a partir de la informacion compartida en el historial cargado
-    \item RF-03: El sistema debe de calcular para cada producto datos como el punto de reposicion y la cantidad recomendada de compra, considerando factores externos como el tiempo de entrega del proveedor o lead time, presupuestos y el inventario actual disponible
-    \item RF-04: El sistema debe de contar con alertas visuales claras para los productos cuyo inventario actual se encuentre en o por debajo de su punto de reposicion.
+    \item RF-01: El sistema debe permitir que un usuario registrado como admin pueda realizar la carga de un archivo CSV con datos como el historial de consumo mensual de los productos, validando que contenga los datos mínimos requeridos: fecha, id del producto y cantidad demandada.
+    \item RF-02: El sistema debe generar una estimación de la demanda mensual, esperada para cada producto a partir de la información compartida en el historial cargado
+    \item RF-03: El sistema debe de calcular para cada producto datos como el punto de reposición y la cantidad recomendada de compra, considerando factores externos como el tiempo de entrega del proveedor o lead time, presupuestos y el inventario actual disponible
+    \item RF-04: El sistema debe de contar con alertas visuales claras para los productos cuyo inventario actual se encuentre en o por debajo de su punto de reposición.
     \item RF-05: El sistema debe presentar los resultados, demanda pronosticada, estado del inventario, etc, de una manera clara y sencilla de entender en una interfaz intuitiva para el usuario
-    \item RF-06: El sistema debe permitirle al personal del inventario registrar un pedido, guardando informacion importante de este como proveedor elegido, fecha del pedido y el usuario responsable de la realizacion del pedido.
-    \item RF-07: El sistema debe restringir el acceso a la carga de los archivos y la ejecucion del proceso unicamente al perfil administrador.
+    \item RF-06: El sistema debe permitirle al personal del inventario registrar un pedido, guardando información importante de este como proveedor elegido, fecha del pedido y el usuario responsable de la realización del pedido.
+    \item RF-07: El sistema debe restringir el acceso a la carga de los archivos y la ejecución del proceso únicamente al perfil administrador.
     \item RF-08: El sistema debe permitirle al perfil de administrador el poder crear nuevos usuarios con menos privilegios para sus empleados.
-    \item RF-09: El sistema debe permitir el registro e inicio de sesion de los usuarios.
+    \item RF-09: El sistema debe permitir el registro e inicio de sesión de los usuarios.
     \item RF-10: El sistema debe permitir deshacer un pedido previamente confirmado.
     \item RF-11: El sistema debe registrar y permitirle al administrador consultar una bitácora de las acciones relevantes realizadas por los usuarios.
     \item RF-12: El sistema debe permitirle a los usuarios ver un calendario con las fechas en las que tienen que realizarse los pedidos de cada producto
@@ -69,9 +69,9 @@ Es en base a todo esto, que se definieron los siguientes requisitos funcionales:
 En cuanto a los requisitos no funcionales de Thary, se identificaron los siguientes:
 
 \begin{itemize}
-    \item RNF-01: Si el sistema es utilizado por mas de una organizacion, los datos de una no deben de ser accesibles para otra
-    \item RNF-02: El sistema debe de poder procesar archivos de distintos dominios de inventario (salud, alimentos, ferreteria, etc) siempre y cuando contengan los datos minimos requeridos.
-    \item RNF-03: El sistema debe poder generar una estimacion incluso si el historial de producto presenta datos faltantes.
+    \item RNF-01: Si el sistema es utilizado por más de una organización, los datos de una no deben de ser accesibles para otra
+    \item RNF-02: El sistema debe de poder procesar archivos de distintos dominios de inventario (salud, alimentos, ferreteria, etc) siempre y cuando contengan los datos mínimos requeridos.
+    \item RNF-03: El sistema debe poder generar una estimación incluso si el historial de producto presenta datos faltantes.
 \end{itemize}
 
 \subsubsection{Especificación de Requisitos de Software (SRS)}

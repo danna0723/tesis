@@ -1,20 +1,15 @@
 [0] Config.pm:328> INFO - This is Biber 2.21
 [1] Config.pm:331> INFO - Logfile is 'main.blg'
-[1757] biber-MSWIN64:342> INFO - === 
-[2043] Biber.pm:421> INFO - Reading 'main.bcf'
-[3094] Biber.pm:1002> INFO - Found 40 citekeys in bib section 0
-[3188] Biber.pm:4487> INFO - Processing section 0
-[3249] Biber.pm:4678> INFO - Looking for bibtex file 'bibs/sample.bib' for section 0
-[3406] bibtex.pm:1713> INFO - LaTeX decoding ...
-[3528] bibtex.pm:1519> INFO - Found BibTeX data source 'bibs/sample.bib'
-[4228] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[4228] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[4228] Biber.pm:4307> INFO - Sorting list 'none/global//global/global/global' of type 'entry' with template 'none' and locale 'en-US'
-[4228] Biber.pm:4313> INFO - No sort tailoring available for locale 'en-US'
-[4313] bbl.pm:676> INFO - Writing 'main.bbl' with encoding 'UTF-8'
-[4366] bbl.pm:779> INFO - Output to main.bbl
-[4367] Biber.pm:132> WARN - legacy year field '2024-11-05' in entry '10596_69801' is not an integer - this will probably not sort properly.
-[4367] Biber.pm:132> WARN - BibTeX subsystem: C:\Users\Home\AppData\Local\Temp\biber_tmp_Q8Q0\4f254e11deca8776044b2c0962cb1230_20580.utf8, line 51, warning: 6 characters of junk seen at toplevel
-[4367] Biber.pm:132> WARN - BibTeX subsystem: C:\Users\Home\AppData\Local\Temp\biber_tmp_Q8Q0\4f254e11deca8776044b2c0962cb1230_20580.utf8, line 173, warning: 12 characters of junk seen at toplevel
-[4367] Biber.pm:132> WARN - I didn't find a database entry for 'Mahendrawathi2011215' (section 0)
-[4368] Biber.pm:134> INFO - WARNINGS: 4
+[240] biber-MSWIN64:342> INFO - === 
+[326] Biber.pm:421> INFO - Reading 'main.bcf'
+[664] Biber.pm:1002> INFO - Found 40 citekeys in bib section 0
+[706] Biber.pm:4487> INFO - Processing section 0
+[731] Biber.pm:4678> INFO - Looking for bibtex file 'bibs/sample.bib' for section 0
+[865] bibtex.pm:1713> INFO - LaTeX decoding ...
+[970] bibtex.pm:1519> INFO - Found BibTeX data source 'bibs/sample.bib'
+[1446] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[1446] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[1446] Biber.pm:4307> INFO - Sorting list 'none/global//global/global/global' of type 'entry' with template 'none' and locale 'en-US'
+[1446] Biber.pm:4313> INFO - No sort tailoring available for locale 'en-US'
+[1521] bbl.pm:676> INFO - Writing 'main.bbl' with encoding 'UTF-8'
+[1566] bbl.pm:779> INFO - Output to main.bbl

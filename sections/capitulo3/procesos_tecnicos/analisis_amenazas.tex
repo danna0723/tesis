@@ -1,7 +1,7 @@
-Debido a su naturaleza, Thary es un sistema que maneja informacion que podria considerarse potencialmente sensible, como los datos de los usuarios, de consumo, entre otros. Teniendo esto en cuenta, se realizo un analisis en el que se identificaron las amenazas siguiendo el modelado de amenzasas STRIDE:
+Debido a su naturaleza, Thary es un sistema que maneja información que podría considerarse potencialmente sensible, como los datos de los usuarios, de consumo, entre otros. Teniendo esto en cuenta, se realizo un análisis en el que se identificaron las amenazas siguiendo el modelado de amenzasas STRIDE:
 
 \begin{itemize}
-    \item \textbf{Suplantación de identidad}: Mitigada mediante autenticación basada en usuario y contraseña, almacenando esta última mediante un algoritmo de hash (\textit{scrypt}, el metodo por defecto de \texttt{werkzeug.security}) y nunca en texto plano.
+    \item \textbf{Suplantación de identidad}: Mitigada mediante autenticación basada en usuario y contraseña, almacenando esta última mediante un algoritmo de hash (\textit{scrypt}, el método por defecto de \texttt{werkzeug.security}) y nunca en texto plano. Adicionalmente, la clave que usa Flask para firmar las cookies de sesión (\texttt{SECRET\_KEY}) se lee desde una variable de entorno, en vez de estar escrita directamente en el código fuente, ya que si alguien tuviera acceso al código y esta clave estuviera ahí escrita, podria fabricar una sesión valida sin necesidad de conocer ninguna contraseña. Es por esto que, sin esta variable configurada, la aplicación no arranca.
     
     \Needspace{5\baselineskip}
     \captionof{listing}{Función \texttt{crear\_usuario}, que almacena la contraseña como hash.}\label{lst:crear_usuario}
@@ -43,7 +43,7 @@ Debido a su naturaleza, Thary es un sistema que maneja informacion que podria co
         )
     \end{minted}
 
-    \item \textbf{Repudio}: El sistema Thary cuenta con una tabla en la base de datos llamada "Actividad", en la cual se lleva un registro de todas las acciones relevantes que los usuarios realizan en el sistema, guardando informacion como el nombre del usuario, fecha y hora del evento, y la accion que fue realizada.
+    \item \textbf{Repudio}: El sistema Thary cuenta con una tabla en la base de datos llamada "Actividad", en la cual se lleva un registro de todas las acciones relevantes que los usuarios realizan en el sistema, guardando información como el nombre del usuario, fecha y hora del evento, y la acción que fue realizada.
     
     \Needspace{9\baselineskip}
     \captionof{listing}{Registro de la actividad del usuario al confirmar un pedido (función \texttt{pedido\_confirmar}).}\label{lst:pedido_confirmar_actividad}
@@ -57,7 +57,7 @@ Debido a su naturaleza, Thary es un sistema que maneja informacion que podria co
             )
     \end{minted}
 
-    \item \textbf{Divulgación de información}: Se evita que exista divulgacion de informacion mediante el aislamiento de los datos por empresa, de forma que ninguna organización pueda acceder a los datos de otra.
+    \item \textbf{Divulgación de información}: Se evita que exista divulgacion de información mediante el aislamiento de los datos por empresa, de forma que ninguna organización pueda acceder a los datos de otra.
     
     \Needspace{10\baselineskip}
     \captionof{listing}{Función \texttt{carpeta\_uploads}, que aísla los archivos cargados por cada empresa.}\label{lst:carpeta_uploads}
@@ -74,8 +74,8 @@ def carpeta_resultados(empresa_id):
     return ruta
     \end{minted}
 
-    \item \textbf{Denegacion de servicio}: Thary implementa varios controles para mitigar este riesgo. Se establecio un limite de tamaño para los archivos cargados (10 MB, mediante la configuracion \texttt{MAX\_CONTENT\_LENGTH} de Flask). Adicionalmente, el servidor WSGI de produccion (Gunicorn) se configuro con multiples procesos de trabajo (\textit{workers}) y un tiempo maximo de espera ampliado a 120 segundos, de forma que una solicitud de procesamiento pesada (por ejemplo, el entrenamiento de los modelos sobre un catalogo grande) ocupe unicamente uno de los procesos disponibles, sin bloquear el acceso al sistema para el resto de los usuarios. Finalmente, se incorporo un limite de tasa (\textit{rate limiting}) mediante la libreria \texttt{Flask-Limiter} sobre las rutas de inicio de sesion y registro, restringiendo a 10 solicitudes por minuto por direccion IP, mitigando intentos de fuerza bruta y saturacion por solicitudes repetidas. Cabe señalar que, al usar Gunicorn con multiples \textit{workers} y un almacenamiento de limite de tasa en memoria del propio proceso, este limite se aplica de forma independiente por cada worker y no de forma global para todo el servicio.
+    \item \textbf{Denegación de servicio}: Thary implementa varios controles para mitigar este riesgo. Se estableció un límite de tamaño para los archivos cargados (10 MB, mediante la configuración \texttt{MAX\_CONTENT\_LENGTH} de Flask). Adicionalmente, el servidor WSGI de producción (Gunicorn) se configuró con múltiples procesos de trabajo (\textit{workers}) y un tiempo máximo de espera ampliado a 120 segundos, de forma que una solicitud de procesamiento pesada (por ejemplo, el entrenamiento de los modelos sobre un catálogo grande) ocupe únicamente uno de los procesos disponibles, sin bloquear el acceso al sistema para el resto de los usuarios. Finalmente, se incorporó un límite de tasa (\textit{rate limiting}) mediante la librería \texttt{Flask-Limiter} sobre las rutas de inicio de sesión y registro, restringiendo a 10 solicitudes por minuto por dirección IP, mitigando intentos de fuerza bruta y saturación por solicitudes repetidas. Cabe señalar que, al usar Gunicorn con múltiples \textit{workers} y un almacenamiento de límite de tasa en memoria del propio proceso, este límite se aplica de forma independiente por cada worker y no de forma global para todo el servicio.
 
-    \item \textbf{Elevación de privilegios}: Para evitar este riesgo, se implemento un control de acceso basado en roles mediante el decorador \texttt{admin\_required} (definido en \texttt{app/services/auth.py}), aplicado sobre las rutas de carga y procesamiento de archivos, el panel tecnico de validacion, la gestion de usuarios y la consulta de la actividad de toda la empresa, restringiendo estas funciones exclusivamente al perfil administrador.
+    \item \textbf{Elevación de privilegios}: Para evitar este riesgo, se implementó un control de acceso basado en roles mediante el decorador \texttt{admin\_required} (definido en \texttt{app/services/auth.py}), aplicado sobre las rutas de carga y procesamiento de archivos, el panel técnico de validación, la gestión de usuarios y la consulta de la actividad de toda la empresa, restringiendo estas funciones exclusivamente al perfil administrador.
     
 \end{itemize}

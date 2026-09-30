@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.12) (preloaded format=xelatex 2026.9.9)  28 SEP 2026 14:08
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.12) (preloaded format=xelatex 2026.9.9)  28 SEP 2026 19:58
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1425,11 +1425,7 @@ Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
 Package csquotes Info: Redefining alias 'default' -> 'english'.
- (main.aux
-
-LaTeX Warning: Label `fig:ux_dashboard' multiply defined.
-
-)
+ (main.aux)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 83.
@@ -1510,15 +1506,7 @@ Package biblatex Info: Automatic encoding selection.
 
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'main.bbl' found.
- (main.bbl
-
-Package biblatex Warning: The following entry could not be found
-(biblatex)                in the database:
-(biblatex)                Mahendrawathi2011215
-(biblatex)                Please verify the spelling and rerun
-(biblatex)                LaTeX afterwards.
-
-)
+ (main.bbl)
 Package biblatex Info: Reference section=0 on input line 83.
 Package biblatex Info: Reference segment=0 on input line 83.
 Package hyperref Info: Link coloring OFF on input line 83.
@@ -1567,102 +1555,14 @@ LaTeX Font Info:    Font shape `TU/TeXGyreTermesX(0)/b/n' will be
 
 
 ]
-Overfull \hbox (6.0pt too wide) detected at line 51
-\TU/TeXGyreTermesX(0)/m/n/12 2.2.10 
- []
-
-
-Overfull \hbox (6.0pt too wide) detected at line 52
-\TU/TeXGyreTermesX(0)/m/n/12 2.2.11 
- []
-
 LaTeX Font Info:    Font shape `TU/TeXGyreTermesX(0)/m/n' will be
 (Font)              scaled to size 8.0pt on input line 56.
-
-Overfull \hbox (6.0pt too wide) detected at line 59
-\TU/TeXGyreTermesX(0)/m/n/12 2.2.12 
- []
-
-[5]
-Overfull \hbox (6.0pt too wide) detected at line 87
-\TU/TeXGyreTermesX(0)/m/n/12 3.2.10 
- []
-
-
-Overfull \hbox (6.0pt too wide) detected at line 88
-\TU/TeXGyreTermesX(0)/m/n/12 3.2.11 
- []
-
-
-Overfull \hbox (6.0pt too wide) detected at line 89
-\TU/TeXGyreTermesX(0)/m/n/12 3.2.12 
- []
-
-
-Overfull \hbox (6.0pt too wide) detected at line 95
-\TU/TeXGyreTermesX(0)/m/n/12 3.2.13 
- []
-
-
-Overfull \hbox (6.0pt too wide) detected at line 96
-\TU/TeXGyreTermesX(0)/m/n/12 3.2.14 
- []
-
-
-Overfull \hbox (6.0pt too wide) detected at line 97
-\TU/TeXGyreTermesX(0)/m/n/12 3.2.15 
- []
-
-
-Overfull \hbox (6.0pt too wide) detected at line 99
-\TU/TeXGyreTermesX(0)/m/n/12 3.2.16 
- []
-
-
-Overfull \hbox (6.0pt too wide) detected at line 105
-\TU/TeXGyreTermesX(0)/m/n/12 3.2.17 
- []
-
-
-Overfull \hbox (6.0pt too wide) detected at line 106
-\TU/TeXGyreTermesX(0)/m/n/12 3.2.18 
- []
-
-[6]
-Overfull \hbox (6.0pt too wide) detected at line 107
-\TU/TeXGyreTermesX(0)/m/n/12 3.2.19 
- []
-
-[7]
-Overfull \hbox (6.728pt too wide) detected at line 147
-\TU/TeXGyreTermesX(0)/b/n/12 Anexo A 
- []
-
-
-Overfull \hbox (6.068pt too wide) detected at line 148
-\TU/TeXGyreTermesX(0)/b/n/12 Anexo B 
- []
-
-
-Overfull \hbox (6.728pt too wide) detected at line 149
-\TU/TeXGyreTermesX(0)/b/n/12 Anexo C 
- []
-
-
-Overfull \hbox (6.728pt too wide) detected at line 150
-\TU/TeXGyreTermesX(0)/b/n/12 Anexo D 
- []
-
-
-Overfull \hbox (6.068pt too wide) detected at line 151
-\TU/TeXGyreTermesX(0)/b/n/12 Anexo E 
- []
-
-)
+ [5] [6] [7])
 \tf@toc=\write6
 \openout6 = `main.toc'.
 
- [8] (main.lot
+
+[8] (main.lot
 Overfull \hbox (1.71596pt too wide) detected at line 21
 \TU/TeXGyreTermesX(0)/m/n/12 XVIII 
  []
@@ -1733,8 +1633,8 @@ File: templatefigures/propuesta.png Graphic file (type bmp)
 <templatefigures/propuesta.png>
 
 Overfull \hbox (0.2128pt too wide) in paragraph at lines 9--14
-[]\TU/TeXGyreTermesX(0)/m/n/12 Esta informacion sera presentada en una interaz 
-que permitira visualizar los resultados de manera
+[]\TU/TeXGyreTermesX(0)/m/n/12 Esta información será presentada en una interaz 
+que permitirá visualizar los resultados de manera
  []
 
 ) (sections/capitulo1/pregunta_investigacion.tex [20])
@@ -1749,29 +1649,24 @@ que permitira visualizar los resultados de manera
 ]
 LaTeX Font Info:    Font shape `TU/TeXGyreTermesX(0)/b/it' will be
 (Font)              scaled to size 12.0pt on input line 20.
- [26]
-
-LaTeX Warning: Citation 'Mahendrawathi2011215' on page 27 undefined on input li
-ne 43.
-
-[27] [28] [29] [30] [31] [32] [33]
+ [26] [27] [28] [29] [30] [31] [32] [33]
 LaTeX Font Info:    Font shape `TU/TeXGyreTermesX(0)/m/n' will be
 (Font)              scaled to size 6.0pt on input line 242.
  [34] [35] [36] [37]
 LaTeX Font Info:    Font shape `TU/TeXGyreTermesX(0)/b/it' will be
-(Font)              scaled to size 8.0pt on input line 329.
+(Font)              scaled to size 8.0pt on input line 333.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 329.
+(hyperref)                removing `\mathsurround' on input line 333.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 329.
+(hyperref)                removing `\z@' on input line 333.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 329.
+(hyperref)                removing `superscript' on input line 333.
 
 [38] [39] [40] [41]) [42] (sections/capitulo2/antecedentes.tex
 LaTeX Font Info:    Font shape `TU/TeXGyreTermesX(0)/m/it' will be
@@ -1787,34 +1682,34 @@ Package hyperref Warning: Difference (2) between bookmark levels is greater
 [47])) (sections/capitulo3_diseno_desarrollo.tex [48]
 (sections/capitulo3/enfoque_metodologico.tex [49
 
-] [50])
-(sections/capitulo3/procesos_tecnicos.tex [51] [52] [53]
+] [50] [51])
+(sections/capitulo3/procesos_tecnicos.tex [52] [53] [54]
 (sections/capitulo3/procesos_tecnicos/especificacion_requisitos.tex
 File: templatefigures/caso_de_uso_admin.png Graphic file (type bmp)
 <templatefigures/caso_de_uso_admin.png>
- [54]
+ [55]
 File: templatefigures/caso_de_uso_personal.png Graphic file (type bmp)
 <templatefigures/caso_de_uso_personal.png>
 
-[55] [56] [57]
+[56] [57] [58]
 Overfull \hbox (0.10083pt too wide) in paragraph at lines 78--79
 \TU/TeXGyreTermesX(0)/m/n/12 corresponde al RF-11, y le permite al administrado
 r consultar la bitacora completa de acciones
  []
 
-) [58] (sections/capitulo3/procesos_tecnicos/diseño_arquitectura.tex [59]
-[60]
+) [59] (sections/capitulo3/procesos_tecnicos/diseño_arquitectura.tex [60]
+[61]
 File: templatefigures/Nivel1_Contexto.png Graphic file (type bmp)
 <templatefigures/Nivel1_Contexto.png>
- [61]
+ [62]
 File: templatefigures/Nivel2_Contenedores.png Graphic file (type bmp)
 <templatefigures/Nivel2_Contenedores.png>
- [62]
+ [63]
 File: templatefigures/Nivel3_Componentes.png Graphic file (type bmp)
 <templatefigures/Nivel3_Componentes.png>
- [63]) (sections/capitulo3/procesos_tecnicos/diseño_detallado.tex (sections/cap
+ [64]) (sections/capitulo3/procesos_tecnicos/diseño_detallado.tex (sections/cap
 itulo3/procesos_tecnicos/diseño_detallado/etapa1_carga.tex
-[64]
+[65]
 
 Package caption Warning: \setcaptiontype
 (caption)                outside box or environment on input line 5.
@@ -1830,11 +1725,11 @@ t line 5.
 \pydata@fh@0=\write10
 \openout10 = `_FAD58DE7366495DB4650CFEFAC2FCD61.data.minted'.
 
-runsystem(latexminted config  --timestamp 20260928140811 FAD58DE7366495DB4650CF
+runsystem(latexminted config  --timestamp 20260928195814 FAD58DE7366495DB4650CF
 EFAC2FCD61)...executed.
 
 (_FAD58DE7366495DB4650CFEFAC2FCD61.config.minted)
-runsystem(latexminted cleanconfig  --timestamp 20260928140811 FAD58DE7366495DB4
+runsystem(latexminted cleanconfig  --timestamp 20260928195814 FAD58DE7366495DB4
 650CFEFAC2FCD61)...executed.
 
  (_minted/default.style.minted) (_minted/CCBFAB299662DEDBD1388F16472B2439.highl
@@ -1843,17 +1738,17 @@ LaTeX Font Info:    Font shape `TU/texgyrecursor(0)/m/it' will be
 (Font)              scaled to size 12.94958pt on input line 12.
 LaTeX Font Info:    Font shape `TU/texgyrecursor(0)/b/n' will be
 (Font)              scaled to size 12.35687pt on input line 18.
- [65]))
+ [66]))
 (sections/capitulo3/procesos_tecnicos/diseño_detallado/etapa2_segmentacion.tex
-[66]
+[67]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 15.
 See the caption package documentation for explanation.
 
-(_minted/23C6151BA532DA3F36AF65A2DB2E7922.highlight.minted [67]))
+(_minted/23C6151BA532DA3F36AF65A2DB2E7922.highlight.minted [68]))
 (sections/capitulo3/procesos_tecnicos/diseño_detallado/etapa3_construccion_vari
-ables.tex [68]
+ables.tex [69]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 13.
@@ -1865,7 +1760,7 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 27.
 See the caption package documentation for explanation.
 
-(_minted/76E280305BFEE4D651FD4B3B44A6EBB9.highlight.minted) [69] [70]
+(_minted/76E280305BFEE4D651FD4B3B44A6EBB9.highlight.minted) [70] [71]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 52.
@@ -1877,7 +1772,7 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 62.
 See the caption package documentation for explanation.
 
-(_minted/41B6246987A2E10D3C6D975B0974F558.highlight.minted) [71]
+(_minted/41B6246987A2E10D3C6D975B0974F558.highlight.minted) [72]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 85.
@@ -1889,7 +1784,7 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 108.
 See the caption package documentation for explanation.
 
-(_minted/E1D93BC85152D01C5C6780F7BEFF0ED7.highlight.minted) [72]
+(_minted/E1D93BC85152D01C5C6780F7BEFF0ED7.highlight.minted) [73]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 126.
@@ -1901,13 +1796,13 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 137.
 See the caption package documentation for explanation.
 
-(_minted/5A8187584628E913DFD7A8BC59C6E465.highlight.minted) [73]
+(_minted/5A8187584628E913DFD7A8BC59C6E465.highlight.minted) [74]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 154.
 See the caption package documentation for explanation.
 
-(_minted/C5A5B8BA644393E35EC686A842FC82D0.highlight.minted) [74]
+(_minted/C5A5B8BA644393E35EC686A842FC82D0.highlight.minted) [75]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 176.
@@ -1927,93 +1822,92 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 21.
 See the caption package documentation for explanation.
 
-(_minted/9CF018CE2C3A79D4F3DFCC377FCF3AB1.highlight.minted) [75]
+(_minted/9CF018CE2C3A79D4F3DFCC377FCF3AB1.highlight.minted) [76]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 45.
 See the caption package documentation for explanation.
 
-(_minted/C6CA803DAD6A7EB8F4581A51C2A80A87.highlight.minted) [76]
+(_minted/C6CA803DAD6A7EB8F4581A51C2A80A87.highlight.minted) [77]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 73.
+(caption)                particular \caption on input line 75.
 See the caption package documentation for explanation.
 
-(_minted/72B164CBCAEB2E501A077438591A6D89.highlight.minted) [77]
+(_minted/72B164CBCAEB2E501A077438591A6D89.highlight.minted) [78]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 102.
+(caption)                particular \caption on input line 105.
 See the caption package documentation for explanation.
 
-(_minted/739DBAAE097A83F0688522C021828134.highlight.minted [78])
+(_minted/739DBAAE097A83F0688522C021828134.highlight.minted [79]) [80] [81]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 132.
+(caption)                particular \caption on input line 157.
 See the caption package documentation for explanation.
 
-(_minted/0DA38C635DD527F8230E77D8B489E7F9.highlight.minted) [79]
+(_minted/0DA38C635DD527F8230E77D8B489E7F9.highlight.minted)
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 146.
+(caption)                particular \caption on input line 172.
 See the caption package documentation for explanation.
 
-(_minted/E77B3C23D8DF7B25D31D377BA69F228E.highlight.minted)
+(_minted/E77B3C23D8DF7B25D31D377BA69F228E.highlight.minted) [82]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 161.
+(caption)                particular \caption on input line 187.
 See the caption package documentation for explanation.
 
-(_minted/4D9B0407788EAD40F364B165A4058449.highlight.minted) [80]
+(_minted/4D9B0407788EAD40F364B165A4058449.highlight.minted)
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 176.
+(caption)                particular \caption on input line 204.
 See the caption package documentation for explanation.
 
-(_minted/C22A5FD65548B769423E1F3BE61D4577.highlight.minted) [81]
+(_minted/C22A5FD65548B769423E1F3BE61D4577.highlight.minted) [83]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 198.
+(caption)                particular \caption on input line 226.
 See the caption package documentation for explanation.
 
-(_minted/96877CEAD7BB9C6EBBBCF6FF2A444D85.highlight.minted)
+(_minted/96877CEAD7BB9C6EBBBCF6FF2A444D85.highlight.minted) [84]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 216.
+(caption)                particular \caption on input line 244.
 See the caption package documentation for explanation.
 
-(_minted/3379F04BAC241D5ACACD7241CDA03FFD.highlight.minted) [82]
+(_minted/3379F04BAC241D5ACACD7241CDA03FFD.highlight.minted) [85]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 238.
+(caption)                particular \caption on input line 266.
 See the caption package documentation for explanation.
 
-(_minted/B9B8098CF509568CB09A92583A7441CA.highlight.minted) [83]
+(_minted/B9B8098CF509568CB09A92583A7441CA.highlight.minted)
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 264.
+(caption)                particular \caption on input line 292.
 See the caption package documentation for explanation.
 
-(_minted/09F4196D86BEE71DBF18F4E818790914.highlight.minted))
+(_minted/09F4196D86BEE71DBF18F4E818790914.highlight.minted [86]))
 (sections/capitulo3/procesos_tecnicos/diseño_detallado/seleccion_campeon.tex
-[84]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 10.
 See the caption package documentation for explanation.
 
-(_minted/C0A04925B1F0AC20EE4F567DAD2DFC54.highlight.minted)
+(_minted/C0A04925B1F0AC20EE4F567DAD2DFC54.highlight.minted) [87]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 29.
 See the caption package documentation for explanation.
 
-(_minted/BDBEC82557F26B0D1B7684056FDE3637.highlight.minted) [85]
+(_minted/BDBEC82557F26B0D1B7684056FDE3637.highlight.minted) [88]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 56.
 See the caption package documentation for explanation.
 
-(_minted/81A5EB574124AF2CF0F0CC408F41EA17.highlight.minted [86]) [87]
+(_minted/81A5EB574124AF2CF0F0CC408F41EA17.highlight.minted) [89]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 111.
@@ -2021,40 +1915,40 @@ See the caption package documentation for explanation.
 
 (_minted/C6CA803DAD6A7EB8F4581A51C2A80A87.highlight.minted))
 (sections/capitulo3/procesos_tecnicos/diseño_detallado/combinacion_pronosticos.
-tex [88]
+tex [90]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 8.
 See the caption package documentation for explanation.
 
-(_minted/B4B15E29B2D3271BCB8EADAC4FC1BBFD.highlight.minted)
+(_minted/B4B15E29B2D3271BCB8EADAC4FC1BBFD.highlight.minted) [91]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 24.
 See the caption package documentation for explanation.
 
-(_minted/6A9634DDA5776865E10D90F86ED99DD3.highlight.minted) [89])
+(_minted/6A9634DDA5776865E10D90F86ED99DD3.highlight.minted))
 (sections/capitulo3/procesos_tecnicos/diseño_detallado/pronostico_futuro.tex
-(_minted/39B28AABBE6B4ABE4ED4F6FBC63E7387.highlight.minted) [90]
-(_minted/3EB27F60FFAF361E4684B5C05A7B7CA5.highlight.minted [91]) [92]
-(_minted/001AA4C8A67EFDC2538764D07051ECEB.highlight.minted) [93]
-(_minted/DFF3736CDDB15149D085DDD56ACD1869.highlight.minted)) [94]
+(_minted/39B28AABBE6B4ABE4ED4F6FBC63E7387.highlight.minted [92])
+(_minted/3EB27F60FFAF361E4684B5C05A7B7CA5.highlight.minted [93]) [94]
+(_minted/001AA4C8A67EFDC2538764D07051ECEB.highlight.minted) [95]
+(_minted/DFF3736CDDB15149D085DDD56ACD1869.highlight.minted [96]))
 (sections/capitulo3/procesos_tecnicos/diseño_detallado/calculo_reposicion.tex
-(_minted/01A848295DA24146D0399C13324AD808.highlight.minted)
-(_minted/19914D2E8AA5103C7F7217B48CB84120.highlight.minted [95])
+(_minted/01A848295DA24146D0399C13324AD808.highlight.minted [97])
+(_minted/19914D2E8AA5103C7F7217B48CB84120.highlight.minted)
 (_minted/3B475A46A555FEF0FBED9FDE925811DE.highlight.minted)
-(_minted/4CDA8F081D6910E1187AEE91458EB8A1.highlight.minted) [96]
+(_minted/4CDA8F081D6910E1187AEE91458EB8A1.highlight.minted) [98]
 (_minted/CE0557910879AD327FBE5FF6046D49F4.highlight.minted)
-(_minted/D648A1939FAAAEEF8EA0CC30AD3C045A.highlight.minted) [97]
-(_minted/73241D152CAED7BAD6FF10C9D2D95A54.highlight.minted))
+(_minted/D648A1939FAAAEEF8EA0CC30AD3C045A.highlight.minted [99])
+(_minted/73241D152CAED7BAD6FF10C9D2D95A54.highlight.minted [100]))
 (sections/capitulo3/procesos_tecnicos/diseño_detallado/modelo_datos.tex
-[98] [99] [100]
+[101] [102]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 56.
 See the caption package documentation for explanation.
 
-(_minted/4A5BFD544CAC683864C12F46026834C1.highlight.minted) [101]
+(_minted/4A5BFD544CAC683864C12F46026834C1.highlight.minted) [103]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 85.
@@ -2063,10 +1957,10 @@ See the caption package documentation for explanation.
 (_minted/8DD128728F3054749A379D2911907557.highlight.minted)
 File: templatefigures/mysql_workbench_empresas.png Graphic file (type bmp)
 <templatefigures/mysql_workbench_empresas.png>
- [102]
+ [104]
 File: templatefigures/mysql_workbench_corridas.png Graphic file (type bmp)
 <templatefigures/mysql_workbench_corridas.png>
-) [103]
+) [105]
 (sections/capitulo3/procesos_tecnicos/diseño_detallado/diseño_ux_ui.tex
 File: templatefigures/logo.png Graphic file (type bmp)
 <templatefigures/logo.png>
@@ -2075,69 +1969,52 @@ File: templatefigures/ux_login.png Graphic file (type bmp)
 File: templatefigures/ux_registro.png Graphic file (type bmp)
 <templatefigures/ux_registro.png>
 
-[104]
+[106]
 File: templatefigures/ux_dashboard.png Graphic file (type bmp)
 <templatefigures/ux_dashboard.png>
 File: templatefigures/ux_subir_archivo.png Graphic file (type bmp)
 <templatefigures/ux_subir_archivo.png>
 File: templatefigures/ux_prediccion.png Graphic file (type bmp)
 <templatefigures/ux_prediccion.png>
- [105]
+ [107]
 File: templatefigures/ux_usuarios.png Graphic file (type bmp)
 <templatefigures/ux_usuarios.png>
 File: templatefigures/ux_sidebar_empleado.png Graphic file (type bmp)
 <templatefigures/ux_sidebar_empleado.png>
 File: templatefigures/ux_sidebar_administrador.png Graphic file (type bmp)
 <templatefigures/ux_sidebar_administrador.png>
- [106]
+ [108]
 File: templatefigures/ux_estado_inventario.png Graphic file (type bmp)
 <templatefigures/ux_estado_inventario.png>
 File: templatefigures/ux_presupuesto.png Graphic file (type bmp)
 <templatefigures/ux_presupuesto.png>
-
-Overfull \hbox (116.41628pt too wide) in paragraph at lines 93--94
- [][] 
- []
-
 File: templatefigures/ux_reposicion_alertas.png Graphic file (type bmp)
 <templatefigures/ux_reposicion_alertas.png>
-
-Overfull \hbox (138.61742pt too wide) in paragraph at lines 100--101
- [][] 
- []
-
-[107]
+ [109]
 File: templatefigures/ux_pedidos.png Graphic file (type bmp)
 <templatefigures/ux_pedidos.png>
-
-Overfull \hbox (116.42105pt too wide) in paragraph at lines 112--113
- [][] 
- []
-
 File: templatefigures/ux_pedidos_confirmados.png Graphic file (type bmp)
 <templatefigures/ux_pedidos_confirmados.png>
-
-Overfull \hbox (120.22531pt too wide) in paragraph at lines 119--120
- [][] 
- []
-
+ [110]
 File: templatefigures/ux_prox_pedidos.png Graphic file (type bmp)
 <templatefigures/ux_prox_pedidos.png>
+ [111]
 File: templatefigures/ux_calendario_pedidos.png Graphic file (type bmp)
 <templatefigures/ux_calendario_pedidos.png>
-[108]
 File: templatefigures/ux_cerrar_sesion.png Graphic file (type bmp)
 <templatefigures/ux_cerrar_sesion.png>
+ [112]
 File: templatefigures/ux_alertas_visuales.png Graphic file (type bmp)
 <templatefigures/ux_alertas_visuales.png>
- [109]
 File: templatefigures/ux_dashboard_empleado.png Graphic file (type bmp)
 <templatefigures/ux_dashboard_empleado.png>
 File: templatefigures/ux_dashboard_claro.png Graphic file (type bmp)
 <templatefigures/ux_dashboard_claro.png>
+ [113]
 File: templatefigures/ux_dashboard_mobile.png Graphic file (type bmp)
 <templatefigures/ux_dashboard_mobile.png>
- [110])) (sections/capitulo3/procesos_tecnicos/analisis_amenazas.tex [111]
+ [114]))
+(sections/capitulo3/procesos_tecnicos/analisis_amenazas.tex [115]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 7.
@@ -2155,7 +2032,7 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 27.
 See the caption package documentation for explanation.
 
-(_minted/81DAD8D6206678F42BB5B2D373F0B387.highlight.minted [112])
+(_minted/81DAD8D6206678F42BB5B2D373F0B387.highlight.minted [116])
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 49.
@@ -2167,7 +2044,7 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 63.
 See the caption package documentation for explanation.
 
-(_minted/ECD3B3FCC9F08291E5546BB21388F1AE.highlight.minted) [113]))
+(_minted/ECD3B3FCC9F08291E5546BB21388F1AE.highlight.minted) [117]))
 (sections/capitulo3/construccion_despliegue.tex
 Missing character: There is no ├ in font [texgyrecursor-regular.otf]/OT:script=
 latn;language=dflt;!
@@ -2203,6 +2080,7 @@ Missing character: There is no ─ in font [texgyrecursor-regular.otf]/OT:script
 latn;language=dflt;!
 Missing character: There is no ─ in font [texgyrecursor-regular.otf]/OT:script=
 latn;language=dflt;!
+[118]
 Missing character: There is no │ in font [texgyrecursor-regular.otf]/OT:script=
 latn;language=dflt;!
 Missing character: There is no ├ in font [texgyrecursor-regular.otf]/OT:script=
@@ -2211,7 +2089,6 @@ Missing character: There is no ─ in font [texgyrecursor-regular.otf]/OT:script
 latn;language=dflt;!
 Missing character: There is no ─ in font [texgyrecursor-regular.otf]/OT:script=
 latn;language=dflt;!
-[114]
 Missing character: There is no │ in font [texgyrecursor-regular.otf]/OT:script=
 latn;language=dflt;!
 Missing character: There is no │ in font [texgyrecursor-regular.otf]/OT:script=
@@ -2442,7 +2319,7 @@ Missing character: There is no ─ in font [texgyrecursor-regular.otf]/OT:script
 latn;language=dflt;!
 Missing character: There is no ─ in font [texgyrecursor-regular.otf]/OT:script=
 latn;language=dflt;!
-[115]
+[119]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 60.
@@ -2454,7 +2331,7 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 71.
 See the caption package documentation for explanation.
 
-(_minted/5E2995772A16F3E79C38E8769A572304.highlight.minted [116]) [117]
+(_minted/5E2995772A16F3E79C38E8769A572304.highlight.minted [120]) [121]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 110.
@@ -2466,7 +2343,7 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 126.
 See the caption package documentation for explanation.
 
-(_minted/2AF517DB605F2DA3F1AC9972ACA69C0B.highlight.minted) [118]
+(_minted/2AF517DB605F2DA3F1AC9972ACA69C0B.highlight.minted) [122]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 146.
@@ -2475,67 +2352,67 @@ See the caption package documentation for explanation.
 (_minted/1E7FD43384ED7949A0AF159EDA38F5F9.highlight.minted)
 File: templatefigures/railway_servicios.png Graphic file (type bmp)
 <templatefigures/railway_servicios.png>
- [119]
+ [123]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 192.
 See the caption package documentation for explanation.
 
-(_minted/D9E1FDFCE3F5BD234322D134FA0EFF1C.highlight.minted)
+(_minted/653637453976BA295238C5764F405DF9.highlight.minted)
 File: templatefigures/railway_deploy_details.png Graphic file (type bmp)
 <templatefigures/railway_deploy_details.png>
- [120]
+ [124]
 File: templatefigures/railway_variables.png Graphic file (type bmp)
 <templatefigures/railway_variables.png>
- [121]
+ [125]
 File: templatefigures/railway_mysql_tablas.png Graphic file (type bmp)
 <templatefigures/railway_mysql_tablas.png>
 
-[122]
+[126]
 File: templatefigures/thary_login_produccion.png Graphic file (type bmp)
 <templatefigures/thary_login_produccion.png>
 ) (sections/capitulo3/plan_verificacion_validacion.tex
 (sections/capitulo3/plan_verificacion_validacion/estrategia_verificacion.tex
-[123])
+[127])
 (sections/capitulo3/plan_verificacion_validacion/estrategia_validacion_modelo.t
-ex [124])
+ex [128])
 (sections/capitulo3/plan_verificacion_validacion/criterios_aceptacion.tex
-[125])
+[129])
 (sections/capitulo3/plan_verificacion_validacion/plan_validacion_usuarios.tex
-[126]))) (sections/capitulo4_resultados.tex [127]
+[130]))) (sections/capitulo4_resultados.tex [131]
 (sections/capitulo4/resultados_verificacion.tex
 File: templatefigures/pytest_resultados_verbose.png Graphic file (type bmp)
 <templatefigures/pytest_resultados_verbose.png>
- [128
+ [132
 
 ]
 File: templatefigures/pytest_resultados_resumen.png Graphic file (type bmp)
 <templatefigures/pytest_resultados_resumen.png>
-) [129]
+) [133]
 (sections/capitulo4/resultados_validacion_modelo.tex
 File: templatefigures/comparacion_WAPE_porcentaje.png Graphic file (type bmp)
 <templatefigures/comparacion_WAPE_porcentaje.png>
- [130]
+ [134] [135]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 44.
+(caption)                particular \caption on input line 48.
 See the caption package documentation for explanation.
 
-(_minted/3542C0AC6571E8F53AD41E16A8F09DE2.highlight.minted [131]) [132])
-(sections/capitulo4/resultados_validacion.tex [133])
-(sections/capitulo4/evaluacion_seguridad_estandares.tex [134] [135])
-(sections/capitulo4/analisis_impactos.tex [136] [137])
-(sections/capitulo4/conclusiones.tex [138] [139] [140])
-(sections/capitulo4/recomendaciones_mantenibilidad.tex [141] [142])
-(sections/capitulo4/trabajos_futuros.tex [143])
-(sections/capitulo4/declaracion_uso_responsable_ia.tex [144])) [145]
+(_minted/3542C0AC6571E8F53AD41E16A8F09DE2.highlight.minted) [136] [137])
+(sections/capitulo4/resultados_validacion.tex) [138]
+(sections/capitulo4/evaluacion_seguridad_estandares.tex [139]) [140]
+(sections/capitulo4/analisis_impactos.tex [141] [142])
+(sections/capitulo4/conclusiones.tex [143] [144]) [145]
+(sections/capitulo4/recomendaciones_mantenibilidad.tex [146])
+(sections/capitulo4/trabajos_futuros.tex [147] [148])
+(sections/capitulo4/declaracion_uso_responsable_ia.tex [149])) [150]
 LaTeX Font Info:    Font shape `TU/TeXGyreTermesX(0)/m/sc' will be
 (Font)              scaled to size 12.0pt on input line 203.
- [146
+ [151
 
 
 ]
-[147] [148]
+[152] [153]
 
 Package biblatex Warning: No driver for 'standard'.
 (biblatex)                Using fallback driver on input line 203.
@@ -2548,11 +2425,11 @@ Package biblatex Warning: No driver for 'standard'.
 Package biblatex Warning: No driver for 'standard'.
 (biblatex)                Using fallback driver on input line 203.
 
-[149] (anexos/anexos.tex [150
+[154] [155] (anexos/anexos.tex [156
 
 
 
-] [151
+] [157
 
 ]
 Overfull \vbox (8.91196pt too high) has occurred while \output is active []
@@ -2561,1939 +2438,46 @@ Overfull \vbox (8.91196pt too high) has occurred while \output is active []
 Overfull \vbox (8.91196pt too high) has occurred while \output is active []
 
 
-[152] [153] [154] [155] [156] [157] [158] [159] [160] [161] [162]
-Overfull \hbox (40.80078pt too wide) in paragraph at lines 547--547
-[]|\TU/TeXGyreTermesX(0)/b/n/12 Descripción| 
- []
+[158] [159] [160] [161] [162] [163] [164] [165] [166] [167] [168] [169
 
+]
+[170] [171] [172] [173] [174] [175]
+Overfull \vbox (228.28864pt too high) has occurred while \output is active []
 
-Overfull \hbox (41.46078pt too wide) in paragraph at lines 547--547
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Identificador
- []
 
+Overfull \vbox (228.28864pt too high) has occurred while \output is active []
 
-Overfull \hbox (6.80478pt too wide) in paragraph at lines 547--547
-\TU/TeXGyreTermesX(0)/m/n/12 único
- []
 
-
-Overfull \hbox (15.70879pt too wide) in paragraph at lines 547--547
-\TU/TeXGyreTermesX(0)/m/n/12 usuario| 
- []
-
-
-Overfull \hbox (19.22478pt too wide) in paragraph at lines 547--547
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Nombre
- []
-
-
-Overfull \hbox (24.80478pt too wide) in paragraph at lines 547--547
-\TU/TeXGyreTermesX(0)/m/n/12 completo
- []
-
-
-Overfull \hbox (15.70879pt too wide) in paragraph at lines 547--547
-\TU/TeXGyreTermesX(0)/m/n/12 usuario| 
- []
-
-
-Overfull \hbox (19.22478pt too wide) in paragraph at lines 547--547
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Nombre
- []
-
-
-Overfull \hbox (15.70879pt too wide) in paragraph at lines 547--547
-\TU/TeXGyreTermesX(0)/m/n/12 usuario
- []
-
-
-Overfull \hbox (0.79279pt too wide) in paragraph at lines 547--547
-\TU/TeXGyreTermesX(0)/m/n/12 para
- []
-
-
-Overfull \hbox (7.47678pt too wide) in paragraph at lines 547--547
-\TU/TeXGyreTermesX(0)/m/n/12 inicio
- []
-
-
-Overfull \hbox (10.14078pt too wide) in paragraph at lines 547--547
-\TU/TeXGyreTermesX(0)/m/n/12 sesión| 
- []
-
-
-Overfull \hbox (13.76479pt too wide) in paragraph at lines 547--547
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Correo
- []
-
-
-Overfull \hbox (33.45679pt too wide) in paragraph at lines 547--547
-\TU/TeXGyreTermesX(0)/m/n/12 electrónico
- []
-
-
-Overfull \hbox (15.70879pt too wide) in paragraph at lines 547--547
-\TU/TeXGyreTermesX(0)/m/n/12 usuario| 
- []
-
-
-Overfull \hbox (4.80078pt too wide) in paragraph at lines 547--547
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Hash
- []
-
-
-Overfull \hbox (34.45277pt too wide) in paragraph at lines 547--547
-\TU/TeXGyreTermesX(0)/m/n/12 contraseña,
- []
-
-
-Overfull \hbox (23.82079pt too wide) in paragraph at lines 547--547
-\TU/TeXGyreTermesX(0)/m/n/12 generado
- []
-
-
-Overfull \hbox (9.86478pt too wide) in paragraph at lines 547--547
-\TU/TeXGyreTermesX(0)/m/it/12 scrypt| 
- []
-
-
-Overfull \hbox (15.70879pt too wide) in paragraph at lines 547--547
-\TU/TeXGyreTermesX(0)/m/n/12 usuario
- []
-
-
-Overfull \hbox (10.80078pt too wide) in paragraph at lines 547--547
-\TU/TeXGyreTermesX(0)/m/n/12 dentro
- []
-
-
-Overfull \hbox (20.12479pt too wide) in paragraph at lines 547--547
-\TU/TeXGyreTermesX(0)/m/n/12 empresa| 
- []
-
-
-Overfull \hbox (22.12878pt too wide) in paragraph at lines 547--547
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Empresa
- []
-
-
-Overfull \hbox (26.41278pt too wide) in paragraph at lines 547--547
-\TU/TeXGyreTermesX(0)/m/n/12 pertenece
- []
-
-
-Overfull \hbox (15.70879pt too wide) in paragraph at lines 547--547
-\TU/TeXGyreTermesX(0)/m/n/12 usuario| 
- []
-
-[163
-
-] [164]
-Overfull \hbox (11.97678pt too wide) in paragraph at lines 585--585
-\TU/TeXGyreTermesX(0)/m/n/12 (archivo_subido,
- []
-
-
-Overfull \hbox (28.15279pt too wide) in paragraph at lines 585--585
-\TU/TeXGyreTermesX(0)/m/n/12 pedido_confirmado,
- []
-
-[165]
-Overfull \hbox (56.13678pt too wide) in paragraph at lines 609--609
-[]|\TU/TeXGyreTermesX(0)/b/n/12 Descripción| 
- []
-
-
-Overfull \hbox (56.79678pt too wide) in paragraph at lines 609--609
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Identificador
- []
-
-
-Overfull \hbox (6.80478pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 de
- []
-
-
-Overfull \hbox (4.14078pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 la
- []
-
-
-Overfull \hbox (30.00078pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 corrida
- []
-
-
-Overfull \hbox (22.80078pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 (tabla
- []
-
-
-Overfull \hbox (26.12477pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 padre)| 
- []
-
-
-Overfull \hbox (37.46478pt too wide) in paragraph at lines 609--609
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Empresa
- []
-
-
-Overfull \hbox (12.68478pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 que
- []
-
-
-Overfull \hbox (30.13278pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 ejecutó
- []
-
-
-Overfull \hbox (4.14078pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 la
- []
-
-
-Overfull \hbox (30.00078pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 corrida| 
- []
-
-
-Overfull \hbox (23.71278pt too wide) in paragraph at lines 609--609
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Fecha
- []
-
-
-Overfull \hbox (6.80478pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 de
- []
-
-
-Overfull \hbox (4.14078pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 la
- []
-
-
-Overfull \hbox (30.00078pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 corrida| 
- []
-
-
-Overfull \hbox (26.13678pt too wide) in paragraph at lines 609--609
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Meses
- []
-
-
-Overfull \hbox (20.79678pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 hacia
- []
-
-
-Overfull \hbox (35.46078pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 adelante
- []
-
-
-Overfull \hbox (61.95679pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 pronosticados| 
- []
-
-
-Overfull \hbox (53.29279pt too wide) in paragraph at lines 609--609
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Presupuesto
- []
-
-
-Overfull \hbox (16.81277pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 total
- []
-
-
-Overfull \hbox (45.48077pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 disponible| 
- []
-
-
-Overfull \hbox (53.29279pt too wide) in paragraph at lines 609--609
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Presupuesto
- []
-
-
-Overfull \hbox (38.13678pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 asignado
- []
-
-
-Overfull \hbox (11.47278pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 por
- []
-
-
-Overfull \hbox (38.13678pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 producto| 
- []
-
-
-Overfull \hbox (28.81277pt too wide) in paragraph at lines 609--609
-[]|\TU/TeXGyreTermesX(0)/m/n/12 MAPE
- []
-
-
-Overfull \hbox (10.14078pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 del
- []
-
-
-Overfull \hbox (31.29678pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 sistema
- []
-
-
-Overfull \hbox (16.81277pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 final| 
- []
-
-
-Overfull \hbox (28.09277pt too wide) in paragraph at lines 609--609
-[]|\TU/TeXGyreTermesX(0)/m/n/12 WAPE
- []
-
-
-Overfull \hbox (10.14078pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 del
- []
-
-
-Overfull \hbox (31.29678pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 sistema
- []
-
-
-Overfull \hbox (16.81277pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 final| 
- []
-
-
-Overfull \hbox (23.30478pt too wide) in paragraph at lines 609--609
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Costo
- []
-
-
-Overfull \hbox (16.81277pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 total
- []
-
-
-Overfull \hbox (6.80478pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 de
- []
-
-
-Overfull \hbox (42.80478pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 productos
- []
-
-
-Overfull \hbox (6.80478pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 en
- []
-
-
-Overfull \hbox (22.42877pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 alerta| 
- []
-
-
-Overfull \hbox (21.72078pt too wide) in paragraph at lines 609--609
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Valor
- []
-
-
-Overfull \hbox (16.81277pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 total
- []
-
-
-Overfull \hbox (10.14078pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 del
- []
-
-
-Overfull \hbox (43.59677pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 inventario
- []
-
-
-Overfull \hbox (6.80478pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 en
- []
-
-
-Overfull \hbox (4.14078pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 la
- []
-
-
-Overfull \hbox (30.00078pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 corrida| 
- []
-
-
-Overfull \hbox (38.80878pt too wide) in paragraph at lines 609--609
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Cantidad
- []
-
-
-Overfull \hbox (6.80478pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 de
- []
-
-
-Overfull \hbox (42.80478pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 productos
- []
-
-
-Overfull \hbox (9.48077pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 sin
- []
-
-
-Overfull \hbox (43.59677pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 inventario
- []
-
-
-Overfull \hbox (43.28477pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 registrado| 
- []
-
-
-Overfull \hbox (38.80878pt too wide) in paragraph at lines 609--609
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Cantidad
- []
-
-
-Overfull \hbox (6.80478pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 de
- []
-
-
-Overfull \hbox (42.80478pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 productos
- []
-
-
-Overfull \hbox (6.80478pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 en
- []
-
-
-Overfull \hbox (1.47678pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 o
- []
-
-
-Overfull \hbox (15.84077pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 bajo
- []
-
-
-Overfull \hbox (4.14078pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 el
- []
-
-
-Overfull \hbox (22.81277pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 punto
- []
-
-
-Overfull \hbox (6.80478pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 de
- []
-
-
-Overfull \hbox (32.12477pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 reorden| 
- []
-
-
-Overfull \hbox (40.62077pt too wide) in paragraph at lines 609--609
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Variables
- []
-
-
-Overfull \hbox (61.45277pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 seleccionadas
- []
-
-
-Overfull \hbox (11.47278pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 por
- []
-
-
-Overfull \hbox (40.15277pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 RFE/VIF
- []
-
-
-Overfull \hbox (55.69278pt too wide) in paragraph at lines 609--609
-\TU/TeXGyreTermesX(0)/m/n/12 (serializado)| 
- []
-
-[166]
-Overfull \vbox (398.7479pt too high) has occurred while \output is active []
-
-
-Overfull \vbox (398.7479pt too high) has occurred while \output is active []
-
-
-[167]
-Overfull \hbox (57.9488pt too wide) in paragraph at lines 635--635
-[]|\TU/TeXGyreTermesX(0)/b/n/12 Descripción| 
- []
-
-
-Overfull \hbox (58.60881pt too wide) in paragraph at lines 635--635
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Identificador
- []
-
-
-Overfull \hbox (23.9528pt too wide) in paragraph at lines 635--635
-\TU/TeXGyreTermesX(0)/m/n/12 único| 
- []
-
-
-Overfull \hbox (34.4888pt too wide) in paragraph at lines 635--635
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Corrida
- []
-
-
-Overfull \hbox (2.6168pt too wide) in paragraph at lines 635--635
-\TU/TeXGyreTermesX(0)/m/n/12 a
- []
-
-
-Overfull \hbox (5.9528pt too wide) in paragraph at lines 635--635
-\TU/TeXGyreTermesX(0)/m/n/12 la
- []
-
-
-Overfull \hbox (14.49681pt too wide) in paragraph at lines 635--635
-\TU/TeXGyreTermesX(0)/m/n/12 que
- []
-
-
-Overfull \hbox (43.5608pt too wide) in paragraph at lines 635--635
-\TU/TeXGyreTermesX(0)/m/n/12 pertenece| 
- []
-
-
-Overfull \hbox (58.60881pt too wide) in paragraph at lines 635--635
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Identificador
- []
-
-
-Overfull \hbox (11.9528pt too wide) in paragraph at lines 635--635
-\TU/TeXGyreTermesX(0)/m/n/12 del
- []
-
-
-Overfull \hbox (39.9488pt too wide) in paragraph at lines 635--635
-\TU/TeXGyreTermesX(0)/m/n/12 producto| 
- []
-
-
-Overfull \hbox (36.3728pt too wide) in paragraph at lines 635--635
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Nombre
- []
-
-
-Overfull \hbox (11.9528pt too wide) in paragraph at lines 635--635
-\TU/TeXGyreTermesX(0)/m/n/12 del
- []
-
-
-Overfull \hbox (39.9488pt too wide) in paragraph at lines 635--635
-\TU/TeXGyreTermesX(0)/m/n/12 producto| 
- []
-
-
-Overfull \hbox (44.1848pt too wide) in paragraph at lines 635--635
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Categoría
- []
-
-
-Overfull \hbox (3.2888pt too wide) in paragraph at lines 635--635
-\TU/TeXGyreTermesX(0)/m/n/12 o
- []
-
-
-Overfull \hbox (23.5208pt too wide) in paragraph at lines 635--635
-\TU/TeXGyreTermesX(0)/m/n/12 rubro
- []
-
-
-Overfull \hbox (11.9528pt too wide) in paragraph at lines 635--635
-\TU/TeXGyreTermesX(0)/m/n/12 del
- []
-
-
-Overfull \hbox (39.9488pt too wide) in paragraph at lines 635--635
-\TU/TeXGyreTermesX(0)/m/n/12 producto| 
- []
-
-
-Overfull \hbox (43.27281pt too wide) in paragraph at lines 635--635
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Demanda
- []
-
-
-Overfull \hbox (18.6248pt too wide) in paragraph at lines 635--635
-\TU/TeXGyreTermesX(0)/m/n/12 total
- []
-
-
-Overfull \hbox (38.6768pt too wide) in paragraph at lines 635--635
-\TU/TeXGyreTermesX(0)/m/n/12 histórica| 
- []
-
-
-Overfull \hbox (43.27281pt too wide) in paragraph at lines 635--635
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Demanda
- []
-
-
-Overfull \hbox (43.2848pt too wide) in paragraph at lines 635--635
-\TU/TeXGyreTermesX(0)/m/n/12 promedio
- []
-
-
-Overfull \hbox (37.2848pt too wide) in paragraph at lines 635--635
-\TU/TeXGyreTermesX(0)/m/n/12 mensual| 
- []
-
-
-Overfull \hbox (51.27681pt too wide) in paragraph at lines 635--635
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Desviación
- []
-
-
-Overfull \hbox (37.0928pt too wide) in paragraph at lines 635--635
-\TU/TeXGyreTermesX(0)/m/n/12 estándar
- []
-
-
-Overfull \hbox (8.6168pt too wide) in paragraph at lines 635--635
-\TU/TeXGyreTermesX(0)/m/n/12 de
- []
-
-
-Overfull \hbox (5.9528pt too wide) in paragraph at lines 635--635
-\TU/TeXGyreTermesX(0)/m/n/12 la
- []
-
-
-Overfull \hbox (40.60881pt too wide) in paragraph at lines 635--635
-\TU/TeXGyreTermesX(0)/m/n/12 demanda| 
- []
-
-
-Overfull \hbox (51.9488pt too wide) in paragraph at lines 635--635
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Coeficiente
- []
-
-
-Overfull \hbox (8.6168pt too wide) in paragraph at lines 635--635
-\TU/TeXGyreTermesX(0)/m/n/12 de
- []
-
-
-Overfull \hbox (41.8808pt too wide) in paragraph at lines 635--635
-\TU/TeXGyreTermesX(0)/m/n/12 variación| 
- []
-
-
-Overfull \hbox (59.9528pt too wide) in paragraph at lines 635--635
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Clasificación
- []
-
-
-Overfull \hbox (76.9808pt too wide) in paragraph at lines 635--635
-\TU/TeXGyreTermesX(0)/m/n/12 Alta/Media/Baja| 
- []
-
-
-Overfull \hbox (47.3408pt too wide) in paragraph at lines 635--635
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Porcentaje
- []
-
-
-Overfull \hbox (49.94481pt too wide) in paragraph at lines 635--635
-\TU/TeXGyreTermesX(0)/m/n/12 acumulado
- []
-
-
-Overfull \hbox (8.6168pt too wide) in paragraph at lines 635--635
-\TU/TeXGyreTermesX(0)/m/n/12 de
- []
-
-
-Overfull \hbox (40.60881pt too wide) in paragraph at lines 635--635
-\TU/TeXGyreTermesX(0)/m/n/12 demanda| 
- []
-
-
-Overfull \hbox (59.9528pt too wide) in paragraph at lines 635--635
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Clasificación
- []
-
-
-Overfull \hbox (28.6328pt too wide) in paragraph at lines 635--635
-\TU/TeXGyreTermesX(0)/m/n/12 A/B/C| 
- []
-
-
-Overfull \hbox (34.6208pt too wide) in paragraph at lines 635--635
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Modelo
- []
-
-
-Overfull \hbox (59.2688pt too wide) in paragraph at lines 635--635
-\TU/TeXGyreTermesX(0)/m/n/12 seleccionado
- []
-
-
-Overfull \hbox (23.9528pt too wide) in paragraph at lines 635--635
-\TU/TeXGyreTermesX(0)/m/n/12 como
- []
-
-
-Overfull \hbox (40.60881pt too wide) in paragraph at lines 635--635
-\TU/TeXGyreTermesX(0)/m/n/12 campeón| 
- []
-
-
-Overfull \hbox (45.7688pt too wide) in paragraph at lines 635--635
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Proveedor
- []
-
-
-Overfull \hbox (40.18881pt too wide) in paragraph at lines 635--635
-\TU/TeXGyreTermesX(0)/m/n/12 principal
- []
-
-
-Overfull \hbox (11.9528pt too wide) in paragraph at lines 635--635
-\TU/TeXGyreTermesX(0)/m/n/12 del
- []
-
-
-Overfull \hbox (39.9488pt too wide) in paragraph at lines 635--635
-\TU/TeXGyreTermesX(0)/m/n/12 producto| 
- []
-
-
-Overfull \hbox (45.7688pt too wide) in paragraph at lines 635--635
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Proveedor
- []
-
-
-Overfull \hbox (30.8528pt too wide) in paragraph at lines 635--635
-\TU/TeXGyreTermesX(0)/m/n/12 alterno
- []
-
-
-Overfull \hbox (11.9528pt too wide) in paragraph at lines 635--635
-\TU/TeXGyreTermesX(0)/m/n/12 del
- []
-
-
-Overfull \hbox (39.9488pt too wide) in paragraph at lines 635--635
-\TU/TeXGyreTermesX(0)/m/n/12 producto| 
- []
-
-
-Overfull \vbox (166.74786pt too high) has occurred while \output is active []
-
-
-Overfull \vbox (166.74786pt too high) has occurred while \output is active []
-
-
-[168]
-Overfull \hbox (0.91281pt too wide) in paragraph at lines 655--655
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Identificador
- []
-
-
-Overfull \hbox (8.4848pt too wide) in paragraph at lines 655--655
-\TU/TeXGyreTermesX(0)/m/n/12 determinación| 
- []
-
-
-Package tabularx Warning: X Columns too narrow (table too wide)
-(tabularx)                 on input line 679.
-
-
-Overfull \hbox (48.66pt too wide) in paragraph at lines 679--679
-[]|\TU/TeXGyreTermesX(0)/b/n/12 Descripción| 
- []
-
-
-Overfull \hbox (49.32pt too wide) in paragraph at lines 679--679
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Identificador
- []
-
-
-Overfull \hbox (14.664pt too wide) in paragraph at lines 679--679
-\TU/TeXGyreTermesX(0)/m/n/12 único| 
- []
-
-
-Overfull \hbox (25.2pt too wide) in paragraph at lines 679--679
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Corrida
- []
-
-
-Overfull \hbox (5.20801pt too wide) in paragraph at lines 679--679
-\TU/TeXGyreTermesX(0)/m/n/12 que
- []
-
-
-Overfull \hbox (34.272pt too wide) in paragraph at lines 679--679
-\TU/TeXGyreTermesX(0)/m/n/12 pertenece| 
- []
-
-
-Overfull \hbox (16.23601pt too wide) in paragraph at lines 679--679
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Fecha
- []
-
-
-Overfull \hbox (2.664pt too wide) in paragraph at lines 679--679
-\TU/TeXGyreTermesX(0)/m/n/12 del
- []
-
-
-Overfull \hbox (7.332pt too wide) in paragraph at lines 679--679
-\TU/TeXGyreTermesX(0)/m/n/12 mes
- []
-
-
-Overfull \hbox (30.72pt too wide) in paragraph at lines 679--679
-\TU/TeXGyreTermesX(0)/m/n/12 evaluado
- []
-
-
-Overfull \hbox (30.348pt too wide) in paragraph at lines 679--679
-\TU/TeXGyreTermesX(0)/m/n/12 (AAAA-
- []
-
-
-Overfull \hbox (13.332pt too wide) in paragraph at lines 679--679
-\TU/TeXGyreTermesX(0)/m/n/12 MM-
- []
-
-
-Overfull \hbox (9.324pt too wide) in paragraph at lines 679--679
-\TU/TeXGyreTermesX(0)/m/n/12 DD)| 
- []
-
-
-Overfull \hbox (49.32pt too wide) in paragraph at lines 679--679
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Identificador
- []
-
-
-Overfull \hbox (2.664pt too wide) in paragraph at lines 679--679
-\TU/TeXGyreTermesX(0)/m/n/12 del
- []
-
-
-Overfull \hbox (30.66pt too wide) in paragraph at lines 679--679
-\TU/TeXGyreTermesX(0)/m/n/12 producto| 
- []
-
-
-Overfull \hbox (33.98401pt too wide) in paragraph at lines 679--679
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Demanda
- []
-
-
-Overfull \hbox (5.988pt too wide) in paragraph at lines 679--679
-\TU/TeXGyreTermesX(0)/m/n/12 real
- []
-
-
-Overfull \hbox (36.588pt too wide) in paragraph at lines 679--679
-\TU/TeXGyreTermesX(0)/m/n/12 observada| 
- []
-
-
-Overfull \hbox (50.664pt too wide) in paragraph at lines 679--679
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Clasificación
- []
-
-
-Overfull \hbox (12.672pt too wide) in paragraph at lines 679--679
-\TU/TeXGyreTermesX(0)/m/n/12 ABC
- []
-
-
-Overfull \hbox (2.664pt too wide) in paragraph at lines 679--679
-\TU/TeXGyreTermesX(0)/m/n/12 del
- []
-
-
-Overfull \hbox (30.66pt too wide) in paragraph at lines 679--679
-\TU/TeXGyreTermesX(0)/m/n/12 producto| 
- []
-
-
-Overfull \hbox (50.664pt too wide) in paragraph at lines 679--679
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Clasificación
- []
-
-
-Overfull \hbox (45.264pt too wide) in paragraph at lines 679--679
-\TU/TeXGyreTermesX(0)/m/n/12 variabilidad| 
- []
-
-
-Overfull \hbox (39.324pt too wide) in paragraph at lines 679--679
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Predicción
- []
-
-
-Overfull \hbox (2.664pt too wide) in paragraph at lines 679--679
-\TU/TeXGyreTermesX(0)/m/n/12 del
- []
-
-
-Overfull \hbox (24.0pt too wide) in paragraph at lines 679--679
-\TU/TeXGyreTermesX(0)/m/n/12 modelo
- []
-
-
-Overfull \hbox (18.66pt too wide) in paragraph at lines 679--679
-\TU/TeXGyreTermesX(0)/m/n/12 Media
- []
-
-
-Overfull \hbox (17.34pt too wide) in paragraph at lines 679--679
-\TU/TeXGyreTermesX(0)/m/n/12 Móvil| 
- []
-
-
-Overfull \hbox (39.324pt too wide) in paragraph at lines 679--679
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Predicción
- []
-
-
-Overfull \hbox (2.664pt too wide) in paragraph at lines 679--679
-\TU/TeXGyreTermesX(0)/m/n/12 del
- []
-
-
-Overfull \hbox (24.0pt too wide) in paragraph at lines 679--679
-\TU/TeXGyreTermesX(0)/m/n/12 modelo
- []
-
-
-Overfull \hbox (36.48pt too wide) in paragraph at lines 679--679
-\TU/TeXGyreTermesX(0)/m/n/12 Regresión
- []
-
-
-Overfull \hbox (18.66pt too wide) in paragraph at lines 679--679
-\TU/TeXGyreTermesX(0)/m/n/12 Lineal| 
- []
-
-
-Overfull \hbox (39.324pt too wide) in paragraph at lines 679--679
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Predicción
- []
-
-
-Overfull \hbox (2.664pt too wide) in paragraph at lines 679--679
-\TU/TeXGyreTermesX(0)/m/n/12 del
- []
-
-
-Overfull \hbox (24.0pt too wide) in paragraph at lines 679--679
-\TU/TeXGyreTermesX(0)/m/n/12 modelo
- []
-
-
-Overfull \hbox (33.156pt too wide) in paragraph at lines 679--679
-\TU/TeXGyreTermesX(0)/m/n/12 XGBoost| 
- []
-
-
-Overfull \hbox (39.324pt too wide) in paragraph at lines 679--679
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Predicción
- []
-
-
-Overfull \hbox (2.664pt too wide) in paragraph at lines 679--679
-\TU/TeXGyreTermesX(0)/m/n/12 del
- []
-
-
-Overfull \hbox (24.0pt too wide) in paragraph at lines 679--679
-\TU/TeXGyreTermesX(0)/m/n/12 método
- []
-
-
-Overfull \hbox (31.32pt too wide) in paragraph at lines 679--679
-\TU/TeXGyreTermesX(0)/m/n/12 campeón
- []
-
-
-Overfull \hbox (49.98pt too wide) in paragraph at lines 679--679
-\TU/TeXGyreTermesX(0)/m/n/12 seleccionado| 
- []
-
-
-Overfull \hbox (13.62pt too wide) in paragraph at lines 679--679
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Error
- []
-
-
-Overfull \hbox (38.65201pt too wide) in paragraph at lines 679--679
-\TU/TeXGyreTermesX(0)/m/n/12 predicción
- []
-
-
-Overfull \hbox (9.336pt too wide) in paragraph at lines 679--679
-\TU/TeXGyreTermesX(0)/m/n/12 final| 
- []
-
-
-Overfull \hbox (25.332pt too wide) in paragraph at lines 679--679
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Modelo
- []
-
-
-Overfull \hbox (49.98pt too wide) in paragraph at lines 679--679
-\TU/TeXGyreTermesX(0)/m/n/12 seleccionado
- []
-
-
-Overfull \hbox (8.65201pt too wide) in paragraph at lines 679--679
-\TU/TeXGyreTermesX(0)/m/n/12 para
- []
-
-
-Overfull \hbox (3.324pt too wide) in paragraph at lines 679--679
-\TU/TeXGyreTermesX(0)/m/n/12 ese
- []
-
-
-Overfull \hbox (30.66pt too wide) in paragraph at lines 679--679
-\TU/TeXGyreTermesX(0)/m/n/12 producto
- []
-
-
-Overfull \hbox (7.332pt too wide) in paragraph at lines 679--679
-\TU/TeXGyreTermesX(0)/m/n/12 mes| 
- []
-
-
-Overfull \hbox (15.4088pt too wide) in alignment at lines 679--679
-[][][][] 
- []
-
-[169]
-Overfull \vbox (253.7479pt too high) has occurred while \output is active []
-
-
-Overfull \vbox (253.7479pt too high) has occurred while \output is active []
-
-
-[170]
-
-Package tabularx Warning: X Columns too narrow (table too wide)
-(tabularx)                 on input line 702.
-
-
-Overfull \hbox (48.66pt too wide) in paragraph at lines 702--702
-[]|\TU/TeXGyreTermesX(0)/b/n/12 Descripción| 
- []
-
-
-Overfull \hbox (49.32pt too wide) in paragraph at lines 702--702
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Identificador
- []
-
-
-Overfull \hbox (14.664pt too wide) in paragraph at lines 702--702
-\TU/TeXGyreTermesX(0)/m/n/12 único| 
- []
-
-
-Overfull \hbox (25.2pt too wide) in paragraph at lines 702--702
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Corrida
- []
-
-
-Overfull \hbox (5.20801pt too wide) in paragraph at lines 702--702
-\TU/TeXGyreTermesX(0)/m/n/12 que
- []
-
-
-Overfull \hbox (34.272pt too wide) in paragraph at lines 702--702
-\TU/TeXGyreTermesX(0)/m/n/12 pertenece| 
- []
-
-
-Overfull \hbox (49.32pt too wide) in paragraph at lines 702--702
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Identificador
- []
-
-
-Overfull \hbox (2.664pt too wide) in paragraph at lines 702--702
-\TU/TeXGyreTermesX(0)/m/n/12 del
- []
-
-
-Overfull \hbox (30.66pt too wide) in paragraph at lines 702--702
-\TU/TeXGyreTermesX(0)/m/n/12 producto| 
- []
-
-
-Overfull \hbox (27.084pt too wide) in paragraph at lines 702--702
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Nombre
- []
-
-
-Overfull \hbox (2.664pt too wide) in paragraph at lines 702--702
-\TU/TeXGyreTermesX(0)/m/n/12 del
- []
-
-
-Overfull \hbox (30.66pt too wide) in paragraph at lines 702--702
-\TU/TeXGyreTermesX(0)/m/n/12 producto| 
- []
-
-
-Overfull \hbox (34.896pt too wide) in paragraph at lines 702--702
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Categoría
- []
-
-
-Overfull \hbox (2.664pt too wide) in paragraph at lines 702--702
-\TU/TeXGyreTermesX(0)/m/n/12 del
- []
-
-
-Overfull \hbox (30.66pt too wide) in paragraph at lines 702--702
-\TU/TeXGyreTermesX(0)/m/n/12 producto| 
- []
-
-
-Overfull \hbox (8.664pt too wide) in paragraph at lines 702--702
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Mes
- []
-
-
-Overfull \hbox (17.328pt too wide) in paragraph at lines 702--702
-\TU/TeXGyreTermesX(0)/m/n/12 futuro
- []
-
-
-Overfull \hbox (49.812pt too wide) in paragraph at lines 702--702
-\TU/TeXGyreTermesX(0)/m/n/12 pronosticado
- []
-
-
-Overfull \hbox (30.348pt too wide) in paragraph at lines 702--702
-\TU/TeXGyreTermesX(0)/m/n/12 (AAAA-
- []
-
-
-Overfull \hbox (13.332pt too wide) in paragraph at lines 702--702
-\TU/TeXGyreTermesX(0)/m/n/12 MM)| 
- []
-
-
-Overfull \hbox (27.024pt too wide) in paragraph at lines 702--702
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Número
- []
-
-
-Overfull \hbox (7.332pt too wide) in paragraph at lines 702--702
-\TU/TeXGyreTermesX(0)/m/n/12 mes
- []
-
-
-Overfull \hbox (18.66pt too wide) in paragraph at lines 702--702
-\TU/TeXGyreTermesX(0)/m/n/12 dentro
- []
-
-
-Overfull \hbox (2.664pt too wide) in paragraph at lines 702--702
-\TU/TeXGyreTermesX(0)/m/n/12 del
- []
-
-
-Overfull \hbox (33.564pt too wide) in paragraph at lines 702--702
-\TU/TeXGyreTermesX(0)/m/n/12 horizonte| 
- []
-
-
-Overfull \hbox (39.324pt too wide) in paragraph at lines 702--702
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Predicción
- []
-
-
-Overfull \hbox (33.156pt too wide) in paragraph at lines 702--702
-\TU/TeXGyreTermesX(0)/m/n/12 XGBoost| 
- []
-
-
-Overfull \hbox (39.324pt too wide) in paragraph at lines 702--702
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Predicción
- []
-
-
-Overfull \hbox (36.48pt too wide) in paragraph at lines 702--702
-\TU/TeXGyreTermesX(0)/m/n/12 Regresión
- []
-
-
-Overfull \hbox (18.66pt too wide) in paragraph at lines 702--702
-\TU/TeXGyreTermesX(0)/m/n/12 Lineal| 
- []
-
-
-Overfull \hbox (39.324pt too wide) in paragraph at lines 702--702
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Predicción
- []
-
-
-Overfull \hbox (18.66pt too wide) in paragraph at lines 702--702
-\TU/TeXGyreTermesX(0)/m/n/12 Media
- []
-
-
-Overfull \hbox (17.34pt too wide) in paragraph at lines 702--702
-\TU/TeXGyreTermesX(0)/m/n/12 Móvil| 
- []
-
-
-Overfull \hbox (39.324pt too wide) in paragraph at lines 702--702
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Predicción
- []
-
-
-Overfull \hbox (2.664pt too wide) in paragraph at lines 702--702
-\TU/TeXGyreTermesX(0)/m/n/12 del
- []
-
-
-Overfull \hbox (24.0pt too wide) in paragraph at lines 702--702
-\TU/TeXGyreTermesX(0)/m/n/12 método
- []
-
-
-Overfull \hbox (31.32pt too wide) in paragraph at lines 702--702
-\TU/TeXGyreTermesX(0)/m/n/12 campeón| 
- []
-
-
-Overfull \hbox (25.332pt too wide) in paragraph at lines 702--702
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Modelo
- []
-
-
-Overfull \hbox (49.98pt too wide) in paragraph at lines 702--702
-\TU/TeXGyreTermesX(0)/m/n/12 seleccionado
- []
-
-
-Overfull \hbox (8.65201pt too wide) in paragraph at lines 702--702
-\TU/TeXGyreTermesX(0)/m/n/12 para
- []
-
-
-Overfull \hbox (3.324pt too wide) in paragraph at lines 702--702
-\TU/TeXGyreTermesX(0)/m/n/12 ese
- []
-
-
-Overfull \hbox (30.66pt too wide) in paragraph at lines 702--702
-\TU/TeXGyreTermesX(0)/m/n/12 producto| 
- []
-
-
-Overfull \hbox (21.4088pt too wide) in alignment at lines 702--702
-[][][][] 
- []
-
-
-Overfull \vbox (94.24791pt too high) has occurred while \output is active []
-
-
-Overfull \vbox (94.24791pt too high) has occurred while \output is active []
-
-
-[171]
-
-Package tabularx Warning: X Columns too narrow (table too wide)
-(tabularx)                 on input line 740.
-
-
-Overfull \hbox (48.66pt too wide) in paragraph at lines 740--740
-[]|\TU/TeXGyreTermesX(0)/b/n/12 Descripción| 
- []
-
-
-Overfull \hbox (49.32pt too wide) in paragraph at lines 740--740
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Identificador
- []
-
-
-Overfull \hbox (14.664pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 único| 
- []
-
-
-Overfull \hbox (25.2pt too wide) in paragraph at lines 740--740
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Corrida
- []
-
-
-Overfull \hbox (5.20801pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 que
- []
-
-
-Overfull \hbox (34.272pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 pertenece| 
- []
-
-
-Overfull \hbox (49.32pt too wide) in paragraph at lines 740--740
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Identificador
- []
-
-
-Overfull \hbox (2.664pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 del
- []
-
-
-Overfull \hbox (30.66pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 producto| 
- []
-
-
-Overfull \hbox (27.084pt too wide) in paragraph at lines 740--740
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Nombre
- []
-
-
-Overfull \hbox (2.664pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 del
- []
-
-
-Overfull \hbox (30.66pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 producto| 
- []
-
-
-Overfull \hbox (34.896pt too wide) in paragraph at lines 740--740
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Categoría
- []
-
-
-Overfull \hbox (2.664pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 del
- []
-
-
-Overfull \hbox (30.66pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 producto| 
- []
-
-
-Overfull \hbox (36.48pt too wide) in paragraph at lines 740--740
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Proveedor
- []
-
-
-Overfull \hbox (30.90001pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 principal| 
- []
-
-
-Overfull \hbox (36.48pt too wide) in paragraph at lines 740--740
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Proveedor
- []
-
-
-Overfull \hbox (21.564pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 alterno| 
- []
-
-
-Overfull \hbox (50.664pt too wide) in paragraph at lines 740--740
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Clasificación
- []
-
-
-Overfull \hbox (12.672pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 ABC| 
- []
-
-
-Overfull \hbox (50.664pt too wide) in paragraph at lines 740--740
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Clasificación
- []
-
-
-Overfull \hbox (45.264pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 variabilidad| 
- []
-
-
-Overfull \hbox (25.332pt too wide) in paragraph at lines 740--740
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Modelo
- []
-
-
-Overfull \hbox (15.996pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 usado
- []
-
-
-Overfull \hbox (8.65201pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 para
- []
-
-
-Overfull \hbox (41.808pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 pronosticar| 
- []
-
-
-Overfull \hbox (33.98401pt too wide) in paragraph at lines 740--740
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Demanda
- []
-
-
-Overfull \hbox (33.996pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 promedio
- []
-
-
-Overfull \hbox (49.14pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 pronosticada| 
- []
-
-
-Overfull \hbox (25.092pt too wide) in paragraph at lines 740--740
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Tiempo
- []
-
-
-Overfull \hbox (23.076pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 entrega
- []
-
-
-Overfull \hbox (28.656pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 semanas| 
- []
-
-
-Overfull \hbox (25.092pt too wide) in paragraph at lines 740--740
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Tiempo
- []
-
-
-Overfull \hbox (23.076pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 entrega
- []
-
-
-Overfull \hbox (17.328pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 meses| 
- []
-
-
-Overfull \hbox (14.856pt too wide) in paragraph at lines 740--740
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Stock
- []
-
-
-Overfull \hbox (34.896pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 seguridad
- []
-
-
-Overfull \hbox (33.98401pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 calculado| 
- []
-
-
-Overfull \hbox (16.008pt too wide) in paragraph at lines 740--740
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Punto
- []
-
-
-Overfull \hbox (24.648pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 reorden
- []
-
-
-Overfull \hbox (33.98401pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 calculado| 
- []
-
-
-Overfull \hbox (36.78pt too wide) in paragraph at lines 740--740
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Inventario
- []
-
-
-Overfull \hbox (38.004pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 disponible
- []
-
-
-Overfull \hbox (16.656pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 actual| 
- []
-
-
-Overfull \hbox (31.332pt too wide) in paragraph at lines 740--740
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Cantidad
- []
-
-
-Overfull \hbox (39.98401pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 económica
- []
-
-
-Overfull \hbox (20.664pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 pedido| 
- []
-
-
-Overfull \hbox (20.004pt too wide) in paragraph at lines 740--740
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Límite
- []
-
-
-Overfull \hbox (30.66pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 unidades
- []
-
-
-Overfull \hbox (15.996pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 según
- []
-
-
-Overfull \hbox (45.144pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 presupuesto| 
- []
-
-
-Overfull \hbox (31.332pt too wide) in paragraph at lines 740--740
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Cantidad
- []
-
-
-Overfull \hbox (9.336pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 final
- []
-
-
-Overfull \hbox (28.59601pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 sugerida| 
- []
-
-
-Overfull \hbox (15.828pt too wide) in paragraph at lines 740--740
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Costo
- []
-
-
-Overfull \hbox (25.572pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 unitario
- []
-
-
-Overfull \hbox (2.664pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 del
- []
-
-
-Overfull \hbox (30.66pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 producto| 
- []
-
-
-Overfull \hbox (15.828pt too wide) in paragraph at lines 740--740
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Costo
- []
-
-
-Overfull \hbox (9.336pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 total
- []
-
-
-Overfull \hbox (31.15201pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 estimado
- []
-
-
-Overfull \hbox (2.664pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 del
- []
-
-
-Overfull \hbox (20.664pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 pedido| 
- []
-
-
-Overfull \hbox (14.244pt too wide) in paragraph at lines 740--740
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Valor
- []
-
-
-Overfull \hbox (2.664pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 del
- []
-
-
-Overfull \hbox (36.12pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 inventario
- []
-
-
-Overfull \hbox (38.004pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 disponible| 
- []
-
-
-Overfull \hbox (24.84pt too wide) in paragraph at lines 740--740
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Margen
- []
-
-
-Overfull \hbox (25.572pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 unitario
- []
-
-
-Overfull \hbox (2.664pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 del
- []
-
-
-Overfull \hbox (30.66pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 producto
- []
-
-
-Overfull \hbox (21.98401pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 (precio
- []
-
-
-Overfull \hbox (19.332pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 menos
- []
-
-
-Overfull \hbox (13.15201pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 costo
- []
-
-
-Overfull \hbox (29.56801pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 unitario)| 
- []
-
-
-Overfull \hbox (15.828pt too wide) in paragraph at lines 740--740
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Costo
- []
-
-
-Overfull \hbox (31.15201pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 estimado
- []
-
-
-Overfull \hbox (22.896pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 ruptura
- []
-
-
-Overfull \hbox (35.604pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 (\TU/TeXGyreTermesX(0)/m/it/12 stockout\TU/TeXGyre
-TermesX(0)/m/n/12 )| 
- []
-
-
-Overfull \hbox (16.23601pt too wide) in paragraph at lines 740--740
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Fecha
- []
-
-
-Overfull \hbox (30.48pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 estimada
- []
-
-
-Overfull \hbox (5.20801pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 que
- []
-
-
-Overfull \hbox (23.556pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 debería
- []
-
-
-Overfull \hbox (22.656pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 pedirse
- []
-
-
-Overfull \hbox (30.348pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 (AAAA-
- []
-
-
-Overfull \hbox (13.332pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 MM-
- []
-
-
-Overfull \hbox (9.324pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 DD)| 
- []
-
-
-Overfull \hbox (9.996pt too wide) in paragraph at lines 740--740
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Días
- []
-
-
-Overfull \hbox (29.808pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 restantes
- []
-
-
-Overfull \hbox (12.48pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 hasta
- []
-
-
-Overfull \hbox (13.38pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 fecha
- []
-
-
-Overfull \hbox (30.48pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 estimada| 
- []
-
-
-Overfull \hbox (33.98401pt too wide) in paragraph at lines 740--740
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Indicador
- []
-
-
-Overfull \hbox (48.396pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 (“SI”/“NO”)
- []
-
-
-Overfull \hbox (14.952pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 alerta
- []
-
-
-Overfull \hbox (37.992pt too wide) in paragraph at lines 740--740
-\TU/TeXGyreTermesX(0)/m/n/12 reposición| 
- []
-
-
-Overfull \hbox (95.7728pt too wide) in alignment at lines 740--740
-[][][][] 
- []
-
-
-Overfull \vbox (1036.74768pt too high) has occurred while \output is active []
-
-
-Overfull \vbox (1036.74768pt too high) has occurred while \output is active []
-
-
-[172]
-Overfull \hbox (33.96082pt too wide) in paragraph at lines 761--761
-[]|\TU/TeXGyreTermesX(0)/b/n/12 Descripción| 
- []
-
-
-Overfull \hbox (34.62082pt too wide) in paragraph at lines 761--761
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Identificador
- []
-
-
-Overfull \hbox (10.50081pt too wide) in paragraph at lines 761--761
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Corrida
- []
-
-
-Overfull \hbox (19.57281pt too wide) in paragraph at lines 761--761
-\TU/TeXGyreTermesX(0)/m/n/12 pertenece| 
- []
-
-
-Overfull \hbox (12.32481pt too wide) in paragraph at lines 761--761
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Número
- []
-
-
-Overfull \hbox (3.96082pt too wide) in paragraph at lines 761--761
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Meses
- []
-
-
-Overfull \hbox (5.96481pt too wide) in paragraph at lines 761--761
-\TU/TeXGyreTermesX(0)/m/n/12 usados
- []
-
-
-Overfull \hbox (12.61281pt too wide) in paragraph at lines 761--761
-\TU/TeXGyreTermesX(0)/m/n/12 entrenar
- []
-
-
-Overfull \hbox (10.57281pt too wide) in paragraph at lines 761--761
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Periodo
- []
-
-
-Overfull \hbox (16.02081pt too wide) in paragraph at lines 761--761
-\TU/TeXGyreTermesX(0)/m/n/12 evaluado
- []
-
-
-Overfull \hbox (10.63281pt too wide) in paragraph at lines 761--761
-[]|\TU/TeXGyreTermesX(0)/m/n/12 Modelo
- []
-
-
-Overfull \hbox (16.02081pt too wide) in paragraph at lines 761--761
-\TU/TeXGyreTermesX(0)/m/n/12 evaluado
- []
-
-
-Overfull \hbox (12.20482pt too wide) in paragraph at lines 761--761
-\TU/TeXGyreTermesX(0)/m/n/12 (incluye
- []
-
-
-Overfull \hbox (16.45282pt too wide) in paragraph at lines 761--761
-\TU/TeXGyreTermesX(0)/m/n/12 “Sistema
- []
-
-
-Overfull \hbox (3.96082pt too wide) in paragraph at lines 761--761
-\TU/TeXGyreTermesX(0)/m/n/12 final”)| 
- []
-
-
-Overfull \hbox (15.30081pt too wide) in paragraph at lines 761--761
-\TU/TeXGyreTermesX(0)/m/n/12 obtenido
- []
-
-
-Overfull \hbox (5.9768pt too wide) in paragraph at lines 761--761
-[]|\TU/TeXGyreTermesX(0)/m/n/12 RMSE
- []
-
-
-Overfull \hbox (15.30081pt too wide) in paragraph at lines 761--761
-\TU/TeXGyreTermesX(0)/m/n/12 obtenido
- []
-
-
-Overfull \hbox (6.63681pt too wide) in paragraph at lines 761--761
-[]|\TU/TeXGyreTermesX(0)/m/n/12 MAPE
- []
-
-
-Overfull \hbox (15.30081pt too wide) in paragraph at lines 761--761
-\TU/TeXGyreTermesX(0)/m/n/12 obtenido
- []
-
-
-Overfull \hbox (5.91681pt too wide) in paragraph at lines 761--761
-[]|\TU/TeXGyreTermesX(0)/m/n/12 WAPE
- []
-
-
-Overfull \hbox (15.30081pt too wide) in paragraph at lines 761--761
-\TU/TeXGyreTermesX(0)/m/n/12 obtenido
- []
-
-
-Overfull \vbox (108.74794pt too high) has occurred while \output is active []
-
-
-Overfull \vbox (108.74794pt too high) has occurred while \output is active []
-
-
-[173] [174] (_minted/DE379DED7A7D7592B294434A9391A8EA.highlight.minted)
+[176] [177] (_minted/DE379DED7A7D7592B294434A9391A8EA.highlight.minted)
 (_minted/1548FA5526D3DB050E6EC39CFD626149.highlight.minted)
 (_minted/9340F2FE07033F9DFE5914CA990D695E.highlight.minted)
 (_minted/E56FF72A6C5EE3CFBFB1FA47B502A329.highlight.minted)
-(_minted/DD015CF752F4A4BE4A4F080B4481F4F4.highlight.minted) [175
+(_minted/DD015CF752F4A4BE4A4F080B4481F4F4.highlight.minted) [178
 
 ]
-(_minted/653637453976BA295238C5764F405DF9.highlight.minted) [176] [177]
-[178
+(_minted/653637453976BA295238C5764F405DF9.highlight.minted) [179] [180]
+[181
 
-]) [179
+]) [182
 
 ] (main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2020/03/25>
  ***********
-
-
-LaTeX Warning: There were multiply-defined labels.
-
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: CF2CCB92239C76058EC7AE9560513097;37683.
+(rerunfilecheck)             Checksum: 41AACA8ACD74B0086F87C38648666C74;38736.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 34704 strings out of 402986
- 743476 string characters out of 5448711
- 1836184 words of memory out of 5000000
- 62532 multiletter control sequences out of 15000+600000
+ 34696 strings out of 402986
+ 742975 string characters out of 5448711
+ 1836904 words of memory out of 5000000
+ 62525 multiletter control sequences out of 15000+600000
  636301 words of font info for 114 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 91i,14n,120p,1785b,5575s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 91i,14n,120p,1503b,5575s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.pdf (179 pages).
+Output written on main.pdf (182 pages).

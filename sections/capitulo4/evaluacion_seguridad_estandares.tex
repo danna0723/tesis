@@ -1,50 +1,61 @@
 La seguridad de Thary fue evaluada en base al rendimiento que tienen las mitigaciones implementadas en el sistema frente a las amenazas identificadas mediante el modelo STRIDE.
 
-\subsubsection{Resultados del analisis de amenazas (STRIDE)}
+\subsubsection{Resultados del análisis de amenazas (STRIDE)}
 
 En la siguiente tabla se pueden ver los resultados del estado de cada una de las partes de STRIDE, indicando si la amenaza fue mitigada o no y en el caso de que no lo haya sido, se indica el riesgo asociado a la amenaza.
 
 \begin{table}[H]
     \centering
-    \caption{Estado de mitigacion de las amenazas identificadas mediante STRIDE.}
+    \caption{Estado de mitigación de las amenazas identificadas mediante STRIDE.}
     \label{tab:resultados_stride}
-    \begin{tabularx}{\textwidth}{lcX}
-        \toprule
-        \textbf{Amenaza} & \textbf{Estado} & \textbf{Evidencia} \\
-        \midrule
-        Suplantacion de identidad & Mitigada & Contraseñas con hash \textit{scrypt}, nunca en texto plano \\
-        Manipulacion de datos & Mitigada & Cantidad y costo del pedido tomados del servidor, no del formulario \\
-        Repudio & Mitigada & Tabla \texttt{actividad} (subir archivo, confirmar/deshacer pedido, crear usuario) y registro de usuario/fecha en \texttt{pedidos} \\
-        Divulgacion de informacion & Mitigada & Aislamiento de datos por \texttt{empresa\_id} mediante clave foranea \\
-        Denegacion de servicio & Parcialmente mitigada & Limite de tamaño de archivo (\texttt{MAX\_CONTENT\_LENGTH}) y limite de tasa en login/registro (\textit{Flask-Limiter}, 10 solicitudes/minuto) \\
-        Elevacion de privilegios & Mitigada & Control de acceso por roles (\texttt{admin\_required}) en las siete rutas administrativas del sistema \\
-        \bottomrule
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabularx}{\textwidth}{|l|c|X|}
+    \hline
+    \textbf{Amenaza} & \textbf{Estado} & \textbf{Evidencia} \\
+    \hline
+    Suplantacion de identidad & Mitigada & Contraseñas con hash \textit{scrypt}, nunca en texto plano; clave de sesión (\texttt{SECRET\_KEY}) leída desde variable de entorno \\
+    \hline
+    Manipulacion de datos & Mitigada & Cantidad y costo del pedido tomados del servidor, no del formulario \\
+    \hline
+    Repudio & Mitigada & Tabla \texttt{actividad} (subir archivo, confirmar/deshacer pedido, crear usuario) y registro de usuario/fecha en \texttt{pedidos} \\
+    \hline
+    Divulgacion de información & Mitigada & Aislamiento de datos por \texttt{empresa\_id} mediante clave foranea \\
+    \hline
+    Denegación de servicio & Parcialmente mitigada & Límite de tamaño de archivo (\texttt{MAX\_CONTENT\_LENGTH}) y límite de tasa en login/registro (\textit{Flask-Limiter}, 10 solicitudes/minuto) \\
+    \hline
+    Elevacion de privilegios & Mitigada & Control de acceso por roles (\texttt{admin\_required}) en las siete rutas administrativas del sistema \\
+    \hline
     \end{tabularx}
 \end{table}
 
-Cinco de las seis amenazas fueron mitigadas exitosamente. La unica amenaza cuya mitigacion podria considerarse parcial es "Denegacion de servicio". Si bien se cuenta con mitigaciones como el limite para el tamaño de archivo y el limite de tasa en las rutas de login y registro, existe un problema en como se aplica este ultimo, ya que aunque se configuro un limite de intentos por minuto, el servidor corre con varios procesos distintos, y cada uno lleva su propia cuenta de intentos por separado sin compartirla entre si, ya que ese conteo se guarda en la memoria de cada proceso individual. Esto significa que una misma persona podria hacer mas intentos de los permitidos repartiendolos entre los distintos procesos, por lo que el limite real termina siendo mayor al configurado. Tampoco existe un mecanismo que bloquee a un usuario despues de varios intentos fallidos de contraseña, mas alla de este limite general de peticiones.
+Cinco de las seis amenazas fueron mitigadas exitosamente. La única amenaza cuya mitigación podría considerarse parcial es "Denegación de servicio". Si bien se cuenta con mitigaciones como el límite para el tamaño de archivo y el límite de tasa en las rutas de login y registro, existe un problema en como se aplica este último, ya que aunque se configuró un límite de intentos por minuto, el servidor corre con varios procesos distintos, y cada uno lleva su propia cuenta de intentos por separado sin compartirla entre si, ya que ese conteo se guarda en la memoria de cada proceso individual. Esto significa que una misma persona podría hacer más intentos de los permitidos repartiendolos entre los distintos procesos, por lo que el límite real termina siendo mayor al configurado. Tampoco existe un mecanismo que bloquee a un usuario después de varios intentos fallidos de contraseña, más allá de este límite general de peticiones.
 
-En cuanto a la mitigacion de repudio, esta solo cubre el registro de las actividades que los usuarios realizan estando ya dentro del sistema, como subir un archivo, confirmar o deshacer un pedido, o crear un nuevo usuario, por lo que no se registran eventos como el inicio de sesion.
+En cuanto a la mitigación de repudio, esta solo cubre el registro de las actividades que los usuarios realizan estando ya dentro del sistema, como subir un archivo, confirmar o deshacer un pedido, o crear un nuevo usuario, por lo que no se registran eventos como el inicio de sesión.
 
 \subsubsection{Nivel de cumplimiento frente a los estandares declarados}
 
-Por otro lado, tambien se realizo la evaluacion de cumplimiento frente a los estandares ISO/IEC/IEEE 12207, ISO/IEC/IEEE 29148, Modelo C4, ISO/IEC 25010, Modelado STRIDE. Resultados los cuales se resumieron en la siguiente tabla: 
+Por otro lado, también se realizo la evaluación de cumplimiento frente a los estandares ISO/IEC/IEEE 12207, ISO/IEC/IEEE 29148, Modelo C4, ISO/IEC 25010, Modelado STRIDE. Resultados los cuales se resumieron en la siguiente tabla: 
 
 \begin{table}[H]
     \centering
     \caption{Nivel de cumplimiento frente a los estandares de ingenieria declarados.}
     \label{tab:cumplimiento_estandares}
-    \begin{tabularx}{\textwidth}{lcX}
-        \toprule
-        \textbf{Estandar} & \textbf{Nivel} & \textbf{Evidencia} \\
-        \midrule
-        ISO/IEC/IEEE 12207 & Alto & Procesos tecnicos aplicados en su totalidad: stakeholders, requisitos, arquitectura, diseño detallado, amenazas \\
-        ISO/IEC/IEEE 29148 & Alto & SRS estructurado en requisitos funcionales, no funcionales y casos de uso, con especificacion completa en el Anexo A \\
-        ISO/IEC 25010 & Medio & Aplicado de forma implicita mediante los escenarios arquitecturales; no se realizo una evaluacion formal por cada caracteristica de calidad \\
-        Modelo C4 & Alto & Diagramas de contexto, contenedores y componentes, reflejando la arquitectura real del sistema \\
-        Modelado STRIDE & Alto & Seis categorias de amenaza evaluadas; cinco mitigadas, una parcialmente mitigada (Tabla \ref{tab:resultados_stride}) \\
-        \bottomrule
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabularx}{\textwidth}{|l|c|X|}
+    \hline
+    \textbf{Estándar} & \textbf{Nivel} & \textbf{Evidencia} \\
+    \hline
+    ISO/IEC/IEEE 12207 & Alto & Procesos técnicos aplicados en su totalidad: stakeholders, requisitos, arquitectura, diseño detallado, amenazas \\
+    \hline
+    ISO/IEC/IEEE 29148 & Alto & SRS estructurado en requisitos funcionales, no funcionales y casos de uso, con especificación completa en el Anexo A \\
+    \hline
+    ISO/IEC 25010 & Medio & Aplicado de forma implicita mediante los escenarios arquitecturales; no se realizo una evaluación formal por cada característica de calidad \\
+    \hline
+    Modelo C4 & Alto & Diagramas de contexto, contenedores y componentes, reflejando la arquitectura real del sistema \\
+    \hline
+    Modelado STRIDE & Alto & Seis categorías de amenaza evaluadas; cinco mitigadas, una parcialmente mitigada (Tabla \ref{tab:resultados_stride}) \\
+    \hline
     \end{tabularx}
 \end{table}
 
-En general, después de esta evaluacion de seguridad y estandares, se puede determinar que el sistema Thary cuenta con un nivel de cumplimiento alto en cuanto a los estandares de ISO/IEC/IEEE 12207, ISO/IEC/IEEE 29148, Modelo C4 y el Modelado STRIDE, los cuales representan tanto el proceso de ingenieria de requisitos como de arquitectura y analisis de amenazas. En cuanto al ISO/IEC 25010, este solo fue aplicado a traves de los escenarios arquitecturales, no se realizo una evaluacion formal para verificar cada caracteristica, por lo que se considera una oportunidad de mejora para trabajos futuros. 
+En general, después de esta evaluación de seguridad y estandares, se puede determinar que el sistema Thary cuenta con un nivel de cumplimiento alto en cuanto a los estandares de ISO/IEC/IEEE 12207, ISO/IEC/IEEE 29148, Modelo C4 y el Modelado STRIDE, los cuales representan tanto el proceso de ingenieria de requisitos como de arquitectura y análisis de amenazas. En cuanto al ISO/IEC 25010, este solo fue aplicado a través de los escenarios arquitecturales, no se realizo una evaluación formal para verificar cada característica, por lo que se considera una oportunidad de mejora para trabajos futuros. 

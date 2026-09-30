@@ -1,4 +1,4 @@
-A partir de los requisitos especificados, se elaboro la especificacion de requisitos funcionales (SRP), la cual fue estructurada mediante casos de uso y tomando como referencia los lineamientos de la norma IEEE 29148 para la elaboracion de los mismos. El sistema contempla dos actores principales, el administrados y el personal de inventario. El administrador es el tipo de usuario que mas privilegios tiene, es responsable de cargar el historial de consumo e iniciar el procesamiento y gestionar las cuentas de los usuarios. Mientras que el personal de inventario solo usa el sistema para consultar las predicciones y, entre otras actividades, gestionar los pedidos sugeridos. La figura debajo representa los casos de uso correspondientes al Administrador:
+A partir de los requisitos especificados, se elaboró la especificación de requisitos funcionales (SRP), la cual fue estructurada mediante casos de uso y tomando como referencia los lineamientos de la norma IEEE 29148 para la elaboración de los mismos. El sistema contempla dos actores principales, el administrados y el personal de inventario. El administrador es el tipo de usuario que más privilegios tiene, es responsable de cargar el historial de consumo e iniciar el procesamiento y gestionar las cuentas de los usuarios. Mientras que el personal de inventario solo usa el sistema para consultar las predicciones y, entre otras actividades, gestionar los pedidos sugeridos. La figura debajo representa los casos de uso correspondientes al Administrador:
 
 \begin{figure}[H]
     \centering
@@ -61,27 +61,27 @@ CU-12 & Consultar perfil & Usuario registrado & RF-13 \\
 
     \item Caso de uso CU-02 (Cargar historial de consumo (administrador)): Este caso de uso corresponde al RF-01, y permite al administrador seleccionar y cargar el archivo csv con el historial de consumo.
 
-    \item Caso de uso CU-03 (Iniciar procesamiento(Administrador)): Corresponde al requerimiento RF-02, que hace referncia a que una vez cargado el archivo, el administrador debe de seleccionar la opcion "Procesar archivo" para que el sistema inicialice el procesamiento de los datos. 
+    \item Caso de uso CU-03 (Iniciar procesamiento(Administrador)): Corresponde al requerimiento RF-02, que hace referncia a que una vez cargado el archivo, el administrador debe de seleccionar la opción "Procesar archivo" para que el sistema inicialice el procesamiento de los datos. 
 
     \item Caso de uso CU-04 (Consultar demanda pronosticada (Personal de inventario)): Este caso de uso corresponde al RF-02 y al RF-05, y le permite al usuario consultar la demanda mensual estimada para cada producto una vez el archivo ya ha sido procesado.
 
     \item Caso de uso CU-05 (Consultar estado del inventario (Personal de inventario)): Este caso de uso corresponde a RF-04, que permite al usuario visualizar tanto el inventario disponible como los productos que presentan condiciones de alerta.
 
-    \item Caso de uso CU-06 (Consultar las recomendaciones de reposicion y presupuesto (Personal del inventario)): Corresponde al requisito RF-03, y le permite al usuario consultar las recomendaciones generadas por el sistema y la informacion asociada al presupuesto disponible
+    \item Caso de uso CU-06 (Consultar las recomendaciones de reposición y presupuesto (Personal del inventario)): Corresponde al requisito RF-03, y le permite al usuario consultar las recomendaciones generadas por el sistema y la información asociada al presupuesto disponible
 
     \item Caso de uso CU-07 (Registrar pedido (Personal de inventario)): Este se relaciona directamente con el RF-06, y permite marcar como completado las recomendaciones de pedido generadas por Thary. Los pedidos confirmados quedan registrados con el nombre de la persona que los completa.
 
     \item Caso de uso CU-08 (Gestionar cuentas de usuario(administrador)): Le permite al administrador el poder crear nuevas cuentas al personal del inventario.
     
-    \item Caso de uso CU-09 (Deshacer pedido (Personal de inventario)): Corresponde al RF-10, y le permite al personal de inventario revertir un pedido previamente confirmado, en caso de haberse equivocado o de que la confirmacion ya no sea necesaria.
+    \item Caso de uso CU-09 (Deshacer pedido (Personal de inventario)): Corresponde al RF-10, y le permite al personal de inventario revertir un pedido previamente confirmado, en caso de haberse equivocado o de que la confirmación ya no sea necesaria.
 
-    \item Caso de uso CU-10 (Consultar actividad de la empresa (Administrador)): Este caso de uso corresponde al RF-11, y le permite al administrador consultar la bitacora completa de acciones realizadas por todos los usuarios de su empresa: carga de archivos, confirmacion o reversion de pedidos, creacion de usuarios, con fines de auditoria.
+    \item Caso de uso CU-10 (Consultar actividad de la empresa (Administrador)): Este caso de uso corresponde al RF-11, y le permite al administrador consultar la bitacora completa de acciones realizadas por todos los usuarios de su empresa: carga de archivos, confirmación o reversión de pedidos, creación de usuarios, con fines de auditoria.
 
-    \item Caso de uso CU-11 (Consultar calendario de pedidos (Personal de inventario)): Se relaciona con el RF-12, y le permite al usuario visualizar en un calendario las fechas estimadas en las que debe realizarse el pedido de cada producto, segun las recomendaciones generadas por el sistema.
+    \item Caso de uso CU-11 (Consultar calendario de pedidos (Personal de inventario)): Se relaciona con el RF-12, y le permite al usuario visualizar en un calendario las fechas estimadas en las que debe realizarse el pedido de cada producto, según las recomendaciones generadas por el sistema.
 
     \item Caso de uso CU-12 (Consultar perfil (Usuario registrado)): Este caso de uso corresponde al RF-13, y le permite a cualquier usuario, sin importar su rol, poder consultar los datos de su propia cuenta y el historial de las acciones que el mismo ha realizado en el sistema.
 \end{itemize}
 
-Todos los casos de uso se documentan individualmente en la especificacion SRS presentada en el Anexo A, la cual contempla detalles como objetivo, actor principal, precondiciones y postcondiciones, flujo principales y alternativos.
+Todos los casos de uso se documentan individualmente en la especificación SRS presentada en el Anexo A, la cual contempla detalles como objetivo, actor principal, precondiciones y postcondiciones, flujo principales y alternativos.
 
-En cuanto a elementos como las precondiciones, estos se establecen antes de iniciar una funcionalidad, mientras que las postcondiciones describen cual es el estado esperado del sistema al finalizar el proceso, es de esta manera que realizar una correcta especificacion de casos permite establecer una base a la hora de continuar con el proceso de diseño de arquitectura e implementacion de servicios.
+En cuanto a elementos como las precondiciones, estos se establecen antes de iniciar una funcionalidad, mientras que las postcondiciones describen cual es el estado esperado del sistema al finalizar el proceso, es de esta manera que realizar una correcta especificación de casos permite establecer una base a la hora de continuar con el proceso de diseño de arquitectura e implementación de servicios.

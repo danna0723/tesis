@@ -1,13 +1,13 @@
-El principal criterio de aceptacion que se establece para Thary es que el componente principal, es decir, el metodo de seleccion del mejor modelo por producto, debe tener un mejor resultado que la Media Movil aplicada a todo el catalogo, y esto debe cumplirse en todos los periodos evaluados de la validacion cruzada, no solo en el promedio general.
+El principal criterio de aceptación que se establece para Thary es que el componente principal, es decir, el método de selección del mejor modelo por producto, debe tener un mejor resultado que la Media Móvil aplicada a todo el catálogo, y esto debe cumplirse en todos los periodos evaluados de la validación cruzada, no solo en el promedio general.
 
-Esta comparacion se hace con la metrica WAPE, promediada sobre los distintos periodos de la validacion cruzada. Se eligio esta metrica porque representa el error total del pronostico como porcentaje de la demanda total, y porque no se infla con productos de demanda baja, como si le ocurre al MAPE, que ademas no se puede calcular cuando la demanda es cero.
+Esta comparación se hace con la métrica WAPE, promediada sobre los distintos periodos de la validación cruzada. Se eligió esta métrica porque representa el error total del pronóstico como porcentaje de la demanda total, y porque no se infla con productos de demanda baja, como si le ocurre al MAPE, que además no se puede calcular cuando la demanda es cero.
 
-Otro factor que se tiene en cuenta para el cumplimiento del criterio es que, cuando se hace la seleccion del modelo ganador para cada producto, se selecciona con base en cual de los tres cuenta con el menor MAE en el periodo de prueba. Una vez hecho esto, se aplica la prueba de Diebold-Mariano con la correccion de Harvey-Leybourne-Newbold, para verificar que su ventaja no sea por ruido en los datos o otros factores externos. Si no se encuentra suficiente evidencia de que la ventaja es real, se usa Media Movil como respaldo en vez de aceptar ese resultado.
+Otro factor que se tiene en cuenta para el cumplimiento del criterio es que, cuando se hace la selección del modelo ganador para cada producto, se selecciona con base en cual de los tres cuenta con el menor MAE en el periodo de prueba. Una vez hecho esto, se aplica la prueba de Diebold-Mariano con la corrección de Harvey-Leybourne-Newbold, para verificar que su ventaja no sea por ruido en los datos o otros factores externos. Si no se encuentra suficiente evidencia de que la ventaja es real, se usa Media Móvil como respaldo en vez de aceptar ese resultado.
 
-Adicionalmente, tambien se definieron los siguientes criterios generales de aceptacion para el sistema:
+Adicionalmente, también se definieron los siguientes criterios generales de aceptación para el sistema:
 
 \begin{itemize}
     \item Todas las pruebas automatizadas hechas con Pytest deben pasar sin errores, tanto en la computadora local como en GitHub Actions.
     \item El flujo completo de Thary: cargar un archivo, procesarlo, ver los resultados y confirmar un pedido, debe poder hacerse de principio a fin sin errores.
-    \item El sistema debe poder generar una prediccion incluso si un producto tiene poco historial (menos de 4 meses), usando media movil como metodo de respaldo en vez de fallar o excluir ese producto.
+    \item El sistema debe poder generar una predicción incluso si un producto tiene poco historial (menos de 4 meses), usando media móvil como método de respaldo en vez de fallar o excluir ese producto.
 \end{itemize}

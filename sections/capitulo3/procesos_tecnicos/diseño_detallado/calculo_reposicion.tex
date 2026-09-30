@@ -1,6 +1,6 @@
-El calculo de la reposicion responde a la necesidad de determinar cuanto inventario de seguridad es conveniente mantener para cada producto en un nuevo pedido, junto a otra informacion relevante como en que nivel de inventario es mas conveniente hacer el pedido, que cantidad se debe pedir y en que fecha debe hacerse el pedido.
+El cálculo de la reposición responde a la necesidad de determinar cuánto inventario de seguridad es conveniente mantener para cada producto en un nuevo pedido, junto a otra información relevante como en qué nivel de inventario es más conveniente hacer el pedido, qué cantidad se debe pedir y en qué fecha debe hacerse el pedido.
 
-Para esta parte, se utilizaron las formulas de gestion de inventraio clasicas para stock de seguridad, punto de reorden y cantidad económica de pedido (EOQ), los cuales tambien se usaron en los ejemplos de referencia \textit{Ejemplo 1 (SKU Demand Forecasting)} \cite{ejemplo1_demandforecast} y \textit{Ejemplo 2 (Machine Learning for Retail Demand Forecasting: Comparative Study of Demand Forecasting Methods for a Retail Store (XGBoost Model vs. Rolling Mean))} \cite{ejemplo2_saci2020mlretail}. En este aspecto, la propuesta de valor de Thary es que estas formulas se hacen en base al pronostico futuro que fue generado en la etapa anterior, y no en base a los datos historicos. 
+Para esta parte, se utilizaron las fórmulas de gestión de inventraio clásicas para stock de seguridad, punto de reorden y cantidad económica de pedido (EOQ), los cuales también se usaron en los ejemplos de referencia \textit{Ejemplo 1 (SKU Demand Forecasting)} \cite{ejemplo1_demandforecast} y \textit{Ejemplo 2 (Machine Learning for Retail Demand Forecasting: Comparative Study of Demand Forecasting Methods for a Retail Store (XGBoost Model vs. Rolling Mean))} \cite{ejemplo2_saci2020mlretail}. En este aspecto, la propuesta de valor de Thary es que estas fórmulas se hacen en base al pronóstico futuro que fue generado en la etapa anterior, y no en base a los datos históricos. 
 
 A partir de las predicciones finales de los meses pronosticados se calculan el promedio mensual $\bar{d}$ y su desviación estándar $\sigma_d$.    
 
@@ -17,7 +17,7 @@ def calcular_tabla_reorden(
 
 \paragraph{Lead time}
 
-El lead time ($L$) de cada producto representa el tiempo en el que los proovedores entregarian el producto despues de hacer un pedido, en el sistema se expresa en meses para que sea consistente con la unidad de tiempo de las demandas. Para asegurar esto, si el archivo original contiene el lead time en semanas, el sistema convierte los semanas de lead time a meses, dividiendolas entre 4.345. De no tener el lead time, se asume un valor por defecto de 0.5 meses.
+El lead time ($L$) de cada producto representa el tiempo en el que los proovedores entregarian el producto después de hacer un pedido, en el sistema se expresa en meses para que sea consistente con la unidad de tiempo de las demandas. Para asegurar esto, si el archivo original contiene el lead time en semanas, el sistema convierte los semanas de lead time a meses, dividiendolas entre 4.345. De no tener el lead time, se asume un valor por defecto de 0.5 meses.
 
 \begin{minted}{python}
 lead_time_meses = (
@@ -62,7 +62,7 @@ En el que:
 
 \paragraph{Cantidad económica de pedido (EOQ)}
 
-El EOQ consiste en la cantidad de cada pedido que minimiza los costos de inventario, considerando el costo de mantener inventario y el costo de hacer pedidos. La formula consiste en:
+El EOQ consiste en la cantidad de cada pedido que minimiza los costos de inventario, considerando el costo de mantener inventario y el costo de hacer pedidos. La fórmula consiste en:
 
 \[
 EOQ = \sqrt{\frac{2 \cdot D \cdot S}{H}}
@@ -76,7 +76,7 @@ En donde:
     \item $H$ es el costo anual de mantener una unidad en inventario, calculado como el costo unitario multiplicado por el porcentaje de costo de mantenimiento.
 \end{itemize}
 
-En el sistema, esto se implemento teniendo en cuenta que como el costo de pedido y el porcentaje de mantenimiento son columnas opcionales del archivo csv, por lo que el EOQ solo se calcula si estan disponibles en el archivo:
+En el sistema, esto se implementó teniendo en cuenta que como el costo de pedido y el porcentaje de mantenimiento son columnas opcionales del archivo csv, por lo que el EOQ solo se calcula si estan disponibles en el archivo:
 
 \begin{minted}{python}
 demanda_anual_estimada = demanda_promedio * 12
@@ -90,9 +90,9 @@ else:
 \paragraph{Cantidad sugerida y presupuesto}
 
 
-La cantidad sugerida se calcula en base al EOQ, de no estarlo, pero se conoce el inventario actual, se sugiere la cantidad que falta para llegar al punto de reorden. Esto se propuso en el sistema Thary para poder hacer recomendaciones de pedidos en catalogos que no traigan costros de pedido o mantenimiento.
+La cantidad sugerida se calcula en base al EOQ, de no estarlo, pero se conoce el inventario actual, se sugiere la cantidad que falta para llegar al punto de reorden. Esto se propuso en el sistema Thary para poder hacer recomendaciones de pedidos en catálogos que no traigan costos de pedido o mantenimiento.
 
-En cuanto al presupuesto, la cantidad que el usuario incluye se reparte por igual entre todos los productis y el limite corresponde a la cantidad de unidades que ese monto permite comprar. La canidad final es el menor valor entre la cantidad calculada y el límite por presupuesto. El costo estimado del pedido se obtiene multiplicando esa cantidad por el costo unitario.
+En cuanto al presupuesto, la cantidad que el usuario incluye se reparte por igual entre todos los productos y el límite corresponde a la cantidad de unidades que ese monto permite comprar. La cantidad final es el menor valor entre la cantidad calculada y el límite por presupuesto. El costo estimado del pedido se obtiene multiplicando esa cantidad por el costo unitario.
 
 \begin{minted}{python}
 presupuesto_por_producto = working_capital_budget / n_productos_activos
@@ -115,9 +115,9 @@ if not pd.isna(cantidad_sugerida) and not pd.isna(limite_presupuesto):
 
 \paragraph{Decisión de pedido y fecha estimada}
 
-Para poder organizar los pedidos de una manera eficiente y facil de interpretar, los productos se marcan con un indicador de si es necesario hacer un pedido o no, (\texttt{ordenar = "SI"}) cuando el inventario actual del producto es menor o igual al punto de reorden.
+Para poder organizar los pedidos de una manera eficiente y fácil de interpretar, los productos se marcan con un indicador de si es necesario hacer un pedido o no, (\texttt{ordenar = "SI"}) cuando el inventario actual del producto es menor o igual al punto de reorden.
 
-Tambien se incluyo la fecha estimada en la que el inventario llegara a ese punto de reposicion, asumiendo que el consumo del inventario se matiene con el ritmo promedio ya pronosticado, la fecha de referencia es el ultimo mes del que se tiene informacion en el archivo csv. Si el inventario esta por debajo de lpunto de reorden, se usa la fecha del ultimo mes con datos de archivo. Por otra parte, si el inventario está por encima, se calculan los días que faltan para llegar al punto de reorden, dividiendo el inventario que sobra entre la demanda diaria, que es la demanda mensual pronosticada dividida entre 30.44 (días promedio por mes). Esos días se suman a la fecha de referencia y el resultado es la fecha estimada en la que se debe hacer el pedido. Se aplica un tope de 36\,500 días (100 años) para evitar valores absurdos en productos con demanda pronosticada casi nula. Si no hay inventario o no hay demanda pronosticada, no se puede estimar la fecha.
+También se incluyó la fecha estimada en la que el inventario llegará a ese punto de reposición, asumiendo que el consumo del inventario se mantiene con el ritmo promedio ya pronosticado, la fecha de referencia es el último mes del que se tiene información en el archivo csv. Si el inventario está por debajo del punto de reorden, se usa la fecha del último mes con datos de archivo. Por otra parte, si el inventario está por encima, se calculan los días que faltan para llegar al punto de reorden, dividiendo el inventario que sobra entre la demanda diaria, que es la demanda mensual pronosticada dividida entre 30.44 (días promedio por mes). Esos días se suman a la fecha de referencia y el resultado es la fecha estimada en la que se debe hacer el pedido. Se aplica un tope de 36\,500 días (100 años) para evitar valores absurdos en productos con demanda pronosticada casi nula. Si no hay inventario o no hay demanda pronosticada, no se puede estimar la fecha.
 
 \begin{minted}{python}
 ya_hay_que_pedir = not pd.isna(inventario_actual) and inventario_actual <= punto_reorden
@@ -138,6 +138,6 @@ else:
     fecha_estimada_pedido = None
     dias_para_pedido = np.nan\end{minted}
 
-Como calculos adicionales, se incluyo que la tabla de reposición también calculara el valor del inventario actual y el margen de dinero que se dejaria de ganar si el producto se agota durante el lead time.
+Como calculos adicionales, se incluyó que la tabla de reposición también calculara el valor del inventario actual y el margen de dinero que se dejaria de ganar si el producto se agota durante el lead time.
 
-Como principales limitaciones es que $\sigma_d$ sale de las predicciones y no del error de pronostico ni sobre la demanda real, por lo que mide que tanto varian las predicciones y no la incertidumbre real.
+Como principales limitaciones es que $\sigma_d$ sale de las predicciones y no del error de pronóstico ni sobre la demanda real, por lo que mide que tanto varian las predicciones y no la incertidumbre real.

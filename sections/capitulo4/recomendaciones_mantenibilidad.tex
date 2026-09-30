@@ -1,40 +1,40 @@
 % TODO: recomendaciones para la operacion, soporte y mantenibilidad del sistema.
 
-Las recomendaciones para la operacion y mantenibilidad de Thary se realizan a partir de los hallazgos encontrados durante la evaluacion de seguridad y del analisis de despliegue. El objetivo de estas recomendaciones es poder garantizar la continuidad del servicio, la seguridad de los datos y la mantenibilidad del sistema a lo largo del tiempo.
+Las recomendaciones para la operación y mantenibilidad de Thary se realizan a partir de los hallazgos encontrados durante la evaluación de seguridad y del análisis de despliegue. El objetivo de estas recomendaciones es poder garantizar la continuidad del servicio, la seguridad de los datos y la mantenibilidad del sistema a lo largo del tiempo.
 
-\subsubsection{Continuidad y recuperacion de datos}
+\subsubsection{Continuidad y recuperación de datos}
 
-Para garantizar que en caso de que el sistema falle se puedan recuperar los datos, se recomienda implementar un plan de respaldo y restauracion de datos que abarque los siguientes puntos, teniendo en cuenta que el sistema se encuentra actualmente desplegado en Railway, un proveedor de nube que ofrece servicios de base de datos y despliegue de aplicaciones web:
+Para garantizar que en caso de que el sistema falle se puedan recuperar los datos, se recomienda implementar un plan de respaldo y restauración de datos que abarque los siguientes puntos, teniendo en cuenta que el sistema se encuentra actualmente desplegado en Railway, un proveedor de nube que ofrece servicios de base de datos y despliegue de aplicaciones web:
 
 \begin{itemize}
-    \item Activar la funcionalidad de \textit{backups} automaticos diarios de Railway sobre el servicio de MySQL, priorizando las tablas \texttt{usuarios}, \texttt{empresas} y \texttt{pedidos}.
-    \item Configurar un volumen de almacenamiento persistente para el servicio web de Thary, para asegurar que los archivos que sean generados durante la ejecución como el CSV cargado, el modelo entrenado, graficas, etc. no se pierdan ante cada redespliegue.
-    \item Complementar los \textit{backups} nativos de Railway con una exportacion periodica (\texttt{mysqldump}) hacia un proveedor de nube distinto, esto con el fin de tener una copia de seguridad adicional y evitar depender de un unico proveedor. De esta manera, de fallar Railway, se podra restaurar la base de datos en otro proveedor de nube y continuar con la operacion del sistema.
-    \item Documentar el proceso de recuperacion de datos, especificando el orden de prioridad de restauracion. Las tablas de empresas y usuarios tienen prioridad, por lo que deben de restaurarse antes que otras tablas como resultados, dado que estas dependen de aquellas por clave foranea. Asimismo, se debe especificar los responsables de ejecutarlo.
-    \item Cada tres meses debe de ejecutarse una prueba de restauracion real sobre un entorno distinto al de produccion. Esto con el fin de confirmar que los \textit{backups} generados efectivamente pueden restaurarse.
+    \item Activar la funcionalidad de \textit{backups} automáticos diarios de Railway sobre el servicio de MySQL, priorizando las tablas \texttt{usuarios}, \texttt{empresas} y \texttt{pedidos}.
+    \item Configurar un volumen de almacenamiento persistente para el servicio web de Thary, para asegurar que los archivos que sean generados durante la ejecución como el CSV cargado, el modelo entrenado, gráficas, etc. no se pierdan ante cada redespliegue.
+    \item Complementar los \textit{backups} nativos de Railway con una exportación periodica (\texttt{mysqldump}) hacia un proveedor de nube distinto, esto con el fin de tener una copia de seguridad adicional y evitar depender de un único proveedor. De esta manera, de fallar Railway, se podrá restaurar la base de datos en otro proveedor de nube y continuar con la operación del sistema.
+    \item Documentar el proceso de recuperación de datos, especificando el orden de prioridad de restauración. Las tablas de empresas y usuarios tienen prioridad, por lo que deben de restaurarse antes que otras tablas como resultados, dado que estas dependen de aquellas por clave foranea. Asimismo, se debe especificar los responsables de ejecutarlo.
+    \item Cada tres meses debe de ejecutarse una prueba de restauración real sobre un entorno distinto al de producción. Esto con el fin de confirmar que los \textit{backups} generados efectivamente pueden restaurarse.
 \end{itemize}
 
 \subsubsection{Seguridad}
 
-Para garantizar la seguridad tanto de los datos como de la informacion de los usuarios, se recomienda: 
+Para garantizar la seguridad tanto de los datos como de la información de los usuarios, se recomienda: 
 
 \begin{itemize}
-    \item Implementar una politica de complejidad para las contraseñas de los usuarios al momento del registro que incluya requisitos como un mínimo de 8 caracteres, la inclusion de letras mayúsculas, minúsculas, números y caracteres especiales, 
-    \item Hacer que los distintos procesos del servidor compartan un mismo conteo de intentos de inicio de sesion, en vez de que cada uno lleve su propia cuenta por separado. Asi, se garantiza que el limite de intentos de inicio de sesion que esta configurado se cumpla de verdad, sin importar cuantos procesos esten corriendo.
-    \item Registrar los inicios de sesion dentro de la bitacora de actividades, complementando las demas acciones de los usuarios que ya se registran.
+    \item Implementar una politica de complejidad para las contraseñas de los usuarios al momento del registro que incluya requisitos como un mínimo de 8 caracteres, la inclusión de letras mayúsculas, minúsculas, números y caracteres especiales, 
+    \item Hacer que los distintos procesos del servidor compartan un mismo conteo de intentos de inicio de sesión, en vez de que cada uno lleve su propia cuenta por separado. Así, se garantiza que el límite de intentos de inicio de sesión que está configurado se cumpla de verdad, sin importar cuántos procesos estén corriendo.
+    \item Registrar los inicios de sesión dentro de la bitacora de actividades, complementando las demas acciones de los usuarios que ya se registran.
 \end{itemize}
 
-\subsubsection{Verificacion continua}
+\subsubsection{Verificación continua}
 
 \begin{itemize}
-    \item Ampliar el alcance de las pruebas automatizadas para que tambien cubran las etapas faltantes: segmentacion de productos, construccion de variables, las rutas y autenticacion de la aplicacion web.
-    \item Configurar el flujo de integracion continua de GitHub Actions para que, ademas de ejecutar las pruebas, tambien calcule y reporte la cobertura de codigo en cada \textit{push}, facilitando el seguimiento de esta ampliacion en el tiempo.
-    \item Establecer un ambiente de pruebas (\textit{staging}) que este separado del entorno de produccion y cuente con su propia instancia de base de datos, para poder realizar pruebas de seguridad y validar cambios antes de desplegarlos a produccion.
+    \item Ampliar el alcance de las pruebas automatizadas para que también cubran las etapas faltantes: segmentación de productos, construcción de variables, las rutas y autenticación de la aplicación web.
+    \item Configurar el flujo de integración continua de GitHub Actions para que, además de ejecutar las pruebas, también calcule y reporte la cobertura de código en cada \textit{push}, facilitando el seguimiento de esta ampliacion en el tiempo.
+    \item Establecer un ambiente de pruebas (\textit{staging}) que este separado del entorno de producción y cuente con su propia instancia de base de datos, para poder realizar pruebas de seguridad y validar cambios antes de desplegarlos a producción.
 \end{itemize}
 
 \subsubsection{Accesibilidad y mantenibilidad de la interfaz}
 
 \begin{itemize}
-    \item Incorporar nuevos mecanismos basicos para garantizar que las pantallas de interfaz del sistema sean inclusivas y accesibles para todo tipo de usuarios, entre los mecanismos que convendria incluir se encuentran: etiquetas para lectores de pantalla, navegacion completa por teclado, entre otros.
-    \item Mantener actualizada la documentacion del diccionario de datos del Anexo B cada vez que se agregue una nueva columna al esquema de la base de datos.
+    \item Incorporar nuevos mecanismos basicos para garantizar que las pantallas de interfaz del sistema sean inclusivas y accesibles para todo tipo de usuarios, entre los mecanismos que convendría incluir se encuentran: etiquetas para lectores de pantalla, navegación completa por teclado, entre otros.
+    \item Mantener actualizada la documentación del diccionario de datos del Anexo B cada vez que se agregue una nueva columna al esquema de la base de datos.
 \end{itemize}

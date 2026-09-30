@@ -1,5 +1,5 @@
 % Guia: flujos de usuario, wireframes y criterios de usabilidad y accesibilidad.
-El nombre del sistema "Thary" fue elegido en la etapa de diseño de identidad visual, es un nombre corto escogido por foneticamente sonar similar a las ultimas cuatro letras de la palabra "Inventory", (inventario en ingles). En cuanto a icono representativo, se eligio la figura de un buho, para transmitir la idea de orden y control, ya que los buhos son animales reconocidos por su capacidad de percepcion y vigilancia, relacionado a como Thary se encarga de detectar señales de riesgo que podrian afectar el inventario de una empresa.
+El nombre del sistema "Thary" fue elegido en la etapa de diseño de identidad visual, es un nombre corto escogido por fonéticamente sonar similar a las últimas cuatro letras de la palabra "Inventory", (inventario en inglés). En cuanto a icono representativo, se eligió la figura de un buho, para transmitir la idea de orden y control, ya que los buhos son animales reconocidos por su capacidad de percepción y vigilancia, relacionado a como Thary se encarga de detectar señales de riesgo que podrían afectar el inventario de una empresa.
 
 \begin{figure}[H]
     \centering
@@ -8,14 +8,14 @@ El nombre del sistema "Thary" fue elegido en la etapa de diseño de identidad vi
     \label{fig:ux_login_logo}
 \end{figure}
 
-Para realizar el diseño de interaccion de Thary, se decidio separar las pantallas en dos: Una dirigida exclusivamente a los administradores y otra dirigida a los empleados del inventario. Al ingresar al sistema, un usuario con el rol de administrador sigue el siguiente flujo:
+Para realizar el diseño de interacción de Thary, se decidió separar las pantallas en dos: Una dirigida exclusivamente a los administradores y otra dirigida a los empleados del inventario. Al ingresar al sistema, un usuario con el rol de administrador sigue el siguiente flujo:
 
-El usuario inicia sesion o se registra de no tener una cuenta.
+El usuario inicia sesión o se registra de no tener una cuenta.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{templatefigures/ux_login}
-    \caption{Pantalla de inicio de sesion de Thary}
+    \caption{Pantalla de inicio de sesión de Thary}
     \label{fig:ux_login}
 \end{figure}
 
@@ -26,7 +26,7 @@ El usuario inicia sesion o se registra de no tener una cuenta.
     \label{fig:ux_registro}
 \end{figure}
 
-El administrador inicia en la pantalla de inicio del sistema, desde la cual puede acceder a la funcionalidad de carga de archivo (\textit{index}), al haber cargado el archivo correctamnete y que este sea valido, se le redirige automaticamente al dashboard, donde al seleccionar "Pronostico de demanda", se muestran los resultados.
+El administrador inicia en la pantalla de inicio del sistema, desde la cual puede acceder a la funcionalidad de carga de archivo (\textit{index}), al haber cargado el archivo correctamente y que este sea válido, se le redirige automáticamente al dashboard, donde al seleccionar "Pronóstico de demanda", se muestran los resultados.
 
 \begin{figure}[H]
     \centering
@@ -40,7 +40,7 @@ El administrador inicia en la pantalla de inicio del sistema, desde la cual pued
     \centering
     \includegraphics[width=0.5\textwidth]{templatefigures/ux_subir_archivo}
     \caption{Pantalla para subir archivos de Thary}
-    \label{fig:ux_dashboard}
+    \label{fig:ux_subir_archivo}
 \end{figure}
 
 
@@ -51,7 +51,7 @@ El administrador inicia en la pantalla de inicio del sistema, desde la cual pued
     \label{fig:ux_prediccion}
 \end{figure}
 
-En el sidebar, ademas de encontrar demas opciones como estado del inventario, presupuesto y pedidos, el administrador puede navegar hacia la gestion de usuarios, donde puede crear cuentas nuevas para su personal de inventario. 
+En el sidebar, además de encontrar demas opciones como estado del inventario, presupuesto y pedidos, el administrador puede navegar hacia la gestión de usuarios, donde puede crear cuentas nuevas para su personal de inventario. 
 
 \begin{figure}[H]
     \centering
@@ -60,18 +60,18 @@ En el sidebar, ademas de encontrar demas opciones como estado del inventario, pr
     \label{fig:ux_usuarios}
 \end{figure}
 
-El flujo de los empleados es bastante similar, con la diferencia de que el perfil de un empleado cuenta con menos privilegios que el perfil de un administrador, por lo que al iniciar sesion, el empleado no puede subir ningun archivo,por lo que solo puede acceder al dashboard de la demanda pronosticada en base al csv que ya anteriormente fue cargado al sistema por el administrador que creo su cuenta, ya desde ahi, puede navegar a las mismas funcionalidades del analisis de los datos que el administrador: estado del inventario, presupuesto y pedidos. 
+El flujo de los empleados es bastante similar, con la diferencia de que el perfil de un empleado cuenta con menos privilegios que el perfil de un administrador, por lo que al iniciar sesión, el empleado no puede subir ningún archivo,por lo que solo puede acceder al dashboard de la demanda pronosticada en base al csv que ya anteriormente fue cargado al sistema por el administrador que creó su cuenta, ya desde ahí, puede navegar a las mismas funcionalidades del análisis de los datos que el administrador: estado del inventario, presupuesto y pedidos. 
 
 \begin{figure}[H]
     \centering
-    \begin{subfigure}[b]{0.45\textwidth}
+    \begin{subfigure}[b]{0.42\textwidth}
         \centering
         \includegraphics[height=0.25\textheight]{templatefigures/ux_sidebar_empleado.png}
         \caption{Sidebar de empleado}
         \label{fig:ux_sidebar_empleado}
     \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.45\textwidth}
+    \hspace{1cm}
+    \begin{subfigure}[b]{0.42\textwidth}
         \centering
         \includegraphics[height=0.25\textheight]{templatefigures/ux_sidebar_administrador.png}
         \caption{Sidebar de administrador}
@@ -88,35 +88,39 @@ El flujo de los empleados es bastante similar, con la diferencia de que el perfi
 
 \begin{figure}[H]
     \centering
-    \begin{subfigure}[b]{0.45\textwidth}
+    \begin{subfigure}[b]{0.85\textwidth}
         \centering
-        \includegraphics[height=0.25\textheight]{templatefigures/ux_presupuesto.png}
+        \includegraphics[width=\textwidth]{templatefigures/ux_presupuesto.png}
         \caption{Presupuesto}
         \label{fig:ux_presupuesto}
     \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.45\textwidth}
+
+    \vspace{0.4cm}
+
+    \begin{subfigure}[b]{0.85\textwidth}
         \centering
-        \includegraphics[height=0.25\textheight]{templatefigures/ux_reposicion_alertas.png}
+        \includegraphics[width=\textwidth]{templatefigures/ux_reposicion_alertas.png}
         \caption{Alertas de reposición}
         \label{fig:ux_reposicion_alertas}
     \end{subfigure}
 \end{figure}
 
-La gestion de pedidos se puede ver en tres vistas: los pedidos sugeridos pendientes de confirmar, el historial de pedidos ya confirmados, y los proximos pedidos estimados segun el calendario de reposicion.
+La gestión de pedidos se puede ver en tres vistas: los pedidos sugeridos pendientes de confirmar, el historial de pedidos ya confirmados, y los próximos pedidos estimados según el calendario de reposición.
 
 \begin{figure}[H]
     \centering
-    \begin{subfigure}[b]{0.45\textwidth}
+    \begin{subfigure}[b]{0.85\textwidth}
         \centering
-        \includegraphics[height=0.25\textheight]{templatefigures/ux_pedidos.png}
+        \includegraphics[width=\textwidth]{templatefigures/ux_pedidos.png}
         \caption{Lista de Pedidos}
         \label{fig:ux_pedidos}
     \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.45\textwidth}
+
+    \vspace{0.4cm}
+
+    \begin{subfigure}[b]{0.85\textwidth}
         \centering
-        \includegraphics[height=0.25\textheight]{templatefigures/ux_pedidos_confirmados.png}
+        \includegraphics[width=\textwidth]{templatefigures/ux_pedidos_confirmados.png}
         \caption{Pedidos confirmados}
         \label{fig:ux_pedidos_confirmados}
     \end{subfigure}
@@ -136,7 +140,7 @@ La gestion de pedidos se puede ver en tres vistas: los pedidos sugeridos pendien
     \label{fig:ux_calendario_pedidos}
 \end{figure}
 
-Una vez finalizadas sus tareas, los usuarios pueden cerrar sesion en su cuenta.
+Una vez finalizadas sus tareas, los usuarios pueden cerrar sesión en su cuenta.
 
 \begin{figure}[H]
     \centering
@@ -148,7 +152,7 @@ Una vez finalizadas sus tareas, los usuarios pueden cerrar sesion en su cuenta.
 Los criterios de usabilidad que fueron tomados en cuenta fueron:
 
 \begin{itemize}
-    \item Uso de alertas visuales codificadas por color para indicar facilmente que productos se encuentran en o por debajo de su punto de reposicion y requieren ser reabastecidos inmediatamente.
+    \item Uso de alertas visuales codificadas por color para indicar fácilmente que productos se encuentran en o por debajo de su punto de reposición y requieren ser reabastecidos inmediatamente.
     
     \begin{figure}[H]
     \centering
@@ -157,7 +161,7 @@ Los criterios de usabilidad que fueron tomados en cuenta fueron:
     \label{fig:ux_alertas_visuales}
     \end{figure}
 
-    \item Cuando un usuario con el rol de empleado inicie sesion, pero su respectivo administrador no subio ningun archivo csv, en ves de ver la pantalla del dashboard, vera una pantalla con el mensaje de que una vez el admin cargue el archivo, podra ver los analisis.
+    \item Cuando un usuario con el rol de empleado inicie sesión, pero su respectivo administrador no subió ningún archivo csv, en vez de ver la pantalla del dashboard, verá una pantalla con el mensaje de que una vez el admin cargue el archivo, podrá ver los análisis.
 
     \begin{figure}[H]
     \centering
@@ -166,7 +170,7 @@ Los criterios de usabilidad que fueron tomados en cuenta fueron:
     \label{fig:ux_dashboard_empleado}
     \end{figure}
     
-    \item El sistema cuenta con un modo oscuro y modo claro para que el usuario pueda escoger segun sus preferencias, mejorando la usabilidad ofreciendo ventajas como comodidad visual, menor fatiga en uso prolongado, contraste, etc.
+    \item El sistema cuenta con un modo oscuro y modo claro para que el usuario pueda escoger según sus preferencias, mejorando la usabilidad ofreciendo ventajas como comodidad visual, menor fatiga en uso prolongado, contraste, etc.
 
     \begin{figure}[H]
     \centering
@@ -175,7 +179,7 @@ Los criterios de usabilidad que fueron tomados en cuenta fueron:
     \label{fig:ux_dashboard_claro}
     \end{figure}
 
-    \item Thary cuenta con una version mobile, la cual le permite al usuario poder acceder a todas las funcionalidades de la version de escritorio desde su telefono movil.
+    \item Thary cuenta con una versión mobile, la cual le permite al usuario poder acceder a todas las funcionalidades de la versión de escritorio desde su teléfono móvil.
 
         \begin{figure}[H]
     \centering
@@ -185,4 +189,4 @@ Los criterios de usabilidad que fueron tomados en cuenta fueron:
     \end{figure}
 \end{itemize}
 
-En cuanto a criterios de accesibilidad, se tomaron en cuenta los criterios de usabilidad, pero no se tomaron en cuenta mecanismos adicionales para hacer mas accesible el sistema como algun tipo de lector de pantalla para personas con discapacidad visual, o implementar un sistema de navegacion completa por teclado para alguna persona que no pueda usar un mouse. Estas falencias se reconocen como una limitacion del diseño actual, y se espera mejorarlas en el futuro. 
+En cuanto a criterios de accesibilidad, se tomaron en cuenta los criterios de usabilidad, pero no se tomaron en cuenta mecanismos adicionales para hacer más accesible el sistema como algún tipo de lector de pantalla para personas con discapacidad visual, o implementar un sistema de navegación completa por teclado para alguna persona que no pueda usar un mouse. Estas falencias se reconocen como una limitación del diseño actual, y se espera mejorarlas en el futuro. 

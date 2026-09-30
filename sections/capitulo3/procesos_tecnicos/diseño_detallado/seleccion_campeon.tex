@@ -1,8 +1,8 @@
-El sistema de prediccion Thary no usa el mismo metodo para todos los productos del catalogo. Para cada uno de los productos se selecciona cual de los tres modelos candidatos usar para su pronostico. 
+El sistema de predicción Thary no usa el mismo método para todos los productos del catálogo. Para cada uno de los productos se selecciona cual de los tres modelos candidatos usar para su pronóstico. 
 
-Esta desicion se tomo de manera independiente para el sistema Thary, ya que al revisar las implementaciones de los 4 sistemas de prediccion en las que se baso el sistema, se evidencio que estos simplemente usaban el mejor modelo para todo el catalogo por igual.
+Esta decisión se tomó de manera independiente para el sistema Thary, ya que al revisar las implementaciones de los 4 sistemas de predicción en las que se basó el sistema, se evidenció que estos simplemente usaban el mejor modelo para todo el catálogo por igual.
 
-En una primera version del sistema, la seleccion del mejor modelo por producto se hacia en base a cual de los 3 obtuvo un menor MAE. El problema con esta estrategia es que el backtest generalmente solo cuenta con entre 3 y 6 meses de datos si es que se cuenta con un archivo mas grande, son pocos meses, por lo que el hecho de que un modelo tenga el MAE mas bajo no es prueba de que sea mejor, podria darse por diferentes factores o por casualidad. 
+En una primera versión del sistema, la selección del mejor modelo por producto se hacia en base a cual de los 3 obtuvo un menor MAE. El problema con esta estrategia es que el backtest generalmente solo cuenta con entre 3 y 6 meses de datos si es que se cuenta con un archivo más grande, son pocos meses, por lo que el hecho de que un modelo tenga el MAE más bajo no es prueba de que sea mejor, podría darse por diferentes factores o por casualidad. 
 
 Es por eso que para seleccionar el mejor modelo, lo primero que se hace es calcular el MAE de los 3 modelos, se identifican los dos modelos que obtengan el menor MAE para cada producto. Esto usando \texttt{np.argsort} sobre la tabla de errores:
 
@@ -42,15 +42,15 @@ Se calcula la diferencia de error entre el mejor y el segundo mejor modelo para 
     stats_diferencia = diferencia.groupby(productos).agg(d_media="mean", d_std="std", n="count")
 \end{minted}
 
-Se implemento la prueba de Diebold-Mariano \cite{diebold_mariano}. El problema que resuelve es que cuando se comparan dos modelos para un producto, se quiere saber si el modelo ganador realmente es mejor o si por algun motivo tuvo suerte en esos pocos 3 meses, ya que un solo mes con un comportamiento atipico puede hacer que un modelo gane sin que eso signifique que sea mejor.
+Se implementó la prueba de Diebold-Mariano \cite{diebold_mariano}. El problema que resuelve es que cuando se comparan dos modelos para un producto, se quiere saber si el modelo ganador realmente es mejor o si por algún motivo tuvo suerte en esos pocos 3 meses, ya que un solo mes con un comportamiento atípico puede hacer que un modelo gane sin que eso signifique que sea mejor.
 
-La prueba Diebold-Mariano permite determinar estadisticamente si la diferencia de error entre el mejor y el segundo mejor modelo es estadisticamente significativa, o si es solo ruido. La prueba consiste en observar mes a mes cuanto le gano un modelo al otro. Si esa diferencia es consistente (un modelo le gana al otro casi todos los meses, por una cantidad parecida), es una señal fuerte de que la ventaja es real. Si la diferencia varia mucho de un mes a otro (a veces gana uno, a veces el otro, por cantidades muy distintas), es señal de que lo que se vio como "ganador" fue mas bien casualidad.
+La prueba Diebold-Mariano permite determinar estadísticamente si la diferencia de error entre el mejor y el segundo mejor modelo es estadísticamente significativa, o si es solo ruido. La prueba consiste en observar mes a mes cuánto le gana un modelo al otro. Si esa diferencia es consistente (un modelo le gana al otro casi todos los meses, por una cantidad parecida), es una señal fuerte de que la ventaja es real. Si la diferencia varía mucho de un mes a otro (a veces gana uno, a veces el otro, por cantidades muy distintas), es señal de que lo que se vio como "ganador" fue más bien casualidad.
 
-Debido a que la prueba clasica esta pensada para muestras grandes, se adapto para muestras pequeñas siguiendo la correccion de Harvey, Leybourne y Newbold, ampliamente discutida y recomendada por Diebold \cite{diebold2015comparing}, la cual consistio en ajustar (\texttt{dm\_ajustado = dm * sqrt((n-1)/n)}) y comparar el resultado contra una distribucion t de Student con n-1 grados de libertad, en vez de la normal estandar de la prueba original. Cuantos mas grados de libertad tiene una prueba estadistica, mas confiable es su capacidad de detectar diferencias reales, especialmente cuando se cuenta con pocos datos.
+Debido a que la prueba clásica está pensada para muestras grandes, se adaptó para muestras pequeñas siguiendo la corrección de Harvey, Leybourne y Newbold, ampliamente discutida y recomendada por Diebold \cite{diebold2015comparing}, la cual consistió en ajustar (\texttt{dm\_ajustado = dm * sqrt((n-1)/n)}) y comparar el resultado contra una distribución t de Student con n-1 grados de libertad, en vez de la normal estándar de la prueba original. Cuantos más grados de libertad tiene una prueba estadística, más confiable es su capacidad de detectar diferencias reales, especialmente cuando se cuenta con pocos datos.
 
-La implementacion de la prueba consiste, inicialmente, en medir que tan confiable es el promedio de las diferencias, dado que se calculo con pocos datos. Cuanto mas dispersas son las diferencias (\texttt{d\_std}) o menos meses tiene (\texttt{n}), mas "ruidoso" es ese promedio.
+La implementación de la prueba consiste, inicialmente, en medir qué tan confiable es el promedio de las diferencias, dado que se calculó con pocos datos. Cuanto más dispersas son las diferencias (\texttt{d\_std}) o menos meses tiene (\texttt{n}), más "ruidoso" es ese promedio.
 
-Para comparar que tan grande es la ventaja promedio frente a que tan confiable es: si la ventaja promedio es grande pero el error estandar (la inconsistencia) tambien es grande, \texttt{dm} resulta pequeño, lo cual es señal de que la ventaja no es confiable.
+Para comparar qué tan grande es la ventaja promedio frente a qué tan confiable es: si la ventaja promedio es grande pero el error estándar (la inconsistencia) también es grande, \texttt{dm} resulta pequeño, lo cual es señal de que la ventaja no es confiable.
 
 \Needspace{10\baselineskip}
 \captionof{listing}{Prueba de Diebold-Mariano con la corrección de Harvey, Leybourne y Newbold.}\label{lst:campeon_diebold_mariano}
@@ -74,38 +74,38 @@ Para comparar que tan grande es la ventaja promedio frente a que tan confiable e
     return campeon
 \end{minted}
 
-Se descarta el resultado del MAE y se usa el modelo de Media Movil como respaldo si:
+Se descarta el resultado del MAE y se usa el modelo de Media Móvil como respaldo si:
 
 \begin{itemize}
-    \item La diferencia no resulta estadisticamente significativa, es decir, que el p-valor de la prueba Diebold-Mariano es mayor al nivel de significancia definido (5\%).
+    \item La diferencia no resulta estadísticamente significativa, es decir, que el p-valor de la prueba Diebold-Mariano es mayor al nivel de significancia definido (5\%).
     \item Los dos métodos se equivocaron exactamente igual (varianza cero, sin evidencia de que uno sea mejor)
     \item No hay al menos 2 meses para medir varianza
 \end{itemize}
 
-En estos casos se selecciona la Media Movil en vez del modelo que gano por una diferencia que no es significativa y que podria tratarse solo de ruido.
+En estos casos se selecciona la Media Móvil en vez del modelo que ganó por una diferencia que no es significativa y que podría tratarse solo de ruido.
 
-Al aplicar este mecanismo al sistema, se evidencio un cambio drastico en el resultado real, probado sobre el catalogo completo de la Clinica Nuestra Señora de los Remedios (856 productos). Antes de implementar la validacion con Diebold-Mariano, seleccionando unicamente por el MAE mas bajo, el metodo campeon se distribuia asi:
+Al aplicar este mecanismo al sistema, se evidenció un cambio drástico en el resultado real, probado sobre el catálogo completo de la Clínica Nuestra Señora de los Remedios (856 productos). Antes de implementar la validación con Diebold-Mariano, seleccionando únicamente por el MAE más bajo, el método campeón se distribuía así:
 
 \begin{itemize}
     \item XGBoost ganaba en 430 productos (50.2\%)
-    \item Media Movil en 227 (26.5\%)
-    \item Regresion Lineal en 199 (23.2\%)
+    \item Media Móvil en 227 (26.5\%)
+    \item Regresión Lineal en 199 (23.2\%)
 \end{itemize}
 
-Al incorporar la prueba de Diebold-Mariano, esa distribucion cambio radicalmente: 
+Al incorporar la prueba de Diebold-Mariano, esa distribución cambió radicalmente:
 
 \begin{itemize}
-    \item XGBoost paso a ganar en solo 15 productos (1.8\%)
-    \item Regresion Lineal en 12 (1.4\%)
-    \item Media Movil paso a ser el metodo campeon en 829 productos (96.8\%)
+    \item XGBoost pasó a ganar en solo 15 productos (1.8\%)
+    \item Regresión Lineal en 12 (1.4\%)
+    \item Media Móvil pasó a ser el método campeón en 829 productos (96.8\%)
 \end{itemize}
 
 
-De los 430 productos en los que originalmente ganaba XGBoost, 415 pasaron a usar Media Movil y solo 15 se mantuvieron con XGBoost; de los 199 en los que ganaba Regresion Lineal, 187 pasaron a Media Movil y solo 12 se mantuvieron. Los 227 productos que ya usaban Media Movil se mantuvieron igual, ya que este es el metodo de respaldo cuando la diferencia no resulta significativa. 
+De los 430 productos en los que originalmente ganaba XGBoost, 415 pasaron a usar Media Móvil y solo 15 se mantuvieron con XGBoost; de los 199 en los que ganaba Regresión Lineal, 187 pasaron a Media Móvil y solo 12 se mantuvieron. Los 227 productos que ya usaban Media Móvil se mantuvieron igual, ya que este es el método de respaldo cuando la diferencia no resulta significativa. 
 
-Esto evidencia que, sin la validacion estadistica de Diebold-Mariano, el sistema estaba seleccionando modelos "ganadores" cuya ventaja, en la gran mayoria de los casos, no era estadisticamente distinguible del ruido.
+Esto evidencia que, sin la validación estadística de Diebold-Mariano, el sistema estaba seleccionando modelos "ganadores" cuya ventaja, en la gran mayoría de los casos, no era estadísticamente distinguible del ruido.
 
-En cuanto al tamaño del periodo de prueba, cuando se cuenta con un test fijo de 3 meses, la prueba de Diebold-Mariano siempre tendria solo 2 grados de libertad, sin importar cuanta historia tenga el archivo, nunca ganando mas poder estadistico para detectar diferencias reales. Por eso, el tamaño del periodo de prueba se ajusta segun el historial disponible:
+En cuanto al tamaño del periodo de prueba, cuando se cuenta con un test fijo de 3 meses, la prueba de Diebold-Mariano siempre tendría solo 2 grados de libertad, sin importar cuánta historia tenga el archivo, nunca ganando más poder estadístico para detectar diferencias reales. Por eso, el tamaño del periodo de prueba se ajusta según el historial disponible:
 
 \Needspace{7\baselineskip}
 \captionof{listing}{Función \texttt{tamano\_test\_backtest}, que ajusta el periodo de prueba al historial disponible.}\label{lst:campeon_tamano_test}
@@ -117,6 +117,6 @@ def tamano_test_backtest(n_meses_usables):
     return TEST_SIZE_MESES_DEFAULT
 \end{minted}
 
-En caso de que se cuente con un archivo csv grande (es decir, un archivo con 18 meses o mas), se usa un test de 6 meses en vez de 3, dandole mas grados de libertad y mas poder estadistico a la prueba de Diebold-Mariano. 
+En caso de que se cuente con un archivo csv grande (es decir, un archivo con 18 meses o más), se usa un test de 6 meses en vez de 3, dándole más grados de libertad y más poder estadístico a la prueba de Diebold-Mariano. 
 
-El corte de 18 meses es practica definida para este proyecto, se escogio por ser un valor redondo (año y medio). No es un valor tomado de una fuente externa, a diferencia del las demas practicas aplicadas como Diebold-Mariano o nivel de significancia.
+El corte de 18 meses es práctica definida para este proyecto, se escogió por ser un valor redondo (año y medio). No es un valor tomado de una fuente externa, a diferencia del las demas prácticas aplicadas como Diebold-Mariano o nivel de significancia.

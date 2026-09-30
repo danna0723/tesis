@@ -104,22 +104,22 @@ La selección del modelo ya se tiene lista desde la etapa anterior de "selecció
 Las condiciones para considerar un resultado incoherente son:
 
 \begin{itemize}
-    \item El modelo tiene que ser XGBoost o Regresion Lineal
-    \item Media movil tiene que ser mayor de 0, es decir, el producto tiene que haber vendido algo en los ultimos 3 meses
-    \item La prediccion del modelo ganador es menor que la mitad de la media movil de los ultimos 3 meses, es decir, el modelo ganador predice que se va a vender menos de la mitad de lo que se ha vendido en los ultimos 3 meses.
+    \item El modelo tiene que ser XGBoost o Regresión Lineal
+    \item Media móvil tiene que ser mayor de 0, es decir, el producto tiene que haber vendido algo en los últimos 3 meses
+    \item La predicción del modelo ganador es menor que la mitad de la media móvil de los últimos 3 meses, es decir, el modelo ganador predice que se va a vender menos de la mitad de lo que se ha vendido en los últimos 3 meses.
 \end{itemize}
 
-Se tiene el diccionario \texttt{predicciones\_por\_metodo} que cuenta con las 3 predicciones, de aqui es donde se obtiene el metodo elegido y posteriormente, con \texttt{pronostico\_futuro.append(\{...\})} se guarda una fila con:
+Se tiene el diccionario \texttt{predicciones\_por\_metodo} que cuenta con las 3 predicciones, de aquí es donde se obtiene el método elegido y posteriormente, con \texttt{pronostico\_futuro.append(\{...\})} se guarda una fila con:
 
 \begin{itemize}
-    \item Identificacion del producto: \texttt{producto\_id}, \texttt{nombre\_producto} y \texttt{categoria}
+    \item Identificación del producto: \texttt{producto\_id}, \texttt{nombre\_producto} y \texttt{categoria}
     \item Mes pronosticado: \texttt{mes\_pronosticado}
     \item Las 3 predicciones de los 3 modelos: \texttt{prediccion\_xgboost}, \texttt{prediccion\_regresion\_lineal} y \texttt{prediccion\_baseline}
-    \item Prediccion final: La que se le mostrara al usuario final (\texttt{prediccion\_final})
+    \item Predicción final: La que se le mostrara al usuario final (\texttt{prediccion\_final})
     \item Método usado: \texttt{metodo\_usado}, este puede cambiar si al final se recurrió a usar la salvaguarda.
 \end{itemize}
 
-Por ultimo, se agrega la predicción hecha al final de la lista de demandas del producto, por lo que en el mes siguiente, \texttt{demandas[-1]} (el \texttt{lag\_1}) ya no representara la demanda real, sino la predicción recien hecha.
+Por último, se agrega la predicción hecha al final de la lista de demandas del producto, por lo que en el mes siguiente, \texttt{demandas[-1]} (el \texttt{lag\_1}) ya no representará la demanda real, sino la predicción recien hecha.
 
 \begin{minted}{python}
     metodo_campeon = segmento["metodo_campeon"]

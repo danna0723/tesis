@@ -1,15 +1,15 @@
 % Guia: practicas de codificacion, control de versiones, CI/CD y ambientes
 % de despliegue.
 
-Thary es un sistema que se desarrollo mediante el uso de las siguientes tecnologias: Python, Flask como framework, librerias como scikit-learn, Pandas, y XGBoost. 
+Thary es un sistema que se desarrollo mediante el uso de las siguientes tecnologias: Python, Flask como framework, librerías como scikit-learn, Pandas, y XGBoost. 
 
-A la hora de ejecutar el sistema en Flask, se tiene que ejecutar el comando \texttt{run.py} en un entorno virtual (\textit{venv}), todas las dependencias necesarias para la correcta ejecucion del proyecto se encuentran resumidas en el archivo \texttt{requirements.txt} para su facil instalacion. 
+A la hora de ejecutar el sistema en Flask, se tiene que ejecutar el comando \texttt{run.py} en un entorno virtual (\textit{venv}), todas las dependencias necesarias para la correcta ejecución del proyecto se encuentran resumidas en el archivo \texttt{requirements.txt} para su fácil instalación. 
 
-Por su parte, el control de versiones del sistema se llevo a cabo mediante una seria de commits en GitHub en el que se documentaron los cambios mas significativos del sistema durante todo el tiempo de desarrollo. 
+Por su parte, el control de versiones del sistema se llevó a cabo mediante una seria de commits en GitHub en el que se documentaron los cambios más significativos del sistema durante todo el tiempo de desarrollo. 
 
 \subsubsection{Construcción}
 
-La principal practica de codificacion que se siguio durante el desarrollo e implementacion del sistema Thary es la separacion de responsabilidades, practica la cual se vio reflejada en la organizacion de archivos y carpetas del proyecto:
+La principal práctica de codificación que se siguio durante el desarrollo e implementación del sistema Thary es la separación de responsabilidades, práctica la cual se vio reflejada en la organización de archivos y carpetas del proyecto:
 
 \begin{verbatim}
 sistema_prediccion_inventario/
@@ -40,21 +40,21 @@ sistema_prediccion_inventario/
     └── test_reposicion.py
 \end{verbatim}
 
-Como se puede observar, la organizacion se divide en tres capas: \texttt{routes/} con el control del sistema, \texttt{services/} con la logica de negocio y, dentro de esta ultima, \texttt{prediccion/}. Es en esa ultima capa, en la cual cada una de las 9 etapas del pipeline se encuentran alojadas en nueve modulos independientes: carga de datos, segmentacion, construccion de variables, modelos, validacion, pronostico, reposicion, graficas y exportacion. La principal ventaja de esta organizacion, es que permite que se pueda modificar una etapa especifica del flujo sin afectar directamente a las demas partes, ademas de facilitar el mantenimiento y un entendimiento mas facil del codigo.
+Como se puede observar, la organización se divide en tres capas: \texttt{routes/} con el control del sistema, \texttt{services/} con la lógica de negocio y, dentro de esta última, \texttt{prediccion/}. Es en esa última capa, en la cual cada una de las 9 etapas del pipeline se encuentran alojadas en nueve módulos independientes: carga de datos, segmentación, construcción de variables, modelos, validación, pronóstico, reposición, gráficas y exportación. La principal ventaja de esta organización, es que permite que se pueda modificar una etapa específica del flujo sin afectar directamente a las demas partes, además de facilitar el mantenimiento y un entendimiento más fácil del código.
 
-Como complemento a esta organizacion, se incorporaron pruebas automatizadas escritas con \textit{pytest}, las cuales fueron agrupadas en tres archivos dentro de la carpeta \texttt{tests/}:
+Como complemento a esta organización, se incorporaron pruebas automatizadas escritas con \textit{pytest}, las cuales fueron agrupadas en tres archivos dentro de la carpeta \texttt{tests/}:
 
 \begin{itemize}
     \item \texttt{test\_carga\_datos.py}, en este archivo se verifican los mensajes de error ante archivos invalidos y el reconocimiento de columnas heterogeneas
-    \item \texttt{test\_modelos.py}, en el que se verifica la logica de seleccion del modelo campeon por producto
-    \item y por ultimo,\texttt{test\_reposicion.py}, en donde se verifican los calculos de stock de seguridad, punto de reorden y EOQ
+    \item \texttt{test\_modelos.py}, en el que se verifica la lógica de selección del modelo campeón por producto
+    \item y por último,\texttt{test\_reposicion.py}, en donde se verifican los calculos de stock de seguridad, punto de reorden y EOQ
 \end{itemize}
 
-(Los resultados obtenidos al ejecutar esta suite de pruebas se presentan en el Capitulo 4.)
+(Los resultados obtenidos al ejecutar esta suite de pruebas se presentan en el Capítulo 4.)
 
 \subsubsection{Integración}
 
-Las rutas de la aplicacion se organizan en el archivo \texttt{app/\_\_init\_\_.py}, mediante el mecanismo de Blueprints de Flask, el cual permite que se pueda agrupar un conjunto de vistas en un modulo independiente y registrarlo en la aplicacion principal. Thary cuenta con dos blueprints: \texttt{main\_bp} (dashboard, inventario, presupuesto, pedidos y panel tecnico) y \texttt{auth\_bp} (inicio de sesion, registro y gestion de usuarios), que se registran de la siguiente manera:
+Las rutas de la aplicación se organizan en el archivo \texttt{app/\_\_init\_\_.py}, mediante el mecanismo de Blueprints de Flask, el cual permite que se pueda agrupar un conjunto de vistas en un módulo independiente y registrarlo en la aplicación principal. Thary cuenta con dos blueprints: \texttt{main\_bp} (dashboard, inventario, presupuesto, pedidos y panel técnico) y \texttt{auth\_bp} (inicio de sesión, registro y gestión de usuarios), que se registran de la siguiente manera:
 
 \Needspace{4\baselineskip}
 \captionof{listing}{Registro de los blueprints \texttt{main\_bp} y \texttt{auth\_bp} en la aplicación Flask.}\label{lst:registro_blueprints}
@@ -63,9 +63,9 @@ app.register_blueprint(main_bp)
 app.register_blueprint(auth_bp)
 \end{minted}
 
-Esta organizacion permite que cada blueprint se desarrolle y se pruebe de forma independiente, y que agregar un nuevo conjunto de rutas al sistema no implique tener que modificar el codigo de los blueprints que ya existen.
+Esta organización permite que cada blueprint se desarrolle y se pruebe de forma independiente, y que agregar un nuevo conjunto de rutas al sistema no implique tener que modificar el código de los blueprints que ya existen.
 
-Por otra parte, para integrar correctamente el modelo de prediccion con la aplicacion web, en el archivo \texttt{services/sistema\_prediccion.py} se incluyo una funcion de entrada, \texttt{ejecutar\_sistema()}, la cual se encarga de orquestar secuencialmente las nueve etapas del pipeline y devolver un resultado. Esta decision de integracion se tomo tomando en cuenta la separacion de capas ya establecida para todo el proyecto. En este caso, la capa de servicios de dominio se mantiene independiente de la de presentacion.
+Por otra parte, para integrar correctamente el modelo de predicción con la aplicación web, en el archivo \texttt{services/sistema\_prediccion.py} se incluyó una función de entrada, \texttt{ejecutar\_sistema()}, la cual se encarga de orquestar secuencialmente las nueve etapas del pipeline y devolver un resultado. Esta decisión de integración se tomó tomando en cuenta la separación de capas ya establecida para todo el proyecto. En este caso, la capa de servicios de dominio se mantiene independiente de la de presentacion.
 
 \Needspace{10\baselineskip}
 \captionof{listing}{Función \texttt{ejecutar\_sistema}, que orquesta las nueve etapas del pipeline.}\label{lst:ejecutar_sistema}
@@ -103,7 +103,7 @@ def ejecutar_sistema(
     return {...}
 \end{minted}
 
-Otro punto de integracion relevante es que Thary tiene dos maneras de almacenar la informacion: la base de datos relacional (MySQL), para datos que sean estructurados como numeros o textos cortos y el sistema de archivos para archivos que por su naturaleza no se podria poner en una tabla, en el caso de Thary, estos archivos serian el archivo del modelo XGBoost ya entrenado, y las imagenes de las graficas. Cada vez que se procesa un CSV, en MySQL se agrega una fila nueva, nunca se borra nada, pero los archivos, es decir, las graficas, modelo entrenado, etc, van siempre a la misma carpeta de la empresa a la que pertenezcan, y cada vez que se procesa un nuevo archivo, se sobrescriben los anteriores. Asi que, si se hace una serie de corridas, en MySQL habra varias filas completas, pero en la carpeta, solo existiran los archivos de la ultima corrida. 
+Otro punto de integración relevante es que Thary tiene dos maneras de almacenar la información: la base de datos relacional (MySQL), para datos que sean estructurados como números o textos cortos y el sistema de archivos para archivos que por su naturaleza no se podría poner en una tabla, en el caso de Thary, estos archivos serían el archivo del modelo XGBoost ya entrenado, y las imágenes de las gráficas. Cada vez que se procesa un CSV, en MySQL se agrega una fila nueva, nunca se borra nada, pero los archivos, es decir, las gráficas, modelo entrenado, etc, van siempre a la misma carpeta de la empresa a la que pertenezcan, y cada vez que se procesa un nuevo archivo, se sobrescriben los anteriores. Así que, si se hace una serie de corridas, en MySQL habrá varias filas completas, pero en la carpeta, solo existirán los archivos de la última corrida. 
 
 \texttt{app/routes/main.py}:
 \Needspace{8\baselineskip}
@@ -119,7 +119,7 @@ def carpeta_resultados(empresa_id):
 
 La ruta de la carpeta depende del id de la empresa (\texttt{empresa\_id}), y no del id de la corrida (\texttt{corrida\_id}), por lo que, la carpeta siempre es la misma para una misma empresa, sin importar cuantas veces se haya procesado un archivo. 
 
-Por otra parte, tal como se explico en capitulos anteriores, se definio un control de acceso basado en roles, esto con el objetivo de poder diferenciar a que funcionalidades debe tener acceso un usuario dependiendo de su rol. El administrador (\texttt{admin}) debe ser el unico usuario que cuente con todos los privilegios de acceso a la informacion sensible de la organizacion, mientras que para otros usuarios con menor rango, (\texttt{empleado}), convendria restringir este acceso completo a solo aquellas funcionalidades menos invasivas que sean necesarias para el desempeño de su trabajo, como todas aquellas que describen el analisis de los datos y la lista de pedidos: 
+Por otra parte, tal como se explicó en capítulos anteriores, se definió un control de acceso basado en roles, esto con el objetivo de poder diferenciar a que funcionalidades debe tener acceso un usuario dependiendo de su rol. El administrador (\texttt{admin}) debe ser el único usuario que cuente con todos los privilegios de acceso a la información sensible de la organización, mientras que para otros usuarios con menor rango, (\texttt{empleado}), convendría restringir este acceso completo a solo aquellas funcionalidades menos invasivas que sean necesarias para el desempeño de su trabajo, como todas aquellas que describen el análisis de los datos y la lista de pedidos: 
 
 \texttt{app/services/auth.py}:
 \Needspace{10\baselineskip}
@@ -140,7 +140,7 @@ def admin_required(vista):
 
 \paragraph{Integración continua (CI)}
 
-El proyecto utilizo GitHub Actions para la automatizacion de pruebas unitarias (\texttt{.github/workflows/tests.yml}). Este se ejecuta automaticamente cada vez que se haga un \textit{push} o \textit{pull request} en el repositorio. El archivo cuenta con una configuracion que permite instalar tanto Python como todas las dependencias necesarias, y ejecuta las pruebas unitarias con \texttt{pytest}:  
+El proyecto utilizó GitHub Actions para la automatización de pruebas unitarias (\texttt{.github/workflows/tests.yml}). Este se ejecuta automaticamente cada vez que se haga un \textit{push} o \textit{pull request} en el repositorio. El archivo cuenta con una configuración que permite instalar tanto Python como todas las dependencias necesarias, y ejecuta las pruebas unitarias con \texttt{pytest}:  
 
 \Needspace{10\baselineskip}
 \captionof{listing}{Flujo de trabajo de GitHub Actions para ejecutar las pruebas automatizadas (\texttt{tests.yml}).}\label{lst:github_actions}
@@ -167,7 +167,7 @@ jobs:
       - run: pytest tests/ -q
 \end{minted}
 
-El flujo solo cubre la parte de CI (Integracion Continua), en cuanto a CD (Despliegue Continuo), se decidio hacerlo de manera manual, principalmente porque 
+El flujo solo cubre la parte de CI (Integración Continua), en cuanto a CD (Despliegue Continuo), se decidió hacerlo de manera manual, principalmente porque 
 al ser un proyecto desarrollado por una sola persona, es decir, sin múltiples entornos ni
 un equipo que dependa de constantes despliegues, el beneficio de
 un pipeline de CD completo es menor frente a la complejidad adicional que
@@ -186,12 +186,12 @@ El despliegue del sistema Thary (además del entorno de desarrollo local), se en
 
 Como se ve en la figura, Thary y la base de datos, se encuentran corriendo en Railway como servicios independientes, los cuales se comunican entre si para compartir información y funcionalidades.
 
-La aplicacion se ejecuta mediante un servidor WSGI de produccion (Gunicorn), configurado a traves del archivo \texttt{Procfile}:
+La aplicación se ejecuta mediante un servidor WSGI de producción (Gunicorn), configurado a través del archivo \texttt{Procfile}:
 
 \Needspace{3\baselineskip}
 \captionof{listing}{Contenido del archivo \texttt{Procfile} para el servidor Gunicorn.}\label{lst:procfile}
 \begin{minted}{text}
-web: gunicorn run:app --bind 0.0.0.0:$PORT
+web: gunicorn run:app --bind 0.0.0.0:$PORT --workers 2 --timeout 120
 \end{minted}
 
 \begin{figure}[H]
@@ -201,9 +201,9 @@ web: gunicorn run:app --bind 0.0.0.0:$PORT
     \label{fig:railway_deploy_details}
 \end{figure}
 
-Railway detecta y se encarga de ejecutar este comando \textit{start command} cuando se realiza un despliegue. Automaticamente identifica la version de python con la que se esta trabajando, en este caso, \texttt{.python-version} (3.13).  El proyecto fija todas sus dependencias en \texttt{requirements.txt}, incluyendo las versiones exactas de las librerias de prediccion (pandas, scikit-learn, XGBoost, statsmodels) y las necesarias para la conexion a la base de datos (\texttt{SQLAlchemy}, \texttt{PyMySQL}) y el servidor de produccion (\texttt{gunicorn}).
+Railway detecta y se encarga de ejecutar este comando \textit{start command} cuando se realiza un despliegue. Automáticamente identifica la versión de python con la que se está trabajando, en este caso, \texttt{.python-version} (3.13).  El proyecto fija todas sus dependencias en \texttt{requirements.txt}, incluyendo las versiones exactas de las librerías de predicción (pandas, scikit-learn, XGBoost, statsmodels) y las necesarias para la conexión a la base de datos (\texttt{SQLAlchemy}, \texttt{PyMySQL}) y el servidor de producción (\texttt{gunicorn}).
 
-En cuanto a la persistencia de los datos, esta se manejó mediante MySQL. La configuracion de conexion a la base de datos solo se obtiene de las variables de entorno, tal como se detallo en la Seccion \ref{sec:modelo_datos} (funcion \texttt{\_config()}).
+En cuanto a la persistencia de los datos, esta se manejó mediante MySQL. La configuración de conexión a la base de datos solo se obtiene de las variables de entorno, tal como se detalló en la Sección \ref{sec:modelo_datos} (función \texttt{\_config()}).
 
 % \begin{minted}{python}
 % def _config():
@@ -223,7 +223,7 @@ En cuanto a la persistencia de los datos, esta se manejó mediante MySQL. La con
     \label{fig:railway_variables}
 \end{figure}
 
-Las credenciales se configuran en el panel de Railway como variables de entorno del servicio,  nunca visibles en el repositorio de codigo. 
+Las credenciales se configuran en el panel de Railway como variables de entorno del servicio,  nunca visibles en el repositorio de código. 
 
 \begin{figure}[H]
     \centering
@@ -232,9 +232,9 @@ Las credenciales se configuran en el panel de Railway como variables de entorno 
     \label{fig:railway_mysql_tablas}
 \end{figure}
 
-La Fig. \ref{fig:railway_mysql_tablas} muestra que el mismo esquema de 12 tablas que se tiene localmente, tambien existe en el entorno desplegado de Railway.
+La Fig. \ref{fig:railway_mysql_tablas} muestra que el mismo esquema de 12 tablas que se tiene localmente, también existe en el entorno desplegado de Railway.
 
-El servicio de Thary no cuenta con un volumen configurado, esto puede verse en el panel de adminsitracion en el que no se ve la pestalla de "volumenes". Esto quiere decir que los archivos que estan en el servicio son efimeros, es decir, cada vez que se redespliegue el servicio, como por ejemplo, por una actualizacion del codigo o un reinicio del servicio, se crea un nuevo contenedor, por lo que se pierden por completo los archivos generados por el sistema en las corridas anteriores del pipeline. Esto se reconoce como una limitacion del entorno de produccion. 
+El servicio de Thary no cuenta con un volumen configurado, esto puede verse en el panel de administración en el que no se ve la pestaña de "volúmenes". Esto quiere decir que los archivos que están en el servicio son efímeros, es decir, cada vez que se redespliegue el servicio, como por ejemplo, por una actualización del código o un reinicio del servicio, se crea un nuevo contenedor, por lo que se pierden por completo los archivos generados por el sistema en las corridas anteriores del pipeline. Esto se reconoce como una limitación del entorno de producción. 
 
 \begin{figure}[H]
     \centering
@@ -243,4 +243,4 @@ El servicio de Thary no cuenta con un volumen configurado, esto puede verse en e
     \label{fig:thary_login_produccion}
 \end{figure}
 
-Finalmente, la figura muestra la aplicacion funcionando correctamente en el entorno de produccion a traves de de la URL publica asignada por Railway.
+Finalmente, la figura muestra la aplicación funcionando correctamente en el entorno de producción a través de de la URL pública asignada por Railway.
