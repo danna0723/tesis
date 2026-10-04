@@ -34,20 +34,24 @@ sistema_prediccion_inventario/
 │   │       ├── graficas.py        #   8. Generacion de graficos
 │   │       └── exportacion.py     #   9. Exportacion de resultados
 │   └── templates/                
-└── tests/                        # pytest
-    ├── test_carga_datos.py
-    ├── test_modelos.py
-    └── test_reposicion.py
+└── tests/                # pytest
+    test_carga_datos.py
+    test_combinacion.py
+    test_modelos.py
+    test_pronostico_futuro.py
+    test_reposicion.py
 \end{verbatim}
 
 Como se puede observar, la organización se divide en tres capas: \texttt{routes/} con el control del sistema, \texttt{services/} con la lógica de negocio y, dentro de esta última, \texttt{prediccion/}. Es en esa última capa, en la cual cada una de las 9 etapas del pipeline se encuentran alojadas en nueve módulos independientes: carga de datos, segmentación, construcción de variables, modelos, validación, pronóstico, reposición, gráficas y exportación. La principal ventaja de esta organización, es que permite que se pueda modificar una etapa específica del flujo sin afectar directamente a las demas partes, además de facilitar el mantenimiento y un entendimiento más fácil del código.
 
-Como complemento a esta organización, se incorporaron pruebas automatizadas escritas con \textit{pytest}, las cuales fueron agrupadas en tres archivos dentro de la carpeta \texttt{tests/}:
+Como complemento a esta organización, se incorporaron pruebas automatizadas escritas con \textit{pytest}, las cuales fueron agrupadas en cinco archivos dentro de la carpeta \texttt{tests/}:
 
 \begin{itemize}
-    \item \texttt{test\_carga\_datos.py}, en este archivo se verifican los mensajes de error ante archivos invalidos y el reconocimiento de columnas heterogeneas
-    \item \texttt{test\_modelos.py}, en el que se verifica la lógica de selección del modelo campeón por producto
-    \item y por último,\texttt{test\_reposicion.py}, en donde se verifican los calculos de stock de seguridad, punto de reorden y EOQ
+    \item \texttt{test\_carga\_datos.py}, en este archivo se verifican los mensajes de error ante archivos inválidos y el reconocimiento de columnas heterogéneas.
+    \item \texttt{test\_combinacion.py}, en el que se verifica el cálculo del peso utilizado para combinar los pronósticos de XGBoost y Media Móvil.
+    \item \texttt{test\_modelos.py}, en el que se verifica la lógica de selección del modelo campeón por producto y la prueba de Diebold-Mariano.
+    \item \texttt{test\_pronostico\_futuro.py}, en el que se verifica el cálculo del rango de predicción y la identificación de predicciones de baja confianza.
+    \item \texttt{test\_reposicion.py}, en donde se verifican los cálculos de stock de seguridad, punto de reorden, EOQ, presupuesto y costos.
 \end{itemize}
 
 (Los resultados obtenidos al ejecutar esta suite de pruebas se presentan en el Capítulo 4.)

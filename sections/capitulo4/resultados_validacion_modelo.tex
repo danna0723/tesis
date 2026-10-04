@@ -1,6 +1,8 @@
-A continuación, se presentan los resultados obtenidos en la validación del sistema Thary. Estos resultados se obtuvieron luego de aplicar la estrategia de validación ya definida anteriormente, sobre el historial real de consumo de 856 productos (medicamentos) del año 2021 - 2022 en la Clínica Nuestra Señora de los remedios. 
+A continuación, se presentan los resultados obtenidos en la validación del sistema Thary. Estos resultados se obtuvieron luego de aplicar la estrategia de validación ya definida anteriormente, sobre el historial real de consumo de 856 productos (medicamentos, dispositivos médicos, productos de nutrición y medicamentos controlados) correspondiente al periodo comprendido entre julio de 2021 y junio de 2022 en la Clínica Nuestra Señora de los Remedios.
 
-Las métricas obtenidas al evaluar los tres modelos candidatos, junto con el método de selección de modelo por producto. Todo esto sobre el último periodo de prueba disponible, que corresponde al trimestre abril-junio de 2022, con seis meses de entrenamiento previo.
+Como el archivo cuenta con 12 meses y los primeros 3 se pierden al calcular los rezagos, quedan 9 meses utilizables (de octubre de 2021 a junio de 2022). Estos se dividen en tres partes: 
+
+Los modelos se entrenan con octubre, noviembre y diciembre de 2021,  el método campeón de cada producto se elige con enero, febrero y marzo de 2022 (periodo de validación), y las métricas que se presentan en la siguiente Tabla se calculan sobre el trimestre abril-junio de 2022 (periodo de test), que no participó ni en el entrenamiento ni en la elección del campeón.
 
 \begin{table}[H]
     \centering
@@ -13,14 +15,16 @@ Las métricas obtenidas al evaluar los tres modelos candidatos, junto con el mé
     \hline
     Media Móvil (3 meses) & 48.79 & 243.65 & 5.33 & 80.32 & 23.86 \\
     \hline
-    Regresión Lineal      & 56.43 & 276.41 & 5.25 & 95.30 & 27.60 \\
+    Regresión Lineal      & 57.71 & 257.87 & 5.98 & 104.43 & 28.23 \\
     \hline
-    XGBoost (log1p)       & 50.59 & 254.82 & 3.53 & 65.12 & 24.74 \\
+    XGBoost (log1p)       & 52.16 & 242.94 & 3.82 & 70.27 & 25.51 \\
     \hline
-    \textbf{Sistema final (selección por producto)} & \textbf{48.47} & \textbf{243.55} & --- & \textbf{79.33} & \textbf{23.71} \\
+    \textbf{Sistema final (selección por producto)} & \textbf{48.89} & \textbf{243.74} & \textbf{5.33} & \textbf{80.49} & \textbf{23.91} \\
     \hline
     \end{tabularx}
 \end{table}
+
+En la tabla se puede observar que el sistema final obtiene un resultado prácticamente igual al de Media Móvil (WAPE de 23.91\% frente a 23.86\%), e incluso ligeramente peor. Esto es esperable, ya que al elegir el campeón con un periodo distinto al del test, ya no está garantizado que el modelo elegido sea el que menos se equivocó en esos meses de prueba, y en los pocos productos en los que el sistema se aparta de Media Móvil, la ventaja que mostró en la validación no siempre se mantiene en el test. Que esta diferencia sea tan pequeña confirma que las métricas del sistema final ahora sí miden qué tan bien funciona el sistema con datos que nunca ha visto, y no un resultado en el que el sistema estaba ”haciendo trampa” al elegir el modelo conociendo de antemano la respuesta.
 
 \begin{figure}[H]
     \centering
@@ -28,6 +32,31 @@ Las métricas obtenidas al evaluar los tres modelos candidatos, junto con el mé
     \caption{Comparación de WAPE entre los tres modelos candidatos (holdout final).}
     \label{fig:comparacion_wape}
 \end{figure}
+
+
+\begin{table}[H]
+\centering
+\caption{Comparación entre modelo único y combinación — caso de estudio clínico.}
+\label{tab:clinica-combinacion}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{|X|c|c|c|c|c|c|}
+\hline
+\textbf{Opción} & \textbf{MAE} & \textbf{RMSE} & \textbf{Mediana Error} & \textbf{$R^2$} & \textbf{MAPE (\%)} & \textbf{WAPE (\%)} \\
+\hline
+Media móvil sola & 48.79 & 243.65 & 5.33 & 0.93 & 80.32 & 23.86 \\
+\hline
+XGBoost solo & 52.16 & 242.94 & 3.82 & 0.93 & 70.27 & 25.51 \\
+\hline
+Combinación XGBoost + Media móvil & 49.63 & 252.65 & 4.30 & 0.92 & 72.04 & 24.28 \\
+\hline
+\end{tabularx}
+\end{table}
+
+Para el caso de estudio clinico, la combinacion queda en un punto intermedio en MAE (49.63, entre el 48.79 de Media Movil sola y el 52.16 de XGBoost solo). Sin embargo, su RMSE (252.65) resulta mas alto que el de ambas opciones por separado.
+
+Esto indica que, aunque el peso por minimos cuadrados reduce el error promedio, lo hace a costa de errores puntuales mas grandes en algunos meses, probablemente los mismos productos de demanda intermitente que ya se identificaron como de baja confianza (seccion~\ref{sec:rango-predicciones}).
+
+Esto es coherente con la decision metodologica de no usar esta combinacion en produccion (seccion~\ref{sec:combinacion-pronosticos}), ya que el valor de Thary esta en elegir, por producto, cual de los tres metodos conviene, y no en promediarlos.
 
 \subsubsection{Consistencia mediante validación cruzada temporal}
 
@@ -38,7 +67,8 @@ La idea principal, es probar el modelo varias veces simulando estar en un mes di
 \begin{enumerate}
     \item Prueba 1 (Fold 1): Es el más antiguo, se le enseña al modelo con los 4 meses previos a febrero de 2022, y se hace que el sistema adivine febrero, marzo y abril de 2022. Se compara lo que adivino contra los resultados reales de esos meses y se registra que tan grande fue el error.
     \item Prueba 2 (Fold 2): En esta segunda prueba o Fold, se le enseña al modelo con 5 meses en vez de 4, es decir, los meses previos a marzo de 2022, y se le pide que prediga marzo, abril y mayo de 2022, una vez más, se compara y se registra el error.
-    \item Prueba 3 (Fold 3): Por último, se le enseña al modelo con los 6 meses previos a abril de 2022 y se le solicita al sistema que prediga abril, mayo y junio de 2022, se compara y, una vez más, se registra el error. Este último fold corresponde al mismo holdout final presentado en la Tabla \ref{tab:resultados_holdout}.
+
+    \item Prueba 3 (Fold 3): Por último, se le enseña al modelo con los 6 meses previos a abril de 2022 y se le solicita al sistema que prediga abril, mayo y junio de 2022, se compara y, una vez más, se registra el error. Este último fold evalúa los mismos meses que el holdout final presentado en la Tabla \ref{tab:resultados_holdout}, pero no es idéntico a él, en el holdout los modelos se entrenan solo con 3 meses, porque los meses de enero a marzo se reservan para elegir el campeón, mientras que en la validación cruzada el campeón ya viene decidido, por lo que cada fold puede entrenar con todos los meses anteriores a su periodo de prueba.
 \end{enumerate}
 
 
@@ -47,17 +77,21 @@ Dicha validación cruzada temporal se implementó en el sistema en el archivo \t
 \Needspace{10\baselineskip}
 \captionof{listing}{Constantes y función \texttt{\_armar\_folds} de la validación cruzada temporal.}\label{lst:validacion_folds}
 \begin{minted}{python}
-TEST_SIZE_MESES = 3
+from app.services.prediccion.modelos import (
+    tamano_test_backtest,
+)
+
 MIN_TRAIN_MESES = 3
 MAX_FOLDS = 3
 
 
 def _armar_folds(meses_ordenados):
     n = len(meses_ordenados)
+    tamano_test = tamano_test_backtest(n)
     folds = []
     fin_test = n
     while len(folds) < MAX_FOLDS:
-        inicio_test = fin_test - TEST_SIZE_MESES
+        inicio_test = fin_test - tamano_test
         if inicio_test < MIN_TRAIN_MESES:
             break
         folds.append((meses_ordenados[:inicio_test], meses_ordenados[inicio_test:fin_test]))
@@ -66,21 +100,19 @@ def _armar_folds(meses_ordenados):
     return folds
 \end{minted}
 
-Se definen tres constantes, \texttt{TEST\_SIZE\_MESES}, \texttt{MIN\_TRAIN\_MESES} y \texttt{MAX\_FOLDS}, que definen el tamaño de la ventana de prueba, el tamaño mínimo de la ventana de entrenamiento y el número máximo de folds a generar, respectivamente.
+Se definen dos constantes, \texttt{MIN\_TRAIN\_MESES} y \texttt{MAX\_FOLDS}, que corresponden al tamaño mínimo de la ventana de entrenamiento y al número máximo de folds a generar, respectivamente. El tamaño de la ventana de prueba se obtiene con la función \texttt{tamano\_test\_backtest}, la misma que se usa en el pipeline principal, de manera que los folds usen 3 o 6 meses de prueba según el historial disponible.
 
-
-Se arma la función que genera las particiones \texttt{\_armar\_folds}, esta recibe una lista de todos los meses disponibles organizados cronologicamente. Se define el fold más reciente, es decir, los últimos meses disponibles \texttt{TEST\_SIZE\_MESES}. En cada iteracion se retrocede el punto de corte de un mes hacia atrás en el tiempo, de esta manera, se crea un nuevo Fold cuyo entrenamiento crece en un mes respecto al anterior. Este proceso se repite hasta completar \texttt{MAX\_FOLDS}, o hasta que ya no quede suficiente historial y el tamaño de la ventana de entrenamiento sea menor a \texttt{MIN\_TRAIN\_MESES} meses de entrenamiento.  
+Se arma la función que genera las particiones \texttt{\_armar\_folds}, esta recibe una lista de todos los meses disponibles organizados cronológicamente. Se define el fold más reciente, es decir, el que usa como prueba los últimos meses disponibles, con el tamaño que devuelve \texttt{tamano\_test\_backtest}. En cada iteración se retrocede el punto de corte un mes hacia atrás en el tiempo, de esta manera, se crea un nuevo fold cuyo entrenamiento es un mes más corto que el del fold siguiente. Este proceso se repite hasta completar \texttt{MAX\_FOLDS}, o hasta que ya no quede suficiente historial y la ventana de entrenamiento sea menor a \texttt{MIN\_TRAIN\_MESES} meses.
 
 Al finalizar, los folds se ordenan en orden cronológico del más antiguo al más nuevo antes de ser devueltos.
 
-Al ya tener los folds organizados, el sistema entrena nuevamente los tres modelos candidatos, y selecciona el mejor modelo por producto, evaluando el resultado bajo la etiqueta de "Sistema final". Es decir, es la estrategia que usa Thary para predecir el consumo, en vez de escoger uno solo, para cada producto, el sistema entrena los 3 modelos y selecciona el que se equivocó menos con ese producto en particular.
+Al ya tener los folds organizados, el sistema entrena nuevamente los tres modelos candidatos en cada fold, únicamente con los meses de entrenamiento de ese fold, y evalúa sus predicciones sobre los meses de prueba. Para el resultado bajo la etiqueta de ”Sistema final”, no se vuelve a elegir el campeón en cada fold, sino que se aplica a cada producto el mismo método campeón que ya se había elegido en el pipeline principal con el periodo de validación. Es decir, la validación cruzada no responde a la pregunta de si el sistema puede elegir mejor sabiendo la respuesta de cada periodo, sino a si la decisión que ya se tomó sigue funcionando en otros periodos históricos.
 
-Un aspecto importante es que, la elección de qué modelo usar para cada producto se hace solo con los datos de entrenamiento, antes de ver los datos de prueba. Esto demuestra que no se está "haciendo trampa", ya que el sistema no tiene acceso a los datos de prueba, y por lo tanto, no puede "aprender" de ellos.
+En una primera versión, cada fold volvía a elegir el campeón con los datos de su propio periodo de prueba. Esto quiere decir que el método campeón de cada producto era, por definición, el que menos se había equivocado en ese mismo periodo, por lo que el sistema prácticamente no podía perder contra Media Móvil en esa evaluación. El problema es que esto no pasaba porque la selección de modelos realmente funcionara mejor, sino porque la elección ya conocía de antemano el resultado de ese periodo. Es por eso que se decidió reutilizar el campeón elegido con el periodo de validación.
 
-Aun así, solo esto no basta para confiar en el resultado, ya que aun si el sistema está eligiendo el modelo de forma honesta, un único experimento podría haber salido bien por casualidad y no porque el sistema de verdad sea bueno.
+Aun así, esta solución mejora la validacion cruzada, pero no elimina por completo el problema de la fuga de datos. El campeón se eligió con los meses de enero a marzo de 2022, y los periodos de prueba del Fold 1 (febrero a abril) y del Fold 2 (marzo a mayo) incluyen algunos de esos mismos meses. En esos dos folds, parte de los meses evaluados ya fueron vistos por la selección del campeón, por lo que sus resultados para el ”Sistema final” siguen siendo ligeramente optimistas. Solo el Fold 3, cuyo periodo de prueba (abril a junio) no comparte ningún mes con la validación, mide el desempeño del sistema final sin ninguna fuga. Esto se reconoce como una limitación de la validación cruzada y se documenta como trabajo futuro.
 
-
-Es por eso que la validación cruzada aportó valor al sistema, ya que al repetir este mismo proceso (entrenamiento, elección del modelo y evaluación) en diferentes periodos de prueba, se confirma que el resultado obtenido en el holdout final no fue un resultado aislado, sino que se repite de forma consistente en distintos periodos de prueba.
+Por otra parte, la validación cruzada sí aporta valor al sistema, ya que permite ver si el desempeño de los tres modelos candidatos se mantiene estable en diferentes periodos de prueba, es decir, que el resultado no dependa de que un único periodo haya sido particularmente fácil o difícil de pronosticar, o de un simple ”golpe de suerte”.
 
 En la siguiente tabla se describen el promedio y la desviación estándar de las métricas obtenidas en cada fold, para cada modelo candidato y el sistema final:
 
@@ -97,9 +129,10 @@ En la siguiente tabla se describen el promedio y la desviación estándar de las
     \hline
     Regresión Lineal   & 58.13 $\pm$ 2.21  & 270.35 $\pm$ 6.32  & 106.24 $\pm$ 10.64 & 29.38 $\pm$ 1.84 \\
     \hline
-    XGBoost            & 46.58 $\pm$ 3.46  & 223.64 $\pm$ 31.40 & 64.93 $\pm$ 2.25  & 23.48 $\pm$ 1.15 \\
+    XGBoost            & 46.09 $\pm$ 3.16  & 215.56 $\pm$ 29.72 & 65.13 $\pm$ 2.10  & 23.23 $\pm$ 1.00 \\
+
     \hline
-    \textbf{Sistema final} & \textbf{43.42 $\pm$ 3.77} & \textbf{190.50 $\pm$ 40.63} & \textbf{81.13 $\pm$ 1.56} & \textbf{21.88 $\pm$ 1.34} \\
+    \textbf{Sistema final} & \textbf{44.17 $\pm$ 3.78} & \textbf{200.81 $\pm$ 41.30} & \textbf{82.20 $\pm$ 1.45} & \textbf{22.25 $\pm$ 1.33} \\
     \hline
     \end{tabularx}
 \end{table}
@@ -107,15 +140,155 @@ En la siguiente tabla se describen el promedio y la desviación estándar de las
 De la tabla se puede observar que:
 
 \begin{itemize}
-    \item El sistema final es el que obtiene el mejor promedio en las cuatro
-    métricas evaluadas. En cuanto a la estabilidad entre folds, presenta la
-    menor desviación estándar en RMSE y MAPE, aunque una desviación ligeramente
-    mayor a la de la Media Móvil en MAE y WAPE. Esto es significativo, porque
-    demuestra que vale la pena la complejidad de elegir un modelo distinto para
-    cada producto: el sistema final es consistentemente más preciso en promedio,
-    aunque su ventaja en estabilidad no se cumple de forma uniforme en las
-    cuatro métricas.
-    \item La media móvil es el segundo mejor modelo, seguido por XGBoost y finalmente la regresión lineal. Cuando se comparan los tres modelos candidatos de forma individual, la media móvil es la que obtiene un mejor MAE, RMSE y WAPE, mientras que solo XGBoost la supera en MAPE. El hecho de que ninguno de los dos modelos más sofisticados domine de forma general sobre la línea base avala la decisión de seleccionar un modelo distinto por producto, ya que no existe un único modelo que sea el mejor en todos los casos.
+    \item El sistema final obtiene un resultado practicamente igual al de Media Movil sola en las cuatro metricas (44.17 vs 44.27 de MAE, 200.81 vs 200.82 de RMSE, 82.20\% vs 82.38\% de MAPE, 22.25\% vs 22.31\% de WAPE), con una diferencia minima y dentro del margen de desviacion estandar de ambos. Esto es consistente con que, al validarse estadisticamente con la prueba de Diebold-Mariano, el sistema elige Media Movil como metodo campeon en el 97.1\% de los productos, por lo que el resultado agregado del "sistema final" termina siendo practicamente igual al de aplicar Media Movil a todo el catalogo.
+    
+    Además, como se explicó anteriormente, los Folds 1 y 2 comparten meses con el periodo de validación, por lo que esta pequeña diferencia a favor del sistema final debe interpretarse con cautela.
+    
+    \item La media móvil es la que obtiene el mejor MAE, RMSE y WAPE, seguida por XGBoost y finalmente la regresión lineal, mientras que solo XGBoost la supera en MAPE. El hecho de que XGBoost tenga un menor error en MAPE pero mayor en WAPE indica que se equivoca menos en los productos de baja demanda, pero más en los de alta demanda, que son los que más pesan en el WAPE. Que ninguno de los dos modelos más sofisticados domine de forma general a la línea base es la razón por la que tiene sentido evaluar la elección por producto, aunque en este caso de estudio esa elección casi siempre termine en Media Móvil.
+
     \item La Regresión Lineal es la que tiene los peores resultados en las cuatro métricas, además de que su MAPE es el que más varía entre los 3 folds. Esto es coherente con la tendencia de este modelo a sobreestimar los productos de alta demanda, observada previamente en el análisis de dispersión entre modelos, lo que ayuda a explicar por que su error resulta más alto que el de los otros dos modelos.
-    \item Finalmente, se observa que la efectividad del sistema final no se debe solamente a "elegir el mejor modelo en general", que en este caso seria la media móvil, sino a elegir un modelo distinto para cada producto. En caso de haber elegido media móvil para todos los productos, el error hubiera sido de 22.31\% de WAPE, mientras que al elegir el mejor modelo por producto, validado mediante la prueba de Diebold-Mariano, el error se reduce a 21.88\%
+    \item Finalmente, se observa que, en este caso de estudio, de haber elegido Media Móvil para todos los productos, el error hubiera sido de 22.31\% de WAPE, mientras que al elegir el mejor modelo por producto, validado mediante la prueba de Diebold-Mariano, el error se reduce a 22.25\%. Es una diferencia mínima, dentro del margen de ruido. El valor del enfoque, entonces, no está en una ganancia de precisión agregada medible en este catálogo en particular, sino en poder identificar, con respaldo estadístico, qué productos sí se benefician de Regresión Lineal o XGBoost, sin arriesgarse a cambiar de método en el resto sin evidencia suficiente.
 \end{itemize}
+
+\subsubsection{Validación exploratoria en otros dominios}
+
+Con el fin de explorar el comportamiento de Thary fuera del dominio de salud, se realizaron dos pruebas exploratorias adicionales con datasets publicos de Kaggle: uno de pronostico de demanda en retail (Store Item Demand Forecasting\cite{talukdar2023storeitem}, 50 tiendas y 50 productos, 2019-2023) y otro de cadena de suministro en comercio electronico (DataCo Smart\cite{constante2019dataco} Supply Chain, 118 productos, 2015-2017).
+
+Antes de poder usar estos dos datasets en Thary, fue necesario prepararlos, ya que ninguno de los dos venia organizado a nivel mensual, que es el nivel que el sistema necesita.
+
+El dataset de "Store Item Demand Forecasting" traia las ventas dia por dia, por lo que se agruparon sumando las ventas de cada mes, por cada combinacion de tienda y producto. 
+
+El dataset de DataCo, por su parte, traia cada fila como un pedido individual, por lo que se agruparon sumando las cantidades pedidas de cada mes, por cada producto.
+
+Otra limitación de estos dos datasets es que no contaban con todas las columnas opcionales que usa Thary para las recomendaciones de reposición. Además de las columnas obligatorias (fecha, producto y demanda), el dataset de Store Item Demand Forecasting incluye el precio, y el de DataCo incluye el nombre del producto, su categoría, el precio y el tiempo de entrega (lead time). Pero ninguno de los dos incluye el inventario disponible ni los costos de pedido y de mantenimiento. Esto quiere decir que, a diferencia del caso de estudio principal de la clínica, no fue posible generar con ellos las alertas de reposición, el EOQ, el presupuesto ni el costo de ruptura. Por esta razón, la validación con estos dos datasets se limitó únicamente al análisis de la predicción de demanda.
+
+\begin{table}[H]
+\centering
+\caption{Comparación de modelos en el dataset de Store Item Demand Forecasting.}
+\label{tab:store-item-modelos}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{|X|c|c|c|c|c|c|}
+\hline
+\textbf{Modelo} & \textbf{MAE} & \textbf{RMSE} & \textbf{Mediana Error} & \textbf{$R^2$} & \textbf{MAPE (\%)} & \textbf{WAPE (\%)} \\
+\hline
+Media Móvil 3 meses & 176.41 & 210.85 & 153.67 & 0.63 & 21.42 & 21.22 \\
+\hline
+Regresión Lineal & 67.03 & 80.23 & 62.20 & 0.95 & 11.50 & 8.06 \\
+\hline
+XGBoost (log1p) & 26.96 & 35.37 & 21.38 & 0.99 & 3.46 & 3.24 \\
+\hline
+\end{tabularx}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{templatefigures/comparacion_WAPE_porcentaje_StoreItemDemandForecasting}
+    \caption{Comparación de WAPE entre los tres modelos candidatos (holdout final).}
+    \label{fig:comparacion_wape_StoreItemDemandForecasting}
+\end{figure}
+
+En este dataset, XGBoost obtuvo resultados notablemente mejores que en el caso de estudio principal (R² de 0.99, WAPE de 3.24\%), lo cual es consistente con tratarse de un patron de demanda mas estable y con mayor volumen de historial por producto (60 meses continuos, sin productos entrando o saliendo del catalogo).
+
+\begin{table}[H]
+\centering
+\caption{Comparación entre modelo único y combinación — Store Item Demand Forecasting.}
+\label{tab:store-item-combinacion}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{|X|c|c|c|c|c|c|}
+\hline
+\textbf{Opción} & \textbf{MAE} & \textbf{RMSE} & \textbf{Mediana Error} & \textbf{$R^2$} & \textbf{MAPE (\%)} & \textbf{WAPE (\%)} \\
+\hline
+Media móvil sola & 176.41 & 210.85 & 153.67 & 0.63 & 21.42 & 21.22 \\
+\hline
+XGBoost solo & 26.96 & 35.37 & 21.38 & 0.99 & 3.46 & 3.24 \\
+\hline
+Combinación XGBoost + Media móvil & 26.83 & 35.00 & 21.43 & 0.99 & 3.46 & 3.23 \\
+\hline
+\end{tabularx}
+\end{table}
+
+En este dataset, combinar si ofrece una mejora, aunque pequeña: la combinacion (MAE 26.83, WAPE 3.23\%) supera levemente a XGBoost solo (MAE 26.96, WAPE 3.24\%) en todas las metricas.
+
+Esto tiene sentido en base a la teoria de combinacion de pronosticos (Bates y Granger, 1969), ya que cuando los dos metodos base ya son precisos pero se equivocan de forma distinta entre si, promediarlos puede reducir el error todavia mas.
+
+\begin{table}[H]
+\centering
+\caption{Comparación de modelos en el dataset DataCo Supply Chain.}
+\label{tab:dataco-modelos}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{|X|c|c|c|c|c|c|}
+\hline
+\textbf{Modelo} & \textbf{MAE} & \textbf{RMSE} & \textbf{Mediana Error} & \textbf{$R^2$} & \textbf{MAPE (\%)} & \textbf{WAPE (\%)} \\
+\hline
+Media Móvil 3 meses & 87.01 & 303.58 & 12.33 & 0.74 & 213.70 & 25.11 \\
+\hline
+Regresión Lineal & 96.78 & 300.67 & 26.33 & 0.75 & 343.93 & 27.93 \\
+\hline
+XGBoost (log1p) & 88.23 & 302.43 & 17.98 & 0.75 & 274.32 & 25.46 \\
+\hline
+\end{tabularx}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{templatefigures/comparacion_WAPE_porcentaje_dataco}
+    \caption{Comparación de WAPE entre los tres modelos candidatos (holdout final).}
+    \label{fig:comparacion_WAPE_porcentaje_dataco}
+
+\end{figure}
+
+En este segundo dataset, el MAPE se mantiene elevado (sobre 200\%), mientras que el WAPE es mucho mas moderado (25\%). Esta diferencia tan marcada entre las dos metricas es evidencia de que el dataset tiene varios productos con meses de demanda muy baja: cuando la demanda real de un mes es pequeña, como de 1 o 2 unidades, un error de solo unas pocas unidades se traduce en un porcentaje de error enorme, lo cual infla el promedio del MAPE. El WAPE, en cambio, no se ve tan afectado por estos casos, ya que suma todos los errores y toda la demanda antes de calcular el porcentaje, en lugar de promediar porcentajes individuales por mes. Esto es consistente con la limitacion del MAPE ya documentada en la seccion de Metricas de evaluacion de pronosticos.
+
+\begin{table}[H]
+\centering
+\caption{Comparación entre modelo único y combinación — DataCo Supply Chain.}
+\label{tab:dataco-combinacion}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{|X|c|c|c|c|c|c|}
+\hline
+\textbf{Opción} & \textbf{MAE} & \textbf{RMSE} & \textbf{Mediana Error} & \textbf{$R^2$} & \textbf{MAPE (\%)} & \textbf{WAPE (\%)} \\
+\hline
+Media móvil sola & 87.01 & 303.58 & 12.33 & 0.74 & 213.70 & 25.11 \\
+\hline
+XGBoost solo & 88.23 & 302.43 & 17.98 & 0.75 & 274.32 & 25.46 \\
+\hline
+Combinación XGBoost + Media móvil & 88.43 & 302.83 & 17.54 & 0.75 & 271.93 & 25.52 \\
+\hline
+\end{tabularx}
+\end{table}
+
+En DataCo, la combinacion (MAE 88.43) queda peor que Media Movil sola (87.01), aunque sigue siendo mejor que Regresion Lineal.
+
+Esto es consistente con lo que ya se observo en el MAPE elevado de este dataset. Con varios productos de demanda muy baja e intermitente, el peso optimo de la combinacion varia mes a mes sin llegar a un patron estable, por lo que promediar dos metodos no logra compensar el ruido de ese tipo de series.
+
+\begin{table}[H]
+\centering
+\caption{Comparación del WAPE promedio en validación cruzada: Media Móvil aplicada a todo el catálogo vs. selección de modelo por producto (Sistema final).}
+\label{tab:comparacion-cv-dominios}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{|X|c|c|X|}
+\hline
+\textbf{Dataset} & \textbf{WAPE Media Móvil (\%)} & \textbf{WAPE Sistema final (\%)} & \textbf{Diferencia} \\
+\hline
+Clínica (caso de estudio) & 22.31 & 22.25 & Prácticamente nula \\
+\hline
+DataCo Supply Chain & 13.32 & 13.30 & Prácticamente nula \\
+\hline
+Store Item Demand Forecasting & 19.48 & 9.13 & Más de la mitad \\
+\hline
+\end{tabularx}
+\end{table}
+
+La Tabla~\ref{tab:comparacion-cv-dominios} resume el WAPE promedio de la validación cruzada temporal en los tres dominios evaluados, comparando Media Móvil aplicada a todo el catálogo contra la selección de modelo por producto (Sistema final). Se observa que el aporte de la selección por producto cambia mucho de un dominio a otro.
+
+En DataCo, el sistema final es prácticamente idéntico a Media Móvil aplicada a todo el catálogo (WAPE 13.30\% vs 13.32\%). De hecho, en uno de los tres folds, el método elegido coincide exactamente con Media Móvil para absolutamente todos los productos. Esto se debe a que muchos productos de este dataset tienen historiales cortos o demanda intermitente, por lo que no tienen suficientes meses con datos dentro del periodo de validación para que la prueba de Diebold-Mariano encuentre una diferencia significativa.
+
+En Store Item Demand Forecasting, en cambio, el sistema final sí reduce el WAPE a menos de la mitad frente a Media Móvil sola (9.13\% vs 19.48\%). Como este archivo tiene más de 18 meses, el periodo de validación es de 6 meses en vez de 3, lo que le da a la prueba de Diebold-Mariano 5 grados de libertad en lugar de 2, y le permite detectar con mayor seguridad en qué productos conviene usar un modelo distinto. En este dataset, XGBoost fue elegido como campeón en 1338 de las 2500 series (53.5\%), y Media Móvil en las 1162 restantes.
+
+Por otra parte, este resultado también deja en evidencia una limitación del diseño. XGBoost aplicado a todo el catálogo obtuvo un WAPE promedio de 3.60\% en la validación cruzada, es decir, mucho menor que el 9.13\% del sistema final. Esto quiere decir que, en las 1162 series que quedaron con Media Móvil, el sistema usó un método bastante peor que XGBoost solo porque la prueba no encontró evidencia suficiente con 6 meses de validación. Es aquí donde se ve que usar siempre Media Móvil como respaldo es una forma de ”jugar a la segura”: protege al sistema de cambiar de método sin evidencia en catálogos como el de la clínica, pero en catálogos donde un modelo es claramente superior en general, le hace perder precisión. Una alternativa, que se propone como trabajo futuro, es que el respaldo no sea siempre Media Móvil, sino el modelo con mejor desempeño general en el periodo de validación.
+
+El beneficio del enfoque, entonces, no es fijo, sino que depende tanto de la cantidad de meses disponibles para la validación como del patrón de demanda de cada producto.
+
+Estos resultados confirman que el desempeño de Thary varia segun las caracteristicas del dominio y del patron de demanda, siendo mas favorable en catalogos con historial largo y continuo (Store Item Demand Forecasting) que en catalogos con historiales heterogeneos entre productos (DataCo).
+
+En cuanto a la combinacion de pronosticos, los tres dominios muestran que su aporte no es consistente, ya que ayuda levemente en Store Item Demand Forecasting (demanda estable, historial largo), pero no en DataCo ni en el caso de estudio clinico (demanda intermitente, historial mas corto por producto). Esto refuerza la decision de diseño de Thary de apoyarse en la seleccion de modelo por producto validada con la prueba de Diebold-Mariano: un mecanismo que no garantiza una mejora agregada en todos los dominios, pero que si asegura, con respaldo estadistico, que cualquier cambio de modelo frente a Media Movil responde a una ventaja real y no al azar, y que esa mejora crece de forma natural cuando se cuenta con mas historial por producto.

@@ -2,6 +2,8 @@ El cálculo del pronóstico futuro es la funcionalidad principal del sistema, es
 
 Después de que el usuario sube el archivo CSV con el historial de consumo, el sistema le permite configurar tanto el presupuesto disponible como el número de meses que desea pronosticar. Se implementó en \texttt{app/services/prediccion/pronostico\_futuro.py}:
 
+\Needspace{18\baselineskip}
+\captionof{listing}{Función \texttt{generar\_pronostico\_futuro}, que arma la lista de meses a pronosticar.}\label{lst:generar_pronostico_futuro}
 \begin{minted}{python}
 def generar_pronostico_futuro(
     df_mensual, producto_comportamiento, model, feature_cols, modelo_lr, features_lr,
@@ -25,6 +27,8 @@ En donde, se toma el último mes con datos del archivo, se le suma un mes, y des
 
 Para poder calcular el pronóstico futuro, se necesita del mes anterior para predecir el mes futuro, pero cuando se quiere predecir varios meses hacia adelante, el mes anterior a ese todavía no existe. Para resolverlo, Thary utiliza una estrategia recursiva \cite{BENTAIEB20127067}, es decir, para predecir un mes se usa la predicción del mes anterior como si fuera un mes real. Es recursiva porque el resultado de un mes se vuelve la entrada para predecir el mes siguiente. Es una característica propia de Thary respecto a los ejemplos de referencia \textit{Ejemplo 1 (SKU Demand Forecasting)} \cite{ejemplo1_demandforecast} y \textit{Ejemplo 3 (XGBoost)} \cite{ejemplo3_ksmooi_inventorydemand}, ya que estos solo pueden pronosticar el mes siguiente al último dato. La desventaja es que, al usar los meses pronosticados como entrada, es probable que el error vaya acumulándose y creciendo a medida que se pronostican meses más lejanos.
 
+\Needspace{10\baselineskip}
+\captionof{listing}{Construcción de las variables de entrada para cada mes a pronosticar.}\label{lst:features_pronostico_futuro}
 \begin{minted}{python}
 for h in range(horizonte_meses):
     mes_objetivo = proximo_mes + pd.DateOffset(months=h)
@@ -83,6 +87,8 @@ El proceso es recursivo porque la lista de demanda de cada producto no es fija, 
 Se arma una tabla con las variables de todos los productos y se llama a \texttt{predict()} una sola vez por modelo, para predecir los productos de todo el lote. De esta manera, se pueden predecir todos los productos de un mes en una sola llamada al modelo, lo que mejora el rendimiento del sistema, ya que se obtienen los mismos resultados que si se llamara al modelo producto por producto y es mucho más rápido. Para cada uno de los productos se obtienen las tres predicciones de los 3 modelos.
 
 
+\Needspace{13\baselineskip}
+\captionof{listing}{Predicción por lote con XGBoost y Regresión Lineal para todos los productos de un mes.}\label{lst:prediccion_lote_futuro}
 \begin{minted}{python}
     X_futuro_lote = pd.DataFrame(filas_features)[feature_cols]
     preds_xgb_lote = np.maximum(np.expm1(model.predict(X_futuro_lote)), 0)
@@ -121,6 +127,8 @@ Se tiene el diccionario \texttt{predicciones\_por\_metodo} que cuenta con las 3 
 
 Por último, se agrega la predicción hecha al final de la lista de demandas del producto, por lo que en el mes siguiente, \texttt{demandas[-1]} (el \texttt{lag\_1}) ya no representará la demanda real, sino la predicción recien hecha.
 
+\Needspace{20\baselineskip}
+\captionof{listing}{Selección del método final con salvaguarda y actualización de la lista de demandas del producto.}\label{lst:seleccion_metodo_futuro}
 \begin{minted}{python}
     metodo_campeon = segmento["metodo_campeon"]
     if (

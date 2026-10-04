@@ -15,4 +15,5 @@
     \PYG{n}{fecha\PYGZus{}estimada\PYGZus{}pedido} \PYG{o}{=} \PYG{n}{fecha\PYGZus{}referencia} \PYG{o}{+} \PYG{n}{pd}\PYG{o}{.}\PYG{n}{Timedelta}\PYG{p}{(}\PYG{n}{days}\PYG{o}{=}\PYG{n}{dias\PYGZus{}para\PYGZus{}pedido}\PYG{p}{)}
 \PYG{k}{else}\PYG{p}{:}
     \PYG{n}{fecha\PYGZus{}estimada\PYGZus{}pedido} \PYG{o}{=} \PYG{k+kc}{None}
+    \PYG{n}{dias\PYGZus{}para\PYGZus{}pedido} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{nan}
 \end{MintedVerbatim}

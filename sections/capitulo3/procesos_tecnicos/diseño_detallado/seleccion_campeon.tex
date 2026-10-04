@@ -4,7 +4,7 @@ Esta decisión se tomó de manera independiente para el sistema Thary, ya que al
 
 En una primera versión del sistema, la selección del mejor modelo por producto se hacia en base a cual de los 3 obtuvo un menor MAE. El problema con esta estrategia es que el backtest generalmente solo cuenta con entre 3 y 6 meses de datos si es que se cuenta con un archivo más grande, son pocos meses, por lo que el hecho de que un modelo tenga el MAE más bajo no es prueba de que sea mejor, podría darse por diferentes factores o por casualidad. 
 
-Es por eso que para seleccionar el mejor modelo, lo primero que se hace es calcular el MAE de los 3 modelos, se identifican los dos modelos que obtengan el menor MAE para cada producto. Esto usando \texttt{np.argsort} sobre la tabla de errores:
+Es por eso que para seleccionar el mejor modelo, lo primero que se hace es calcular el MAE de los 3 modelos para cada producto, pero no sobre el periodo de prueba, sino sobre un periodo de validación que se separa antes del test. En el caso de estudio de la clínica, los modelos se entrenan con los meses de octubre a diciembre de 2021, el campeón se elige con los meses de enero a marzo de 2022 (validación) y las métricas finales se reportan con abril a junio de 2022 (test). De esta manera, el periodo de test no participa en ninguna decisión del sistema. Con los errores de validación, se identifican los dos modelos que obtienen el menor MAE para cada producto, esto usando np.argsort sobre la tabla de errores:
 
 \Needspace{10\baselineskip}
 \captionof{listing}{Identificación del mejor y el segundo mejor modelo de cada producto (función \texttt{elegir\_campeon\_por\_producto}).}\label{lst:campeon_mejores}
@@ -84,28 +84,23 @@ Se descarta el resultado del MAE y se usa el modelo de Media Móvil como respald
 
 En estos casos se selecciona la Media Móvil en vez del modelo que ganó por una diferencia que no es significativa y que podría tratarse solo de ruido.
 
-Al aplicar este mecanismo al sistema, se evidenció un cambio drástico en el resultado real, probado sobre el catálogo completo de la Clínica Nuestra Señora de los Remedios (856 productos). Antes de implementar la validación con Diebold-Mariano, seleccionando únicamente por el MAE más bajo, el método campeón se distribuía así:
+Al aplicar este mecanismo al sistema, se evidenció un cambio drástico en el resultado real, probado sobre el catálogo completo de la Clínica Nuestra Señora de los Remedios (856 productos). En una primera versión del sistema, en la que el campeón todavía se elegía con el mismo periodo de prueba y únicamente por el MAE más bajo, el método campeón se distribuía así:
 
 \begin{itemize}
     \item XGBoost ganaba en 430 productos (50.2\%)
-    \item Media Móvil en 227 (26.5\%)
     \item Regresión Lineal en 199 (23.2\%)
+    \item Media Móvil en 227 (26.5\%)
+
 \end{itemize}
 
-Al incorporar la prueba de Diebold-Mariano, esa distribución cambió radicalmente:
+Al incorporarse la prueba de Diebold-Mariano en esa misma versión, XGBoost pasó a ganar en solo 15 productos (1.8\%), Regresión Lineal en 12 (1.4\%) y Media Móvil pasó a ser el método campeón en 829 productos (96.8\%).
+En la versión final de Thary, en la que el campeón se elige con el periodo de validación y la prueba de Diebold-Mariano se aplica sobre esos mismos meses de validación, la distribución se mantiene prácticamente igual: Media Móvil es el método campeón en el 97.1\% de los productos seguido por XGBoost y Regresión Lineal.
 
-\begin{itemize}
-    \item XGBoost pasó a ganar en solo 15 productos (1.8\%)
-    \item Regresión Lineal en 12 (1.4\%)
-    \item Media Móvil pasó a ser el método campeón en 829 productos (96.8\%)
-\end{itemize}
+Esto evidencia que, sin la validación estadística de Diebold-Mariano, el sistema estaba seleccionando modelos ”ganadores” cuya ventaja, en la gran mayoría de los casos, no era estadísticamente distinguible del ruido. También muestra que, con solo 3 meses para comparar, la prueba casi nunca encuentra evidencia suficiente para apartarse de Media Móvil, algo que se analiza con más detalle en el capitulo 4.
 
+En cuanto al tamaño del periodo de validación, este usa el mismo tamaño que el periodo de prueba , es decir 3 o 6 meses, según la función \texttt{tamano\_test\_backtest}, ya que es sobre la validación que se aplica la prueba de Diebold-Mariano. 
 
-De los 430 productos en los que originalmente ganaba XGBoost, 415 pasaron a usar Media Móvil y solo 15 se mantuvieron con XGBoost; de los 199 en los que ganaba Regresión Lineal, 187 pasaron a Media Móvil y solo 12 se mantuvieron. Los 227 productos que ya usaban Media Móvil se mantuvieron igual, ya que este es el método de respaldo cuando la diferencia no resulta significativa. 
-
-Esto evidencia que, sin la validación estadística de Diebold-Mariano, el sistema estaba seleccionando modelos "ganadores" cuya ventaja, en la gran mayoría de los casos, no era estadísticamente distinguible del ruido.
-
-En cuanto al tamaño del periodo de prueba, cuando se cuenta con un test fijo de 3 meses, la prueba de Diebold-Mariano siempre tendría solo 2 grados de libertad, sin importar cuánta historia tenga el archivo, nunca ganando más poder estadístico para detectar diferencias reales. Por eso, el tamaño del periodo de prueba se ajusta según el historial disponible:
+Si el archivo es tan corto que no alcanza para separar un periodo de validación sin dejar vacío el entrenamiento, el sistema vuelve a elegir el campeón con el propio periodo de prueba, y lo deja indicado en el resultado (\texttt{seleccion\_metodo\_con\_fuga}) para que se sepa que, en ese caso, las métricas finales son optimistas.
 
 \Needspace{7\baselineskip}
 \captionof{listing}{Función \texttt{tamano\_test\_backtest}, que ajusta el periodo de prueba al historial disponible.}\label{lst:campeon_tamano_test}

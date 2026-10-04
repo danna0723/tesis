@@ -2,23 +2,30 @@ El cálculo de la reposición responde a la necesidad de determinar cuánto inve
 
 Para esta parte, se utilizaron las fórmulas de gestión de inventraio clásicas para stock de seguridad, punto de reorden y cantidad económica de pedido (EOQ), los cuales también se usaron en los ejemplos de referencia \textit{Ejemplo 1 (SKU Demand Forecasting)} \cite{ejemplo1_demandforecast} y \textit{Ejemplo 2 (Machine Learning for Retail Demand Forecasting: Comparative Study of Demand Forecasting Methods for a Retail Store (XGBoost Model vs. Rolling Mean))} \cite{ejemplo2_saci2020mlretail}. En este aspecto, la propuesta de valor de Thary es que estas fórmulas se hacen en base al pronóstico futuro que fue generado en la etapa anterior, y no en base a los datos históricos. 
 
-A partir de las predicciones finales de los meses pronosticados se calculan el promedio mensual $\bar{d}$ y su desviación estándar $\sigma_d$.    
+A partir de las predicciones finales de los meses pronosticados se calcula el promedio mensual $\bar{d}$. Para $\sigma_d$, en una primera version se usaba la desviacion estandar de esos mismos valores pronosticados entre si. El problema es que, con un metodo recursivo como Media Movil, los pocos meses pronosticados suelen salir parecidos entre si, ya que la prediccion de un mes alimenta la del siguiente. Esto hacia que esa desviacion fuese pequeña, incluso para productos con demanda muy erratica, por lo que en realidad se estaba midiendo que tanto variaban las predicciones entre si, y no que tanto se equivocaba el pronostico.
+
+Es por esto que ahora $\sigma_d$ usa directamente el MAE del backtest del metodo campeon para ese producto. Solo cuando no hay un MAE medido, es que se recurre de nuevo a la desviacion de los pronosticos.
+
+El MAE es el promedio de los errores absolutos. Cuando los errores del pronóstico siguen una distribución normal, la desviación estándar del error es aproximadamente 1.25 veces el MAE ($\sigma \approx 1.25 \cdot MAE$). En Thary se decidió usar el MAE directamente, sin ese factor, por lo que el stock de seguridad calculado puede quedar alrededor de un 20\% por debajo del que se obtendría con la desviación estándar del error. Esto quiere decir que el sistema tiende a sugerir un poco menos de stock de seguridad del necesario, lo que se reconoce como una limitación y se documenta como trabajo futuro.
+
+\Needspace{11\baselineskip}
+\captionof{listing}{Cálculo del promedio y la desviación estándar de la demanda pronosticada (función \texttt{calcular\_tabla\_reorden}).}\label{lst:calcular_tabla_reorden}
 
 \begin{minted}{python}
-def calcular_tabla_reorden(
-    df_model, df_mensual, producto_comportamiento, pronostico_futuro_df,
-    presupuesto_capital_trabajo=None
-):
-    #...
-    stats_pronostico = pronostico_futuro_df.groupby("producto_id")["prediccion_final"].agg(
-        demanda_promedio="mean", desviacion_demanda=lambda x: np.std(x)
-    )
+metodo_campeon = segmento["metodo_campeon"]
+mae_campeon = segmento.get(MAE_POR_METODO_COL.get(metodo_campeon))
+if mae_campeon is not None and not pd.isna(mae_campeon):
+    desviacion_demanda = mae_campeon
+else:
+    desviacion_demanda = stats_pronostico.at[producto, "desviacion_pronostico_std"]
 \end{minted}
 
 \paragraph{Lead time}
 
 El lead time ($L$) de cada producto representa el tiempo en el que los proovedores entregarian el producto después de hacer un pedido, en el sistema se expresa en meses para que sea consistente con la unidad de tiempo de las demandas. Para asegurar esto, si el archivo original contiene el lead time en semanas, el sistema convierte los semanas de lead time a meses, dividiendolas entre 4.345. De no tener el lead time, se asume un valor por defecto de 0.5 meses.
 
+\Needspace{7\baselineskip}
+\captionof{listing}{Conversión del lead time a meses.}\label{lst:lead_time_meses}
 \begin{minted}{python}
 lead_time_meses = (
     fila_params["lead_time_semanas"] / 4.345
@@ -36,6 +43,8 @@ SS = Z \cdot \sigma_d \cdot \sqrt{L}
 \qquad\qquad
 \]
 
+\Needspace{3\baselineskip}
+\captionof{listing}{Cálculo del stock de seguridad con el nivel de servicio normal.}\label{lst:stock_seguridad_normal}
 \begin{minted}{python}
 stock_seguridad = SERVICE_LEVEL_Z * desviacion_demanda * np.sqrt(lead_time_meses)
 \end{minted}
@@ -49,6 +58,8 @@ ROP = \bar{d} \cdot L + SS
 \qquad\qquad
 \]
 
+\Needspace{3\baselineskip}
+\captionof{listing}{Cálculo del punto de reorden (ROP).}\label{lst:punto_reorden}
 \begin{minted}{python}
 punto_reorden = demanda_promedio * lead_time_meses + stock_seguridad
 \end{minted}
@@ -59,6 +70,43 @@ En el que:
     \item $L$ es el lead time.
     \item $SS$ es el stock de seguridad.
 \end{itemize}
+
+\paragraph{Comparación con demanda log-normal}
+
+Es importante tener en cuenta que, hasta el momento, los cálculos mencionados asumen que la demanda durante el lead time sigue una distribución normal, es decir, una campana simétrica. El problema es que, si la variabilidad del producto es alta, esta campana se extiende tanto que termina permitiendo valores negativos de demanda, algo que en la realidad no tiene sentido. Además, los productos de rotación baja o intermitente, comunes en diferentes dominios de inventario, suelen tener una demanda con muchos meses bajos y pocos picos altos, un comportamiento que la distribución normal no representa bien, ya que esta asume que los valores se reparten de forma pareja a ambos lados del promedio.
+
+Por eso se decidió que el sistema calculara adicionalmente tanto el stock de seguridad como el punto de reorden, asumiendo que la demanda sigue una distribución log-normal. Esto quiere decir que no es la demanda en sí la que se distribuye de forma normal, sino su logaritmo ($\ln(d)$).
+
+Para hacer este cálculo, se parte de los mismos dos datos que ya se usan en las fórmulas de la normal: el promedio de la demanda durante el lead time ($\bar{d} \cdot L$) y su desviación estándar ($\sigma_d \cdot \sqrt{L}$). A partir de estos dos valores, se despejan los parámetros $\mu$ y $\sigma$ de la distribución log-normal que reproducen ese mismo nivel de variabilidad:
+
+\[
+\sigma_{\ln} = \sqrt{\ln\left(1 + CV_L^2\right)}
+\qquad\qquad
+\mu_{\ln} = \ln(\bar{d} \cdot L) - \frac{\sigma_{\ln}^2}{2}
+\]
+
+donde $CV_L$ es el coeficiente de variación de la demanda durante el lead time, es decir, la desviación dividida entre el promedio ($\sigma_d \cdot \sqrt{L} \,/\, \bar{d} \cdot L$). Con esto, el punto de reorden y el stock de seguridad bajo este supuesto quedan como:
+
+\[
+ROP_{\ln} = e^{\,\mu_{\ln} + Z \cdot \sigma_{\ln}}
+\qquad\qquad
+SS_{\ln} = ROP_{\ln} - \bar{d} \cdot L
+\]
+
+La implementacion se puede ver en el codigo como:
+\Needspace{9\baselineskip}
+\captionof{listing}{Cálculo del stock de seguridad y el punto de reorden bajo el supuesto de demanda log-normal.}\label{lst:reposicion_lognormal}
+\begin{minted}{python}
+media_lt = demanda_promedio * lead_time_meses
+desviacion_lt = desviacion_demanda * np.sqrt(lead_time_meses)
+cv_lt = desviacion_lt / media_lt
+sigma_log = np.sqrt(np.log(1 + cv_lt ** 2))
+mu_log = np.log(media_lt) - (sigma_log ** 2) / 2
+punto_reorden_lognormal = np.exp(mu_log + SERVICE_LEVEL_Z * sigma_log)
+stock_seguridad_lognormal = punto_reorden_lognormal - media_lt
+\end{minted}
+
+Este cálculo no reemplaza al de la normal, ya que el sistema sigue usando el $SS$ y el $ROP$ originales para decidir si se genera una alerta de reposición y cuánto pedir. El valor log-normal solo se muestra en el panel técnico, como una comparación adicional: cuanto más distintos sean los dos resultados para un producto, más importa, para ese producto en particular, qué distribución se esté asumiendo.
 
 \paragraph{Cantidad económica de pedido (EOQ)}
 
@@ -78,6 +126,8 @@ En donde:
 
 En el sistema, esto se implementó teniendo en cuenta que como el costo de pedido y el porcentaje de mantenimiento son columnas opcionales del archivo csv, por lo que el EOQ solo se calcula si estan disponibles en el archivo:
 
+\Needspace{8\baselineskip}
+\captionof{listing}{Cálculo de la cantidad económica de pedido (EOQ).}\label{lst:eoq_calculo}
 \begin{minted}{python}
 demanda_anual_estimada = demanda_promedio * 12
 if not pd.isna(costo_unitario_producto) and not pd.isna(porcentaje_mantenimiento) and not pd.isna(costo_pedido_producto):
@@ -94,6 +144,8 @@ La cantidad sugerida se calcula en base al EOQ, de no estarlo, pero se conoce el
 
 En cuanto al presupuesto, la cantidad que el usuario incluye se reparte por igual entre todos los productos y el límite corresponde a la cantidad de unidades que ese monto permite comprar. La cantidad final es el menor valor entre la cantidad calculada y el límite por presupuesto. El costo estimado del pedido se obtiene multiplicando esa cantidad por el costo unitario.
 
+\Needspace{15\baselineskip}
+\captionof{listing}{Cálculo de la cantidad sugerida de pedido y el límite por presupuesto.}\label{lst:cantidad_sugerida_presupuesto}
 \begin{minted}{python}
 presupuesto_por_producto = working_capital_budget / n_productos_activos
 
@@ -119,6 +171,8 @@ Para poder organizar los pedidos de una manera eficiente y fácil de interpretar
 
 También se incluyó la fecha estimada en la que el inventario llegará a ese punto de reposición, asumiendo que el consumo del inventario se mantiene con el ritmo promedio ya pronosticado, la fecha de referencia es el último mes del que se tiene información en el archivo csv. Si el inventario está por debajo del punto de reorden, se usa la fecha del último mes con datos de archivo. Por otra parte, si el inventario está por encima, se calculan los días que faltan para llegar al punto de reorden, dividiendo el inventario que sobra entre la demanda diaria, que es la demanda mensual pronosticada dividida entre 30.44 (días promedio por mes). Esos días se suman a la fecha de referencia y el resultado es la fecha estimada en la que se debe hacer el pedido. Se aplica un tope de 36\,500 días (100 años) para evitar valores absurdos en productos con demanda pronosticada casi nula. Si no hay inventario o no hay demanda pronosticada, no se puede estimar la fecha.
 
+\Needspace{18\baselineskip}
+\captionof{listing}{Cálculo de la fecha estimada del pedido.}\label{lst:fecha_estimada_pedido}
 \begin{minted}{python}
 ya_hay_que_pedir = not pd.isna(inventario_actual) and inventario_actual <= punto_reorden
 if pd.isna(inventario_actual):
@@ -136,8 +190,9 @@ elif demanda_promedio > 0:
     fecha_estimada_pedido = fecha_referencia + pd.Timedelta(days=dias_para_pedido)
 else:
     fecha_estimada_pedido = None
-    dias_para_pedido = np.nan\end{minted}
+    dias_para_pedido = np.nan
+\end{minted}
 
 Como calculos adicionales, se incluyó que la tabla de reposición también calculara el valor del inventario actual y el margen de dinero que se dejaria de ganar si el producto se agota durante el lead time.
 
-Como principales limitaciones es que $\sigma_d$ sale de las predicciones y no del error de pronóstico ni sobre la demanda real, por lo que mide que tanto varian las predicciones y no la incertidumbre real.
+La principal limitación es que $\sigma_d$ depende de que el producto tenga un MAE de backtest medido. Cuando hay productos sin datos de backtest, el sistema vuelve a usar la desviación estándar de los valores pronosticados, que mide qué tanto varía el pronóstico entre un mes y otro, y no qué tanto se equivoca. Además, el MAE se usa como $\sigma_d$ sin el factor de 1.25 explicado anteriormente, y si el MAE del producto fue exactamente 0 en el backtest (por ejemplo, un producto sin ventas que el modelo también predijo en 0), el stock de seguridad también queda en 0.

@@ -682,12 +682,19 @@ categoría\_\discretionary{}{}{}abc & VARCHAR(5) & & Clasificación A/B/C \\
 \hline
 método\_\discretionary{}{}{}campeón & VARCHAR(40) & & Modelo seleccionado como campeón \\
 \hline
+mae\_\discretionary{}{}{}media\_\discretionary{}{}{}móvil & DOUBLE & & MAE de backtest del modelo Media Móvil para este producto \\
+\hline
+mae\_\discretionary{}{}{}regresión\_\discretionary{}{}{}lineal & DOUBLE & & MAE de backtest del modelo Regresión Lineal para este producto \\
+\hline
+mae\_\discretionary{}{}{}xgboost & DOUBLE & & MAE de backtest del modelo XGBoost para este producto \\
+\hline
 proveedor\_\discretionary{}{}{}principal & VARCHAR(160) & & Proveedor principal del producto \\
 \hline
 proveedor\_\discretionary{}{}{}alterno & VARCHAR(160) & & Proveedor alterno del producto \\
 \hline
 \end{tabularx}
 \end{table}
+
 
 \subsection*{Tabla \texttt{metricas\_modelos}}
 \begin{table}[H]
@@ -785,10 +792,15 @@ predicción\_\discretionary{}{}{}baseline & DOUBLE & & Predicción de Media Móv
 \hline
 predicción\_\discretionary{}{}{}final & DOUBLE & & Predicción del método campeón \\
 \hline
+predicción\_\discretionary{}{}{}min & DOUBLE & & Límite inferior del rango de la predicción final (predicción menos el MAE de backtest del método usado) \\
+\hline
+predicción\_\discretionary{}{}{}max & DOUBLE & & Límite superior del rango de la predicción final \\
+\hline
 método\_\discretionary{}{}{}usado & VARCHAR(40) & & Modelo seleccionado para ese producto \\
 \hline
 \end{tabularx}
 \end{table}
+
 
 \subsection*{Tabla \texttt{reorder}}
 \begin{table}[H]
@@ -824,9 +836,13 @@ lead\_\discretionary{}{}{}time\_\discretionary{}{}{}semanas & DOUBLE & & Tiempo 
 \hline
 lead\_\discretionary{}{}{}time\_\discretionary{}{}{}meses & DOUBLE & & Tiempo de entrega en meses \\
 \hline
-stock\_\discretionary{}{}{}seguridad & DOUBLE & & Stock de seguridad calculado \\
+stock\_\discretionary{}{}{}seguridad & DOUBLE & & Stock de seguridad calculado (supuesto de demanda normal) \\
 \hline
-punto\_\discretionary{}{}{}reorden & DOUBLE & & Punto de reorden calculado \\
+punto\_\discretionary{}{}{}reorden & DOUBLE & & Punto de reorden calculado (supuesto de demanda normal) \\
+\hline
+stock\_\discretionary{}{}{}seguridad\_\discretionary{}{}{}lognormal & DOUBLE & & Stock de seguridad calculado asumiendo demanda log-normal, a modo de comparación \\
+\hline
+punto\_\discretionary{}{}{}reorden\_\discretionary{}{}{}lognormal & DOUBLE & & Punto de reorden calculado asumiendo demanda log-normal, a modo de comparación \\
 \hline
 inventario\_\discretionary{}{}{}actual & DOUBLE & & Inventario disponible actual \\
 \hline

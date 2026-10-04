@@ -129,6 +129,40 @@
       \verb 10.51519/journalisi.v6i1.647
       \endverb
     \endentry
+    \entry{chopra2018supplychain}{book}{}{}
+      \name{author}{2}{}{%
+        {{hash=c89c289b7605f2c991bd85e8fabd286d}{%
+           family={Chopra},
+           familyi={C\bibinitperiod},
+           given={Sunil},
+           giveni={S\bibinitperiod}}}%
+        {{hash=dc2d813710eb980f88a732a98b0ea903}{%
+           family={Meindl},
+           familyi={M\bibinitperiod},
+           given={Peter},
+           giveni={P\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Pearson}%
+      }
+      \strng{namehash}{417574065407421bc65ef48d27a60355}
+      \strng{fullhash}{417574065407421bc65ef48d27a60355}
+      \strng{fullhashraw}{417574065407421bc65ef48d27a60355}
+      \strng{bibnamehash}{417574065407421bc65ef48d27a60355}
+      \strng{authorbibnamehash}{417574065407421bc65ef48d27a60355}
+      \strng{authornamehash}{417574065407421bc65ef48d27a60355}
+      \strng{authorfullhash}{417574065407421bc65ef48d27a60355}
+      \strng{authorfullhashraw}{417574065407421bc65ef48d27a60355}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{7}
+      \field{isbn}{978-0-13-473188-9}
+      \field{note}{Capitulo 12: Managing Uncertainty in a Supply Chain: Safety Inventory}
+      \field{title}{Supply Chain Management: Strategy, Planning, and Operation}
+      \field{year}{2018}
+    \endentry
     \entry{mahendrawathi2011abc}{inproceedings}{}{}
       \name{author}{3}{}{%
         {{hash=4540df8fbb09bc076db4fadda64e6e40}{%
@@ -155,8 +189,8 @@
       \strng{authornamehash}{6e99340d87a8c27aa5259890b2213bb5}
       \strng{authorfullhash}{2427a72919440c7f0514bcc43790de5f}
       \strng{authorfullhashraw}{2427a72919440c7f0514bcc43790de5f}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{ICACSIS 2011 - 2011 International Conference on Advanced Computer Science and Information Systems, Proceedings}
@@ -192,8 +226,8 @@
       \strng{authornamehash}{901252fac8fd23e4435788b726848ce1}
       \strng{authorfullhash}{46549b06dc07f9b63307175caea43c91}
       \strng{authorfullhashraw}{46549b06dc07f9b63307175caea43c91}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of the Operational Research Society}
@@ -231,8 +265,8 @@
       \strng{authornamehash}{3f15202ce4245a45d216564fdc7b07be}
       \strng{authorfullhash}{3f15202ce4245a45d216564fdc7b07be}
       \strng{authorfullhashraw}{3f15202ce4245a45d216564fdc7b07be}
-      \field{sortinit}{7}
-      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{¿Qué es la previsión de demanda?}
@@ -274,8 +308,8 @@
       \strng{authornamehash}{f3e05c7440ad9472b1c6d591d6be8e45}
       \strng{authorfullhash}{23fe3fc9e29bfd67668feaa2fb4fb0cd}
       \strng{authorfullhashraw}{23fe3fc9e29bfd67668feaa2fb4fb0cd}
-      \field{sortinit}{8}
-      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{DYNA}
@@ -639,8 +673,8 @@
       \strng{authornamehash}{22d436eac46158db792e782fc2723b80}
       \strng{authorfullhash}{22d436eac46158db792e782fc2723b80}
       \strng{authorfullhashraw}{22d436eac46158db792e782fc2723b80}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{Documentacion oficial de XGBoost}
@@ -722,6 +756,48 @@
       \field{type}{CESifo Working Paper}
       \field{year}{2009}
     \endentry
+    \entry{cobb2013lognormal}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=2fd0e8c90230b569d4fbdbfa84c46830}{%
+           family={Cobb},
+           familyi={C\bibinitperiod},
+           given={Barry\bibnamedelima R.},
+           giveni={B\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=20fd59c7506783fb5ee59ece7acaef6b}{%
+           family={Rumí},
+           familyi={R\bibinitperiod},
+           given={Rafael},
+           giveni={R\bibinitperiod}}}%
+        {{hash=26b7e196819628fcfe50563539e072de}{%
+           family={Salmerón},
+           familyi={S\bibinitperiod},
+           given={Antonio},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{43994a9d15285352f0f3c2614f23e8e9}
+      \strng{fullhash}{f6ede7b29d6360112962faa2ac71d608}
+      \strng{fullhashraw}{f6ede7b29d6360112962faa2ac71d608}
+      \strng{bibnamehash}{f6ede7b29d6360112962faa2ac71d608}
+      \strng{authorbibnamehash}{f6ede7b29d6360112962faa2ac71d608}
+      \strng{authornamehash}{43994a9d15285352f0f3c2614f23e8e9}
+      \strng{authorfullhash}{f6ede7b29d6360112962faa2ac71d608}
+      \strng{authorfullhashraw}{f6ede7b29d6360112962faa2ac71d608}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Computers \& Operations Research}
+      \field{note}{Disponible en: \url{https://doi.org/10.1016/j.cor.2013.01.017}}
+      \field{number}{7}
+      \field{title}{Inventory management with log-normal demand per unit time}
+      \field{volume}{40}
+      \field{year}{2013}
+      \field{pages}{1842\bibrangedash 1851}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.1016/j.cor.2013.01.017
+      \endverb
+    \endentry
     \entry{jahin2025mcdfn}{article}{}{}
       \name{author}{3}{}{%
         {{hash=6ec53b38d2143431674ce98015adb6a8}{%
@@ -748,8 +824,8 @@
       \strng{authornamehash}{41ca603b96a5d172ca15ac999b48a728}
       \strng{authorfullhash}{1e9eae44b022001864dde1d870894ce3}
       \strng{authorfullhashraw}{1e9eae44b022001864dde1d870894ce3}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Evolutionary Intelligence}
@@ -791,8 +867,8 @@
       \strng{authornamehash}{9c9b7af522197e2b1702e3cc2b7f98db}
       \strng{authorfullhash}{b27d0d88f682a434b1f55d770dbd34c9}
       \strng{authorfullhashraw}{b27d0d88f682a434b1f55d770dbd34c9}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{International Journal of Forecasting}
@@ -828,8 +904,8 @@
       \strng{authornamehash}{eff2500053d70f182fdc49dfd66de945}
       \strng{authorfullhash}{eff2500053d70f182fdc49dfd66de945}
       \strng{authorfullhashraw}{eff2500053d70f182fdc49dfd66de945}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Operational Research Quarterly}
@@ -970,8 +1046,8 @@
       \strng{authornamehash}{15cc2e3b52b5ea2d3045be532376a348}
       \strng{authorfullhash}{15cc2e3b52b5ea2d3045be532376a348}
       \strng{authorfullhashraw}{15cc2e3b52b5ea2d3045be532376a348}
-      \field{sortinit}{7}
-      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of Business \& Economic Statistics}
@@ -1217,8 +1293,8 @@
       \strng{authornamehash}{ac4b6dded842549c0c8b219e06896d7a}
       \strng{authorfullhash}{2c08c5255abf97e3676f79ad13f5f28b}
       \strng{authorfullhashraw}{2c08c5255abf97e3676f79ad13f5f28b}
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{International Journal of Interactive Mobile Technologies (iJIM)}
@@ -1339,6 +1415,75 @@
       \field{note}{Notebook sobre el dataset BoomBikes (demanda de bicicletas compartidas). Disponible en: \url{https://github.com/21-f3000932/LinearRegression_Demand-forecasting/tree/main}}
       \field{title}{Linear Regression: Demand Forecasting}
       \field{year}{2021}
+    \endentry
+    \entry{datarithm2024}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=e4447192674c71d405e36e295b221cd6}{%
+           family={{Datarithm}},
+           familyi={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{e4447192674c71d405e36e295b221cd6}
+      \strng{fullhash}{e4447192674c71d405e36e295b221cd6}
+      \strng{fullhashraw}{e4447192674c71d405e36e295b221cd6}
+      \strng{bibnamehash}{e4447192674c71d405e36e295b221cd6}
+      \strng{authorbibnamehash}{e4447192674c71d405e36e295b221cd6}
+      \strng{authornamehash}{e4447192674c71d405e36e295b221cd6}
+      \strng{authorfullhash}{e4447192674c71d405e36e295b221cd6}
+      \strng{authorfullhashraw}{e4447192674c71d405e36e295b221cd6}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{Sitio web comercial}
+      \field{note}{Consultado en 2026. Disponible en: \url{https://www.datarithm.co/perpetual-inventory}}
+      \field{title}{Perpetual Inventory \& Demand Forecasting for Pharmacies}
+      \field{year}{2024}
+    \endentry
+    \entry{profiter2024}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=0b6a93e3ec892cf07d2e3ab106c41679}{%
+           family={{Profiter}},
+           familyi={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{0b6a93e3ec892cf07d2e3ab106c41679}
+      \strng{fullhash}{0b6a93e3ec892cf07d2e3ab106c41679}
+      \strng{fullhashraw}{0b6a93e3ec892cf07d2e3ab106c41679}
+      \strng{bibnamehash}{0b6a93e3ec892cf07d2e3ab106c41679}
+      \strng{authorbibnamehash}{0b6a93e3ec892cf07d2e3ab106c41679}
+      \strng{authornamehash}{0b6a93e3ec892cf07d2e3ab106c41679}
+      \strng{authorfullhash}{0b6a93e3ec892cf07d2e3ab106c41679}
+      \strng{authorfullhashraw}{0b6a93e3ec892cf07d2e3ab106c41679}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{Sitio web comercial}
+      \field{note}{Consultado en 2026. Disponible en: \url{https://profiter.ai/en/}}
+      \field{title}{Profiter: AI-Powered Platform for Pharmacies and Hospitals}
+      \field{year}{2024}
+    \endentry
+    \entry{odoo_ai_dashboard}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=5db11edd479f3549e321e72b8baf9f61}{%
+           family={{SCS}},
+           familyi={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{5db11edd479f3549e321e72b8baf9f61}
+      \strng{fullhash}{5db11edd479f3549e321e72b8baf9f61}
+      \strng{fullhashraw}{5db11edd479f3549e321e72b8baf9f61}
+      \strng{bibnamehash}{5db11edd479f3549e321e72b8baf9f61}
+      \strng{authorbibnamehash}{5db11edd479f3549e321e72b8baf9f61}
+      \strng{authornamehash}{5db11edd479f3549e321e72b8baf9f61}
+      \strng{authorfullhash}{5db11edd479f3549e321e72b8baf9f61}
+      \strng{authorfullhashraw}{5db11edd479f3549e321e72b8baf9f61}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{Modulo de Odoo}
+      \field{note}{Consultado en 2026. Disponible en: \url{https://apps.odoo.com/apps/modules/18.0/ai_dashboard}}
+      \field{title}{AI Dashboard -- Odoo App Store}
+      \field{year}{2024}
     \endentry
     \entry{iso12207}{standard}{}{}
       \name{author}{1}{}{%
@@ -1465,6 +1610,72 @@
       \endverb
       \verb{url}
       \verb https://www.sciencedirect.com/science/article/pii/S0957417412000528
+      \endverb
+    \endentry
+    \entry{talukdar2023storeitem}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=f2c89bfa06f497f1234ced1c6f3cc457}{%
+           family={Talukdar},
+           familyi={T\bibinitperiod},
+           given={Dhrubang},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{f2c89bfa06f497f1234ced1c6f3cc457}
+      \strng{fullhash}{f2c89bfa06f497f1234ced1c6f3cc457}
+      \strng{fullhashraw}{f2c89bfa06f497f1234ced1c6f3cc457}
+      \strng{bibnamehash}{f2c89bfa06f497f1234ced1c6f3cc457}
+      \strng{authorbibnamehash}{f2c89bfa06f497f1234ced1c6f3cc457}
+      \strng{authornamehash}{f2c89bfa06f497f1234ced1c6f3cc457}
+      \strng{authorfullhash}{f2c89bfa06f497f1234ced1c6f3cc457}
+      \strng{authorfullhashraw}{f2c89bfa06f497f1234ced1c6f3cc457}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{Kaggle}
+      \field{note}{Basado en la competencia "Store Item Demand Forecasting Challenge" de Kaggle (2018). Disponible en: \url{https://www.kaggle.com/datasets/dhrubangtalukdar/store-item-demand-forecasting-dataset}}
+      \field{title}{Store Item Demand Forecasting Dataset}
+      \field{year}{2023}
+    \endentry
+    \entry{constante2019dataco}{misc}{}{}
+      \name{author}{3}{}{%
+        {{hash=7d954d4289dd2ea67c89ea5a34eabbb8}{%
+           family={Constante},
+           familyi={C\bibinitperiod},
+           given={Fabian},
+           giveni={F\bibinitperiod}}}%
+        {{hash=b4f7e31494cbc912cffb3d3d47caefd2}{%
+           family={Silva},
+           familyi={S\bibinitperiod},
+           given={Fernando},
+           giveni={F\bibinitperiod}}}%
+        {{hash=83a2d1471e22d8c1558463bafef940f4}{%
+           family={Pereira},
+           familyi={P\bibinitperiod},
+           given={António},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Mendeley Data}%
+      }
+      \strng{namehash}{1fe572748f65a5f014d867165d4a10c0}
+      \strng{fullhash}{cf1e8a980aec6f21c3ff352f482a9c35}
+      \strng{fullhashraw}{cf1e8a980aec6f21c3ff352f482a9c35}
+      \strng{bibnamehash}{cf1e8a980aec6f21c3ff352f482a9c35}
+      \strng{authorbibnamehash}{cf1e8a980aec6f21c3ff352f482a9c35}
+      \strng{authornamehash}{1fe572748f65a5f014d867165d4a10c0}
+      \strng{authorfullhash}{cf1e8a980aec6f21c3ff352f482a9c35}
+      \strng{authorfullhashraw}{cf1e8a980aec6f21c3ff352f482a9c35}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Tambien disponible en Kaggle: \url{https://www.kaggle.com/datasets/shashwatwork/dataco-smart-supply-chain-for-big-data-analysis}}
+      \field{title}{DataCo Smart Supply Chain for Big Data Analysis}
+      \field{version}{5}
+      \field{year}{2019}
+      \verb{doi}
+      \verb 10.17632/8gx2fvg2k6.5
       \endverb
     \endentry
   \enddatalist

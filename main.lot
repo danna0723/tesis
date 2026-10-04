@@ -1,28 +1,34 @@
 \babel@toc {english}{}\relax 
 \babel@toc {english}{}\relax 
 \babel@toc {english}{}\relax 
-\contentsline {table}{\numberline {I}{\ignorespaces Ejemplo de cuatro meses utilizado para explicar las métricas.}}{37}{table.caption.21}%
-\contentsline {table}{\numberline {II}{\ignorespaces Ejemplo de la prueba de Diebold-Mariano con y sin la corrección de muestra pequeña ($T = 4$, $h = 1$).}}{42}{table.caption.31}%
-\contentsline {table}{\numberline {III}{\ignorespaces Comparación de técnicas de predicción aplicadas a problemas de demanda y series de tiempo}}{44}{table.caption.32}%
-\contentsline {table}{\numberline {IV}{\ignorespaces Implementaciones de referencia consultadas para el desarrollo de Thary.}}{45}{table.caption.33}%
+\contentsline {table}{\numberline {I}{\ignorespaces Ejemplo de cuatro meses utilizado para explicar las métricas.}}{38}{table.caption.21}%
+\contentsline {table}{\numberline {II}{\ignorespaces Ejemplo de la prueba de Diebold-Mariano con y sin la corrección de muestra pequeña ($T = 4$, $h = 1$).}}{43}{table.caption.31}%
+\contentsline {table}{\numberline {III}{\ignorespaces Comparación de técnicas de predicción aplicadas a problemas de demanda y series de tiempo}}{45}{table.caption.32}%
+\contentsline {table}{\numberline {IV}{\ignorespaces Implementaciones de referencia consultadas para el desarrollo de Thary.}}{46}{table.caption.33}%
 \contentsline {table}{\numberline {V}{\ignorespaces Identificación y mitigación de riesgos del proyecto.}}{51}{table.caption.39}%
 \contentsline {table}{\numberline {VI}{\ignorespaces Análisis de interés e influencia de los stakeholders}}{53}{table.caption.40}%
 \contentsline {table}{\numberline {VII}{\ignorespaces Trazabilidad entre casos de uso y requisitos funcionales}}{58}{table.caption.43}%
-\contentsline {table}{\numberline {VIII}{\ignorespaces Entidades principales del modelo de datos.}}{102}{table.caption.58}%
-\contentsline {table}{\numberline {IX}{\ignorespaces Resultados de la suite de pruebas automatizadas por archivo.}}{133}{table.caption.86}%
-\contentsline {table}{\numberline {X}{\ignorespaces Métricas del holdout final por modelo.}}{134}{table.caption.88}%
-\contentsline {table}{\numberline {XI}{\ignorespaces Resumen de la validación cruzada temporal (promedio $\pm $ desviación, 3 folds).}}{137}{table.caption.90}%
-\contentsline {table}{\numberline {XII}{\ignorespaces Estado de mitigación de las amenazas identificadas mediante STRIDE.}}{139}{table.caption.91}%
-\contentsline {table}{\numberline {XIII}{\ignorespaces Nivel de cumplimiento frente a los estandares de ingenieria declarados.}}{140}{table.caption.92}%
-\contentsline {table}{\numberline {XIV}{\ignorespaces Especificación del caso de uso CU-01: Iniciar sesión}}{157}{table.caption.95}%
-\contentsline {table}{\numberline {XV}{\ignorespaces Especificación del caso de uso CU-02: Cargar historial de consumo}}{158}{table.caption.96}%
-\contentsline {table}{\numberline {XVI}{\ignorespaces Especificación del caso de uso CU-03: Procesar archivo}}{159}{table.caption.97}%
-\contentsline {table}{\numberline {XVII}{\ignorespaces Especificación del caso de uso CU-04: Consultar demanda pronosticada}}{160}{table.caption.98}%
-\contentsline {table}{\numberline {XVIII}{\ignorespaces Especificación del caso de uso CU-05: Consultar estado del inventario}}{161}{table.caption.99}%
-\contentsline {table}{\numberline {XIX}{\ignorespaces Especificación del caso de uso CU-06: Consultar recomendaciones de reposición y presupuesto}}{162}{table.caption.100}%
-\contentsline {table}{\numberline {XX}{\ignorespaces Especificación del caso de uso CU-07: Registrar pedido}}{163}{table.caption.101}%
-\contentsline {table}{\numberline {XXI}{\ignorespaces Especificación del caso de uso CU-08: Gestionar usuarios}}{164}{table.caption.102}%
-\contentsline {table}{\numberline {XXII}{\ignorespaces Especificación del caso de uso CU-09: Deshacer pedido}}{165}{table.caption.103}%
-\contentsline {table}{\numberline {XXIII}{\ignorespaces Especificación del caso de uso CU-10: Consultar actividad de la empresa}}{166}{table.caption.104}%
-\contentsline {table}{\numberline {XXIV}{\ignorespaces Especificación del caso de uso CU-11: Consultar calendario de pedidos}}{167}{table.caption.105}%
-\contentsline {table}{\numberline {XXV}{\ignorespaces Especificación del caso de uso CU-12: Consultar perfil}}{168}{table.caption.106}%
+\contentsline {table}{\numberline {VIII}{\ignorespaces Entidades principales del modelo de datos.}}{107}{table.caption.62}%
+\contentsline {table}{\numberline {IX}{\ignorespaces Resultados de la suite de pruebas automatizadas por archivo.}}{139}{table.caption.92}%
+\contentsline {table}{\numberline {X}{\ignorespaces Métricas del holdout final por modelo.}}{141}{table.caption.94}%
+\contentsline {table}{\numberline {XI}{\ignorespaces Comparación entre modelo único y combinación — caso de estudio clínico.}}{142}{table.caption.96}%
+\contentsline {table}{\numberline {XII}{\ignorespaces Resumen de la validación cruzada temporal (promedio $\pm $ desviación, 3 folds).}}{145}{table.caption.97}%
+\contentsline {table}{\numberline {XIII}{\ignorespaces Comparación de modelos en el dataset de Store Item Demand Forecasting.}}{146}{table.caption.98}%
+\contentsline {table}{\numberline {XIV}{\ignorespaces Comparación entre modelo único y combinación — Store Item Demand Forecasting.}}{147}{table.caption.100}%
+\contentsline {table}{\numberline {XV}{\ignorespaces Comparación de modelos en el dataset DataCo Supply Chain.}}{148}{table.caption.101}%
+\contentsline {table}{\numberline {XVI}{\ignorespaces Comparación entre modelo único y combinación — DataCo Supply Chain.}}{149}{table.caption.103}%
+\contentsline {table}{\numberline {XVII}{\ignorespaces Comparación del WAPE promedio en validación cruzada: Media Móvil aplicada a todo el catálogo vs. selección de modelo por producto (Sistema final).}}{149}{table.caption.104}%
+\contentsline {table}{\numberline {XVIII}{\ignorespaces Estado de mitigación de las amenazas identificadas mediante STRIDE.}}{152}{table.caption.105}%
+\contentsline {table}{\numberline {XIX}{\ignorespaces Nivel de cumplimiento frente a los estandares de ingenieria declarados.}}{153}{table.caption.106}%
+\contentsline {table}{\numberline {XX}{\ignorespaces Especificación del caso de uso CU-01: Iniciar sesión}}{170}{table.caption.109}%
+\contentsline {table}{\numberline {XXI}{\ignorespaces Especificación del caso de uso CU-02: Cargar historial de consumo}}{171}{table.caption.110}%
+\contentsline {table}{\numberline {XXII}{\ignorespaces Especificación del caso de uso CU-03: Procesar archivo}}{172}{table.caption.111}%
+\contentsline {table}{\numberline {XXIII}{\ignorespaces Especificación del caso de uso CU-04: Consultar demanda pronosticada}}{173}{table.caption.112}%
+\contentsline {table}{\numberline {XXIV}{\ignorespaces Especificación del caso de uso CU-05: Consultar estado del inventario}}{174}{table.caption.113}%
+\contentsline {table}{\numberline {XXV}{\ignorespaces Especificación del caso de uso CU-06: Consultar recomendaciones de reposición y presupuesto}}{175}{table.caption.114}%
+\contentsline {table}{\numberline {XXVI}{\ignorespaces Especificación del caso de uso CU-07: Registrar pedido}}{176}{table.caption.115}%
+\contentsline {table}{\numberline {XXVII}{\ignorespaces Especificación del caso de uso CU-08: Gestionar usuarios}}{177}{table.caption.116}%
+\contentsline {table}{\numberline {XXVIII}{\ignorespaces Especificación del caso de uso CU-09: Deshacer pedido}}{178}{table.caption.117}%
+\contentsline {table}{\numberline {XXIX}{\ignorespaces Especificación del caso de uso CU-10: Consultar actividad de la empresa}}{179}{table.caption.118}%
+\contentsline {table}{\numberline {XXX}{\ignorespaces Especificación del caso de uso CU-11: Consultar calendario de pedidos}}{180}{table.caption.119}%
+\contentsline {table}{\numberline {XXXI}{\ignorespaces Especificación del caso de uso CU-12: Consultar perfil}}{181}{table.caption.120}%

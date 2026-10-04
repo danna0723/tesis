@@ -1,0 +1,4 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{es\PYGZus{}baja\PYGZus{}confianza}\PYG{p}{(}\PYG{n}{prediccion}\PYG{p}{,} \PYG{n}{minimo}\PYG{p}{):}
+    \PYG{k}{return} \PYG{n}{prediccion} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{0} \PYG{o+ow}{and} \PYG{n}{minimo} \PYG{o}{\PYGZlt{}=} \PYG{l+m+mi}{0}
+\end{MintedVerbatim}

@@ -38,6 +38,23 @@ Donde $d$ es la demanda promedio por periodo, $L$ es el tiempo de entrega del pr
 
 El Stock de Seguridad se trata de una cantidad adicional de cada producto que se mantiene en el inventario como medida de seguridad frente a la variabilidad de la demanda o del tiempo de entrega de los proovedores, protegiendo a la organización de quedarse sin existencias ante una demanda mayor a la esperada durante el periodo de espera del pedido.
 
+Tambien se puede calcular de manera mas formal, asumiendo que la demanda durante el tiempo de entrega sigue una distribucion normal \cite{chopra2018supplychain}:
+
+\begin{equation}
+SS = Z \times \sigma_D \times \sqrt{L}
+\end{equation}
+
+Donde $\sigma_D$ es la desviacion estandar de la demanda y $L$ es el tiempo de entrega,$Z$ es el valor que le corresponde al nivel de servicio que se quiera alcanzar, tomado de la distribucion normal estandar.  En el caso de Thary, se implemento como: 
+
+\Needspace{4\baselineskip}
+\captionof{listing}{Cálculo del stock de seguridad con el nivel de servicio implementado en Thary.}\label{lst:stock_seguridad_z}
+\begin{minted}{python}
+SERVICE_LEVEL_Z = 1.65
+stock_seguridad = SERVICE_LEVEL_Z * desviacion_demanda * np.sqrt(lead_time_meses)
+\end{minted}
+
+Si se quiere cubrir el 95\% de los escenarios posibles de demanda, se usa $Z = 1.65$ \cite{chopra2018supplychain}, que es justamente el valor que se implemento en el sistema.
+
 \subsubsection{Clasificación de inventarios}                     % NUEVO
     \paragraph{Clasificación ABC}\mbox{}\\
     La clasificación ABC es una técnica que divide el catálogo de productos en tres categorías según su importancia dentro de la demanda o el valor total acumulado. Esta clasificación permite que se prioricen los productos de mayor impacto en vez de tratar a todo el catálogo con los mismos estándares \cite{mahendrawathi2011abc}.
@@ -234,6 +251,8 @@ LSTM y GRU son variantes de redes neuronales recurrentes, diseñadas especificam
     Con esto, un mes con demanda cero sigue siendo cero después de la transformación, ya que $\log(0 + 1) = 0$. Cuando el modelo hace su predicción en esta escala transformada, se tiene que devolver a la escala original con la operación inversa, que es $y_t = e^{w_t} - 1$, porque lo que interesa es la demanda en unidades reales.
 
     Aun así, hay que tener en cuenta que esta transformación no siempre mejora el pronóstico, ya que su beneficio depende de que realmente logre estabilizar la varianza de la serie: si lo logra, puede mejorar la precisión, pero si no lo logra, puede perjudicarla \cite{luetkepohl2009log}. En Thary se aplica a la demanda antes de entrenar XGBoost, y las predicciones se devuelven a la escala original antes de compararlas con las de los demás modelos.
+    
+    Por otro lado, una de las razones por las que la transformación logarítmica funciona bien con datos de demanda es que, en la práctica, la demanda de muchos productos tiende a seguir una distribución log-normal, en lugar de una distribución normal \cite{cobb2013lognormal}. Esto significa que, aunque la demanda original tenga una forma asimétrica (con muchos valores bajos y pocos picos altos), el logaritmo de esa demanda se aproxima mucho más a una distribución normal, lo cual facilita que el modelo aprenda patrones más equilibrados entre productos de distinto volumen.
 
     \paragraph{Codificación cíclica de variables periódicas}\mbox{}\\
     Las variables de calendario como el mes se repiten cada cierto tiempo, es decir, después de diciembre vuelve a empezar enero. El problema es que si el mes se representa como un número del 1 al 12, el modelo va a ver a diciembre (12) y a enero (1) como dos meses muy lejanos entre sí, cuando en realidad son meses consecutivos. Para evitar esto se utiliza la codificación cíclica, que representa el mes con dos valores calculados con seno y coseno, de manera que la periodicidad quede representada de una forma que los modelos puedan interpretar \cite{jahin2025mcdfn}:

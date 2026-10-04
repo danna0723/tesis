@@ -131,7 +131,7 @@ Después, se calculca cuanto stock habia el mes anterior. La condición (\texttt
         df_mensual["inventario_lag_1"] = df_mensual.groupby("producto_id")["inventario"].shift(1)
 \end{minted}
 
-En esta parte, se implementó otra idea del \textit{Ejemplo 1 (SKU Demand Forecasting)} \cite{ejemplo1_demandforecast} para poder descartar las filas sin historial suficiente para tener los lags. Para esto, se define una lista con nueve nombres de las columnas obligatorias para poder entrenar, con (\texttt{(dropna(subset=feature\_history))}) se revisan las 4 columnas y elimina cualquier fila que tenga un espacio vacío, posteriormente el resultado se guarda en (\texttt{(df\_model)}), que es la tabla final que se usara para entrenar el modelo.
+En esta parte, se implementó otra idea del \textit{Ejemplo 1 (SKU Demand Forecasting)} \cite{ejemplo1_demandforecast} para poder descartar las filas sin historial suficiente para tener los lags. Para esto, se define una lista con cuatro columnas necesarias para poder entrenar, correspondientes a \texttt{lag\_1}, \texttt{lag\_2}, \texttt{lag\_3} y \texttt{media\_movil\_3}. Con (\texttt{dropna(subset=feature\_history)}) se revisan estas cuatro columnas y se elimina cualquier fila que tenga un espacio vacío en alguna de ellas. Posteriormente, el resultado se guarda en (\texttt{df\_model}), que es la tabla final que se usará para entrenar el modelo.
 
 \Needspace{10\baselineskip}
 \captionof{listing}{Descarte de las filas sin historial suficiente para calcular los rezagos.}\label{lst:features_dropna}

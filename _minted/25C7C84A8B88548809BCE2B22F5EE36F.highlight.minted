@@ -1,0 +1,8 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n}{metodo\PYGZus{}campeon} \PYG{o}{=} \PYG{n}{segmento}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}metodo\PYGZus{}campeon\PYGZdq{}}\PYG{p}{]}
+\PYG{n}{mae\PYGZus{}campeon} \PYG{o}{=} \PYG{n}{segmento}\PYG{o}{.}\PYG{n}{get}\PYG{p}{(}\PYG{n}{MAE\PYGZus{}POR\PYGZus{}METODO\PYGZus{}COL}\PYG{o}{.}\PYG{n}{get}\PYG{p}{(}\PYG{n}{metodo\PYGZus{}campeon}\PYG{p}{))}
+\PYG{k}{if} \PYG{n}{mae\PYGZus{}campeon} \PYG{o+ow}{is} \PYG{o+ow}{not} \PYG{k+kc}{None} \PYG{o+ow}{and} \PYG{o+ow}{not} \PYG{n}{pd}\PYG{o}{.}\PYG{n}{isna}\PYG{p}{(}\PYG{n}{mae\PYGZus{}campeon}\PYG{p}{):}
+    \PYG{n}{desviacion\PYGZus{}demanda} \PYG{o}{=} \PYG{n}{mae\PYGZus{}campeon}
+\PYG{k}{else}\PYG{p}{:}
+    \PYG{n}{desviacion\PYGZus{}demanda} \PYG{o}{=} \PYG{n}{stats\PYGZus{}pronostico}\PYG{o}{.}\PYG{n}{at}\PYG{p}{[}\PYG{n}{producto}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}desviacion\PYGZus{}pronostico\PYGZus{}std\PYGZdq{}}\PYG{p}{]}
+\end{MintedVerbatim}

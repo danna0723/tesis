@@ -1,0 +1,52 @@
+\paragraph{Rango de predicciones}
+
+Una vez que ya se eligió el método ganador para un producto, el rango que lo acompaña se calcula tomando el error que ese mismo método tuvo, en promedio, con ese mismo producto durante el backtest, y usándolo como margen hacia ambos lados de la predicción.
+\[
+[\text{mínimo},\ \text{máximo}] = \left[\max(0,\ \hat{d} - MAE),\ \ \hat{d} + MAE\right]
+\]
+
+\Needspace{7\baselineskip}
+\captionof{listing}{Función \texttt{calcular\_rango\_prediccion}, que calcula el mínimo y máximo del rango.}\label{lst:calcular_rango_prediccion}
+\begin{minted}{python}
+def calcular_rango_prediccion(prediccion, margen):
+    if margen is None or (isinstance(margen, float) and np.isnan(margen)):
+        margen = 0.0
+    return max(0.0, prediccion - margen), prediccion + margen
+\end{minted}
+
+En esta fórmula, $\hat{d}$ es la predicción puntual y $MAE$ es el error absoluto promedio que tuvo, en el backtest, el método que se terminó usando para ese producto, no el de los otros dos métodos que se descartaron. El mínimo se recorta en 0, ya que la demanda nunca puede ser negativa.
+
+Esta es una aproximación que usa un error que el sistema ya calcula de todos modos, es decir, el MAE del backtest, sin necesidad de entrenar modelos adicionales ni de asumir alguna distribución de probabilidad para el error del pronóstico.
+
+\paragraph{Productos sin rango de predicciones}
+
+El rango que acompaña a cada predicción usa como margen el MAE del método que se usó para ese producto. Cuando este margen no está disponible, el rango se colapsa al mismo valor de la predicción, ya que el sistema no quiere inventar una incertidumbre que en realidad nunca se midió. Esto significa que pueden existir productos sin rango de predicciones.
+
+Las principales dos razones que pueden generar esto son:
+
+Que no exista dato de backtest. Esto pasa porque el período de prueba se elige con los últimos meses del archivo completo, y no por cada producto por separado. Si el historial de un producto no llega hasta esos meses, por ejemplo, si se dejó de vender antes, ese producto no entra al backtest y su margen queda sin definir. Esto suele pasar en catálogos donde los productos tienen distinta duración de historial.
+
+La segunda razón es que el margen se haya medido como exactamente cero. Esto pasa con productos de rotación casi nula, cuya demanda fue 0 en los meses de prueba y que el modelo también predijo como 0. Un error absoluto de cero no significa que falte el dato, sino que fue un acierto perfecto. El rango se colapsa igual que en el caso anterior, pero en este caso es porque el error es cero, no porque no se sepa el margen de error.
+
+\paragraph{Baja confianza en el rango de predicciones}\label{sec:rango-predicciones}
+
+En el dashboard existe un ícono de advertencia amarillo que representa la baja confianza, y se activa cuando el mínimo del rango de la sección anterior queda recortado en 0. Esto pasa exactamente cuando el margen de error (el MAE del backtest del método usado) es igual o mayor que la predicción misma, es decir, el modelo se equivocó, en el pasado, al menos tanto como el valor que está prediciendo ahora, por lo que no se puede confiar en ese número puntual por sí solo.
+
+\Needspace{5\baselineskip}
+\captionof{listing}{Función \texttt{es\_baja\_confianza}, que detecta cuándo el mínimo del rango quedó recortado en 0.}\label{lst:es_baja_confianza}
+\begin{minted}{python}
+def es_baja_confianza(prediccion, minimo):
+    return prediccion > 0 and minimo <= 0
+\end{minted}
+
+La causa de esto es casi siempre la misma: la demanda intermitente, es decir, productos que la mayoría de los meses no tienen ninguna venta, y de vez en cuando aparece un pedido grande sin ningún aviso previo.
+
+Ningún método de los evaluados en este trabajo, ni en general ningún método de pronóstico de series de tiempo, puede anticipar cuándo va a caer el próximo pico de un producto así. 
+
+El minimo no se recorta, y por lo tanto tampoco se marca como baja confianza, en dos casos distintos:
+
+El primero es cuando un producto no tiene datos de backtest, por lo que no existe ningun margen que medir y se trata como si fuera 0. El segundo es cuando si se pudo medir el margen, pero este dio exactamente 0.
+
+En los dos casos el resultado se ve igual en pantalla, pero la razon es distinta, ya que no tener margen medido no es lo mismo que tener un margen medido en cero.
+
+Para estos productos, lo recomendable es no fijarse tanto en el numero puntual de un mes especifico, y apoyarse mas en el punto de reorden y el stock de seguridad (seccion~\ref{sec:reposicion}), que ya estan pensados para cubrir justamente este tipo de variabilidad en la demanda.

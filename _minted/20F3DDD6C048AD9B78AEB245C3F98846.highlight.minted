@@ -1,0 +1,6 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{calcular\PYGZus{}rango\PYGZus{}prediccion}\PYG{p}{(}\PYG{n}{prediccion}\PYG{p}{,} \PYG{n}{margen}\PYG{p}{):}
+    \PYG{k}{if} \PYG{n}{margen} \PYG{o+ow}{is} \PYG{k+kc}{None} \PYG{o+ow}{or} \PYG{p}{(}\PYG{n+nb}{isinstance}\PYG{p}{(}\PYG{n}{margen}\PYG{p}{,} \PYG{n+nb}{float}\PYG{p}{)} \PYG{o+ow}{and} \PYG{n}{np}\PYG{o}{.}\PYG{n}{isnan}\PYG{p}{(}\PYG{n}{margen}\PYG{p}{)):}
+        \PYG{n}{margen} \PYG{o}{=} \PYG{l+m+mf}{0.0}
+    \PYG{k}{return} \PYG{n+nb}{max}\PYG{p}{(}\PYG{l+m+mf}{0.0}\PYG{p}{,} \PYG{n}{prediccion} \PYG{o}{\PYGZhy{}} \PYG{n}{margen}\PYG{p}{),} \PYG{n}{prediccion} \PYG{o}{+} \PYG{n}{margen}
+\end{MintedVerbatim}

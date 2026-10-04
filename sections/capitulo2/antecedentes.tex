@@ -120,6 +120,20 @@ mediante el identificador presentado en la Tabla \ref{tab:implementaciones_refer
 indicando en cada caso que partes específicas de Thary se basaron en ellas y
 cuales corresponden a extensiones propias desarrolladas durante el proyecto.
 
+\subsubsection{Soluciones comerciales existentes}
+
+Ademas de las implementaciones practicas de codigo abierto revisadas, tambien se consultaron algunas soluciones comerciales que ya existen en el mercado, con el fin de comparar el enfoque de Thary frente a lo que ofrecen productos reales. Se seleccionaron tres soluciones que se consideraron relevantes para el estudio:
+\begin{itemize}
+    \item Datarithm \cite{datarithm2024}: Es un software comercial que esta dirigido especificamente a las farmacias, cadenas y centros de cuidado. Este funciona analizando el historial de dispensacion para predecir la demanda a 30 dias y calcular puntos de reorden de forma automatica.
+    
+    \item Profiter \cite{profiter2024}: Esta es una platafaforma que es algo similar a Datarithm, ya que tambien esta orientada a farmacias y hospitales, pero su funcionamiento consiste en la utilizacion de prediccion de demanda, optmizacion del inventario, y gestion automatica de pedidos.
+
+    En caso de estas dos herramientas, es desconocido que tipo de algoritmos o modelos implementan internamente, por lo que no se puede comparar su metodologia con la de Thary, ni verificar como llegan a sus resultados. Sin embargo, tambien se reviso una tercera herramienta que si especifica en que consiste su metodologia, y es el sistema Odoo:
+
+    \item Oddo \cite{odoo_ai_dashboard}: Este consiste en un modulo de codigo abierto en el que se implementa un modelo de regresion lineal para generar un pronostico de demanda de 30 dias. Tambien se pudo revisar el diseño de la interfaz de usuario mediante capturas de pantalla compartidas en su pagina web, lo que permitio comparar como se le presenta la informacion al usuario final en comparacion con Thary.
+\end{itemize}
+
+
 \subsubsection{Brecha identificada}
 
 Una vez habiendo analizado algunas de las implementaciones ya existentes para la resolución de una problemática similar a la planteada en este proyecto, se identificó que la mayoría de estas implementaciones no contemplan un enfoque de selección de modelos por producto, sino que utilizan un único modelo (ANN, LSTM, Regresión Lineal, GRU o XGBoost) para todo el catálogo.
@@ -130,6 +144,9 @@ Esto puede generar problemas de predicción, ya que no todos los productos tiene
 
 Además, la mayoría de estas implementaciones no cuentan con un mecanismo de validación estadística que permita confirmar que las diferencias observadas entre modelos sean reales y no producto del azar. Los estudios reportan únicamente el modelo con mejor métrica de error (MAE, RMSE, MAPE o $R^2$) como superior, sin verificar si dicha diferencia es estadísticamente significativa o podría explicarse por casualidad.
 
-Por último, la mayoría de estas implementaciones solo se centran en la etapa de predicción de la demanda, sin traducir los resultados a un análisis que pueda ayudar a los usuarios a tomar decisiones operativas de reposición como punto de reorden, cantidad económica de pedido o costo de ruptura ante un posible desabastecimiento. Solo uno de los estudios académicos revisados, el de Lin \cite{lin2024abc} (Regresión Lineal, Tabla \ref{tab:comparacion_modelos}), incorpora un análisis de clasificación ABC, pero de forma independiente al modelo predictivo, no como parte de un mismo sistema integrado.
+La mayoría de estas implementaciones solo se centran en la etapa de predicción de la demanda, sin traducir los resultados a un análisis que pueda ayudar a los usuarios a tomar decisiones operativas de reposición como punto de reorden, cantidad económica de pedido o costo de ruptura ante un posible desabastecimiento. Solo uno de los estudios académicos revisados, el de Lin \cite{lin2024abc} (Regresión Lineal, Tabla \ref{tab:comparacion_modelos}), incorpora un análisis de clasificación ABC, pero de forma independiente al modelo predictivo, no como parte de un mismo sistema integrado.
 
-En resumen, la diferencia entre la propuesta de Thary en comparación a los antecedentes revisados es que Thary busca integrar, dentro de un mismo sistema, la comparación de múltiples modelos candidatos, un mecanismo formal de selección respaldado estadísticamente, y su traducción directa en recomendaciones operativas de inventario, aplicado y validado sobre un caso de estudio real, en este caso, del dominio de salud.
+Por ultimo, Thary se distingue de los sistemas ya disponibles en mercado que fueron identificados en la transparencia metodologica: mientras que Datarithm y Profiter funcionan como "cajas negras" sin revelar su algoritmo, y el modulo de Odoo se limita a un unico modelo simple (regresion lineal), Thary documenta de forma completa y reproducible cada uno de los tres modelos utilizados, el proceso de seleccion del modelo campeon por producto, y la validacion estadistica aplicada mediante la prueba de Diebold-Mariano, permitiendo verificar y auditar sus resultados en cualquier momento.
+
+En resumen, la diferencia entre la propuesta de Thary en comparación a los antecedentes revisados es que Thary busca integrar, dentro de un mismo sistema, la comparación de múltiples modelos candidatos, un mecanismo formal de selección respaldado estadísticamente, y su traducción directa en recomendaciones operativas de inventario, aplicado y validado sobre un caso de estudio real, en este caso, del dominio de salud, y demas datasets de 'kaggle' pertencientes a diferentes dominios.
+
